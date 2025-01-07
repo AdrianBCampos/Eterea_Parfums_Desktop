@@ -28,64 +28,141 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtUsuario = new System.Windows.Forms.Label();
-            this.txtContraseña = new System.Windows.Forms.Label();
-            this.inputUsuario = new System.Windows.Forms.TextBox();
-            this.inputContraseña = new System.Windows.Forms.TextBox();
-            this.btnLogin = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lbl_error_auth = new System.Windows.Forms.Label();
+            this.lbl_error_pass = new System.Windows.Forms.Label();
+            this.lbl_error_user = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_contraseña = new System.Windows.Forms.TextBox();
+            this.txt_usuario = new System.Windows.Forms.TextBox();
+            this.btn_login = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // txtUsuario
+            // button1
             // 
-            this.txtUsuario.AutoSize = true;
-            this.txtUsuario.Location = new System.Drawing.Point(128, 103);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(64, 20);
-            this.txtUsuario.TabIndex = 0;
-            this.txtUsuario.Text = "Usuario";
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.SystemColors.Desktop;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(667, 30);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(73, 51);
+            this.button1.TabIndex = 77;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = false;
             // 
-            // txtContraseña
+            // lbl_error_auth
             // 
-            this.txtContraseña.AutoSize = true;
-            this.txtContraseña.Location = new System.Drawing.Point(128, 185);
-            this.txtContraseña.Name = "txtContraseña";
-            this.txtContraseña.Size = new System.Drawing.Size(92, 20);
-            this.txtContraseña.TabIndex = 1;
-            this.txtContraseña.Text = "Contraseña";
+            this.lbl_error_auth.AutoSize = true;
+            this.lbl_error_auth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_error_auth.ForeColor = System.Drawing.Color.DeepPink;
+            this.lbl_error_auth.Location = new System.Drawing.Point(124, 345);
+            this.lbl_error_auth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_error_auth.Name = "lbl_error_auth";
+            this.lbl_error_auth.Size = new System.Drawing.Size(100, 25);
+            this.lbl_error_auth.TabIndex = 75;
+            this.lbl_error_auth.Text = "Error Auth";
             // 
-            // inputUsuario
+            // lbl_error_pass
             // 
-            this.inputUsuario.Location = new System.Drawing.Point(300, 97);
-            this.inputUsuario.Name = "inputUsuario";
-            this.inputUsuario.Size = new System.Drawing.Size(177, 26);
-            this.inputUsuario.TabIndex = 2;
+            this.lbl_error_pass.AutoSize = true;
+            this.lbl_error_pass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_error_pass.ForeColor = System.Drawing.Color.DeepPink;
+            this.lbl_error_pass.Location = new System.Drawing.Point(606, 280);
+            this.lbl_error_pass.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_error_pass.Name = "lbl_error_pass";
+            this.lbl_error_pass.Size = new System.Drawing.Size(54, 25);
+            this.lbl_error_pass.TabIndex = 74;
+            this.lbl_error_pass.Text = "Error";
             // 
-            // inputContraseña
+            // lbl_error_user
             // 
-            this.inputContraseña.Location = new System.Drawing.Point(300, 179);
-            this.inputContraseña.Name = "inputContraseña";
-            this.inputContraseña.Size = new System.Drawing.Size(177, 26);
-            this.inputContraseña.TabIndex = 3;
+            this.lbl_error_user.AutoSize = true;
+            this.lbl_error_user.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_error_user.ForeColor = System.Drawing.Color.DeepPink;
+            this.lbl_error_user.Location = new System.Drawing.Point(606, 205);
+            this.lbl_error_user.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_error_user.Name = "lbl_error_user";
+            this.lbl_error_user.Size = new System.Drawing.Size(54, 25);
+            this.lbl_error_user.TabIndex = 73;
+            this.lbl_error_user.Text = "Error";
             // 
-            // btnLogin
+            // label2
             // 
-            this.btnLogin.Location = new System.Drawing.Point(285, 306);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(189, 47);
-            this.btnLogin.TabIndex = 4;
-            this.btnLogin.Text = "Ingresar";
-            this.btnLogin.UseVisualStyleBackColor = true;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Snow;
+            this.label2.Location = new System.Drawing.Point(123, 280);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(128, 24);
+            this.label2.TabIndex = 72;
+            this.label2.Text = "Contraseña: ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Snow;
+            this.label1.Location = new System.Drawing.Point(123, 206);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 24);
+            this.label1.TabIndex = 71;
+            this.label1.Text = "Usuario:";
+            // 
+            // txt_contraseña
+            // 
+            this.txt_contraseña.Location = new System.Drawing.Point(267, 279);
+            this.txt_contraseña.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_contraseña.Name = "txt_contraseña";
+            this.txt_contraseña.PasswordChar = '*';
+            this.txt_contraseña.Size = new System.Drawing.Size(329, 22);
+            this.txt_contraseña.TabIndex = 70;
+            // 
+            // txt_usuario
+            // 
+            this.txt_usuario.Location = new System.Drawing.Point(267, 206);
+            this.txt_usuario.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_usuario.Name = "txt_usuario";
+            this.txt_usuario.Size = new System.Drawing.Size(329, 22);
+            this.txt_usuario.TabIndex = 69;
+            // 
+            // btn_login
+            // 
+            this.btn_login.BackColor = System.Drawing.Color.Pink;
+            this.btn_login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_login.Location = new System.Drawing.Point(324, 399);
+            this.btn_login.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_login.Name = "btn_login";
+            this.btn_login.Size = new System.Drawing.Size(183, 46);
+            this.btn_login.TabIndex = 68;
+            this.btn_login.Text = "Iniciar Sesión";
+            this.btn_login.UseVisualStyleBackColor = false;
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.inputContraseña);
-            this.Controls.Add(this.inputUsuario);
-            this.Controls.Add(this.txtContraseña);
-            this.Controls.Add(this.txtUsuario);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(799, 488);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lbl_error_auth);
+            this.Controls.Add(this.lbl_error_pass);
+            this.Controls.Add(this.lbl_error_user);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txt_contraseña);
+            this.Controls.Add(this.txt_usuario);
+            this.Controls.Add(this.btn_login);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Login";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.Login_Load);
@@ -96,10 +173,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Label txtUsuario;
-        private System.Windows.Forms.Label txtContraseña;
-        private System.Windows.Forms.TextBox inputUsuario;
-        private System.Windows.Forms.TextBox inputContraseña;
-        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lbl_error_auth;
+        private System.Windows.Forms.Label lbl_error_pass;
+        private System.Windows.Forms.Label lbl_error_user;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txt_contraseña;
+        private System.Windows.Forms.TextBox txt_usuario;
+        private System.Windows.Forms.Button btn_login;
     }
 }
