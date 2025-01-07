@@ -16,5 +16,10 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
