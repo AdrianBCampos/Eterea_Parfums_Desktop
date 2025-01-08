@@ -1,4 +1,5 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,14 +17,14 @@ namespace Eterea_Parfums_Desktop
         public static int debug_mode = 1;
 
       
-        /// <summary>
-        /// public static Vendedor logueado;
-        /// </summary>
+        
+        public static Empleado logueado;
+        
        
 
         public static String Ruta_Base;
         public static String Ruta_Web;
-        public static String entorno = "adri";
+        public static String entorno = "dami";
 
         [STAThread]
         static void Main()
