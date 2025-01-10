@@ -12,18 +12,61 @@ namespace Eterea_Parfums_Desktop
 {
     public partial class NumeroDeCaja : Form
     {
+        // Declarar el evento personalizado ConfirmarNumeroCaja
+        public event EventHandler<string> ConfirmarNumeroCaja;
+
+        // Declaro una propiedad para almacenar el valor del número de caja
+        public string NumeroCaja { get; private set; }
+
         public NumeroDeCaja()
         {
             InitializeComponent();
             string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";
             img_logo.Image = Image.FromFile(rutaCompletaImagen);
+
+            lbl_error_caja.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            InicioAdministrador InicioAdministrador = new InicioAdministrador();
-            InicioAdministrador.Show();
-            this.Close();
+
+            if (Program.logueado.rol == "Admin")
+            {
+                InicioAdministrador InicioAdministrador = new InicioAdministrador();
+                InicioAdministrador.Show();
+                this.Close();
+            }
+            else
+            {
+                InicioVendedor InicioVendedor = new InicioVendedor();
+                InicioVendedor.Show();
+                this.Close();
+            }
+        }
+
+        private void btn_continuar_Click(object sender, EventArgs e)
+        {
+            // Obtengo el valor ingresado en el txt_numero_caja
+            string numCaja = txt_numero_caja.Text;
+
+            // Verifico si el valor ingresado es válido 
+            if (!string.IsNullOrWhiteSpace(numCaja))
+            {
+                // Asigno el valor del número de caja a la propiedad NumeroCaja
+                NumeroCaja = numCaja;
+
+                // Invocar el evento ConfirmarNumeroCaja con el número de caja confirmado
+                ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
+               
+                Facturacion facturacion = new Facturacion();
+                facturacion.Show();
+                this.Close();
+            }
+            else
+            {
+                // Muestra un mensaje de error si el valor ingresado no es válido
+                MessageBox.Show("Por favor, ingresa un número de caja válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

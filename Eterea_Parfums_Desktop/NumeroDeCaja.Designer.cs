@@ -34,6 +34,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_continuar = new System.Windows.Forms.Button();
             this.txt_numero_caja = new System.Windows.Forms.TextBox();
+            this.lbl_error_caja = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -102,6 +103,7 @@
             this.btn_continuar.TabIndex = 90;
             this.btn_continuar.Text = "Continuar";
             this.btn_continuar.UseVisualStyleBackColor = false;
+            this.btn_continuar.Click += new System.EventHandler(this.btn_continuar_Click);
             // 
             // txt_numero_caja
             // 
@@ -111,12 +113,26 @@
             this.txt_numero_caja.Size = new System.Drawing.Size(154, 22);
             this.txt_numero_caja.TabIndex = 96;
             // 
+            // lbl_error_caja
+            // 
+            this.lbl_error_caja.AutoSize = true;
+            this.lbl_error_caja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_error_caja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_error_caja.ForeColor = System.Drawing.Color.Red;
+            this.lbl_error_caja.Location = new System.Drawing.Point(423, 289);
+            this.lbl_error_caja.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_error_caja.Name = "lbl_error_caja";
+            this.lbl_error_caja.Size = new System.Drawing.Size(54, 25);
+            this.lbl_error_caja.TabIndex = 97;
+            this.lbl_error_caja.Text = "Error";
+            // 
             // NumeroDeCaja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbl_error_caja);
             this.Controls.Add(this.txt_numero_caja);
             this.Controls.Add(this.img_logo);
             this.Controls.Add(this.lbl_numero_caja);
@@ -140,5 +156,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btn_continuar;
         private System.Windows.Forms.TextBox txt_numero_caja;
+        private System.Windows.Forms.Label lbl_error_caja;
     }
 }
