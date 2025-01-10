@@ -17,7 +17,7 @@ namespace Eterea_Parfums_Desktop
         public static int debug_mode = 1;
 
       
-        
+
         public static Empleado logueado;
         
        
@@ -41,7 +41,7 @@ namespace Eterea_Parfums_Desktop
             else if (entorno == "dami")
             {
                 Ruta_Base = @"C:\Users\damim\source\repos"; 
-                Ruta_Base = @"C:\Users\Alumno\Desktop\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
+                Ruta_Base = @"C:\Users\damim\Source\Repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
             }
             else if (entorno == "adri")
             {
