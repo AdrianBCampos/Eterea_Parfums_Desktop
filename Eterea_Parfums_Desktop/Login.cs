@@ -40,9 +40,19 @@ namespace Eterea_Parfums_Desktop
             {
                 if (EmpleadoControlador.auth(txt_usuario.Text, txt_contraseña.Text))//, true))
                 {
-                   
 
-                    //
+                    if (Program.logueado.rol == "Admin")
+                    {
+                        InicioAdministrador InicioAdministrador = new InicioAdministrador();
+                        InicioAdministrador.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        InicioVendedor InicioVendedor = new InicioVendedor();
+                        InicioVendedor.Show();
+                        this.Hide();
+                    }
 
 
                 }
@@ -54,12 +64,14 @@ namespace Eterea_Parfums_Desktop
             }
 
 
+            /*
             if (EmpleadoControlador.auth(usuraio, clave))
             {
-                InicioAutoConsultas inicioAutoConsultas = new InicioAutoConsultas();
-                inicioAutoConsultas.Show();
+                InicioAdministrador InicioAdministrador = new InicioAdministrador();
+                InicioAdministrador.Show();
                 this.Hide();
             }
+            */
                 
         }
 

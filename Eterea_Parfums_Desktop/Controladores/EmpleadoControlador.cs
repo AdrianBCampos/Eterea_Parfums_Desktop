@@ -43,6 +43,8 @@ namespace Eterea_Parfums_Desktop.Controladores
                     empleado.id = r.GetInt32(0);
                     empleado.usuario = r.GetString(1);
                     empleado.clave = r.GetString(2);
+                    empleado.nombre = r.GetString(3);
+                    empleado.apellido = r.GetString(4);
                     empleado.rol = r.GetString(22);
 
                 }
