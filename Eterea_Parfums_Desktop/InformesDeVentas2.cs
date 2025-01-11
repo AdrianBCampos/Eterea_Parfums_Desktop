@@ -10,18 +10,18 @@ using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
 {
-    public partial class InicioAutoConsultas : Form
+    public partial class InformesDeVentas2 : Form
     {
-        public InicioAutoConsultas()
+        public InformesDeVentas2()
         {
             InitializeComponent();
         }
 
-        private void btn_iniciar_sesion_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            Login login = new Login();  
-            login.Show();
-            this.Hide();
+            InformesDeVentas informesDeVentas = new InformesDeVentas();
+            informesDeVentas.Show();
+            this.Close();
         }
     }
 }

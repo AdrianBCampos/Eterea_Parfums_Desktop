@@ -46,16 +46,127 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Facturacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturacion.Designer.cs">
+      <DependentUpon>Facturacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEmpleado.Designer.cs">
+      <DependentUpon>FormEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InformesDeVentas2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformesDeVentas2.Designer.cs">
+      <DependentUpon>InformesDeVentas2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Stock.Designer.cs">
+      <DependentUpon>Stock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controladores\DB_Controller.cs" />
+    <Compile Include="Controladores\EmpleadoControlador.cs" />
+    <Compile Include="InformesDeVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformesDeVentas.Designer.cs">
+      <DependentUpon>InformesDeVentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InicioAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InicioAdministrador.Designer.cs">
+      <DependentUpon>InicioAdministrador.cs</DependentUpon>
+    </Compile>
     <Compile Include="InicioAutoConsultas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="InicioAutoConsultas.Designer.cs">
       <DependentUpon>InicioAutoConsultas.cs</DependentUpon>
     </Compile>
+    <Compile Include="InicioVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InicioVendedor.Designer.cs">
+      <DependentUpon>InicioVendedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListaDeEnvios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListaDeEnvios.Designer.cs">
+      <DependentUpon>ListaDeEnvios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\Empleado.cs" />
+    <Compile Include="NumeroDeCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NumeroDeCaja.Designer.cs">
+      <DependentUpon>NumeroDeCaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NumeroDeSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NumeroDeSucursal.Designer.cs">
+      <DependentUpon>NumeroDeSucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Productos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Productos.Designer.cs">
+      <DependentUpon>Productos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Facturacion.resx">
+      <DependentUpon>Facturacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEmpleado.resx">
+      <DependentUpon>FormEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformesDeVentas2.resx">
+      <DependentUpon>InformesDeVentas2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Stock.resx">
+      <DependentUpon>Stock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformesDeVentas.resx">
+      <DependentUpon>InformesDeVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InicioAdministrador.resx">
+      <DependentUpon>InicioAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InicioAutoConsultas.resx">
       <DependentUpon>InicioAutoConsultas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InicioVendedor.resx">
+      <DependentUpon>InicioVendedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListaDeEnvios.resx">
+      <DependentUpon>ListaDeEnvios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NumeroDeCaja.resx">
+      <DependentUpon>NumeroDeCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NumeroDeSucursal.resx">
+      <DependentUpon>NumeroDeSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Productos.resx">
+      <DependentUpon>Productos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -78,6 +189,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\CerrarSesion.png" />
+    <Content Include="Resources\LogoEterea.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
