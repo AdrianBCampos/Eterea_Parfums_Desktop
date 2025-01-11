@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controladores\CalleControlador.cs" />
+    <Compile Include="Controladores\GeneroControlador.cs" />
+    <Compile Include="Controladores\LocalidadControlador.cs" />
+    <Compile Include="Controladores\MarcaControlador.cs" />
+    <Compile Include="Controladores\PaisControlador.cs" />
+    <Compile Include="Controladores\ProvinciaControlador.cs" />
     <Compile Include="Facturacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +70,12 @@
     <Compile Include="InformesDeVentas2.Designer.cs">
       <DependentUpon>InformesDeVentas2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\Calle.cs" />
+    <Compile Include="Modelos\Genero.cs" />
+    <Compile Include="Modelos\Localidad.cs" />
+    <Compile Include="Modelos\Marca.cs" />
+    <Compile Include="Modelos\Pais.cs" />
+    <Compile Include="Modelos\Provincia.cs" />
     <Compile Include="Stock.cs">
       <SubType>Form</SubType>
     </Compile>
