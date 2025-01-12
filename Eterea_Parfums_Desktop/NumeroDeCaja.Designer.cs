@@ -120,7 +120,7 @@
             this.lbl_error_caja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_caja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_error_caja.ForeColor = System.Drawing.Color.Red;
-            this.lbl_error_caja.Location = new System.Drawing.Point(476, 361);
+            this.lbl_error_caja.Location = new System.Drawing.Point(227, 361);
             this.lbl_error_caja.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_caja.Name = "lbl_error_caja";
             this.lbl_error_caja.Size = new System.Drawing.Size(67, 29);

@@ -25,6 +25,7 @@ namespace Eterea_Parfums_Desktop
             img_logo.Image = Image.FromFile(rutaCompletaImagen);
 
             lbl_error_caja.Visible = false;
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -70,9 +71,18 @@ namespace Eterea_Parfums_Desktop
             else
             {
                 // Muestra un mensaje de error si el valor ingresado no es un número válido
-                MessageBox.Show("Por favor, ingresa un número de caja válido. Solo se permiten números.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                lbl_error_caja.Text = "Por favor, ingresa un número de caja válido.";
+                lbl_error_caja.Visible = true;
+
+                // Limpia el contenido del TextBox
+                txt_numero_caja.Text = string.Empty;
+
+                // (Opcional) Coloca el foco de vuelta en el TextBox
+                txt_numero_caja.Focus();
             }
         }
 
+      
     }
 }
