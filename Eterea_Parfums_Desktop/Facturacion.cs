@@ -37,7 +37,7 @@ namespace Eterea_Parfums_Desktop
         {
             NumeroDeCaja numeroDeCaja = new NumeroDeCaja();
             numeroDeCaja.Show();
-            this.Hide();
+            this.Close();
         }
     }
 }

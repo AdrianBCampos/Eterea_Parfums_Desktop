@@ -30,7 +30,7 @@ namespace Eterea_Parfums_Desktop
         private void button2_Click(object sender, EventArgs e)
         {
 
-            if (Program.logueado.rol == "Admin")
+            if (Program.logueado.rol == "admin")
             {
                 InicioAdministrador InicioAdministrador = new InicioAdministrador();
                 InicioAdministrador.Show();
