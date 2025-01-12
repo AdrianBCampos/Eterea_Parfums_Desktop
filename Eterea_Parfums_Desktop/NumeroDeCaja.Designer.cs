@@ -41,10 +41,10 @@
             // 
             // img_logo
             // 
-            this.img_logo.Location = new System.Drawing.Point(226, 35);
-            this.img_logo.Margin = new System.Windows.Forms.Padding(4);
+            this.img_logo.Location = new System.Drawing.Point(254, 44);
+            this.img_logo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.img_logo.Name = "img_logo";
-            this.img_logo.Size = new System.Drawing.Size(356, 177);
+            this.img_logo.Size = new System.Drawing.Size(400, 221);
             this.img_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.img_logo.TabIndex = 95;
             this.img_logo.TabStop = false;
@@ -55,10 +55,10 @@
             this.lbl_numero_caja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_numero_caja.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_numero_caja.ForeColor = System.Drawing.Color.Black;
-            this.lbl_numero_caja.Location = new System.Drawing.Point(234, 261);
+            this.lbl_numero_caja.Location = new System.Drawing.Point(263, 326);
             this.lbl_numero_caja.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_numero_caja.Name = "lbl_numero_caja";
-            this.lbl_numero_caja.Size = new System.Drawing.Size(168, 24);
+            this.lbl_numero_caja.Size = new System.Drawing.Size(210, 29);
             this.lbl_numero_caja.TabIndex = 93;
             this.lbl_numero_caja.Text = "Numero de Caja:";
             // 
@@ -71,11 +71,11 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(741, 12);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Location = new System.Drawing.Point(834, 15);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(46, 40);
+            this.button2.Size = new System.Drawing.Size(52, 50);
             this.button2.TabIndex = 92;
             this.button2.Text = "X";
             this.button2.UseVisualStyleBackColor = false;
@@ -85,9 +85,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(83, 231);
+            this.pictureBox1.Location = new System.Drawing.Point(93, 289);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(647, 90);
+            this.pictureBox1.Size = new System.Drawing.Size(728, 112);
             this.pictureBox1.TabIndex = 91;
             this.pictureBox1.TabStop = false;
             // 
@@ -96,10 +97,10 @@
             this.btn_continuar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_continuar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_continuar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_continuar.Location = new System.Drawing.Point(313, 344);
-            this.btn_continuar.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_continuar.Location = new System.Drawing.Point(352, 430);
+            this.btn_continuar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_continuar.Name = "btn_continuar";
-            this.btn_continuar.Size = new System.Drawing.Size(183, 46);
+            this.btn_continuar.Size = new System.Drawing.Size(206, 58);
             this.btn_continuar.TabIndex = 90;
             this.btn_continuar.Text = "Continuar";
             this.btn_continuar.UseVisualStyleBackColor = false;
@@ -107,10 +108,10 @@
             // 
             // txt_numero_caja
             // 
-            this.txt_numero_caja.Location = new System.Drawing.Point(428, 263);
-            this.txt_numero_caja.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_numero_caja.Location = new System.Drawing.Point(482, 329);
+            this.txt_numero_caja.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_numero_caja.Name = "txt_numero_caja";
-            this.txt_numero_caja.Size = new System.Drawing.Size(154, 22);
+            this.txt_numero_caja.Size = new System.Drawing.Size(173, 26);
             this.txt_numero_caja.TabIndex = 96;
             // 
             // lbl_error_caja
@@ -119,19 +120,20 @@
             this.lbl_error_caja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_caja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_error_caja.ForeColor = System.Drawing.Color.Red;
-            this.lbl_error_caja.Location = new System.Drawing.Point(423, 289);
+            this.lbl_error_caja.Location = new System.Drawing.Point(476, 361);
             this.lbl_error_caja.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_caja.Name = "lbl_error_caja";
-            this.lbl_error_caja.Size = new System.Drawing.Size(54, 25);
+            this.lbl_error_caja.Size = new System.Drawing.Size(67, 29);
             this.lbl_error_caja.TabIndex = 97;
             this.lbl_error_caja.Text = "Error";
             // 
             // NumeroDeCaja
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AcceptButton = this.btn_continuar;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(900, 562);
             this.Controls.Add(this.lbl_error_caja);
             this.Controls.Add(this.txt_numero_caja);
             this.Controls.Add(this.img_logo);
@@ -139,6 +141,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btn_continuar);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "NumeroDeCaja";
             this.Text = "NumeroDeCaja";
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).EndInit();

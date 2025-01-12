@@ -13,20 +13,26 @@ namespace Eterea_Parfums_Desktop
 {
     public partial class InicioAdministrador : Form
     {
+        // Declarar la instancia de ToolTip
+        private ToolTip toolTip = new ToolTip();
+
         public InicioAdministrador()
         {
             InitializeComponent();
 
+            // Configurar las imágenes
             string rutaLogo = Program.Ruta_Base + @"LogoEterea.png";
             img_logo.Image = Image.FromFile(rutaLogo);
 
             string rutaCerrarSesion = Program.Ruta_Base + @"CerrarSesion.png";
             btn_cerrar_sesion.Image = Image.FromFile(rutaCerrarSesion);
 
+            // Configurar el saludo
             txt_saludo.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
-        }
 
-        
+            // Configurar el ToolTip para el botón de cerrar sesión
+            toolTip.SetToolTip(btn_cerrar_sesion, "Cerrar sesión");
+        }
 
         private void btn_cerrar_sesion_Click(object sender, EventArgs e)
         {
