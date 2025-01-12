@@ -21,9 +21,9 @@ namespace Eterea_Parfums_Desktop.Modelos
         public Pais pais_id { get; set; }
         public Provincia provincia_id { get; set; }
         public Localidad localidad_id { get; set; }
-        public int codigo_postal { get; set; }
+        public int? codigo_postal { get; set; }
         public Calle calle_id { get; set; }
-        public int numeracion_calle { get; set; }
+        public int? numeracion_calle { get; set; }
         public String piso { get; set; }
         public String departamento { get; set; }
         public String comentarios_domicilio { get; set; }
