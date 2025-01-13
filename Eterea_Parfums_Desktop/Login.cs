@@ -40,8 +40,8 @@ namespace Eterea_Parfums_Desktop
             {
                 if (EmpleadoControlador.auth(txt_usuario.Text, txt_contraseña.Text))//, true))
                 {
-
-                    if (Program.logueado.rol == "Admin")
+                  
+                    if (Program.logueado.rol == "admin")
                     {
                         InicioAdministrador InicioAdministrador = new InicioAdministrador();
                         InicioAdministrador.Show();
