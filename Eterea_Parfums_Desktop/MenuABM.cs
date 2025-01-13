@@ -27,8 +27,6 @@ namespace Eterea_Parfums_Desktop
             this.Close();
         }
 
-        private void btn_perfumes_Click(object sender, EventArgs e)
-        {
 
         }
 
