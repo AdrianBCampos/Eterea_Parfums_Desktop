@@ -23,5 +23,12 @@ namespace Eterea_Parfums_Desktop
             InicioAdministrador.Show();
             this.Close();
         }
+
+        private void btn_siguiente_Click(object sender, EventArgs e)
+        {
+            AromaNota aromaNota = new AromaNota();
+            aromaNota.Show();
+            this.Hide();
+        }
     }
 }

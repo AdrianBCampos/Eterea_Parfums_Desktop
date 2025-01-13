@@ -30,12 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewPerfumes = new System.Windows.Forms.DataGridView();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.txt_buscar_codigo = new System.Windows.Forms.TextBox();
-            this.lbl_codigo = new System.Windows.Forms.Label();
-            this.lbl_perfumes = new System.Windows.Forms.Label();
-            this.btn_crear_perfume = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +44,12 @@
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Editar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.txt_buscar_codigo = new System.Windows.Forms.TextBox();
+            this.lbl_codigo = new System.Windows.Forms.Label();
+            this.lbl_perfumes = new System.Windows.Forms.Label();
+            this.btn_crear_perfume = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPerfumes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -88,71 +88,6 @@
             this.dataGridViewPerfumes.RowHeadersWidth = 51;
             this.dataGridViewPerfumes.Size = new System.Drawing.Size(934, 266);
             this.dataGridViewPerfumes.TabIndex = 229;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(11, 104);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(967, 299);
-            this.pictureBox2.TabIndex = 228;
-            this.pictureBox2.TabStop = false;
-            // 
-            // txt_buscar_codigo
-            // 
-            this.txt_buscar_codigo.Location = new System.Drawing.Point(443, 72);
-            this.txt_buscar_codigo.Name = "txt_buscar_codigo";
-            this.txt_buscar_codigo.Size = new System.Drawing.Size(200, 20);
-            this.txt_buscar_codigo.TabIndex = 227;
-            // 
-            // lbl_codigo
-            // 
-            this.lbl_codigo.AutoSize = true;
-            this.lbl_codigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_codigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_codigo.ForeColor = System.Drawing.Color.Black;
-            this.lbl_codigo.Location = new System.Drawing.Point(370, 74);
-            this.lbl_codigo.Name = "lbl_codigo";
-            this.lbl_codigo.Size = new System.Drawing.Size(67, 18);
-            this.lbl_codigo.TabIndex = 226;
-            this.lbl_codigo.Text = "Código:";
-            // 
-            // lbl_perfumes
-            // 
-            this.lbl_perfumes.AutoSize = true;
-            this.lbl_perfumes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_perfumes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_perfumes.ForeColor = System.Drawing.Color.Black;
-            this.lbl_perfumes.Location = new System.Drawing.Point(18, 19);
-            this.lbl_perfumes.Name = "lbl_perfumes";
-            this.lbl_perfumes.Size = new System.Drawing.Size(80, 18);
-            this.lbl_perfumes.TabIndex = 225;
-            this.lbl_perfumes.Text = "Perfumes";
-            // 
-            // btn_crear_perfume
-            // 
-            this.btn_crear_perfume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.btn_crear_perfume.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_crear_perfume.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_crear_perfume.Location = new System.Drawing.Point(21, 52);
-            this.btn_crear_perfume.Name = "btn_crear_perfume";
-            this.btn_crear_perfume.Size = new System.Drawing.Size(137, 37);
-            this.btn_crear_perfume.TabIndex = 224;
-            this.btn_crear_perfume.Text = "Crear";
-            this.btn_crear_perfume.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(11, 7);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(967, 92);
-            this.pictureBox1.TabIndex = 223;
-            this.pictureBox1.TabStop = false;
             // 
             // Id
             // 
@@ -224,6 +159,72 @@
             // 
             this.Eliminar.HeaderText = "Eliminar";
             this.Eliminar.Name = "Eliminar";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox2.Location = new System.Drawing.Point(11, 104);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(967, 299);
+            this.pictureBox2.TabIndex = 228;
+            this.pictureBox2.TabStop = false;
+            // 
+            // txt_buscar_codigo
+            // 
+            this.txt_buscar_codigo.Location = new System.Drawing.Point(443, 72);
+            this.txt_buscar_codigo.Name = "txt_buscar_codigo";
+            this.txt_buscar_codigo.Size = new System.Drawing.Size(200, 20);
+            this.txt_buscar_codigo.TabIndex = 227;
+            // 
+            // lbl_codigo
+            // 
+            this.lbl_codigo.AutoSize = true;
+            this.lbl_codigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_codigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_codigo.ForeColor = System.Drawing.Color.Black;
+            this.lbl_codigo.Location = new System.Drawing.Point(370, 74);
+            this.lbl_codigo.Name = "lbl_codigo";
+            this.lbl_codigo.Size = new System.Drawing.Size(67, 18);
+            this.lbl_codigo.TabIndex = 226;
+            this.lbl_codigo.Text = "Código:";
+            // 
+            // lbl_perfumes
+            // 
+            this.lbl_perfumes.AutoSize = true;
+            this.lbl_perfumes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_perfumes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_perfumes.ForeColor = System.Drawing.Color.Black;
+            this.lbl_perfumes.Location = new System.Drawing.Point(18, 19);
+            this.lbl_perfumes.Name = "lbl_perfumes";
+            this.lbl_perfumes.Size = new System.Drawing.Size(80, 18);
+            this.lbl_perfumes.TabIndex = 225;
+            this.lbl_perfumes.Text = "Perfumes";
+            // 
+            // btn_crear_perfume
+            // 
+            this.btn_crear_perfume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
+            this.btn_crear_perfume.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_crear_perfume.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_crear_perfume.Location = new System.Drawing.Point(21, 52);
+            this.btn_crear_perfume.Name = "btn_crear_perfume";
+            this.btn_crear_perfume.Size = new System.Drawing.Size(137, 37);
+            this.btn_crear_perfume.TabIndex = 224;
+            this.btn_crear_perfume.Text = "Crear";
+            this.btn_crear_perfume.UseVisualStyleBackColor = false;
+            this.btn_crear_perfume.Click += new System.EventHandler(this.btn_crear_perfume_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.Location = new System.Drawing.Point(11, 7);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(967, 92);
+            this.pictureBox1.TabIndex = 223;
+            this.pictureBox1.TabStop = false;
             // 
             // PerfumesUC
             // 

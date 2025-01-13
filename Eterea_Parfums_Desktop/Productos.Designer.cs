@@ -544,6 +544,7 @@
             this.btn_siguiente.TabIndex = 142;
             this.btn_siguiente.Text = "Siguiente";
             this.btn_siguiente.UseVisualStyleBackColor = false;
+            this.btn_siguiente.Click += new System.EventHandler(this.btn_siguiente_Click);
             // 
             // Productos
             // 

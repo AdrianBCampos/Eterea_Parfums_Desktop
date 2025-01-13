@@ -52,8 +52,8 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_gestionar_Click(object sender, EventArgs e)
         {
-            Productos productos = new Productos();
-            productos.Show();
+            MenuABM menuABM = new MenuABM();
+            menuABM.Show();
             this.Hide();
         }
 
