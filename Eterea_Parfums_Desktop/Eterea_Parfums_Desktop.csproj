@@ -100,12 +100,20 @@
     <Compile Include="MenuABM.Designer.cs">
       <DependentUpon>MenuABM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\AromaDelPerfume.cs" />
     <Compile Include="Modelos\Calle.cs" />
     <Compile Include="Modelos\Genero.cs" />
     <Compile Include="Modelos\Localidad.cs" />
     <Compile Include="Modelos\Marca.cs" />
+    <Compile Include="Modelos\Nota.cs" />
+    <Compile Include="Modelos\NotaConTipoDeNota.cs" />
+    <Compile Include="Modelos\NotasDelPerfume.cs" />
     <Compile Include="Modelos\Pais.cs" />
+    <Compile Include="Modelos\Perfume.cs" />
     <Compile Include="Modelos\Provincia.cs" />
+    <Compile Include="Modelos\TipoDeAroma.cs" />
+    <Compile Include="Modelos\TipoDeNota.cs" />
+    <Compile Include="Modelos\TipoDePerfume.cs" />
     <Compile Include="Stock.cs">
       <SubType>Form</SubType>
     </Compile>
