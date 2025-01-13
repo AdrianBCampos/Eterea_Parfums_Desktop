@@ -94,6 +94,12 @@
     <Compile Include="InformesDeVentas2.Designer.cs">
       <DependentUpon>InformesDeVentas2.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuABM.Designer.cs">
+      <DependentUpon>MenuABM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\Calle.cs" />
     <Compile Include="Modelos\Genero.cs" />
     <Compile Include="Modelos\Localidad.cs" />
@@ -185,6 +191,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InformesDeVentas2.resx">
       <DependentUpon>InformesDeVentas2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuABM.resx">
+      <DependentUpon>MenuABM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Stock.resx">
       <DependentUpon>Stock.cs</DependentUpon>
