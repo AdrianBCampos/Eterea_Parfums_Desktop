@@ -58,6 +58,12 @@
     <Compile Include="Controladores\MarcaControlador.cs" />
     <Compile Include="Controladores\PaisControlador.cs" />
     <Compile Include="Controladores\ProvinciaControlador.cs" />
+    <Compile Include="ControlesDeUsuario\PerfumesUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\PerfumesUC.Designer.cs">
+      <DependentUpon>PerfumesUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditarAromaNota.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AromaNota.resx">
       <DependentUpon>AromaNota.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesDeUsuario\PerfumesUC.resx">
+      <DependentUpon>PerfumesUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditarAromaNota.resx">
       <DependentUpon>EditarAromaNota.cs</DependentUpon>

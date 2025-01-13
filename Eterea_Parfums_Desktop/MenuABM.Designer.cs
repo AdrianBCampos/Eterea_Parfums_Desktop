@@ -113,6 +113,7 @@
             this.btn_perfumes.TabIndex = 105;
             this.btn_perfumes.Text = "Perfumes";
             this.btn_perfumes.UseVisualStyleBackColor = false;
+            this.btn_perfumes.Click += new System.EventHandler(this.btn_perfumes_Click);
             // 
             // MenuABM
             // 

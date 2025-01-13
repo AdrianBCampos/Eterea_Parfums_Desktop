@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Eterea_Parfums_Desktop.ControlesDeUsuario;
 
 namespace Eterea_Parfums_Desktop
 {
@@ -28,8 +29,6 @@ namespace Eterea_Parfums_Desktop
         }
 
 
-        }
-
         private void btn_empleados_Click(object sender, EventArgs e)
         {
 
@@ -37,17 +36,17 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_clientes_Click(object sender, EventArgs e)
         {
-            Clientes_UC clientes_UC = new Clientes_UC();
-            addUserControl(clientes_UC);
+            /*Clientes_UC clientes_UC = new Clientes_UC();
+            addUserControl(clientes_UC);*/
         }
 
-        private void addUserControl(UserControl uc)
+        /*private void addUserControl(UserControl uc)
         {
             uc.Dock = DockStyle.Fill;
             panel_abm.Controls.Clear();
             panel_abm.Controls.Add(uc);
             uc.BringToFront();
-        }
+        }*/
 
         private void btn_promociones_Click(object sender, EventArgs e)
         {
@@ -59,6 +58,13 @@ namespace Eterea_Parfums_Desktop
             InicioAdministrador InicioAdministrador = new InicioAdministrador();
             InicioAdministrador.Show();
             this.Close();
+        }
+
+        private void btn_perfumes_Click(object sender, EventArgs e)
+        {
+            PerfumesUC perfumesUC = new PerfumesUC();
+            
+
         }
     }
 }
