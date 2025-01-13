@@ -142,18 +142,24 @@ namespace Eterea_Parfums_Desktop
             txt_apellido.Text = cliente.apellido.ToString();
             txt_dni.Text = cliente.dni.ToString();
             txt_cond_iva.Text = cliente.condicion_frente_al_iva.ToString();
-            dateTime_nac.Text = cliente.fecha_nacimiento.ToString();
+            dateTime_nac.Text = cliente.fecha_nacimiento?.ToString("1900-01-01") ?? ""; // Si es null, asigna una cadena vacía
+            //dateTime_nac.Text = cliente.fecha_nacimiento.ToString();
             txt_celular.Text = cliente.celular.ToString();
             txt_email.Text = cliente.e_mail.ToString();
             combo_pais.SelectedItem = cliente.pais_id.nombre.ToString();
             combo_provincia.SelectedItem = cliente.provincia_id.nombre.ToString();
             combo_localidad.SelectedItem = cliente.localidad_id.nombre.ToString();
-            txt_cp.Text = cliente.codigo_postal.ToString();
+            txt_cp.Text = cliente.codigo_postal?.ToString() ?? ""; // Si es null, asigna una cadena vacía
+            //txt_cp.Text = cliente.codigo_postal.ToString();
             combo_calle.SelectedItem = cliente.calle_id.nombre.ToString();
-            txt_num_calle.Text = cliente.numeracion_calle.ToString();
-            txt_piso.Text = cliente.piso.ToString();
-            txt_depto.Text = cliente.departamento.ToString();
-            txt_comentarios.Text = cliente.comentarios_domicilio.ToString();
+            txt_num_calle.Text = cliente.numeracion_calle?.ToString() ?? ""; // Si es null, asigna una cadena vacía
+            txt_piso.Text = cliente.piso ?? ""; // Si es null, asigna una cadena vacía
+            txt_depto.Text = cliente.departamento ?? ""; // Si es null, asigna una cadena vacía
+            txt_comentarios.Text = cliente.comentarios_domicilio ?? ""; // Si es null, asigna una cadena vacía
+            //txt_num_calle.Text = cliente.numeracion_calle.ToString();
+            //txt_piso.Text = cliente.piso.ToString();
+            //txt_depto.Text = cliente.departamento.ToString();
+            //txt_comentarios.Text = cliente.comentarios_domicilio.ToString();
 
             combo_activo.Items.Clear();
             combo_activo.Items.Add("Activo");
