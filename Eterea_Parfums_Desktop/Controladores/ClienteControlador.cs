@@ -412,7 +412,9 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
         }
 
-
-
+        internal static List<Cliente> obtenerPorDni(string nombre)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

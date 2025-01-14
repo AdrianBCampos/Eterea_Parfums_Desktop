@@ -32,7 +32,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_crear_cliente = new System.Windows.Forms.Button();
             this.lbl_cond_ivaE = new System.Windows.Forms.Label();
-            this.txt_cond_iva = new System.Windows.Forms.TextBox();
             this.lbl_cond_iva = new System.Windows.Forms.Label();
             this.lbl_paisE = new System.Windows.Forms.Label();
             this.lbl_emailE = new System.Windows.Forms.Label();
@@ -91,6 +90,7 @@
             this.lbl_cp = new System.Windows.Forms.Label();
             this.lbl_Localidad = new System.Windows.Forms.Label();
             this.lbl_provincia = new System.Windows.Forms.Label();
+            this.combo_con_iva = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -143,14 +143,6 @@
             this.lbl_cond_ivaE.Size = new System.Drawing.Size(36, 16);
             this.lbl_cond_ivaE.TabIndex = 144;
             this.lbl_cond_ivaE.Text = "Error";
-            // 
-            // txt_cond_iva
-            // 
-            this.txt_cond_iva.Location = new System.Drawing.Point(220, 291);
-            this.txt_cond_iva.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_cond_iva.Name = "txt_cond_iva";
-            this.txt_cond_iva.Size = new System.Drawing.Size(179, 22);
-            this.txt_cond_iva.TabIndex = 143;
             // 
             // lbl_cond_iva
             // 
@@ -773,12 +765,22 @@
             this.lbl_provincia.TabIndex = 149;
             this.lbl_provincia.Text = "Provincia";
             // 
+            // combo_con_iva
+            // 
+            this.combo_con_iva.FormattingEnabled = true;
+            this.combo_con_iva.Location = new System.Drawing.Point(220, 289);
+            this.combo_con_iva.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_con_iva.Name = "combo_con_iva";
+            this.combo_con_iva.Size = new System.Drawing.Size(179, 24);
+            this.combo_con_iva.TabIndex = 176;
+            // 
             // FormCrearClienteABM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(1122, 576);
+            this.Controls.Add(this.combo_con_iva);
             this.Controls.Add(this.lbl_activoE);
             this.Controls.Add(this.lbl_comentariosE);
             this.Controls.Add(this.lbl_deptoE);
@@ -810,7 +812,6 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lbl_cond_ivaE);
-            this.Controls.Add(this.txt_cond_iva);
             this.Controls.Add(this.lbl_cond_iva);
             this.Controls.Add(this.lbl_paisE);
             this.Controls.Add(this.lbl_emailE);
@@ -856,7 +857,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btn_crear_cliente;
         private System.Windows.Forms.Label lbl_cond_ivaE;
-        private System.Windows.Forms.TextBox txt_cond_iva;
         private System.Windows.Forms.Label lbl_cond_iva;
         private System.Windows.Forms.Label lbl_paisE;
         private System.Windows.Forms.Label lbl_emailE;
@@ -915,5 +915,6 @@
         private System.Windows.Forms.Label lbl_cp;
         private System.Windows.Forms.Label lbl_Localidad;
         private System.Windows.Forms.Label lbl_provincia;
+        private System.Windows.Forms.ComboBox combo_con_iva;
     }
 }

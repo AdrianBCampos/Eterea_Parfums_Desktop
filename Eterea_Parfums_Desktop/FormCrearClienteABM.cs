@@ -75,6 +75,13 @@ namespace Eterea_Parfums_Desktop
             combo_activo.Items.Clear();
             combo_activo.Items.Add("Activo");
             combo_activo.Items.Add("Inactivo");
+
+            combo_con_iva.Items.Clear();
+            combo_con_iva.Items.Add("Consumidor Final");
+            combo_con_iva.Items.Add("Responsable Inscripto");
+            combo_con_iva.Items.Add("Responsable no Inscripto");
+            combo_con_iva.Items.Add("Responsable Monotributo");
+            
         }
 
         private void btn_crear_cliente_Click(object sender, EventArgs e)
@@ -120,7 +127,7 @@ namespace Eterea_Parfums_Desktop
 
 
             Cliente cliente = new Cliente(0, txt_usuario.Text, txt_clave.Text, txt_nombre.Text, txt_apellido.Text,
-                int.Parse(txt_dni.Text), txt_cond_iva.Text, DateTime.Parse(dateTime_nac.Text), txt_celular.Text, txt_email.Text,
+                int.Parse(txt_dni.Text), combo_con_iva.Text, DateTime.Parse(dateTime_nac.Text), txt_celular.Text, txt_email.Text,
                 pais, provincia, ciudad, int.Parse(txt_cp.Text), calle, int.Parse(txt_num_calle.Text),
                 txt_piso.Text, txt_depto.Text, txt_comentarios.Text,
                  activo, rol);

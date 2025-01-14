@@ -59,7 +59,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lbl_cond_ivaE = new System.Windows.Forms.Label();
-            this.txt_cond_iva = new System.Windows.Forms.TextBox();
             this.lbl_cond_iva = new System.Windows.Forms.Label();
             this.lbl_paisE = new System.Windows.Forms.Label();
             this.lbl_emailE = new System.Windows.Forms.Label();
@@ -91,6 +90,7 @@
             this.txt_clave = new System.Windows.Forms.TextBox();
             this.lbl_clave = new System.Windows.Forms.Label();
             this.lbl_claveE = new System.Windows.Forms.Label();
+            this.combo_con_iva = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -437,14 +437,6 @@
             this.lbl_cond_ivaE.TabIndex = 208;
             this.lbl_cond_ivaE.Text = "Error";
             // 
-            // txt_cond_iva
-            // 
-            this.txt_cond_iva.Location = new System.Drawing.Point(220, 261);
-            this.txt_cond_iva.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_cond_iva.Name = "txt_cond_iva";
-            this.txt_cond_iva.Size = new System.Drawing.Size(179, 22);
-            this.txt_cond_iva.TabIndex = 207;
-            // 
             // lbl_cond_iva
             // 
             this.lbl_cond_iva.AutoSize = true;
@@ -773,12 +765,22 @@
             this.lbl_claveE.TabIndex = 198;
             this.lbl_claveE.Text = "Error";
             // 
+            // combo_con_iva
+            // 
+            this.combo_con_iva.FormattingEnabled = true;
+            this.combo_con_iva.Location = new System.Drawing.Point(220, 257);
+            this.combo_con_iva.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_con_iva.Name = "combo_con_iva";
+            this.combo_con_iva.Size = new System.Drawing.Size(179, 24);
+            this.combo_con_iva.TabIndex = 239;
+            // 
             // FormEditarClienteABM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(1122, 576);
+            this.Controls.Add(this.combo_con_iva);
             this.Controls.Add(this.lbl_activoE);
             this.Controls.Add(this.lbl_comentariosE);
             this.Controls.Add(this.lbl_deptoE);
@@ -810,7 +812,6 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lbl_cond_ivaE);
-            this.Controls.Add(this.txt_cond_iva);
             this.Controls.Add(this.lbl_cond_iva);
             this.Controls.Add(this.lbl_paisE);
             this.Controls.Add(this.lbl_emailE);
@@ -884,7 +885,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lbl_cond_ivaE;
-        private System.Windows.Forms.TextBox txt_cond_iva;
         private System.Windows.Forms.Label lbl_cond_iva;
         private System.Windows.Forms.Label lbl_paisE;
         private System.Windows.Forms.Label lbl_emailE;
@@ -916,5 +916,6 @@
         private System.Windows.Forms.TextBox txt_clave;
         private System.Windows.Forms.Label lbl_clave;
         private System.Windows.Forms.Label lbl_claveE;
+        private System.Windows.Forms.ComboBox combo_con_iva;
     }
 }

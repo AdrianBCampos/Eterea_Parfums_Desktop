@@ -78,6 +78,12 @@ namespace Eterea_Parfums_Desktop
             combo_activo.Items.Clear();
             combo_activo.Items.Add("Activo");
             combo_activo.Items.Add("Inactivo");
+
+            combo_con_iva.Items.Clear();
+            combo_con_iva.Items.Add("Consumidor Final");
+            combo_con_iva.Items.Add("Responsable Inscripto");
+            combo_con_iva.Items.Add("Responsable no Inscripto");
+            combo_con_iva.Items.Add("Responsable Monotributo");
         }
 
         //SOBRECARGAR EL CONSTRUCTOR PARA INICIAR EL FORM CON LA INFO CARGADA, PARA EDITAR
@@ -141,8 +147,8 @@ namespace Eterea_Parfums_Desktop
             txt_nombre.Text = cliente.nombre.ToString();
             txt_apellido.Text = cliente.apellido.ToString();
             txt_dni.Text = cliente.dni.ToString();
-            txt_cond_iva.Text = cliente.condicion_frente_al_iva.ToString();
-            dateTime_nac.Text = cliente.fecha_nacimiento?.ToString("1900-01-01") ?? ""; // Si es null, asigna una cadena vacía
+            combo_con_iva.Text = cliente.condicion_frente_al_iva.ToString();
+            dateTime_nac.Text = cliente.fecha_nacimiento?.ToString() ?? ""; // Si es null, asigna una cadena vacía
             //dateTime_nac.Text = cliente.fecha_nacimiento.ToString();
             txt_celular.Text = cliente.celular.ToString();
             txt_email.Text = cliente.e_mail.ToString();
@@ -174,6 +180,12 @@ namespace Eterea_Parfums_Desktop
                 combo_activo.SelectedItem = "Inactivo";
             }
 
+            combo_con_iva.Items.Clear();
+            combo_con_iva.Items.Add("Consumidor Final");
+            combo_con_iva.Items.Add("Responsable Inscripto");
+            combo_con_iva.Items.Add("Responsable no Inscripto");
+            combo_con_iva.Items.Add("Responsable Monotributo");
+
         }
 
         private void btn_editar_cliente_Click(object sender, EventArgs e)
@@ -198,8 +210,8 @@ namespace Eterea_Parfums_Desktop
             Calle calle = CalleControlador.getByName(combo_calle.SelectedItem.ToString());
 
 
-            Cliente cliente = new Cliente(0, txt_usuario.Text, txt_clave.Text, txt_nombre.Text, txt_apellido.Text,
-               int.Parse(txt_dni.Text), txt_cond_iva.Text, DateTime.Parse(dateTime_nac.Text), txt_celular.Text, txt_email.Text,
+            Cliente cliente = new Cliente(id_editar, txt_usuario.Text, txt_clave.Text, txt_nombre.Text, txt_apellido.Text,
+               int.Parse(txt_dni.Text), combo_con_iva.Text, DateTime.Parse(dateTime_nac.Text), txt_celular.Text, txt_email.Text,
                pais, provincia, ciudad, int.Parse(txt_cp.Text), calle, int.Parse(txt_num_calle.Text),
                txt_piso.Text, txt_depto.Text, txt_comentarios.Text,
                 activo, rol);
