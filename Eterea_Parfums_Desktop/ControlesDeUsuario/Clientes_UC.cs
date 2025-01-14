@@ -86,9 +86,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                 Cliente cliente_editar = ClienteControlador.obtenerPorId(id);
 
-                FormEditarClienteABM formEditarClienteABMl = new FormEditarClienteABM(cliente_editar);
+                FormEditarClienteABM formEditarClienteABM = new FormEditarClienteABM(cliente_editar);
 
-                DialogResult dr = formEditarClienteABMl.ShowDialog();
+                DialogResult dr = formEditarClienteABM.ShowDialog();
 
                 if (dr == DialogResult.OK)
                 {

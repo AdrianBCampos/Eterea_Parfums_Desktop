@@ -173,11 +173,13 @@ namespace Eterea_Parfums_Desktop
             {
                 combo_activo.SelectedItem = "Inactivo";
             }
+
         }
 
         private void btn_editar_cliente_Click(object sender, EventArgs e)
         {
             editar();
+
         }
 
         private void editar()

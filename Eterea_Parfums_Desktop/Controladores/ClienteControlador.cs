@@ -243,6 +243,8 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             return cliente;
         }
+
+
         //GET ONE BY DNI
 
         public static Cliente obtenerPorDni(int dni)
@@ -302,7 +304,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         public static bool editarCliente(Cliente cliente)
         {
-            //Dar de alta un vendedor en la base de datos
+            
 
             string query = "update eterea.cliente set usuario = @usuario, " +
                 "nombre = @nombre, " +
@@ -381,6 +383,8 @@ namespace Eterea_Parfums_Desktop.Controladores
             {
                 throw new Exception("Hay un error en la query: " + e.Message);
             }
+
+
         }
 
         public static bool eliminarCliente(int id)

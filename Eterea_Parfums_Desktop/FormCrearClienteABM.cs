@@ -80,7 +80,7 @@ namespace Eterea_Parfums_Desktop
         private void btn_crear_cliente_Click(object sender, EventArgs e)
         {
             crear();
-            this.Hide();
+
         }
 
         private void crear()
