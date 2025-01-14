@@ -57,7 +57,9 @@
     <Compile Include="Controladores\LocalidadControlador.cs" />
     <Compile Include="Controladores\MarcaControlador.cs" />
     <Compile Include="Controladores\PaisControlador.cs" />
+    <Compile Include="Controladores\PerfumeControlador.cs" />
     <Compile Include="Controladores\ProvinciaControlador.cs" />
+    <Compile Include="Controladores\TipoDePerfumeControlador.cs" />
     <Compile Include="ControlesDeUsuario\PerfumesUC.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -78,6 +78,7 @@
             this.lbl_img2 = new System.Windows.Forms.Label();
             this.lbl_crear_producto = new System.Windows.Forms.Label();
             this.btn_siguiente = new System.Windows.Forms.Button();
+            this.lbl_error_descripcion = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProducto1)).BeginInit();
@@ -463,6 +464,7 @@
             this.btn_cargar_img1.TabIndex = 134;
             this.btn_cargar_img1.Text = "Cargar";
             this.btn_cargar_img1.UseVisualStyleBackColor = false;
+            this.btn_cargar_img1.Click += new System.EventHandler(this.btn_cargar_img1_Click);
             // 
             // pictureBoxProducto1
             // 
@@ -502,6 +504,7 @@
             this.btn_cargar_img2.TabIndex = 138;
             this.btn_cargar_img2.Text = "Cargar";
             this.btn_cargar_img2.UseVisualStyleBackColor = false;
+            this.btn_cargar_img2.Click += new System.EventHandler(this.btn_cargar_img2_Click);
             // 
             // pictureBoxProducto2
             // 
@@ -546,12 +549,23 @@
             this.btn_siguiente.UseVisualStyleBackColor = false;
             this.btn_siguiente.Click += new System.EventHandler(this.btn_siguiente_Click);
             // 
+            // lbl_error_descripcion
+            // 
+            this.lbl_error_descripcion.AutoSize = true;
+            this.lbl_error_descripcion.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_error_descripcion.Location = new System.Drawing.Point(139, 560);
+            this.lbl_error_descripcion.Name = "lbl_error_descripcion";
+            this.lbl_error_descripcion.Size = new System.Drawing.Size(29, 13);
+            this.lbl_error_descripcion.TabIndex = 143;
+            this.lbl_error_descripcion.Text = "Error";
+            // 
             // Productos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(726, 825);
+            this.Controls.Add(this.lbl_error_descripcion);
             this.Controls.Add(this.btn_siguiente);
             this.Controls.Add(this.lbl_crear_producto);
             this.Controls.Add(this.lbl_error_img2);
@@ -665,5 +679,6 @@
         private System.Windows.Forms.Label lbl_img2;
         private System.Windows.Forms.Label lbl_crear_producto;
         private System.Windows.Forms.Button btn_siguiente;
+        private System.Windows.Forms.Label lbl_error_descripcion;
     }
 }

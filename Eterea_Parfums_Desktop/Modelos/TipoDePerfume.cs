@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Eterea_Parfums_Desktop.Modelos
 {
-    internal class TipoDePerfume
+    public class TipoDePerfume
     {
         public int id { get; set; }
         public string tipo_de_perfume { get; set; }
