@@ -24,7 +24,7 @@ namespace Eterea_Parfums_Desktop
 
         public static String Ruta_Base;
         public static String Ruta_Web;
-        public static String entorno = "dami";
+        public static String entorno = "maxi";
 
         [STAThread]
         static void Main()
@@ -77,7 +77,7 @@ namespace Eterea_Parfums_Desktop
 
             }
 
-            Application.Run(new InicioAutoConsultas());
+          Application.Run(new InicioAutoConsultas());
         }
 
         public static bool connectionIsValid()
