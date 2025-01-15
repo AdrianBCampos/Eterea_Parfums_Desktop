@@ -106,6 +106,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                 {
                     MaxId = reader.GetInt32(0);
                 }
+
                 reader.Close();
                 DB_Controller.connection.Close();
                 return MaxId;
@@ -391,9 +392,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             int activo = 0;
             //Dar de baja lógica a un cliente en la base de datos
-            string query = "update eterea.cliente set activo = @activo " +
-
-               "where id = @id;";
+            string query = "update eterea.cliente set activo = @activo " + "where id = @id;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@id", id);
