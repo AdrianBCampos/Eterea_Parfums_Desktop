@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,9 +57,13 @@
     <Compile Include="Controladores\GeneroControlador.cs" />
     <Compile Include="Controladores\LocalidadControlador.cs" />
     <Compile Include="Controladores\MarcaControlador.cs" />
+    <Compile Include="Controladores\NotaControlador.cs" />
+    <Compile Include="Controladores\NotasDelPerfume.cs" />
     <Compile Include="Controladores\PaisControlador.cs" />
     <Compile Include="Controladores\PerfumeControlador.cs" />
     <Compile Include="Controladores\ProvinciaControlador.cs" />
+    <Compile Include="Controladores\TipoDeAromaControlador.cs" />
+    <Compile Include="Controladores\TipoDeNotaControlador.cs" />
     <Compile Include="Controladores\TipoDePerfumeControlador.cs" />
     <Compile Include="ControlesDeUsuario\PerfumesUC.cs">
       <SubType>UserControl</SubType>

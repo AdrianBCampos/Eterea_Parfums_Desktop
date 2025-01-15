@@ -44,10 +44,14 @@
             this.lbl_seleccionar_aroma = new System.Windows.Forms.Label();
             this.lbl_seleccionar_tipo_nota = new System.Windows.Forms.Label();
             this.lbl_buscar_nota = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_nota = new System.Windows.Forms.TextBox();
             this.lbl_nota = new System.Windows.Forms.Label();
             this.checkedListBoxAroma = new System.Windows.Forms.CheckedListBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBoxNota = new System.Windows.Forms.CheckedListBox();
+            this.txt_nombre_perfume = new System.Windows.Forms.Label();
+            this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
+            this.directorySearcher2 = new System.DirectoryServices.DirectorySearcher();
+            this.directorySearcher3 = new System.DirectoryServices.DirectorySearcher();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -64,9 +68,9 @@
             this.lbl_tipo_aroma_nota.ForeColor = System.Drawing.Color.Black;
             this.lbl_tipo_aroma_nota.Location = new System.Drawing.Point(28, 27);
             this.lbl_tipo_aroma_nota.Name = "lbl_tipo_aroma_nota";
-            this.lbl_tipo_aroma_nota.Size = new System.Drawing.Size(323, 18);
+            this.lbl_tipo_aroma_nota.Size = new System.Drawing.Size(403, 18);
             this.lbl_tipo_aroma_nota.TabIndex = 142;
-            this.lbl_tipo_aroma_nota.Text = "Asignar Tipo De Aroma y Perfume Creado";
+            this.lbl_tipo_aroma_nota.Text = "Asignar Tipo De Aroma y Notas Del Perfume Creado";
             // 
             // pictureBox1
             // 
@@ -184,6 +188,7 @@
             this.btn_agregar.TabIndex = 151;
             this.btn_agregar.Text = "Agregar";
             this.btn_agregar.UseVisualStyleBackColor = false;
+            this.btn_agregar.Click += new System.EventHandler(this.btn_agregar_Click);
             // 
             // lbl_seleccionar_aroma
             // 
@@ -218,12 +223,13 @@
             this.lbl_buscar_nota.TabIndex = 154;
             this.lbl_buscar_nota.Text = "Buscar Nota:";
             // 
-            // textBox1
+            // txt_nota
             // 
-            this.textBox1.Location = new System.Drawing.Point(278, 251);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(159, 20);
-            this.textBox1.TabIndex = 155;
+            this.txt_nota.Location = new System.Drawing.Point(278, 251);
+            this.txt_nota.Name = "txt_nota";
+            this.txt_nota.Size = new System.Drawing.Size(159, 20);
+            this.txt_nota.TabIndex = 155;
+            this.txt_nota.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // lbl_nota
             // 
@@ -237,30 +243,47 @@
             // checkedListBoxAroma
             // 
             this.checkedListBoxAroma.FormattingEnabled = true;
-            this.checkedListBoxAroma.Items.AddRange(new object[] {
-            "Cítrico",
-            "Floral",
-            "Fougere",
-            "Chipre",
-            "Amaderado",
-            "Ambarado",
-            "Oriental"});
             this.checkedListBoxAroma.Location = new System.Drawing.Point(47, 162);
             this.checkedListBoxAroma.Name = "checkedListBoxAroma";
             this.checkedListBoxAroma.Size = new System.Drawing.Size(169, 154);
             this.checkedListBoxAroma.TabIndex = 157;
             // 
-            // checkedListBox1
+            // checkedListBoxNota
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "Nota de Salida",
-            "Nota de Corazon",
-            "Nota de Fondo"});
-            this.checkedListBox1.Location = new System.Drawing.Point(278, 162);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(159, 49);
-            this.checkedListBox1.TabIndex = 158;
+            this.checkedListBoxNota.FormattingEnabled = true;
+            this.checkedListBoxNota.Location = new System.Drawing.Point(278, 162);
+            this.checkedListBoxNota.Name = "checkedListBoxNota";
+            this.checkedListBoxNota.Size = new System.Drawing.Size(159, 49);
+            this.checkedListBoxNota.TabIndex = 158;
+            // 
+            // txt_nombre_perfume
+            // 
+            this.txt_nombre_perfume.AutoSize = true;
+            this.txt_nombre_perfume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.txt_nombre_perfume.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_nombre_perfume.Location = new System.Drawing.Point(206, 67);
+            this.txt_nombre_perfume.Name = "txt_nombre_perfume";
+            this.txt_nombre_perfume.Size = new System.Drawing.Size(187, 25);
+            this.txt_nombre_perfume.TabIndex = 159;
+            this.txt_nombre_perfume.Text = "Nombre Perfume";
+            // 
+            // directorySearcher1
+            // 
+            this.directorySearcher1.ClientTimeout = System.TimeSpan.Parse("-00:00:01");
+            this.directorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
+            this.directorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
+            // 
+            // directorySearcher2
+            // 
+            this.directorySearcher2.ClientTimeout = System.TimeSpan.Parse("-00:00:01");
+            this.directorySearcher2.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
+            this.directorySearcher2.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
+            // 
+            // directorySearcher3
+            // 
+            this.directorySearcher3.ClientTimeout = System.TimeSpan.Parse("-00:00:01");
+            this.directorySearcher3.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
+            this.directorySearcher3.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
             // 
             // AromaNota
             // 
@@ -268,10 +291,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(834, 450);
-            this.Controls.Add(this.checkedListBox1);
+            this.Controls.Add(this.txt_nombre_perfume);
+            this.Controls.Add(this.checkedListBoxNota);
             this.Controls.Add(this.checkedListBoxAroma);
             this.Controls.Add(this.lbl_nota);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txt_nota);
             this.Controls.Add(this.lbl_buscar_nota);
             this.Controls.Add(this.lbl_seleccionar_tipo_nota);
             this.Controls.Add(this.lbl_seleccionar_aroma);
@@ -316,9 +340,13 @@
         private System.Windows.Forms.Label lbl_seleccionar_aroma;
         private System.Windows.Forms.Label lbl_seleccionar_tipo_nota;
         private System.Windows.Forms.Label lbl_buscar_nota;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_nota;
         private System.Windows.Forms.Label lbl_nota;
         private System.Windows.Forms.CheckedListBox checkedListBoxAroma;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox checkedListBoxNota;
+        private System.Windows.Forms.Label txt_nombre_perfume;
+        private System.DirectoryServices.DirectorySearcher directorySearcher1;
+        private System.DirectoryServices.DirectorySearcher directorySearcher2;
+        private System.DirectoryServices.DirectorySearcher directorySearcher3;
     }
 }
