@@ -44,8 +44,8 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             string query = "INSERT INTO eterea.notas_del_perfume VALUES (@perfume_id, @nota_id)";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-            cmd.Parameters.AddWithValue("@perfume_id", notasDelperfume.perfume.id);
-            cmd.Parameters.AddWithValue("@nota_id", notasDelperfume.nota.id);
+            cmd.Parameters.AddWithValue("@perfume_id", notasDelPerfume.perfume.id);
+            cmd.Parameters.AddWithValue("@nota_id", notasDelPerfume.notaConTipoDeNota.id);
             try
             {
                 DB_Controller.connection.Open();
