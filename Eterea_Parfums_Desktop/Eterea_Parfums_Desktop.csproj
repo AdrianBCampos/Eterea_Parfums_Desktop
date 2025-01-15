@@ -71,6 +71,12 @@
     <Compile Include="FormCrearClienteABM.Designer.cs">
       <DependentUpon>FormCrearClienteABM.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCrearClienteFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCrearClienteFactura.Designer.cs">
+      <DependentUpon>FormCrearClienteFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEditarClienteABM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCrearClienteABM.resx">
       <DependentUpon>FormCrearClienteABM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCrearClienteFactura.resx">
+      <DependentUpon>FormCrearClienteFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEditarClienteABM.resx">
       <DependentUpon>FormEditarClienteABM.cs</DependentUpon>
