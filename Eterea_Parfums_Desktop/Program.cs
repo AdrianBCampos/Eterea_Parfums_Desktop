@@ -45,7 +45,7 @@ namespace Eterea_Parfums_Desktop
             }
             else if (entorno == "adri")
             {
-                Ruta_Base = @"C:\Users\PC\source\repos";
+                Ruta_Base = @"C:\Users\PC\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
                 Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
             }
             else if (entorno == "maxi")
