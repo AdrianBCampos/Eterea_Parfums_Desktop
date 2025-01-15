@@ -20,7 +20,6 @@ namespace Eterea_Parfums_Desktop
         public List<Pais> paises;
         private Image File;
         private Image File2;
-        private int numero_aleatorio;
         private string nombre_foto_uno;
         private string nombre_foto_dos;
         public Productos()
@@ -113,8 +112,8 @@ namespace Eterea_Parfums_Desktop
             if (validacionDatosPerfume)
             {
 
-                saveImagenResources(out nombre_foto_uno);
-                saveImagenResources(out nombre_foto_dos);
+                saveImagenResources(out nombre_foto_uno, File);
+                saveImagenResources(out nombre_foto_dos, File2);
                 crear();
                 AromaNota aromaNota = new AromaNota();
                 aromaNota.Show();
@@ -123,15 +122,15 @@ namespace Eterea_Parfums_Desktop
            
         }
 
-        private void saveImagenResources(out string nombreFoto)
+        private void saveImagenResources(out string nombreFoto, Image File)
         {
             try
             {
 
-                numero_aleatorio = numeroAleatorio();
+                int numero_aleatorio = numeroAleatorio();
+                Console.WriteLine(numero_aleatorio);
                 nombreFoto = txt_nombre.Text + numero_aleatorio + "-envase.jpg";
-                File.Save(Program.Ruta_Base + nombreFoto,
-                System.Drawing.Imaging.ImageFormat.Jpeg);
+                File.Save(Program.Ruta_Base + nombreFoto, System.Drawing.Imaging.ImageFormat.Jpeg);
             }
             catch (Exception ex)
             {
@@ -470,7 +469,7 @@ namespace Eterea_Parfums_Desktop
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 File2 = Image.FromFile(ofd.FileName);
-                pictureBoxProducto2.Image = File;
+                pictureBoxProducto2.Image = File2;
 
             }
         }
