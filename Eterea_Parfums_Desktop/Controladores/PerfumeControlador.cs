@@ -66,9 +66,8 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
            
 
-            string query = "insert into eterea.perfume values" +
-                // "(@id, " +
-                "@codigo, " +
+            string query = "insert into eterea.perfume values " +
+                "(@codigo, " +
                 "@marca, " +
                 "@nombre, " +
                 "@tipo_de_perfume, " +
@@ -87,7 +86,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
             //cmd.Parameters.AddWithValue("@id", obtenerMaxId() + 1);
-            cmd.Parameters.AddWithValue("@sku", perfume.codigo);
+            cmd.Parameters.AddWithValue("@codigo", perfume.codigo);
             cmd.Parameters.AddWithValue("@marca", perfume.marca.id);
             cmd.Parameters.AddWithValue("@nombre", perfume.nombre);
             cmd.Parameters.AddWithValue("@tipo_de_perfume", perfume.tipo_de_perfume.id);
@@ -108,12 +107,16 @@ namespace Eterea_Parfums_Desktop.Controladores
             {
                 DB_Controller.connection.Open();
                 cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
                 DB_Controller.connection.Close();
                 return true;
             }
             catch (Exception e)
             {
-                throw new Exception("Hay un error en la query: " + e.Message);
+                DB_Controller.connection.Close();
+                //throw new Exception("Hay un error en la query: " + e.Message);
+                Trace.WriteLine(e.Message);
+                return false;
             }
         }
 

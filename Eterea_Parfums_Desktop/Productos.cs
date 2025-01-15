@@ -18,7 +18,11 @@ namespace Eterea_Parfums_Desktop
         public List<TipoDePerfume> tiposDePerfume;
         public List<Genero> generos;
         public List<Pais> paises;
-
+        private Image File;
+        private Image File2;
+        private int numero_aleatorio;
+        private string nombre_foto_uno;
+        private string nombre_foto_dos;
         public Productos()
         {
             InitializeComponent();
@@ -108,6 +112,10 @@ namespace Eterea_Parfums_Desktop
 
             if (validacionDatosPerfume)
             {
+
+                saveImagenResources(out nombre_foto_uno);
+                saveImagenResources(out nombre_foto_dos);
+                crear();
                 AromaNota aromaNota = new AromaNota();
                 aromaNota.Show();
                 this.Hide();
@@ -115,11 +123,34 @@ namespace Eterea_Parfums_Desktop
            
         }
 
+        private void saveImagenResources(out string nombreFoto)
+        {
+            try
+            {
+
+                numero_aleatorio = numeroAleatorio();
+                nombreFoto = txt_nombre.Text + numero_aleatorio + "-envase.jpg";
+                File.Save(Program.Ruta_Base + nombreFoto,
+                System.Drawing.Imaging.ImageFormat.Jpeg);
+            }
+            catch (Exception ex)
+            {
+                //NO SE PUDO GUARDAR LA FOTO
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private int numeroAleatorio()
+        {
+            Random rnd = new Random();
+            int numero = rnd.Next(1000, 9999);
+            return numero;
+        }
+
+
         private void crear()
         {
             // ACA ANTES DE EJECUTAR CUALQUIER COSA, TIENEN QUE HACERSE LAS VALIDACIONES...
-
-
             int spray = 0;
             if (combo_spray.SelectedItem.ToString() == "Si")
             {
@@ -139,16 +170,14 @@ namespace Eterea_Parfums_Desktop
             }
 
 
-
-
             Marca marca = MarcaControlador.getByName(combo_marca.SelectedItem.ToString());
-            TipoDePerfume tipo_de_perfume = TipoDePerfumeControlador.getByName(combo_tipo.SelectedItem.ToString());
+            TipoDePerfume tipo_de_perfume = TipoDePerfumeControlador.getByName(combo_tipo_de_perfume.SelectedItem.ToString());
             Genero genero = GeneroControlador.getByGenero(combo_genero.SelectedItem.ToString());
             Pais pais = PaisControlador.getByName(combo_pais.SelectedItem.ToString());
 
             Perfume perfume = new Perfume(0, txt_codigo.Text, marca, txt_nombre.Text, tipo_de_perfume,
                 genero, int.Parse(txt_presentacion.Text), pais, spray, recargable, txt_descripcion.Text,
-                int.Parse(txt_anio_de_lanzamiento.Text), Double.Parse(txt_precio.Text), activo, txt_nombre.Text + num + "-envase", txt_img2.Text);
+                int.Parse(txt_anio_de_lanzamiento.Text), Double.Parse(txt_precio.Text), activo, nombre_foto_uno, nombre_foto_dos);
 
 
 
@@ -425,10 +454,10 @@ namespace Eterea_Parfums_Desktop
         private void btn_cargar_img1_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "JPG(*.JPG)|*.JPG";
+            ofd.Filter = "JPG(*.JPG)|*.JPG|PNG(*.png)|*.png";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                Image File = Image.FromFile(ofd.FileName);
+                File = Image.FromFile(ofd.FileName);
                 pictureBoxProducto1.Image = File;
 
             }
@@ -437,10 +466,10 @@ namespace Eterea_Parfums_Desktop
         private void btn_cargar_img2_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "JPG(*.JPG)|*.JPG";
+            ofd.Filter = "JPG(*.JPG)|*.JPG|PNG(*.png)|*.png";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                Image File = Image.FromFile(ofd.FileName);
+                File2 = Image.FromFile(ofd.FileName);
                 pictureBoxProducto2.Image = File;
 
             }

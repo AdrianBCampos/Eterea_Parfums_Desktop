@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,36 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
             return lista_tipos_de_perfumes;
 
+        }
+
+        public static TipoDePerfume getByName(string tipo)
+        {
+            TipoDePerfume tipo_de_perfume = new TipoDePerfume();
+            string query = "select * from eterea.tipo_de_perfume where " +
+                "nombre = @tipo;";
+
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+            cmd.Parameters.AddWithValue("@tipo", tipo);
+
+            try
+            {
+                DB_Controller.connection.Open();
+                SqlDataReader r = cmd.ExecuteReader();
+
+                while (r.Read())
+                {
+                    tipo_de_perfume = new TipoDePerfume(r.GetInt32(0), r.GetString(1));
+                }
+                r.Close();
+                DB_Controller.connection.Close();
+
+            }
+            catch (Exception e)
+            {
+                Trace.Write("Error al consultar la DB: " + e.Message);
+
+            }
+            return tipo_de_perfume;
         }
     }
 }
