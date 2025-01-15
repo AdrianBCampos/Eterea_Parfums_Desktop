@@ -8,13 +8,13 @@ namespace Eterea_Parfums_Desktop.Modelos
 {
     internal class AromaDelPerfume
     {
-        Perfume perfume;
-        TipoDeNota tipoDeNota;
+        public Perfume perfume { get; set; }
+        public TipoDeAroma tipoDeAroma { get; set; }
 
-        public AromaDelPerfume(Perfume perfume, TipoDeNota tipoDeNota)
+        public AromaDelPerfume(Perfume perfume, TipoDeAroma tipoDeAroma)
         {
             this.perfume = perfume;
-            this.tipoDeNota = tipoDeNota;
+            this.tipoDeAroma = tipoDeAroma;
         }
 
         public AromaDelPerfume()

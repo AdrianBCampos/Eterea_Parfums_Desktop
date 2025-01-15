@@ -56,5 +56,29 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
             return nota;
         }
+
+        public static Nota getByNombre(string nombre)
+        {
+            Nota nota = new Nota();
+            string query = "SELECT * FROM eterea.nota WHERE nombre = @nombre";
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+                cmd.Parameters.AddWithValue("@nombre", nombre);
+                DB_Controller.connection.Open();
+                SqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    nota = new Nota(r.GetInt32(0), r.GetString(1));
+                }
+                r.Close();
+                DB_Controller.connection.Close();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Hay un error en la query: " + e.Message);
+            }
+            return nota;
+        }
     }
 }

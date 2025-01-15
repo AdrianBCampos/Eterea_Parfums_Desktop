@@ -114,8 +114,8 @@ namespace Eterea_Parfums_Desktop
 
                 saveImagenResources(out nombre_foto_uno, File);
                 saveImagenResources(out nombre_foto_dos, File2);
-                crear();
-                AromaNota aromaNota = new AromaNota();
+                Perfume perfume = crear();
+                AromaNota aromaNota = new AromaNota(perfume);
                 aromaNota.Show();
                 this.Hide();
             }
@@ -147,7 +147,7 @@ namespace Eterea_Parfums_Desktop
         }
 
 
-        private void crear()
+        private Perfume crear()
         {
             // ACA ANTES DE EJECUTAR CUALQUIER COSA, TIENEN QUE HACERSE LAS VALIDACIONES...
             int spray = 0;
@@ -174,7 +174,7 @@ namespace Eterea_Parfums_Desktop
             Genero genero = GeneroControlador.getByGenero(combo_genero.SelectedItem.ToString());
             Pais pais = PaisControlador.getByName(combo_pais.SelectedItem.ToString());
 
-            Perfume perfume = new Perfume(0, txt_codigo.Text, marca, txt_nombre.Text, tipo_de_perfume,
+            Perfume perfume = new Perfume(PerfumeControlador.getByMaxId() + 1, txt_codigo.Text, marca, txt_nombre.Text, tipo_de_perfume,
                 genero, int.Parse(txt_presentacion.Text), pais, spray, recargable, txt_descripcion.Text,
                 int.Parse(txt_anio_de_lanzamiento.Text), Double.Parse(txt_precio.Text), activo, nombre_foto_uno, nombre_foto_dos);
 
@@ -185,6 +185,8 @@ namespace Eterea_Parfums_Desktop
             {
                 this.DialogResult = DialogResult.OK;
             }
+
+            return perfume;
 
         }
 

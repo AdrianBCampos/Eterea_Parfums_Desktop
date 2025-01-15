@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace Eterea_Parfums_Desktop.Modelos
 {
-    internal class NotasDelPerfume
+    public class NotasDelPerfume
     {
-        Perfume perfume;
-        NotaConTipoDeNota nota_con_tipo_de_nota;
+        public Perfume perfume { get; set; }
+        public NotaConTipoDeNota notaConTipoDeNota { get; set; }
 
-        public NotasDelPerfume(Perfume perfume, NotaConTipoDeNota nota_con_tipo_de_nota)
+        public NotasDelPerfume(Perfume perfume, NotaConTipoDeNota notaConTipoDeNota)
         {
             this.perfume = perfume;
-            this.nota_con_tipo_de_nota = nota_con_tipo_de_nota;
+            this.notaConTipoDeNota = notaConTipoDeNota;
         }
+
         public NotasDelPerfume()
         {
         }

@@ -35,7 +35,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btn_finalizar = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewNotasDelPerfume = new System.Windows.Forms.DataGridView();
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,11 +52,13 @@
             this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
             this.directorySearcher2 = new System.DirectoryServices.DirectorySearcher();
             this.directorySearcher3 = new System.DirectoryServices.DirectorySearcher();
+            this.lbl_error_seleccion_aroma = new System.Windows.Forms.Label();
+            this.lbl_error_seleccion_nota = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNotasDelPerfume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,7 +103,7 @@
             this.pictureBox2.Location = new System.Drawing.Point(31, 114);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(212, 310);
+            this.pictureBox2.Size = new System.Drawing.Size(212, 337);
             this.pictureBox2.TabIndex = 145;
             this.pictureBox2.TabStop = false;
             // 
@@ -112,7 +114,7 @@
             this.pictureBox3.Location = new System.Drawing.Point(256, 114);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(212, 176);
+            this.pictureBox3.Size = new System.Drawing.Size(212, 218);
             this.pictureBox3.TabIndex = 146;
             this.pictureBox3.TabStop = false;
             // 
@@ -139,17 +141,17 @@
             this.btn_finalizar.Text = "Finalizar";
             this.btn_finalizar.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // dataGridViewNotasDelPerfume
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewNotasDelPerfume.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewNotasDelPerfume.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Tipo,
             this.Nota,
             this.Eliminar});
-            this.dataGridView1.Location = new System.Drawing.Point(503, 128);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(304, 244);
-            this.dataGridView1.TabIndex = 149;
+            this.dataGridViewNotasDelPerfume.Location = new System.Drawing.Point(503, 128);
+            this.dataGridViewNotasDelPerfume.Name = "dataGridViewNotasDelPerfume";
+            this.dataGridViewNotasDelPerfume.Size = new System.Drawing.Size(304, 244);
+            this.dataGridViewNotasDelPerfume.TabIndex = 149;
             // 
             // Tipo
             // 
@@ -170,10 +172,10 @@
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox5.Location = new System.Drawing.Point(256, 294);
+            this.pictureBox5.Location = new System.Drawing.Point(256, 336);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(212, 130);
+            this.pictureBox5.Size = new System.Drawing.Size(212, 115);
             this.pictureBox5.TabIndex = 150;
             this.pictureBox5.TabStop = false;
             // 
@@ -182,7 +184,7 @@
             this.btn_agregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_agregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_agregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_agregar.Location = new System.Drawing.Point(304, 373);
+            this.btn_agregar.Location = new System.Drawing.Point(304, 400);
             this.btn_agregar.Name = "btn_agregar";
             this.btn_agregar.Size = new System.Drawing.Size(116, 31);
             this.btn_agregar.TabIndex = 151;
@@ -217,7 +219,7 @@
             this.lbl_buscar_nota.AutoSize = true;
             this.lbl_buscar_nota.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_buscar_nota.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_buscar_nota.Location = new System.Drawing.Point(262, 217);
+            this.lbl_buscar_nota.Location = new System.Drawing.Point(262, 253);
             this.lbl_buscar_nota.Name = "lbl_buscar_nota";
             this.lbl_buscar_nota.Size = new System.Drawing.Size(101, 20);
             this.lbl_buscar_nota.TabIndex = 154;
@@ -225,7 +227,7 @@
             // 
             // txt_nota
             // 
-            this.txt_nota.Location = new System.Drawing.Point(278, 251);
+            this.txt_nota.Location = new System.Drawing.Point(278, 284);
             this.txt_nota.Name = "txt_nota";
             this.txt_nota.Size = new System.Drawing.Size(159, 20);
             this.txt_nota.TabIndex = 155;
@@ -234,7 +236,7 @@
             // lbl_nota
             // 
             this.lbl_nota.AutoSize = true;
-            this.lbl_nota.Location = new System.Drawing.Point(292, 326);
+            this.lbl_nota.Location = new System.Drawing.Point(292, 353);
             this.lbl_nota.Name = "lbl_nota";
             this.lbl_nota.Size = new System.Drawing.Size(35, 13);
             this.lbl_nota.TabIndex = 156;
@@ -285,12 +287,34 @@
             this.directorySearcher3.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
             this.directorySearcher3.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
             // 
+            // lbl_error_seleccion_aroma
+            // 
+            this.lbl_error_seleccion_aroma.AutoSize = true;
+            this.lbl_error_seleccion_aroma.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_error_seleccion_aroma.Location = new System.Drawing.Point(49, 328);
+            this.lbl_error_seleccion_aroma.Name = "lbl_error_seleccion_aroma";
+            this.lbl_error_seleccion_aroma.Size = new System.Drawing.Size(29, 13);
+            this.lbl_error_seleccion_aroma.TabIndex = 160;
+            this.lbl_error_seleccion_aroma.Text = "Error";
+            // 
+            // lbl_error_seleccion_nota
+            // 
+            this.lbl_error_seleccion_nota.AutoSize = true;
+            this.lbl_error_seleccion_nota.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_error_seleccion_nota.Location = new System.Drawing.Point(279, 225);
+            this.lbl_error_seleccion_nota.Name = "lbl_error_seleccion_nota";
+            this.lbl_error_seleccion_nota.Size = new System.Drawing.Size(29, 13);
+            this.lbl_error_seleccion_nota.TabIndex = 161;
+            this.lbl_error_seleccion_nota.Text = "Error";
+            // 
             // AromaNota
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(834, 450);
+            this.ClientSize = new System.Drawing.Size(834, 488);
+            this.Controls.Add(this.lbl_error_seleccion_nota);
+            this.Controls.Add(this.lbl_error_seleccion_aroma);
             this.Controls.Add(this.txt_nombre_perfume);
             this.Controls.Add(this.checkedListBoxNota);
             this.Controls.Add(this.checkedListBoxAroma);
@@ -301,7 +325,7 @@
             this.Controls.Add(this.lbl_seleccionar_aroma);
             this.Controls.Add(this.btn_agregar);
             this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewNotasDelPerfume);
             this.Controls.Add(this.btn_finalizar);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
@@ -315,7 +339,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNotasDelPerfume)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -331,7 +355,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button btn_finalizar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewNotasDelPerfume;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nota;
         private System.Windows.Forms.DataGridViewTextBoxColumn Eliminar;
@@ -348,5 +372,7 @@
         private System.DirectoryServices.DirectorySearcher directorySearcher1;
         private System.DirectoryServices.DirectorySearcher directorySearcher2;
         private System.DirectoryServices.DirectorySearcher directorySearcher3;
+        private System.Windows.Forms.Label lbl_error_seleccion_aroma;
+        private System.Windows.Forms.Label lbl_error_seleccion_nota;
     }
 }

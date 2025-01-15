@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Eterea_Parfums_Desktop.Modelos;
 
@@ -117,6 +118,69 @@ namespace Eterea_Parfums_Desktop.Controladores
                 //throw new Exception("Hay un error en la query: " + e.Message);
                 Trace.WriteLine(e.Message);
                 return false;
+            }
+        }
+
+
+        public static Perfume getByID(int id)
+        {
+            Marca marca = null;
+            TipoDePerfume tipo_de_perfume = null;
+            Genero genero = null;
+            Pais pais = null;
+            Perfume perfume = new Perfume();
+            string query = "select * from eterea.perfume where id = @id;";
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+            cmd.Parameters.AddWithValue("@id", id);
+            try
+            {
+                DB_Controller.connection.Open();
+                SqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    marca = new Marca(r.GetInt32(2), null);
+                    tipo_de_perfume = new TipoDePerfume(r.GetInt32(4), null);
+                    genero = new Genero(r.GetInt32(5), null);
+                    pais = new Pais(r.GetInt32(7), null);
+                    perfume = new Perfume(r.GetInt32(0), r.GetString(1), marca, r.GetString(3),
+                        tipo_de_perfume, genero, r.GetInt32(6), pais,
+                        r.GetInt32(8), r.GetInt32(9), r.GetString(10), r.GetInt32(11), r.GetDouble(12),
+                        r.GetInt32(13), r.GetString(14), r.GetString(15));
+                }
+                r.Close();
+                DB_Controller.connection.Close();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Hay un error en la query: " + e.Message);
+            }
+            return perfume;
+        }
+
+
+        public static int getByMaxId()
+        {
+            int MaxId = 0;
+            string query = "select max(id) from eterea.perfume;";
+
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+
+            try
+            {
+                DB_Controller.connection.Open();
+                SqlDataReader r = cmd.ExecuteReader();
+
+                while (r.Read())
+                {
+                    MaxId = r.GetInt32(0);
+                }
+                r.Close();
+                DB_Controller.connection.Close();
+                return MaxId;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Hay un error en la query: " + e.Message);
             }
         }
 

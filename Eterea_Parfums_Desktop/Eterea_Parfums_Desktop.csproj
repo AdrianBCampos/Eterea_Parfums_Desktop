@@ -53,12 +53,14 @@
     <Compile Include="AromaNota.Designer.cs">
       <DependentUpon>AromaNota.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controladores\AromaDelPerfumeControlador.cs" />
     <Compile Include="Controladores\CalleControlador.cs" />
     <Compile Include="Controladores\GeneroControlador.cs" />
     <Compile Include="Controladores\LocalidadControlador.cs" />
     <Compile Include="Controladores\MarcaControlador.cs" />
+    <Compile Include="Controladores\NotaConTipoDeNotaControlador.cs" />
     <Compile Include="Controladores\NotaControlador.cs" />
-    <Compile Include="Controladores\NotasDelPerfume.cs" />
+    <Compile Include="Controladores\NotasDelPerfumeControlador.cs" />
     <Compile Include="Controladores\PaisControlador.cs" />
     <Compile Include="Controladores\PerfumeControlador.cs" />
     <Compile Include="Controladores\ProvinciaControlador.cs" />

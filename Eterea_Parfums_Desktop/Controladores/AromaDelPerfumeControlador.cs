@@ -8,32 +8,26 @@ using Eterea_Parfums_Desktop.Modelos;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
-    internal class NotasDelPerfume
+    internal class AromaDelPerfumeControlador
     {
-        public static List<NotasDelPerfume> getByIDPerfume(int id)
+        public static void create(AromaDelPerfume aromaDelPerfume)
         {
-            List<NotasDelPerfume> notas = new List<NotasDelPerfume>();
-            string query = "SELECT * FROM eterea.notas_del_perfume WHERE id_perfume = @id";
+            string query = "INSERT INTO eterea.aroma_del_perfume VALUES (@perfume_id, @tipo_de_aroma_id)";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@perfume_id", aromaDelPerfume.perfume.id);
+            cmd.Parameters.AddWithValue("@tipo_de_aroma_id", aromaDelPerfume.tipoDeNota.id);
             try
             {
                 DB_Controller.connection.Open();
-                SqlDataReader r = cmd.ExecuteReader();
-                while (r.Read())
-                {
-
-                    notas.Add(new NotasDelPerfume(r.GetInt32(0), r.GetInt32(1)));
-                }
-                r.Close();
+                cmd.ExecuteNonQuery();
                 DB_Controller.connection.Close();
-              
             }
             catch (Exception e)
             {
                 throw new Exception("Hay un error en la query: " + e.Message);
             }
-            return notas;
         }
     }
-}
+
+   
+    }
