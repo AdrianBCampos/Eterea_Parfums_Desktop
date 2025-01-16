@@ -53,11 +53,18 @@
     <Compile Include="Controladores\MarcaControlador.cs" />
     <Compile Include="Controladores\PaisControlador.cs" />
     <Compile Include="Controladores\ProvinciaControlador.cs" />
+    <Compile Include="Controladores\SucursalControlador.cs" />
     <Compile Include="ControlesDeUsuario\Clientes_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ControlesDeUsuario\Clientes_UC.Designer.cs">
       <DependentUpon>Clientes_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\Empleados_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\Empleados_UC.Designer.cs">
+      <DependentUpon>Empleados_UC.cs</DependentUpon>
     </Compile>
     <Compile Include="Facturacion.cs">
       <SubType>Form</SubType>
@@ -83,11 +90,23 @@
     <Compile Include="FormEditarClienteABM.Designer.cs">
       <DependentUpon>FormEditarClienteABM.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormEditarEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditarEmpleado.Designer.cs">
+      <DependentUpon>FormEditarEmpleado.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEliminarClienteABM.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormEliminarClienteABM.Designer.cs">
       <DependentUpon>FormEliminarClienteABM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEliminarEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEliminarEmpleado.Designer.cs">
+      <DependentUpon>FormEliminarEmpleado.cs</DependentUpon>
     </Compile>
     <Compile Include="FormEmpleado.cs">
       <SubType>Form</SubType>
@@ -114,6 +133,7 @@
     <Compile Include="Modelos\Marca.cs" />
     <Compile Include="Modelos\Pais.cs" />
     <Compile Include="Modelos\Provincia.cs" />
+    <Compile Include="Modelos\Sucursal.cs" />
     <Compile Include="Stock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +196,9 @@
     <EmbeddedResource Include="ControlesDeUsuario\Clientes_UC.resx">
       <DependentUpon>Clientes_UC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ControlesDeUsuario\Empleados_UC.resx">
+      <DependentUpon>Empleados_UC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Facturacion.resx">
       <DependentUpon>Facturacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -188,8 +211,14 @@
     <EmbeddedResource Include="FormEditarClienteABM.resx">
       <DependentUpon>FormEditarClienteABM.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormEditarEmpleado.resx">
+      <DependentUpon>FormEditarEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormEliminarClienteABM.resx">
       <DependentUpon>FormEliminarClienteABM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEliminarEmpleado.resx">
+      <DependentUpon>FormEliminarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEmpleado.resx">
       <DependentUpon>FormEmpleado.cs</DependentUpon>
