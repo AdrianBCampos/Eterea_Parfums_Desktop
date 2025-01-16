@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -142,51 +143,72 @@ namespace Eterea_Parfums_Desktop
         }
         private void btn_agregar_Click(object sender, EventArgs e)
         {
-
+            string tipoDeNotaMarcado = null;
 
             if (checkedListBoxNota.CheckedItems.Count == 0)
             {
+                lbl_error_seleccion_nota.Text = "Debe marcar un tipo de nota";
                 lbl_error_seleccion_nota.Visible = true;
+                return;
             }
-
-            if (checkedListBoxAroma.CheckedItems.Count == 0)
+            else if (!(checkedListBoxAroma.CheckedItems.Count == 1))
             {
+                lbl_error_seleccion_nota.Text = "marcar un solo tipo de nota";
                 lbl_error_seleccion_nota.Visible = true;
-            }
-
-
-            var tipoDeNotaMarcado = checkedListBoxNota.Items.ToString();
-            var tipoDeAromaMarcado = checkedListBoxAroma.Items.ToString();
-
-            if (tipoDeNotaMarcado != null && tipoDeAromaMarcado != null)
+                return;
+            } else if (string.IsNullOrEmpty(lbl_nota.Text))
             {
+
+
                 Nota nota = NotaControlador.getByNombre(lbl_nota.Text);
                 TipoDeNota tipoDeNota = TipoDeNotaControlador.getByNombre(tipoDeNotaMarcado);
 
                 NotaConTipoDeNota notaConTipoDeNota = new NotaConTipoDeNota(0, nota, tipoDeNota);
 
                 NotaConTipoDeNotaControlador.create(notaConTipoDeNota);
-                
+
                 notaConTipoDeNota = NotaConTipoDeNotaControlador.getByNotaAndTipoDeNota(notaConTipoDeNota);
 
                 NotasDelPerfume notasDelPerfume = new NotasDelPerfume(perfume, notaConTipoDeNota);
                 //fata Id
                 NotasDelPerfumeControlador.create(notasDelPerfume);
 
+                MessageBox.Show("Se ha guardado la nota y el tipo de nota del perfume correctamente");
 
-                TipoDeAroma tipoDeAroma = TipoDeAromaControlador.getByNombre(tipoDeAromaMarcado);
-                AromaDelPerfume aromaDelPerfume = new AromaDelPerfume(perfume, tipoDeAroma);
-
-                AromaDelPerfumeControlador.create(aromaDelPerfume);
-              
                 cargarDataGridViewNotasDePerfume();
 
+            }
+            else
+            {
+                lbl_error_seleccion_nota.Text = "Debe ingresar una nota";
+                lbl_error_seleccion_nota.Visible = true;
+                return;
+            }
 
+         }
 
+        private void btn_finalizar_Click(object sender, EventArgs e)
+        {
 
+            if (checkedListBoxAroma.CheckedItems.Count == 0)
+            {
+                lbl_error_seleccion_nota.Text = "Debe marcar al menos un tipo de aroma";
+                lbl_error_seleccion_nota.Visible = true;
+                return;
+            }
 
-               
-        }
+            var listaDeAromasMarcados = checkedListBoxAroma.CheckedItems;
+   
+            foreach (var item in listaDeAromasMarcados)
+            {
+                var tipoDeAromaMarcado = item.ToString();
+                TipoDeAroma tipoDeAroma = TipoDeAromaControlador.getByNombre(tipoDeAromaMarcado);
+                AromaDelPerfume aromaDelPerfume = new AromaDelPerfume(perfume, tipoDeAroma);
+                AromaDelPerfumeControlador.create(aromaDelPerfume);
+            }
+
+            MessageBox.Show("Se han guardado los aromas y notas del perfume correctamente");
+            this.Close();
 
         }
     }

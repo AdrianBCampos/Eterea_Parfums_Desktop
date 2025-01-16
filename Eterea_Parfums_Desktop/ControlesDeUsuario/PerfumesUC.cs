@@ -41,7 +41,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     int rowIndex = dataGridViewPerfumes.Rows.Add();
 
                     dataGridViewPerfumes.Rows[rowIndex].Cells[0].Value = perfume.id.ToString();
-                    dataGridViewPerfumes.Rows[rowIndex].Cells[1].Value = perfume.codigo.ToString();
+                    dataGridViewPerfumes.Rows[rowIndex].Cells[1].Value = perfume.codigo;
                     dataGridViewPerfumes.Rows[rowIndex].Cells[2].Value = (MarcaControlador.getById(perfume.marca.id)).nombre;
                     dataGridViewPerfumes.Rows[rowIndex].Cells[3].Value = perfume.nombre.ToString();
                     dataGridViewPerfumes.Rows[rowIndex].Cells[4].Value = (TipoDePerfumeControlador.getById(perfume.tipo_de_perfume.id)).tipo_de_perfume;
