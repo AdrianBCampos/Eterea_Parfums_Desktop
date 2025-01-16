@@ -83,7 +83,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                 "@fecha_nacimiento, " +
                 "@celular, " +
                 "@e_mail, " +
-                "@pais_id, " +
+                "@pais, " +
                 "@provincia_id, " +
                 "@localidad_id, " +
                 "@codigo_postal, " +
@@ -91,7 +91,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                 "@numeracion_calle, " +
                 "@piso, " +
                 "@departamento, " +
-                "@cometanrios_domicilio, " +
+                "@comentarios_domicilio, " +
                 "@sucursal_id, " +
                 "@fecha_ingreso, " +
                 "@sueldo, " +
@@ -101,23 +101,23 @@ namespace Eterea_Parfums_Desktop.Controladores
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@id", obtenerMaxId() + 1);
             cmd.Parameters.AddWithValue("@usuario", empleado.usuario);
-            cmd.Parameters.AddWithValue("@contraseña", empleado.clave);
+            cmd.Parameters.AddWithValue("@clave", empleado.clave);
             cmd.Parameters.AddWithValue("@nombre", empleado.nombre);
             cmd.Parameters.AddWithValue("@apellido", empleado.apellido);
             cmd.Parameters.AddWithValue("@dni", empleado.dni);
             cmd.Parameters.AddWithValue("@fecha_nacimiento", empleado.fecha_nacimiento);
             cmd.Parameters.AddWithValue("@celular", empleado.celular);
             cmd.Parameters.AddWithValue("@e_mail", empleado.e_mail);
-            cmd.Parameters.AddWithValue("@pais", empleado.pais_id);
-            cmd.Parameters.AddWithValue("@provincia_id", empleado.provincia_id);
-            cmd.Parameters.AddWithValue("@ciudad_id", empleado.localidad_id);
+            cmd.Parameters.AddWithValue("@pais", empleado.pais_id.id);
+            cmd.Parameters.AddWithValue("@provincia_id", empleado.provincia_id.id);
+            cmd.Parameters.AddWithValue("@localidad_id", empleado.localidad_id.id);
             cmd.Parameters.AddWithValue("@codigo_postal", empleado.codigo_postal);
-            cmd.Parameters.AddWithValue("@calle_id", empleado.calle_id);
+            cmd.Parameters.AddWithValue("@calle_id", empleado.calle_id.id);
             cmd.Parameters.AddWithValue("@numeracion_calle", empleado.numeracion_calle);
             cmd.Parameters.AddWithValue("@piso", empleado.piso);
             cmd.Parameters.AddWithValue("@departamento", empleado.departamento);
             cmd.Parameters.AddWithValue("@comentarios_domicilio", empleado.comentarios_domicilio);
-            cmd.Parameters.AddWithValue("@sucursal_id", empleado.sucursal_id);
+            cmd.Parameters.AddWithValue("@sucursal_id", empleado.sucursal_id.id);
             cmd.Parameters.AddWithValue("@fecha_ingreso", empleado.fecha_ingreso);
             cmd.Parameters.AddWithValue("@sueldo", empleado.sueldo);
             cmd.Parameters.AddWithValue("@activo", empleado.activo);
@@ -285,6 +285,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             //Editar un empleado en la base de datos
 
             string query = "update eterea.empleado set usuario = @usuario, " +
+                "clave = @clave, " +
                 "nombre = @nombre, " +
                 "apellido = @apellido, " +
                 "dni = @dni, " +
@@ -311,7 +312,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@id", empleado.id);
             cmd.Parameters.AddWithValue("@usuario", empleado.usuario);
-            //cmd.Parameters.AddWithValue("@contraseña", empleado.contraseña);  //hc.PassHash(vendedor.contraseña)
+            cmd.Parameters.AddWithValue("@clave", empleado.clave);  //hc.PassHash(vendedor.contraseña)
             cmd.Parameters.AddWithValue("@nombre", empleado.nombre);
             cmd.Parameters.AddWithValue("@apellido", empleado.apellido);
             cmd.Parameters.AddWithValue("@dni", empleado.dni);
@@ -321,7 +322,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             cmd.Parameters.AddWithValue("@e_mail", empleado.e_mail);
             cmd.Parameters.AddWithValue("@pais", empleado.pais_id.id);
             cmd.Parameters.AddWithValue("@provincia_id", empleado.provincia_id.id);
-            cmd.Parameters.AddWithValue("@ciudad_id", empleado.localidad_id.id);
+            cmd.Parameters.AddWithValue("@localidad_id", empleado.localidad_id.id);
             cmd.Parameters.AddWithValue("@codigo_postal", empleado.codigo_postal);
             cmd.Parameters.AddWithValue("@calle_id", empleado.calle_id.id);
             cmd.Parameters.AddWithValue("@numeracion_calle", empleado.numeracion_calle);

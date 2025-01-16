@@ -35,10 +35,10 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_empleados_Click(object sender, EventArgs e)
         {
-            FormEmpleado formEmpleado = new FormEmpleado();
-            formEmpleado.Show();
-           // Empleados_UC empleados_UC = new Empleados_UC();
-           // addUserControl(empleados_UC);
+           // FormEditarEmpleado formEmpleado = new FormEditarEmpleado();
+           // formEmpleado.Show();
+            Empleados_UC empleados_UC = new Empleados_UC();
+            addUserControl(empleados_UC);
         }
 
         private void btn_clientes_Click(object sender, EventArgs e)

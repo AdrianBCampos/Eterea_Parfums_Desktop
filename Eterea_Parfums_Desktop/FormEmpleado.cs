@@ -9,17 +9,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Eterea_Parfums_Desktop.Modelos;
 using Eterea_Parfums_Desktop.Controladores;
+using System.Diagnostics;
 
 namespace Eterea_Parfums_Desktop
 {
     public partial class FormEmpleado : Form
     {
 
-        string situacion;
+      //  string situacion;
 
-        int id_editar;
+     //   int id_editar;
 
-        int id_eliminar;
+     //   int id_eliminar;
 
         public List<Pais> paises;
         public List<Provincia> provincias;
@@ -32,7 +33,7 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
-            paises = PaisControlador.getAll();
+                paises = PaisControlador.getAll();
             combo_pais.Items.Clear();
             foreach (Pais pais in paises)
             {
@@ -76,134 +77,225 @@ namespace Eterea_Parfums_Desktop
             combo_rol.Items.Add("admin");
             combo_rol.Items.Add("vendedor");
 
-            situacion = "Creacion";
+         //   situacion = "Creacion";
+         
         }
 
         //SOBRECARGAR EL CONSTRUCTOR PARA INICIAR EL FORM CON LA INFO CARGADA, PARA EDITAR
-        public FormEmpleado(Empleado empleado)
-        {
-            InitializeComponent();
-
-
-            paises = PaisControlador.getAll();
-            combo_pais.Items.Clear();
-            foreach (Pais pais in paises)
+        /*    public FormEmpleado(Empleado empleado)
             {
-                combo_pais.Items.Add(pais.nombre.ToString());
+                InitializeComponent();
+
+
+                paises = PaisControlador.getAll();
+                combo_pais.Items.Clear();
+                foreach (Pais pais in paises)
+                {
+                    combo_pais.Items.Add(pais.nombre.ToString());
+
+                }
+
+
+                provincias = ProvinciaControlador.getAll();
+                combo_provincia.Items.Clear();
+                foreach (Provincia provincia in provincias)
+                {
+                    combo_provincia.Items.Add(provincia.nombre.ToString());
+                }
+
+                localidades = LocalidadControlador.getAll();
+                combo_localidad.Items.Clear();
+                foreach (Localidad localidad in localidades)
+                {
+                    combo_localidad.Items.Add(localidad.nombre.ToString());
+                }
+
+                calles = CalleControlador.getAll();
+                combo_calle.Items.Clear();
+                foreach (Calle calle in calles)
+                {
+                    combo_calle.Items.Add(calle.nombre.ToString());
+                }
+
+                sucursales = SucursalControlador.getAll();
+                combo_sucursal.Items.Clear();
+                foreach (Sucursal sucursal in sucursales)
+                {
+                    combo_sucursal.Items.Add(sucursal.nombre.ToString());
+                }
+
+
+                label4.Hide();
+
+
+                id_editar = empleado.id;
+
+                txt_usuario.Text = empleado.usuario.ToString();
+                txt_contraseña.Hide();
+                txt_nombre.Text = empleado.nombre.ToString();
+                txt_apellido.Text = empleado.apellido.ToString();
+                txt_dni.Text = empleado.dni.ToString();
+                dateTime_nac.Text = empleado.fecha_nacimiento.ToString();
+
+
+                txt_celular.Text = empleado.celular.ToString();
+                txt_e_mail.Text = empleado.e_mail.ToString();
+                combo_pais.SelectedItem = empleado.pais_id.nombre.ToString();
+                combo_provincia.SelectedItem = empleado.provincia_id.nombre.ToString();
+                combo_localidad.SelectedItem = empleado.localidad_id.nombre.ToString();
+                txt_cp.Text = empleado.codigo_postal.ToString();
+                combo_calle.SelectedItem = empleado.calle_id.nombre.ToString();
+                txt_num_calle.Text = empleado.numeracion_calle.ToString();
+                txt_piso.Text = empleado.piso.ToString();
+                txt_departamento.Text = empleado.departamento.ToString();
+                txt_comentarios_domicilio.Text = empleado.comentarios_domicilio.ToString();
+
+
+                combo_sucursal.Text = empleado.sucursal_id.nombre.ToString();
+                dateTime_ing.Text = empleado.fecha_ingreso.ToString();
+                txt_sueldo.Text = empleado.sueldo.ToString();
+
+
+                combo_activo.Items.Clear();
+                combo_activo.Items.Add("Activo");
+                combo_activo.Items.Add("Inactivo");
+
+                if (empleado.activo == 1)
+                {
+                    combo_activo.SelectedItem = "Activo";
+                }
+                else
+                {
+                    combo_activo.SelectedItem = "Inactivo";
+                }
+
+                combo_rol.Items.Clear();
+                combo_rol.Items.Add("admin");
+                combo_rol.Items.Add("vendedor");
+
+                if (empleado.rol == "admin")
+                {
+                    combo_rol.SelectedItem = "admin";
+                }
+                else
+                {
+                    combo_rol.SelectedItem = "vendedor";
+                }
+
+
+                situacion = "Edicion";
+
+                label1.Text = "Editar Vendedor";
+                btn_crear.Text = "Editar";
 
             }
 
+            //SOBRECARGAR EL CONSTRUCTOR PARA INICIAR EL FORM CON LA INFO PARA ELIMINAR
+            public FormEmpleado(Empleado eliminado, int id)
 
-            provincias = ProvinciaControlador.getAll();
-            combo_provincia.Items.Clear();
-            foreach (Provincia provincia in provincias)
             {
-                combo_provincia.Items.Add(provincia.nombre.ToString());
-            }
+                InitializeComponent();
 
-            localidades = LocalidadControlador.getAll();
-            combo_localidad.Items.Clear();
-            foreach (Localidad localidad in localidades)
-            {
-                combo_localidad.Items.Add(localidad.nombre.ToString());
-            }
-
-            calles = CalleControlador.getAll();
-            combo_calle.Items.Clear();
-            foreach (Calle calle in calles)
-            {
-                combo_calle.Items.Add(calle.nombre.ToString());
-            }
-
-            sucursales = SucursalControlador.getAll();
-            combo_sucursal.Items.Clear();
-            foreach (Sucursal sucursal in sucursales)
-            {
-                combo_sucursal.Items.Add(sucursal.nombre.ToString());
-            }
+                label2.Hide();
+                label4.Hide();
+                label6.Hide();
+                label7.Hide();
+                label14.Hide();
+                label9.Hide();
+                label10.Hide();
+                label11.Hide();
+                label12.Hide();
+                label13.Hide();
+                label24.Hide();
+                label23.Hide();
+                label22.Hide();
+                label21.Hide();
+                label20.Hide();
+                label19.Hide();
+                label17.Hide();
+                label16.Hide();
+                label8.Hide();
 
 
-            label4.Hide();
 
 
-            id_editar = empleado.id;
 
-            txt_usuario.Text = empleado.usuario.ToString();
-            txt_contraseña.Hide();
-            txt_nombre.Text = empleado.nombre.ToString();
-            txt_apellido.Text = empleado.apellido.ToString();
-            txt_dni.Text = empleado.dni.ToString();
-            dateTime_nac.Text = empleado.fecha_nacimiento.ToString();
+                id_eliminar = id;
 
+                txt_usuario.Text = eliminado.usuario.ToString();
+                txt_contraseña.Hide();
+                txt_nombre.Hide();
+                txt_apellido.Hide();
+                txt_dni.Hide();
+                dateTime_nac.Hide();
 
-            txt_celular.Text = empleado.celular.ToString();
-            txt_e_mail.Text = empleado.e_mail.ToString();
-            combo_pais.SelectedItem = empleado.pais_id.nombre.ToString();
-            combo_provincia.SelectedItem = empleado.provincia_id.nombre.ToString();
-            combo_localidad.SelectedItem = empleado.localidad_id.nombre.ToString();
-            txt_cp.Text = empleado.codigo_postal.ToString();
-            combo_calle.SelectedItem = empleado.calle_id.nombre.ToString();
-            txt_num_calle.Text = empleado.numeracion_calle.ToString();
-            txt_piso.Text = empleado.piso.ToString();
-            txt_departamento.Text = empleado.departamento.ToString();
-            txt_comentarios_domicilio.Text = empleado.comentarios_domicilio.ToString();
-
-
-            combo_sucursal.Text = empleado.sucursal_id.nombre.ToString();
-            dateTime_ing.Text = empleado.fecha_ingreso.ToString();
-            txt_sueldo.Text = empleado.sueldo.ToString();
+                txt_celular.Hide();
+                txt_e_mail.Hide();
+                combo_pais.Hide();
+                combo_provincia.Hide();
+                combo_localidad.Hide();
+                txt_cp.Hide();
+                combo_calle.Hide();
+                txt_num_calle.Hide();
+                txt_piso.Hide();
+                txt_departamento.Hide();
+                txt_comentarios_domicilio.Hide();
 
 
-            combo_activo.Items.Clear();
-            combo_activo.Items.Add("Activo");
-            combo_activo.Items.Add("Inactivo");
+                combo_sucursal.Hide();
+                dateTime_ing.Hide();
 
-            if (empleado.activo == 1)
-            {
-                combo_activo.SelectedItem = "Activo";
-            }
-            else
-            {
-                combo_activo.SelectedItem = "Inactivo";
-            }
-
-            combo_rol.Items.Clear();
-            combo_rol.Items.Add("admin");
-            combo_rol.Items.Add("vendedor");
-
-            if (empleado.rol == "admin")
-            {
-                combo_rol.SelectedItem = "admin";
-            }
-            else
-            {
-                combo_rol.SelectedItem = "vendedor";
-            }
+                txt_sueldo.Hide();
 
 
-            situacion = "Edicion";
+                combo_activo.Items.Clear();
+                combo_activo.Items.Add("Activo");
+                combo_activo.Items.Add("Inactivo");
 
-            label1.Text = "Editar Vendedor";
-            btn_crear.Text = "Editar";
+                if (eliminado.activo == 1)
+                {
+                    combo_activo.SelectedItem = "Activo";
+                }
+                else
+                {
+                    combo_activo.SelectedItem = "Inactivo";
+                }
 
-        }
+                combo_rol.Items.Clear();
+                combo_rol.Items.Add("admin");
+                combo_rol.Items.Add("vendedor");
+
+                String rol = "vendedor";
+                if (combo_rol.SelectedItem.ToString() == "Admin")
+                {
+                    rol = "admin";
+                }
+
+
+                situacion = "Eliminar";
+
+                label1.Text = "Eliminar Empleado";
+                btn_crear.Text = "Eliminar";
+
+            }*/
         private void btn_crear_Click(object sender, EventArgs e)
         {
 
-            if (situacion == "Creacion")
-            {
+       /*     if (situacion == "Creacion")
+            { */
                 crear();
-            }
-            if (situacion == "Edicion")
-            {
-                editar();
-            }
-          /*  if (situacion == "Eliminar")
-            {
-                eliminar();
-            }
-            */
+            this.Hide();
+            /*     }
+                 if (situacion == "Edicion")
+                 {
+                     editar();
+                 }
+                if (situacion == "Eliminar")
+                 {
+                     eliminar();
+                 }
 
+                 */
 
         }
 
@@ -242,7 +334,7 @@ namespace Eterea_Parfums_Desktop
                 this.DialogResult = DialogResult.OK;
             }
         }
-
+        /*
         private void editar()
         {
             int activo = 1;
@@ -281,12 +373,12 @@ namespace Eterea_Parfums_Desktop
         {
 
         }
-
+        */
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
+        /*
         private void eliminar()
         {
 
@@ -302,6 +394,6 @@ namespace Eterea_Parfums_Desktop
             {
                 this.DialogResult = DialogResult.OK;
             }
-        }
+        }*/
     }
 }

@@ -47,7 +47,7 @@
             this.dateTime_nac = new System.Windows.Forms.DateTimePicker();
             this.txt_cp = new System.Windows.Forms.TextBox();
             this.combo_calle = new System.Windows.Forms.ComboBox();
-            this.combo_ciudad = new System.Windows.Forms.ComboBox();
+            this.combo_localidad = new System.Windows.Forms.ComboBox();
             this.combo_provincia = new System.Windows.Forms.ComboBox();
             this.combo_pais = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -234,13 +234,13 @@
             this.combo_calle.Size = new System.Drawing.Size(135, 21);
             this.combo_calle.TabIndex = 186;
             // 
-            // combo_ciudad
+            // combo_localidad
             // 
-            this.combo_ciudad.FormattingEnabled = true;
-            this.combo_ciudad.Location = new System.Drawing.Point(188, 407);
-            this.combo_ciudad.Name = "combo_ciudad";
-            this.combo_ciudad.Size = new System.Drawing.Size(135, 21);
-            this.combo_ciudad.TabIndex = 185;
+            this.combo_localidad.FormattingEnabled = true;
+            this.combo_localidad.Location = new System.Drawing.Point(188, 407);
+            this.combo_localidad.Name = "combo_localidad";
+            this.combo_localidad.Size = new System.Drawing.Size(135, 21);
+            this.combo_localidad.TabIndex = 185;
             // 
             // combo_provincia
             // 
@@ -486,7 +486,7 @@
             this.Controls.Add(this.dateTime_nac);
             this.Controls.Add(this.txt_cp);
             this.Controls.Add(this.combo_calle);
-            this.Controls.Add(this.combo_ciudad);
+            this.Controls.Add(this.combo_localidad);
             this.Controls.Add(this.combo_provincia);
             this.Controls.Add(this.combo_pais);
             this.Controls.Add(this.label21);
@@ -541,7 +541,7 @@
         private System.Windows.Forms.DateTimePicker dateTime_nac;
         private System.Windows.Forms.TextBox txt_cp;
         private System.Windows.Forms.ComboBox combo_calle;
-        private System.Windows.Forms.ComboBox combo_ciudad;
+        private System.Windows.Forms.ComboBox combo_localidad;
         private System.Windows.Forms.ComboBox combo_provincia;
         private System.Windows.Forms.ComboBox combo_pais;
         private System.Windows.Forms.Label label21;
