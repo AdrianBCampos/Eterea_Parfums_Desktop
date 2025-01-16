@@ -163,7 +163,7 @@ namespace Eterea_Parfums_Desktop
                 Nota nota = NotaControlador.getByNombre(lbl_nota.Text);
                 TipoDeNota tipoDeNota = TipoDeNotaControlador.getByNombre(tipoDeNotaMarcado);
 
-                NotaConTipoDeNota notaConTipoDeNota = new NotaConTipoDeNota(0, nota, tipoDeNota);
+                NotaConTipoDeNota notaConTipoDeNota = new NotaConTipoDeNota(NotaConTipoDeNotaControlador.getByMaxId() + 1, nota, tipoDeNota);
 
                 NotaConTipoDeNotaControlador.create(notaConTipoDeNota);
 

@@ -87,8 +87,8 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
-            //cmd.Parameters.AddWithValue("@id", obtenerMaxId() + 1);
-            cmd.Parameters.AddWithValue("@codigo", perfume.codigo);
+            cmd.Parameters.AddWithValue("@id", getByMaxId() + 1);
+            cmd.Parameters.AddWithValue("@codigo", Convert.ToInt64(perfume.codigo));
             cmd.Parameters.AddWithValue("@marca", perfume.marca.id);
             cmd.Parameters.AddWithValue("@nombre", perfume.nombre);
             cmd.Parameters.AddWithValue("@tipo_de_perfume", perfume.tipo_de_perfume.id);
@@ -143,7 +143,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                     tipo_de_perfume = new TipoDePerfume(r.GetInt32(4), null);
                     genero = new Genero(r.GetInt32(5), null);
                     pais = new Pais(r.GetInt32(7), null);
-                    perfume = new Perfume(r.GetInt32(0), r.GetString(1), marca, r.GetString(3),
+                    perfume = new Perfume(r.GetInt32(0), r.GetInt64(1).ToString(), marca, r.GetString(3),
                         tipo_de_perfume, genero, r.GetInt32(6), pais,
                         r.GetInt32(8), r.GetInt32(9), r.GetString(10), r.GetInt32(11), r.GetDouble(12),
                         r.GetInt32(13), r.GetString(14), r.GetString(15));
