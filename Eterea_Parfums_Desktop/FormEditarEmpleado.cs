@@ -127,8 +127,7 @@ namespace Eterea_Parfums_Desktop
             label4.Hide();
 
 
-            id_editar = 3;
-                //empleado.id;
+            id_editar = empleado.id;
 
             txt_usuario.Text = empleado.usuario.ToString();
             txt_contraseña.Hide();
@@ -187,27 +186,6 @@ namespace Eterea_Parfums_Desktop
 
             label1.Text = "Editar Vendedor";
             btn_crear.Text = "Editar";
-
-        }
-        private void btn_crear_Click(object sender, EventArgs e)
-        {
-
-       /*     if (situacion == "Creacion")
-            {
-                crear();
-            }
-            if (situacion == "Edicion")
-            {
-       */
-                editar();
-            this.Hide();
-            /*     }
-                 if (situacion == "Eliminar")
-                 {
-                     eliminar();
-                 }
-            */
-
 
         }
         /*
@@ -290,25 +268,31 @@ namespace Eterea_Parfums_Desktop
         {
             this.Close();
         }
-        /*
-        private void eliminar()
+
+        private void btn_crear_Click_1(object sender, EventArgs e)
         {
-
-            int activo = 0;
-
-
-
-
-            Empleado empleado = new Empleado(id_eliminar, activo);
-
-
-            if (EmpleadoControlador.eliminarEmpleado(id_eliminar))
-            {
-                this.DialogResult = DialogResult.OK;
-            }
+            editar();
+            this.Hide();
         }
+        /*
+private void eliminar()
+{
 
-        */
+   int activo = 0;
+
+
+
+
+   Empleado empleado = new Empleado(id_eliminar, activo);
+
+
+   if (EmpleadoControlador.eliminarEmpleado(id_eliminar))
+   {
+       this.DialogResult = DialogResult.OK;
+   }
+}
+
+*/
 
     }
 }

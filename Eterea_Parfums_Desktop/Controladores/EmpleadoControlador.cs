@@ -235,7 +235,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             Calle calle = new Calle();
             Sucursal sucursal = new Sucursal();
 
-            string query = "select * from dbo.Vendedor where id = @id;";
+            string query = "select * from eterea.empleado where id = @id;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@id", id);
@@ -292,7 +292,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                 "fecha_nacimiento = @fecha_nacimiento, " +
                 "celular = @celular, " +
                 "e_mail = @e_mail, " +
-                "pais = @pais, " +
+                "pais_id = @pais, " +
                 "provincia_id = @provincia_id, " +
                 "localidad_id = @localidad_id, " +
                 "codigo_postal = @codigo_postal, " +

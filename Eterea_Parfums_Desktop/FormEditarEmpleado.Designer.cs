@@ -87,6 +87,7 @@
             this.btn_crear.TabIndex = 204;
             this.btn_crear.Text = "Confirmar";
             this.btn_crear.UseVisualStyleBackColor = false;
+            this.btn_crear.Click += new System.EventHandler(this.btn_crear_Click_1);
             // 
             // label17
             // 

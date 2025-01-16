@@ -55,6 +55,7 @@
             this.btn_new.TabIndex = 5;
             this.btn_new.Text = "Crear";
             this.btn_new.UseVisualStyleBackColor = false;
+            this.btn_new.Click += new System.EventHandler(this.btn_new_Click_1);
             // 
             // dataGridView1
             // 
@@ -82,6 +83,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1144, 271);
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Id
             // 

@@ -78,7 +78,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             }
         }
 
-        private void btn_new_Click(object sender, EventArgs e)
+
+        private void btn_new_Click_1(object sender, EventArgs e)
         {
             FormEmpleado frmVend = new FormEmpleado();
             DialogResult dr = frmVend.ShowDialog();
@@ -92,7 +93,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             }
         }
 
- /*       private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
 
@@ -106,7 +107,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                 Empleado empleado_editar = EmpleadoControlador.obtenerPorId(id);
 
-                FormEmpleado frmVend = new FormEmpleado(empleado_editar);
+                FormEditarEmpleado frmVend = new FormEditarEmpleado(empleado_editar);
 
                 DialogResult dr = frmVend.ShowDialog();
 
@@ -119,18 +120,46 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                 }
             }
-                 else if (senderGrid.Columns[e.ColumnIndex].Name == "Eliminar")
+            else if (senderGrid.Columns[e.ColumnIndex].Name == "Eliminar")
+            {
+                //ELIMINAMOS
+                int id = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+                Trace.WriteLine("El id es: " + id);
+
+                Empleado empleado_eliminar = EmpleadoControlador.obtenerPorId(id);
+
+                FormEliminarEmpleado frmVend = new FormEliminarEmpleado(empleado_eliminar, id);
+
+                DialogResult dr = frmVend.ShowDialog();
+
+                if (dr == DialogResult.OK)
+                {
+                    Trace.WriteLine("OK");
+
+                    //ACTUALIZAR LA LISTA
+                    cargarEmpleados();
+
+                }
+            }
+
+        }
+
+        /*       private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+               {
+                   var senderGrid = (DataGridView)sender;
+
+                   if (senderGrid.Columns[e.ColumnIndex].Name == "Editar")
                    {
-                       //ELIMINAMOS
+                       //EDITAMOS
+
                        int id = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
 
                        Trace.WriteLine("El id es: " + id);
 
+                       Empleado empleado_editar = EmpleadoControlador.obtenerPorId(id);
 
-
-                       Empleado empleado_eliminar = EmpleadoControlador.obtenerPorId(id);
-
-                 FormEmpleado frmVend = new FormEmpleado(empleado_eliminar, id);
+                       FormEmpleado frmVend = new FormEmpleado(empleado_editar);
 
                        DialogResult dr = frmVend.ShowDialog();
 
@@ -143,7 +172,31 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                        }
                    }
-        }
- */
+                        else if (senderGrid.Columns[e.ColumnIndex].Name == "Eliminar")
+                          {
+                              //ELIMINAMOS
+                              int id = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+                              Trace.WriteLine("El id es: " + id);
+
+
+
+                              Empleado empleado_eliminar = EmpleadoControlador.obtenerPorId(id);
+
+                        FormEmpleado frmVend = new FormEmpleado(empleado_eliminar, id);
+
+                              DialogResult dr = frmVend.ShowDialog();
+
+                              if (dr == DialogResult.OK)
+                              {
+                                  Trace.WriteLine("OK");
+
+                                  //ACTUALIZAR LA LISTA
+                                  cargarEmpleados();
+
+                              }
+                          }
+               }
+        */
     }
 }
