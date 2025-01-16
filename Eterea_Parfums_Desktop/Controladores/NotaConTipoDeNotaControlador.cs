@@ -83,5 +83,32 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
             return nota_con_tipo_de_nota;
         }
+
+
+        public static int getByMaxId()
+        {
+            int MaxId = 0;
+            string query = "select max(id) from eterea.nota_con_tipo_de_nota;";
+
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+
+            try
+            {
+                DB_Controller.connection.Open();
+                SqlDataReader r = cmd.ExecuteReader();
+
+                while (r.Read())
+                {
+                    MaxId = r.GetInt32(0);
+                }
+                r.Close();
+                DB_Controller.connection.Close();
+                return MaxId;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Hay un error en la query: " + e.Message);
+            }
+        }
     }
 }

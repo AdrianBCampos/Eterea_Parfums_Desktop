@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -47,6 +48,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                         tipo_de_perfume, genero, r.GetInt32(6), pais,
                         r.GetInt32(8), r.GetInt32(9), r.GetString(10), r.GetInt32(11), r.GetDouble(12),
                         r.GetInt32(13), r.GetString(14), r.GetString(15)));
+                        Trace.WriteLine("Perfume encontrado, nombre: " + cod1);
                     }
 
                     
@@ -64,11 +66,12 @@ namespace Eterea_Parfums_Desktop.Controladores
         }
 
 
-        /*public static bool create(Perfume perfume)
+        public static bool create(Perfume perfume)
         {
            
 
             string query = "insert into eterea.perfume values " +
+                "@id, " +
                 "(@codigo, " +
                 "@marca, " +
                 "@nombre, " +
@@ -87,7 +90,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
-            cmd.Parameters.AddWithValue("@id", getByMaxId() + 1);
+            cmd.Parameters.AddWithValue("@id",perfume.id);
             cmd.Parameters.AddWithValue("@codigo", Convert.ToInt64(perfume.codigo));
             cmd.Parameters.AddWithValue("@marca", perfume.marca.id);
             cmd.Parameters.AddWithValue("@nombre", perfume.nombre);
@@ -183,7 +186,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             {
                 throw new Exception("Hay un error en la query: " + e.Message);
             }
-        }*/
+        }
 
     }
 }
