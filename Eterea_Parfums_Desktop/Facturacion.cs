@@ -21,6 +21,8 @@ namespace Eterea_Parfums_Desktop
             
             txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
             txt_numero_caja.Text = " ";
+
+            lbl_dni_clienteE.Hide();
         }
 
         // Método para manejar el evento ConfirmarNumeroCaja
@@ -37,6 +39,13 @@ namespace Eterea_Parfums_Desktop
         {
             NumeroDeCaja numeroDeCaja = new NumeroDeCaja();
             numeroDeCaja.Show();
+            this.Close();
+        }
+
+        private void btn_buscar_Click(object sender, EventArgs e)
+        {
+            FormCrearClienteFactura formCrearClienteFactura = new FormCrearClienteFactura();
+            formCrearClienteFactura.Show();
             this.Hide();
         }
     }

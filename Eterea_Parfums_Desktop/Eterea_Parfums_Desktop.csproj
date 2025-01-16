@@ -47,16 +47,47 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controladores\CalleControlador.cs" />
+    <Compile Include="Controladores\ClienteControlador.cs" />
     <Compile Include="Controladores\GeneroControlador.cs" />
     <Compile Include="Controladores\LocalidadControlador.cs" />
     <Compile Include="Controladores\MarcaControlador.cs" />
     <Compile Include="Controladores\PaisControlador.cs" />
     <Compile Include="Controladores\ProvinciaControlador.cs" />
+    <Compile Include="ControlesDeUsuario\Clientes_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\Clientes_UC.Designer.cs">
+      <DependentUpon>Clientes_UC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Facturacion.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Facturacion.Designer.cs">
       <DependentUpon>Facturacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCrearClienteABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCrearClienteABM.Designer.cs">
+      <DependentUpon>FormCrearClienteABM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCrearClienteFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCrearClienteFactura.Designer.cs">
+      <DependentUpon>FormCrearClienteFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEditarClienteABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEditarClienteABM.Designer.cs">
+      <DependentUpon>FormEditarClienteABM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEliminarClienteABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEliminarClienteABM.Designer.cs">
+      <DependentUpon>FormEliminarClienteABM.cs</DependentUpon>
     </Compile>
     <Compile Include="FormEmpleado.cs">
       <SubType>Form</SubType>
@@ -70,7 +101,14 @@
     <Compile Include="InformesDeVentas2.Designer.cs">
       <DependentUpon>InformesDeVentas2.cs</DependentUpon>
     </Compile>
+    <Compile Include="MenuABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuABM.Designer.cs">
+      <DependentUpon>MenuABM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\Calle.cs" />
+    <Compile Include="Modelos\Cliente.cs" />
     <Compile Include="Modelos\Genero.cs" />
     <Compile Include="Modelos\Localidad.cs" />
     <Compile Include="Modelos\Marca.cs" />
@@ -135,14 +173,32 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ControlesDeUsuario\Clientes_UC.resx">
+      <DependentUpon>Clientes_UC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Facturacion.resx">
       <DependentUpon>Facturacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCrearClienteABM.resx">
+      <DependentUpon>FormCrearClienteABM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCrearClienteFactura.resx">
+      <DependentUpon>FormCrearClienteFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEditarClienteABM.resx">
+      <DependentUpon>FormEditarClienteABM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEliminarClienteABM.resx">
+      <DependentUpon>FormEliminarClienteABM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEmpleado.resx">
       <DependentUpon>FormEmpleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InformesDeVentas2.resx">
       <DependentUpon>InformesDeVentas2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuABM.resx">
+      <DependentUpon>MenuABM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Stock.resx">
       <DependentUpon>Stock.cs</DependentUpon>
