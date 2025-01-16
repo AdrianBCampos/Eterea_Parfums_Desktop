@@ -16,7 +16,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Localidad> getAll()
         {
             List<Localidad> list = new List<Localidad>();
-            string query = "select * from eterea.localidad;";
+            string query = "select * from dbo.localidad;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
@@ -46,7 +46,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static Localidad getByName(string nombre)
         {
             Localidad localidad = new Localidad();
-            string query = "select * from eterea.localidad where " +
+            string query = "select * from dbo.localidad where " +
                 "nombre = @nombre;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
@@ -77,7 +77,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static Localidad getById(int id)
         {
             Localidad localidad = new Localidad();
-            string query = "select * from eterea.localidad where " +
+            string query = "select * from dbo.localidad where " +
                 "id = @id;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);

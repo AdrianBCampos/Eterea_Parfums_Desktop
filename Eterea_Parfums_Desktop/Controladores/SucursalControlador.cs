@@ -16,7 +16,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Sucursal> getAll()
         {
             List<Sucursal> list = new List<Sucursal>();
-            string query = "select * from eterea.sucursal;";
+            string query = "select * from dbo.sucursal;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
@@ -53,7 +53,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static Sucursal getByName(string nombre)
         {
             Sucursal sucursal = new Sucursal();
-            string query = "select * from eterea.sucursal where " +
+            string query = "select * from dbo.sucursal where " +
                 "nombre = @nombre;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
@@ -91,7 +91,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static Sucursal getById(int id)
         {
             Sucursal sucursal = new Sucursal();
-            string query = "select * from eterea.sucursal where " +
+            string query = "select * from dbo.sucursal where " +
                 "id = @id;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);

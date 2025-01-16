@@ -14,7 +14,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static bool auth(string usr, string pass)//, bool hasheado)
         {
             Empleado empleado = new Empleado();
-            string query = "select * from eterea.empleado where " +
+            string query = "select * from dbo.empleado where " +
                 "usuario = @user and clave = @pass;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
@@ -73,7 +73,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         public static bool crearEmpleado(Empleado empleado)
         {
-            string query = "insert into eterea.empleado values" +
+            string query = "insert into dbo.empleado values" +
                 "(@id, " +
                 "@usuario, " +
                 "@clave, " +
@@ -142,7 +142,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static int obtenerMaxId()
         {
             int MaxId = 0;
-            string query = "select max(id) from eterea.empleado;";
+            string query = "select max(id) from dbo.empleado;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
@@ -180,7 +180,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
 
-            string query = "select * from eterea.empleado;";
+            string query = "select * from dbo.empleado;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
@@ -235,7 +235,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             Calle calle = new Calle();
             Sucursal sucursal = new Sucursal();
 
-            string query = "select * from eterea.empleado where id = @id;";
+            string query = "select * from dbo.empleado where id = @id;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@id", id);
@@ -352,7 +352,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             int activo = 0;
             //Dar de baja lógica a un empleado en la base de datos
-            string query = "update eterea.empleado set activo = @activo " +
+            string query = "update dbo.empleado set activo = @activo " +
 
                "where id = @id;";
 
@@ -378,7 +378,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             int idSuc = 0;
 
-            string query = "SELECT sucursal_id FROM eterea.empleado WHERE id = @id";
+            string query = "SELECT sucursal_id FROM dbo.empleado WHERE id = @id";
 
             using (SqlConnection connection = new SqlConnection(DB_Controller.connectionString))
             {

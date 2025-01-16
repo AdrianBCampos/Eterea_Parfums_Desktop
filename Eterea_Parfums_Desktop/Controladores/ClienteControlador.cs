@@ -21,7 +21,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             //Dar de alta un cliente en la base de datos
 
-            string query = "insert into eterea.cliente values" +
+            string query = "insert into dbo.cliente values" +
                 "(@id, " +
                 "@usuario, " +
                 "@clave, " +
@@ -93,7 +93,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static int obtenerMaxId()
         {
             int MaxId = 0;
-            string query = "select max(id) from eterea.cliente;";
+            string query = "select max(id) from dbo.cliente;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
@@ -121,7 +121,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Cliente> obtenerTodos()
         {
             List<Cliente> list = new List<Cliente>();
-            string query = "select * from eterea.cliente;";
+            string query = "select * from dbo.cliente;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
@@ -185,7 +185,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             Localidad localidad = new Localidad();
             Calle calle = new Calle();
 
-            string query = "select * from eterea.cliente where id = @id;";
+            string query = "select * from dbo.cliente where id = @id;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@id", id);
@@ -257,7 +257,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             Localidad localidad = new Localidad();
             Calle calle = new Calle();
 
-            string query = "select * from eterea.cliente where dni = @dni;";
+            string query = "select * from dbo.cliente where dni = @dni;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@dni", dni);
@@ -392,7 +392,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             int activo = 0;
             //Dar de baja lógica a un cliente en la base de datos
-            string query = "update eterea.cliente set activo = @activo " + "where id = @id;";
+            string query = "update dbo.cliente set activo = @activo " + "where id = @id;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@id", id);

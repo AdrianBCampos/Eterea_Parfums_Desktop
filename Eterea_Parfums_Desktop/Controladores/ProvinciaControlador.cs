@@ -15,7 +15,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Provincia> getAll()
         {
             List<Provincia> list = new List<Provincia>();
-            string query = "select * from eterea.provincia;";
+            string query = "select * from dbo.provincia;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
@@ -45,7 +45,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static Provincia getByName(string nombre)
         {
             Provincia provincia = new Provincia();
-            string query = "select * from eterea.provincia where " +
+            string query = "select * from dbo.provincia where " +
                 "nombre = @nombre;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
@@ -76,7 +76,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static Provincia getById(int id)
         {
             Provincia provincia = new Provincia();
-            string query = "select * from eterea.provincia where " +
+            string query = "select * from dbo.provincia where " +
                 "id = @id;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
