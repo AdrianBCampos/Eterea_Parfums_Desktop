@@ -15,7 +15,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Pais> getAll()
         {
             List<Pais> list = new List<Pais>();
-            string query = "select * from eterea.pais;";
+            string query = "select * from dbo.pais;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
@@ -45,7 +45,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static Pais getByName(string nombre)
         {
             Pais pais = new Pais();
-            string query = "select * from eterea.pais where " +
+            string query = "select * from dbo.pais where " +
                 "nombre = @nombre;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
@@ -76,7 +76,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static Pais getById(int id)
         {
             Pais pais = new Pais();
-            string query = "select * from eterea.pais where " +
+            string query = "select * from dbo.pais where " +
                 "id = @id;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);

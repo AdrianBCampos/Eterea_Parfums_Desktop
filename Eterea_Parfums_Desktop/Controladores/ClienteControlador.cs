@@ -21,7 +21,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             //Dar de alta un cliente en la base de datos
 
-            string query = "insert into eterea.cliente values" +
+            string query = "insert into dbo.cliente values" +
                 "(@id, " +
                 "@usuario, " +
                 "@clave, " +
@@ -32,7 +32,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                 "@fecha_nacimiento, " +
                 "@celular, " +
                 "@e_mail, " +
-                "@pais, " +
+                "@pais_id, " +
                 "@provincia_id, " +
                 "@localidad_id, " +
                 "@codigo_postal, " +
@@ -57,7 +57,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             //cmd.Parameters.AddWithValue("@fecha_nacimiento", cliente.fecha_nacimiento);
             cmd.Parameters.AddWithValue("@celular", cliente.celular);
             cmd.Parameters.AddWithValue("@e_mail", cliente.e_mail);
-            cmd.Parameters.AddWithValue("@pais", cliente.pais_id.id);
+            cmd.Parameters.AddWithValue("@pais_id", cliente.pais_id.id);
             cmd.Parameters.AddWithValue("@provincia_id", cliente.provincia_id.id);
             cmd.Parameters.AddWithValue("@localidad_id", cliente.localidad_id.id);
             cmd.Parameters.Add("@codigo_postal", System.Data.SqlDbType.Int).Value = cliente.codigo_postal ?? (object)DBNull.Value;
@@ -93,7 +93,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static int obtenerMaxId()
         {
             int MaxId = 0;
-            string query = "select max(id) from eterea.cliente;";
+            string query = "select max(id) from dbo.cliente;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
@@ -120,7 +120,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Cliente> obtenerTodos()
         {
             List<Cliente> list = new List<Cliente>();
-            string query = "select * from eterea.cliente;";
+            string query = "select * from dbo.cliente;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
@@ -184,7 +184,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             Localidad localidad = new Localidad();
             Calle calle = new Calle();
 
-            string query = "select * from eterea.cliente where id = @id;";
+            string query = "select * from dbo.cliente where id = @id;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@id", id);
@@ -254,7 +254,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             Localidad localidad = new Localidad();
             Calle calle = new Calle();
 
-            string query = "select * from eterea.cliente where dni = @dni;";
+            string query = "select * from dbo.cliente where dni = @dni;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@dni", dni);
@@ -304,7 +304,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             //Dar de alta un vendedor en la base de datos
 
-            string query = "update eterea.cliente set usuario = @usuario, " +
+            string query = "update dbo.cliente set usuario = @usuario, " +
                 "nombre = @nombre, " +
                 "apellido = @apellido, " +
                 "dni = @dni, " +
@@ -387,7 +387,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             int activo = 0;
             //Dar de baja lógica a un cliente en la base de datos
-            string query = "update eterea.cliente set activo = @activo " +
+            string query = "update dbo.cliente set activo = @activo " +
 
                "where id = @id;";
 

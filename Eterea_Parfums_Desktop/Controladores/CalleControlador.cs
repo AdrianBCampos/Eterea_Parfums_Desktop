@@ -15,7 +15,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Calle> getAll()
         {
             List<Calle> list = new List<Calle>();
-            string query = "select * from eterea.calle;";
+            string query = "select * from dbo.calle;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 

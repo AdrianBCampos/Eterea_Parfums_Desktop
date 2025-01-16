@@ -14,7 +14,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static bool auth(string usr, string pass)//, bool hasheado)
         {
             Empleado empleado = new Empleado();
-            string query = "select * from eterea.empleado where " +
+            string query = "select * from dbo.empleado where " +
                 "usuario = @user and clave = @pass;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
