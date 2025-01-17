@@ -16,7 +16,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Genero> getAll()
         {
             List<Genero> list = new List<Genero>();
-            string query = "select * from eterea.Genero;";
+            string query = "select * from dbo.genero;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
@@ -77,7 +77,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static Genero getById(int id)
         {
             Genero genero = new Genero();
-            string query = "select * from eterea.Genero where " +
+            string query = "select * from dbo.genero where " +
                 "id = @id;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);

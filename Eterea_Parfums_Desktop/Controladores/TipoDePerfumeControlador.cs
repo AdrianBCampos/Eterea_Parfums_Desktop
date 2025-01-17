@@ -19,7 +19,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             try
             {
                 lista_tipos_de_perfumes = new List<TipoDePerfume>();
-                string query = "select * from eterea.Tipo_de_perfume;";
+                string query = "select * from dbo.tipo_de_perfume;";
                 SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
                 DB_Controller.connection.Open();
                 SqlDataReader r = cmd.ExecuteReader();
@@ -43,7 +43,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static TipoDePerfume getByName(string tipo)
         {
             TipoDePerfume tipo_de_perfume = new TipoDePerfume();
-            string query = "select * from eterea.tipo_de_perfume where " +
+            string query = "select * from dbo.tipo_de_perfume where " +
                 "nombre = @tipo;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
@@ -73,7 +73,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static TipoDePerfume getById(int id)
         {
             TipoDePerfume tipo_de_perfume = new TipoDePerfume();
-            string query = "select * from eterea.tipo_de_perfume where " +
+            string query = "select * from dbo.tipo_de_perfume where " +
                 "id = @id;";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@id", id);

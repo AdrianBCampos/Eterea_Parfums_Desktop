@@ -114,7 +114,9 @@ namespace Eterea_Parfums_Desktop
 
                 saveImagenResources(out nombre_foto_uno, File);
                 saveImagenResources(out nombre_foto_dos, File2);
+               
                 Perfume perfume = crear();
+                Console.WriteLine(perfume.id);
                 AromaNota aromaNota = new AromaNota(perfume);
                 aromaNota.Show();
                 this.Hide();

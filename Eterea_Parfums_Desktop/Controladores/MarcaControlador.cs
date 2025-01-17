@@ -15,7 +15,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Marca> getAll()
         {
             List<Marca> list = new List<Marca>();
-            string query = "select * from eterea.Marca;";
+            string query = "select * from dbo.marca;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
@@ -45,7 +45,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static Marca getByName(string nombre)
         {
             Marca pais = new Marca();
-            string query = "select * from eterea.Marca where " +
+            string query = "select * from dbo.marca where " +
                 "nombre = @nombre;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
@@ -76,7 +76,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static Marca getById(int id)
         {
             Marca marca = new Marca();
-            string query = "select * from eterea.marca where " +
+            string query = "select * from dbo.marca where " +
                 "id = @id;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);

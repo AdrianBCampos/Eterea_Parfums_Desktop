@@ -14,7 +14,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static NotaConTipoDeNota getByID(int id)
         {
             NotaConTipoDeNota nota_con_tipo_de_nota = null;
-            string query = "SELECT * FROM eterea.nota_con_tipo_de_nota WHERE id = @id";
+            string query = "SELECT * FROM dbo.nota_con_tipo_de_nota WHERE id = @id";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@id", id);
             try
@@ -62,7 +62,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
 
             NotaConTipoDeNota nota_con_tipo_de_nota = null;
-            string query = "SELECT * FROM eterea.nota_con_tipo_de_nota WHERE nota_id = @nota_id AND tipo_de_nota_id = @tipo_de_nota_id";
+            string query = "SELECT * FROM dbo.nota_con_tipo_de_nota WHERE nota_id = @nota_id AND tipo_de_nota_id = @tipo_de_nota_id";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@nota_id", notaConTipoDeNota.nota.id);
             cmd.Parameters.AddWithValue("@tipo_de_nota_id", notaConTipoDeNota.tipoDeNota.id);
@@ -88,7 +88,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static int getByMaxId()
         {
             int MaxId = 0;
-            string query = "select max(id) from eterea.nota_con_tipo_de_nota;";
+            string query = "select max(id) from dbo.nota_con_tipo_de_nota;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 

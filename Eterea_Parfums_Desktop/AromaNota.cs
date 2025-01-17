@@ -151,16 +151,24 @@ namespace Eterea_Parfums_Desktop
                 lbl_error_seleccion_nota.Visible = true;
                 return;
             }
-            else if (!(checkedListBoxAroma.CheckedItems.Count == 1))
+            else if (!(checkedListBoxNota.CheckedItems.Count == 1))
             {
                 lbl_error_seleccion_nota.Text = "marcar un solo tipo de nota";
                 lbl_error_seleccion_nota.Visible = true;
                 return;
-            } else if (string.IsNullOrEmpty(lbl_nota.Text))
+            }
+            else if (checkedListBoxNota.CheckedItems.Count > 1)
+            {
+                lbl_error_seleccion_nota.Text = "marcar un solo tipo de nota";
+                lbl_error_seleccion_nota.Visible = true;
+                return;
+            }
+            else if (!(string.IsNullOrEmpty(lbl_nota.Text)))
             {
 
-
+                Console.WriteLine("Nota Ingresada: " + lbl_nota.Text);
                 Nota nota = NotaControlador.getByNombre(lbl_nota.Text);
+                tipoDeNotaMarcado = checkedListBoxNota.CheckedItems[0].ToString();
                 TipoDeNota tipoDeNota = TipoDeNotaControlador.getByNombre(tipoDeNotaMarcado);
 
                 NotaConTipoDeNota notaConTipoDeNota = new NotaConTipoDeNota(NotaConTipoDeNotaControlador.getByMaxId() + 1, nota, tipoDeNota);

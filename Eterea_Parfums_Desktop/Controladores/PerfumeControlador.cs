@@ -20,7 +20,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             try
             {
-                query = "select * from eterea.perfume;";
+                query = "select * from dbo.perfume;";
                 SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
                 DB_Controller.connection.Open();
                 SqlDataReader r = cmd.ExecuteReader();
@@ -65,8 +65,8 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
 
 
-            string query = "insert into eterea.perfume values " +
-                "(@id, " +
+            string query = "insert into dbo.perfume values " +
+                 "(@id, " +
                 "@codigo, " +
                 "@marca, " +
                 "@nombre, " +
@@ -90,6 +90,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             cmd.Parameters.AddWithValue("@marca", perfume.marca.id);
             cmd.Parameters.AddWithValue("@nombre", perfume.nombre);
             cmd.Parameters.AddWithValue("@tipo_de_perfume", perfume.tipo_de_perfume.id);
+           
             cmd.Parameters.AddWithValue("@genero", perfume.genero.id);
             cmd.Parameters.AddWithValue("@presentacion_ml", perfume.presentacion_ml);
             cmd.Parameters.AddWithValue("@pais", perfume.pais.id);
@@ -102,9 +103,10 @@ namespace Eterea_Parfums_Desktop.Controladores
             cmd.Parameters.AddWithValue("@imagen1", perfume.imagen1);
             cmd.Parameters.AddWithValue("@imagen2", perfume.imagen2);
 
-
+            Console.WriteLine("genero_id" + perfume.genero.id);
             try
             {
+               
                 DB_Controller.connection.Open();
                 cmd.ExecuteNonQuery();
                 return true;
@@ -120,7 +122,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             {
                 cmd.Parameters.Clear();
                 DB_Controller.connection.Close();
-        }
+            }
         }
 
 
@@ -131,7 +133,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             Genero genero = null;
             Pais pais = null;
             Perfume perfume = new Perfume();
-            string query = "select * from eterea.perfume where id = @id;";
+            string query = "select * from dbo.perfume where id = @id;";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@id", id);
             try
@@ -154,7 +156,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
             catch (Exception e)
             {
-               
+
                 throw new Exception("Hay un error en la query: " + e.Message);
             }
             finally
@@ -167,7 +169,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static int GetByMaxId()
         {
             int MaxId = 0;
-            string query = "select max(id) from eterea.perfume;";
+            string query = "select max(id) from dbo.perfume;";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             try
             {
@@ -186,13 +188,13 @@ namespace Eterea_Parfums_Desktop.Controladores
             catch (Exception e)
             {
                Trace.WriteLine("Error al consultar la DB: " + e.Message);
-                    }
+            }
             finally
             {
 
                 DB_Controller.connection.Close();
             }
-     
+
             return MaxId;
         }
     }

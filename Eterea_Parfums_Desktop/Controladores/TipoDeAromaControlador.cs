@@ -13,7 +13,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<TipoDeAroma> getAll()
         {
             List<TipoDeAroma> tipo_de_aromas = new List<TipoDeAroma>();
-            string query = "SELECT * FROM eterea.tipo_de_aroma";
+            string query = "SELECT * FROM dbo.tipo_de_aroma";
 
             try
             {
@@ -37,7 +37,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static TipoDeAroma getByNombre(string nombre)
         {
             TipoDeAroma tipo_de_aroma = null;
-            string query = "SELECT * FROM eterea.tipo_de_aroma WHERE nombre = @nombre";
+            string query = "SELECT * FROM dbo.tipo_de_aroma WHERE nombre = @nombre";
             try
             {
                 SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);

@@ -13,7 +13,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Nota> getAll()
         {
             List<Nota> notas = new List<Nota>();
-            string query = "SELECT * FROM eterea.nota";
+            string query = "SELECT * FROM dbo.nota";
             try
             {
                 SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
@@ -36,7 +36,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static Nota getById(int id)
         {
             Nota nota = new Nota();
-            string query = "SELECT * FROM eterea.nota WHERE id = @id";
+            string query = "SELECT * FROM dbo.nota WHERE id = @id";
             try
             {
                 SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
@@ -60,7 +60,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static Nota getByNombre(string nombre)
         {
             Nota nota = new Nota();
-            string query = "SELECT * FROM eterea.nota WHERE nombre = @nombre";
+            string query = "SELECT * FROM dbo.nota WHERE nombre = @nombre";
             try
             {
                 SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
