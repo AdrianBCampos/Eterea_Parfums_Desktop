@@ -15,7 +15,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Calle> getAll()
         {
             List<Calle> list = new List<Calle>();
-            string query = "select * from eterea.calle;";
+            string query = "select * from dbo.calle;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
@@ -45,7 +45,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static Calle getByName(string nombre)
         {
             Calle calle = new Calle();
-            string query = "select * from eterea.calle where " +
+            string query = "select * from dbo.calle where " +
                 "nombre = @nombre;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
@@ -76,7 +76,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static Calle getById(int id)
         {
             Calle calle = new Calle();
-            string query = "select * from eterea.calle where " +
+            string query = "select * from dbo.calle where " +
                 "id = @id;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Eterea_Parfums_Desktop.Modelos
 {
-    internal class Provincia
+    public class Provincia
     {
         public int id { get; set; }
         public string nombre { get; set; }

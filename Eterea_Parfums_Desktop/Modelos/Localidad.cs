@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Eterea_Parfums_Desktop.Modelos
 {
-    internal class Localidad
+    public class Localidad
     {
 
         public int id { get; set; }
