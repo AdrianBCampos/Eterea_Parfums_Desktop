@@ -89,5 +89,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             }
         }
 
+        private void dataGridViewPerfumes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

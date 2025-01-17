@@ -88,6 +88,7 @@
             this.dataGridViewPerfumes.RowHeadersWidth = 51;
             this.dataGridViewPerfumes.Size = new System.Drawing.Size(934, 266);
             this.dataGridViewPerfumes.TabIndex = 229;
+            this.dataGridViewPerfumes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPerfumes_CellContentClick);
             // 
             // Id
             // 

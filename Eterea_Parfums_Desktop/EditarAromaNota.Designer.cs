@@ -38,9 +38,6 @@
             this.btn_agregar = new System.Windows.Forms.Button();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_finalizar = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -48,6 +45,9 @@
             this.lbl_nombre_perfume = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbl_editar_tipo_aroma_nota = new System.Windows.Forms.Label();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -158,6 +158,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Tipo,
@@ -167,21 +168,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(304, 244);
             this.dataGridView1.TabIndex = 166;
-            // 
-            // Tipo
-            // 
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            // 
-            // Nota
-            // 
-            this.Nota.HeaderText = "Nota";
-            this.Nota.Name = "Nota";
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.Name = "Eliminar";
             // 
             // btn_finalizar
             // 
@@ -258,9 +244,26 @@
             this.lbl_editar_tipo_aroma_nota.ForeColor = System.Drawing.Color.Black;
             this.lbl_editar_tipo_aroma_nota.Location = new System.Drawing.Point(30, 27);
             this.lbl_editar_tipo_aroma_nota.Name = "lbl_editar_tipo_aroma_nota";
-            this.lbl_editar_tipo_aroma_nota.Size = new System.Drawing.Size(311, 18);
+            this.lbl_editar_tipo_aroma_nota.Size = new System.Drawing.Size(391, 18);
             this.lbl_editar_tipo_aroma_nota.TabIndex = 159;
-            this.lbl_editar_tipo_aroma_nota.Text = "Editar Tipo De Aroma y Perfume Creado";
+            this.lbl_editar_tipo_aroma_nota.Text = "Editar Tipo De Aroma y Notas Del Perfume Creado";
+            // 
+            // Tipo
+            // 
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            // 
+            // Nota
+            // 
+            this.Nota.HeaderText = "Nota";
+            this.Nota.Name = "Nota";
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // EditarAromaNota
             // 
@@ -310,9 +313,6 @@
         private System.Windows.Forms.Button btn_agregar;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nota;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Eliminar;
         private System.Windows.Forms.Button btn_finalizar;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
@@ -320,5 +320,8 @@
         private System.Windows.Forms.Label lbl_nombre_perfume;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbl_editar_tipo_aroma_nota;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nota;
+        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
     }
 }
