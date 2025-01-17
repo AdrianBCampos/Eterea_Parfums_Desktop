@@ -52,6 +52,7 @@
     <Compile Include="Controladores\LocalidadControlador.cs" />
     <Compile Include="Controladores\MarcaControlador.cs" />
     <Compile Include="Controladores\PaisControlador.cs" />
+    <Compile Include="Controladores\PromoControlador.cs" />
     <Compile Include="Controladores\ProvinciaControlador.cs" />
     <Compile Include="Controladores\SucursalControlador.cs" />
     <Compile Include="ControlesDeUsuario\Clientes_UC.cs">
@@ -65,6 +66,12 @@
     </Compile>
     <Compile Include="ControlesDeUsuario\Empleados_UC.Designer.cs">
       <DependentUpon>Empleados_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\Promos_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\Promos_UC.Designer.cs">
+      <DependentUpon>Promos_UC.cs</DependentUpon>
     </Compile>
     <Compile Include="Facturacion.cs">
       <SubType>Form</SubType>
@@ -83,6 +90,12 @@
     </Compile>
     <Compile Include="FormCrearClienteFactura.Designer.cs">
       <DependentUpon>FormCrearClienteFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCrearPromo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCrearPromo.Designer.cs">
+      <DependentUpon>FormCrearPromo.cs</DependentUpon>
     </Compile>
     <Compile Include="FormEditarClienteABM.cs">
       <SubType>Form</SubType>
@@ -132,6 +145,7 @@
     <Compile Include="Modelos\Localidad.cs" />
     <Compile Include="Modelos\Marca.cs" />
     <Compile Include="Modelos\Pais.cs" />
+    <Compile Include="Modelos\Promocion.cs" />
     <Compile Include="Modelos\Provincia.cs" />
     <Compile Include="Modelos\Sucursal.cs" />
     <Compile Include="Stock.cs">
@@ -196,6 +210,9 @@
     <EmbeddedResource Include="ControlesDeUsuario\Clientes_UC.resx">
       <DependentUpon>Clientes_UC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ControlesDeUsuario\Promos_UC.resx">
+      <DependentUpon>Promos_UC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlesDeUsuario\Empleados_UC.resx">
       <DependentUpon>Empleados_UC.cs</DependentUpon>
     </EmbeddedResource>
@@ -204,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormCrearClienteABM.resx">
       <DependentUpon>FormCrearClienteABM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCrearPromo.resx">
+      <DependentUpon>FormCrearPromo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCrearClienteFactura.resx">
       <DependentUpon>FormCrearClienteFactura.cs</DependentUpon>

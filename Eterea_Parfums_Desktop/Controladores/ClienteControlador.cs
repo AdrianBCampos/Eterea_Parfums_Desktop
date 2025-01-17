@@ -32,7 +32,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                 "@fecha_nacimiento, " +
                 "@celular, " +
                 "@e_mail, " +
-                "@pais, " +
+                "@pais_id, " +
                 "@provincia_id, " +
                 "@localidad_id, " +
                 "@codigo_postal, " +
@@ -57,7 +57,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             //cmd.Parameters.AddWithValue("@fecha_nacimiento", cliente.fecha_nacimiento);
             cmd.Parameters.AddWithValue("@celular", cliente.celular);
             cmd.Parameters.AddWithValue("@e_mail", cliente.e_mail);
-            cmd.Parameters.AddWithValue("@pais", cliente.pais_id.id);
+            cmd.Parameters.AddWithValue("@pais_id", cliente.pais_id.id);
             cmd.Parameters.AddWithValue("@provincia_id", cliente.provincia_id.id);
             cmd.Parameters.AddWithValue("@localidad_id", cliente.localidad_id.id);
             cmd.Parameters.Add("@codigo_postal", System.Data.SqlDbType.Int).Value = cliente.codigo_postal ?? (object)DBNull.Value;
