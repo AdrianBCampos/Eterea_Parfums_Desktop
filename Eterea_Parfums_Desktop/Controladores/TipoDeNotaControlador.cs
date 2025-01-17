@@ -60,7 +60,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static TipoDeNota getByNombre(string nombre)
         {
             TipoDeNota tipo_de_nota = null;
-            string query = "SELECT * FROM eterea.tipo_de_nota WHERE nombre = @nombre";
+            string query = "SELECT * FROM dbo.tipo_de_nota WHERE nombre = @nombre";
             try
             {
                 SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);

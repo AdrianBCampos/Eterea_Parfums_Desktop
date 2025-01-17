@@ -42,12 +42,11 @@ namespace Eterea_Parfums_Desktop.Controladores
         }
 
 
-        //GET ONE ByName
-        public static Genero getByGenero(string gen)
+      
+        public static Genero getByName(string gen)
         {
-            Genero genero = new Genero();
-            string query = "select * from eterea.Genero where " +
-                "genero = @genero;";
+            Genero genero = null;
+            string query = "select * from dbo.genero where genero = @genero;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@genero", gen);
@@ -62,6 +61,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                     genero = new Genero(r.GetInt32(0), r.GetString(1));
                 }
                 r.Close();
+                //cmd.Parameters.Clear();
                 DB_Controller.connection.Close();
 
             }

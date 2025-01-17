@@ -2,11 +2,6 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Eterea_Parfums_Desktop.Modelos;
 
 namespace Eterea_Parfums_Desktop.Controladores
@@ -42,13 +37,13 @@ namespace Eterea_Parfums_Desktop.Controladores
                     if (r.GetInt32(13) == 1)
                     {
 
-                        string cod1 = r.GetInt64(1).ToString();
+                        //string cod1 = r.GetInt64(1).ToString();
 
-                        lista_perfumes.Add(new Perfume(r.GetInt32(0), cod1, marca, r.GetString(3),
+                        lista_perfumes.Add(new Perfume(r.GetInt32(0), r.GetString(1), marca, r.GetString(3),
                         tipo_de_perfume, genero, r.GetInt32(6), pais,
                         r.GetInt32(8), r.GetInt32(9), r.GetString(10), r.GetInt32(11), r.GetDouble(12),
                         r.GetInt32(13), r.GetString(14), r.GetString(15)));
-                        Trace.WriteLine("Perfume encontrado, nombre: " + cod1);
+                        //Trace.WriteLine("Perfume encontrado, nombre: " + cod1);
                     }
 
 
@@ -90,8 +85,8 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
-            cmd.Parameters.AddWithValue("@id", perfume.id);
-            cmd.Parameters.AddWithValue("@codigo", Convert.ToInt64(perfume.codigo));
+            cmd.Parameters.AddWithValue("@id", GetByMaxId() + 1);
+            cmd.Parameters.AddWithValue("@codigo", perfume.codigo);
             cmd.Parameters.AddWithValue("@marca", perfume.marca.id);
             cmd.Parameters.AddWithValue("@nombre", perfume.nombre);
             cmd.Parameters.AddWithValue("@tipo_de_perfume", perfume.tipo_de_perfume.id);
@@ -112,17 +107,20 @@ namespace Eterea_Parfums_Desktop.Controladores
             {
                 DB_Controller.connection.Open();
                 cmd.ExecuteNonQuery();
-                cmd.Parameters.Clear();
-                DB_Controller.connection.Close();
                 return true;
             }
             catch (Exception e)
             {
-                DB_Controller.connection.Close();
+                
                 //throw new Exception("Hay un error en la query: " + e.Message);
                 Trace.WriteLine(e.Message);
                 return false;
             }
+            finally
+            {
+                cmd.Parameters.Clear();
+                DB_Controller.connection.Close();
+        }
         }
 
 
@@ -152,19 +150,23 @@ namespace Eterea_Parfums_Desktop.Controladores
                         r.GetInt32(13), r.GetString(14), r.GetString(15));
                 }
                 r.Close();
-                DB_Controller.connection.Close();
+               
             }
             catch (Exception e)
             {
                
                 throw new Exception("Hay un error en la query: " + e.Message);
             }
+            finally
+            {
+                DB_Controller.connection.Close();
+            }
             return perfume;
         }
 
-        public static int getByMaxId()
+        public static int GetByMaxId()
         {
-            var MaxId = 0;
+            int MaxId = 0;
             string query = "select max(id) from eterea.perfume;";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             try
@@ -174,20 +176,23 @@ namespace Eterea_Parfums_Desktop.Controladores
                 while (r.Read())
                 {
                     MaxId = r.GetInt32(0);
+                    Console.WriteLine("MaxId: " + MaxId);
                 }
+               
                 r.Close();
+
+
             }
             catch (Exception e)
             {
-                throw new Exception("Hay un error en la query: " + e.Message);
-            }
+               Trace.WriteLine("Error al consultar la DB: " + e.Message);
+                    }
             finally
             {
-                if (DB_Controller.connection.State == System.Data.ConnectionState.Open)
-                {
-                    DB_Controller.connection.Close();
-                }
+
+                DB_Controller.connection.Close();
             }
+     
             return MaxId;
         }
     }

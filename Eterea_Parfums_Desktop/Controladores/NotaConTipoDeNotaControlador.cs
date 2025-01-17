@@ -41,7 +41,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         public static void create(NotaConTipoDeNota nota_con_tipo_de_nota)
         {
-            string query = "INSERT INTO eterea.nota_con_tipo_de_nota VALUES (@id, @nota_id, @tipo_de_nota_id)";
+            string query = "INSERT INTO dbo.nota_con_tipo_de_nota VALUES (@id, @nota_id, @tipo_de_nota_id)";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@id", nota_con_tipo_de_nota.id);
             cmd.Parameters.AddWithValue("@nota_id", nota_con_tipo_de_nota.nota.id);
