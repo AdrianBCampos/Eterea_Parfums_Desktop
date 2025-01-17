@@ -284,7 +284,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             //Editar un empleado en la base de datos
 
-            string query = "update eterea.empleado set usuario = @usuario, " +
+            string query = "update dbo.empleado set usuario = @usuario, " +
                 "clave = @clave, " +
                 "nombre = @nombre, " +
                 "apellido = @apellido, " +

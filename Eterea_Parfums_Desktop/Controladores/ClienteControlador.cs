@@ -307,7 +307,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             
 
-            string query = "update eterea.cliente set usuario = @usuario, " +
+            string query = "update dbo.cliente set usuario = @usuario, " +
                 "nombre = @nombre, " +
                 "apellido = @apellido, " +
                 "dni = @dni, " +
