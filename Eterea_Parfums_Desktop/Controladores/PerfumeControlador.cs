@@ -156,6 +156,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
             catch (Exception e)
             {
+                DB_Controller.connection.Close();
                 throw new Exception("Hay un error en la query: " + e.Message);
             }
             return perfume;
@@ -164,16 +165,13 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         public static int getByMaxId()
         {
-            int MaxId = 0;
+            var MaxId = 0;
             string query = "select max(id) from eterea.perfume;";
-
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-
             try
             {
                 DB_Controller.connection.Open();
                 SqlDataReader r = cmd.ExecuteReader();
-
                 while (r.Read())
                 {
                     MaxId = r.GetInt32(0);
@@ -184,6 +182,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
             catch (Exception e)
             {
+                DB_Controller.connection.Close();
                 throw new Exception("Hay un error en la query: " + e.Message);
             }
         }

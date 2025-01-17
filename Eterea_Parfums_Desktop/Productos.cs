@@ -173,8 +173,8 @@ namespace Eterea_Parfums_Desktop
             TipoDePerfume tipo_de_perfume = TipoDePerfumeControlador.getByName(combo_tipo_de_perfume.SelectedItem.ToString());
             Genero genero = GeneroControlador.getByGenero(combo_genero.SelectedItem.ToString());
             Pais pais = PaisControlador.getByName(combo_pais.SelectedItem.ToString());
-
-            Perfume perfume = new Perfume(PerfumeControlador.getByMaxId() + 1, txt_codigo.Text, marca, txt_nombre.Text, tipo_de_perfume,
+            int id_Perfume = PerfumeControlador.getByMaxId() + 1;
+            Perfume perfume = new Perfume(id_Perfume, txt_codigo.Text, marca, txt_nombre.Text, tipo_de_perfume,
                 genero, int.Parse(txt_presentacion.Text), pais, spray, recargable, txt_descripcion.Text,
                 int.Parse(txt_anio_de_lanzamiento.Text), Double.Parse(txt_precio.Text), activo, nombre_foto_uno, nombre_foto_dos);
 
