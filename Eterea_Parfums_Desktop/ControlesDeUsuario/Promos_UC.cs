@@ -34,9 +34,34 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                     dataGV_Promos.Rows[rowIndex].Cells[0].Value = promocion.id.ToString();
                     dataGV_Promos.Rows[rowIndex].Cells[1].Value = promocion.nombre.ToString();
-                    dataGV_Promos.Rows[rowIndex].Cells[2].Value = promocion.fecha_inicio.ToString("dd-MM-yyyy");
-                    dataGV_Promos.Rows[rowIndex].Cells[3].Value = promocion.fecha_fin.ToString("dd-MM-yyyy");
-                    dataGV_Promos.Rows[rowIndex].Cells[4].Value = promocion.descuento.ToString();
+                    dataGV_Promos.Rows[rowIndex].Cells[3].Value = promocion.fecha_inicio.ToString("dd-MM-yyyy");
+                    dataGV_Promos.Rows[rowIndex].Cells[4].Value = promocion.fecha_fin.ToString("dd-MM-yyyy");
+                    //dataGV_Promos.Rows[rowIndex].Cells[2].Value = promocion.descuento.ToString();
+                    int descuento = promocion.descuento; // Obtén el valor del descuento como entero
+
+                    string textoPromocion;
+
+                    switch (descuento)
+                    {
+                        case 50:
+                            textoPromocion = "2 x 1";
+                            break;
+                        case 25:
+                            textoPromocion = "2da Unidad 50% Dto.";
+                            break;
+                        case 35:
+                            textoPromocion = "2da Unidad 70% Dto.";
+                            break;
+                        case 40:
+                            textoPromocion = "2da Unidad 80% Dto.";
+                            break;
+                        default:
+                            textoPromocion = "Sin promoción"; // Texto predeterminado para otros valores
+                            break;
+                    }
+
+                    // Asigna el texto al DataGridView
+                    dataGV_Promos.Rows[rowIndex].Cells[2].Value = textoPromocion;
 
                     if (promocion.activo.ToString() == "1")
                     {
