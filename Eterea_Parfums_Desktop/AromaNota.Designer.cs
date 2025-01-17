@@ -36,6 +36,9 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btn_finalizar = new System.Windows.Forms.Button();
             this.dataGridViewNotasDelPerfume = new System.Windows.Forms.DataGridView();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.btn_agregar = new System.Windows.Forms.Button();
             this.lbl_seleccionar_aroma = new System.Windows.Forms.Label();
@@ -51,9 +54,6 @@
             this.directorySearcher3 = new System.DirectoryServices.DirectorySearcher();
             this.lbl_error_seleccion_aroma = new System.Windows.Forms.Label();
             this.lbl_error_seleccion_nota = new System.Windows.Forms.Label();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -114,7 +114,7 @@
             this.pictureBox3.Location = new System.Drawing.Point(256, 114);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(212, 218);
+            this.pictureBox3.Size = new System.Drawing.Size(212, 202);
             this.pictureBox3.TabIndex = 146;
             this.pictureBox3.TabStop = false;
             // 
@@ -155,14 +155,31 @@
             this.dataGridViewNotasDelPerfume.Size = new System.Drawing.Size(304, 244);
             this.dataGridViewNotasDelPerfume.TabIndex = 149;
             // 
+            // Tipo
+            // 
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            // 
+            // Nota
+            // 
+            this.Nota.HeaderText = "Nota";
+            this.Nota.Name = "Nota";
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox5.Location = new System.Drawing.Point(256, 336);
+            this.pictureBox5.Location = new System.Drawing.Point(256, 328);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(212, 115);
+            this.pictureBox5.Size = new System.Drawing.Size(212, 123);
             this.pictureBox5.TabIndex = 150;
             this.pictureBox5.TabStop = false;
             // 
@@ -206,7 +223,7 @@
             this.lbl_buscar_nota.AutoSize = true;
             this.lbl_buscar_nota.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_buscar_nota.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_buscar_nota.Location = new System.Drawing.Point(262, 253);
+            this.lbl_buscar_nota.Location = new System.Drawing.Point(272, 243);
             this.lbl_buscar_nota.Name = "lbl_buscar_nota";
             this.lbl_buscar_nota.Size = new System.Drawing.Size(101, 20);
             this.lbl_buscar_nota.TabIndex = 154;
@@ -214,7 +231,7 @@
             // 
             // txt_nota
             // 
-            this.txt_nota.Location = new System.Drawing.Point(278, 284);
+            this.txt_nota.Location = new System.Drawing.Point(278, 276);
             this.txt_nota.Name = "txt_nota";
             this.txt_nota.Size = new System.Drawing.Size(159, 20);
             this.txt_nota.TabIndex = 155;
@@ -223,7 +240,7 @@
             // lbl_nota
             // 
             this.lbl_nota.AutoSize = true;
-            this.lbl_nota.Location = new System.Drawing.Point(292, 353);
+            this.lbl_nota.Location = new System.Drawing.Point(292, 350);
             this.lbl_nota.Name = "lbl_nota";
             this.lbl_nota.Size = new System.Drawing.Size(35, 13);
             this.lbl_nota.TabIndex = 156;
@@ -288,35 +305,18 @@
             // 
             this.lbl_error_seleccion_nota.AutoSize = true;
             this.lbl_error_seleccion_nota.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_seleccion_nota.Location = new System.Drawing.Point(279, 225);
+            this.lbl_error_seleccion_nota.Location = new System.Drawing.Point(295, 372);
             this.lbl_error_seleccion_nota.Name = "lbl_error_seleccion_nota";
             this.lbl_error_seleccion_nota.Size = new System.Drawing.Size(29, 13);
             this.lbl_error_seleccion_nota.TabIndex = 161;
             this.lbl_error_seleccion_nota.Text = "Error";
-            // 
-            // Tipo
-            // 
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            // 
-            // Nota
-            // 
-            this.Nota.HeaderText = "Nota";
-            this.Nota.Name = "Nota";
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // AromaNota
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(834, 488);
+            this.ClientSize = new System.Drawing.Size(834, 471);
             this.Controls.Add(this.lbl_error_seleccion_nota);
             this.Controls.Add(this.lbl_error_seleccion_aroma);
             this.Controls.Add(this.txt_nombre_perfume);

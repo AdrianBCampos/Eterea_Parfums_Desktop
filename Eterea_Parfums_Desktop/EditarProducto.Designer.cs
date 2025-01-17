@@ -78,6 +78,7 @@
             this.txt_nombre = new System.Windows.Forms.TextBox();
             this.txt_codigo = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lbl_error_descripcion = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProducto2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProducto1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -95,6 +96,7 @@
             this.btn_siguiente.TabIndex = 192;
             this.btn_siguiente.Text = "Siguiente";
             this.btn_siguiente.UseVisualStyleBackColor = false;
+            this.btn_siguiente.Click += new System.EventHandler(this.btn_siguiente_Click);
             // 
             // lbl_editar_producto
             // 
@@ -128,6 +130,7 @@
             this.btn_cargar_img2.TabIndex = 189;
             this.btn_cargar_img2.Text = "Cargar";
             this.btn_cargar_img2.UseVisualStyleBackColor = false;
+            this.btn_cargar_img2.Click += new System.EventHandler(this.btn_cargar_img2_Click);
             // 
             // pictureBoxProducto2
             // 
@@ -167,6 +170,7 @@
             this.btn_cargar_img1.TabIndex = 185;
             this.btn_cargar_img1.Text = "Cargar";
             this.btn_cargar_img1.UseVisualStyleBackColor = false;
+            this.btn_cargar_img1.Click += new System.EventHandler(this.btn_cargar_img1_Click);
             // 
             // pictureBoxProducto1
             // 
@@ -545,12 +549,23 @@
             this.pictureBox1.TabIndex = 143;
             this.pictureBox1.TabStop = false;
             // 
+            // lbl_error_descripcion
+            // 
+            this.lbl_error_descripcion.AutoSize = true;
+            this.lbl_error_descripcion.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_error_descripcion.Location = new System.Drawing.Point(184, 533);
+            this.lbl_error_descripcion.Name = "lbl_error_descripcion";
+            this.lbl_error_descripcion.Size = new System.Drawing.Size(29, 13);
+            this.lbl_error_descripcion.TabIndex = 193;
+            this.lbl_error_descripcion.Text = "Error";
+            // 
             // EditarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(800, 742);
+            this.Controls.Add(this.lbl_error_descripcion);
             this.Controls.Add(this.btn_siguiente);
             this.Controls.Add(this.lbl_editar_producto);
             this.Controls.Add(this.lbl_error_img2);
@@ -664,5 +679,6 @@
         private System.Windows.Forms.TextBox txt_nombre;
         private System.Windows.Forms.TextBox txt_codigo;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lbl_error_descripcion;
     }
 }

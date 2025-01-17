@@ -57,5 +57,25 @@ namespace Eterea_Parfums_Desktop.Controladores
                 throw new Exception("Hay un error en la query: " + e.Message);
             }
         }
+
+        public static bool delete(int id)
+        {
+            bool result = false;
+            string query = "DELETE FROM dbo.notas_del_perfume WHERE nota_con_tipo_de_nota_id = @id";
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+            cmd.Parameters.AddWithValue("@id", id);
+            try
+            {
+                DB_Controller.connection.Open();
+                cmd.ExecuteNonQuery();
+                DB_Controller.connection.Close();
+                result = true;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Hay un error en la query: " + e.Message);
+            }
+            return result;
+        }
     }
 }
