@@ -60,6 +60,7 @@
             this.btn_crear_cliente.TabIndex = 218;
             this.btn_crear_cliente.Text = "Crear";
             this.btn_crear_cliente.UseVisualStyleBackColor = false;
+            this.btn_crear_cliente.Click += new System.EventHandler(this.btn_crear_promo_Click);
             // 
             // pict_fondoSuperior
             // 
@@ -105,6 +106,7 @@
             this.textbox_nombrePromo.Name = "textbox_nombrePromo";
             this.textbox_nombrePromo.Size = new System.Drawing.Size(298, 26);
             this.textbox_nombrePromo.TabIndex = 222;
+            this.textbox_nombrePromo.TextChanged += new System.EventHandler(this.txt_buscar_nombre_TextChanged);
             // 
             // pict_fondoInferior
             // 

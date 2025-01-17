@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -21,14 +22,15 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             cargarPromociones();
         }
 
-        private void cargarPromociones()
+        private void cargarPromociones(string filtroNombre = "")
         {
             promociones = PromoControlador.obtenerTodos();
 
             dataGV_Promos.Rows.Clear();
             foreach (Promocion promocion in promociones)
             {
-                if (promocion.activo == 1)
+                if (promocion.activo == 1 && (string.IsNullOrEmpty(filtroNombre) || promocion.nombre.ToString().IndexOf(filtroNombre, StringComparison.OrdinalIgnoreCase) >= 0))
+
                 {
                     int rowIndex = dataGV_Promos.Rows.Add();
 
@@ -75,6 +77,29 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     dataGV_Promos.Rows[rowIndex].Cells[6].Value = "Editar";
                     dataGV_Promos.Rows[rowIndex].Cells[7].Value = "Eliminar";
                 }
+            }
+        }
+        private void txt_buscar_nombre_TextChanged(object sender, EventArgs e)
+        {
+            string filtroNombre = textbox_nombrePromo.Text.Trim();
+
+            // Actualiza el DataGridView con el filtro
+            cargarPromociones(filtroNombre);
+        }
+
+       
+
+        private void btn_crear_promo_Click(object sender, EventArgs e)
+        {
+            FormCrearPromo formCrearPromo = new FormCrearPromo();
+            DialogResult dr = formCrearPromo.ShowDialog();
+
+            if (dr == DialogResult.OK)
+            {
+                Trace.WriteLine("OK");
+
+                //ACTUALIZAR LA LISTA
+                cargarPromociones();
             }
         }
     }
