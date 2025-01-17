@@ -17,7 +17,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             var builder = new SqlConnectionStringBuilder();
 
-            builder.DataSource = @"DESKTOP-N6TI9JV\MSSQLSERVER02";  //NOMBRE DEL SERVIDOR
+            builder.DataSource = @"DESKTOP-U4RUEJ1\SQLEXPRESS";  //NOMBRE DEL SERVIDOR
             builder.InitialCatalog = "eterea";  //NOMBRE DE LA BASE DE DATOS
             builder.IntegratedSecurity = true;  //TIENE O NO SEGURIDAD INTEGRADA CON WINDOWS
 
