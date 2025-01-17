@@ -51,7 +51,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                         Trace.WriteLine("Perfume encontrado, nombre: " + cod1);
                     }
 
-                    
+
                 }
                 r.Close();
                 DB_Controller.connection.Close();
@@ -68,7 +68,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         public static bool create(Perfume perfume)
         {
-           
+
 
             string query = "insert into eterea.perfume values " +
                 "(@id, " +
@@ -156,12 +156,11 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
             catch (Exception e)
             {
-                DB_Controller.connection.Close();
+               
                 throw new Exception("Hay un error en la query: " + e.Message);
             }
             return perfume;
         }
-
 
         public static int getByMaxId()
         {
@@ -177,8 +176,6 @@ namespace Eterea_Parfums_Desktop.Controladores
                     MaxId = r.GetInt32(0);
                 }
                 r.Close();
-                DB_Controller.connection.Close();
-                return MaxId;
             }
             catch (Exception e)
             {
@@ -188,11 +185,10 @@ namespace Eterea_Parfums_Desktop.Controladores
             {
                 if (DB_Controller.connection.State == System.Data.ConnectionState.Open)
                 {
-                DB_Controller.connection.Close();
+                    DB_Controller.connection.Close();
                 }
             }
             return MaxId;
         }
-
     }
 }
