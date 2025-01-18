@@ -146,6 +146,7 @@ namespace Eterea_Parfums_Desktop
         {
             string tipoDeNotaMarcado = null;
 
+            
             if (checkedListBoxNota.CheckedItems.Count == 0)
             {
                 lbl_error_seleccion_nota.Text = "Debe marcar un tipo de nota";
@@ -170,6 +171,7 @@ namespace Eterea_Parfums_Desktop
                 Console.WriteLine("Nota Ingresada: " + lbl_nota.Text);
                 Nota nota = NotaControlador.getByNombre(lbl_nota.Text);
                 tipoDeNotaMarcado = checkedListBoxNota.CheckedItems[0].ToString();
+
                 TipoDeNota tipoDeNota = TipoDeNotaControlador.getByNombre(tipoDeNotaMarcado);
 
                 NotaConTipoDeNota notaConTipoDeNota = new NotaConTipoDeNota(NotaConTipoDeNotaControlador.getByMaxId() + 1, nota, tipoDeNota);
@@ -232,6 +234,24 @@ namespace Eterea_Parfums_Desktop
                 NotaConTipoDeNotaControlador.delete(id);
                 cargarDataGridViewNotasDePerfume();
                 MessageBox.Show("Se ha eliminado la nota con el tipo de nota del perfume correctamente");
+            }
+        }
+
+        private void checkedListBoxNota_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Verifica si hay algún elemento marcado
+            if (checkedListBoxNota.CheckedItems.Count > 0)
+            {
+                // Obtiene el último elemento marcado
+                string ultimoMarcado = checkedListBoxNota.CheckedItems[checkedListBoxNota.CheckedItems.Count - 1].ToString();
+
+                // Muestra el texto del último ítem marcado en el label
+                lbl_tipo_de_nota.Text = ultimoMarcado;
+            }
+            else
+            {
+                // Si no hay elementos marcados, muestra un mensaje vacío o por defecto
+                lbl_tipo_de_nota.Text = "No hay elementos seleccionados.";
             }
         }
     }

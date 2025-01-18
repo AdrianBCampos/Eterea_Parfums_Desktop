@@ -36,6 +36,10 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.btn_finalizar = new System.Windows.Forms.Button();
             this.dataGridViewNotasDelPerfume = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.btn_agregar = new System.Windows.Forms.Button();
             this.lbl_seleccionar_aroma = new System.Windows.Forms.Label();
@@ -51,10 +55,7 @@
             this.directorySearcher3 = new System.DirectoryServices.DirectorySearcher();
             this.lbl_error_seleccion_aroma = new System.Windows.Forms.Label();
             this.lbl_error_seleccion_nota = new System.Windows.Forms.Label();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.lbl_tipo_de_nota = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -158,6 +159,29 @@
             this.dataGridViewNotasDelPerfume.TabIndex = 149;
             this.dataGridViewNotasDelPerfume.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewNotasDelPerfume_CellContentClick);
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // Tipo
+            // 
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            // 
+            // Nota
+            // 
+            this.Nota.HeaderText = "Nota";
+            this.Nota.Name = "Nota";
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
@@ -247,6 +271,7 @@
             this.checkedListBoxNota.Name = "checkedListBoxNota";
             this.checkedListBoxNota.Size = new System.Drawing.Size(159, 49);
             this.checkedListBoxNota.TabIndex = 158;
+            this.checkedListBoxNota.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxNota_SelectedIndexChanged);
             // 
             // txt_nombre_perfume
             // 
@@ -297,28 +322,14 @@
             this.lbl_error_seleccion_nota.TabIndex = 161;
             this.lbl_error_seleccion_nota.Text = "Error";
             // 
-            // ID
+            // lbl_tipo_de_nota
             // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // Tipo
-            // 
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            // 
-            // Nota
-            // 
-            this.Nota.HeaderText = "Nota";
-            this.Nota.Name = "Nota";
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "Eliminar";
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Eliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.lbl_tipo_de_nota.AutoSize = true;
+            this.lbl_tipo_de_nota.Location = new System.Drawing.Point(337, 350);
+            this.lbl_tipo_de_nota.Name = "lbl_tipo_de_nota";
+            this.lbl_tipo_de_nota.Size = new System.Drawing.Size(35, 13);
+            this.lbl_tipo_de_nota.TabIndex = 162;
+            this.lbl_tipo_de_nota.Text = "label1";
             // 
             // AromaNota
             // 
@@ -326,6 +337,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(834, 471);
+            this.Controls.Add(this.lbl_tipo_de_nota);
             this.Controls.Add(this.lbl_error_seleccion_nota);
             this.Controls.Add(this.lbl_error_seleccion_aroma);
             this.Controls.Add(this.txt_nombre_perfume);
@@ -388,5 +400,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nota;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
+        private System.Windows.Forms.Label lbl_tipo_de_nota;
     }
 }

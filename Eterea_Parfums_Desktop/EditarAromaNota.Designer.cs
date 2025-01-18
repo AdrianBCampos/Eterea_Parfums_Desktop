@@ -52,6 +52,7 @@
             this.txt_nombre_perfume = new System.Windows.Forms.Label();
             this.lbl_error_seleccion_aroma = new System.Windows.Forms.Label();
             this.lbl_error_seleccion_nota = new System.Windows.Forms.Label();
+            this.lbl_tipo_de_nota = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNotasDelPerfume)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -67,6 +68,7 @@
             this.checkedListBoxNota.Name = "checkedListBoxNota";
             this.checkedListBoxNota.Size = new System.Drawing.Size(159, 49);
             this.checkedListBoxNota.TabIndex = 175;
+            this.checkedListBoxNota.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxNota_SelectedIndexChanged);
             // 
             // checkedListBoxAroma
             // 
@@ -300,12 +302,22 @@
             this.lbl_error_seleccion_nota.TabIndex = 162;
             this.lbl_error_seleccion_nota.Text = "Error";
             // 
+            // lbl_tipo_de_nota
+            // 
+            this.lbl_tipo_de_nota.AutoSize = true;
+            this.lbl_tipo_de_nota.Location = new System.Drawing.Point(338, 326);
+            this.lbl_tipo_de_nota.Name = "lbl_tipo_de_nota";
+            this.lbl_tipo_de_nota.Size = new System.Drawing.Size(35, 13);
+            this.lbl_tipo_de_nota.TabIndex = 178;
+            this.lbl_tipo_de_nota.Text = "label1";
+            // 
             // EditarAromaNota
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(832, 451);
+            this.Controls.Add(this.lbl_tipo_de_nota);
             this.Controls.Add(this.lbl_error_seleccion_nota);
             this.Controls.Add(this.lbl_error_seleccion_aroma);
             this.Controls.Add(this.txt_nombre_perfume);
@@ -365,5 +377,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nota;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
+        private System.Windows.Forms.Label lbl_tipo_de_nota;
     }
 }

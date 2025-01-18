@@ -305,7 +305,6 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
-
         private void checkedListBoxNota_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Verifica si hay algún elemento marcado
@@ -323,7 +322,5 @@ namespace Eterea_Parfums_Desktop
                 lbl_tipo_de_nota.Text = "No hay elementos seleccionados.";
             }
         }
-
-
     }
 }
