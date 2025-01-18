@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btn_crear_cliente = new System.Windows.Forms.Button();
             this.pict_fondoSuperior = new System.Windows.Forms.PictureBox();
             this.lbl_promociones = new System.Windows.Forms.Label();
@@ -121,7 +126,26 @@
             // 
             // dataGV_Promos
             // 
-            this.dataGV_Promos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGV_Promos.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGV_Promos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGV_Promos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGV_Promos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            this.dataGV_Promos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGV_Promos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGV_Promos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGV_Promos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGV_Promos.ColumnHeadersHeight = 24;
             this.dataGV_Promos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id_promo,
             this.nombre_promo,
@@ -131,70 +155,98 @@
             this.activo_promo,
             this.editar_promo,
             this.eliminar_promo});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGV_Promos.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGV_Promos.EnableHeadersVisualStyles = false;
+            this.dataGV_Promos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.dataGV_Promos.Location = new System.Drawing.Point(35, 191);
+            this.dataGV_Promos.Margin = new System.Windows.Forms.Padding(4);
             this.dataGV_Promos.Name = "dataGV_Promos";
-            this.dataGV_Promos.RowHeadersWidth = 62;
+            this.dataGV_Promos.ReadOnly = true;
+            this.dataGV_Promos.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGV_Promos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGV_Promos.RowHeadersWidth = 51;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGV_Promos.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGV_Promos.RowTemplate.Height = 28;
+            this.dataGV_Promos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGV_Promos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGV_Promos.Size = new System.Drawing.Size(1407, 409);
-            this.dataGV_Promos.TabIndex = 224;
+            this.dataGV_Promos.TabIndex = 222;
             // 
             // Id_promo
             // 
             this.Id_promo.HeaderText = "Id";
             this.Id_promo.MinimumWidth = 8;
             this.Id_promo.Name = "Id_promo";
-            this.Id_promo.Width = 150;
+            this.Id_promo.ReadOnly = true;
             // 
             // nombre_promo
             // 
             this.nombre_promo.HeaderText = "Nombre";
             this.nombre_promo.MinimumWidth = 8;
             this.nombre_promo.Name = "nombre_promo";
-            this.nombre_promo.Width = 150;
+            this.nombre_promo.ReadOnly = true;
             // 
             // tipo_de_promo
             // 
             this.tipo_de_promo.HeaderText = "Tipo de Promoción";
             this.tipo_de_promo.MinimumWidth = 8;
             this.tipo_de_promo.Name = "tipo_de_promo";
-            this.tipo_de_promo.Width = 150;
+            this.tipo_de_promo.ReadOnly = true;
             // 
             // Inicio_promo
             // 
             this.Inicio_promo.HeaderText = "Fecha de inicio";
             this.Inicio_promo.MinimumWidth = 8;
             this.Inicio_promo.Name = "Inicio_promo";
-            this.Inicio_promo.Width = 150;
+            this.Inicio_promo.ReadOnly = true;
             // 
             // fin_promo
             // 
             this.fin_promo.HeaderText = "Fecha de finalización";
             this.fin_promo.MinimumWidth = 8;
             this.fin_promo.Name = "fin_promo";
-            this.fin_promo.Width = 150;
+            this.fin_promo.ReadOnly = true;
             // 
             // activo_promo
             // 
             this.activo_promo.HeaderText = "Activo";
             this.activo_promo.MinimumWidth = 8;
             this.activo_promo.Name = "activo_promo";
-            this.activo_promo.Width = 150;
+            this.activo_promo.ReadOnly = true;
             // 
             // editar_promo
             // 
-            this.editar_promo.HeaderText = "Editar";
+            this.editar_promo.HeaderText = "";
             this.editar_promo.MinimumWidth = 8;
             this.editar_promo.Name = "editar_promo";
-            this.editar_promo.Text = "Editar";
-            this.editar_promo.Width = 150;
+            this.editar_promo.ReadOnly = true;
+            this.editar_promo.Text = "";
             // 
             // eliminar_promo
             // 
-            this.eliminar_promo.HeaderText = "Eliminar";
+            this.eliminar_promo.HeaderText = "";
             this.eliminar_promo.MinimumWidth = 8;
             this.eliminar_promo.Name = "eliminar_promo";
-            this.eliminar_promo.Text = "Eliminar";
-            this.eliminar_promo.Width = 150;
+            this.eliminar_promo.ReadOnly = true;
+            this.eliminar_promo.Text = "";
             // 
             // Promos_UC
             // 
@@ -225,7 +277,6 @@
         private System.Windows.Forms.Label lbl_nombre;
         private System.Windows.Forms.TextBox textbox_nombrePromo;
         private System.Windows.Forms.PictureBox pict_fondoInferior;
-        private System.Windows.Forms.DataGridView dataGV_Promos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id_promo;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre_promo;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo_de_promo;
@@ -234,5 +285,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn activo_promo;
         private System.Windows.Forms.DataGridViewButtonColumn editar_promo;
         private System.Windows.Forms.DataGridViewButtonColumn eliminar_promo;
+        private System.Windows.Forms.DataGridView dataGV_Promos;
     }
 }
