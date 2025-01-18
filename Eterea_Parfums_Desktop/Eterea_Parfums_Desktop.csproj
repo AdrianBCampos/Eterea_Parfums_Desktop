@@ -99,12 +99,6 @@
     <Compile Include="EditarProducto.Designer.cs">
       <DependentUpon>EditarProducto.cs</DependentUpon>
     </Compile>
-    <Compile Include="EliminarProducto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EliminarProducto.Designer.cs">
-      <DependentUpon>EliminarProducto.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controladores\SucursalControlador.cs" />
     <Compile Include="ControlesDeUsuario\Clientes_UC.cs">
       <SubType>UserControl</SubType>
@@ -178,6 +172,12 @@
     <Compile Include="FormEliminarEmpleado.Designer.cs">
       <DependentUpon>FormEliminarEmpleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormEliminarProductoABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEliminarProductoABM.Designer.cs">
+      <DependentUpon>FormEliminarProductoABM.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +189,12 @@
     </Compile>
     <Compile Include="InformesDeVentas2.Designer.cs">
       <DependentUpon>InformesDeVentas2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MenuABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MenuABM.Designer.cs">
+      <DependentUpon>MenuABM.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelos\AromaDelPerfume.cs" />
     <Compile Include="Modelos\Calle.cs" />
@@ -209,6 +215,9 @@
     <Compile Include="Modelos\Sucursal.cs" />
     <Compile Include="Productos.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Productos.Designer.cs">
+      <DependentUpon>Productos.cs</DependentUpon>
     </Compile>
     <Compile Include="Stock.cs">
       <SubType>Form</SubType>
@@ -305,9 +314,6 @@
     <EmbeddedResource Include="EditarProducto.resx">
       <DependentUpon>EditarProducto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EliminarProducto.resx">
-      <DependentUpon>EliminarProducto.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ControlesDeUsuario\Clientes_UC.resx">
       <DependentUpon>Clientes_UC.cs</DependentUpon>
     </EmbeddedResource>
@@ -344,11 +350,17 @@
     <EmbeddedResource Include="FormEliminarEmpleado.resx">
       <DependentUpon>FormEliminarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormEliminarProductoABM.resx">
+      <DependentUpon>FormEliminarProductoABM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormEmpleado.resx">
       <DependentUpon>FormEmpleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InformesDeVentas2.resx">
       <DependentUpon>InformesDeVentas2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MenuABM.resx">
+      <DependentUpon>MenuABM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Productos.resx">
       <DependentUpon>Productos.cs</DependentUpon>
