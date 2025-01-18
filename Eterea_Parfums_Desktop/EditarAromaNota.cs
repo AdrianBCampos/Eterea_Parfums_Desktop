@@ -306,5 +306,24 @@ namespace Eterea_Parfums_Desktop
         }
 
 
+        private void checkedListBoxNota_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Verifica si hay algún elemento marcado
+            if (checkedListBoxNota.CheckedItems.Count > 0)
+            {
+                // Obtiene el último elemento marcado
+                string ultimoMarcado = checkedListBoxNota.CheckedItems[checkedListBoxNota.CheckedItems.Count - 1].ToString();
+
+                // Muestra el texto del último ítem marcado en el label
+                lbl_tipo_de_nota.Text = ultimoMarcado;
+            }
+            else
+            {
+                // Si no hay elementos marcados, muestra un mensaje vacío o por defecto
+                lbl_tipo_de_nota.Text = "No hay elementos seleccionados.";
+            }
+        }
+
+
     }
 }
