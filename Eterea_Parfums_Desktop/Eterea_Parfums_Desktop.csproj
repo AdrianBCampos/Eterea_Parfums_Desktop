@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuscarPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuscarPedidos.Designer.cs">
+      <DependentUpon>BuscarPedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultasPerfumeEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultasPerfumeEmpleado.Designer.cs">
+      <DependentUpon>ConsultasPerfumeEmpleado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controladores\CalleControlador.cs" />
     <Compile Include="Controladores\ClienteControlador.cs" />
     <Compile Include="Controladores\GeneroControlador.cs" />
@@ -72,6 +84,12 @@
     </Compile>
     <Compile Include="ControlesDeUsuario\Promos_UC.Designer.cs">
       <DependentUpon>Promos_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Escanear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Escanear.Designer.cs">
+      <DependentUpon>Escanear.cs</DependentUpon>
     </Compile>
     <Compile Include="Facturacion.cs">
       <SubType>Form</SubType>
@@ -207,6 +225,30 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VerDetallePerfume.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerDetallePerfume.Designer.cs">
+      <DependentUpon>VerDetallePerfume.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerPerfumesSimilares.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerPerfumesSimilares.Designer.cs">
+      <DependentUpon>VerPerfumesSimilares.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VerPromociones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VerPromociones.Designer.cs">
+      <DependentUpon>VerPromociones.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="BuscarPedidos.resx">
+      <DependentUpon>BuscarPedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsultasPerfumeEmpleado.resx">
+      <DependentUpon>ConsultasPerfumeEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlesDeUsuario\Clientes_UC.resx">
       <DependentUpon>Clientes_UC.cs</DependentUpon>
     </EmbeddedResource>
@@ -215,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlesDeUsuario\Empleados_UC.resx">
       <DependentUpon>Empleados_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Escanear.resx">
+      <DependentUpon>Escanear.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Facturacion.resx">
       <DependentUpon>Facturacion.cs</DependentUpon>
@@ -285,6 +330,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="VerDetallePerfume.resx">
+      <DependentUpon>VerDetallePerfume.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerPerfumesSimilares.resx">
+      <DependentUpon>VerPerfumesSimilares.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VerPromociones.resx">
+      <DependentUpon>VerPromociones.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

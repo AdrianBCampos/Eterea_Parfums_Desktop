@@ -62,10 +62,9 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 18);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 14);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1450, 141);
+            this.pictureBox1.Size = new System.Drawing.Size(1289, 113);
             this.pictureBox1.TabIndex = 178;
             this.pictureBox1.TabStop = false;
             // 
@@ -74,10 +73,10 @@
             this.btn_crear_cliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_crear_cliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_crear_cliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_crear_cliente.Location = new System.Drawing.Point(28, 86);
-            this.btn_crear_cliente.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_crear_cliente.Location = new System.Drawing.Point(25, 69);
+            this.btn_crear_cliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_crear_cliente.Name = "btn_crear_cliente";
-            this.btn_crear_cliente.Size = new System.Drawing.Size(206, 58);
+            this.btn_crear_cliente.Size = new System.Drawing.Size(183, 46);
             this.btn_crear_cliente.TabIndex = 217;
             this.btn_crear_cliente.Text = "Crear";
             this.btn_crear_cliente.UseVisualStyleBackColor = false;
@@ -89,10 +88,10 @@
             this.lbl_clientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_clientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_clientes.ForeColor = System.Drawing.Color.Black;
-            this.lbl_clientes.Location = new System.Drawing.Point(24, 35);
+            this.lbl_clientes.Location = new System.Drawing.Point(21, 28);
             this.lbl_clientes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_clientes.Name = "lbl_clientes";
-            this.lbl_clientes.Size = new System.Drawing.Size(109, 29);
+            this.lbl_clientes.Size = new System.Drawing.Size(85, 24);
             this.lbl_clientes.TabIndex = 218;
             this.lbl_clientes.Text = "Clientes";
             // 
@@ -102,19 +101,19 @@
             this.lbl_dni.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_dni.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_dni.ForeColor = System.Drawing.Color.Black;
-            this.lbl_dni.Location = new System.Drawing.Point(596, 114);
+            this.lbl_dni.Location = new System.Drawing.Point(530, 91);
             this.lbl_dni.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_dni.Name = "lbl_dni";
-            this.lbl_dni.Size = new System.Drawing.Size(64, 29);
+            this.lbl_dni.Size = new System.Drawing.Size(50, 24);
             this.lbl_dni.TabIndex = 219;
             this.lbl_dni.Text = "DNI:";
             // 
             // txt_buscar_dni
             // 
-            this.txt_buscar_dni.Location = new System.Drawing.Point(662, 116);
-            this.txt_buscar_dni.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_buscar_dni.Location = new System.Drawing.Point(588, 93);
+            this.txt_buscar_dni.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_buscar_dni.Name = "txt_buscar_dni";
-            this.txt_buscar_dni.Size = new System.Drawing.Size(298, 26);
+            this.txt_buscar_dni.Size = new System.Drawing.Size(265, 22);
             this.txt_buscar_dni.TabIndex = 220;
             this.txt_buscar_dni.TextChanged += new System.EventHandler(this.txt_buscar_dni_TextChanged);
             // 
@@ -122,10 +121,9 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(14, 166);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox2.Location = new System.Drawing.Point(12, 133);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1450, 460);
+            this.pictureBox2.Size = new System.Drawing.Size(1289, 368);
             this.pictureBox2.TabIndex = 221;
             this.pictureBox2.TabStop = false;
             // 
@@ -172,8 +170,8 @@
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.dataGridView1.Location = new System.Drawing.Point(31, 153);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Location = new System.Drawing.Point(34, 150);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -192,7 +190,7 @@
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1251, 327);
+            this.dataGridView1.Size = new System.Drawing.Size(1251, 336);
             this.dataGridView1.TabIndex = 222;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
@@ -286,7 +284,7 @@
             // 
             // Clientes_UC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.Controls.Add(this.dataGridView1);
@@ -296,9 +294,8 @@
             this.Controls.Add(this.lbl_clientes);
             this.Controls.Add(this.btn_crear_cliente);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Clientes_UC";
-            this.Size = new System.Drawing.Size(1482, 630);
+            this.Size = new System.Drawing.Size(1317, 513);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

@@ -10,17 +10,14 @@ using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
 {
-    public partial class ListaDeEnvios : Form
+    public partial class BuscarPedidos : Form
     {
-        public ListaDeEnvios()
+        public BuscarPedidos()
         {
             InitializeComponent();
 
             string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";
             img_logo.Image = Image.FromFile(rutaCompletaImagen);
-
-
-            txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -30,10 +27,10 @@ namespace Eterea_Parfums_Desktop
             this.Close();
         }
 
-        private void btn_consultas_Click(object sender, EventArgs e)
+        private void btn_lista_envios_Click(object sender, EventArgs e)
         {
-            BuscarPedidos buscarPedidos = new BuscarPedidos();
-            buscarPedidos.Show();
+            ListaDeEnvios listaDeEnvios = new ListaDeEnvios();
+            listaDeEnvios.Show();
             this.Close();
         }
 

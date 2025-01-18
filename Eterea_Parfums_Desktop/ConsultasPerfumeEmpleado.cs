@@ -10,33 +10,31 @@ using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
 {
-    public partial class ListaDeEnvios : Form
+    public partial class ConsultasPerfumeEmpleado : Form
     {
-        public ListaDeEnvios()
+        public ConsultasPerfumeEmpleado()
         {
             InitializeComponent();
 
             string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";
             img_logo.Image = Image.FromFile(rutaCompletaImagen);
 
-
             txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
+            txt_numero_caja.Text = " ";
+        }
+
+        private void btn_facturacion_Click(object sender, EventArgs e)
+        {
+            Facturacion facturacion = new Facturacion();
+            facturacion.Show();
+            this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            InicioVendedor InicioVendedor = new InicioVendedor();
-            InicioVendedor.Show();
+            NumeroDeCaja numeroDeCaja = new NumeroDeCaja();
+            numeroDeCaja.Show();
             this.Close();
         }
-
-        private void btn_consultas_Click(object sender, EventArgs e)
-        {
-            BuscarPedidos buscarPedidos = new BuscarPedidos();
-            buscarPedidos.Show();
-            this.Close();
-        }
-
-        
     }
 }

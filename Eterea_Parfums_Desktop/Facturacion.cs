@@ -48,5 +48,12 @@ namespace Eterea_Parfums_Desktop
             formCrearClienteFactura.Show();
             this.Hide();
         }
+
+        private void btn_consultas_Click(object sender, EventArgs e)
+        {
+            ConsultasPerfumeEmpleado consultasPerfumeEmpleado = new ConsultasPerfumeEmpleado();
+            consultasPerfumeEmpleado.Show();
+            this.Hide();
+        }
     }
 }
