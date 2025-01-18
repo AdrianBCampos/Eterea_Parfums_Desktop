@@ -97,6 +97,12 @@
     <Compile Include="Facturacion.Designer.cs">
       <DependentUpon>Facturacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormEliminarProductoABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEliminarProductoABM.Designer.cs">
+      <DependentUpon>FormEliminarProductoABM.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Facturacion.resx">
       <DependentUpon>Facturacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEliminarProductoABM.resx">
+      <DependentUpon>FormEliminarProductoABM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormEmpleado.resx">
       <DependentUpon>FormEmpleado.cs</DependentUpon>

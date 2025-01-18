@@ -127,9 +127,19 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             if (senderGrid.Columns[e.ColumnIndex].Name == "Eliminar")
             {
                 //ELIMINAMOS
-                int id = int.Parse(dataGridViewPerfumes.Rows[e.RowIndex].Cells[0].Value.ToString());
+                /*int id = int.Parse(dataGridViewPerfumes.Rows[e.RowIndex].Cells[0].Value.ToString());
                 PerfumeControlador.delete(id);
-                cargarPerfumes();
+                cargarPerfumes();*/
+
+                int id = int.Parse(dataGridViewPerfumes.Rows[e.RowIndex].Cells[0].Value.ToString());
+                Perfume perfume = PerfumeControlador.getByID(id);
+                FormEliminarProductoABM formEliminarProductoABM = new FormEliminarProductoABM(perfume);
+                DialogResult dr = formEliminarProductoABM.ShowDialog();
+                if (dr == DialogResult.OK)
+                {
+                    Trace.WriteLine("OK");
+                    cargarPerfumes();
+                }
             }
 
         }
