@@ -123,6 +123,15 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 }
             }
 
+
+            if (senderGrid.Columns[e.ColumnIndex].Name == "Eliminar")
+            {
+                //ELIMINAMOS
+                int id = int.Parse(dataGridViewPerfumes.Rows[e.RowIndex].Cells[0].Value.ToString());
+                PerfumeControlador.delete(id);
+                cargarPerfumes();
+            }
+
         }
     
     }
