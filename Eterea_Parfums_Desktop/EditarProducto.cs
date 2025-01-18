@@ -183,7 +183,7 @@ namespace Eterea_Parfums_Desktop
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 imagen1 = Image.FromFile(ofd.FileName);
-                pictureBoxProducto1.Image = imagen2;
+                pictureBoxProducto1.Image = imagen1;
 
             }
         }

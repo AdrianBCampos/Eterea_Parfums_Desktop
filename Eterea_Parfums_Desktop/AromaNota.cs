@@ -134,10 +134,11 @@ namespace Eterea_Parfums_Desktop
                     tipo_de_nota = TipoDeNotaControlador.getById(nota_con_tipo_de_nota_.tipoDeNota.id);
 
                     int rowIndex = dataGridViewNotasDelPerfume.Rows.Add();
-                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[0].Value = tipo_de_nota.nombre_tipo_de_nota;
-                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[1].Value = nota.nombre;
-                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[2].Value = "Eliminar";
-          
+                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[0].Value = nota_con_tipo_de_nota_.id;
+                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[1].Value = tipo_de_nota.nombre_tipo_de_nota;
+                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[2].Value = nota.nombre;
+                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[3].Value = "Eliminar";
+
                 }
             }
         }
@@ -218,6 +219,20 @@ namespace Eterea_Parfums_Desktop
             MessageBox.Show("Se han guardado los aromas y notas del perfume correctamente");
             this.Close();
 
+        }
+
+        private void dataGridViewNotasDelPerfume_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+            int id = int.Parse(dataGridViewNotasDelPerfume.Rows[e.RowIndex].Cells[0].Value.ToString());
+            NotasDelPerfumeControlador.delete(id);
+            if (senderGrid.Columns[e.ColumnIndex].Name == "Eliminar")
+            {
+                //ELIMINAMOS
+                NotaConTipoDeNotaControlador.delete(id);
+                cargarDataGridViewNotasDePerfume();
+                MessageBox.Show("Se ha eliminado la nota con el tipo de nota del perfume correctamente");
+            }
         }
     }
 }

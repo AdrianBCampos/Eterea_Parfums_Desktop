@@ -54,6 +54,11 @@ namespace Eterea_Parfums_Desktop.Modelos
 
         }
 
+        public Perfume(int id)
+        {
+            this.id = id;
+        }
+
         public Perfume(int id, int activo)
         {
             this.id = id;
