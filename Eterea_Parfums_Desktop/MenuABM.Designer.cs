@@ -34,6 +34,10 @@
             this.btn_promociones = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel_abm = new System.Windows.Forms.Panel();
+            this.btn_promociones = new System.Windows.Forms.Button();
+            this.btn_clientes = new System.Windows.Forms.Button();
+            this.btn_empleados = new System.Windows.Forms.Button();
+            this.btn_perfumes = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_perfumes
@@ -94,6 +98,9 @@
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -122,6 +129,55 @@
             this.panel_abm.TabIndex = 97;
             this.panel_abm.UseWaitCursor = true;
             // 
+            // btn_promociones
+            // 
+            this.btn_promociones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
+            this.btn_promociones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_promociones.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_promociones.Location = new System.Drawing.Point(594, 40);
+            this.btn_promociones.Name = "btn_promociones";
+            this.btn_promociones.Size = new System.Drawing.Size(137, 37);
+            this.btn_promociones.TabIndex = 108;
+            this.btn_promociones.Text = "Promociones";
+            this.btn_promociones.UseVisualStyleBackColor = false;
+            // 
+            // btn_clientes
+            // 
+            this.btn_clientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
+            this.btn_clientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_clientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_clientes.Location = new System.Drawing.Point(400, 40);
+            this.btn_clientes.Name = "btn_clientes";
+            this.btn_clientes.Size = new System.Drawing.Size(137, 37);
+            this.btn_clientes.TabIndex = 107;
+            this.btn_clientes.Text = "Clientes";
+            this.btn_clientes.UseVisualStyleBackColor = false;
+            // 
+            // btn_empleados
+            // 
+            this.btn_empleados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
+            this.btn_empleados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_empleados.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_empleados.Location = new System.Drawing.Point(202, 40);
+            this.btn_empleados.Name = "btn_empleados";
+            this.btn_empleados.Size = new System.Drawing.Size(137, 37);
+            this.btn_empleados.TabIndex = 106;
+            this.btn_empleados.Text = "Empleados";
+            this.btn_empleados.UseVisualStyleBackColor = false;
+            // 
+            // btn_perfumes
+            // 
+            this.btn_perfumes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
+            this.btn_perfumes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_perfumes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_perfumes.Location = new System.Drawing.Point(6, 40);
+            this.btn_perfumes.Name = "btn_perfumes";
+            this.btn_perfumes.Size = new System.Drawing.Size(137, 37);
+            this.btn_perfumes.TabIndex = 105;
+            this.btn_perfumes.Text = "Perfumes";
+            this.btn_perfumes.UseVisualStyleBackColor = false;
+            this.btn_perfumes.Click += new System.EventHandler(this.btn_perfumes_Click);
+            // 
             // MenuABM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -148,5 +204,9 @@
         private System.Windows.Forms.Button btn_promociones;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panel_abm;
+        private System.Windows.Forms.Button btn_promociones;
+        private System.Windows.Forms.Button btn_clientes;
+        private System.Windows.Forms.Button btn_empleados;
+        private System.Windows.Forms.Button btn_perfumes;
     }
 }

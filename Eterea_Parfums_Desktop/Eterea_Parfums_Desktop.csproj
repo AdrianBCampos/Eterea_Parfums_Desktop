@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,14 +47,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AromaNota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AromaNota.Designer.cs">
+      <DependentUpon>AromaNota.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controladores\AromaDelPerfumeControlador.cs" />
     <Compile Include="Controladores\CalleControlador.cs" />
     <Compile Include="Controladores\ClienteControlador.cs" />
     <Compile Include="Controladores\GeneroControlador.cs" />
     <Compile Include="Controladores\LocalidadControlador.cs" />
     <Compile Include="Controladores\MarcaControlador.cs" />
+    <Compile Include="Controladores\NotaConTipoDeNotaControlador.cs" />
+    <Compile Include="Controladores\NotaControlador.cs" />
+    <Compile Include="Controladores\NotasDelPerfumeControlador.cs" />
     <Compile Include="Controladores\PaisControlador.cs" />
+    <Compile Include="Controladores\PerfumeControlador.cs" />
     <Compile Include="Controladores\PromoControlador.cs" />
     <Compile Include="Controladores\ProvinciaControlador.cs" />
+    <Compile Include="Controladores\TipoDeAromaControlador.cs" />
+    <Compile Include="Controladores\TipoDeNotaControlador.cs" />
+    <Compile Include="Controladores\TipoDePerfumeControlador.cs" />
+    <Compile Include="ControlesDeUsuario\PerfumesUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\PerfumesUC.Designer.cs">
+      <DependentUpon>PerfumesUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditarAromaNota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarAromaNota.Designer.cs">
+      <DependentUpon>EditarAromaNota.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditarProducto.Designer.cs">
+      <DependentUpon>EditarProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EliminarProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EliminarProducto.Designer.cs">
+      <DependentUpon>EliminarProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controladores\SucursalControlador.cs" />
     <Compile Include="ControlesDeUsuario\Clientes_UC.cs">
       <SubType>UserControl</SubType>
@@ -139,14 +178,22 @@
     <Compile Include="MenuABM.Designer.cs">
       <DependentUpon>MenuABM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modelos\AromaDelPerfume.cs" />
     <Compile Include="Modelos\Calle.cs" />
     <Compile Include="Modelos\Cliente.cs" />
     <Compile Include="Modelos\Genero.cs" />
     <Compile Include="Modelos\Localidad.cs" />
     <Compile Include="Modelos\Marca.cs" />
+    <Compile Include="Modelos\Nota.cs" />
+    <Compile Include="Modelos\NotaConTipoDeNota.cs" />
+    <Compile Include="Modelos\NotasDelPerfume.cs" />
     <Compile Include="Modelos\Pais.cs" />
+    <Compile Include="Modelos\Perfume.cs" />
     <Compile Include="Modelos\Promocion.cs" />
     <Compile Include="Modelos\Provincia.cs" />
+    <Compile Include="Modelos\TipoDeAroma.cs" />
+    <Compile Include="Modelos\TipoDeNota.cs" />
+    <Compile Include="Modelos\TipoDePerfume.cs" />
     <Compile Include="Modelos\Sucursal.cs" />
     <Compile Include="Stock.cs">
       <SubType>Form</SubType>
@@ -207,6 +254,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AromaNota.resx">
+      <DependentUpon>AromaNota.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesDeUsuario\PerfumesUC.resx">
+      <DependentUpon>PerfumesUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditarAromaNota.resx">
+      <DependentUpon>EditarAromaNota.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditarProducto.resx">
+      <DependentUpon>EditarProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EliminarProducto.resx">
+      <DependentUpon>EliminarProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlesDeUsuario\Clientes_UC.resx">
       <DependentUpon>Clientes_UC.cs</DependentUpon>
     </EmbeddedResource>

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Eterea_Parfums_Desktop.ControlesDeUsuario;
 
 namespace Eterea_Parfums_Desktop
 {
@@ -66,6 +67,12 @@ namespace Eterea_Parfums_Desktop
             InicioAdministrador InicioAdministrador = new InicioAdministrador();
             InicioAdministrador.Show();
             this.Close();
+        }
+
+        private void btn_perfumes_Click(object sender, EventArgs e)
+        {
+            PerfumesUC perfumes_UC = new PerfumesUC();
+            addUserControl(perfumes_UC);
         }
     }
 }

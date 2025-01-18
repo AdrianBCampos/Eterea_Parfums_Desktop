@@ -1,33 +1,32 @@
-﻿using Eterea_Parfums_Desktop.Modelos;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Eterea_Parfums_Desktop.Modelos;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
-    internal class GeneroControlador
+    internal class TipoDePerfumeControlador
     {
-
-        // GET ALL
-        public static List<Genero> getAll()
+        public static List<TipoDePerfume> getAll()
         {
-            List<Genero> list = new List<Genero>();
-            string query = "select * from dbo.genero;";
 
-            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+            List<TipoDePerfume> lista_tipos_de_perfumes;
 
             try
             {
+                lista_tipos_de_perfumes = new List<TipoDePerfume>();
+                string query = "select * from dbo.tipo_de_perfume;";
+                SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
                 DB_Controller.connection.Open();
                 SqlDataReader r = cmd.ExecuteReader();
 
                 while (r.Read())
                 {
-                    list.Add(new Genero(r.GetInt32(0), r.GetString(1)));
+                    lista_tipos_de_perfumes.Add(new TipoDePerfume(r.GetInt32(0), r.GetString(1)));
 
                 }
                 r.Close();
@@ -37,20 +36,18 @@ namespace Eterea_Parfums_Desktop.Controladores
             {
                 throw new Exception("Hay un error en la query: " + e.Message);
             }
-            return list;
+            return lista_tipos_de_perfumes;
 
         }
 
-
-      
-        public static Genero getByName(string gen)
+        public static TipoDePerfume getByName(string tipo)
         {
-            Genero genero = new Genero();
-            string query = "select * from dbo.Genero where " +
-                "genero = @genero;";
+            TipoDePerfume tipo_de_perfume = new TipoDePerfume();
+            string query = "select * from dbo.tipo_de_perfume where " +
+                "nombre = @tipo;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-            cmd.Parameters.AddWithValue("@genero", gen);
+            cmd.Parameters.AddWithValue("@tipo", tipo);
 
             try
             {
@@ -59,10 +56,9 @@ namespace Eterea_Parfums_Desktop.Controladores
 
                 while (r.Read())
                 {
-                    genero = new Genero(r.GetInt32(0), r.GetString(1));
+                    tipo_de_perfume = new TipoDePerfume(r.GetInt32(0), r.GetString(1));
                 }
                 r.Close();
-                //cmd.Parameters.Clear();
                 DB_Controller.connection.Close();
 
             }
@@ -71,39 +67,33 @@ namespace Eterea_Parfums_Desktop.Controladores
                 Trace.Write("Error al consultar la DB: " + e.Message);
 
             }
-            return genero;
+            return tipo_de_perfume;
         }
 
-        //GET ONE ById
-        public static Genero getById(int id)
+        public static TipoDePerfume getById(int id)
         {
-            Genero genero = new Genero();
-            string query = "select * from dbo.genero where " +
+            TipoDePerfume tipo_de_perfume = new TipoDePerfume();
+            string query = "select * from dbo.tipo_de_perfume where " +
                 "id = @id;";
-
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@id", id);
-
             try
             {
                 DB_Controller.connection.Open();
                 SqlDataReader r = cmd.ExecuteReader();
-
                 while (r.Read())
                 {
-                    genero = new Genero(r.GetInt32(0), r.GetString(1));
+                    tipo_de_perfume = new TipoDePerfume(r.GetInt32(0), r.GetString(1));
                 }
                 r.Close();
                 DB_Controller.connection.Close();
-
             }
             catch (Exception e)
             {
                 Trace.Write("Error al consultar la DB: " + e.Message);
-
             }
-            return genero;
+            return tipo_de_perfume;
         }
-
     }
+
 }

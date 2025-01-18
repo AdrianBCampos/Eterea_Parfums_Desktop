@@ -12,21 +12,26 @@ using Eterea_Parfums_Desktop.Modelos;
 
 namespace Eterea_Parfums_Desktop
 {
-    public partial class FormCrearPromo : Form
+    public partial class EditarProducto : Form
     {
-        public FormCrearPromo()
-        public List<Marca> marcas;
-        public List<TipoDePerfume> tiposDePerfume;
-        public List<Genero> generos;
-        public List<Pais> paises;
-        private Image File;
-        private Image File2;
+
+        private Image imagen1;
+        private Image imagen2;
         private string nombre_foto_uno;
         private string nombre_foto_dos;
-        public Productos()
+        private Perfume perfume;
+        public EditarProducto()
         {
             InitializeComponent();
             LblErrorSetVisibleFalse();
+        }
+
+
+        public EditarProducto(Perfume perfume)
+        {
+            InitializeComponent();
+            LblErrorSetVisibleFalse();
+            this.perfume = perfume;
             CargarMarcas();
             CargarTiposDePerfume();
             CargarGeneros();
@@ -34,7 +39,75 @@ namespace Eterea_Parfums_Desktop
             CargarOpciones(combo_spray);
             CargarOpciones(combo_recargable);
             CargarOpciones(combo_activo);
+            cargarDatos(perfume);
         }
+
+
+        private void cargarDatos(Perfume perfume)
+        {
+            txt_codigo.Text = perfume.codigo;
+            combo_marca.Text = perfume.marca.nombre;
+            Console.WriteLine(perfume.marca.nombre);
+            txt_nombre.Text = perfume.nombre;
+            combo_tipo_de_perfume.Text = perfume.tipo_de_perfume.tipo_de_perfume;
+            combo_genero.SelectedItem = perfume.genero.genero;
+            txt_presentacion.Text = perfume.presentacion_ml.ToString();
+            combo_pais.Text = perfume.pais.nombre;
+            combo_spray.Text = perfume.spray.ToString();
+            if (perfume.spray == 1)
+            {
+                combo_spray.SelectedItem = "Si";
+            }
+            else
+            {
+                combo_spray.SelectedItem = "No";
+            }
+            combo_recargable.Text = perfume.recargable.ToString();
+            if (perfume.recargable == 1)
+            {
+                combo_recargable.SelectedItem = "Si";
+            }
+            else
+            {
+                combo_recargable.SelectedItem = "No";
+            }
+            txt_descripcion.Text = perfume.descripcion;
+            txt_anio_de_lanzamiento.Text = perfume.anio_de_lanzamiento.ToString();
+            txt_precio.Text = perfume.precio_en_pesos.ToString();
+            if (perfume.activo.ToString() == "1")
+            {
+                combo_activo.Text = "Si";
+            }
+            else
+            {
+                combo_activo.Text = "No";
+
+            }
+
+            nombre_foto_uno = perfume.imagen1;
+            nombre_foto_dos = perfume.imagen2;
+            Console.WriteLine(nombre_foto_dos);
+
+            cargarImagen(nombre_foto_uno, pictureBoxProducto1);
+            cargarImagen(nombre_foto_dos, pictureBoxProducto2);
+
+        }
+
+
+        private void cargarImagen(string nombreImg, PictureBox pictureBox)
+        {
+            string rutaCompletaImagen = Program.Ruta_Base + nombreImg;
+            if (System.IO.File.Exists(rutaCompletaImagen))
+            {
+                pictureBox.Image = Image.FromFile(rutaCompletaImagen);
+            }
+            else
+            {
+                MessageBox.Show("La imagen no se encontró en la ruta especificada: " + rutaCompletaImagen, "Error de carga de imagen", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
 
         private void LblErrorSetVisibleFalse()
         {
@@ -103,128 +176,33 @@ namespace Eterea_Parfums_Desktop
             combo.Items.Add("No");
         }
 
-
-        private void btn_siguiente_Click(object sender, EventArgs e)
+        private void btn_cargar_img1_Click(object sender, EventArgs e)
         {
-
-            //Validar datos del perfume
-            bool validacionDatosPerfume = ValidarPerfume();
-
-            if (validacionDatosPerfume)
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "JPG(*.JPG)|*.JPG|PNG(*.png)|*.png";
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
+                imagen1 = Image.FromFile(ofd.FileName);
+                pictureBoxProducto1.Image = imagen1;
 
-                saveImagenResources(out nombre_foto_uno, File);
-                saveImagenResources(out nombre_foto_dos, File2);
-               
-                Perfume perfume = crear();
-                Console.WriteLine(perfume.id);
-                AromaNota aromaNota = new AromaNota(perfume);
-                aromaNota.Show();
-                this.Hide();
-            }
-           
-        }
-
-        private void saveImagenResources(out string nombreFoto, Image File)
-        {
-            try
-            {
-
-                int numero_aleatorio = numeroAleatorio();
-                Console.WriteLine(numero_aleatorio);
-                nombreFoto = txt_nombre.Text + numero_aleatorio + "-envase.jpg";
-                File.Save(Program.Ruta_Base + nombreFoto, System.Drawing.Imaging.ImageFormat.Jpeg);
-            }
-            catch (Exception ex)
-            {
-                //NO SE PUDO GUARDAR LA FOTO
-                throw new Exception(ex.Message);
             }
         }
 
-        private int numeroAleatorio()
+        private void btn_cargar_img2_Click(object sender, EventArgs e)
         {
-            Random rnd = new Random();
-            int numero = rnd.Next(1000, 9999);
-            return numero;
-        }
-
-
-        private Perfume crear()
-        {
-            // ACA ANTES DE EJECUTAR CUALQUIER COSA, TIENEN QUE HACERSE LAS VALIDACIONES...
-            int spray = 0;
-            if (combo_spray.SelectedItem.ToString() == "Si")
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "JPG(*.JPG)|*.JPG|PNG(*.png)|*.png";
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
-                spray = 1;
+                imagen2 = Image.FromFile(ofd.FileName);
+                pictureBoxProducto2.Image = imagen2;
+
             }
-
-            int recargable = 0;
-            if (combo_spray.SelectedItem.ToString() == "Si")
-            {
-                recargable = 1;
-            }
-
-            int activo = 1;
-            if (combo_activo.SelectedItem.ToString() == "No")
-            {
-                activo = 0;
-            }
-
-
-            Marca marca = MarcaControlador.getByName(combo_marca.SelectedItem.ToString());
-            TipoDePerfume tipo_de_perfume = TipoDePerfumeControlador.getByName(combo_tipo_de_perfume.SelectedItem.ToString());
-            Genero genero = GeneroControlador.getByName(combo_genero.SelectedItem.ToString());
-            Console.WriteLine("Genero: " + genero.id);
-            Pais pais = PaisControlador.getByName(combo_pais.SelectedItem.ToString());
-            Console.WriteLine("Marca: " + marca.nombre);
-            int id_Perfume = PerfumeControlador.GetByMaxId();
-            Console.WriteLine("ID: " + id_Perfume);
-            Perfume perfume = new Perfume(id_Perfume + 1, txt_codigo.Text, marca, txt_nombre.Text, tipo_de_perfume,
-                genero, int.Parse(txt_presentacion.Text), pais, spray, recargable, txt_descripcion.Text,
-                int.Parse(txt_anio_de_lanzamiento.Text), Double.Parse(txt_precio.Text), activo, nombre_foto_uno, nombre_foto_dos);
-
-
-
-
-            if (PerfumeControlador.create(perfume))
-            {
-                this.DialogResult = DialogResult.OK;
-            }
-
-            return perfume;
-
-        }
-
-        private bool EsCodigoBarraCODE128Valido(string codigo)
-        {
-            // Validar que no esté vacío
-            if (string.IsNullOrEmpty(codigo))
-            {
-                return false;
-            }
-
-            // Validar longitud mínima (CODE128 puede variar según el contenido)
-            if (codigo.Length < 1 || codigo.Length > 128) // Longitud típica entre 1 y 128
-            {
-                return false;
-            }
-
-            // Validar que solo contenga caracteres permitidos (ASCII 0-127)
-            foreach (char c in codigo)
-            {
-                if (c < 32 || c > 126) // Incluye caracteres ASCII imprimibles
-                {
-                    return false;
-                }
-            }
-
-            return true;
         }
 
         private bool ValidarPerfume()
         {
-      
+
             string errorMsg = "";
 
             if (string.IsNullOrEmpty(txt_codigo.Text))
@@ -430,9 +408,9 @@ namespace Eterea_Parfums_Desktop
             }
             else
             {
-                
+
                 lbl_error_img1.Visible = false;
-               
+
             }
 
             if (pictureBoxProducto2.Image == null)
@@ -444,7 +422,7 @@ namespace Eterea_Parfums_Desktop
             }
             else
             {
-               lbl_error_img2.Visible = false;
+                lbl_error_img2.Visible = false;
             }
 
 
@@ -458,28 +436,124 @@ namespace Eterea_Parfums_Desktop
 
         }
 
-        private void btn_cargar_img1_Click(object sender, EventArgs e)
+        private bool EsCodigoBarraCODE128Valido(string codigo)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "JPG(*.JPG)|*.JPG|PNG(*.png)|*.png";
-            if (ofd.ShowDialog() == DialogResult.OK)
+            // Validar que no esté vacío
+            if (string.IsNullOrEmpty(codigo))
             {
-                File = Image.FromFile(ofd.FileName);
-                pictureBoxProducto1.Image = File;
+                return false;
+            }
 
+            // Validar longitud mínima (CODE128 puede variar según el contenido)
+            if (codigo.Length < 1 || codigo.Length > 128) // Longitud típica entre 1 y 128
+            {
+                return false;
+            }
+
+            // Validar que solo contenga caracteres permitidos (ASCII 0-127)
+            foreach (char c in codigo)
+            {
+                if (c < 32 || c > 126) // Incluye caracteres ASCII imprimibles
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        private void btn_siguiente_Click(object sender, EventArgs e)
+        {
+            //Validar datos del perfume
+            bool validacionDatosPerfume = ValidarPerfume();
+            if (validacionDatosPerfume)
+            {
+                if(imagen1 != null)
+                {
+                    saveImagenResources(out nombre_foto_uno, imagen1);
+                }
+
+                if (imagen2 != null)
+                {
+                    saveImagenResources(out nombre_foto_dos, imagen2);
+                }   
+        
+                Perfume perfume = editar();
+                EditarAromaNota editarAromaNota = new EditarAromaNota(perfume);
+                editarAromaNota.Show();
+                this.Hide();
+            }
+        }
+        private void saveImagenResources(out string nombreFoto, Image imagen)
+        {
+            try
+            {
+
+                int numero_aleatorio = numeroAleatorio();
+                Console.WriteLine(numero_aleatorio);
+                nombreFoto = txt_nombre.Text + numero_aleatorio + "-envase.jpg";
+                imagen.Save(Program.Ruta_Base + nombreFoto, System.Drawing.Imaging.ImageFormat.Jpeg);
+                
+            }
+            catch (Exception ex)
+            {
+                //NO SE PUDO GUARDAR LA FOTO
+                throw new Exception(ex.Message);
             }
         }
 
-        private void btn_cargar_img2_Click(object sender, EventArgs e)
+        private int numeroAleatorio()
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "JPG(*.JPG)|*.JPG|PNG(*.png)|*.png";
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                File2 = Image.FromFile(ofd.FileName);
-                pictureBoxProducto2.Image = File2;
-
-            }
+            Random rnd = new Random();
+            int numero = rnd.Next(1000, 9999);
+            return numero;
         }
+
+
+        private Perfume editar()
+        {
+            // ACA ANTES DE EJECUTAR CUALQUIER COSA, TIENEN QUE HACERSE LAS VALIDACIONES...
+            int spray = 0;
+            if (combo_spray.SelectedItem.ToString() == "Si")
+            {
+                spray = 1;
+            }
+
+            int recargable = 0;
+            if (combo_spray.SelectedItem.ToString() == "Si")
+            {
+                recargable = 1;
+            }
+
+            int activo = 1;
+            if (combo_activo.SelectedItem.ToString() == "No")
+            {
+                activo = 0;
+            }
+
+
+            Marca marca = MarcaControlador.getByName(combo_marca.SelectedItem.ToString());
+            TipoDePerfume tipo_de_perfume = TipoDePerfumeControlador.getByName(combo_tipo_de_perfume.SelectedItem.ToString());
+            Genero genero = GeneroControlador.getByName(combo_genero.SelectedItem.ToString());
+            Console.WriteLine("Genero: " + genero.id);
+            Pais pais = PaisControlador.getByName(combo_pais.SelectedItem.ToString());
+            Console.WriteLine("Marca: " + marca.nombre);
+            Perfume perfume1 = new Perfume(perfume.id, txt_codigo.Text, marca, txt_nombre.Text, tipo_de_perfume,
+                genero, int.Parse(txt_presentacion.Text), pais, spray, recargable, txt_descripcion.Text,
+                int.Parse(txt_anio_de_lanzamiento.Text), Double.Parse(txt_precio.Text), activo, nombre_foto_uno, nombre_foto_dos);
+
+
+
+
+            if (PerfumeControlador.update(perfume1))
+            {
+                this.DialogResult = DialogResult.OK;
+                MessageBox.Show("El perfume se ha actualizado correctamente", "Perfume actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            return perfume1;
+
+        }
+
     }
+    
 }

@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace Eterea_Parfums_Desktop.Modelos
 {
-    public class Marca
+    public class TipoDePerfume
     {
         public int id { get; set; }
-        public string nombre { get; set; }
+        public string tipo_de_perfume { get; set; }
 
-        public Marca(int id, string nombre)
+        public TipoDePerfume(int id, string tipo_de_perfume)
         {
             this.id = id;
-            this.nombre = nombre;
+            this.tipo_de_perfume = tipo_de_perfume;
         }
-
-        public Marca()
+        public TipoDePerfume()
         {
+
         }
     }
 }
