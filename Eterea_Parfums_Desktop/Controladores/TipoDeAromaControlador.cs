@@ -57,5 +57,29 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
             return tipo_de_aroma;
         }
+
+        public static TipoDeAroma getById(int id)
+        {
+            TipoDeAroma tipo_de_aroma = null;
+            string query = "SELECT * FROM dbo.tipo_de_aroma WHERE id = @id";
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+                cmd.Parameters.AddWithValue("@id", id);
+                DB_Controller.connection.Open();
+                SqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    tipo_de_aroma = new TipoDeAroma(r.GetInt32(0), r.GetString(1));
+                }
+                r.Close();
+                DB_Controller.connection.Close();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Hay un error en la query: " + e.Message);
+            }
+            return tipo_de_aroma;
+        }
     }
 }
