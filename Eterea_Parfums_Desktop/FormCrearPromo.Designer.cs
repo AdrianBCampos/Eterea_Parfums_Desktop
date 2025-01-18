@@ -144,11 +144,11 @@
             // 
             // combo_tipo_promo
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(216, 78);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(180, 28);
-            this.comboBox1.TabIndex = 107;
+            this.combo_tipo_promo.FormattingEnabled = true;
+            this.combo_tipo_promo.Location = new System.Drawing.Point(216, 95);
+            this.combo_tipo_promo.Name = "combo_tipo_promo";
+            this.combo_tipo_promo.Size = new System.Drawing.Size(180, 28);
+            this.combo_tipo_promo.TabIndex = 107;
             // 
             // combo_fecha_ini_promo
             // 
