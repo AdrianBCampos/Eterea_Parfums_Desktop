@@ -24,7 +24,7 @@ namespace Eterea_Parfums_Desktop
 
         public static String Ruta_Base;
         public static String Ruta_Web;
-        public static String entorno = "jose";
+        public static String entorno = "dami";
 
         [STAThread]
         static void Main()
@@ -40,8 +40,8 @@ namespace Eterea_Parfums_Desktop
             
             else if (entorno == "dami")
             {
-                Ruta_Base = @"C:\Users\damim\source\repos"; 
-                Ruta_Base = @"C:\Users\damim\Source\Repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                Ruta_Base = @"C:\Users\damim\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\"; 
+                Ruta_Web = @"C:\Users\damim\Source\Repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
             }
             else if (entorno == "adri")
             {
