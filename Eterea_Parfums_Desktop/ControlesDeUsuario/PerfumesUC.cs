@@ -105,7 +105,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 Perfume perfume_editar = PerfumeControlador.getByID(id);
 
                 Marca marca = MarcaControlador.getById(perfume_editar.marca.id);
-                TipoDePerfume tipo_de_perfume = TipoDePerfumeControlador.getById(perfume_editar.id);
+                TipoDePerfume tipo_de_perfume = TipoDePerfumeControlador.getById(perfume_editar.tipo_de_perfume.id);
                 Genero genero = GeneroControlador.getById(perfume_editar.genero.id);
                 Pais pais = PaisControlador.getById(perfume_editar.pais.id);
                 perfume_editar = new Perfume(perfume_editar.id, perfume_editar.codigo, marca, perfume_editar.nombre, tipo_de_perfume, genero, perfume_editar.presentacion_ml, pais, perfume_editar.spray, perfume_editar.recargable, perfume_editar.descripcion, perfume_editar.anio_de_lanzamiento, perfume_editar.precio_en_pesos, perfume_editar.activo, perfume_editar.imagen1, perfume_editar.imagen2);
@@ -122,28 +122,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                 }
             }
-            /*else if (senderGrid.Columns[e.ColumnIndex].Name == "Eliminar")
-            {
-                //ELIMINAMOS
-                int id = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
 
-                Trace.WriteLine("El id es: " + id);
-
-                Cliente cliente_eliminar = ClienteControlador.obtenerPorId(id);
-
-                FormEliminarClienteABM formEliminarClienteABM = new FormEliminarClienteABM(cliente_eliminar, id);
-
-                DialogResult dr = formEliminarClienteABM.ShowDialog();
-
-                if (dr == DialogResult.OK)
-                {
-                    Trace.WriteLine("OK");
-
-                    //ACTUALIZAR LA LISTA
-                    cargarClientes();
-
-                }
-            }*/
         }
     
     }
