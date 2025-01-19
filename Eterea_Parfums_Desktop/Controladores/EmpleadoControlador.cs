@@ -47,6 +47,19 @@ namespace Eterea_Parfums_Desktop.Controladores
                     empleado.apellido = r.GetString(4);
                     empleado.rol = r.GetString(22);
 
+                    /*Pais pais = PaisController.getById(r.GetInt32(9));
+                    Provincia provincia = ProvinciaController.getById(r.GetInt32(10));
+                    Ciudad ciudad = CiudadController.getById(r.GetInt32(11));
+                    Calle calle = CalleController.getById(r.GetInt32(13));
+                    Sucursal sucursal = SucursalController.getById(r.GetInt32(18));
+
+                    vendedor = new Vendedor(r.GetInt32(0), r.GetString(1), r.GetString(2), r.GetString(3), r.GetString(4),
+                        r.GetInt32(5), r.GetDateTime(6), r.GetString(7), r.GetString(8), pais,
+                        provincia, ciudad, r.GetInt32(12), calle, r.GetInt32(14),
+                        r.GetString(15), r.GetString(16), r.GetString(17),
+                        sucursal, r.GetDateTime(19), r.GetInt32(20), r.GetInt32(21), r.GetInt32(22));
+                    */
+
                 }
                 r.Close();
                 DB_Controller.connection.Close();
