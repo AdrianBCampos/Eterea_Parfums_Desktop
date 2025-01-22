@@ -38,11 +38,11 @@
             this.lbl_medios_pago = new System.Windows.Forms.Label();
             this.combo_cuotas = new System.Windows.Forms.ComboBox();
             this.lbl_cuotas = new System.Windows.Forms.Label();
-            this.text_recargo = new System.Windows.Forms.TextBox();
+            this.txt_recargo = new System.Windows.Forms.TextBox();
             this.lbl_recargo = new System.Windows.Forms.Label();
-            this.text_valor_cuota = new System.Windows.Forms.TextBox();
+            this.txt_valor_cuota = new System.Windows.Forms.TextBox();
             this.lbl_valor_cuota = new System.Windows.Forms.Label();
-            this.text_precio_final = new System.Windows.Forms.TextBox();
+            this.txt_precio_final = new System.Windows.Forms.TextBox();
             this.lbl_precio_final = new System.Windows.Forms.Label();
             this.btn_ver_promociones = new System.Windows.Forms.Button();
             this.txt_nombre_perfume = new System.Windows.Forms.Label();
@@ -56,17 +56,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_perfume)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 60);
+            this.pictureBox1.Location = new System.Drawing.Point(11, 67);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(353, 494);
             this.pictureBox1.TabIndex = 281;
@@ -74,21 +76,22 @@
             // 
             // combo_medios_pago
             // 
-            this.combo_medios_pago.BackColor = System.Drawing.Color.White;
+            this.combo_medios_pago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.combo_medios_pago.FormattingEnabled = true;
-            this.combo_medios_pago.Location = new System.Drawing.Point(155, 145);
+            this.combo_medios_pago.Location = new System.Drawing.Point(176, 152);
             this.combo_medios_pago.Margin = new System.Windows.Forms.Padding(4);
             this.combo_medios_pago.Name = "combo_medios_pago";
-            this.combo_medios_pago.Size = new System.Drawing.Size(196, 24);
+            this.combo_medios_pago.Size = new System.Drawing.Size(174, 24);
             this.combo_medios_pago.TabIndex = 284;
+            this.combo_medios_pago.SelectedIndexChanged += new System.EventHandler(this.combo_medios_pago_SelectedIndexChanged);
             // 
             // txt_precio_lista
             // 
-            this.txt_precio_lista.BackColor = System.Drawing.Color.White;
-            this.txt_precio_lista.Location = new System.Drawing.Point(155, 84);
+            this.txt_precio_lista.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_precio_lista.Location = new System.Drawing.Point(176, 91);
             this.txt_precio_lista.Margin = new System.Windows.Forms.Padding(4);
             this.txt_precio_lista.Name = "txt_precio_lista";
-            this.txt_precio_lista.Size = new System.Drawing.Size(196, 22);
+            this.txt_precio_lista.Size = new System.Drawing.Size(174, 22);
             this.txt_precio_lista.TabIndex = 283;
             this.txt_precio_lista.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -97,7 +100,7 @@
             this.lbl_precio_lista.AutoSize = true;
             this.lbl_precio_lista.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_precio_lista.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_precio_lista.Location = new System.Drawing.Point(25, 88);
+            this.lbl_precio_lista.Location = new System.Drawing.Point(24, 95);
             this.lbl_precio_lista.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_precio_lista.Name = "lbl_precio_lista";
             this.lbl_precio_lista.Size = new System.Drawing.Size(110, 18);
@@ -108,7 +111,7 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(654, 60);
+            this.pictureBox2.Location = new System.Drawing.Point(653, 67);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(297, 494);
             this.pictureBox2.TabIndex = 285;
@@ -118,7 +121,7 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox3.Location = new System.Drawing.Point(371, 60);
+            this.pictureBox3.Location = new System.Drawing.Point(370, 67);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(277, 494);
             this.pictureBox3.TabIndex = 286;
@@ -130,7 +133,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(905, 13);
+            this.button2.Location = new System.Drawing.Point(904, 16);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -145,7 +148,7 @@
             this.lbl_medios_pago.AutoSize = true;
             this.lbl_medios_pago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_medios_pago.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_medios_pago.Location = new System.Drawing.Point(25, 149);
+            this.lbl_medios_pago.Location = new System.Drawing.Point(24, 156);
             this.lbl_medios_pago.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_medios_pago.Name = "lbl_medios_pago";
             this.lbl_medios_pago.Size = new System.Drawing.Size(120, 18);
@@ -154,86 +157,87 @@
             // 
             // combo_cuotas
             // 
-            this.combo_cuotas.BackColor = System.Drawing.Color.White;
+            this.combo_cuotas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.combo_cuotas.FormattingEnabled = true;
-            this.combo_cuotas.Location = new System.Drawing.Point(155, 207);
+            this.combo_cuotas.Location = new System.Drawing.Point(176, 214);
             this.combo_cuotas.Margin = new System.Windows.Forms.Padding(4);
             this.combo_cuotas.Name = "combo_cuotas";
-            this.combo_cuotas.Size = new System.Drawing.Size(196, 24);
+            this.combo_cuotas.Size = new System.Drawing.Size(174, 24);
             this.combo_cuotas.TabIndex = 289;
+            this.combo_cuotas.SelectedIndexChanged += new System.EventHandler(this.combo_cuotas_SelectedIndexChanged);
             // 
             // lbl_cuotas
             // 
             this.lbl_cuotas.AutoSize = true;
             this.lbl_cuotas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_cuotas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_cuotas.Location = new System.Drawing.Point(25, 211);
+            this.lbl_cuotas.Location = new System.Drawing.Point(24, 218);
             this.lbl_cuotas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_cuotas.Name = "lbl_cuotas";
             this.lbl_cuotas.Size = new System.Drawing.Size(60, 18);
             this.lbl_cuotas.TabIndex = 290;
             this.lbl_cuotas.Text = "Cuotas:";
             // 
-            // text_recargo
+            // txt_recargo
             // 
-            this.text_recargo.BackColor = System.Drawing.Color.White;
-            this.text_recargo.Location = new System.Drawing.Point(155, 271);
-            this.text_recargo.Margin = new System.Windows.Forms.Padding(4);
-            this.text_recargo.Name = "text_recargo";
-            this.text_recargo.Size = new System.Drawing.Size(196, 22);
-            this.text_recargo.TabIndex = 292;
-            this.text_recargo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_recargo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_recargo.Location = new System.Drawing.Point(176, 278);
+            this.txt_recargo.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_recargo.Name = "txt_recargo";
+            this.txt_recargo.Size = new System.Drawing.Size(174, 22);
+            this.txt_recargo.TabIndex = 292;
+            this.txt_recargo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_recargo
             // 
             this.lbl_recargo.AutoSize = true;
             this.lbl_recargo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_recargo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_recargo.Location = new System.Drawing.Point(25, 275);
+            this.lbl_recargo.Location = new System.Drawing.Point(24, 282);
             this.lbl_recargo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_recargo.Name = "lbl_recargo";
             this.lbl_recargo.Size = new System.Drawing.Size(69, 18);
             this.lbl_recargo.TabIndex = 291;
             this.lbl_recargo.Text = "Recargo:";
             // 
-            // text_valor_cuota
+            // txt_valor_cuota
             // 
-            this.text_valor_cuota.BackColor = System.Drawing.Color.White;
-            this.text_valor_cuota.Location = new System.Drawing.Point(155, 332);
-            this.text_valor_cuota.Margin = new System.Windows.Forms.Padding(4);
-            this.text_valor_cuota.Name = "text_valor_cuota";
-            this.text_valor_cuota.Size = new System.Drawing.Size(196, 22);
-            this.text_valor_cuota.TabIndex = 294;
-            this.text_valor_cuota.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_valor_cuota.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_valor_cuota.Location = new System.Drawing.Point(176, 339);
+            this.txt_valor_cuota.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_valor_cuota.Name = "txt_valor_cuota";
+            this.txt_valor_cuota.Size = new System.Drawing.Size(174, 22);
+            this.txt_valor_cuota.TabIndex = 294;
+            this.txt_valor_cuota.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_valor_cuota
             // 
             this.lbl_valor_cuota.AutoSize = true;
             this.lbl_valor_cuota.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_valor_cuota.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_valor_cuota.Location = new System.Drawing.Point(25, 336);
+            this.lbl_valor_cuota.Location = new System.Drawing.Point(24, 343);
             this.lbl_valor_cuota.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_valor_cuota.Name = "lbl_valor_cuota";
             this.lbl_valor_cuota.Size = new System.Drawing.Size(90, 18);
             this.lbl_valor_cuota.TabIndex = 293;
             this.lbl_valor_cuota.Text = "Valor Cuota:";
             // 
-            // text_precio_final
+            // txt_precio_final
             // 
-            this.text_precio_final.BackColor = System.Drawing.Color.White;
-            this.text_precio_final.Location = new System.Drawing.Point(155, 392);
-            this.text_precio_final.Margin = new System.Windows.Forms.Padding(4);
-            this.text_precio_final.Name = "text_precio_final";
-            this.text_precio_final.Size = new System.Drawing.Size(196, 22);
-            this.text_precio_final.TabIndex = 296;
-            this.text_precio_final.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_precio_final.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_precio_final.Location = new System.Drawing.Point(176, 399);
+            this.txt_precio_final.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_precio_final.Name = "txt_precio_final";
+            this.txt_precio_final.Size = new System.Drawing.Size(174, 22);
+            this.txt_precio_final.TabIndex = 296;
+            this.txt_precio_final.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_precio_final
             // 
             this.lbl_precio_final.AutoSize = true;
             this.lbl_precio_final.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_precio_final.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_precio_final.Location = new System.Drawing.Point(25, 396);
+            this.lbl_precio_final.Location = new System.Drawing.Point(24, 403);
             this.lbl_precio_final.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_precio_final.Name = "lbl_precio_final";
             this.lbl_precio_final.Size = new System.Drawing.Size(90, 18);
@@ -245,7 +249,7 @@
             this.btn_ver_promociones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_ver_promociones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ver_promociones.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_ver_promociones.Location = new System.Drawing.Point(82, 457);
+            this.btn_ver_promociones.Location = new System.Drawing.Point(78, 464);
             this.btn_ver_promociones.Margin = new System.Windows.Forms.Padding(4);
             this.btn_ver_promociones.Name = "btn_ver_promociones";
             this.btn_ver_promociones.Size = new System.Drawing.Size(217, 58);
@@ -257,10 +261,10 @@
             // txt_nombre_perfume
             // 
             this.txt_nombre_perfume.AutoSize = true;
-            this.txt_nombre_perfume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_nombre_perfume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.txt_nombre_perfume.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_nombre_perfume.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txt_nombre_perfume.Location = new System.Drawing.Point(11, 15);
+            this.txt_nombre_perfume.Location = new System.Drawing.Point(19, 20);
             this.txt_nombre_perfume.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_nombre_perfume.Name = "txt_nombre_perfume";
             this.txt_nombre_perfume.Size = new System.Drawing.Size(274, 32);
@@ -269,7 +273,7 @@
             // 
             // img_perfume
             // 
-            this.img_perfume.Location = new System.Drawing.Point(389, 84);
+            this.img_perfume.Location = new System.Drawing.Point(388, 91);
             this.img_perfume.Margin = new System.Windows.Forms.Padding(4);
             this.img_perfume.Name = "img_perfume";
             this.img_perfume.Size = new System.Drawing.Size(241, 330);
@@ -282,7 +286,7 @@
             this.btn_buscar_perfumes_simi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_buscar_perfumes_simi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_buscar_perfumes_simi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_buscar_perfumes_simi.Location = new System.Drawing.Point(414, 435);
+            this.btn_buscar_perfumes_simi.Location = new System.Drawing.Point(415, 442);
             this.btn_buscar_perfumes_simi.Margin = new System.Windows.Forms.Padding(4);
             this.btn_buscar_perfumes_simi.Name = "btn_buscar_perfumes_simi";
             this.btn_buscar_perfumes_simi.Size = new System.Drawing.Size(183, 97);
@@ -293,9 +297,9 @@
             // 
             // richTextBox_descripcion
             // 
-            this.richTextBox_descripcion.BackColor = System.Drawing.Color.White;
+            this.richTextBox_descripcion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.richTextBox_descripcion.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.richTextBox_descripcion.Location = new System.Drawing.Point(671, 101);
+            this.richTextBox_descripcion.Location = new System.Drawing.Point(670, 108);
             this.richTextBox_descripcion.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox_descripcion.Name = "richTextBox_descripcion";
             this.richTextBox_descripcion.Size = new System.Drawing.Size(263, 218);
@@ -307,7 +311,7 @@
             this.lbl_detalles_perfumes.AutoSize = true;
             this.lbl_detalles_perfumes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_detalles_perfumes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_detalles_perfumes.Location = new System.Drawing.Point(668, 349);
+            this.lbl_detalles_perfumes.Location = new System.Drawing.Point(667, 356);
             this.lbl_detalles_perfumes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_detalles_perfumes.Name = "lbl_detalles_perfumes";
             this.lbl_detalles_perfumes.Size = new System.Drawing.Size(65, 18);
@@ -319,7 +323,7 @@
             this.lbl_descripcion.AutoSize = true;
             this.lbl_descripcion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_descripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_descripcion.Location = new System.Drawing.Point(668, 79);
+            this.lbl_descripcion.Location = new System.Drawing.Point(667, 86);
             this.lbl_descripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_descripcion.Name = "lbl_descripcion";
             this.lbl_descripcion.Size = new System.Drawing.Size(91, 18);
@@ -328,9 +332,9 @@
             // 
             // richTextBox_detalles
             // 
-            this.richTextBox_detalles.BackColor = System.Drawing.Color.White;
+            this.richTextBox_detalles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.richTextBox_detalles.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.richTextBox_detalles.Location = new System.Drawing.Point(671, 373);
+            this.richTextBox_detalles.Location = new System.Drawing.Point(670, 380);
             this.richTextBox_detalles.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox_detalles.Name = "richTextBox_detalles";
             this.richTextBox_detalles.Size = new System.Drawing.Size(263, 156);
@@ -340,9 +344,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(160, 85);
+            this.label3.Location = new System.Drawing.Point(182, 92);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(18, 20);
@@ -352,9 +356,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(160, 393);
+            this.label1.Location = new System.Drawing.Point(182, 400);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(18, 20);
@@ -364,9 +368,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(326, 272);
+            this.label2.Location = new System.Drawing.Point(321, 279);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(24, 20);
@@ -376,21 +380,31 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.White;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(159, 333);
+            this.label4.Location = new System.Drawing.Point(182, 340);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(18, 20);
             this.label4.TabIndex = 308;
             this.label4.Text = "$";
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox4.Location = new System.Drawing.Point(11, 9);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(886, 53);
+            this.pictureBox4.TabIndex = 309;
+            this.pictureBox4.TabStop = false;
+            // 
             // VerDetallePerfume
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(958, 566);
+            this.ClientSize = new System.Drawing.Size(958, 571);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -403,11 +417,11 @@
             this.Controls.Add(this.img_perfume);
             this.Controls.Add(this.txt_nombre_perfume);
             this.Controls.Add(this.btn_ver_promociones);
-            this.Controls.Add(this.text_precio_final);
+            this.Controls.Add(this.txt_precio_final);
             this.Controls.Add(this.lbl_precio_final);
-            this.Controls.Add(this.text_valor_cuota);
+            this.Controls.Add(this.txt_valor_cuota);
             this.Controls.Add(this.lbl_valor_cuota);
-            this.Controls.Add(this.text_recargo);
+            this.Controls.Add(this.txt_recargo);
             this.Controls.Add(this.lbl_recargo);
             this.Controls.Add(this.combo_cuotas);
             this.Controls.Add(this.lbl_cuotas);
@@ -419,12 +433,14 @@
             this.Controls.Add(this.txt_precio_lista);
             this.Controls.Add(this.lbl_precio_lista);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBox4);
             this.Name = "VerDetallePerfume";
             this.Text = "VerDetallePerfume";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_perfume)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -442,11 +458,11 @@
         private System.Windows.Forms.Label lbl_medios_pago;
         private System.Windows.Forms.ComboBox combo_cuotas;
         private System.Windows.Forms.Label lbl_cuotas;
-        private System.Windows.Forms.TextBox text_recargo;
+        private System.Windows.Forms.TextBox txt_recargo;
         private System.Windows.Forms.Label lbl_recargo;
-        private System.Windows.Forms.TextBox text_valor_cuota;
+        private System.Windows.Forms.TextBox txt_valor_cuota;
         private System.Windows.Forms.Label lbl_valor_cuota;
-        private System.Windows.Forms.TextBox text_precio_final;
+        private System.Windows.Forms.TextBox txt_precio_final;
         private System.Windows.Forms.Label lbl_precio_final;
         private System.Windows.Forms.Button btn_ver_promociones;
         private System.Windows.Forms.Label txt_nombre_perfume;
@@ -460,5 +476,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }
