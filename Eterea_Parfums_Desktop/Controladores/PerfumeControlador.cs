@@ -273,5 +273,70 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
             return result;
         }
+
+        public static List<Perfume> filtrarPorNombre(string nombre)
+        {
+            List<Perfume> list = new List<Perfume>();
+
+            Marca marca = new Marca();
+            TipoDePerfume tipo = new TipoDePerfume();
+            Genero genero = new Genero();
+            Pais pais = new Pais();
+
+
+            if (nombre == null)
+            {
+                list = PerfumeControlador.getAll();
+            }
+            else
+            {
+
+                string query = "select * from dbo.Perfume where nombre like @nombre;";
+
+
+                SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+                cmd.Parameters.AddWithValue("@nombre", "%" + nombre + "%");
+
+
+                try
+                {
+                    DB_Controller.connection.Open();
+                    SqlDataReader r = cmd.ExecuteReader();
+
+                    while (r.Read())
+                    {
+
+                        marca.id = r.GetInt32(2);
+                        tipo.id = r.GetInt32(4);
+                        genero.id = r.GetInt32(5);
+                        pais.id = r.GetInt32(7);
+
+                        Marca marcaOb = new Marca(marca.id, "");
+                        TipoDePerfume tipo_de_perfumeOb = new TipoDePerfume(tipo.id, "");
+                        Genero generoOb = new Genero(genero.id, "");
+                        Pais paisOb = new Pais(pais.id, "");
+
+
+                        list.Add(new Perfume(r.GetInt32(0), r.GetString(1), marcaOb, r.GetString(3),
+                            tipo_de_perfumeOb, generoOb, r.GetInt32(6), paisOb,
+                            r.GetInt32(8), r.GetInt32(9), r.GetString(10), r.GetInt32(11), r.GetDouble(12),
+                            r.GetInt32(13), r.GetString(14), r.GetString(15)));
+
+
+                    }
+                    r.Close();
+                    DB_Controller.connection.Close();
+
+
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Hay un error en la query: " + e.Message);
+                }
+
+
+            }
+            return list;
+        }
     }
 }

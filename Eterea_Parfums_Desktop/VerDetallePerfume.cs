@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Eterea_Parfums_Desktop.Modelos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,15 +13,17 @@ namespace Eterea_Parfums_Desktop
 {
     public partial class VerDetallePerfume : Form
     {
-        public VerDetallePerfume()
+        public VerDetallePerfume(Perfume perfumeSeleccionado)
         {
             InitializeComponent();
         }
 
+        public VerDetallePerfume()
+        {
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
-            InicioAutoConsultas inicioAutoConsultas = new InicioAutoConsultas();
-            inicioAutoConsultas.Show();
             this.Close();
         }
 

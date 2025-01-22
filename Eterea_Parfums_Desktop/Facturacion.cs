@@ -12,27 +12,22 @@ namespace Eterea_Parfums_Desktop
 {
     public partial class Facturacion : Form
     {
+        public string NumeroCaja { get; set; }
+
         public Facturacion()
         {
             InitializeComponent();
             string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";
-            img_logo.Image = Image.FromFile(rutaCompletaImagen);
+            img_logo.Image = Image.FromFile(rutaCompletaImagen);           
 
-            
             txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
-            txt_numero_caja.Text = " ";
-
+            
             lbl_dni_clienteE.Hide();
         }
 
-        // Método para manejar el evento ConfirmarNumeroCaja
-        private void ConfirmarNumeroCajaHandler(object sender, string numeroCaja)
+        private void Facturacion_Load(object sender, EventArgs e)
         {
-            // Asignar el número de caja al campo txt_numero_caja en FormVentas
-            txt_numero_caja.Text = numeroCaja;
-
-            // Mostrar FormVentas
-            this.Show();
+            txt_numero_caja.Text = NumeroCaja;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -55,5 +50,7 @@ namespace Eterea_Parfums_Desktop
             consultasPerfumeEmpleado.Show();
             this.Hide();
         }
+
+        
     }
 }

@@ -49,8 +49,8 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_continuar_Click(object sender, EventArgs e)
         {
-            // Obtengo el valor ingresado en el txt_ingNumCaja
-            string numCaja = txt_numero_caja.Text;
+            // Obtengo el valor ingresado en el txt_ing_numero_caja
+            string numCaja = txt_ing_numero_caja.Text;
 
             // Verifico si el valor ingresado es un número válido
             if (!string.IsNullOrWhiteSpace(numCaja) && int.TryParse(numCaja, out int numeroValido))
@@ -60,13 +60,12 @@ namespace Eterea_Parfums_Desktop
 
                 // Invocar el evento ConfirmarNumeroCaja con el número de caja confirmado
                 ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
-                Facturacion facturacion = new Facturacion();
+                Facturacion facturacion = new Facturacion();      
+                facturacion.NumeroCaja = numCaja; 
                 facturacion.Show();
 
                 // Cierro este formulario
-                this.Close();
-                
-          
+                this.Close();                          
             }
             else
             {
@@ -76,10 +75,10 @@ namespace Eterea_Parfums_Desktop
                 lbl_error_caja.Visible = true;
 
                 // Limpia el contenido del TextBox
-                txt_numero_caja.Text = string.Empty;
+                txt_ing_numero_caja.Text = string.Empty;
 
                 // (Opcional) Coloca el foco de vuelta en el TextBox
-                txt_numero_caja.Focus();
+                txt_ing_numero_caja.Focus();
             }
         }
 
