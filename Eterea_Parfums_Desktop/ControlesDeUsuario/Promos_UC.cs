@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -22,22 +23,29 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             cargarPromociones();
         }
 
+        public void recargarPromociones()
+        {
+            // Código para volver a cargar el DataGridView con las promociones actualizadas
+            var promociones = PromoControlador.obtenerTodos();
+            dataGridViewPromos.DataSource = promociones;
+        }
+
         private void cargarPromociones(string filtroNombre = "")
         {
             promociones = PromoControlador.obtenerTodos();
 
-            dataGV_Promos.Rows.Clear();
+            dataGridViewPromos.Rows.Clear();
             foreach (Promocion promocion in promociones)
             {
-                if (promocion.activo == 1 && (string.IsNullOrEmpty(filtroNombre) || promocion.nombre.ToString().IndexOf(filtroNombre, StringComparison.OrdinalIgnoreCase) >= 0))
+                if (string.IsNullOrEmpty(filtroNombre) || promocion.nombre.ToString().IndexOf(filtroNombre, StringComparison.OrdinalIgnoreCase) >= 0)
 
                 {
-                    int rowIndex = dataGV_Promos.Rows.Add();
+                    int rowIndex = dataGridViewPromos.Rows.Add();
 
-                    dataGV_Promos.Rows[rowIndex].Cells[0].Value = promocion.id.ToString();
-                    dataGV_Promos.Rows[rowIndex].Cells[1].Value = promocion.nombre.ToString();
-                    dataGV_Promos.Rows[rowIndex].Cells[3].Value = promocion.fecha_inicio.ToString("dd-MM-yyyy");
-                    dataGV_Promos.Rows[rowIndex].Cells[4].Value = promocion.fecha_fin.ToString("dd-MM-yyyy");
+                    dataGridViewPromos.Rows[rowIndex].Cells[0].Value = promocion.id.ToString();
+                    dataGridViewPromos.Rows[rowIndex].Cells[1].Value = promocion.nombre.ToString();
+                    dataGridViewPromos.Rows[rowIndex].Cells[3].Value = promocion.fecha_inicio.ToString("dd-MM-yyyy");
+                    dataGridViewPromos.Rows[rowIndex].Cells[4].Value = promocion.fecha_fin.ToString("dd-MM-yyyy");
                     //dataGV_Promos.Rows[rowIndex].Cells[2].Value = promocion.descuento.ToString();
                     int descuento = promocion.descuento; // Obtén el valor del descuento como entero
 
@@ -57,25 +65,28 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                         case 40:
                             textoPromocion = "2da Unidad 80% Dto.";
                             break;
+                        case 10:
+                            textoPromocion = "Descuento especial del 10%";
+                            break;
                         default:
                             textoPromocion = "Sin promoción"; // Texto predeterminado para otros valores
                             break;
                     }
 
                     // Asigna el texto al DataGridView
-                    dataGV_Promos.Rows[rowIndex].Cells[2].Value = textoPromocion;
+                    dataGridViewPromos.Rows[rowIndex].Cells[2].Value = textoPromocion;
 
                     if (promocion.activo.ToString() == "1")
                     {
-                        dataGV_Promos.Rows[rowIndex].Cells[5].Value = "Activo";
+                        dataGridViewPromos.Rows[rowIndex].Cells[5].Value = "Activo";
                     }
                     else
                     {
-                        dataGV_Promos.Rows[rowIndex].Cells[5].Value = "Inactivo";
+                        dataGridViewPromos.Rows[rowIndex].Cells[5].Value = "Inactivo";
                     }
 
-                    dataGV_Promos.Rows[rowIndex].Cells[6].Value = "Editar";
-                    dataGV_Promos.Rows[rowIndex].Cells[7].Value = "Eliminar";
+                    dataGridViewPromos.Rows[rowIndex].Cells[6].Value = "Editar";
+                    dataGridViewPromos.Rows[rowIndex].Cells[7].Value = "Eliminar";
                 }
             }
         }
@@ -102,5 +113,56 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 cargarPromociones();
             }
         }
+
+        private void dataGridViewPromos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Verificar si el clic fue en la columna de editar (puedes verificar el índice de la columna)
+            if (e.ColumnIndex == dataGridViewPromos.Columns[6].Index && e.RowIndex >= 0)
+            {
+                // Obtener el ID de la promoción de la fila seleccionada
+                var idPromoCell = dataGridViewPromos.Rows[e.RowIndex].Cells[0].Value;
+
+                // Verificar si el ID de la promoción es válido
+                if (idPromoCell != null && int.TryParse(idPromoCell.ToString(), out int idPromo))
+                {
+                    // Crear una nueva instancia del formulario de edición
+                    FormEditarPromo formEditarPromo = new FormEditarPromo(idPromo);
+
+                    // Mostrar el formulario de edición
+                    formEditarPromo.Show();
+                }
+                else
+                {
+                    // Mostrar un mensaje de error si el ID no es válido
+                    MessageBox.Show("No se pudo obtener el ID de la promoción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            // Verificar si el clic fue en la columna de "Eliminar"
+            if (e.ColumnIndex == dataGridViewPromos.Columns[7].Index && e.RowIndex >= 0)
+            {
+                // Obtener el ID y el nombre de la promoción de la fila seleccionada
+                var idPromoCell = dataGridViewPromos.Rows[e.RowIndex].Cells[0].Value;
+                var nombrePromoCell = dataGridViewPromos.Rows[e.RowIndex].Cells[1].Value;
+
+                // Verificar si el ID de la promoción es válido
+                if (idPromoCell != null && int.TryParse(idPromoCell.ToString(), out int idPromo))
+                {
+                    string nombrePromo = nombrePromoCell?.ToString() ?? "Sin nombre";
+
+                    // Crear una nueva instancia del formulario de eliminación y pasar datos
+                    FormEliminarPromo formEliminarPromo = new FormEliminarPromo(idPromo, nombrePromo);
+
+                    // Mostrar el formulario
+                    formEliminarPromo.ShowDialog();
+                    cargarPromociones();
+                }
+                else
+                {
+                    // Mostrar un mensaje de error si el ID no es válido
+                    MessageBox.Show("No se pudo obtener el ID de la promoción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
     }
 }

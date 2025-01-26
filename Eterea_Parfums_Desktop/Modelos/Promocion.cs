@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Eterea_Parfums_Desktop.Modelos
 {
-    internal class Promocion
+    public class Promocion
     {
         public int id { get; set; }
         public string nombre { get; set; }

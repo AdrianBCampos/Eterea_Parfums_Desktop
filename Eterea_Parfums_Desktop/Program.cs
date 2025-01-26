@@ -1,4 +1,5 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
@@ -15,12 +16,10 @@ namespace Eterea_Parfums_Desktop
         /// Punto de entrada principal para la aplicación.
         /// </summary>
         public static int debug_mode = 1;
-
       
 
         public static Empleado logueado;
-        
-       
+
 
         public static String Ruta_Base;
         public static String Ruta_Web;
@@ -45,7 +44,7 @@ namespace Eterea_Parfums_Desktop
             }
             else if (entorno == "adri")
             {
-                Ruta_Base = @"C:\Users\PC\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                Ruta_Base = @"C:\Users\intersan\Desktop\TESIS\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
                 Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
             }
             else if (entorno == "maxi")
@@ -77,7 +76,11 @@ namespace Eterea_Parfums_Desktop
 
             }
 
-          Application.Run(new InicioAutoConsultas());
+            // Llamamos a ActualizarEstadoPromociones al inicio del programa
+            PromocionService.ActualizarEstadoPromociones();
+
+            //Application.Run(new FormCrearPromo());
+            Application.Run(new MenuABM());
         }
 
         public static bool connectionIsValid()
@@ -99,5 +102,8 @@ namespace Eterea_Parfums_Desktop
             }
 
         }
+
+
+
     }
 }
