@@ -98,7 +98,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             cargarPromociones(filtroNombre);
         }
 
-       
+
 
         private void btn_crear_promo_Click(object sender, EventArgs e)
         {
@@ -125,32 +125,54 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 // Verificar si el ID de la promoción es válido
                 if (idPromoCell != null && int.TryParse(idPromoCell.ToString(), out int idPromo))
                 {
-                    // Crear una nueva instancia del formulario de edición
-                    FormEditarPromo formEditarPromo = new FormEditarPromo(idPromo);
+                    /* int id = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
 
-                    // Mostrar el formulario de edición
-                    formEditarPromo.Show();
-                }
-                else
+                Trace.WriteLine("El id es: " + id);
+
+                Cliente cliente_editar = ClienteControlador.obtenerPorId(id);
+
+                FormEditarClienteABM formEditarClienteABM = new FormEditarClienteABM(cliente_editar);
+
+                DialogResult dr = formEditarClienteABM.ShowDialog();
+
+                if (dr == DialogResult.OK)
                 {
-                    // Mostrar un mensaje de error si el ID no es válido
-                    MessageBox.Show("No se pudo obtener el ID de la promoción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Trace.WriteLine("OK");
+
+                    //ACTUALIZAR LA LISTA
+                    cargarClientes();
+
+                }*/
+                    // Crear una nueva instancia del formulario de edición
+                    Promocion promocion_editar = PromoControlador.obtenerPorId(idPromo);
+                    FormEditarPromo formEditarPromo = new FormEditarPromo(promocion_editar);
+                    DialogResult dr = formEditarPromo.ShowDialog();
+
+                    if (dr == DialogResult.OK)
+                    {
+                        Trace.WriteLine("OK");
+
+                        //ACTUALIZAR LA LISTA
+                        cargarPromociones();
+
+                    }
+
                 }
             }
             // Verificar si el clic fue en la columna de "Eliminar"
             if (e.ColumnIndex == dataGridViewPromos.Columns[7].Index && e.RowIndex >= 0)
             {
                 // Obtener el ID y el nombre de la promoción de la fila seleccionada
-                var idPromoCell = dataGridViewPromos.Rows[e.RowIndex].Cells[0].Value;
-                var nombrePromoCell = dataGridViewPromos.Rows[e.RowIndex].Cells[1].Value;
+                var idPromoCellEliminar = dataGridViewPromos.Rows[e.RowIndex].Cells[0].Value;
+                var nombrePromoCellEliminar = dataGridViewPromos.Rows[e.RowIndex].Cells[1].Value;
 
                 // Verificar si el ID de la promoción es válido
-                if (idPromoCell != null && int.TryParse(idPromoCell.ToString(), out int idPromo))
+                if (idPromoCellEliminar != null && int.TryParse(idPromoCellEliminar.ToString(), out int idPromoEliminar))
                 {
-                    string nombrePromo = nombrePromoCell?.ToString() ?? "Sin nombre";
+                    string nombrePromoEliminar = nombrePromoCellEliminar?.ToString() ?? "Sin nombre";
 
                     // Crear una nueva instancia del formulario de eliminación y pasar datos
-                    FormEliminarPromo formEliminarPromo = new FormEliminarPromo(idPromo, nombrePromo);
+                    FormEliminarPromo formEliminarPromo = new FormEliminarPromo(idPromoEliminar, nombrePromoEliminar);
 
                     // Mostrar el formulario
                     formEliminarPromo.ShowDialog();
@@ -162,7 +184,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     MessageBox.Show("No se pudo obtener el ID de la promoción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
         }
 
     }
-}
+ }
+

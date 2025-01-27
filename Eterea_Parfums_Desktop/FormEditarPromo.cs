@@ -44,7 +44,7 @@ namespace Eterea_Parfums_Desktop
         }
 
         //SOBRECARGAR EL CONSTRUCTOR PARA INICIAR EL FORM CON LA INFO CARGADA, PARA EDITAR
-        public FormEditarPromo(int idPromo)
+        public FormEditarPromo(Promocion promo)
         {
             InitializeComponent();
 
@@ -61,13 +61,16 @@ namespace Eterea_Parfums_Desktop
             cargarComboBoxGeneros();
             inicializarDatePickers();
             cargarPerfumes();
-           
+
             //btn_limpiar_DataFridView_Click(object sender, EventArgs e);
+
+            // Asignar el id de la promo al campo interno id_editar
+            id_editar = promo.id;
 
             List<PerfumeDTO> perfumes = new List<PerfumeDTO>();
             // Llamada al método que carga los perfumes por idPromo
             PerfumeEnPromoControlador controladorPerfume = new PerfumeEnPromoControlador();
-            perfumes = controladorPerfume.CargarPerfumesPorIdPromocion(idPromo);
+            perfumes = controladorPerfume.CargarPerfumesPorIdPromocion(id_editar);
 
             cargarPerfumesDePromo(perfumes);
 
@@ -79,10 +82,9 @@ namespace Eterea_Parfums_Desktop
             combo_activo_promo_edit.SelectedIndex = -1;
 
             // Obtener la promoción desde la base de datos
-            Promocion promo = PromoControlador.obtenerPorId(idPromo);
+            //Promocion promo = PromoControlador.obtenerPorId(idPromo);
 
-            // Asignar el id de la promo al campo interno id_editar
-            id_editar = promo.id;
+         
 
             /* // Asignar el descuento correspondiente al texto
              int descuento = promo.descuento; // Valor numérico del descuento obtenido de la BD
@@ -365,7 +367,7 @@ namespace Eterea_Parfums_Desktop
             {
                 var selectedItem = (KeyValuePair<int, string>)combo_tipo_promo_edit.SelectedItem;
                 int descuentoSeleccionado = selectedItem.Key;
-                // Aquí puedes trabajar con el descuentoSeleccionado, como guardarlo en una base de datos o usarlo en la lógica de tu aplicación
+                // Se puede trabajar con el descuentoSeleccionado, como guardarlo en una base de datos o usarlo en la lógica de la aplicación
             }
         }
 
@@ -398,7 +400,7 @@ namespace Eterea_Parfums_Desktop
          }*/
 
 
-        private void btn_recargar_DataGridView_Click(object sender, EventArgs e)
+        /*private void btn_recargar_DataGridView_Click(object sender, EventArgs e)
         {
             // Restablecer los filtros a sus valores predeterminados
             combo_buscar_marca_edit.SelectedIndex = 0;  // "Todas las Marcas"
@@ -407,7 +409,7 @@ namespace Eterea_Parfums_Desktop
 
             // Recargar el DataGridView con todos los perfumes sin aplicar filtros
             cargarPerfumes(0, "", 0);
-        }
+        }*/
 
         private void btn_quitar_filtros_Click(object sender, EventArgs e)
         {
@@ -438,7 +440,7 @@ namespace Eterea_Parfums_Desktop
             cargarPerfumes(filtroMarcaP, "", filtroGeneroP);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_x_cerrar_ventana_Click(object sender, EventArgs e)
         {
             this.Close(); // Cierra el formulario
         }
@@ -481,12 +483,119 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_editar_promo_Click(object sender, EventArgs e)
         {
-            editarPromo();
+            string errorMsg;
+            if (validarPromoEdit(out errorMsg))
+            {
+                editarPromo();
+            }
+            else
+            {
+
+            }
+          
         }
+
+        private void limpiarMensajesErrorEdit()
+        {
+            lbl_error_tipo_promo_edit.Visible = false;
+            lbl_error_nomb_edit.Visible = false;
+            lbl_error_fecha_ini_edit.Visible = false;
+            lbl_error_fecha_fin_edit.Visible = false;
+            lbl_error_promo_act_edit.Visible = false;
+
+        }
+
+        private bool validarPromoEdit(out string errorMsg)
+        {
+            errorMsg = "";
+            limpiarMensajesErrorEdit();
+
+            if (combo_tipo_promo_edit.SelectedItem == null || string.IsNullOrEmpty(combo_tipo_promo_edit.Text))
+            {
+                errorMsg += "Debes seleccionar el tipo de promoción" + Environment.NewLine;
+                lbl_error_tipo_promo_edit.Text = "Debes seleccionar el tipo de promoción";
+                lbl_error_tipo_promo_edit.Show();
+            }
+            else
+            {
+                lbl_error_tipo_promo_edit.Visible = false;
+            }
+
+            if (string.IsNullOrEmpty(txt_nomb_promo_edit.Text))
+            {
+                errorMsg += "Debes ingresar el nombre de la promoción" + Environment.NewLine;
+                lbl_error_nomb_edit.Text = "Debes ingresar el nombre de la promoción";
+                lbl_error_nomb_edit.Show();
+
+            }
+            else if (txt_nomb_promo_edit.Text.Length > 80)
+            {
+                errorMsg += "El nombre no puede exceder los 80 caracteres" + Environment.NewLine;
+                lbl_error_nomb_edit.Text = "El nombre no puede exceder los 80 caracteres";
+                lbl_error_nomb_edit.Show();
+            }
+            else
+            {
+
+                lbl_error_nomb_edit.Visible = false;
+
+            }
+
+          
+
+            // Validación de la fecha de inicio
+            if (dateTime_inicio_promo_edit.Format == DateTimePickerFormat.Custom && dateTime_inicio_promo_edit.CustomFormat == " ")
+            {
+                errorMsg += "Debes seleccionar una fecha de inicio para la promoción" + Environment.NewLine;
+                lbl_error_fecha_ini_edit.Text = "Debes seleccionar una fecha de inicio";
+                lbl_error_fecha_ini_edit.Show();
+            }
+            else
+            {
+                lbl_error_fecha_ini_edit.Visible = false;
+            }
+
+            // Validación de la fecha de finalización
+            if (dateTime_fin_promo_edit.Format == DateTimePickerFormat.Custom && dateTime_fin_promo_edit.CustomFormat == " ")
+            {
+                errorMsg += "Debes seleccionar una fecha de finalización para la promoción" + Environment.NewLine;
+                lbl_error_fecha_fin_edit.Text = "Debes seleccionar una fecha de finalización";
+                lbl_error_fecha_fin_edit.Show();
+            }
+            else if (dateTime_fin_promo_edit.Value <= dateTime_inicio_promo_edit.Value)
+            {
+                errorMsg += "La fecha de finalización debe ser posterior a la fecha de inicio" + Environment.NewLine;
+                lbl_error_fecha_fin_edit.Text = "La fecha de finalización debe ser posterior a la fecha de inicio";
+                lbl_error_fecha_fin_edit.Show();
+            }
+            else
+            {
+                lbl_error_fecha_fin_edit.Visible = false;
+            }
+
+            if (combo_activo_promo_edit.SelectedItem == null || string.IsNullOrEmpty(combo_activo_promo_edit.Text))
+            {
+                errorMsg += "Debes seleccionar si la promoción está activa" + Environment.NewLine;
+                lbl_error_promo_act_edit.Text = "Debes seleccionar si la promoción está activa";
+                lbl_error_promo_act_edit.Show();
+            }
+            else
+            {
+                lbl_error_promo_act_edit.Show();
+                lbl_error_promo_act_edit.Show();
+                lbl_error_promo_act_edit.Show();
+                lbl_error_promo_act_edit.Visible = false;
+            }
+
+
+            // Devolver si hay errores o no
+            return string.IsNullOrEmpty(errorMsg);
+        }
+
 
         private void editarPromo()
             { 
-                    // ID de la promoción que se está editando
+            // ID de la promoción que se está editando
             //int idPromo = id_editar;
 
             // Obtener la clave del descuento seleccionada (clave del diccionario)

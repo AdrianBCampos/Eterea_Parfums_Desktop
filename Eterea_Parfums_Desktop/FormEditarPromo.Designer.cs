@@ -50,7 +50,7 @@
             this.combo_buscar_genero_edit = new System.Windows.Forms.ComboBox();
             this.dateTime_fin_promo_edit = new System.Windows.Forms.DateTimePicker();
             this.dateTime_inicio_promo_edit = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_x_cerrar_ventana = new System.Windows.Forms.Button();
             this.btn_editar_promo = new System.Windows.Forms.Button();
             this.lbl_buscar_genero_edit = new System.Windows.Forms.Label();
             this.lbl_buscar_marca_edit = new System.Windows.Forms.Label();
@@ -218,20 +218,20 @@
             this.dateTime_inicio_promo_edit.TabIndex = 330;
             this.dateTime_inicio_promo_edit.ValueChanged += new System.EventHandler(this.dateTime_inicio_promo_ValueChanged);
             // 
-            // button1
+            // btn_x_cerrar_ventana
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(1221, 3);
-            this.button1.Name = "button1";
-            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(35, 32);
-            this.button1.TabIndex = 328;
-            this.button1.Text = "X";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_x_cerrar_ventana.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.btn_x_cerrar_ventana.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_x_cerrar_ventana.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_x_cerrar_ventana.ForeColor = System.Drawing.Color.White;
+            this.btn_x_cerrar_ventana.Location = new System.Drawing.Point(1221, 3);
+            this.btn_x_cerrar_ventana.Name = "btn_x_cerrar_ventana";
+            this.btn_x_cerrar_ventana.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_x_cerrar_ventana.Size = new System.Drawing.Size(35, 32);
+            this.btn_x_cerrar_ventana.TabIndex = 328;
+            this.btn_x_cerrar_ventana.Text = "X";
+            this.btn_x_cerrar_ventana.UseVisualStyleBackColor = false;
+            this.btn_x_cerrar_ventana.Click += new System.EventHandler(this.btn_x_cerrar_ventana_Click);
             // 
             // btn_editar_promo
             // 
@@ -711,7 +711,7 @@
             this.Controls.Add(this.combo_buscar_genero_edit);
             this.Controls.Add(this.dateTime_fin_promo_edit);
             this.Controls.Add(this.dateTime_inicio_promo_edit);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_x_cerrar_ventana);
             this.Controls.Add(this.btn_editar_promo);
             this.Controls.Add(this.lbl_buscar_genero_edit);
             this.Controls.Add(this.lbl_buscar_marca_edit);
@@ -754,7 +754,7 @@
         private System.Windows.Forms.ComboBox combo_buscar_genero_edit;
         private System.Windows.Forms.DateTimePicker dateTime_fin_promo_edit;
         private System.Windows.Forms.DateTimePicker dateTime_inicio_promo_edit;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_x_cerrar_ventana;
         private System.Windows.Forms.Button btn_editar_promo;
         private System.Windows.Forms.Label lbl_buscar_genero_edit;
         private System.Windows.Forms.Label lbl_buscar_marca_edit;
