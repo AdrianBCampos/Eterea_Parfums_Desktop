@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
@@ -15,18 +15,48 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         public static void initialize()
         {
-            var builder = new SqlConnectionStringBuilder();
+            // Lista de posibles nombres de servidores
+            List<string> serverNames = new List<string>
+            {
+                @"LocalHost",
+                @"(localdb)\Local",
+                @"DESKTOP-N6TI9JV\MSSQLSERVER02"
+            };
 
-            builder.DataSource = @"DESKTOP-N6TI9JV\MSSQLSERVER02";  //NOMBRE DEL SERVIDOR
-            builder.InitialCatalog = "eterea";  //NOMBRE DE LA BASE DE DATOS
-            builder.IntegratedSecurity = true;  //TIENE O NO SEGURIDAD INTEGRADA CON WINDOWS
+            string databaseName = "eterea";
+            bool integratedSecurity = true;
 
-            connectionString = builder.ToString();
-            connection = new SqlConnection(connectionString);
+            foreach (var serverName in serverNames)
+            {
+                try
+                {
+                    // Construir la cadena de conexión
+                    var builder = new SqlConnectionStringBuilder
+                    {
+                        DataSource = serverName,        // Nombre del servidor
+                        InitialCatalog = databaseName, // Nombre de la base de datos
+                        IntegratedSecurity = integratedSecurity
+                    };
 
-            Trace.WriteLine("Conexion a la BD: " + connection);
+                    connectionString = builder.ToString();
+                    connection = new SqlConnection(connectionString);
+
+                    // Intentar abrir la conexión
+                    connection.Open();
+                    Trace.WriteLine($"Conexión exitosa al servidor: {serverName}");
+                    connection.Close();
+                    break; // Si la conexión es exitosa, salir del bucle
+                }
+                catch (Exception ex)
+                {
+                    Trace.WriteLine($"No se pudo conectar al servidor: {serverName}. Error: {ex.Message}");
+                }
+            }
+
+            if (connection == null || connection.State != System.Data.ConnectionState.Closed)
+            {
+                throw new Exception("No se pudo conectar a ninguno de los servidores especificados.");
+            }
         }
-
-
     }
 }
