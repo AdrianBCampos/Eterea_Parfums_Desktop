@@ -78,7 +78,7 @@ namespace Eterea_Parfums_Desktop
             PromocionService.ActualizarEstadoPromociones();
 
             //Application.Run(new FormCrearPromo());
-            Application.Run(new MenuABM());
+            Application.Run(new InicioAutoConsultas());
         }
 
         public static bool connectionIsValid()
