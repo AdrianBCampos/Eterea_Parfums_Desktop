@@ -76,7 +76,7 @@
             this.txt_contraseña = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lbl_sucursalE = new System.Windows.Forms.PictureBox();
+            this.picturebox2 = new System.Windows.Forms.PictureBox();
             this.lbl_usuarioE = new System.Windows.Forms.Label();
             this.lbl_claveE = new System.Windows.Forms.Label();
             this.lbl_nombreE = new System.Windows.Forms.Label();
@@ -94,13 +94,13 @@
             this.lbl_pisoE = new System.Windows.Forms.Label();
             this.lbl_departamentoE = new System.Windows.Forms.Label();
             this.lbl_comentarios_domicilioE = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
+            this.lbl_sucursalE = new System.Windows.Forms.Label();
             this.lbl_ingE = new System.Windows.Forms.Label();
             this.lbl_sueldoE = new System.Windows.Forms.Label();
             this.lbl_activoE = new System.Windows.Forms.Label();
             this.lbl_rolE = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_sucursalE)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picturebox2)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_crear
@@ -535,16 +535,16 @@
             this.pictureBox1.TabIndex = 159;
             this.pictureBox1.TabStop = false;
             // 
-            // lbl_sucursalE
+            // picturebox2
             // 
-            this.lbl_sucursalE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_sucursalE.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.lbl_sucursalE.Location = new System.Drawing.Point(418, 49);
-            this.lbl_sucursalE.Margin = new System.Windows.Forms.Padding(2);
-            this.lbl_sucursalE.Name = "lbl_sucursalE";
-            this.lbl_sucursalE.Size = new System.Drawing.Size(336, 559);
-            this.lbl_sucursalE.TabIndex = 160;
-            this.lbl_sucursalE.TabStop = false;
+            this.picturebox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.picturebox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.picturebox2.Location = new System.Drawing.Point(418, 49);
+            this.picturebox2.Margin = new System.Windows.Forms.Padding(2);
+            this.picturebox2.Name = "picturebox2";
+            this.picturebox2.Size = new System.Drawing.Size(336, 559);
+            this.picturebox2.TabIndex = 160;
+            this.picturebox2.TabStop = false;
             // 
             // lbl_usuarioE
             // 
@@ -733,16 +733,16 @@
             this.lbl_comentarios_domicilioE.TabIndex = 177;
             this.lbl_comentarios_domicilioE.Text = "Error";
             // 
-            // label40
+            // lbl_sucursalE
             // 
-            this.label40.AutoSize = true;
-            this.label40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label40.ForeColor = System.Drawing.Color.Crimson;
-            this.label40.Location = new System.Drawing.Point(584, 384);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(29, 13);
-            this.label40.TabIndex = 178;
-            this.label40.Text = "Error";
+            this.lbl_sucursalE.AutoSize = true;
+            this.lbl_sucursalE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_sucursalE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_sucursalE.Location = new System.Drawing.Point(584, 384);
+            this.lbl_sucursalE.Name = "lbl_sucursalE";
+            this.lbl_sucursalE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_sucursalE.TabIndex = 178;
+            this.lbl_sucursalE.Text = "Error";
             // 
             // lbl_ingE
             // 
@@ -798,7 +798,7 @@
             this.Controls.Add(this.lbl_activoE);
             this.Controls.Add(this.lbl_sueldoE);
             this.Controls.Add(this.lbl_ingE);
-            this.Controls.Add(this.label40);
+            this.Controls.Add(this.lbl_sucursalE);
             this.Controls.Add(this.lbl_comentarios_domicilioE);
             this.Controls.Add(this.lbl_departamentoE);
             this.Controls.Add(this.lbl_pisoE);
@@ -864,12 +864,12 @@
             this.Controls.Add(this.txt_contraseña);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.lbl_sucursalE);
+            this.Controls.Add(this.picturebox2);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormEmpleado";
             this.Text = "FormEmpleado";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lbl_sucursalE)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picturebox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -925,7 +925,7 @@
         private System.Windows.Forms.TextBox txt_contraseña;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox lbl_sucursalE;
+        private System.Windows.Forms.PictureBox picturebox2;
         private System.Windows.Forms.Label lbl_usuarioE;
         private System.Windows.Forms.Label lbl_claveE;
         private System.Windows.Forms.Label lbl_nombreE;
@@ -943,7 +943,7 @@
         private System.Windows.Forms.Label lbl_pisoE;
         private System.Windows.Forms.Label lbl_departamentoE;
         private System.Windows.Forms.Label lbl_comentarios_domicilioE;
-        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label lbl_sucursalE;
         private System.Windows.Forms.Label lbl_ingE;
         private System.Windows.Forms.Label lbl_sueldoE;
         private System.Windows.Forms.Label lbl_activoE;

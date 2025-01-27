@@ -50,7 +50,7 @@ namespace Eterea_Parfums_Desktop
             lbl_pisoE.Hide();
             lbl_departamentoE.Hide();
             lbl_comentarios_domicilioE.Hide();
-            lbl_sucursalE.Hide();
+            picturebox2.Hide();
             lbl_ingE.Hide();
             lbl_sueldoE.Hide();
             lbl_activoE.Hide();
@@ -108,10 +108,16 @@ namespace Eterea_Parfums_Desktop
         
         private void btn_crear_Click(object sender, EventArgs e)
         {
-                crear();
-            this.Hide();
-   
+            string errorMsg;
 
+            if (validarDatosCliente(out errorMsg))
+            {
+                crear();
+            }
+            else
+            {
+
+            }
         }
 
         private void crear()
@@ -149,12 +155,6 @@ namespace Eterea_Parfums_Desktop
                 this.DialogResult = DialogResult.OK;
             }
         }
-
-        /* ---------------------------------------------------------------------
-         * -----------------------------------------------------------------
-         * -----------------------------------------------------------------
-         * -----------------------------------------------------------------
-         * HACERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR VALIDACION
         private bool validarDatosCliente(out string errorMsg)
         {
             errorMsg = string.Empty;
@@ -165,20 +165,23 @@ namespace Eterea_Parfums_Desktop
             lbl_nombreE.Hide();
             lbl_apellidoE.Hide();
             lbl_dniE.Hide();
-            lbl_cond_ivaE.Hide();
-            lbl_celularE.Hide();
-            lbl_emailE.Hide();
-            lbl_cpE.Hide();
-            lbl_num_calleE.Hide();
-            lbl_pisoE.Hide();
-            lbl_deptoE.Hide();
-            lbl_comentariosE.Hide();
             lbl_nacE.Hide();
+            lbl_celularE.Hide();
+            lbl_e_mailE.Hide();
             lbl_paisE.Hide();
             lbl_provinciaE.Hide();
             lbl_localidadE.Hide();
+            lbl_cpE.Hide();
             lbl_calleE.Hide();
+            lbl_num_calleE.Hide();
+            lbl_pisoE.Hide();
+            lbl_departamentoE.Hide();
+            lbl_comentarios_domicilioE.Hide();
+            picturebox2.Hide();
+            lbl_ingE.Hide();
+            lbl_sueldoE.Hide();
             lbl_activoE.Hide();
+            lbl_rolE.Hide();
 
             // Validaciones individuales
             if (string.IsNullOrEmpty(txt_usuario.Text))
@@ -188,7 +191,7 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_usuarioE.Text + Environment.NewLine;
             }
 
-            if (string.IsNullOrEmpty(txt_clave.Text))
+            if (string.IsNullOrEmpty(txt_contraseña.Text))
             {
                 lbl_claveE.Text = "Debe generar una contraseña.";
                 lbl_claveE.Show();
@@ -197,21 +200,21 @@ namespace Eterea_Parfums_Desktop
 
             if (string.IsNullOrEmpty(txt_nombre.Text))
             {
-                lbl_nombreE.Text = "Debe ingresar el nombre del cliente.";
+                lbl_nombreE.Text = "Debe ingresar el nombre del usuario.";
                 lbl_nombreE.Show();
                 errorMsg += lbl_nombreE.Text + Environment.NewLine;
             }
 
             if (string.IsNullOrEmpty(txt_apellido.Text))
             {
-                lbl_apellidoE.Text = "Debe ingresar el apellido del cliente.";
+                lbl_apellidoE.Text = "Debe ingresar el apellido del usuario.";
                 lbl_apellidoE.Show();
                 errorMsg += lbl_apellidoE.Text + Environment.NewLine;
             }
 
             if (string.IsNullOrEmpty(txt_dni.Text))
             {
-                string error = "Debe ingresar el número de DNI del cliente." + Environment.NewLine;
+                string error = "Debe ingresar el número de DNI del usuario." + Environment.NewLine;
                 lbl_dniE.Text = error;
                 lbl_dniE.Show();
             }
@@ -236,25 +239,11 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_celularE.Text + Environment.NewLine;
             }
 
-            if (string.IsNullOrEmpty(txt_email.Text) || !txt_email.Text.Contains("@"))
+            if (string.IsNullOrEmpty(txt_e_mail.Text) || !txt_e_mail.Text.Contains("@"))
             {
-                lbl_emailE.Text = "Debe ingresar un correo electrónico válido.";
-                lbl_emailE.Show();
-                errorMsg += lbl_emailE.Text + Environment.NewLine;
-            }
-
-            if (string.IsNullOrEmpty(txt_cp.Text) || !int.TryParse(txt_cp.Text, out _))
-            {
-                lbl_cpE.Text = "Debe ingresar un código postal válido.";
-                lbl_cpE.Show();
-                errorMsg += lbl_cpE.Text + Environment.NewLine;
-            }
-
-            if (string.IsNullOrEmpty(txt_num_calle.Text) || !int.TryParse(txt_num_calle.Text, out _))
-            {
-                lbl_num_calleE.Text = "Debe ingresar un número de calle válido.";
-                lbl_num_calleE.Show();
-                errorMsg += lbl_num_calleE.Text + Environment.NewLine;
+                lbl_e_mailE.Text = "Debe ingresar un correo electrónico válido.";
+                lbl_e_mailE.Show();
+                errorMsg += lbl_e_mailE.Text + Environment.NewLine;
             }
 
             if (combo_pais.SelectedItem == null)
@@ -278,11 +267,60 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_localidadE.Text + Environment.NewLine;
             }
 
+            if (string.IsNullOrEmpty(txt_cp.Text) || !int.TryParse(txt_cp.Text, out _))
+            {
+                lbl_cpE.Text = "Debe ingresar un código postal válido.";
+                lbl_cpE.Show();
+                errorMsg += lbl_cpE.Text + Environment.NewLine;
+            }
+
             if (combo_calle.SelectedItem == null)
             {
                 lbl_calleE.Text = "Debe seleccionar una calle.";
                 lbl_calleE.Show();
                 errorMsg += lbl_calleE.Text + Environment.NewLine;
+            }
+
+            if (string.IsNullOrEmpty(txt_num_calle.Text) || !int.TryParse(txt_num_calle.Text, out _))
+            {
+                lbl_num_calleE.Text = "Debe ingresar un número de calle válido.";
+                lbl_num_calleE.Show();
+                errorMsg += lbl_num_calleE.Text + Environment.NewLine;
+            }
+
+            /*        if (string.IsNullOrEmpty(txt_piso.Text) || !int.TryParse(txt_piso.Text, out _))
+                {
+                    lbl_pisoE.Text = "Debe ingresar un piso valido.";
+                    lbl_pisoE.Show();
+                    errorMsg += lbl_pisoE.Text + Environment.NewLine;
+                } */
+
+            /*    if (string.IsNullOrEmpty(txt_departamento.Text))
+            {
+                lbl_departamentoE.Text = "Debe ingresar un piso valido.";
+                lbl_departamentoE.Show();
+                errorMsg += lbl_departamentoE.Text + Environment.NewLine;
+            } */
+
+            if (combo_sucursal.SelectedItem == null)
+            {
+                picturebox2.Text = "Debe seleccionar una sucursal.";
+                picturebox2.Show();
+                errorMsg += picturebox2.Text + Environment.NewLine;
+            }
+
+            if (!DateTime.TryParse(dateTime_ing.Text, out _))
+            {
+                lbl_ingE.Text = "Debe ingresar una fecha de ingreso válida.";
+                lbl_ingE.Show();
+                errorMsg += lbl_ingE.Text + Environment.NewLine;
+            }
+
+            if (string.IsNullOrEmpty(txt_sueldo.Text) || !int.TryParse(txt_sueldo.Text, out _))
+            {
+                lbl_sueldoE.Text = "Debe ingresar un sueldo válido.";
+                lbl_sueldoE.Show();
+                errorMsg += lbl_sueldoE.Text + Environment.NewLine;
             }
 
             if (combo_activo.SelectedItem == null)
@@ -292,8 +330,15 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_activoE.Text + Environment.NewLine;
             }
 
+            if (combo_rol.SelectedItem == null)
+            {
+                lbl_rolE.Text = "Debe seleccionar un rol válido.";
+                lbl_rolE.Show();
+                errorMsg += lbl_rolE.Text + Environment.NewLine;
+            }
+
             return string.IsNullOrEmpty(errorMsg);
-        } */
+        } 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
