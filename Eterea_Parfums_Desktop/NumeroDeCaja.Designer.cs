@@ -33,7 +33,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_continuar = new System.Windows.Forms.Button();
-            this.txt_numero_caja = new System.Windows.Forms.TextBox();
+            this.txt_ing_numero_caja = new System.Windows.Forms.TextBox();
             this.lbl_error_caja = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -42,7 +42,7 @@
             // img_logo
             // 
             this.img_logo.Location = new System.Drawing.Point(226, 35);
-            this.img_logo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.img_logo.Margin = new System.Windows.Forms.Padding(4);
             this.img_logo.Name = "img_logo";
             this.img_logo.Size = new System.Drawing.Size(356, 177);
             this.img_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -69,7 +69,7 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(741, 12);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button2.Size = new System.Drawing.Size(46, 40);
@@ -94,7 +94,7 @@
             this.btn_continuar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_continuar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_continuar.Location = new System.Drawing.Point(313, 344);
-            this.btn_continuar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_continuar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_continuar.Name = "btn_continuar";
             this.btn_continuar.Size = new System.Drawing.Size(183, 46);
             this.btn_continuar.TabIndex = 90;
@@ -102,13 +102,13 @@
             this.btn_continuar.UseVisualStyleBackColor = false;
             this.btn_continuar.Click += new System.EventHandler(this.btn_continuar_Click);
             // 
-            // txt_numero_caja
+            // txt_ing_numero_caja
             // 
-            this.txt_numero_caja.Location = new System.Drawing.Point(428, 263);
-            this.txt_numero_caja.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txt_numero_caja.Name = "txt_numero_caja";
-            this.txt_numero_caja.Size = new System.Drawing.Size(154, 22);
-            this.txt_numero_caja.TabIndex = 96;
+            this.txt_ing_numero_caja.Location = new System.Drawing.Point(428, 263);
+            this.txt_ing_numero_caja.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_ing_numero_caja.Name = "txt_ing_numero_caja";
+            this.txt_ing_numero_caja.Size = new System.Drawing.Size(154, 22);
+            this.txt_ing_numero_caja.TabIndex = 96;
             // 
             // lbl_error_caja
             // 
@@ -131,7 +131,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(800, 447);
             this.Controls.Add(this.lbl_error_caja);
-            this.Controls.Add(this.txt_numero_caja);
+            this.Controls.Add(this.txt_ing_numero_caja);
             this.Controls.Add(this.img_logo);
             this.Controls.Add(this.lbl_numero_caja);
             this.Controls.Add(this.button2);
@@ -153,7 +153,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btn_continuar;
-        private System.Windows.Forms.TextBox txt_numero_caja;
+        private System.Windows.Forms.TextBox txt_ing_numero_caja;
         private System.Windows.Forms.Label lbl_error_caja;
     }
 }

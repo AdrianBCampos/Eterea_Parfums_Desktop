@@ -167,6 +167,7 @@
             this.btn_posterior.TabIndex = 307;
             this.btn_posterior.Text = ">>";
             this.btn_posterior.UseVisualStyleBackColor = false;
+            this.btn_posterior.Click += new System.EventHandler(this.btn_posterior_Click_1);
             // 
             // btn_anterior
             // 
@@ -180,6 +181,7 @@
             this.btn_anterior.TabIndex = 306;
             this.btn_anterior.Text = "<<";
             this.btn_anterior.UseVisualStyleBackColor = false;
+            this.btn_anterior.Click += new System.EventHandler(this.btn_anterior_Click_1);
             // 
             // lbl_paginacion_Info
             // 
@@ -264,6 +266,7 @@
             this.dataGridViewConsultas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewConsultas.Size = new System.Drawing.Size(1059, 387);
             this.dataGridViewConsultas.TabIndex = 303;
+            this.dataGridViewConsultas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewConsultas_CellContentClick_1);
             // 
             // nombre
             // 
@@ -323,6 +326,7 @@
             this.combo_filtro_genero.Name = "combo_filtro_genero";
             this.combo_filtro_genero.Size = new System.Drawing.Size(198, 24);
             this.combo_filtro_genero.TabIndex = 300;
+            this.combo_filtro_genero.SelectedIndexChanged += new System.EventHandler(this.combo_filtro_genero_SelectedIndexChanged_1);
             // 
             // lbl_filtro_marca
             // 
@@ -343,6 +347,7 @@
             this.combo_filtro_marca.Name = "combo_filtro_marca";
             this.combo_filtro_marca.Size = new System.Drawing.Size(198, 24);
             this.combo_filtro_marca.TabIndex = 298;
+            this.combo_filtro_marca.SelectedIndexChanged += new System.EventHandler(this.combo_filtro_marca_SelectedIndexChanged_1);
             // 
             // lbl_filtro_nombre
             // 
@@ -362,6 +367,7 @@
             this.txt_filtro_nombre.Name = "txt_filtro_nombre";
             this.txt_filtro_nombre.Size = new System.Drawing.Size(425, 22);
             this.txt_filtro_nombre.TabIndex = 296;
+            this.txt_filtro_nombre.TextChanged += new System.EventHandler(this.txt_filtro_nombre_TextChanged_1);
             // 
             // pictureBox1
             // 
@@ -416,6 +422,7 @@
             this.Controls.Add(this.img_logo);
             this.Name = "ConsultasPerfumeEmpleado";
             this.Text = "ConsultasPerfumeEmpleado";
+            this.Load += new System.EventHandler(this.ConsultasPerfumeEmpleado_Load);
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsultas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

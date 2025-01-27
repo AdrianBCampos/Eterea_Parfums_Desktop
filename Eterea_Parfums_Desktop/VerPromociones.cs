@@ -19,8 +19,6 @@ namespace Eterea_Parfums_Desktop
 
         private void button2_Click(object sender, EventArgs e)
         {
-            VerDetallePerfume verDetallePerfume = new VerDetallePerfume();
-            verDetallePerfume.Show();
             this.Close();
         }
 

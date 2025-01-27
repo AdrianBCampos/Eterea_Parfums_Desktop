@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Eterea_Parfums_Desktop.Modelos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,15 +13,15 @@ namespace Eterea_Parfums_Desktop
 {
     public partial class VerPerfumesSimilares : Form
     {
+        
         public VerPerfumesSimilares()
         {
             InitializeComponent();
+           
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
-            VerDetallePerfume verDetallePerfume = new VerDetallePerfume();
-            verDetallePerfume.Show();
+        {            
             this.Close();
         }
 

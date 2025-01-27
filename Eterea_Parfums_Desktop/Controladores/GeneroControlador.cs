@@ -46,7 +46,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static Genero getByName(string gen)
         {
             Genero genero = new Genero();
-            string query = "select * from dbo.Genero where " +
+            string query = "select * from dbo.genero where " +
                 "genero = @genero;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
