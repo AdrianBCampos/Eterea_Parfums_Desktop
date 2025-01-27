@@ -50,7 +50,7 @@ namespace Eterea_Parfums_Desktop
             lbl_pisoE.Hide();
             lbl_departamentoE.Hide();
             lbl_comentarios_domicilioE.Hide();
-            picturebox2.Hide();
+            lbl_sucursalE.Hide();
             lbl_ingE.Hide();
             lbl_sueldoE.Hide();
             lbl_activoE.Hide();
@@ -110,7 +110,7 @@ namespace Eterea_Parfums_Desktop
         {
             string errorMsg;
 
-            if (validarDatosCliente(out errorMsg))
+            if (validarDatosEmpleado(out errorMsg))
             {
                 crear();
             }
@@ -155,7 +155,7 @@ namespace Eterea_Parfums_Desktop
                 this.DialogResult = DialogResult.OK;
             }
         }
-        private bool validarDatosCliente(out string errorMsg)
+        private bool validarDatosEmpleado(out string errorMsg)
         {
             errorMsg = string.Empty;
 
@@ -177,7 +177,7 @@ namespace Eterea_Parfums_Desktop
             lbl_pisoE.Hide();
             lbl_departamentoE.Hide();
             lbl_comentarios_domicilioE.Hide();
-            picturebox2.Hide();
+            lbl_sucursalE.Hide();
             lbl_ingE.Hide();
             lbl_sueldoE.Hide();
             lbl_activoE.Hide();
@@ -304,9 +304,9 @@ namespace Eterea_Parfums_Desktop
 
             if (combo_sucursal.SelectedItem == null)
             {
-                picturebox2.Text = "Debe seleccionar una sucursal.";
-                picturebox2.Show();
-                errorMsg += picturebox2.Text + Environment.NewLine;
+                lbl_sucursalE.Text = "Debe seleccionar una sucursal.";
+                lbl_sucursalE.Show();
+                errorMsg += lbl_sucursalE.Text + Environment.NewLine;
             }
 
             if (!DateTime.TryParse(dateTime_ing.Text, out _))

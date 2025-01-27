@@ -76,6 +76,28 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lbl_rolE = new System.Windows.Forms.Label();
+            this.lbl_activoE = new System.Windows.Forms.Label();
+            this.lbl_sueldoE = new System.Windows.Forms.Label();
+            this.lbl_ingE = new System.Windows.Forms.Label();
+            this.lbl_sucursalE = new System.Windows.Forms.Label();
+            this.lbl_comentarios_domicilioE = new System.Windows.Forms.Label();
+            this.lbl_departamentoE = new System.Windows.Forms.Label();
+            this.lbl_pisoE = new System.Windows.Forms.Label();
+            this.lbl_num_calleE = new System.Windows.Forms.Label();
+            this.lbl_calleE = new System.Windows.Forms.Label();
+            this.lbl_cpE = new System.Windows.Forms.Label();
+            this.lbl_localidadE = new System.Windows.Forms.Label();
+            this.lbl_provinciaE = new System.Windows.Forms.Label();
+            this.lbl_paisE = new System.Windows.Forms.Label();
+            this.lbl_e_mailE = new System.Windows.Forms.Label();
+            this.lbl_celularE = new System.Windows.Forms.Label();
+            this.lbl_nacE = new System.Windows.Forms.Label();
+            this.lbl_dniE = new System.Windows.Forms.Label();
+            this.lbl_apellidoE = new System.Windows.Forms.Label();
+            this.lbl_nombreE = new System.Windows.Forms.Label();
+            this.lbl_claveE = new System.Windows.Forms.Label();
+            this.lbl_usuarioE = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -85,7 +107,7 @@
             this.btn_crear.BackColor = System.Drawing.Color.Pink;
             this.btn_crear.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_crear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_crear.Location = new System.Drawing.Point(281, 483);
+            this.btn_crear.Location = new System.Drawing.Point(276, 627);
             this.btn_crear.Name = "btn_crear";
             this.btn_crear.Size = new System.Drawing.Size(151, 37);
             this.btn_crear.TabIndex = 204;
@@ -97,7 +119,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label17.Location = new System.Drawing.Point(401, 323);
+            this.label17.Location = new System.Drawing.Point(401, 408);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(89, 13);
             this.label17.TabIndex = 203;
@@ -106,14 +128,14 @@
             // 
             // dateTime_ing
             // 
-            this.dateTime_ing.Location = new System.Drawing.Point(528, 319);
+            this.dateTime_ing.Location = new System.Drawing.Point(528, 404);
             this.dateTime_ing.Name = "dateTime_ing";
             this.dateTime_ing.Size = new System.Drawing.Size(135, 20);
             this.dateTime_ing.TabIndex = 202;
             // 
             // txt_sueldo
             // 
-            this.txt_sueldo.Location = new System.Drawing.Point(528, 353);
+            this.txt_sueldo.Location = new System.Drawing.Point(528, 450);
             this.txt_sueldo.Name = "txt_sueldo";
             this.txt_sueldo.Size = new System.Drawing.Size(135, 20);
             this.txt_sueldo.TabIndex = 201;
@@ -122,7 +144,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label8.Location = new System.Drawing.Point(400, 357);
+            this.label8.Location = new System.Drawing.Point(400, 454);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(40, 13);
             this.label8.TabIndex = 200;
@@ -132,7 +154,7 @@
             // combo_activo
             // 
             this.combo_activo.FormattingEnabled = true;
-            this.combo_activo.Location = new System.Drawing.Point(528, 387);
+            this.combo_activo.Location = new System.Drawing.Point(528, 498);
             this.combo_activo.Name = "combo_activo";
             this.combo_activo.Size = new System.Drawing.Size(135, 21);
             this.combo_activo.TabIndex = 199;
@@ -140,7 +162,7 @@
             // combo_sucursal
             // 
             this.combo_sucursal.FormattingEnabled = true;
-            this.combo_sucursal.Location = new System.Drawing.Point(528, 283);
+            this.combo_sucursal.Location = new System.Drawing.Point(528, 356);
             this.combo_sucursal.Name = "combo_sucursal";
             this.combo_sucursal.Size = new System.Drawing.Size(135, 21);
             this.combo_sucursal.TabIndex = 198;
@@ -149,7 +171,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label15.Location = new System.Drawing.Point(401, 393);
+            this.label15.Location = new System.Drawing.Point(401, 504);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(37, 13);
             this.label15.TabIndex = 197;
@@ -160,7 +182,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label16.Location = new System.Drawing.Point(400, 287);
+            this.label16.Location = new System.Drawing.Point(400, 360);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(48, 13);
             this.label16.TabIndex = 196;
@@ -171,7 +193,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label19.Location = new System.Drawing.Point(401, 252);
+            this.label19.Location = new System.Drawing.Point(401, 313);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(123, 13);
             this.label19.TabIndex = 195;
@@ -180,7 +202,7 @@
             // 
             // txt_comentarios_domicilio
             // 
-            this.txt_comentarios_domicilio.Location = new System.Drawing.Point(528, 248);
+            this.txt_comentarios_domicilio.Location = new System.Drawing.Point(528, 309);
             this.txt_comentarios_domicilio.Name = "txt_comentarios_domicilio";
             this.txt_comentarios_domicilio.Size = new System.Drawing.Size(135, 20);
             this.txt_comentarios_domicilio.TabIndex = 194;
@@ -189,7 +211,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label20.Location = new System.Drawing.Point(401, 217);
+            this.label20.Location = new System.Drawing.Point(401, 266);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(74, 13);
             this.label20.TabIndex = 193;
@@ -198,7 +220,7 @@
             // 
             // txt_departamento
             // 
-            this.txt_departamento.Location = new System.Drawing.Point(528, 214);
+            this.txt_departamento.Location = new System.Drawing.Point(528, 263);
             this.txt_departamento.Name = "txt_departamento";
             this.txt_departamento.Size = new System.Drawing.Size(135, 20);
             this.txt_departamento.TabIndex = 192;
@@ -206,7 +228,7 @@
             // combo_rol
             // 
             this.combo_rol.FormattingEnabled = true;
-            this.combo_rol.Location = new System.Drawing.Point(528, 421);
+            this.combo_rol.Location = new System.Drawing.Point(528, 543);
             this.combo_rol.Name = "combo_rol";
             this.combo_rol.Size = new System.Drawing.Size(135, 21);
             this.combo_rol.TabIndex = 191;
@@ -215,7 +237,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label5.Location = new System.Drawing.Point(402, 426);
+            this.label5.Location = new System.Drawing.Point(402, 548);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(23, 13);
             this.label5.TabIndex = 190;
@@ -226,7 +248,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label14.Location = new System.Drawing.Point(44, 255);
+            this.label14.Location = new System.Drawing.Point(44, 316);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(106, 13);
             this.label14.TabIndex = 189;
@@ -235,7 +257,7 @@
             // 
             // dateTime_nac
             // 
-            this.dateTime_nac.Location = new System.Drawing.Point(163, 251);
+            this.dateTime_nac.Location = new System.Drawing.Point(163, 312);
             this.dateTime_nac.Name = "dateTime_nac";
             this.dateTime_nac.Size = new System.Drawing.Size(135, 20);
             this.dateTime_nac.TabIndex = 188;
@@ -250,7 +272,7 @@
             // combo_calle
             // 
             this.combo_calle.FormattingEnabled = true;
-            this.combo_calle.Location = new System.Drawing.Point(528, 110);
+            this.combo_calle.Location = new System.Drawing.Point(528, 122);
             this.combo_calle.Name = "combo_calle";
             this.combo_calle.Size = new System.Drawing.Size(135, 21);
             this.combo_calle.TabIndex = 186;
@@ -258,7 +280,7 @@
             // combo_localidad
             // 
             this.combo_localidad.FormattingEnabled = true;
-            this.combo_localidad.Location = new System.Drawing.Point(163, 426);
+            this.combo_localidad.Location = new System.Drawing.Point(163, 549);
             this.combo_localidad.Name = "combo_localidad";
             this.combo_localidad.Size = new System.Drawing.Size(135, 21);
             this.combo_localidad.TabIndex = 185;
@@ -266,7 +288,7 @@
             // combo_provincia
             // 
             this.combo_provincia.FormattingEnabled = true;
-            this.combo_provincia.Location = new System.Drawing.Point(163, 389);
+            this.combo_provincia.Location = new System.Drawing.Point(163, 502);
             this.combo_provincia.Name = "combo_provincia";
             this.combo_provincia.Size = new System.Drawing.Size(135, 21);
             this.combo_provincia.TabIndex = 184;
@@ -274,7 +296,7 @@
             // combo_pais
             // 
             this.combo_pais.FormattingEnabled = true;
-            this.combo_pais.Location = new System.Drawing.Point(163, 353);
+            this.combo_pais.Location = new System.Drawing.Point(163, 454);
             this.combo_pais.Name = "combo_pais";
             this.combo_pais.Size = new System.Drawing.Size(135, 21);
             this.combo_pais.TabIndex = 183;
@@ -283,7 +305,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label21.Location = new System.Drawing.Point(401, 182);
+            this.label21.Location = new System.Drawing.Point(401, 219);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(27, 13);
             this.label21.TabIndex = 182;
@@ -292,7 +314,7 @@
             // 
             // txt_piso
             // 
-            this.txt_piso.Location = new System.Drawing.Point(528, 180);
+            this.txt_piso.Location = new System.Drawing.Point(528, 217);
             this.txt_piso.Name = "txt_piso";
             this.txt_piso.Size = new System.Drawing.Size(135, 20);
             this.txt_piso.TabIndex = 181;
@@ -301,7 +323,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label22.Location = new System.Drawing.Point(401, 145);
+            this.label22.Location = new System.Drawing.Point(401, 169);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(84, 13);
             this.label22.TabIndex = 180;
@@ -310,7 +332,7 @@
             // 
             // txt_num_calle
             // 
-            this.txt_num_calle.Location = new System.Drawing.Point(528, 145);
+            this.txt_num_calle.Location = new System.Drawing.Point(528, 169);
             this.txt_num_calle.Name = "txt_num_calle";
             this.txt_num_calle.Size = new System.Drawing.Size(135, 20);
             this.txt_num_calle.TabIndex = 179;
@@ -319,7 +341,7 @@
             // 
             this.label23.AutoSize = true;
             this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label23.Location = new System.Drawing.Point(401, 113);
+            this.label23.Location = new System.Drawing.Point(401, 125);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(30, 13);
             this.label23.TabIndex = 178;
@@ -340,7 +362,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label13.Location = new System.Drawing.Point(44, 431);
+            this.label13.Location = new System.Drawing.Point(44, 554);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(53, 13);
             this.label13.TabIndex = 176;
@@ -351,7 +373,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label12.Location = new System.Drawing.Point(44, 392);
+            this.label12.Location = new System.Drawing.Point(44, 505);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(51, 13);
             this.label12.TabIndex = 175;
@@ -362,7 +384,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label11.Location = new System.Drawing.Point(44, 355);
+            this.label11.Location = new System.Drawing.Point(44, 456);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(27, 13);
             this.label11.TabIndex = 174;
@@ -373,7 +395,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label10.Location = new System.Drawing.Point(44, 323);
+            this.label10.Location = new System.Drawing.Point(44, 410);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(32, 13);
             this.label10.TabIndex = 173;
@@ -382,7 +404,7 @@
             // 
             // txt_e_mail
             // 
-            this.txt_e_mail.Location = new System.Drawing.Point(163, 319);
+            this.txt_e_mail.Location = new System.Drawing.Point(163, 406);
             this.txt_e_mail.Name = "txt_e_mail";
             this.txt_e_mail.Size = new System.Drawing.Size(135, 20);
             this.txt_e_mail.TabIndex = 172;
@@ -391,7 +413,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label9.Location = new System.Drawing.Point(44, 289);
+            this.label9.Location = new System.Drawing.Point(44, 364);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(39, 13);
             this.label9.TabIndex = 171;
@@ -400,7 +422,7 @@
             // 
             // txt_celular
             // 
-            this.txt_celular.Location = new System.Drawing.Point(163, 285);
+            this.txt_celular.Location = new System.Drawing.Point(163, 360);
             this.txt_celular.Name = "txt_celular";
             this.txt_celular.Size = new System.Drawing.Size(135, 20);
             this.txt_celular.TabIndex = 170;
@@ -409,7 +431,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label7.Location = new System.Drawing.Point(44, 221);
+            this.label7.Location = new System.Drawing.Point(44, 269);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(26, 13);
             this.label7.TabIndex = 169;
@@ -418,7 +440,7 @@
             // 
             // txt_dni
             // 
-            this.txt_dni.Location = new System.Drawing.Point(163, 216);
+            this.txt_dni.Location = new System.Drawing.Point(163, 264);
             this.txt_dni.Name = "txt_dni";
             this.txt_dni.Size = new System.Drawing.Size(135, 20);
             this.txt_dni.TabIndex = 168;
@@ -427,7 +449,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label6.Location = new System.Drawing.Point(44, 187);
+            this.label6.Location = new System.Drawing.Point(44, 223);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 13);
             this.label6.TabIndex = 167;
@@ -436,7 +458,7 @@
             // 
             // txt_apellido
             // 
-            this.txt_apellido.Location = new System.Drawing.Point(163, 181);
+            this.txt_apellido.Location = new System.Drawing.Point(163, 217);
             this.txt_apellido.Name = "txt_apellido";
             this.txt_apellido.Size = new System.Drawing.Size(135, 20);
             this.txt_apellido.TabIndex = 166;
@@ -445,7 +467,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label2.Location = new System.Drawing.Point(44, 155);
+            this.label2.Location = new System.Drawing.Point(44, 179);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 165;
@@ -454,7 +476,7 @@
             // 
             // txt_nombre
             // 
-            this.txt_nombre.Location = new System.Drawing.Point(163, 147);
+            this.txt_nombre.Location = new System.Drawing.Point(163, 171);
             this.txt_nombre.Name = "txt_nombre";
             this.txt_nombre.Size = new System.Drawing.Size(135, 20);
             this.txt_nombre.TabIndex = 164;
@@ -463,7 +485,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label4.Location = new System.Drawing.Point(44, 119);
+            this.label4.Location = new System.Drawing.Point(44, 131);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 13);
             this.label4.TabIndex = 163;
@@ -490,7 +512,7 @@
             // 
             // txt_contraseña
             // 
-            this.txt_contraseña.Location = new System.Drawing.Point(163, 112);
+            this.txt_contraseña.Location = new System.Drawing.Point(163, 124);
             this.txt_contraseña.Name = "txt_contraseña";
             this.txt_contraseña.Size = new System.Drawing.Size(135, 20);
             this.txt_contraseña.TabIndex = 160;
@@ -513,10 +535,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(20, 60);
+            this.pictureBox1.Location = new System.Drawing.Point(19, 63);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(310, 413);
+            this.pictureBox1.Size = new System.Drawing.Size(310, 541);
             this.pictureBox1.TabIndex = 205;
             this.pictureBox1.TabStop = false;
             // 
@@ -524,19 +546,283 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(386, 60);
+            this.pictureBox2.Location = new System.Drawing.Point(381, 63);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(324, 413);
+            this.pictureBox2.Size = new System.Drawing.Size(324, 541);
             this.pictureBox2.TabIndex = 206;
             this.pictureBox2.TabStop = false;
+            // 
+            // lbl_rolE
+            // 
+            this.lbl_rolE.AutoSize = true;
+            this.lbl_rolE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_rolE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_rolE.Location = new System.Drawing.Point(528, 573);
+            this.lbl_rolE.Name = "lbl_rolE";
+            this.lbl_rolE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_rolE.TabIndex = 228;
+            this.lbl_rolE.Text = "Error";
+            // 
+            // lbl_activoE
+            // 
+            this.lbl_activoE.AutoSize = true;
+            this.lbl_activoE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_activoE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_activoE.Location = new System.Drawing.Point(528, 525);
+            this.lbl_activoE.Name = "lbl_activoE";
+            this.lbl_activoE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_activoE.TabIndex = 227;
+            this.lbl_activoE.Text = "Error";
+            // 
+            // lbl_sueldoE
+            // 
+            this.lbl_sueldoE.AutoSize = true;
+            this.lbl_sueldoE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_sueldoE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_sueldoE.Location = new System.Drawing.Point(528, 478);
+            this.lbl_sueldoE.Name = "lbl_sueldoE";
+            this.lbl_sueldoE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_sueldoE.TabIndex = 226;
+            this.lbl_sueldoE.Text = "Error";
+            // 
+            // lbl_ingE
+            // 
+            this.lbl_ingE.AutoSize = true;
+            this.lbl_ingE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_ingE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_ingE.Location = new System.Drawing.Point(528, 432);
+            this.lbl_ingE.Name = "lbl_ingE";
+            this.lbl_ingE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_ingE.TabIndex = 225;
+            this.lbl_ingE.Text = "Error";
+            // 
+            // lbl_sucursalE
+            // 
+            this.lbl_sucursalE.AutoSize = true;
+            this.lbl_sucursalE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_sucursalE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_sucursalE.Location = new System.Drawing.Point(528, 385);
+            this.lbl_sucursalE.Name = "lbl_sucursalE";
+            this.lbl_sucursalE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_sucursalE.TabIndex = 224;
+            this.lbl_sucursalE.Text = "Error";
+            // 
+            // lbl_comentarios_domicilioE
+            // 
+            this.lbl_comentarios_domicilioE.AutoSize = true;
+            this.lbl_comentarios_domicilioE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_comentarios_domicilioE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_comentarios_domicilioE.Location = new System.Drawing.Point(528, 338);
+            this.lbl_comentarios_domicilioE.Name = "lbl_comentarios_domicilioE";
+            this.lbl_comentarios_domicilioE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_comentarios_domicilioE.TabIndex = 223;
+            this.lbl_comentarios_domicilioE.Text = "Error";
+            // 
+            // lbl_departamentoE
+            // 
+            this.lbl_departamentoE.AutoSize = true;
+            this.lbl_departamentoE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_departamentoE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_departamentoE.Location = new System.Drawing.Point(528, 291);
+            this.lbl_departamentoE.Name = "lbl_departamentoE";
+            this.lbl_departamentoE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_departamentoE.TabIndex = 222;
+            this.lbl_departamentoE.Text = "Error";
+            // 
+            // lbl_pisoE
+            // 
+            this.lbl_pisoE.AutoSize = true;
+            this.lbl_pisoE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_pisoE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_pisoE.Location = new System.Drawing.Point(528, 245);
+            this.lbl_pisoE.Name = "lbl_pisoE";
+            this.lbl_pisoE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_pisoE.TabIndex = 221;
+            this.lbl_pisoE.Text = "Error";
+            // 
+            // lbl_num_calleE
+            // 
+            this.lbl_num_calleE.AutoSize = true;
+            this.lbl_num_calleE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_num_calleE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_num_calleE.Location = new System.Drawing.Point(528, 197);
+            this.lbl_num_calleE.Name = "lbl_num_calleE";
+            this.lbl_num_calleE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_num_calleE.TabIndex = 220;
+            this.lbl_num_calleE.Text = "Error";
+            // 
+            // lbl_calleE
+            // 
+            this.lbl_calleE.AutoSize = true;
+            this.lbl_calleE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_calleE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_calleE.Location = new System.Drawing.Point(528, 149);
+            this.lbl_calleE.Name = "lbl_calleE";
+            this.lbl_calleE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_calleE.TabIndex = 219;
+            this.lbl_calleE.Text = "Error";
+            // 
+            // lbl_cpE
+            // 
+            this.lbl_cpE.AutoSize = true;
+            this.lbl_cpE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_cpE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_cpE.Location = new System.Drawing.Point(528, 103);
+            this.lbl_cpE.Name = "lbl_cpE";
+            this.lbl_cpE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_cpE.TabIndex = 218;
+            this.lbl_cpE.Text = "Error";
+            // 
+            // lbl_localidadE
+            // 
+            this.lbl_localidadE.AutoSize = true;
+            this.lbl_localidadE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_localidadE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_localidadE.Location = new System.Drawing.Point(161, 576);
+            this.lbl_localidadE.Name = "lbl_localidadE";
+            this.lbl_localidadE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_localidadE.TabIndex = 217;
+            this.lbl_localidadE.Text = "Error";
+            // 
+            // lbl_provinciaE
+            // 
+            this.lbl_provinciaE.AutoSize = true;
+            this.lbl_provinciaE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_provinciaE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_provinciaE.Location = new System.Drawing.Point(161, 529);
+            this.lbl_provinciaE.Name = "lbl_provinciaE";
+            this.lbl_provinciaE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_provinciaE.TabIndex = 216;
+            this.lbl_provinciaE.Text = "Error";
+            // 
+            // lbl_paisE
+            // 
+            this.lbl_paisE.AutoSize = true;
+            this.lbl_paisE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_paisE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_paisE.Location = new System.Drawing.Point(161, 481);
+            this.lbl_paisE.Name = "lbl_paisE";
+            this.lbl_paisE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_paisE.TabIndex = 215;
+            this.lbl_paisE.Text = "Error";
+            // 
+            // lbl_e_mailE
+            // 
+            this.lbl_e_mailE.AutoSize = true;
+            this.lbl_e_mailE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_e_mailE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_e_mailE.Location = new System.Drawing.Point(161, 432);
+            this.lbl_e_mailE.Name = "lbl_e_mailE";
+            this.lbl_e_mailE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_e_mailE.TabIndex = 214;
+            this.lbl_e_mailE.Text = "Error";
+            // 
+            // lbl_celularE
+            // 
+            this.lbl_celularE.AutoSize = true;
+            this.lbl_celularE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_celularE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_celularE.Location = new System.Drawing.Point(161, 385);
+            this.lbl_celularE.Name = "lbl_celularE";
+            this.lbl_celularE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_celularE.TabIndex = 213;
+            this.lbl_celularE.Text = "Error";
+            // 
+            // lbl_nacE
+            // 
+            this.lbl_nacE.AutoSize = true;
+            this.lbl_nacE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_nacE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_nacE.Location = new System.Drawing.Point(161, 339);
+            this.lbl_nacE.Name = "lbl_nacE";
+            this.lbl_nacE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_nacE.TabIndex = 212;
+            this.lbl_nacE.Text = "Error";
+            // 
+            // lbl_dniE
+            // 
+            this.lbl_dniE.AutoSize = true;
+            this.lbl_dniE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_dniE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_dniE.Location = new System.Drawing.Point(161, 292);
+            this.lbl_dniE.Name = "lbl_dniE";
+            this.lbl_dniE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_dniE.TabIndex = 211;
+            this.lbl_dniE.Text = "Error";
+            // 
+            // lbl_apellidoE
+            // 
+            this.lbl_apellidoE.AutoSize = true;
+            this.lbl_apellidoE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_apellidoE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_apellidoE.Location = new System.Drawing.Point(161, 244);
+            this.lbl_apellidoE.Name = "lbl_apellidoE";
+            this.lbl_apellidoE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_apellidoE.TabIndex = 210;
+            this.lbl_apellidoE.Text = "Error";
+            // 
+            // lbl_nombreE
+            // 
+            this.lbl_nombreE.AutoSize = true;
+            this.lbl_nombreE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_nombreE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_nombreE.Location = new System.Drawing.Point(161, 196);
+            this.lbl_nombreE.Name = "lbl_nombreE";
+            this.lbl_nombreE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_nombreE.TabIndex = 209;
+            this.lbl_nombreE.Text = "Error";
+            // 
+            // lbl_claveE
+            // 
+            this.lbl_claveE.AutoSize = true;
+            this.lbl_claveE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_claveE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_claveE.Location = new System.Drawing.Point(161, 150);
+            this.lbl_claveE.Name = "lbl_claveE";
+            this.lbl_claveE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_claveE.TabIndex = 208;
+            this.lbl_claveE.Text = "Error";
+            // 
+            // lbl_usuarioE
+            // 
+            this.lbl_usuarioE.AutoSize = true;
+            this.lbl_usuarioE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_usuarioE.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_usuarioE.Location = new System.Drawing.Point(161, 105);
+            this.lbl_usuarioE.Name = "lbl_usuarioE";
+            this.lbl_usuarioE.Size = new System.Drawing.Size(29, 13);
+            this.lbl_usuarioE.TabIndex = 207;
+            this.lbl_usuarioE.Text = "Error";
             // 
             // FormEditarEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(740, 532);
+            this.ClientSize = new System.Drawing.Size(740, 685);
+            this.Controls.Add(this.lbl_rolE);
+            this.Controls.Add(this.lbl_activoE);
+            this.Controls.Add(this.lbl_sueldoE);
+            this.Controls.Add(this.lbl_ingE);
+            this.Controls.Add(this.lbl_sucursalE);
+            this.Controls.Add(this.lbl_comentarios_domicilioE);
+            this.Controls.Add(this.lbl_departamentoE);
+            this.Controls.Add(this.lbl_pisoE);
+            this.Controls.Add(this.lbl_num_calleE);
+            this.Controls.Add(this.lbl_calleE);
+            this.Controls.Add(this.lbl_cpE);
+            this.Controls.Add(this.lbl_localidadE);
+            this.Controls.Add(this.lbl_provinciaE);
+            this.Controls.Add(this.lbl_paisE);
+            this.Controls.Add(this.lbl_e_mailE);
+            this.Controls.Add(this.lbl_celularE);
+            this.Controls.Add(this.lbl_nacE);
+            this.Controls.Add(this.lbl_dniE);
+            this.Controls.Add(this.lbl_apellidoE);
+            this.Controls.Add(this.lbl_nombreE);
+            this.Controls.Add(this.lbl_claveE);
+            this.Controls.Add(this.lbl_usuarioE);
             this.Controls.Add(this.btn_crear);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.dateTime_ing);
@@ -645,5 +931,27 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label lbl_rolE;
+        private System.Windows.Forms.Label lbl_activoE;
+        private System.Windows.Forms.Label lbl_sueldoE;
+        private System.Windows.Forms.Label lbl_ingE;
+        private System.Windows.Forms.Label lbl_sucursalE;
+        private System.Windows.Forms.Label lbl_comentarios_domicilioE;
+        private System.Windows.Forms.Label lbl_departamentoE;
+        private System.Windows.Forms.Label lbl_pisoE;
+        private System.Windows.Forms.Label lbl_num_calleE;
+        private System.Windows.Forms.Label lbl_calleE;
+        private System.Windows.Forms.Label lbl_cpE;
+        private System.Windows.Forms.Label lbl_localidadE;
+        private System.Windows.Forms.Label lbl_provinciaE;
+        private System.Windows.Forms.Label lbl_paisE;
+        private System.Windows.Forms.Label lbl_e_mailE;
+        private System.Windows.Forms.Label lbl_celularE;
+        private System.Windows.Forms.Label lbl_nacE;
+        private System.Windows.Forms.Label lbl_dniE;
+        private System.Windows.Forms.Label lbl_apellidoE;
+        private System.Windows.Forms.Label lbl_nombreE;
+        private System.Windows.Forms.Label lbl_claveE;
+        private System.Windows.Forms.Label lbl_usuarioE;
     }
 }
