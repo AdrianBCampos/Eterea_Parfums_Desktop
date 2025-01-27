@@ -16,10 +16,8 @@ namespace Eterea_Parfums_Desktop
         /// Punto de entrada principal para la aplicación.
         /// </summary>
         public static int debug_mode = 1;
-      
 
         public static Empleado logueado;
-
 
         public static String Ruta_Base;
         public static String Ruta_Web;
