@@ -171,13 +171,11 @@ namespace Eterea_Parfums_Desktop
             }
 
 
-            label4.Hide();
-
 
             id_editar = empleado.id;
 
             txt_usuario.Text = empleado.usuario.ToString();
-            txt_contraseña.Hide();
+           //txt_contraseña.Hide();
             txt_nombre.Text = empleado.nombre.ToString();
             txt_apellido.Text = empleado.apellido.ToString();
             txt_dni.Text = empleado.dni.ToString();
