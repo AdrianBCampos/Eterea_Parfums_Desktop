@@ -20,10 +20,14 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         {
             InitializeComponent();
 
+            // Asocia el evento KeyPress para aceptar solo números
+            txt_buscar_dni.KeyPress += txt_buscar_dni_KeyPress;
+            txt_buscar_dni.TextChanged += txt_buscar_dni_TextChanged;
+
             cargarEmpleados();
         }
 
-        private void cargarEmpleados()
+        private void cargarEmpleados(string filtroDni = "")
         {
             empleados = EmpleadoControlador.obtenerTodos();
 
@@ -33,7 +37,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             dataGridView1.Rows.Clear();
             foreach (Empleado empleado in empleados)
             {
-                if (empleado.activo == 1)
+                if (empleado.activo == 1 && (string.IsNullOrEmpty(filtroDni) || empleado.dni.ToString().Contains(filtroDni)))
                 {
                     int rowIndex = dataGridView1.Rows.Add();
 
@@ -48,18 +52,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
 
                     dataGridView1.Rows[rowIndex].Cells[6].Value = (SucursalControlador.getById(empleado.sucursal_id.id)).nombre;
-
-
-
-
-                    /*if (vendedor.activo.ToString() == "1")
-                    {
-                        dataGridView1.Rows[rowIndex].Cells[7].Value = "Activo";
-                    }
-                    else
-                    {
-                        dataGridView1.Rows[rowIndex].Cells[7].Value = "Inactivo";
-                    }*/
 
 
                     if (empleado.rol.ToString() == "1")
@@ -198,5 +190,22 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                           }
                }
         */
+
+        private void txt_buscar_dni_TextChanged(object sender, EventArgs e)
+        {
+            string filtroDni = txt_buscar_dni.Text.Trim();
+
+            // Actualiza el DataGridView con el filtro
+            cargarEmpleados(filtroDni);
+        }
+
+        private void txt_buscar_dni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir solo dígitos, retroceso y control (como copiar/pegar)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignorar entrada no válida
+            }
+        }
     }
 }
