@@ -63,7 +63,7 @@ namespace Eterea_Parfums_Desktop
             }
 
 
-            DB_Controller.initialize();
+            /*DB_Controller.initialize();
 
             if (connectionIsValid())
             {
@@ -97,6 +97,20 @@ namespace Eterea_Parfums_Desktop
 
                 }
                 return false;
+            }*/
+
+            // Mostrar el formulario de selección de usuario
+            FormSeleccionarUsuario formSeleccionarUsuario = new FormSeleccionarUsuario();
+            if (formSeleccionarUsuario.ShowDialog() == DialogResult.OK)
+            {
+                // Configurar la conexión basada en el usuario seleccionado
+                DB_Controller.ConfigurarConexion(formSeleccionarUsuario.UsuarioSeleccionado);
+
+                // Llamamos a ActualizarEstadoPromociones al inicio del programa
+                PromocionService.ActualizarEstadoPromociones();
+
+                //Application.Run(new FormCrearPromo());
+                Application.Run(new InicioAutoConsultas());
             }
 
         }
