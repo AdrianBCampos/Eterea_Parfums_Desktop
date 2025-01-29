@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -594,9 +595,9 @@ namespace Eterea_Parfums_Desktop
 
 
         private void editarPromo()
-            { 
+        {
             // ID de la promoción que se está editando
-            //int idPromo = id_editar;
+            int idPromo = id_editar;
 
             // Obtener la clave del descuento seleccionada (clave del diccionario)
             var seleccionTipoPromo = (KeyValuePair<int, string>)combo_tipo_promo_edit.SelectedItem;
@@ -617,24 +618,69 @@ namespace Eterea_Parfums_Desktop
             if (resultado == DialogResult.No)
                 return;
 
-            // Conexión a la base de datos
-            using (SqlConnection connection = new SqlConnection(DB_Controller.connectionString))
+            //Se crea el objeto de la promoción a editar
+
+            Promocion promoEditada = new Promocion(id_editar, txt_nomb_promo_edit.Text, dateTime_inicio_promo_edit.Value, dateTime_fin_promo_edit.Value, descuentoClave, activo);
+
+            if (PromoControlador.editarPromo(promoEditada))
             {
-                connection.Open();
-                SqlTransaction transaction = connection.BeginTransaction();
+                this.DialogResult = DialogResult.OK;
+            }
 
-                try
+            PromoControlador.editarPromo(promoEditada);
+            agregarPerfumesAPromocion();
+            limpiarFormulario(); // Limpiar los controles después de crear la promoción*/
+
+
+        }
+
+            /*  try
+            {
+                DB_Controller.connection.Open();
+                SqlDataReader r = cmd.ExecuteReader();
+
+                while (r.Read())
                 {
-                    // 1. Borrar registros de perfumes_en_promo para la promoción actual
-                    string deleteQuery = "DELETE FROM dbo.perfumes_en_promo WHERE promocion_id = @id_editar";
-                    using (SqlCommand deleteCmd = new SqlCommand(deleteQuery, connection, transaction))
-                    {
-                        deleteCmd.Parameters.AddWithValue("@id_editar", id_editar);
-                        deleteCmd.ExecuteNonQuery();
-                    }
+                    list.Add(new Promocion(r.GetInt32(0), r.GetString(1), r.GetDateTime(2), r.GetDateTime(3), r.GetInt32(4), r.GetInt32(5)));
 
-                    // 2. Actualizar los datos de la promoción en dbo.promocion
-                    string updateQuery = @"
+                }
+                r.Close();
+                DB_Controller.connection.Close();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Hay un error en la query: " + e.Message);
+            }
+            return list;
+
+        }*/
+
+            // Conexión a la base de datos
+
+            //eliminarRegistrosPromoPerfumes(int id_promo)
+
+            /* using (SqlConnection connection = new SqlConnection(DB_Controller.connectionString))
+             {
+                 connection.Open();
+                 SqlTransaction transaction = connection.BeginTransaction();
+
+                 try
+                 {
+                     // 1. Borrar registros de perfumes_en_promo para la promoción actual
+                     string deleteQuery = "DELETE FROM dbo.perfumes_en_promo WHERE promocion_id = @id_editar";
+                     using (SqlCommand deleteCmd = new SqlCommand(deleteQuery, connection, transaction))
+                     {
+                         deleteCmd.Parameters.AddWithValue("@id_editar", id_editar);
+                         deleteCmd.ExecuteNonQuery();
+                     }*/
+
+
+
+
+
+
+            /* 2. Actualizar los datos de la promoción en dbo.promocion
+            string updateQuery = @"
                 UPDATE dbo.promocion
                 SET nombre = @nombre,
                     fecha_inicio = @fechaInicio,
@@ -653,26 +699,26 @@ namespace Eterea_Parfums_Desktop
                         updateCmd.ExecuteNonQuery();
                     }
 
-                    // 3. Insertar los perfumes de dataGrid_perfumes_agregados_a_promo_edit en dbo.perfumes_en_promo
-                    string insertQuery = @"
+           // 3. Insertar los perfumes de dataGrid_perfumes_agregados_a_promo_edit en dbo.perfumes_en_promo
+            string insertQuery = @"
                 INSERT INTO dbo.perfumes_en_promo (perfume_id, promocion_id)
                 VALUES (@perfumeId, @promoId)";
-                    using (SqlCommand insertCmd = new SqlCommand(insertQuery, connection, transaction))
+            using (SqlCommand insertCmd = new SqlCommand(insertQuery, connection, transaction))
+            {
+                foreach (DataGridViewRow row in dataGrid_perfumes_agregados_a_promo_edit.Rows)
+                {
+                    if (!row.IsNewRow) // Ignorar filas vacías
                     {
-                        foreach (DataGridViewRow row in dataGrid_perfumes_agregados_a_promo_edit.Rows)
-                        {
-                            if (!row.IsNewRow) // Ignorar filas vacías
-                            {
-                                int perfumeId = Convert.ToInt32(row.Cells[5].Value); // Suponiendo que la columna "Id" contiene el perfume_id
-                                insertCmd.Parameters.Clear();
-                                insertCmd.Parameters.AddWithValue("@perfumeId", perfumeId);
-                                insertCmd.Parameters.AddWithValue("@promoId", id_editar);
-                                insertCmd.ExecuteNonQuery();
-                            }
-                        }
+                        int perfumeId = Convert.ToInt32(row.Cells[5].Value); // Suponiendo que la columna "Id" contiene el perfume_id
+                        insertCmd.Parameters.Clear();
+                        insertCmd.Parameters.AddWithValue("@perfumeId", perfumeId);
+                        insertCmd.Parameters.AddWithValue("@promoId", id_editar);
+                        insertCmd.ExecuteNonQuery();
                     }
-
-                    // Confirmar la transacción
+                }
+            }
+        }
+                    Confirmar la transacción
                     transaction.Commit();
                     MessageBox.Show("Promoción editada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -684,7 +730,36 @@ namespace Eterea_Parfums_Desktop
                     MessageBox.Show($"Error al editar la promoción: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            limpiarFormulario(); // Limpiar los controles después de crear la promoción
+            limpiarFormulario(); // Limpiar los controles después de crear la promoción*/
+
+
+            private void agregarPerfumesAPromocion()
+        {
+            // Crear una lista para almacenar los IDs de los perfumes
+            List<int> perfumeIds = new List<int>();
+
+            // Recorrer las filas del DataGridView para extraer los IDs de perfumes
+            foreach (DataGridViewRow row in dataGrid_perfumes_agregados_a_promo_edit.Rows)
+            {
+                if (!row.IsNewRow) // Ignorar filas vacías
+                {
+                    int perfumeId = Convert.ToInt32(row.Cells[5].Value); // Suponiendo que la columna "Id" contiene el perfume_id
+                    perfumeIds.Add(perfumeId);
+                }
+            }
+
+            // Llamar al método del controlador para insertar los registros
+            try
+            {
+                if (PromoControlador.agregarRegistrosPromoPerfumes(id_editar, perfumeIds))
+                {
+                    MessageBox.Show("Registros de perfumes agregados exitosamente a la promoción.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al agregar los perfumes: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void limpiarFormulario()

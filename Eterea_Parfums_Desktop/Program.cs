@@ -15,7 +15,7 @@ namespace Eterea_Parfums_Desktop
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
-        public static int debug_mode = 1;
+        //public static int debug_mode = 1;
 
         public static Empleado logueado;
 
@@ -29,41 +29,58 @@ namespace Eterea_Parfums_Desktop
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if (entorno == "escuela")
+            // Mostrar el formulario de selección de usuario
+            FormSeleccionarUsuario formSeleccionarUsuario = new FormSeleccionarUsuario();
+            if (formSeleccionarUsuario.ShowDialog() == DialogResult.OK)
             {
-                Ruta_Base = @"C:\Users\Alumno\Desktop\Eterea_Parfums\Eterea_Parfums\Resources\";
-                Ruta_Base = @"C:\Users\Alumno\Desktop\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
-            }
-            
-            else if (entorno == "dami")
-            {
-                Ruta_Base = @"C:\Users\damim\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\"; 
-                Ruta_Web = @"C:\Users\damim\Source\Repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
-            }
-            else if (entorno == "adri")
-            {
-                Ruta_Base = @"C:\Users\intersan\Desktop\TESIS\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
-                Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
-            }
-            else if (entorno == "maxi")
-            {
-                Ruta_Base = @"C:\Users\Maxi\source\repos";
-                Ruta_Base = @"C:\Users\Maxi\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
-            }
-            else if (entorno == "jose")
-            {
-                Ruta_Base = @"C:\Users\josel\source\repos";
-                Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
-            }
-            else if (entorno == "marino")
-            {
-                Ruta_Base = @"C:\Users\intersan\Desktop\Avanzando TP Plataformas\Eterea_Parfums\Eterea_Parfums\Resources\";
-                Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
+                string usuarioSeleccionado = formSeleccionarUsuario.UsuarioSeleccionado;
 
+                // Configurar la conexión a la base de datos con el usuario seleccionado
+                DB_Controller.ConfigurarConexion(usuarioSeleccionado);
+
+                // Configurar rutas según el usuario
+                ConfigurarRutas(usuarioSeleccionado);
+
+                // Iniciar la aplicación principal
+                Application.Run(new InicioAutoConsultas());
             }
+            else
+            {
+                // Si el usuario no selecciona nada y cierra el formulario, salir de la aplicación
+                MessageBox.Show("Debe seleccionar un usuario para continuar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+        }
 
 
-            DB_Controller.initialize();
+        // Método para configurar rutas según el usuario
+        private static void ConfigurarRutas(string usuario)
+            {
+                switch (usuario.ToLower())
+                {
+                    case "escuela":
+                        Ruta_Base = @"C:\Users\Alumno\Desktop\Eterea_Parfums\Eterea_Parfums\Resources\";
+                        Ruta_Web = @"C:\Users\Alumno\Desktop\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
+                        break;
+                    case "dami":
+                        Ruta_Base = @"C:\Users\damim\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                        Ruta_Web = @"C:\Users\damim\Source\Repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                        break;
+                    case "adri":
+                        Ruta_Base = @"C:\Users\intersan\Desktop\TESIS\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                        Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
+                        break;
+                    case "maxi":
+                        Ruta_Base = @"C:\Users\Maxi\source\repos";
+                        Ruta_Web = @"C:\Users\Maxi\source\repos\Eterea_Parfums_Desktop\Resources\";
+                        break;
+                    default:
+                        MessageBox.Show("Usuario no válido, no se configuraron rutas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                }
+            }
+
+            /*DB_Controller.initialize();
 
             if (connectionIsValid())
             {
@@ -97,9 +114,24 @@ namespace Eterea_Parfums_Desktop
 
                 }
                 return false;
-            }
+            }*/
+            /*
+            // Mostrar el formulario de selección de usuario
+            FormSeleccionarUsuario formSeleccionarUsuario = new FormSeleccionarUsuario();
+            if (formSeleccionarUsuario.ShowDialog() == DialogResult.OK)
+            {
+                // Configurar la conexión basada en el usuario seleccionado
+                DB_Controller.ConfigurarConexion(formSeleccionarUsuario.UsuarioSeleccionado);
 
-        }
+                // Llamamos a ActualizarEstadoPromociones al inicio del programa
+                PromocionService.ActualizarEstadoPromociones();
+
+                //Application.Run(new FormCrearPromo());
+                Application.Run(new InicioAutoConsultas());
+            }*/
+
+        
+
 
 
 

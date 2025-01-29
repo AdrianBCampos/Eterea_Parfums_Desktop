@@ -373,47 +373,115 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
         }
 
-
         public static int obtenerIdSucursal(int id_empleado)
         {
-            int idSuc = 0;
+            int idSuc = -1; // Valor predeterminado para sucursales inexistentes
 
             string query = "SELECT sucursal_id FROM dbo.empleado WHERE id = @id";
 
-            using (SqlConnection connection = new SqlConnection(DB_Controller.connectionString))
+            using (SqlCommand cmd = new SqlCommand(query, DB_Controller.connection))
             {
-                using (SqlCommand cmd = new SqlCommand(query, connection))
+                cmd.Parameters.AddWithValue("@id", id_empleado);
+
+                try
                 {
-                    cmd.Parameters.AddWithValue("@id", id_empleado);
+                    // Abrir conexión
+                    DB_Controller.connection.Open();
 
-                    try
+                    // Ejecutar consulta
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        connection.Open();
-                        SqlDataReader reader = cmd.ExecuteReader();
-
-                        if (reader.Read())
+                        if (reader.Read() && !reader.IsDBNull(0))
                         {
-                            // Verificar si el valor no es nulo antes de intentar convertirlo
-                            if (!reader.IsDBNull(0))
-                            {
-                                idSuc = reader.GetInt32(0);
-                            }
-                            else
-                            {
-                                // Manejar el caso en el que el valor sea nulo (por ejemplo, asignar un valor predeterminado)
-                                idSuc = -1; // o cualquier valor que desees
-                            }
+                            idSuc = reader.GetInt32(0); // Leer sucursal_id
                         }
                     }
-                    catch (Exception e)
-                    {
-                        // Manejar la excepción (por ejemplo, log o lanzar una nueva excepción)
-                        throw new Exception("Error al ejecutar la consulta SQL: " + e.Message);
-                    }
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Hay un error en la query: " + e.Message);
+                }
+                finally
+                {
+                    // Asegurar el cierre de la conexión
+                    if (DB_Controller.connection.State == System.Data.ConnectionState.Open)
+                        DB_Controller.connection.Close();
                 }
             }
 
             return idSuc;
         }
+
+
+        /*public static int obtenerIdSucursal(int id_empleado)
+        {
+            int idSuc = 0;
+
+            string query = "SELECT sucursal_id FROM dbo.empleado WHERE id = @id";
+
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+
+            try
+            {
+                DB_Controller.connection.Open();
+                cmd.Parameters.AddWithValue("@id", id_empleado);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    // Verificar si el valor no es nulo antes de intentar convertirlo
+                    if (!reader.IsDBNull(0))
+                    {
+                        idSuc = reader.GetInt32(0);
+                    }
+                    else
+                    {
+                        // Manejar el caso en el que el valor sea nulo (por ejemplo, asignar un valor predeterminado)
+                        idSuc = -1; // o cualquier valor que desees
+                    }
+                }
+                DB_Controller.connection.Close();
+                return idSuc;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Hay un error en la query: " + e.Message);
+            }
+        }*/
+        /*using (SqlConnection connection = new SqlConnection(DB_Controller.connectionString))
+        {
+            using (SqlCommand cmd = new SqlCommand(query, connection))
+            {
+                cmd.Parameters.AddWithValue("@id", id_empleado);
+
+                try
+                {
+                    connection.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        // Verificar si el valor no es nulo antes de intentar convertirlo
+                        if (!reader.IsDBNull(0))
+                        {
+                            idSuc = reader.GetInt32(0);
+                        }
+                        else
+                        {
+                            // Manejar el caso en el que el valor sea nulo (por ejemplo, asignar un valor predeterminado)
+                            idSuc = -1; // o cualquier valor que desees
+                        }
+                    }
+                }
+                catch (Exception e)
+                {
+                    // Manejar la excepción (por ejemplo, log o lanzar una nueva excepción)
+                    throw new Exception("Error al ejecutar la consulta SQL: " + e.Message);
+                }
+            }
+        }
+
+        return idSuc;
+    }*/
     }
 }
