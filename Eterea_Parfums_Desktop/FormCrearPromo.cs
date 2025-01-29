@@ -1,4 +1,5 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
@@ -759,7 +760,7 @@ namespace Eterea_Parfums_Desktop
             };
 
             // Guardar la promoción (esto puede ser en una base de datos, lista, etc.)
-            bool resultado = PromoControlador.crearPromocion(nuevaPromo); // Suponiendo un controlador que maneje las promociones
+            bool resultado = PromoControlador.crearPromocion(nuevaPromo); 
 
             if (resultado)
             {
@@ -769,7 +770,13 @@ namespace Eterea_Parfums_Desktop
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information
                 );
+
+              
+
                 limpiarFormulario(); // Limpiar los controles después de crear la promoción
+
+                this.Close();  // Cerrar la ventana de creación
+
             }
             else
             {
@@ -833,6 +840,8 @@ namespace Eterea_Parfums_Desktop
             {
                 crearPromo();
                 asignarPerfumesAPromo();
+
+                
             }
         }
 

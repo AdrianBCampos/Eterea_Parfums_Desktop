@@ -49,9 +49,12 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     //dataGV_Promos.Rows[rowIndex].Cells[2].Value = promocion.descuento.ToString();
                     int descuento = promocion.descuento; // Obtén el valor del descuento como entero
 
-                    string textoPromocion;
+                    //string textoPromocion;
+                    // Asignar texto basado en el descuento
+                    string textoPromocion = GetTextoPromocion(promocion.descuento);
+                    dataGridViewPromos.Rows[rowIndex].Cells[2].Value = textoPromocion;
 
-                    switch (descuento)
+                   /* switch (descuento)
                     {
                         case 50:
                             textoPromocion = "2 x 1";
@@ -74,7 +77,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     }
 
                     // Asigna el texto al DataGridView
-                    dataGridViewPromos.Rows[rowIndex].Cells[2].Value = textoPromocion;
+                    dataGridViewPromos.Rows[rowIndex].Cells[2].Value = textoPromocion;*/
 
                     if (promocion.activo.ToString() == "1")
                     {
@@ -90,6 +93,28 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 }
             }
         }
+
+        private string GetTextoPromocion(int descuento)
+        {
+            // Devuelve el texto adecuado según el descuento
+            switch (descuento)
+            {
+                case 50:
+                    return "2 x 1";
+                case 25:
+                    return "2da Unidad 50% Dto.";
+                case 35:
+                    return "2da Unidad 70% Dto.";
+                case 40:
+                    return "2da Unidad 80% Dto.";
+                case 10:
+                    return "Descuento especial del 10%";
+                default:
+                    return "Sin promoción";
+            }
+        }
+
+
         private void txt_buscar_nombre_TextChanged(object sender, EventArgs e)
         {
             string filtroNombre = textbox_nombrePromo.Text.Trim();
@@ -103,14 +128,16 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         private void btn_crear_promo_Click(object sender, EventArgs e)
         {
             FormCrearPromo formCrearPromo = new FormCrearPromo();
+  
             DialogResult dr = formCrearPromo.ShowDialog();
 
             if (dr == DialogResult.OK)
             {
                 Trace.WriteLine("OK");
 
-                //ACTUALIZAR LA LISTA
+                //Actualizar la lista
                 cargarPromociones();
+
             }
         }
 

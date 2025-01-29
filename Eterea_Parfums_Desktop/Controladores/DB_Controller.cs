@@ -56,6 +56,12 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             connection = new SqlConnection(connectionString);
 
+            // Mostrar los datos de conexión en la consola
+            Console.WriteLine("=================================");
+            Console.WriteLine($"Usuario seleccionado: {usuario}");
+            Console.WriteLine($"Cadena de conexión: {connectionString}");
+            Console.WriteLine("=================================");
+
         }
     }
 }

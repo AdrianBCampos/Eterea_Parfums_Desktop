@@ -597,7 +597,7 @@ namespace Eterea_Parfums_Desktop
         private void editarPromo()
         {
             // ID de la promoción que se está editando
-            //int idPromo = id_editar;
+            int idPromo = id_editar;
 
             // Obtener la clave del descuento seleccionada (clave del diccionario)
             var seleccionTipoPromo = (KeyValuePair<int, string>)combo_tipo_promo_edit.SelectedItem;
