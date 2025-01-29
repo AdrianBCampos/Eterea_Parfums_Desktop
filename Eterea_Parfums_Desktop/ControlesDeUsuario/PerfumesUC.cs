@@ -20,6 +20,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         public PerfumesUC()
         {
             InitializeComponent();
+            txt_buscar_codigo.MaxLength = 13;
+            txt_buscar_codigo.KeyPress += txt_buscar_codigo_KeyPress;
+            txt_buscar_codigo.TextChanged += txt_buscar_codigo_TextChanged;
             cargarPerfumes();
         }
 
@@ -30,14 +33,14 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             this.Hide();
         }
 
-        private void cargarPerfumes()
+        private void cargarPerfumes(string filtroPerfume = "")
         {
             perfumes = PerfumeControlador.getAll();
 
             dataGridViewPerfumes.Rows.Clear();
             foreach (Perfume perfume in perfumes)
             {
-                if (perfume.activo == 1)
+                if (perfume.activo == 1 && (string.IsNullOrEmpty(filtroPerfume) || perfume.codigo.Contains(filtroPerfume)))
                 {
                     int rowIndex = dataGridViewPerfumes.Rows.Add();
 
@@ -141,6 +144,20 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             }
 
         }
-    
+
+        private void txt_buscar_codigo_TextChanged(object sender, EventArgs e)
+        {
+            string filtroCodigo = txt_buscar_codigo.Text.Trim();
+            cargarPerfumes(filtroCodigo);
+
+        }
+
+        private void txt_buscar_codigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignorar entrada no válida
+            }
+        }
     }
 }
