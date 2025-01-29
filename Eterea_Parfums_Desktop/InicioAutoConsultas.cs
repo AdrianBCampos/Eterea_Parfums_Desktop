@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,7 +52,7 @@ namespace Eterea_Parfums_Desktop
 
             this.KeyPreview = true;
             btn_iniciar_sesion.Visible = false;
-        }        
+        }       
 
         private void InicioAutoConsultas_KeyDown_1(object sender, KeyEventArgs e)
         {
@@ -125,8 +126,9 @@ namespace Eterea_Parfums_Desktop
                     //dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = perfume.sku.ToString();
                     dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = perfume.nombre.ToString();
                     dataGridViewConsultas.Rows[rowIndex].Cells[1].Value = (MarcaControlador.getById(perfume.marca.id)).nombre;
-                    dataGridViewConsultas.Rows[rowIndex].Cells[2].Value = perfume.precio_en_pesos.ToString();
-                    dataGridViewConsultas.Rows[rowIndex].Cells[3].Value = "Ver";
+                    dataGridViewConsultas.Rows[rowIndex].Cells[2].Value = (GeneroControlador.getById(perfume.genero.id)).genero;
+                    dataGridViewConsultas.Rows[rowIndex].Cells[3].Value = perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
+                    dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = "Ver";
                 }
             }
         }
@@ -208,8 +210,6 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
-
-
         private void filtrar()
         {
             Perfumes_Filtrado = Perfumes_Completo;
@@ -231,8 +231,6 @@ namespace Eterea_Parfums_Desktop
                 //Perfumes_Filtrado = PerfumeController.filtrarPorNombre(filtro.nombre);
             }
 
-
-
             total = Perfumes_Filtrado.Count;
             last_pag = (int)Math.Ceiling((double)total / paginador);
             current = 0;
@@ -245,7 +243,7 @@ namespace Eterea_Parfums_Desktop
         {
             var senderGrid = (DataGridView)sender;
 
-            if (e.RowIndex >= 0 && e.ColumnIndex == 3)
+            if (e.RowIndex >= 0 && e.ColumnIndex == 4)
             {
                 int rowIndex = e.RowIndex;
                 Perfume perfumeSeleccionado = Perfumes_Paginados[rowIndex];
@@ -253,9 +251,35 @@ namespace Eterea_Parfums_Desktop
                 VerDetallePerfume detallesForm = new VerDetallePerfume(perfumeSeleccionado);
                 detallesForm.Show();
             }
+            dataGridViewConsultas.CellPainting += dataGridView1_CellPainting;
         }
 
-      
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0 && dataGridViewConsultas.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                e.Handled = true;
+                e.PaintBackground(e.CellBounds, true);
+
+                // Crear un rectángulo para el botón
+                Rectangle buttonRect = e.CellBounds;
+                buttonRect.Inflate(-2, -2); // Reducir tamaño para dar efecto de borde
+
+                // Definir colores personalizados
+                Color buttonColor = Color.FromArgb(228, 137, 164); // Color de fondo del botón
+                Color textColor = Color.FromArgb(250, 236, 239); // Color del texto
+
+                using (SolidBrush brush = new SolidBrush(buttonColor))
+                {
+                    e.Graphics.FillRectangle(brush, buttonRect);
+                }
+
+                // Dibujar el texto del botón
+                TextRenderer.DrawText(e.Graphics, (string)e.Value, e.CellStyle.Font, buttonRect, textColor,
+                                      TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+            }
+        }
+
         private void btn_iniciar_sesion_Click(object sender, EventArgs e)
         {
             Login login = new Login();  
