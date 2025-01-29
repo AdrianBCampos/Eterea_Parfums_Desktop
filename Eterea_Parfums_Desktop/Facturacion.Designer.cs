@@ -47,7 +47,7 @@
             this.btn_buscar = new System.Windows.Forms.Button();
             this.btn_consultas = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.dataGridViewFactura = new System.Windows.Forms.DataGridView();
+            this.Factura = new System.Windows.Forms.DataGridView();
             this.Id_Perfume = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sumar1 = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -63,10 +63,10 @@
             this.txt_subtotal = new System.Windows.Forms.TextBox();
             this.lbl_subtotal = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txt_recargo = new System.Windows.Forms.TextBox();
+            this.txt_monto_recargo = new System.Windows.Forms.TextBox();
             this.lbl_recargo = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txt_descuento = new System.Windows.Forms.TextBox();
+            this.txt_monto_descuento = new System.Windows.Forms.TextBox();
             this.lbl_descuento_total = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_iva = new System.Windows.Forms.TextBox();
@@ -75,8 +75,8 @@
             this.txt_total = new System.Windows.Forms.TextBox();
             this.lbl_total = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.txt_recargo_pocentaje = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.txt_recargo = new System.Windows.Forms.TextBox();
+            this.txt_desc = new System.Windows.Forms.Label();
             this.txt_descuento_porcentaje = new System.Windows.Forms.TextBox();
             this.combo_forma_pago = new System.Windows.Forms.ComboBox();
             this.lbl_forma_pago = new System.Windows.Forms.Label();
@@ -98,7 +98,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFactura)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Factura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -265,19 +265,19 @@
             this.pictureBox2.TabIndex = 295;
             this.pictureBox2.TabStop = false;
             // 
-            // dataGridViewFactura
+            // Factura
             // 
-            this.dataGridViewFactura.AllowUserToAddRows = false;
+            this.Factura.AllowUserToAddRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridViewFactura.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewFactura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewFactura.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            this.dataGridViewFactura.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewFactura.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridViewFactura.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.Factura.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.Factura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.Factura.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            this.Factura.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Factura.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.Factura.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -285,9 +285,9 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewFactura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewFactura.ColumnHeadersHeight = 24;
-            this.dataGridViewFactura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Factura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.Factura.ColumnHeadersHeight = 24;
+            this.Factura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id_Perfume,
             this.Cantidad,
             this.sumar1,
@@ -303,11 +303,11 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewFactura.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewFactura.EnableHeadersVisualStyles = false;
-            this.dataGridViewFactura.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.dataGridViewFactura.Location = new System.Drawing.Point(17, 212);
-            this.dataGridViewFactura.Name = "dataGridViewFactura";
+            this.Factura.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Factura.EnableHeadersVisualStyles = false;
+            this.Factura.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
+            this.Factura.Location = new System.Drawing.Point(17, 212);
+            this.Factura.Name = "Factura";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -315,16 +315,17 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewFactura.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewFactura.RowHeadersVisible = false;
-            this.dataGridViewFactura.RowHeadersWidth = 51;
+            this.Factura.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.Factura.RowHeadersVisible = false;
+            this.Factura.RowHeadersWidth = 51;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridViewFactura.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewFactura.Size = new System.Drawing.Size(712, 251);
-            this.dataGridViewFactura.TabIndex = 296;
+            this.Factura.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.Factura.Size = new System.Drawing.Size(712, 251);
+            this.Factura.TabIndex = 296;
+            this.Factura.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewFactura_CellContentClick);
             // 
             // Id_Perfume
             // 
@@ -474,14 +475,14 @@
             this.label1.TabIndex = 311;
             this.label1.Text = "$";
             // 
-            // txt_recargo
+            // txt_monto_recargo
             // 
-            this.txt_recargo.BackColor = System.Drawing.Color.White;
-            this.txt_recargo.Location = new System.Drawing.Point(514, 531);
-            this.txt_recargo.Name = "txt_recargo";
-            this.txt_recargo.Size = new System.Drawing.Size(148, 20);
-            this.txt_recargo.TabIndex = 310;
-            this.txt_recargo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_monto_recargo.BackColor = System.Drawing.Color.White;
+            this.txt_monto_recargo.Location = new System.Drawing.Point(514, 531);
+            this.txt_monto_recargo.Name = "txt_monto_recargo";
+            this.txt_monto_recargo.Size = new System.Drawing.Size(148, 20);
+            this.txt_monto_recargo.TabIndex = 310;
+            this.txt_monto_recargo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_recargo
             // 
@@ -505,14 +506,14 @@
             this.label4.TabIndex = 314;
             this.label4.Text = "$";
             // 
-            // txt_descuento
+            // txt_monto_descuento
             // 
-            this.txt_descuento.BackColor = System.Drawing.Color.White;
-            this.txt_descuento.Location = new System.Drawing.Point(514, 572);
-            this.txt_descuento.Name = "txt_descuento";
-            this.txt_descuento.Size = new System.Drawing.Size(148, 20);
-            this.txt_descuento.TabIndex = 313;
-            this.txt_descuento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_monto_descuento.BackColor = System.Drawing.Color.White;
+            this.txt_monto_descuento.Location = new System.Drawing.Point(514, 572);
+            this.txt_monto_descuento.Name = "txt_monto_descuento";
+            this.txt_monto_descuento.Size = new System.Drawing.Size(148, 20);
+            this.txt_monto_descuento.TabIndex = 313;
+            this.txt_monto_descuento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_descuento_total
             // 
@@ -598,25 +599,25 @@
             this.label10.TabIndex = 322;
             this.label10.Text = "%";
             // 
-            // txt_recargo_pocentaje
+            // txt_recargo
             // 
-            this.txt_recargo_pocentaje.BackColor = System.Drawing.Color.White;
-            this.txt_recargo_pocentaje.Location = new System.Drawing.Point(679, 531);
-            this.txt_recargo_pocentaje.Name = "txt_recargo_pocentaje";
-            this.txt_recargo_pocentaje.Size = new System.Drawing.Size(51, 20);
-            this.txt_recargo_pocentaje.TabIndex = 321;
-            this.txt_recargo_pocentaje.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_recargo.BackColor = System.Drawing.Color.White;
+            this.txt_recargo.Location = new System.Drawing.Point(679, 531);
+            this.txt_recargo.Name = "txt_recargo";
+            this.txt_recargo.Size = new System.Drawing.Size(51, 20);
+            this.txt_recargo.TabIndex = 321;
+            this.txt_recargo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label11
+            // txt_desc
             // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.White;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(707, 574);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(20, 17);
-            this.label11.TabIndex = 324;
-            this.label11.Text = "%";
+            this.txt_desc.AutoSize = true;
+            this.txt_desc.BackColor = System.Drawing.Color.White;
+            this.txt_desc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_desc.Location = new System.Drawing.Point(707, 574);
+            this.txt_desc.Name = "txt_desc";
+            this.txt_desc.Size = new System.Drawing.Size(20, 17);
+            this.txt_desc.TabIndex = 324;
+            this.txt_desc.Text = "%";
             // 
             // txt_descuento_porcentaje
             // 
@@ -836,10 +837,10 @@
             this.Controls.Add(this.combo_cuotas);
             this.Controls.Add(this.lbl_cuotas);
             this.Controls.Add(this.lbl_forma_pago);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.txt_desc);
             this.Controls.Add(this.txt_descuento_porcentaje);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.txt_recargo_pocentaje);
+            this.Controls.Add(this.txt_recargo);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txt_total);
             this.Controls.Add(this.lbl_total);
@@ -847,10 +848,10 @@
             this.Controls.Add(this.txt_iva);
             this.Controls.Add(this.lbl_iva);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txt_descuento);
+            this.Controls.Add(this.txt_monto_descuento);
             this.Controls.Add(this.lbl_descuento_total);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txt_recargo);
+            this.Controls.Add(this.txt_monto_recargo);
             this.Controls.Add(this.lbl_recargo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txt_subtotal);
@@ -858,7 +859,7 @@
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.dataGridViewFactura);
+            this.Controls.Add(this.Factura);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btn_consultas);
             this.Controls.Add(this.btn_buscar);
@@ -881,7 +882,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFactura)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Factura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
@@ -907,7 +908,7 @@
         private System.Windows.Forms.Button btn_buscar;
         private System.Windows.Forms.Button btn_consultas;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.DataGridView dataGridViewFactura;
+        private System.Windows.Forms.DataGridView Factura;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id_Perfume;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewButtonColumn sumar1;
@@ -923,10 +924,10 @@
         private System.Windows.Forms.TextBox txt_subtotal;
         private System.Windows.Forms.Label lbl_subtotal;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txt_recargo;
+        private System.Windows.Forms.TextBox txt_monto_recargo;
         private System.Windows.Forms.Label lbl_recargo;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txt_descuento;
+        private System.Windows.Forms.TextBox txt_monto_descuento;
         private System.Windows.Forms.Label lbl_descuento_total;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txt_iva;
@@ -935,8 +936,8 @@
         private System.Windows.Forms.TextBox txt_total;
         private System.Windows.Forms.Label lbl_total;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txt_recargo_pocentaje;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txt_recargo;
+        private System.Windows.Forms.Label txt_desc;
         private System.Windows.Forms.TextBox txt_descuento_porcentaje;
         private System.Windows.Forms.ComboBox combo_forma_pago;
         private System.Windows.Forms.Label lbl_forma_pago;

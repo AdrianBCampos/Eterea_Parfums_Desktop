@@ -23,7 +23,20 @@ namespace Eterea_Parfums_Desktop
             img_logo.Image = Image.FromFile(rutaCompletaImagen);           
 
             txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
-            
+
+            combo_forma_pago.Items.Clear();
+            combo_forma_pago.Items.Add("Efectivo");
+            combo_forma_pago.Items.Add("Visa Débito");
+            combo_forma_pago.Items.Add("Visa Crédito");
+            combo_forma_pago.Items.Add("Mastercard");
+            combo_forma_pago.Items.Add("Amex");
+            combo_forma_pago.Items.Add("Mercado Pago");
+            combo_forma_pago.SelectedIndex = 0;
+
+            //txt_recargo.Hide();
+
+            txt_total.Text = "0,00";
+
             lbl_dniE.Hide();
         }
 
@@ -89,10 +102,148 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_consultas_Click(object sender, EventArgs e)
         {
-            ConsultasPerfumeEmpleado consultasPerfumeEmpleado = new ConsultasPerfumeEmpleado();
+            ConsultasPerfumeEmpleado consultasPerfumeEmpleado = new ConsultasPerfumeEmpleado(this);
             consultasPerfumeEmpleado.Show();
             this.Hide();
         }
 
+        private void dataGridViewFactura_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == 7)
+            {
+                Factura.Rows.RemoveAt(e.RowIndex);
+                totalFactura();
+                CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text));
+
+                desc();
+                sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
+
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == 2)
+            {
+                int cant = int.Parse(Factura.Rows[e.RowIndex].Cells[1].Value.ToString());
+                Factura.Rows[e.RowIndex].Cells[1].Value = cant + 1;
+
+                int rowIndex = e.RowIndex;
+
+                int valorMultiplicador = Convert.ToInt32(Factura.Rows[rowIndex].Cells[1].Value);
+                double precio = Convert.ToDouble(Factura.Rows[rowIndex].Cells[5].Value);
+
+
+                Factura.Rows[e.RowIndex].Cells[6].Value = (precio * valorMultiplicador).ToString();
+                totalFactura();
+                CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text));
+
+                desc();
+                sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
+
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == 3)
+            {
+                int cant = int.Parse(Factura.Rows[e.RowIndex].Cells[1].Value.ToString());
+                if (int.Parse(Factura.Rows[e.RowIndex].Cells[1].Value.ToString()) > 1)
+                {
+                    Factura.Rows[e.RowIndex].Cells[1].Value = cant - 1;
+
+                    int rowIndex = e.RowIndex;
+
+                    int valorMultiplicador = Convert.ToInt32(Factura.Rows[rowIndex].Cells[1].Value);
+                    double precio = Convert.ToDouble(Factura.Rows[rowIndex].Cells[5].Value);
+
+                    Factura.Rows[e.RowIndex].Cells[6].Value = (precio * valorMultiplicador).ToString();
+                    totalFactura();
+                    CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text));
+
+                    desc();
+                    sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
+
+                }
+                else
+                {
+                    Factura.Rows.RemoveAt(e.RowIndex);
+                    totalFactura();
+                    CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text));
+
+                    desc();
+                    sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
+
+
+                }
+
+            }
+        }
+        private void totalFactura()
+        {
+            double sumaPrecios = 0; // Usar decimal para los precios
+
+            // Iterar a través de las filas del DataGridView
+            foreach (DataGridViewRow fila in Factura.Rows)
+            {
+                if (fila.Cells[4].Value != null)
+                {
+                    double precioFila = 0;
+                    // Comprobar si el valor se puede convertir a decimal
+                    if (double.TryParse(fila.Cells[6].Value.ToString(), out precioFila))
+                    {
+                        sumaPrecios += precioFila; // Sumar el valor al total
+                    }
+                }
+            }
+            // Mostrar la suma en un TextBox
+            txt_subtotal.Text = sumaPrecios.ToString("N2");
+
+        }
+
+        private void CalcularImporteRecargo(float recargo, float subtotal)
+        {
+            txt_monto_recargo.Text = (subtotal * recargo / 100).ToString("N2");
+        }
+
+        private void desc()
+        {
+            string descuentoStr = combo_descuento.SelectedItem.ToString();
+
+            if (int.TryParse(descuentoStr, out int descuento))
+            {
+                txt_desc.Text = descuento.ToString(); // Mostrar el descuento en txt_desc
+
+                if (float.TryParse(txt_subtotal.Text, out float subtotal))
+                {
+                    CalcularDescuento(descuento, subtotal);
+                }
+                else
+                {
+                    // Si no se puede convertir a float, simplemente establecer el monto de descuento en cero
+                    txt_monto_descuento.Text = "0,00";
+                }
+            }
+            else
+            {
+                MessageBox.Show("El valor de descuento no es válido.");
+                // Puedes manejar este caso de acuerdo a tus necesidades
+            }
+        }
+
+        private void CalcularDescuento(int desc, float subtotal)
+        {
+            if (subtotal > 0)
+            {
+                txt_monto_descuento.Text = (desc * subtotal / 100).ToString("N2");
+            }
+            else
+            {
+                txt_monto_descuento.Text = "0,00";
+            }
+        }
+
+        private void sumaFinal(float subtotal, float recargo, float descuento)
+        {
+            txt_total.Text = (subtotal + recargo - descuento).ToString("N2");
+
+        }
+        public DataGridView GetFacturaDataGrid()
+        {
+            return Factura;
+        }
     }
 }
