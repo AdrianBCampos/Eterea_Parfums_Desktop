@@ -13,7 +13,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         public static NotaConTipoDeNota getByID(int id)
         {
-            NotaConTipoDeNota nota_con_tipo_de_nota = null;
+            NotaConTipoDeNota nota_con_tipo_de_nota = new NotaConTipoDeNota();
             string query = "SELECT * FROM dbo.nota_con_tipo_de_nota WHERE id = @id";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@id", id);
@@ -25,7 +25,9 @@ namespace Eterea_Parfums_Desktop.Controladores
                 {
                     Nota nota = new Nota(r.GetInt32(1), null);
                     TipoDeNota tipo_de_nota = new TipoDeNota(r.GetInt32(2), null);
-                    nota_con_tipo_de_nota = new NotaConTipoDeNota(r.GetInt32(0), nota, tipo_de_nota);
+                    nota_con_tipo_de_nota.id = r.GetInt32(0);
+                    nota_con_tipo_de_nota.nota = nota;
+                    nota_con_tipo_de_nota.tipoDeNota = tipo_de_nota;
                 }
                 r.Close();
                 DB_Controller.connection.Close();
@@ -61,7 +63,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         internal static NotaConTipoDeNota getByNotaAndTipoDeNota(NotaConTipoDeNota notaConTipoDeNota)
         {
 
-            NotaConTipoDeNota nota_con_tipo_de_nota = null;
+            NotaConTipoDeNota nota_con_tipo_de_nota = new NotaConTipoDeNota();
             string query = "SELECT * FROM dbo.nota_con_tipo_de_nota WHERE nota_id = @nota_id AND tipo_de_nota_id = @tipo_de_nota_id";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@nota_id", notaConTipoDeNota.nota.id);
@@ -72,7 +74,9 @@ namespace Eterea_Parfums_Desktop.Controladores
                 SqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
-                    nota_con_tipo_de_nota = new NotaConTipoDeNota(r.GetInt32(0), notaConTipoDeNota.nota, notaConTipoDeNota.tipoDeNota);
+                    nota_con_tipo_de_nota.id = r.GetInt32(0);
+                    nota_con_tipo_de_nota.nota = notaConTipoDeNota.nota;
+                    nota_con_tipo_de_nota.tipoDeNota = notaConTipoDeNota.tipoDeNota;
                 }
                 r.Close();
                 DB_Controller.connection.Close();
