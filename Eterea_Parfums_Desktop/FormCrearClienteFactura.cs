@@ -185,23 +185,6 @@ namespace Eterea_Parfums_Desktop
             }
 
 
-
-
-
-
-
-            // if (combo_activo.SelectedItem == null || string.IsNullOrEmpty(combo_activo.Text))
-            //{
-            //errorMsg += "Debes indicar si el producto ingresa como activo o no" + Environment.NewLine;
-            //lbl_error_activo.Text = "Debes indicar si el producto ingresa como activo o no";
-            //lbl_error_activo.Show();
-            //}
-            //else
-            //{
-            //lbl_error_activo.Visible = false;
-            //}
-
-
             if (string.IsNullOrEmpty(errorMsg))
             {
                 lbl_nombreE.Visible = false;
