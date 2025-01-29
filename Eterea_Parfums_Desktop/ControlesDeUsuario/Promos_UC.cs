@@ -23,12 +23,12 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             cargarPromociones();
         }
 
-        public void recargarPromociones()
+        /*public void recargarPromociones()
         {
             // Código para volver a cargar el DataGridView con las promociones actualizadas
             var promociones = PromoControlador.obtenerTodos();
             dataGridViewPromos.DataSource = promociones;
-        }
+        }*/
 
         private void cargarPromociones(string filtroNombre = "")
         {
@@ -127,9 +127,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void btn_crear_promo_Click(object sender, EventArgs e)
         {
-            FormCrearPromo formCrearPromo = new FormCrearPromo();
-  
-            DialogResult dr = formCrearPromo.ShowDialog();
+            FormCrearPromo crearPromo = new FormCrearPromo();
+
+            DialogResult dr = crearPromo.ShowDialog();
 
             if (dr == DialogResult.OK)
             {

@@ -167,6 +167,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             {
                 throw new Exception("Hay un error en la query: " + e.Message);
             }
+
             return list;
 
         }

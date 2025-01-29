@@ -730,7 +730,7 @@ namespace Eterea_Parfums_Desktop
         private void crearPromo()
         {
             // Validar los datos ingresados
-            if (!validarPromo(out string errorMsg))
+          /*  if (!validarPromo(out string errorMsg))
             {
                 MessageBox.Show(
                     "No se pudo crear la promoción debido a los siguientes errores:\n" + errorMsg,
@@ -739,7 +739,7 @@ namespace Eterea_Parfums_Desktop
                     MessageBoxIcon.Error
                 );
                 return;
-            }
+            }*/
 
             // Obtener los datos de los controles
             KeyValuePair<int, string> tipoPromo = (KeyValuePair<int, string>)combo_tipo_promo.SelectedItem;
@@ -773,7 +773,7 @@ namespace Eterea_Parfums_Desktop
 
               
 
-                limpiarFormulario(); // Limpiar los controles después de crear la promoción
+                //limpiarFormulario(); // Limpiar los controles después de crear la promoción
 
                 this.Close();  // Cerrar la ventana de creación
 
@@ -835,14 +835,16 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_crear_promo_Click(object sender, EventArgs e)
         {
-            bool promoValidada = validarPromo(out string errorMsg);
+
+
+           /* bool promoValidada = validarPromo(out string errorMsg);
             if (promoValidada)
             {
                 crearPromo();
                 asignarPerfumesAPromo();
 
                 
-            }
+            }*/
         }
 
 

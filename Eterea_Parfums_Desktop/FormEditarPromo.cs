@@ -18,6 +18,9 @@ namespace Eterea_Parfums_Desktop
 {
     public partial class FormEditarPromo : Form
     {
+
+        //private DateTime fechaInicioOriginal;
+
         int id_editar;
 
         Dictionary<int, string> textosDescuento = new Dictionary<int, string>
@@ -48,6 +51,9 @@ namespace Eterea_Parfums_Desktop
         public FormEditarPromo(Promocion promo)
         {
             InitializeComponent();
+
+            // Guardar la fecha original para comparaciones
+            //fechaInicioOriginal = promo.fecha_inicio;
 
             // Ocultar etiquetas de error
             lbl_error_tipo_promo_edit.Visible = false;
@@ -125,8 +131,55 @@ namespace Eterea_Parfums_Desktop
 
             // Asignar los valores de la promoción a los controles del formulario
             txt_nomb_promo_edit.Text = promo.nombre;
+
+            // Almacenar temporalmente los valores de la BD
+            DateTime fechaInicioBD = promo.fecha_inicio;
+            DateTime fechaFinBD = promo.fecha_fin;
+
+            // Primero, permitir cualquier fecha (evita restricciones previas)
+            dateTime_inicio_promo_edit.MinDate = DateTimePicker.MinimumDateTime;
+            dateTime_fin_promo_edit.MinDate = DateTimePicker.MinimumDateTime;
+
+            // Asignar las fechas recuperadas de la BD
+            dateTime_inicio_promo_edit.Value = fechaInicioBD;
+            dateTime_fin_promo_edit.Value = fechaFinBD;
+
+           
+
+
+
+            /*
+
+            // Permitir cualquier fecha anterior a hoy
+            dateTime_inicio_promo_edit.MinDate = DateTimePicker.MinimumDateTime;
             dateTime_inicio_promo_edit.Value = promo.fecha_inicio;
+
+            // Después de haber asignado la fecha, establecemos MinDate para futuras modificaciones
+            dateTime_inicio_promo_edit.MinDate = DateTime.Today;
+
+
+            //dateTime_inicio_promo_edit.Value = promo.fecha_inicio;
+            //dateTime_inicio_promo_edit.MinDate = DateTime.Today; // Restringe cambios futuros
+
+
+            // Primero, establece MinDate al valor más bajo posible antes de asignar el valor
+            dateTime_fin_promo_edit.MinDate = DateTimePicker.MinimumDateTime;
             dateTime_fin_promo_edit.Value = promo.fecha_fin;
+
+            // Luego, si deseas restringir la edición futura, lo configuras después de asignar el valor
+            dateTime_fin_promo_edit.MinDate = dateTime_inicio_promo_edit.Value;
+
+            */
+            //dateTime_fin_promo_edit.Value = promo.fecha_fin;
+
+            /*
+            // Permitir todas las fechas al cargar el formulario
+            dateTime_inicio_promo_edit.MinDate = DateTimePicker.MinimumDateTime;
+            dateTime_fin_promo_edit.MinDate = DateTimePicker.MinimumDateTime;
+
+            // Asociar el evento
+            dateTime_inicio_promo_edit.ValueChanged += dateTime_inicio_promo_ValueChanged;
+            */
 
             // Establecer si la promoción está activa
             if (promo.activo == 1)
@@ -220,9 +273,15 @@ namespace Eterea_Parfums_Desktop
 
 
 
-
+        
         private void dateTime_inicio_promo_ValueChanged(object sender, EventArgs e)
         {
+            /*// Solo aplicar MinDate si la fecha ha sido modificada manualmente
+            if (dateTime_inicio_promo_edit.Value != fechaInicioOriginal)
+            {
+                dateTime_inicio_promo_edit.MinDate = DateTime.Today;
+            }*/
+            
             // Establece el formato estándar para mostrar la fecha
             dateTime_inicio_promo_edit.Format = DateTimePickerFormat.Short;
 
