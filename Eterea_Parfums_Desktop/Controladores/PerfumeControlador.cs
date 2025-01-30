@@ -335,5 +335,53 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
             return list;
         }
+
+        public static Perfume getByCodigo(string codigo)
+        {
+            Perfume perfume = new Perfume();
+            string query = "select * from dbo.perfume where codigo = @codigo;";
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+            cmd.Parameters.AddWithValue("@codigo", codigo);
+            try
+            {
+                DB_Controller.connection.Open();
+                SqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    Marca marca = new Marca(r.GetInt32(2), null);
+                    TipoDePerfume tipo_de_perfume = new TipoDePerfume(r.GetInt32(4), null);
+                    Genero genero = new Genero(r.GetInt32(5), null);
+                    Pais pais = new Pais(r.GetInt32(7), null);
+                    perfume.id = r.GetInt32(0);
+                    perfume.codigo = r.GetString(1);
+                    perfume.marca = marca;
+                    perfume.nombre = r.GetString(3);
+                    perfume.tipo_de_perfume = tipo_de_perfume;
+                    perfume.genero = genero;
+                    perfume.presentacion_ml = r.GetInt32(6);
+                    perfume.pais = pais;
+                    perfume.spray = r.GetInt32(8);
+                    perfume.recargable = r.GetInt32(9);
+                    perfume.descripcion = r.GetString(10);
+                    perfume.anio_de_lanzamiento = r.GetInt32(11);
+                    perfume.precio_en_pesos = r.GetDouble(12);
+                    perfume.activo = r.GetInt32(13);
+                    perfume.imagen1 = r.GetString(14);
+                    perfume.imagen2 = r.GetString(15);
+                }
+                r.Close();
+
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception("Hay un error en la query: " + e.Message);
+            }
+            finally
+            {
+                DB_Controller.connection.Close();
+            }
+            return perfume;
+        }
     }
 }
