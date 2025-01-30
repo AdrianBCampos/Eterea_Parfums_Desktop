@@ -47,6 +47,44 @@ namespace Eterea_Parfums_Desktop
             return perfume.nombre != null;
         }
 
+        private bool Validar_Datos_Stock()
+        {
+            string mensaje = "";
+            if (string.IsNullOrEmpty(txt_codigo_producto.Text))
+            {
+                mensaje += "Por favor, ingrese un código de producto.";
+            }
+            else if (txt_codigo_producto.Text.Length != 13)
+            {
+                mensaje += "\nCódigo ingresado es inexistente.";
+            }
+            if (string.IsNullOrEmpty(txt_cantidad_producto.Text))
+            {
+                mensaje += "\nPor favor, ingrese cantidad de producto.";
+            }
+            else if (int.Parse(txt_cantidad_producto.Text) < 0)
+            {
+                mensaje += "\nPor favor, ingrese una cantidad valida.";
+            }
+
+            if (!string.IsNullOrEmpty(mensaje))
+            {
+                MessageBox.Show(mensaje);
+                // Limpiar los campos
+                SetearDatos();
+            }
+
+            return string.IsNullOrEmpty(mensaje);
+        }
+
+        private void SetearDatos()
+        {
+            txt_codigo_producto.Clear(); // Borra el texto si el código no existe
+            txt_datos_producto.Text = ""; // Limpia el campo de datos del producto
+            txt_cantidad_producto.Text = "";
+            perfume = null;
+        }
+
 
         private void txt_codigo_producto_TextChanged(object sender, EventArgs e)
         {
@@ -55,10 +93,8 @@ namespace Eterea_Parfums_Desktop
                 if (!validarSiExisteCodigoPerfume(txt_codigo_producto.Text.Trim()))
                 {
                     MessageBox.Show("Código inexistente, intente nuevamente.");
-                    txt_codigo_producto.Clear(); // Borra el texto si el código no existe
-                    txt_datos_producto.Text = ""; // Limpia el campo de datos del producto
-                    txt_cantidad_producto.Text = "";
-                   
+                    SetearDatos();
+
                 }
                 else
                 {
@@ -81,23 +117,8 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_confirmar_Click(object sender, EventArgs e)
         {
-            string mensaje = "";
-            if (string.IsNullOrEmpty(txt_codigo_producto.Text))
-            {
-                mensaje += "Por favor, ingrese un código de producto.";
-            } else if (txt_codigo_producto.Text.Length != 13)
-            {
-                mensaje += "\nCódigo inexistente.";
-            }
-            if (string.IsNullOrEmpty(txt_cantidad_producto.Text))
-            {
-                mensaje += "\nPor favor, ingrese cantidad de producto.";
-            }else if (int.Parse(txt_cantidad_producto.Text) < 0)
-            {
-                mensaje += "\nPor favor, ingrese una cantidad valida.";
-            }
-
-            if (string.IsNullOrEmpty(mensaje))
+            
+            if (Validar_Datos_Stock())
             {
                 int cantidad = int.Parse(txt_cantidad_producto.Text);
                 if (StockControlador.getStock(perfume.id, idSucursal) != -1)
@@ -110,16 +131,8 @@ namespace Eterea_Parfums_Desktop
                     StockControlador.insertStock(perfume.id, idSucursal, cantidad);
                 }
                 MessageBox.Show("Se ha ingresado con éxito.");
-                this.Close();
-                Stock stock = new Stock(idSucursal);
-                stock.Show();
-            }
-            else
-            {
-                MessageBox.Show(mensaje);
-                txt_codigo_producto.Clear(); // Borra el texto si el código no existe
-                txt_datos_producto.Text = ""; // Limpia el campo de datos del producto
-                txt_cantidad_producto.Text = "";
+                SetearDatos();
+                
             }
         }
 
