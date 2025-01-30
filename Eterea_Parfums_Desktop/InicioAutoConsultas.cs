@@ -52,8 +52,8 @@ namespace Eterea_Parfums_Desktop
 
             this.KeyPreview = true;
             btn_iniciar_sesion.Visible = false;
-        }       
-
+        }
+       
         private void InicioAutoConsultas_KeyDown_1(object sender, KeyEventArgs e)
         {
             // Detectar si se presionan las teclas Ctrl + L
@@ -299,6 +299,6 @@ namespace Eterea_Parfums_Desktop
             this.Hide();
         }
 
-       
+        
     }
 }

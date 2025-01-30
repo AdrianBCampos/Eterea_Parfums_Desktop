@@ -58,7 +58,7 @@ namespace Eterea_Parfums_Desktop
                 }
                 else
                 {
-                    lbl_error_auth.Text = "El usuario o la contraseña están mal ingresados. Vuelva a intentar.";
+                    lbl_error_auth.Text = "El usuario o la contraseña están mal ingresados.";
                     lbl_error_auth.Visible = true;
                 }
             }
