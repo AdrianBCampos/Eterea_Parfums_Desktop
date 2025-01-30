@@ -35,8 +35,8 @@ namespace Eterea_Parfums_Desktop
 
         private void button2_Click(object sender, EventArgs e)
         {
-            InicioAdministrador InicioAdministrador = new InicioAdministrador();
-            InicioAdministrador.Show();
+            //InicioAdministrador InicioAdministrador = new InicioAdministrador();
+            //InicioAdministrador.Show();
             this.Close();
         }
 
@@ -48,6 +48,12 @@ namespace Eterea_Parfums_Desktop
             Stock stock = new Stock(idSucursal);
             stock.Show();
             this.Hide();
+        }
+
+        private void NumeroDeSucursal_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            InicioAdministrador inicioAdministrador = new InicioAdministrador();
+            inicioAdministrador.Show();
         }
     }
 }

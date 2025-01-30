@@ -35,8 +35,8 @@ namespace Eterea_Parfums_Desktop
 
         private void button2_Click(object sender, EventArgs e)
         {
-            NumeroDeSucursal numeroDeSucursal = new NumeroDeSucursal();
-            numeroDeSucursal.Show();
+            //InicioAdministrador inicioAdministrador = new InicioAdministrador();
+            //inicioAdministrador.Show();
             this.Close();
         }
 
@@ -110,6 +110,9 @@ namespace Eterea_Parfums_Desktop
                     StockControlador.insertStock(perfume.id, idSucursal, cantidad);
                 }
                 MessageBox.Show("Se ha ingresado con éxito.");
+                this.Close();
+                Stock stock = new Stock(idSucursal);
+                stock.Show();
             }
             else
             {
@@ -117,6 +120,16 @@ namespace Eterea_Parfums_Desktop
                 txt_codigo_producto.Clear(); // Borra el texto si el código no existe
                 txt_datos_producto.Text = ""; // Limpia el campo de datos del producto
                 txt_cantidad_producto.Text = "";
+            }
+        }
+
+        private void Stock_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Verifica que la razón de cierre no sea por un cierre forzado de la aplicación
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                InicioAdministrador inicioAdministrador = new InicioAdministrador();
+                inicioAdministrador.Show();
             }
         }
     }
