@@ -31,6 +31,8 @@ namespace Eterea_Parfums_Desktop
             txt_ml.Text = perfumeSeleccionado.presentacion_ml.ToString() + " ml";
             txt_tipo.Text = TipoDePerfumeControlador.getById(perfumeSeleccionado.tipo_de_perfume.id).tipo_de_perfume;
             txt_codigo.Text = perfumeSeleccionado.codigo.ToString();
+            txt_spray.Text = (perfumeSeleccionado.spray == 1) ? "Sí" : "No";
+            txt_recargable.Text = (perfumeSeleccionado.recargable == 1) ? "Sí" : "No";
 
             combo_medios_pago.Items.Clear();
             combo_medios_pago.Items.Add("Efectivo");
