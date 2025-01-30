@@ -43,12 +43,7 @@ namespace Eterea_Parfums_Desktop
         private bool validarSiExisteCodigoPerfume(string codigo)
         {
             perfume = PerfumeControlador.getByCodigo(codigo);
-            if (perfume.codigo == null)
-            {
-                return false;
-            }
-
-            return true;
+            return perfume != null;
         }
 
 
@@ -56,12 +51,13 @@ namespace Eterea_Parfums_Desktop
         {
             if (txt_codigo_producto.Text.Length == 13)
             {
-                if (!validarSiExisteCodigoPerfume(txt_codigo_producto.Text))
+                if (!validarSiExisteCodigoPerfume(txt_codigo_producto.Text.Trim()))
                 {
                     MessageBox.Show("Código inexistente, intente nuevamente.");
                     txt_codigo_producto.Clear(); // Borra el texto si el código no existe
                     txt_datos_producto.Text = ""; // Limpia el campo de datos del producto
                     txt_cantidad_producto.Text = "";
+                   
                 }
                 else
                 {

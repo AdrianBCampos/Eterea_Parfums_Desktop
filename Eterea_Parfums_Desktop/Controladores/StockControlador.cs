@@ -27,7 +27,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
                 while (r.Read())
                 {
-                    cantidad = r.GetInt32(2);
+                    cantidad = r.GetInt32(0);
                 }
                 r.Close();
                 DB_Controller.connection.Close();
