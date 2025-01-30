@@ -79,6 +79,7 @@
     <Compile Include="Controladores\PerfumeEnPromoControlador.cs" />
     <Compile Include="Controladores\PromoControlador.cs" />
     <Compile Include="Controladores\ProvinciaControlador.cs" />
+    <Compile Include="Controladores\StockControlador.cs" />
     <Compile Include="Controladores\TipoDeAromaControlador.cs" />
     <Compile Include="Controladores\TipoDeNotaControlador.cs" />
     <Compile Include="Controladores\TipoDePerfumeControlador.cs" />
