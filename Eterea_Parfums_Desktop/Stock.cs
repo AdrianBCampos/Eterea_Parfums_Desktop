@@ -43,7 +43,8 @@ namespace Eterea_Parfums_Desktop
         private bool validarSiExisteCodigoPerfume(string codigo)
         {
             perfume = PerfumeControlador.getByCodigo(codigo);
-            return perfume != null;
+            // Si el perfume no existe, perfume.nombre es null
+            return perfume.nombre != null;
         }
 
 
