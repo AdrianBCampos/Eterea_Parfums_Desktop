@@ -31,6 +31,10 @@ namespace Eterea_Parfums_Desktop
             {
                 combo_sucursales.Items.Add(sucursal.id.ToString());
             }
+            if (combo_sucursales.Items.Count > 0)
+            {
+                combo_sucursales.SelectedIndex = 0;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
