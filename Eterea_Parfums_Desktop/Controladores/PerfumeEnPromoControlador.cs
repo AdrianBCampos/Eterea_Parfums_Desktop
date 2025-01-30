@@ -43,6 +43,12 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         }
 
+
+
+
+
+
+
         //obtener los perfumes de una promo
 
         public List<PerfumeDTO> CargarPerfumesPorIdPromocion(int idPromo)
