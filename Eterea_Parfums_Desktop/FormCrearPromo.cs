@@ -608,8 +608,21 @@ namespace Eterea_Parfums_Desktop
             bool promoValidada = validarPromo(out string errorMsg);
             if (promoValidada)
             {
+                string nombrePromo = txt_nomb_promo.Text.Trim();
+
+                if (PromoControlador.ExisteNombrePromo(nombrePromo))
+                {
+                    MessageBox.Show("Ya existe una promoción con este nombre. Elija otro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+
                 crearPromo();
                 asignarPerfumesAPromo();
+            }
+            else
+            {
+                MessageBox.Show(errorMsg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

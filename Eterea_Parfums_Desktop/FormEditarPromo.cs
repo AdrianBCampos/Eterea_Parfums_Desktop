@@ -518,6 +518,14 @@ namespace Eterea_Parfums_Desktop
             string errorMsg;
             if (validarPromoEdit(out errorMsg))
             {
+                string nombrePromo = txt_nomb_promo_edit.Text.Trim();
+
+                if (PromoControlador.ExisteNombrePromo(nombrePromo, id_editar)) // id_editar = id de la promo actual
+                {
+                    MessageBox.Show("Ya existe otra promoción con este nombre. Elija otro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 editarPromo();
             }
             else

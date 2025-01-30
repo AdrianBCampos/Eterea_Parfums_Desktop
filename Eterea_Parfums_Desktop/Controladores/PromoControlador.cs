@@ -354,5 +354,35 @@ namespace Eterea_Parfums_Desktop.Controladores
         }
 
 
+
+        //Método para verificar que el nombre de la promo no se repite
+        public static bool ExisteNombrePromo(string nombrePromo, int? idPromo = null)
+        {
+            string query = "SELECT COUNT(*) FROM promocion WHERE nombre = @nombrePromo";
+
+            if (idPromo != null)
+            {
+                query += " AND id <> @idPromo"; // Evita conflicto al editar
+            }
+
+            using (SqlConnection conn = new SqlConnection(DB_Controller.connection.ConnectionString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@nombrePromo", nombrePromo);
+                    if (idPromo != null)
+                    {
+                        cmd.Parameters.AddWithValue("@idPromo", idPromo);
+                    }
+
+                    int count = (int)cmd.ExecuteScalar();
+                    return count > 0; // Retorna true si ya existe
+                }
+            }
+        }
+
+
+
     }
 }
