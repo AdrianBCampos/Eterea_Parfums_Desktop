@@ -28,8 +28,11 @@ namespace Eterea_Parfums_Desktop
 
         private List<DataGridViewRow> backupRows = new List<DataGridViewRow>();
 
+
         // Declarar el ToolTip a nivel de la clase
         private ToolTip toolTipBorrar;
+
+
 
         public FormCrearPromo()
         {
@@ -63,6 +66,8 @@ namespace Eterea_Parfums_Desktop
             combo_activo_promo.Items.Add("No");
             combo_activo_promo.SelectedIndex = -1;
         }
+
+
 
 
 
@@ -113,6 +118,8 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
+
         //Cargar marcas en el combo_box
 
         private void cargarComboBoxMarcas()
@@ -139,6 +146,8 @@ namespace Eterea_Parfums_Desktop
             // Seleccionar "Todas las Marcas" por defecto
             combo_buscar_marcaP.SelectedIndex = 0;
         }
+
+
 
 
 
@@ -178,7 +187,7 @@ namespace Eterea_Parfums_Desktop
 
 
 
-        //Evento para para permitir solo letras, números y espacios en el nombre de la promoción
+        //Evento para para permitir solo letras, números, espacios y el signo de % en el nombre de la promoción
 
         private void txt_nomb_promo_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -328,6 +337,8 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
+
         //Método para aplicar el filtro por genero a la busqueda de perfumes cada vez que se detecte un cambio en el combo_box
 
         private void combo_genero_SelectedIndexChanged(object sender, EventArgs e)
@@ -345,6 +356,8 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
+
         //Método para detectar cambios en el combo_box de tipo de promoción
 
         private void combo_tipo_promo_edit_SelectedIndexChanged(object sender, EventArgs e)
@@ -356,6 +369,9 @@ namespace Eterea_Parfums_Desktop
                 // Aquí puedes trabajar con el descuentoSeleccionado, como guardarlo en una base de datos o usarlo en la lógica de tu aplicación
             }
         }
+
+
+
 
 
 
@@ -423,6 +439,8 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
+
         //Acción del botón para quitar todos los filtros de la busqueda
 
         private void btn_quitar_filtros_Click(object sender, EventArgs e)
@@ -440,6 +458,8 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
+
         //Método para limpiar los mensajes de error
 
         private void limpiarMensajesError()
@@ -451,6 +471,8 @@ namespace Eterea_Parfums_Desktop
             lbl_error_promo_act.Visible = false;
 
         }
+
+
 
 
 
@@ -552,6 +574,7 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
         //Método que ejecuta las acciones para crear la promoción (llama a PromoControlador.crearPromo(promoEditada))
 
         private void crearPromo()
@@ -628,6 +651,7 @@ namespace Eterea_Parfums_Desktop
 
       
 
+        //Método para limpiar el formulario
 
         private void limpiarFormulario()
         {
@@ -644,6 +668,8 @@ namespace Eterea_Parfums_Desktop
         }
 
 
+
+        //Acción para el botón cerrar pantalla
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -674,6 +700,10 @@ namespace Eterea_Parfums_Desktop
         }
 
 
+
+
+
+
         private void btn_limpiar_DataGridView_Click(object sender, EventArgs e)
         {
             // Limpia todas las filas del DataGridView
@@ -690,6 +720,11 @@ namespace Eterea_Parfums_Desktop
             // Recargar el DataGridView con todos los perfumes sin aplicar filtros
             cargarPerfumes(0, "", 0);
         }
+
+
+
+
+        //Acción del botón "Eliminar" del dataGridView de los perfumes a los que aplica la promo
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -752,6 +787,12 @@ namespace Eterea_Parfums_Desktop
             // Mostrar un mensaje al final del proceso
             MessageBox.Show("Todos los perfumes han sido agregados correctamente (excepto los duplicados).", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+
+
+
+
+        //Acción del botón "Eliminar todos" para quitar todos los perfumes agregados a la lista de perfumes a los que aplica la promo
 
         private void btn_eliminar_todos_Click(object sender, EventArgs e)
         {
