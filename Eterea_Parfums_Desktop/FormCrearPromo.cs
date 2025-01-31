@@ -28,15 +28,29 @@ namespace Eterea_Parfums_Desktop
 
         private List<DataGridViewRow> backupRows = new List<DataGridViewRow>();
 
+        // Declarar el ToolTip a nivel de la clase
+        private ToolTip toolTipBorrar;
+
         public FormCrearPromo()
         {
            
             InitializeComponent();
+
+            txt_nomb_promo.KeyPress += txt_nomb_promo_KeyPress;
+
+            // Ocultar etiquetas de error
             lbl_error_tipo_promo.Visible = false;
             lbl_error_nombP.Visible = false;
             lbl_error_fecha_iniP.Visible = false;
             lbl_error_fecha_finP.Visible = false;
             lbl_error_promo_act.Visible = false;
+
+            //Ocultar el boton para borrar el texto ingresado en la busqueda de promo por nombre
+            lbl_borrar_texto.Visible = false;
+
+            // Inicializar y configurar el ToolTip
+            toolTipBorrar = new ToolTip();
+            toolTipBorrar.SetToolTip(lbl_borrar_texto, "Borrar texto ingresado");
 
             cargarComboBoxDescuentos();
             cargarComboBoxMarcas();
@@ -162,6 +176,24 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
+
+        //Evento para para permitir solo letras, números y espacios en el nombre de la promoción
+
+        private void txt_nomb_promo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != '%' && e.KeyChar != '\b')
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten letras, números, espacios y el símbolo %.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+
+
+
+
         //Método para activar restricciones en el datePicker de la fecha de inicio
 
         private void dateTime_inicio_promo_ValueChanged(object sender, EventArgs e)
@@ -257,6 +289,9 @@ namespace Eterea_Parfums_Desktop
 
         private void txt_buscar_perfume_x_nombre_TextChanged(object sender, EventArgs e)
         {
+            // Mostrar el label solo si hay texto ingresado
+            lbl_borrar_texto.Visible = !string.IsNullOrWhiteSpace(txt_buscar_nombP.Text);
+
             // Obtén los valores de los filtros
             int filtroMarcaP = combo_buscar_marcaP.SelectedItem != null
               ? ((KeyValuePair<int, string>)combo_buscar_marcaP.SelectedItem).Key
@@ -267,6 +302,8 @@ namespace Eterea_Parfums_Desktop
             int filtroGeneroP = combo_buscar_generoP.SelectedItem != null
                 ? ((KeyValuePair<int, string>) combo_buscar_generoP.SelectedItem).Key
                 : 0; // Si no hay selección, el filtro es 0 (sin filtro)
+
+            
 
             // Actualiza el DataGridView
             cargarPerfumes(filtroMarcaP, filtroNombreP, filtroGeneroP);
@@ -366,6 +403,9 @@ namespace Eterea_Parfums_Desktop
             // Borra el texto en el TextBox de filtro por nombre
             txt_buscar_nombP.Text = "";
 
+            // Ocultar el label al borrar el texto
+            lbl_borrar_texto.Visible = false;
+
             // Llama al método de carga de perfumes, manteniendo los filtros actuales de marca y género
             int filtroMarcaP = (combo_buscar_marcaP.SelectedItem != null)
                 ? ((KeyValuePair<int, string>)combo_buscar_marcaP.SelectedItem).Key
@@ -442,12 +482,19 @@ namespace Eterea_Parfums_Desktop
                 lbl_error_nombP.Show();
 
             }
-            else if (txt_nomb_promo.Text.Length > 80)
+            else if (txt_nomb_promo.Text.Length < 4 || txt_nomb_promo.Text.Length > 80)
             {
-                errorMsg += "El nombre no puede exceder los 80 caracteres" + Environment.NewLine;
-                lbl_error_nombP.Text = "El nombre no puede exceder los 80 caracteres";
+                errorMsg += "El nombre de la promoción debe tener entre 4 y 80 caracteres." + Environment.NewLine;
+                lbl_error_nombP.Text = "El nombre de la promoción debe tener entre 4 y 80 caracteres.";
                 lbl_error_nombP.Show();
             }
+            else if (txt_nomb_promo.Text.Count(c => c == '%') > 1) // Permite solo un '%'
+            {
+                errorMsg += "Solo se permite un símbolo % en el nombre de la promoción." + Environment.NewLine;
+                lbl_error_nombP.Text = "Solo se permite un símbolo % en el nombre de la promoción.";
+                lbl_error_nombP.Show();
+            }
+
             else
             {
 

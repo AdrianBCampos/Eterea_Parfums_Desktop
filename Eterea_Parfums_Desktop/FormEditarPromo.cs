@@ -1,17 +1,11 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
-using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.DTOs;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -45,7 +39,8 @@ namespace Eterea_Parfums_Desktop
 
         }
 
-
+        // Declarar el ToolTip a nivel de la clase
+        private ToolTip toolTipBorrar;
 
 
 
@@ -54,12 +49,21 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
+            txt_nomb_promo_edit.KeyPress += txt_nomb_promo_edit_KeyPress;
+
             // Ocultar etiquetas de error
             lbl_error_tipo_promo_edit.Visible = false;
             lbl_error_nomb_edit.Visible = false;
             lbl_error_fecha_ini_edit.Visible = false;
             lbl_error_fecha_fin_edit.Visible = false;
             lbl_error_promo_act_edit.Visible = false;
+
+            //Ocultar el boton para borrar el texto ingresado en la busqueda de promo por nombre
+            lbl_borrar_texto_edit.Visible = false;
+
+            // Inicializar y configurar el ToolTip
+            toolTipBorrar = new ToolTip();
+            toolTipBorrar.SetToolTip(lbl_borrar_texto_edit, "Borrar texto ingresado");
 
             // Llamar a los métodos de carga de datos
             cargarComboBoxDescuentos();
@@ -222,6 +226,22 @@ namespace Eterea_Parfums_Desktop
 
 
 
+        //Evento para para permitir solo letras, números y espacios en el nombre de la promoción
+
+        private void txt_nomb_promo_edit_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != '%' && e.KeyChar != '\b')
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten letras, números, espacios y el símbolo %.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+
+
+
+
         //Método para activar restricciones en el datePicker de la fecha de inicio
 
         private void dateTime_inicio_promo_ValueChanged(object sender, EventArgs e)
@@ -355,6 +375,9 @@ namespace Eterea_Parfums_Desktop
 
         private void txt_buscar_perfume_x_nombre_TextChanged(object sender, EventArgs e)
         {
+            // Mostrar el label solo si hay texto ingresado
+            lbl_borrar_texto_edit.Visible = !string.IsNullOrWhiteSpace(txt_buscar_nomb_edit.Text);
+
             // Obtén los valores de los filtros
             int filtroMarcaP = combo_buscar_marca_edit.SelectedItem != null
               ? ((KeyValuePair<int, string>)combo_buscar_marca_edit.SelectedItem).Key
@@ -440,6 +463,9 @@ namespace Eterea_Parfums_Desktop
         {
             // Borra el texto en el TextBox de filtro por nombre
             txt_buscar_nomb_edit.Text = "";
+
+            // Ocultar el label al borrar el texto
+            lbl_borrar_texto_edit.Visible = false;
 
             // Llama al método de carga de perfumes, manteniendo los filtros actuales de marca y género
             int filtroMarcaP = (combo_buscar_marca_edit.SelectedItem != null)
@@ -584,12 +610,19 @@ namespace Eterea_Parfums_Desktop
                 lbl_error_nomb_edit.Show();
 
             }
-            else if (txt_nomb_promo_edit.Text.Length > 80)
+            else if (txt_nomb_promo_edit.Text.Length < 4 || txt_nomb_promo_edit.Text.Length > 80)
             {
-                errorMsg += "El nombre no puede exceder los 80 caracteres" + Environment.NewLine;
-                lbl_error_nomb_edit.Text = "El nombre no puede exceder los 80 caracteres";
+                errorMsg += "El nombre de la promoción debe tener entre 4 y 80 caracteres." + Environment.NewLine;
+                lbl_error_nomb_edit.Text = "El nombre de la promoción debe tener entre 4 y 80 caracteres.";
                 lbl_error_nomb_edit.Show();
             }
+            else if (txt_nomb_promo_edit.Text.Count(c => c == '%') > 1) // Permite solo un '%'
+            {
+                errorMsg += "Solo se permite un símbolo % en el nombre de la promoción." + Environment.NewLine;
+                lbl_error_nomb_edit.Text = "Solo se permite un símbolo % en el nombre de la promoción.";
+                lbl_error_nomb_edit.Show();
+            }
+
             else
             {
 
