@@ -54,7 +54,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
 
 
-            string query = "insert into dbo.perfume values " +
+            string query = "insert into dbo.perfume values" +
                  "(@id, " +
                 "@codigo, " +
                 "@marca, " +
@@ -79,7 +79,6 @@ namespace Eterea_Parfums_Desktop.Controladores
             cmd.Parameters.AddWithValue("@marca", perfume.marca.id);
             cmd.Parameters.AddWithValue("@nombre", perfume.nombre);
             cmd.Parameters.AddWithValue("@tipo_de_perfume", perfume.tipo_de_perfume.id);
-
             cmd.Parameters.AddWithValue("@genero", perfume.genero.id);
             cmd.Parameters.AddWithValue("@presentacion_ml", perfume.presentacion_ml);
             cmd.Parameters.AddWithValue("@pais", perfume.pais.id);
@@ -98,19 +97,13 @@ namespace Eterea_Parfums_Desktop.Controladores
 
                 DB_Controller.connection.Open();
                 cmd.ExecuteNonQuery();
+                DB_Controller.connection.Close();
                 return true;
             }
             catch (Exception e)
             {
+                throw new Exception("Hay un error en la query: " + e.Message);
 
-                //throw new Exception("Hay un error en la query: " + e.Message);
-                Trace.WriteLine(e.Message);
-                return false;
-            }
-            finally
-            {
-                cmd.Parameters.Clear();
-                DB_Controller.connection.Close();
             }
         }
 
@@ -163,6 +156,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             return perfume;
         }
 
+        //GET ONE ByMaxId
         public static int GetByMaxId()
         {
             int MaxId = 0;
@@ -179,20 +173,14 @@ namespace Eterea_Parfums_Desktop.Controladores
                 }
 
                 r.Close();
-
-
+                DB_Controller.connection.Close();
+                return MaxId;
             }
             catch (Exception e)
             {
-                Trace.WriteLine("Error al consultar la DB: " + e.Message);
-            }
-            finally
-            {
-
-                DB_Controller.connection.Close();
+                throw new Exception("Hay un error en la query: " + e.Message);
             }
 
-            return MaxId;
         }
 
         public static bool update(Perfume perfume)

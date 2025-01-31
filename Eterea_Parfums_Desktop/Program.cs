@@ -79,6 +79,7 @@ namespace Eterea_Parfums_Desktop
 
             //Application.Run(new FormCrearPromo());
             Application.Run(new InicioAutoConsultas());
+          
         }
 
         public static bool connectionIsValid()

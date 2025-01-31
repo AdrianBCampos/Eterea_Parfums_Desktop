@@ -44,7 +44,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             TipoDePerfume tipo_de_perfume = new TipoDePerfume();
             string query = "select * from dbo.tipo_de_perfume where " +
-                "nombre = @tipo;";
+                "tipo_de_perfume = @tipo;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@tipo", tipo);
