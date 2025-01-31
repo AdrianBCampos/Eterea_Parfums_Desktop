@@ -704,25 +704,6 @@ namespace Eterea_Parfums_Desktop
 
 
 
-        private void btn_limpiar_DataGridView_Click(object sender, EventArgs e)
-        {
-            // Limpia todas las filas del DataGridView
-            dataGrid_resultado_busqueda_perfumes.Rows.Clear();
-        }
-
-        private void btn_recargar_DataGridView_Click(object sender, EventArgs e)
-        {
-            // Restablecer los filtros a sus valores predeterminados
-            combo_buscar_marcaP.SelectedIndex = 0;  // "Todas las Marcas"
-            txt_buscar_nombP.Text = "";             // Nombre vacío
-            combo_buscar_generoP.SelectedIndex = 0; // "Todos los Géneros"
-
-            // Recargar el DataGridView con todos los perfumes sin aplicar filtros
-            cargarPerfumes(0, "", 0);
-        }
-
-
-
 
         //Acción del botón "Eliminar" del dataGridView de los perfumes a los que aplica la promo
 
@@ -751,6 +732,12 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
+
+
+
+
+
+        //Acción del botón "Agregar todos" para agregar todos los perfumes del resultado de la busqueda a la promo que se esta creando/editando
       
         private void btn_agregar_todos_Click_1(object sender, EventArgs e)
         {
@@ -792,6 +779,8 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
+
         //Acción del botón "Eliminar todos" para quitar todos los perfumes agregados a la lista de perfumes a los que aplica la promo
 
         private void btn_eliminar_todos_Click(object sender, EventArgs e)
@@ -826,6 +815,13 @@ namespace Eterea_Parfums_Desktop
             }
 
         }
+
+
+
+
+
+
+        //Acción del botón para volver atras si se eliminaron todos los perfumes de la promo por error
 
         private void btrn_deshacer_eliminacion_Click(object sender, EventArgs e)
         {
