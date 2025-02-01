@@ -204,6 +204,7 @@
             this.lbl_paginacion_Info.AutoSize = true;
             this.lbl_paginacion_Info.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_paginacion_Info.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_paginacion_Info.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.lbl_paginacion_Info.Location = new System.Drawing.Point(445, 596);
             this.lbl_paginacion_Info.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_paginacion_Info.Name = "lbl_paginacion_Info";
@@ -216,6 +217,7 @@
             this.lbl_numero_pagina.AutoSize = true;
             this.lbl_numero_pagina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_numero_pagina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_numero_pagina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.lbl_numero_pagina.Location = new System.Drawing.Point(726, 590);
             this.lbl_numero_pagina.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_numero_pagina.Name = "lbl_numero_pagina";
@@ -449,7 +451,6 @@
             this.Name = "InicioAutoConsultas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
-            
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InicioAutoConsultas_KeyDown_1);
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

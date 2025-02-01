@@ -278,12 +278,7 @@ namespace Eterea_Parfums_Desktop
             // Mostrar el valor de cada cuota
             txt_valor_cuota.Text = valorCuota.ToString("N2");
         }
-        
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+              
         private void btn_buscar_perfumes_simi_Click(object sender, EventArgs e)
         {
             VerPerfumesSimilares verPerfumesSimilares = new VerPerfumesSimilares();
@@ -298,6 +293,9 @@ namespace Eterea_Parfums_Desktop
             this.Close();
         }
 
-       
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

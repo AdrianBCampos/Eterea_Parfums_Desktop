@@ -121,6 +121,65 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Cliente> obtenerTodos()
         {
             List<Cliente> list = new List<Cliente>();
+            string query = "SELECT * FROM dbo.cliente;";
+
+            // 🔹 Usamos "using" para que la conexión se cierre automáticamente
+            using (SqlConnection conexion = new SqlConnection(DB_Controller.connection.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conexion))
+                {
+                    try
+                    {
+                        conexion.Open();
+                        using (SqlDataReader r = cmd.ExecuteReader())
+                        {
+                            while (r.Read())
+                            {
+                                Pais pais = PaisControlador.getById(r.IsDBNull(10) ? 0 : r.GetInt32(10));
+                                Provincia provincia = ProvinciaControlador.getById(r.IsDBNull(11) ? 0 : r.GetInt32(11));
+                                Localidad localidad = LocalidadControlador.getById(r.IsDBNull(12) ? 0 : r.GetInt32(12));
+                                Calle calle = CalleControlador.getById(r.IsDBNull(14) ? 0 : r.GetInt32(14));
+
+                                list.Add(new Cliente(
+                                    r.GetInt32(0),
+                                    r.GetString(1),
+                                    "",
+                                    r.GetString(3),
+                                    r.GetString(4),
+                                    r.GetInt32(5),
+                                    r.GetString(6),
+                                    r.IsDBNull(7) ? default(DateTime) : r.GetDateTime(7),
+                                    r.GetString(8),
+                                    r.GetString(9),
+                                    pais,
+                                    provincia,
+                                    localidad,
+                                    r.IsDBNull(13) ? 0 : r.GetInt32(13),
+                                    calle,
+                                    r.IsDBNull(15) ? 0 : r.GetInt32(15),
+                                    r.IsDBNull(16) ? "" : r.GetString(16),
+                                    r.IsDBNull(17) ? "" : r.GetString(17),
+                                    r.IsDBNull(18) ? "" : r.GetString(18),
+                                    r.GetInt32(19),
+                                    r.GetString(20)
+                                ));
+
+                                Trace.WriteLine("Cliente encontrado, nombre: " + r.GetString(1));
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        throw new Exception("Hay un error en la query: " + e.Message);
+                    }
+                }
+            }
+
+            return list;
+        }
+        /*public static List<Cliente> obtenerTodos()
+        {
+            List<Cliente> list = new List<Cliente>();
             string query = "select * from dbo.cliente;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
@@ -173,7 +232,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
 
             return list;
-        }
+        }*/
 
         // GET ONE BY ID
         public static Cliente obtenerPorId(int id)

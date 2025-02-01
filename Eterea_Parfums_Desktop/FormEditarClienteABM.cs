@@ -161,7 +161,7 @@ namespace Eterea_Parfums_Desktop
             txt_num_calle.Text = cliente.numeracion_calle?.ToString() ?? ""; // Si es null, asigna una cadena vacía
             txt_piso.Text = cliente.piso ?? ""; // Si es null, asigna una cadena vacía
             txt_depto.Text = cliente.departamento ?? ""; // Si es null, asigna una cadena vacía
-            txt_comentarios.Text = cliente.comentarios_domicilio ?? ""; // Si es null, asigna una cadena vacía
+            richTextBox_comentario.Text = cliente.comentarios_domicilio ?? ""; // Si es null, asigna una cadena vacía
             //txt_num_calle.Text = cliente.numeracion_calle.ToString();
             //txt_piso.Text = cliente.piso.ToString();
             //txt_depto.Text = cliente.departamento.ToString();
@@ -188,7 +188,7 @@ namespace Eterea_Parfums_Desktop
 
         }
 
-        private void btn_editar_cliente_Click(object sender, EventArgs e)
+        private void btn_confirmar_Click(object sender, EventArgs e)
         {
             string errorMsg;
             if (validarDatosCliente(out errorMsg))
@@ -220,7 +220,7 @@ namespace Eterea_Parfums_Desktop
             Cliente cliente = new Cliente(id_editar, txt_usuario.Text, txt_clave.Text, txt_nombre.Text, txt_apellido.Text,
                int.Parse(txt_dni.Text), combo_con_iva.Text, DateTime.Parse(dateTime_nac.Text), txt_celular.Text, txt_email.Text,
                pais, provincia, ciudad, int.Parse(txt_cp.Text), calle, int.Parse(txt_num_calle.Text),
-               txt_piso.Text, txt_depto.Text, txt_comentarios.Text,
+               txt_piso.Text, txt_depto.Text, richTextBox_comentario.Text,
                 activo, rol);
 
             if (ClienteControlador.editarCliente(cliente))
@@ -362,7 +362,7 @@ namespace Eterea_Parfums_Desktop
             return string.IsNullOrEmpty(errorMsg);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }
