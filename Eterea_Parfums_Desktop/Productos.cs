@@ -233,66 +233,41 @@ namespace Eterea_Parfums_Desktop
             return perfume;
 
         }
-
-        private bool EsCodigoBarraCODE128Valido(string codigo)
+        private bool EsCodigoBarraPerfumeValido(string codigo)
         {
-            // Validar que no esté vacío
-            if (string.IsNullOrEmpty(codigo))
+            if (string.IsNullOrEmpty(codigo) || codigo.Length != 13 || !codigo.All(char.IsDigit))
             {
                 return false;
             }
-
-            // Validar longitud mínima (CODE128 puede variar según el contenido)
-            if (codigo.Length < 1 || codigo.Length > 128) // Longitud típica entre 1 y 128
-            {
-                return false;
-            }
-
-            // Validar que solo contenga caracteres permitidos (ASCII 0-127)
-            foreach (char c in codigo)
-            {
-                if (c < 32 || c > 126) // Incluye caracteres ASCII imprimibles
-                {
-                    return false;
-                }
-
-            // Validar el dígito de control usando el algoritmo de EAN-13
-            return ValidarEAN13(codigo);
+            //return ValidarEAN13(codigo);
+            return true;
         }
 
         private bool ValidarEAN13(string codigo)
         {
             int suma = 0;
-
-            // Aplicar la fórmula del dígito de control de EAN-13
             for (int i = 0; i < 12; i++)
             {
-                int digito = codigo[i] - '0'; // Convertir char a int
+                int digito = codigo[i] - '0';
                 suma += (i % 2 == 0) ? digito : digito * 3;
             }
             int digitoControlEsperado = (10 - (suma % 10)) % 10;
+            int digitoControlReal = codigo[12] - '0';
 
-            // Comparar con el último dígito del código
-            return digitoControlEsperado == (codigo[12] - '0');
+            return digitoControlEsperado == digitoControlReal;
         }
 
         private bool ValidarPerfume()
         {
       
             string errorMsg = "";
+            if (!EsCodigoBarraPerfumeValido(txt_codigo.Text))
+            {
+                errorMsg += "El código no es válido. Debe ser un código EAN-13 correcto.\n";
+                lbl_error_codigo.Text = "El código no es válido. Debe tener 13 dígitos.";
+            }
+            else lbl_error_codigo.Visible = false;
 
-            if (string.IsNullOrEmpty(txt_codigo.Text))
-            {
-                errorMsg += "Debes ingresar el código CODE128" + Environment.NewLine;
-                lbl_error_codigo.Text = "Debes ingresar el código CODE128";
-                lbl_error_codigo.Show();
-            }
-            else if (!EsCodigoBarraCODE128Valido(txt_codigo.Text))
-            {
-                errorMsg += "El código CODE128 es inválido. Verifique su formato." + Environment.NewLine;
-                lbl_error_codigo.Text = "El código CODE128 es inválido. Verifique su formato.";
-                lbl_error_codigo.Show();
-            }
 
             if (combo_marca.SelectedItem == null || string.IsNullOrEmpty(combo_marca.Text))
             {
