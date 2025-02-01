@@ -18,10 +18,11 @@ namespace Eterea_Parfums_Desktop
         public List<TipoDePerfume> tiposDePerfume;
         public List<Genero> generos;
         public List<Pais> paises;
-        private Image File;
-        private Image File2;
+        private Image imagen1;
+        private Image imagen2;
         private string nombre_foto_uno;
         private string nombre_foto_dos;
+        private static readonly Random rnd = new Random(); //genero una sola instancia
         public Productos()
         {
             InitializeComponent();
@@ -33,6 +34,11 @@ namespace Eterea_Parfums_Desktop
             CargarOpciones(combo_spray);
             CargarOpciones(combo_recargable);
             CargarOpciones(combo_activo);
+            //FOTO DEL PERFUME POR DEFECTO
+            nombre_foto_uno = "imagen1.jpg";
+            nombre_foto_dos = "imagen2.jpg";
+            Cargar_Imagen(nombre_foto_uno, pictureBoxProducto1);
+            Cargar_Imagen(nombre_foto_dos, pictureBoxProducto2);
         }
 
         private void LblErrorSetVisibleFalse()
@@ -63,6 +69,10 @@ namespace Eterea_Parfums_Desktop
             {
                 combo_marca.Items.Add(marca.nombre.ToString());
             }
+            if (combo_marca.Items.Count > 0)
+            {
+                combo_marca.SelectedIndex = 0;
+            }
         }
 
         private void CargarTiposDePerfume()
@@ -72,6 +82,10 @@ namespace Eterea_Parfums_Desktop
             foreach (TipoDePerfume tipo in tiposDePerfume)
             {
                 combo_tipo_de_perfume.Items.Add(tipo.tipo_de_perfume.ToString());
+            }
+            if (combo_tipo_de_perfume.Items.Count > 0)
+            {
+                combo_tipo_de_perfume.SelectedIndex = 0;
             }
         }
 
@@ -83,6 +97,10 @@ namespace Eterea_Parfums_Desktop
             {
                 combo_genero.Items.Add(genero.genero.ToString());
             }
+            if (combo_genero.Items.Count > 0)
+            {
+                combo_genero.SelectedIndex = 0;
+            }
         }
 
         private void CargarPaises()
@@ -93,6 +111,10 @@ namespace Eterea_Parfums_Desktop
             {
                 combo_pais.Items.Add(pais.nombre.ToString());
             }
+            if (combo_pais.Items.Count > 0)
+            {
+                combo_pais.SelectedIndex = 0;
+            }
         }
 
         private void CargarOpciones(ComboBox combo)
@@ -100,8 +122,21 @@ namespace Eterea_Parfums_Desktop
             combo.Items.Clear();
             combo.Items.Add("Si");
             combo.Items.Add("No");
+            combo.SelectedIndex = 0;
         }
 
+        private void Cargar_Imagen(string nombreImg, PictureBox pictureBox)
+        {
+            string rutaCompletaImagen = Program.Ruta_Base + nombreImg;
+            if (System.IO.File.Exists(rutaCompletaImagen))
+            {
+                pictureBox.Image = Image.FromFile(rutaCompletaImagen);
+            }
+            else
+            {
+                MessageBox.Show("La imagen no se encontró en la ruta especificada: " + rutaCompletaImagen, "Error de carga de imagen", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void btn_siguiente_Click(object sender, EventArgs e)
         {
@@ -111,10 +146,16 @@ namespace Eterea_Parfums_Desktop
 
             if (validacionDatosPerfume)
             {
+                if (imagen1 != null)
+                {
+                    saveImagenResources(out nombre_foto_uno, imagen1);
+                }
 
-                saveImagenResources(out nombre_foto_uno, File);
-                saveImagenResources(out nombre_foto_dos, File2);
-               
+                if (imagen2 != null)
+                {
+                    saveImagenResources(out nombre_foto_dos, imagen2);
+                }
+
                 Perfume perfume = crear();
                 Console.WriteLine(perfume.id);
                 AromaNota aromaNota = new AromaNota(perfume);
@@ -124,7 +165,7 @@ namespace Eterea_Parfums_Desktop
            
         }
 
-        private void saveImagenResources(out string nombreFoto, Image File)
+        private void saveImagenResources(out string nombreFoto, Image imagen)
         {
             try
             {
@@ -132,7 +173,7 @@ namespace Eterea_Parfums_Desktop
                 int numero_aleatorio = numeroAleatorio();
                 Console.WriteLine(numero_aleatorio);
                 nombreFoto = txt_nombre.Text + numero_aleatorio + "-envase.jpg";
-                File.Save(Program.Ruta_Base + nombreFoto, System.Drawing.Imaging.ImageFormat.Jpeg);
+                imagen.Save(Program.Ruta_Base + nombreFoto, System.Drawing.Imaging.ImageFormat.Jpeg);
             }
             catch (Exception ex)
             {
@@ -143,9 +184,7 @@ namespace Eterea_Parfums_Desktop
 
         private int numeroAleatorio()
         {
-            Random rnd = new Random();
-            int numero = rnd.Next(1000, 9999);
-            return numero;
+            return  rnd.Next(1000, 9999);
         }
 
 
@@ -463,8 +502,8 @@ namespace Eterea_Parfums_Desktop
             ofd.Filter = "JPG(*.JPG)|*.JPG|PNG(*.png)|*.png";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                File = Image.FromFile(ofd.FileName);
-                pictureBoxProducto1.Image = File;
+                imagen1 = Image.FromFile(ofd.FileName);
+                pictureBoxProducto1.Image = imagen1;
 
             }
         }
@@ -475,8 +514,8 @@ namespace Eterea_Parfums_Desktop
             ofd.Filter = "JPG(*.JPG)|*.JPG|PNG(*.png)|*.png";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                File2 = Image.FromFile(ofd.FileName);
-                pictureBoxProducto2.Image = File2;
+                imagen2 = Image.FromFile(ofd.FileName);
+                pictureBoxProducto2.Image = imagen2;
 
             }
         }

@@ -20,6 +20,7 @@ namespace Eterea_Parfums_Desktop
         private string nombre_foto_uno;
         private string nombre_foto_dos;
         private Perfume perfume;
+        private static readonly Random rnd = new Random();
         public EditarProducto()
         {
             InitializeComponent();
@@ -88,25 +89,79 @@ namespace Eterea_Parfums_Desktop
             nombre_foto_dos = perfume.imagen2;
             Console.WriteLine(nombre_foto_dos);
 
-            cargarImagen(nombre_foto_uno, pictureBoxProducto1);
-            cargarImagen(nombre_foto_dos, pictureBoxProducto2);
+            if (!(cargarImagen(nombre_foto_uno, pictureBoxProducto1)))
+            {
+                nombre_foto_uno = "imagen1.jpg";
+                cargarImagen(nombre_foto_uno, pictureBoxProducto1);
+            }
+
+            if (!(cargarImagen(nombre_foto_dos, pictureBoxProducto2)))
+            {
+                nombre_foto_dos = "imagen2.jpg";
+                cargarImagen(nombre_foto_dos, pictureBoxProducto2);
+            }
 
         }
 
 
-        private void cargarImagen(string nombreImg, PictureBox pictureBox)
+        private bool cargarImagen(string nombreImg, PictureBox pictureBox)
         {
             string rutaCompletaImagen = Program.Ruta_Base + nombreImg;
             if (System.IO.File.Exists(rutaCompletaImagen))
             {
                 pictureBox.Image = Image.FromFile(rutaCompletaImagen);
+                return true;
             }
             else
             {
-                MessageBox.Show("La imagen no se encontró en la ruta especificada: " + rutaCompletaImagen, "Error de carga de imagen", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("LA IMAGEN NO SE ENCONTRO EN LA RUTA: \n" + rutaCompletaImagen + "\n\nSE CARGARA UNO POR DEFECTO PRESIONE ACEPTAR PARA CONTINUAR", "Error al cargar la imagen: " + nombreImg, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 
+        private bool Eliminar_Imagen_Existente(string nombreImg)
+        {
+            String rutaImagen = Program.Ruta_Base + nombreImg;
+            try
+            {
+                if (System.IO.File.Exists(rutaImagen) && nombreImg != "imagen1.jpg" && nombreImg != "imagen2.jpg")
+                {
+                    // Intentar liberar el archivo si está en uso
+                    LiberarImagen(rutaImagen);
+                    // Esperar a que el sistema libere el archivo
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
+                    System.IO.File.Delete(rutaImagen);
+                    Console.WriteLine("Imagen eliminada correctamente.");
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("La imagen no existe en la ruta especificada o no tiene permisos para eliminarlo.");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al eliminar la imagen: " + ex.Message);
+            }
+            return false;
+        }
+
+        private void LiberarImagen(string rutaImagen)
+        {
+            try
+            {
+                using (Image img = Image.FromFile(rutaImagen))
+                {
+                    img.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("No se pudo liberar la imagen: " + ex.Message);
+            }
+        }
 
 
         private void LblErrorSetVisibleFalse()
@@ -469,11 +524,13 @@ namespace Eterea_Parfums_Desktop
             {
                 if(imagen1 != null)
                 {
+                    Eliminar_Imagen_Existente(nombre_foto_uno);
                     saveImagenResources(out nombre_foto_uno, imagen1);
                 }
 
                 if (imagen2 != null)
                 {
+                    Eliminar_Imagen_Existente(nombre_foto_dos);
                     saveImagenResources(out nombre_foto_dos, imagen2);
                 }   
         
@@ -487,7 +544,6 @@ namespace Eterea_Parfums_Desktop
         {
             try
             {
-
                 int numero_aleatorio = numeroAleatorio();
                 Console.WriteLine(numero_aleatorio);
                 nombreFoto = txt_nombre.Text + numero_aleatorio + "-envase.jpg";
@@ -503,9 +559,7 @@ namespace Eterea_Parfums_Desktop
 
         private int numeroAleatorio()
         {
-            Random rnd = new Random();
-            int numero = rnd.Next(1000, 9999);
-            return numero;
+            return rnd.Next(1000, 9999);
         }
 
 
