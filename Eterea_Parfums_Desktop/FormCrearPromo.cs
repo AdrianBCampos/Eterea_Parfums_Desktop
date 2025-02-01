@@ -1,5 +1,6 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
 using Eterea_Parfums_Desktop.ControlesDeUsuario;
+using Eterea_Parfums_Desktop.DTOs;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,13 @@ namespace Eterea_Parfums_Desktop
 {
     public partial class FormCrearPromo : Form
     {
+
+        string situacion;
+
+        int id_editar;
+
+
+
         Dictionary<int, string> textosDescuento = new Dictionary<int, string>
         {
             { 50, "2 x 1" },
@@ -36,7 +44,7 @@ namespace Eterea_Parfums_Desktop
 
         public FormCrearPromo()
         {
-           
+
             InitializeComponent();
 
             txt_nomb_promo.KeyPress += txt_nomb_promo_KeyPress;
@@ -55,6 +63,7 @@ namespace Eterea_Parfums_Desktop
             toolTipBorrar = new ToolTip();
             toolTipBorrar.SetToolTip(lbl_borrar_texto, "Borrar texto ingresado");
 
+            //Cargar los combo_box, inicializar los DatePickers y cargar los perfumes al dataGridView de busqueda de perfumes
             cargarComboBoxDescuentos();
             cargarComboBoxMarcas();
             cargarComboBoxGeneros();
@@ -65,54 +74,8 @@ namespace Eterea_Parfums_Desktop
             combo_activo_promo.Items.Add("Si");
             combo_activo_promo.Items.Add("No");
             combo_activo_promo.SelectedIndex = -1;
-        }
 
-
-
-
-
-
-        //Inicializar los DatePickers
-
-        private void inicializarDatePickers()
-        {
-           
-            // Configura las fechas mínimas para los DateTimePicker
-            dateTime_inicio_promo.MinDate = DateTime.Now; // No permite elegir fechas pasadas
-            dateTime_inicio_promo.Value = DateTime.Now;   // Fecha predeterminada de inicio
-
-            dateTime_fin_promo.MinDate = DateTime.Now.AddDays(1); // Fin debe ser al menos un día después de hoy
-            dateTime_fin_promo.Value = DateTime.Now.AddDays(1);   // Fecha predeterminada de fin
-
-            // Configura los valores personalizados de formato
-            dateTime_inicio_promo.CustomFormat = " ";
-            dateTime_inicio_promo.Format = DateTimePickerFormat.Custom;
-            dateTime_inicio_promo.ValueChanged += dateTime_inicio_promo_ValueChanged;
-
-            dateTime_fin_promo.CustomFormat = " ";
-            dateTime_fin_promo.Format = DateTimePickerFormat.Custom;
-            dateTime_fin_promo.ValueChanged += dateTime_fin_promo_ValueChanged;
-        }
-
-
-
-
-
-
-        //Cargar descuentos en el combo_box
-
-        public void cargarComboBoxDescuentos()
-        {
-            combo_tipo_promo.Items.Clear(); // Limpia cualquier ítem anterior
-            foreach (var item in textosDescuento)
-            {
-                combo_tipo_promo.Items.Add(new KeyValuePair<int, string>(item.Key, item.Value));
-            }
-
-            combo_tipo_promo.DisplayMember = "Value"; // Texto visible
-            combo_tipo_promo.ValueMember = "Key";    // Valor asociado
-
-           
+            situacion = "Creacion";
         }
 
 
@@ -150,6 +113,24 @@ namespace Eterea_Parfums_Desktop
 
 
 
+        //Cargar descuentos en el combo_box
+
+        public void cargarComboBoxDescuentos()
+        {
+            combo_tipo_promo.Items.Clear(); // Limpia cualquier ítem anterior
+            foreach (var item in textosDescuento)
+            {
+                combo_tipo_promo.Items.Add(new KeyValuePair<int, string>(item.Key, item.Value));
+            }
+
+            combo_tipo_promo.DisplayMember = "Value"; // Texto visible
+            combo_tipo_promo.ValueMember = "Key";    // Valor asociado
+
+
+        }
+
+
+
 
 
 
@@ -174,8 +155,8 @@ namespace Eterea_Parfums_Desktop
             }
 
             // Configurar DisplayMember y ValueMember
-            combo_buscar_generoP.DisplayMember = "Value"; 
-            combo_buscar_generoP.ValueMember = "Key";   
+            combo_buscar_generoP.DisplayMember = "Value";
+            combo_buscar_generoP.ValueMember = "Key";
 
             // Seleccionar "Todos los géneros" por defecto
             combo_buscar_generoP.SelectedIndex = 0;
@@ -187,18 +168,28 @@ namespace Eterea_Parfums_Desktop
 
 
 
-        //Evento para para permitir solo letras, números, espacios y el signo de % en el nombre de la promoción
 
-        private void txt_nomb_promo_KeyPress(object sender, KeyPressEventArgs e)
+        //Inicializar los DatePickers
+
+        private void inicializarDatePickers()
         {
-            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != '%' && e.KeyChar != '\b')
-            {
-                e.Handled = true;
-                MessageBox.Show("Solo se permiten letras, números, espacios y el símbolo %.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+
+            // Configura las fechas mínimas para los DateTimePicker
+            dateTime_inicio_promo.MinDate = DateTime.Now; // No permite elegir fechas pasadas
+            dateTime_inicio_promo.Value = DateTime.Now;   // Fecha predeterminada de inicio
+
+            dateTime_fin_promo.MinDate = DateTime.Now.AddDays(1); // Fin debe ser al menos un día después de hoy
+            dateTime_fin_promo.Value = DateTime.Now.AddDays(1);   // Fecha predeterminada de fin
+
+            // Configura los valores personalizados de formato
+            dateTime_inicio_promo.CustomFormat = " ";
+            dateTime_inicio_promo.Format = DateTimePickerFormat.Custom;
+            dateTime_inicio_promo.ValueChanged += dateTime_inicio_promo_ValueChanged;
+
+            dateTime_fin_promo.CustomFormat = " ";
+            dateTime_fin_promo.Format = DateTimePickerFormat.Custom;
+            dateTime_fin_promo.ValueChanged += dateTime_fin_promo_ValueChanged;
         }
-
-
 
 
 
@@ -207,7 +198,7 @@ namespace Eterea_Parfums_Desktop
 
         private void dateTime_inicio_promo_ValueChanged(object sender, EventArgs e)
         {
-          
+
             // Establece el formato estándar para mostrar la fecha
             dateTime_inicio_promo.Format = DateTimePickerFormat.Short;
 
@@ -239,10 +230,11 @@ namespace Eterea_Parfums_Desktop
 
         private void dateTime_fin_promo_ValueChanged(object sender, EventArgs e)
         {
-            
+
             // Establece el formato estándar para mostrar la fecha
             dateTime_fin_promo.Format = DateTimePickerFormat.Short;
         }
+
 
 
 
@@ -253,13 +245,13 @@ namespace Eterea_Parfums_Desktop
 
 
         private void cargarPerfumes(int filtroMarcaP = 0, string filtroNombreP = "", int filtroGeneroP = 0)
-            {
+        {
             List<Perfume> perfumes = PerfumeControlador.getAll();
 
             dataGrid_resultado_busqueda_perfumes.Rows.Clear();
 
-                foreach (Perfume perfume in perfumes)
-                {
+            foreach (Perfume perfume in perfumes)
+            {
                 // Aplica los filtros dinámicamente
 
                 bool coincideMarca = filtroMarcaP == 0 || perfume.marca.id == filtroMarcaP;
@@ -273,22 +265,66 @@ namespace Eterea_Parfums_Desktop
                 if (coincideNombre && coincideMarca && coincideGenero)
 
                 {
-                        int rowIndex = dataGrid_resultado_busqueda_perfumes.Rows.Add();
+                    int rowIndex = dataGrid_resultado_busqueda_perfumes.Rows.Add();
 
-                        dataGrid_resultado_busqueda_perfumes.Rows[rowIndex].Cells[0].Value = (MarcaControlador.getById(perfume.marca.id)).nombre;
-                        dataGrid_resultado_busqueda_perfumes.Rows[rowIndex].Cells[1].Value = perfume.nombre.ToString();
-                        dataGrid_resultado_busqueda_perfumes.Rows[rowIndex].Cells[2].Value = perfume.presentacion_ml.ToString();
-                        dataGrid_resultado_busqueda_perfumes.Rows[rowIndex].Cells[3].Value = (GeneroControlador.getById(perfume.genero.id)).genero;
-                        dataGrid_resultado_busqueda_perfumes.Rows[rowIndex].Cells[5].Value = perfume.id.ToString();
-
-                    //int genero = perfume.genero; // Obtén el id del genero
-
-
+                    dataGrid_resultado_busqueda_perfumes.Rows[rowIndex].Cells[0].Value = (MarcaControlador.getById(perfume.marca.id)).nombre;
+                    dataGrid_resultado_busqueda_perfumes.Rows[rowIndex].Cells[1].Value = perfume.nombre.ToString();
+                    dataGrid_resultado_busqueda_perfumes.Rows[rowIndex].Cells[2].Value = perfume.presentacion_ml.ToString();
+                    dataGrid_resultado_busqueda_perfumes.Rows[rowIndex].Cells[3].Value = (GeneroControlador.getById(perfume.genero.id)).genero;
                     dataGrid_resultado_busqueda_perfumes.Rows[rowIndex].Cells[4].Value = "Agregar";
-                    }
-
+                    dataGrid_resultado_busqueda_perfumes.Rows[rowIndex].Cells[5].Value = perfume.id.ToString();
                 }
+
             }
+        }
+
+
+
+
+
+
+
+        //Método para aplicar el filtro por marca a la busqueda de perfumes cada vez que se detecte un cambio en el combo_box
+
+        private void comboBox_Marcas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Obtener el ID de la marca seleccionada (si hay una selección)
+            int idMarcaSeleccionada = combo_buscar_marcaP.SelectedItem != null
+                ? ((KeyValuePair<int, string>)combo_buscar_marcaP.SelectedItem).Key
+                : 0; // Si no hay selección, usa 0 (todas las marcas)
+
+            // Obtener el ID del género seleccionado (si hay una selección)
+            int idGeneroSeleccionado = combo_buscar_generoP.SelectedItem != null
+                ? ((KeyValuePair<int, string>)combo_buscar_generoP.SelectedItem).Key
+                : 0; // Si no hay selección, usa 0 (todos los géneros)
+
+            // Mantener el texto ingresado en el filtro de nombre
+            string filtroNombre = txt_buscar_nombP.Text.Trim();
+
+            // Recargar los perfumes con los valores actuales
+            cargarPerfumes(filtroNombreP: filtroNombre, filtroMarcaP: idMarcaSeleccionada, filtroGeneroP: idGeneroSeleccionado);
+        }
+
+
+
+
+
+
+
+        //Evento para para permitir solo letras, números, espacios y el signo de % en el nombre de la promoción
+
+        private void txt_nomb_promo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != '%' && e.KeyChar != '\b')
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten letras, números, espacios y el símbolo %.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+
+
 
 
 
@@ -306,13 +342,13 @@ namespace Eterea_Parfums_Desktop
               ? ((KeyValuePair<int, string>)combo_buscar_marcaP.SelectedItem).Key
               : 0; // Si no hay selección, el filtro es 0 (sin filtro)
 
-            string filtroNombreP = txt_buscar_nombP.Text.Trim();        
-            
+            string filtroNombreP = txt_buscar_nombP.Text.Trim();
+
             int filtroGeneroP = combo_buscar_generoP.SelectedItem != null
-                ? ((KeyValuePair<int, string>) combo_buscar_generoP.SelectedItem).Key
+                ? ((KeyValuePair<int, string>)combo_buscar_generoP.SelectedItem).Key
                 : 0; // Si no hay selección, el filtro es 0 (sin filtro)
 
-            
+
 
             // Actualiza el DataGridView
             cargarPerfumes(filtroMarcaP, filtroNombreP, filtroGeneroP);
@@ -322,17 +358,32 @@ namespace Eterea_Parfums_Desktop
 
 
 
-        //Método para aplicar el filtro por marca a la busqueda de perfumes cada vez que se detecte un cambio en el combo_box
 
-        private void comboBox_Marcas_SelectedIndexChanged(object sender, EventArgs e)
+
+
+        //Acción del botón para borrar el texto del text_box de busqueda por nombre de perfume
+
+        private void lbl_borrar_texto_Click(object sender, EventArgs e)
         {
-            // Obtener el ID de la marca seleccionada
-            var seleccion = (KeyValuePair<int, string>)combo_buscar_marcaP.SelectedItem;
-            int idMarcaSeleccionada = seleccion.Key;
+            // Borra el texto en el TextBox de filtro por nombre
+            txt_buscar_nombP.Text = "";
 
-            // Recargar los perfumes con el filtro de marca
-            cargarPerfumes(filtroNombreP: txt_buscar_nombP.Text.Trim(), filtroMarcaP: idMarcaSeleccionada, filtroGeneroP: 0);
+            // Ocultar el label al borrar el texto
+            lbl_borrar_texto.Visible = false;
+
+            // Llama al método de carga de perfumes, manteniendo los filtros actuales de marca y género
+            int filtroMarcaP = (combo_buscar_marcaP.SelectedItem != null)
+                ? ((KeyValuePair<int, string>)combo_buscar_marcaP.SelectedItem).Key
+                : 0; // Si no hay selección de marca, se usa el filtro predeterminado (0 = todas las marcas)
+
+            int filtroGeneroP = combo_buscar_generoP.SelectedItem != null
+                ? ((KeyValuePair<int, string>)combo_buscar_generoP.SelectedItem).Key
+                : 0; // Si no hay selección de género, se usa el filtro predeterminado (0 = todos los géneros)
+
+            // Llama a cargarPerfumes con los filtros actuales de marca y género, y el filtro de nombre vacío
+            cargarPerfumes(filtroMarcaP, "", filtroGeneroP);
         }
+
 
 
 
@@ -342,16 +393,189 @@ namespace Eterea_Parfums_Desktop
         //Método para aplicar el filtro por genero a la busqueda de perfumes cada vez que se detecte un cambio en el combo_box
 
         private void combo_genero_SelectedIndexChanged(object sender, EventArgs e)
-        {  
-            // Obtener el ID del género seleccionado
-            var seleccion = (KeyValuePair<int, string>)combo_buscar_generoP.SelectedItem;
-            int idGeneroSeleccionado = seleccion.Key;
+        {
+            // Obtener el ID de la marca seleccionada (si hay una selección)
+            int idMarcaSeleccionada = combo_buscar_marcaP.SelectedItem != null
+                ? ((KeyValuePair<int, string>)combo_buscar_marcaP.SelectedItem).Key
+                : 0; // Si no hay selección, usa 0 (todas las marcas)
 
-            // Recargar los perfumes con el filtro de género
-            cargarPerfumes(filtroNombreP: txt_buscar_nombP.Text.Trim(), filtroMarcaP: 0, filtroGeneroP: idGeneroSeleccionado);
+            // Obtener el ID del género seleccionado (si hay una selección)
+            int idGeneroSeleccionado = combo_buscar_generoP.SelectedItem != null
+                ? ((KeyValuePair<int, string>)combo_buscar_generoP.SelectedItem).Key
+                : 0; // Si no hay selección, usa 0 (todos los géneros)
+
+            // Mantener el texto ingresado en el filtro de nombre
+            string filtroNombre = txt_buscar_nombP.Text.Trim();
+
+            // Recargar los perfumes con los valores actuales
+            cargarPerfumes(filtroNombreP: filtroNombre, filtroMarcaP: idMarcaSeleccionada, filtroGeneroP: idGeneroSeleccionado);
         }
 
 
+
+
+
+
+
+
+        //Acción del botón para quitar todos los filtros de la busqueda
+
+        private void btn_quitar_filtros_Click(object sender, EventArgs e)
+        {
+            // Restablecer los filtros a sus valores predeterminados
+            combo_buscar_marcaP.SelectedIndex = 0;  // "Todas las Marcas"
+            txt_buscar_nombP.Text = "";             // Nombre vacío
+            combo_buscar_generoP.SelectedIndex = 0; // "Todos los Géneros"
+
+            // Recargar el DataGridView con todos los perfumes sin aplicar filtros
+            cargarPerfumes(0, "", 0);
+        }
+
+
+
+
+
+
+
+        //SOBRECARGAR EL CONSTRUCTOR PARA INICIAR EL FORM CON LA INFO CARGADA, PARA EDITAR
+        public FormCrearPromo(Promocion promo)
+        {
+            InitializeComponent();
+
+            txt_nomb_promo.KeyPress += txt_nomb_promo_KeyPress;
+
+            // Ocultar etiquetas de error
+            lbl_error_tipo_promo.Visible = false;
+            lbl_error_nombP.Visible = false;
+            lbl_error_fecha_iniP.Visible = false;
+            lbl_error_fecha_finP.Visible = false;
+            lbl_error_promo_act.Visible = false;
+
+
+            // Llamar a los métodos de carga de datos
+            cargarComboBoxDescuentos();
+            cargarComboBoxMarcas();
+            cargarComboBoxGeneros();
+            cargarPerfumes();
+
+
+            // Asignar el id de la promo al campo interno id_editar
+            id_editar = promo.id;
+
+
+            //Creamos la lista de perfumes utilizando PerfumeDTO
+            List<PerfumeDTO> perfumes = new List<PerfumeDTO>();
+
+
+            // Llamada al método que carga los perfumes por idPromo
+            PerfumeEnPromoControlador controladorPerfume = new PerfumeEnPromoControlador();
+            perfumes = controladorPerfume.CargarPerfumesPorIdPromocion(id_editar);
+
+            cargarPerfumesDePromo(perfumes);
+
+            // Cargar el combo box para activo
+            combo_activo_promo.Items.Clear();
+            combo_activo_promo.Items.Add("Si");
+            combo_activo_promo.Items.Add("No");
+            combo_activo_promo.SelectedIndex = -1;
+
+            // Asignar el descuento correspondiente al texto
+            int descuento = promo.descuento; // Valor numérico del descuento obtenido de la BD
+
+            if (textosDescuento.TryGetValue(descuento, out string textoDescuento))
+            {
+                // Encontramos el KeyValuePair correspondiente
+                var selectedItem = combo_tipo_promo.Items
+                    .Cast<KeyValuePair<int, string>>()
+                    .FirstOrDefault(x => x.Key == descuento);
+
+                if (!selectedItem.Equals(default(KeyValuePair<int, string>)))
+                {
+                    combo_tipo_promo.SelectedItem = selectedItem; // Asignamos el KeyValuePair completo
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró un elemento coincidente en el ComboBox.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("El valor del descuento no tiene un texto asociado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            // Asignar los valores de la promoción a los controles del formulario
+            txt_nomb_promo.Text = promo.nombre;
+
+            // Primero, permitir cualquier fecha (evita restricciones previas)
+            dateTime_inicio_promo.MinDate = DateTimePicker.MinimumDateTime;
+            dateTime_fin_promo.MinDate = DateTimePicker.MinimumDateTime;
+
+            // Asignar las fechas recuperadas de la BD
+            dateTime_inicio_promo.Value = promo.fecha_inicio;
+            dateTime_fin_promo.Value = promo.fecha_fin;
+
+            // Establecer si la promoción está activa
+            if (promo.activo == 1)
+            {
+                combo_activo_promo.SelectedItem = "Si";
+            }
+            else
+            {
+                combo_activo_promo.SelectedItem = "No";
+            }
+
+            situacion = "Edicion";
+
+            lbl_crear_promo.Text = "Editar promoción";
+            btn_crear_promo.Text = "Editar promoción";
+
+        }
+
+
+
+
+
+
+
+
+        //Método para cargar los datos en el dataGridView de los perfumes agregados a la promo
+
+        private void cargarPerfumesDePromo(List<PerfumeDTO> perfumes)
+        {
+            try
+            {
+                // Verificar que la lista de perfumes tiene datos
+                if (perfumes != null && perfumes.Count > 0)
+                {
+                    // Limpiar las filas previas del DataGridView
+                    dataGrid_perfumes_agregados_a_promo.Rows.Clear();
+
+                    // Recorrer la lista de perfumes
+                    foreach (var perfume in perfumes)
+                    {
+                        // Crear una nueva fila
+                        int rowIndex = dataGrid_perfumes_agregados_a_promo.Rows.Add();
+
+                        // Asignar valores a las celdas de la fila
+                        dataGrid_perfumes_agregados_a_promo.Rows[rowIndex].Cells[0].Value = perfume.marca;
+                        dataGrid_perfumes_agregados_a_promo.Rows[rowIndex].Cells[1].Value = perfume.nombre;
+                        dataGrid_perfumes_agregados_a_promo.Rows[rowIndex].Cells[2].Value = perfume.mililitros;
+                        dataGrid_perfumes_agregados_a_promo.Rows[rowIndex].Cells[3].Value = perfume.genero;
+                        dataGrid_perfumes_agregados_a_promo.Rows[rowIndex].Cells[4].Value = "Eliminar"; // Texto del botón
+                        dataGrid_perfumes_agregados_a_promo.Rows[rowIndex].Cells[5].Value = perfume.id; // ID del perfume
+                    }
+                }
+                else
+                {
+                    // Si no hay perfumes, mostrar mensaje
+                    MessageBox.Show("No se han encontrado perfumes para esta promoción.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar los perfumes: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
 
 
@@ -369,6 +593,52 @@ namespace Eterea_Parfums_Desktop
                 // Aquí puedes trabajar con el descuentoSeleccionado, como guardarlo en una base de datos o usarlo en la lógica de tu aplicación
             }
         }
+
+
+
+
+
+
+        //Acción del botón "Agregar todos" para agregar todos los perfumes del resultado de la busqueda a la promo que se esta creando/editando
+
+        private void btn_agregar_todos_Click_1(object sender, EventArgs e)
+        {
+            // Iterar por todas las filas del dataGrid_resultado_busqueda_perfumes
+            foreach (DataGridViewRow sourceRow in dataGrid_resultado_busqueda_perfumes.Rows)
+            {
+                // Obtener el ID del perfume de la fila actual
+                int idPerfume = Convert.ToInt32(sourceRow.Cells[5].Value);
+
+                // Verificar si el perfume ya está en el dataGrid_perfumes_agregados_a_promo
+                bool perfumeYaAgregado = false;
+                foreach (DataGridViewRow targetRow in dataGrid_perfumes_agregados_a_promo.Rows)
+                {
+                    if (Convert.ToInt32(targetRow.Cells[5].Value) == idPerfume)
+                    {
+                        perfumeYaAgregado = true;
+                        break; // Si el perfume ya está agregado, no seguimos buscando
+                    }
+                }
+
+                // Si el perfume no está agregado, lo agregamos al dataGrid_perfumes_agregados_a_promo
+                if (!perfumeYaAgregado)
+                {
+                    int newRowIndex = dataGrid_perfumes_agregados_a_promo.Rows.Add();
+                    dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[0].Value = sourceRow.Cells[0].Value;
+                    dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[1].Value = sourceRow.Cells[1].Value;
+                    dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[2].Value = sourceRow.Cells[2].Value;
+                    dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[3].Value = sourceRow.Cells[3].Value;
+                    dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[4].Value = "Elimninar";
+                    dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[5].Value = idPerfume;
+                }
+            }
+
+            // Mostrar un mensaje al final del proceso
+            MessageBox.Show("Todos los perfumes han sido agregados correctamente (excepto los duplicados).", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
+
 
 
 
@@ -412,27 +682,34 @@ namespace Eterea_Parfums_Desktop
 
 
 
-        //Acción del botón para borrar el texto del text_box de busqueda por nombre de perfume
 
-        private void lbl_borrar_texto_Click(object sender, EventArgs e)
+
+
+        //Acción del botón "Eliminar" del dataGridView de los perfumes a los que aplica la promo
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Borra el texto en el TextBox de filtro por nombre
-            txt_buscar_nombP.Text = "";
+            // Verifica que la celda clickeada sea la del botón "Eliminar"
+            if (e.ColumnIndex == 4 && e.RowIndex >= 0)
+            {
+                // Obtener el nombre del perfume desde la fila seleccionada
+                string nombrePerfume = dataGrid_perfumes_agregados_a_promo.Rows[e.RowIndex].Cells[1].Value.ToString();  // Columna 1 es el nombre del perfume
+                string mililitrosPerfume = dataGrid_perfumes_agregados_a_promo.Rows[e.RowIndex].Cells[2].Value.ToString();  // Columna 2 es la cantidad de mililitros
 
-            // Ocultar el label al borrar el texto
-            lbl_borrar_texto.Visible = false;
+                // Confirmación de eliminación
+                DialogResult resultado = MessageBox.Show(
+                   $"¿Estás seguro de que deseas eliminar el perfume '{nombrePerfume}'de '{mililitrosPerfume}'ml del listado?",
+                    "Confirmar eliminación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
 
-            // Llama al método de carga de perfumes, manteniendo los filtros actuales de marca y género
-            int filtroMarcaP = (combo_buscar_marcaP.SelectedItem != null)
-                ? ((KeyValuePair<int, string>)combo_buscar_marcaP.SelectedItem).Key
-                : 0; // Si no hay selección de marca, se usa el filtro predeterminado (0 = todas las marcas)
-
-            int filtroGeneroP = combo_buscar_generoP.SelectedItem != null
-                ? ((KeyValuePair<int, string>)combo_buscar_generoP.SelectedItem).Key
-                : 0; // Si no hay selección de género, se usa el filtro predeterminado (0 = todos los géneros)
-
-            // Llama a cargarPerfumes con los filtros actuales de marca y género, y el filtro de nombre vacío
-            cargarPerfumes(filtroMarcaP, "", filtroGeneroP);
+                if (resultado == DialogResult.Yes)
+                {
+                    // Elimina la fila seleccionada del DataGridView
+                    dataGrid_perfumes_agregados_a_promo.Rows.RemoveAt(e.RowIndex);
+                }
+            }
         }
 
 
@@ -441,18 +718,193 @@ namespace Eterea_Parfums_Desktop
 
 
 
-        //Acción del botón para quitar todos los filtros de la busqueda
 
-        private void btn_quitar_filtros_Click(object sender, EventArgs e)
+        //Acción del botón "Eliminar todos" para quitar todos los perfumes agregados a la lista de perfumes a los que aplica la promo
+
+        private void btn_eliminar_todos_Click(object sender, EventArgs e)
         {
-            // Restablecer los filtros a sus valores predeterminados
-            combo_buscar_marcaP.SelectedIndex = 0;  // "Todas las Marcas"
-            txt_buscar_nombP.Text = "";             // Nombre vacío
-            combo_buscar_generoP.SelectedIndex = 0; // "Todos los Géneros"
 
-            // Recargar el DataGridView con todos los perfumes sin aplicar filtros
-            cargarPerfumes(0, "", 0);
+            // Confirmar la acción con el usuario
+            DialogResult resultado = MessageBox.Show(
+                "¿Estás seguro de que deseas eliminar todos los perfumes agregados?",
+                "Confirmación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (resultado == DialogResult.Yes)
+            {
+                // Realiza un respaldo de las filas actuales
+                backupRows.Clear(); // Limpiar el respaldo anterior
+                foreach (DataGridViewRow row in dataGrid_perfumes_agregados_a_promo.Rows)
+                {
+                    // Agregar la fila al respaldo (asegurarse de no agregar filas vacías)
+                    if (!row.IsNewRow)
+                    {
+                        backupRows.Add(row);
+                    }
+                }
+
+                // Elimina todas las filas del DataGridView
+                dataGrid_perfumes_agregados_a_promo.Rows.Clear();
+
+                MessageBox.Show("Todos los perfumes han sido eliminados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+
         }
+
+
+
+
+
+
+        //Acción del botón para volver atras si se eliminaron todos los perfumes de la promo por error
+
+        private void btrn_deshacer_eliminacion_Click(object sender, EventArgs e)
+        {
+            if (backupRows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para deshacer la eliminación.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Restaurar las filas del respaldo al DataGridView
+            foreach (DataGridViewRow row in backupRows)
+            {
+                int rowIndex = dataGrid_perfumes_agregados_a_promo.Rows.Add();
+                for (int i = 0; i < row.Cells.Count; i++)
+                {
+                    dataGrid_perfumes_agregados_a_promo.Rows[rowIndex].Cells[i].Value = row.Cells[i].Value;
+                }
+            }
+
+            // Limpiar el respaldo una vez restaurado
+            backupRows.Clear();
+
+            MessageBox.Show("Se ha deshecho la eliminación de los perfumes.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+
+
+
+
+
+
+
+
+        //Método que ejecuta las acciones para crear la promoción (llama a PromoControlador.crearPromo(promoEditada))
+
+        private void crearPromo()
+        {
+            // Validar los datos ingresados
+            /* if (!validarPromo(out string errorMsg))
+             {
+                 MessageBox.Show(
+                     "No se pudo crear la promoción debido a los siguientes errores:\n" + errorMsg,
+                     "Errores en la creación",
+                     MessageBoxButtons.OK,
+                     MessageBoxIcon.Error
+                 );
+                 return;
+             }*/
+
+            // Obtener los datos de los controles
+            KeyValuePair<int, string> tipoPromo = (KeyValuePair<int, string>)combo_tipo_promo.SelectedItem;
+            string nombrePromo = txt_nomb_promo.Text;
+            DateTime fechaInicio = dateTime_inicio_promo.Value;
+            DateTime fechaFin = dateTime_fin_promo.Value;
+            // Convertir el estado activo en un entero (1 para activo, 0 para no activo)
+            int esActiva = combo_activo_promo.SelectedItem.ToString() == "Si" ? 1 : 0;
+
+            // Crear un objeto Promoción con los datos capturados
+            Promocion nuevaPromo = new Promocion
+            {
+                descuento = tipoPromo.Key,
+                nombre = nombrePromo,
+                fecha_inicio = fechaInicio,
+                fecha_fin = fechaFin,
+                activo = esActiva
+            };
+
+            if (PromoControlador.crearPromocion(nuevaPromo))
+            {
+                this.DialogResult = DialogResult.OK;
+            }
+
+            MessageBox.Show(
+                   "La promoción se creó exitosamente.",
+                   "Promoción creada",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Information
+               );
+
+        }
+
+
+
+
+
+
+
+
+        //Método que ejecuta las acciones para editar la promoción (llama a PromoControlador.editarPromo(promoEditada))
+
+        private void editarPromo()
+        {
+            // ID de la promoción que se está editando
+            int idPromo = id_editar;
+
+            // Obtener la clave del descuento seleccionada (clave del diccionario)
+            var seleccionTipoPromo = (KeyValuePair<int, string>)combo_tipo_promo.SelectedItem;
+            int descuentoClave = seleccionTipoPromo.Key; // La clave que se debe guardar en la base de datos
+
+            // Obtener el valor de "Activo" (1 si está activo, 0 si no)
+            int activo = combo_activo_promo.SelectedIndex == 0 ? 1 : 0; // 0 = No activo, 1 = Activo
+
+
+            // Confirmar con el usuario
+            DialogResult resultado = MessageBox.Show(
+                "¿Estás seguro de que deseas editar esta promoción?",
+                "Confirmación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            //Si el usuario responde "NO", se detiene inmediatamente la ejecución del método editarPromo()
+            if (resultado == DialogResult.No)
+                return;
+
+            //Se crea el objeto de la promoción a editar
+
+            Promocion promoEditada = new Promocion(id_editar, txt_nomb_promo.Text, dateTime_inicio_promo.Value, dateTime_fin_promo.Value, descuentoClave, activo);
+
+            if (PromoControlador.editarPromo(promoEditada))
+            {
+                this.DialogResult = DialogResult.OK;
+            }
+
+            PromoControlador.editarPromo(promoEditada);
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -566,6 +1018,15 @@ namespace Eterea_Parfums_Desktop
             }
 
 
+            if (string.IsNullOrEmpty(errorMsg))
+            {
+                lbl_error_tipo_promo.Visible = false;
+                lbl_error_nombP.Visible = false;
+                lbl_error_fecha_iniP.Visible = false;
+                lbl_error_fecha_finP.Visible = false;
+                lbl_error_promo_act.Visible = false;
+            }
+
             // Devolver si hay errores o no
             return string.IsNullOrEmpty(errorMsg);
         }
@@ -575,53 +1036,6 @@ namespace Eterea_Parfums_Desktop
 
 
 
-        //Método que ejecuta las acciones para crear la promoción (llama a PromoControlador.crearPromo(promoEditada))
-
-        private void crearPromo()
-        {
-            // Validar los datos ingresados
-           /* if (!validarPromo(out string errorMsg))
-            {
-                MessageBox.Show(
-                    "No se pudo crear la promoción debido a los siguientes errores:\n" + errorMsg,
-                    "Errores en la creación",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-                return;
-            }*/
-
-            // Obtener los datos de los controles
-            KeyValuePair<int, string> tipoPromo = (KeyValuePair<int, string>)combo_tipo_promo.SelectedItem;
-            string nombrePromo = txt_nomb_promo.Text;
-            DateTime fechaInicio = dateTime_inicio_promo.Value;
-            DateTime fechaFin = dateTime_fin_promo.Value;
-            // Convertir el estado activo en un entero (1 para activo, 0 para no activo)
-            int esActiva = combo_activo_promo.SelectedItem.ToString() == "Si" ? 1 : 0;
-
-            // Crear un objeto Promoción con los datos capturados
-            Promocion nuevaPromo = new Promocion
-            {
-                descuento = tipoPromo.Key,
-                nombre = nombrePromo,
-                fecha_inicio = fechaInicio,
-                fecha_fin = fechaFin,
-                activo = esActiva
-            };
-
-            if (PromoControlador.crearPromocion(nuevaPromo)) 
-            {
-                this.DialogResult = DialogResult.OK;
-            }
-
-            MessageBox.Show(
-                   "La promoción se creó exitosamente.",
-                   "Promoción creada",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Information
-               );
-
-        }
 
 
 
@@ -649,7 +1063,7 @@ namespace Eterea_Parfums_Desktop
 
         }
 
-      
+
 
         //Método para limpiar el formulario
 
@@ -669,6 +1083,68 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
+
+
+
+
+
+
+        //Acción del botón crear/editar
+
+        private void btn_crear_promo_Click(object sender, EventArgs e)
+        {
+
+            if (situacion == "Creacion")
+            {
+                bool promoValidada = validarPromo(out string errorMsg);
+                if (promoValidada)
+                {
+                    string nombrePromo = txt_nomb_promo.Text.Trim();
+
+                    if (PromoControlador.ExisteNombrePromo(nombrePromo))
+                    {
+                        MessageBox.Show("Ya existe una promoción con este nombre. Elija otro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+
+                    crearPromo();
+                    asignarPerfumesAPromo();
+                }
+            }
+            if (situacion == "Edicion")
+            {
+                bool promoValidada = validarPromo(out string errorMsg);
+                if (promoValidada)
+                {
+                    string nombrePromo = txt_nomb_promo.Text.Trim();
+
+                    if (PromoControlador.ExisteNombrePromo(nombrePromo))
+                    {
+                        MessageBox.Show("Ya existe una promoción con este nombre. Elija otro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+
+                    editarPromo();
+                    asignarPerfumesAPromo();
+                }
+                else
+                {
+                    MessageBox.Show(errorMsg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+
+        }
+
+
+
+
+
+
+
+
         //Acción para el botón cerrar pantalla
 
         private void button1_Click(object sender, EventArgs e)
@@ -676,28 +1152,6 @@ namespace Eterea_Parfums_Desktop
             this.Close(); // Cierra el formulario
         }
 
-        private void btn_crear_promo_Click(object sender, EventArgs e)
-        {
-            bool promoValidada = validarPromo(out string errorMsg);
-            if (promoValidada)
-            {
-                string nombrePromo = txt_nomb_promo.Text.Trim();
-
-                if (PromoControlador.ExisteNombrePromo(nombrePromo))
-                {
-                    MessageBox.Show("Ya existe una promoción con este nombre. Elija otro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
-
-                crearPromo();
-                asignarPerfumesAPromo();
-            }
-            else
-            {
-                MessageBox.Show(errorMsg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
 
 
 
@@ -705,147 +1159,7 @@ namespace Eterea_Parfums_Desktop
 
 
 
-        //Acción del botón "Eliminar" del dataGridView de los perfumes a los que aplica la promo
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Verifica que la celda clickeada sea la del botón "Eliminar"
-            if (e.ColumnIndex == 4 && e.RowIndex >= 0)
-            {
-                // Obtener el nombre del perfume desde la fila seleccionada
-                string nombrePerfume = dataGrid_perfumes_agregados_a_promo.Rows[e.RowIndex].Cells[1].Value.ToString();  // Columna 1 es el nombre del perfume
-                string mililitrosPerfume = dataGrid_perfumes_agregados_a_promo.Rows[e.RowIndex].Cells[2].Value.ToString();  // Columna 2 es la cantidad de mililitros
-
-                // Confirmación de eliminación
-                DialogResult resultado = MessageBox.Show(
-                   $"¿Estás seguro de que deseas eliminar el perfume '{nombrePerfume}'de '{mililitrosPerfume}'ml del listado?",
-                    "Confirmar eliminación",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question
-                );
-
-                if (resultado == DialogResult.Yes)
-                {
-                    // Elimina la fila seleccionada del DataGridView
-                    dataGrid_perfumes_agregados_a_promo.Rows.RemoveAt(e.RowIndex);
-                }
-            }
-        }
-
-
-
-
-
-
-        //Acción del botón "Agregar todos" para agregar todos los perfumes del resultado de la busqueda a la promo que se esta creando/editando
-      
-        private void btn_agregar_todos_Click_1(object sender, EventArgs e)
-        {
-            // Iterar por todas las filas del dataGrid_resultado_busqueda_perfumes
-            foreach (DataGridViewRow sourceRow in dataGrid_resultado_busqueda_perfumes.Rows)
-            {
-                // Obtener el ID del perfume de la fila actual
-                int idPerfume = Convert.ToInt32(sourceRow.Cells[5].Value);
-
-                // Verificar si el perfume ya está en el dataGrid_perfumes_agregados_a_promo
-                bool perfumeYaAgregado = false;
-                foreach (DataGridViewRow targetRow in dataGrid_perfumes_agregados_a_promo.Rows)
-                {
-                    if (Convert.ToInt32(targetRow.Cells[5].Value) == idPerfume)
-                    {
-                        perfumeYaAgregado = true;
-                        break; // Si el perfume ya está agregado, no seguimos buscando
-                    }
-                }
-
-                // Si el perfume no está agregado, lo agregamos al dataGrid_perfumes_agregados_a_promo
-                if (!perfumeYaAgregado)
-                {
-                    int newRowIndex = dataGrid_perfumes_agregados_a_promo.Rows.Add();
-                    dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[0].Value = sourceRow.Cells[0].Value;
-                    dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[1].Value = sourceRow.Cells[1].Value;
-                    dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[2].Value = sourceRow.Cells[2].Value;
-                    dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[3].Value = sourceRow.Cells[3].Value;
-                    dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[4].Value = "Elimninar";
-                    dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[5].Value = idPerfume;
-                }
-            }
-
-            // Mostrar un mensaje al final del proceso
-            MessageBox.Show("Todos los perfumes han sido agregados correctamente (excepto los duplicados).", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-
-
-
-
-
-
-        //Acción del botón "Eliminar todos" para quitar todos los perfumes agregados a la lista de perfumes a los que aplica la promo
-
-        private void btn_eliminar_todos_Click(object sender, EventArgs e)
-        {
-          
-                // Confirmar la acción con el usuario
-                DialogResult resultado = MessageBox.Show(
-                    "¿Estás seguro de que deseas eliminar todos los perfumes agregados?",
-                    "Confirmación",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question
-                );
-
-                if (resultado == DialogResult.Yes)
-                {
-                    // Realiza un respaldo de las filas actuales
-                    backupRows.Clear(); // Limpiar el respaldo anterior
-                    foreach (DataGridViewRow row in dataGrid_perfumes_agregados_a_promo.Rows)
-                    {
-                        // Agregar la fila al respaldo (asegurarse de no agregar filas vacías)
-                        if (!row.IsNewRow)
-                        {
-                            backupRows.Add(row);
-                        }
-                    }
-
-                    // Elimina todas las filas del DataGridView
-                    dataGrid_perfumes_agregados_a_promo.Rows.Clear();
-
-                    MessageBox.Show("Todos los perfumes han sido eliminados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
-            }
-
-        }
-
-
-
-
-
-
-        //Acción del botón para volver atras si se eliminaron todos los perfumes de la promo por error
-
-        private void btrn_deshacer_eliminacion_Click(object sender, EventArgs e)
-        {
-            if (backupRows.Count == 0)
-            {
-                MessageBox.Show("No hay datos para deshacer la eliminación.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // Restaurar las filas del respaldo al DataGridView
-            foreach (DataGridViewRow row in backupRows)
-            {
-                int rowIndex = dataGrid_perfumes_agregados_a_promo.Rows.Add();
-                for (int i = 0; i < row.Cells.Count; i++)
-                {
-                    dataGrid_perfumes_agregados_a_promo.Rows[rowIndex].Cells[i].Value = row.Cells[i].Value;
-                }
-            }
-
-            // Limpiar el respaldo una vez restaurado
-            backupRows.Clear();
-
-            MessageBox.Show("Se ha deshecho la eliminación de los perfumes.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
 
 
     }
