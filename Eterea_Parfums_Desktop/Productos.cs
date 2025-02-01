@@ -255,9 +255,25 @@ namespace Eterea_Parfums_Desktop
                 {
                     return false;
                 }
-            }
 
-            return true;
+            // Validar el dígito de control usando el algoritmo de EAN-13
+            return ValidarEAN13(codigo);
+        }
+
+        private bool ValidarEAN13(string codigo)
+        {
+            int suma = 0;
+
+            // Aplicar la fórmula del dígito de control de EAN-13
+            for (int i = 0; i < 12; i++)
+            {
+                int digito = codigo[i] - '0'; // Convertir char a int
+                suma += (i % 2 == 0) ? digito : digito * 3;
+            }
+            int digitoControlEsperado = (10 - (suma % 10)) % 10;
+
+            // Comparar con el último dígito del código
+            return digitoControlEsperado == (codigo[12] - '0');
         }
 
         private bool ValidarPerfume()
