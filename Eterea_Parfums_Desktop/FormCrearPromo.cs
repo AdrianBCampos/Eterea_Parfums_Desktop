@@ -83,6 +83,11 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
+
+
+
+
         //Cargar marcas en el combo_box
 
         private void cargarComboBoxMarcas()
@@ -113,6 +118,11 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
+
+
+
+
         //Cargar descuentos en el combo_box
 
         public void cargarComboBoxDescuentos()
@@ -128,6 +138,9 @@ namespace Eterea_Parfums_Desktop
 
 
         }
+
+
+
 
 
 
@@ -194,6 +207,12 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
+
+
+
+
+
         //Método para activar restricciones en el datePicker de la fecha de inicio
 
         private void dateTime_inicio_promo_ValueChanged(object sender, EventArgs e)
@@ -226,6 +245,7 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
         //Método para activar restricciones en el datePicker de la fecha de fin
 
         private void dateTime_fin_promo_ValueChanged(object sender, EventArgs e)
@@ -234,6 +254,8 @@ namespace Eterea_Parfums_Desktop
             // Establece el formato estándar para mostrar la fecha
             dateTime_fin_promo.Format = DateTimePickerFormat.Short;
         }
+
+
 
 
 
@@ -284,6 +306,8 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
+
         //Método para aplicar el filtro por marca a la busqueda de perfumes cada vez que se detecte un cambio en el combo_box
 
         private void comboBox_Marcas_SelectedIndexChanged(object sender, EventArgs e)
@@ -311,6 +335,8 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
+
         //Evento para para permitir solo letras, números, espacios y el signo de % en el nombre de la promoción
 
         private void txt_nomb_promo_KeyPress(object sender, KeyPressEventArgs e)
@@ -321,6 +347,7 @@ namespace Eterea_Parfums_Desktop
                 MessageBox.Show("Solo se permiten letras, números, espacios y el símbolo %.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
 
 
 
@@ -361,6 +388,8 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
+
         //Acción del botón para borrar el texto del text_box de busqueda por nombre de perfume
 
         private void lbl_borrar_texto_Click(object sender, EventArgs e)
@@ -383,6 +412,8 @@ namespace Eterea_Parfums_Desktop
             // Llama a cargarPerfumes con los filtros actuales de marca y género, y el filtro de nombre vacío
             cargarPerfumes(filtroMarcaP, "", filtroGeneroP);
         }
+
+
 
 
 
@@ -418,6 +449,7 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
         //Acción del botón para quitar todos los filtros de la busqueda
 
         private void btn_quitar_filtros_Click(object sender, EventArgs e)
@@ -430,6 +462,10 @@ namespace Eterea_Parfums_Desktop
             // Recargar el DataGridView con todos los perfumes sin aplicar filtros
             cargarPerfumes(0, "", 0);
         }
+
+
+
+
 
 
 
@@ -538,6 +574,9 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
+
+
         //Método para cargar los datos en el dataGridView de los perfumes agregados a la promo
 
         private void cargarPerfumesDePromo(List<PerfumeDTO> perfumes)
@@ -582,6 +621,9 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
+
+
         //Método para detectar cambios en el combo_box de tipo de promoción
 
         private void combo_tipo_promo_edit_SelectedIndexChanged(object sender, EventArgs e)
@@ -593,6 +635,9 @@ namespace Eterea_Parfums_Desktop
                 // Aquí puedes trabajar con el descuentoSeleccionado, como guardarlo en una base de datos o usarlo en la lógica de tu aplicación
             }
         }
+
+
+
 
 
 
@@ -897,21 +942,6 @@ namespace Eterea_Parfums_Desktop
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         //Método para limpiar los mensajes de error
 
         private void limpiarMensajesError()
@@ -923,6 +953,7 @@ namespace Eterea_Parfums_Desktop
             lbl_error_promo_act.Visible = false;
 
         }
+
 
 
 
@@ -1065,6 +1096,11 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
+
+
+
+
         //Método para limpiar el formulario
 
         private void limpiarFormulario()
@@ -1151,10 +1187,6 @@ namespace Eterea_Parfums_Desktop
         {
             this.Close(); // Cierra el formulario
         }
-
-
-
-
 
 
 
