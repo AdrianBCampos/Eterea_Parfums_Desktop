@@ -265,6 +265,7 @@ namespace Eterea_Parfums_Desktop
             {
                 errorMsg += "El código no es válido. Debe ser un código EAN-13 correcto.\n";
                 lbl_error_codigo.Text = "El código no es válido. Debe tener 13 dígitos.";
+                lbl_error_codigo.Show();
             }
             else lbl_error_codigo.Visible = false;
 
