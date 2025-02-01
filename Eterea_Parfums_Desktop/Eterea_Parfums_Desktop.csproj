@@ -132,6 +132,12 @@
     <Compile Include="Facturacion.Designer.cs">
       <DependentUpon>Facturacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormSeleccionarUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSeleccionarUsuario.Designer.cs">
+      <DependentUpon>FormSeleccionarUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormEliminarPromo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,12 +173,6 @@
     </Compile>
     <Compile Include="FormEditarEmpleado.Designer.cs">
       <DependentUpon>FormEditarEmpleado.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormEditarPromo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormEditarPromo.Designer.cs">
-      <DependentUpon>FormEditarPromo.cs</DependentUpon>
     </Compile>
     <Compile Include="FormEliminarClienteABM.cs">
       <SubType>Form</SubType>
@@ -362,9 +362,6 @@
     <EmbeddedResource Include="FormEditarEmpleado.resx">
       <DependentUpon>FormEditarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormEditarPromo.resx">
-      <DependentUpon>FormEditarPromo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormEliminarClienteABM.resx">
       <DependentUpon>FormEliminarClienteABM.cs</DependentUpon>
     </EmbeddedResource>
@@ -376,6 +373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormEmpleado.resx">
       <DependentUpon>FormEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSeleccionarUsuario.resx">
+      <DependentUpon>FormSeleccionarUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="InformesDeVentas2.resx">
       <DependentUpon>InformesDeVentas2.cs</DependentUpon>

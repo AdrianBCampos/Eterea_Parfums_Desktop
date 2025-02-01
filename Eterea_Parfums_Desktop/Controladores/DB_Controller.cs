@@ -10,10 +10,10 @@ namespace Eterea_Parfums_Desktop.Controladores
 {
     public static class DB_Controller
     {
-        public static string connectionString = "";
+        //public static string connectionString = "";
         public static SqlConnection connection;
 
-        public static void initialize()
+        /*public static void initialize()
         {
             // Lista de posibles nombres de servidores
             List<string> serverNames = new List<string>
@@ -23,40 +23,51 @@ namespace Eterea_Parfums_Desktop.Controladores
                 @"DESKTOP-N6TI9JV\MSSQLSERVER02"
             };
 
-            string databaseName = "eterea";
-            bool integratedSecurity = true;
-
-            foreach (var serverName in serverNames)
-            {
-                try
-                {
-                    // Construir la cadena de conexión
-                    var builder = new SqlConnectionStringBuilder
-                    {
-                        DataSource = serverName,        // Nombre del servidor
-                        InitialCatalog = databaseName, // Nombre de la base de datos
-                        IntegratedSecurity = integratedSecurity
-                    };
+            builder.DataSource = @"(localdb)\Local";  //NOMBRE DEL SERVIDOR
+            builder.InitialCatalog = "eterea";  //NOMBRE DE LA BASE DE DATOS
+            builder.IntegratedSecurity = true;  //TIENE O NO SEGURIDAD INTEGRADA CON WINDOWS
 
                     connectionString = builder.ToString();
                     connection = new SqlConnection(connectionString);
 
-                    // Intentar abrir la conexión
-                    connection.Open();
-                    Trace.WriteLine($"Conexión exitosa al servidor: {serverName}");
-                    connection.Close();
-                    break; // Si la conexión es exitosa, salir del bucle
-                }
-                catch (Exception ex)
-                {
-                    Trace.WriteLine($"No se pudo conectar al servidor: {serverName}. Error: {ex.Message}");
-                }
+            Trace.WriteLine("Conexion a la BD: " + connection);
+        }*/
+
+        // Método para configurar la conexión basada en el usuario
+        public static void ConfigurarConexion(string usuario)
+        {
+            // Definir la cadena de conexión según el usuario seleccionado
+            string connectionString;
+
+            switch (usuario)
+            {
+                case "Adri":
+                    connectionString = "Data Source=(localdb)\\Local;Initial Catalog=eterea;Integrated Security=True;";
+                    break;
+                case "Dami":
+                    connectionString = "Data Source=LocalHost;Initial Catalog=eterea;Integrated Security=True;";
+                    break;
+                case "Luis":
+                    connectionString = "Data Source=LocalHost;Initial Catalog=eterea;Integrated Security=True;";
+                    break;
+                case "Maxi":
+                    connectionString = "Data Source=DESKTOP-N6TI9JV\\MSSQLSERVER02;Initial Catalog=eterea;Integrated Security=True;";
+                    break;
+                case "Marino":
+                    connectionString = "Data Source=(localdb)\\Local;Initial Catalog=eterea;Integrated Security=True;";
+                    break;
+                default:
+                    throw new Exception("Usuario no válido.");
             }
 
-            if (connection == null || connection.State != System.Data.ConnectionState.Closed)
-            {
-                throw new Exception("No se pudo conectar a ninguno de los servidores especificados.");
-            }
+            connection = new SqlConnection(connectionString);
+
+            // Mostrar los datos de conexión en la consola
+            Console.WriteLine("=================================");
+            Console.WriteLine($"Usuario seleccionado: {usuario}");
+            Console.WriteLine($"Cadena de conexión: {connectionString}");
+            Console.WriteLine("=================================");
+
         }
     }
 }

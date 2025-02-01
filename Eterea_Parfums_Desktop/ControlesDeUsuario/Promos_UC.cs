@@ -23,12 +23,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             cargarPromociones();
         }
 
-        public void recargarPromociones()
-        {
-            // Código para volver a cargar el DataGridView con las promociones actualizadas
-            var promociones = PromoControlador.obtenerTodos();
-            dataGridViewPromos.DataSource = promociones;
-        }
+
 
         private void cargarPromociones(string filtroNombre = "")
         {
@@ -49,31 +44,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     //dataGV_Promos.Rows[rowIndex].Cells[2].Value = promocion.descuento.ToString();
                     int descuento = promocion.descuento; // Obtén el valor del descuento como entero
 
-                    string textoPromocion;
-
-                    switch (descuento)
-                    {
-                        case 50:
-                            textoPromocion = "2 x 1";
-                            break;
-                        case 25:
-                            textoPromocion = "2da Unidad 50% Dto.";
-                            break;
-                        case 35:
-                            textoPromocion = "2da Unidad 70% Dto.";
-                            break;
-                        case 40:
-                            textoPromocion = "2da Unidad 80% Dto.";
-                            break;
-                        case 10:
-                            textoPromocion = "Descuento especial del 10%";
-                            break;
-                        default:
-                            textoPromocion = "Sin promoción"; // Texto predeterminado para otros valores
-                            break;
-                    }
-
-                    // Asigna el texto al DataGridView
+                    //string textoPromocion;
+                    // Asignar texto basado en el descuento
+                    string textoPromocion = GetTextoPromocion(promocion.descuento);
                     dataGridViewPromos.Rows[rowIndex].Cells[2].Value = textoPromocion;
 
                     if (promocion.activo.ToString() == "1")
@@ -90,6 +63,28 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 }
             }
         }
+
+        private string GetTextoPromocion(int descuento)
+        {
+            // Devuelve el texto adecuado según el descuento
+            switch (descuento)
+            {
+                case 50:
+                    return "2 x 1";
+                case 25:
+                    return "2da Unidad 50% Dto.";
+                case 35:
+                    return "2da Unidad 70% Dto.";
+                case 40:
+                    return "2da Unidad 80% Dto.";
+                case 10:
+                    return "Descuento especial del 10%";
+                default:
+                    return "Sin promoción";
+            }
+        }
+
+
         private void txt_buscar_nombre_TextChanged(object sender, EventArgs e)
         {
             string filtroNombre = textbox_nombrePromo.Text.Trim();
@@ -102,15 +97,17 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void btn_crear_promo_Click(object sender, EventArgs e)
         {
-            FormCrearPromo formCrearPromo = new FormCrearPromo();
-            DialogResult dr = formCrearPromo.ShowDialog();
+            FormCrearPromo crearPromo = new FormCrearPromo();
+
+            DialogResult dr = crearPromo.ShowDialog();
 
             if (dr == DialogResult.OK)
             {
                 Trace.WriteLine("OK");
 
-                //ACTUALIZAR LA LISTA
+                //Actualizar la lista
                 cargarPromociones();
+
             }
         }
 
@@ -125,27 +122,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 // Verificar si el ID de la promoción es válido
                 if (idPromoCell != null && int.TryParse(idPromoCell.ToString(), out int idPromo))
                 {
-                    /* int id = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
-
-                Trace.WriteLine("El id es: " + id);
-
-                Cliente cliente_editar = ClienteControlador.obtenerPorId(id);
-
-                FormEditarClienteABM formEditarClienteABM = new FormEditarClienteABM(cliente_editar);
-
-                DialogResult dr = formEditarClienteABM.ShowDialog();
-
-                if (dr == DialogResult.OK)
-                {
-                    Trace.WriteLine("OK");
-
-                    //ACTUALIZAR LA LISTA
-                    cargarClientes();
-
-                }*/
+              
                     // Crear una nueva instancia del formulario de edición
                     Promocion promocion_editar = PromoControlador.obtenerPorId(idPromo);
-                    FormEditarPromo formEditarPromo = new FormEditarPromo(promocion_editar);
+                    FormCrearPromo formEditarPromo = new FormCrearPromo(promocion_editar);
                     DialogResult dr = formEditarPromo.ShowDialog();
 
                     if (dr == DialogResult.OK)
