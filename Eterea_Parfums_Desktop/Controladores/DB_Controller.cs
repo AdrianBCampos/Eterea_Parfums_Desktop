@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
@@ -15,14 +15,20 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         /*public static void initialize()
         {
-            var builder = new SqlConnectionStringBuilder();
+            // Lista de posibles nombres de servidores
+            List<string> serverNames = new List<string>
+            {
+                @"LocalHost",
+                @"(localdb)\Local",
+                @"DESKTOP-N6TI9JV\MSSQLSERVER02"
+            };
 
             builder.DataSource = @"(localdb)\Local";  //NOMBRE DEL SERVIDOR
             builder.InitialCatalog = "eterea";  //NOMBRE DE LA BASE DE DATOS
             builder.IntegratedSecurity = true;  //TIENE O NO SEGURIDAD INTEGRADA CON WINDOWS
 
-            connectionString = builder.ToString();
-            connection = new SqlConnection(connectionString);
+                    connectionString = builder.ToString();
+                    connection = new SqlConnection(connectionString);
 
             Trace.WriteLine("Conexion a la BD: " + connection);
         }*/

@@ -1,14 +1,8 @@
-﻿using Eterea_Parfums_Desktop.Modelos;
+﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.Modelos;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace Eterea_Parfums_Desktop
 {
     public partial class VerDetallePerfume : Form
@@ -28,7 +22,17 @@ namespace Eterea_Parfums_Desktop
 
             txt_nombre_perfume.Text = perfumeSeleccionado.nombre;
             richTextBox_descripcion.Text = perfumeSeleccionado.descripcion;
-            txt_precio_lista.Text = perfumeSeleccionado.precio_en_pesos.ToString();
+            txt_precio_lista.Text = perfumeSeleccionado.precio_en_pesos.ToString("N2");
+
+            txt_marca.Text = MarcaControlador.getById(perfumeSeleccionado.marca.id).nombre;
+            txt_genero.Text = GeneroControlador.getById(perfumeSeleccionado.genero.id).genero;
+            txt_pais.Text = PaisControlador.getById(perfumeSeleccionado.pais.id).nombre;
+            txt_fecha.Text = perfumeSeleccionado.anio_de_lanzamiento.ToString();
+            txt_ml.Text = perfumeSeleccionado.presentacion_ml.ToString() + " ml";
+            txt_tipo.Text = TipoDePerfumeControlador.getById(perfumeSeleccionado.tipo_de_perfume.id).tipo_de_perfume;
+            txt_codigo.Text = perfumeSeleccionado.codigo.ToString();
+            txt_spray.Text = (perfumeSeleccionado.spray == 1) ? "Sí" : "No";
+            txt_recargable.Text = (perfumeSeleccionado.recargable == 1) ? "Sí" : "No";
 
             combo_medios_pago.Items.Clear();
             combo_medios_pago.Items.Add("Efectivo");
@@ -39,27 +43,71 @@ namespace Eterea_Parfums_Desktop
             combo_medios_pago.Items.Add("Mercado Pago");
             combo_medios_pago.SelectedIndex = 0;
 
+            combo_descuento.Items.Clear();
+            combo_descuento.Items.Add("0");
+            combo_descuento.Items.Add("5");
+            combo_descuento.Items.Add("10");
+            combo_descuento.Items.Add("15");
+            combo_descuento.Items.Add("20");
+            combo_descuento.SelectedIndex = 0;
+
             string nombreImagen = perfumeSeleccionado.imagen1.ToString();
             string rutaCompletaImagen = Program.Ruta_Base + nombreImagen + ".jpg";
             img_perfume.Image = Image.FromFile(rutaCompletaImagen);
+
+            ConfigurarDescuentos();
         }
 
         public VerDetallePerfume()
         {
         }
 
-        private void combo_medios_pago_SelectedIndexChanged(object sender, EventArgs e)
+        private void ConfigurarDescuentos()
         {
-            combo_cuotas.Items.Clear();         
+            if (Program.logueado != null)  // Verificamos si hay un usuario logueado
+            {
+                combo_descuento.Visible = true;
+                txt_valor_descuento.Visible = true;
+                lbl_descuento.Visible = true;
+                lbl_valor_descuento.Visible = true;
+                label5.Visible = true;
+                label6.Visible = true;
+                lbl_detalles_descuento.Visible = true;
+            }
+            else
+            {
+                combo_descuento.Visible = false;
+                txt_valor_descuento.Visible = false;
+                lbl_descuento.Visible = false;
+                lbl_valor_descuento.Visible = false;
+                label5.Visible = false;
+                label6.Visible = false;
+                lbl_detalles_descuento.Visible = false;
+            }
+        }
+
+        private void combo_medios_pago_SelectedIndexChanged(object sender, EventArgs e)
+        {               
+            combo_cuotas.Items.Clear();
+            combo_descuento.Items.Clear();
+            
             string formaPago = combo_medios_pago.SelectedItem.ToString();
 
             if (formaPago == "Efectivo")
             {
                 combo_cuotas.Items.Add("1");
+
+                combo_descuento.Items.Add("0");                
+                combo_descuento.Items.Add("10");
+                combo_descuento.Items.Add("15");
+                
             }
             else if (formaPago == "Visa Débito")
             {
                 combo_cuotas.Items.Add("1");
+
+                combo_descuento.Items.Add("0");
+                combo_descuento.Items.Add("10");
             }
             else if (formaPago == "Visa Crédito")
             {
@@ -67,6 +115,9 @@ namespace Eterea_Parfums_Desktop
                 combo_cuotas.Items.Add("3");
                 combo_cuotas.Items.Add("6");
                 combo_cuotas.Items.Add("12");
+
+                combo_descuento.Items.Add("0");
+                                
             }
             else if (formaPago == "Mastercard")
             {
@@ -75,26 +126,37 @@ namespace Eterea_Parfums_Desktop
                 combo_cuotas.Items.Add("6");
                 combo_cuotas.Items.Add("9");
                 combo_cuotas.Items.Add("12");
+
+                combo_descuento.Items.Add("0");
+                
             }
             else if (formaPago == "Amex")
             {
                 combo_cuotas.Items.Add("1");
                 combo_cuotas.Items.Add("6");
-                combo_cuotas.Items.Add("12");               
+                combo_cuotas.Items.Add("12");
+
+                combo_descuento.Items.Add("0");
+                
             }
             else if (formaPago == "Mercado Pago")
             {
-                combo_cuotas.Items.Add("1");              
-            }
+                combo_cuotas.Items.Add("1");
 
+                combo_descuento.Items.Add("0");
+                combo_descuento.Items.Add("10");
+            }
+           
             combo_cuotas.SelectedIndex = 0;
+            combo_descuento.SelectedIndex = 0;
 
             CalcularRecargo(formaPago);
+            
         }
 
         private void CalcularRecargo(string formaPago)
         {
-            int cantidadCuotas = Convert.ToInt32(combo_cuotas.SelectedItem.ToString());
+            int cantidadCuotas = Convert.ToInt32(combo_cuotas.SelectedItem.ToString());          
 
             if (formaPago == "Visa Crédito" || formaPago == "Mastercard" || formaPago == "Amex")
             {
@@ -118,41 +180,105 @@ namespace Eterea_Parfums_Desktop
                 {
                     txt_recargo.Text = recargoDoceCuotas;
                 }
+
+                CalcularImporteRecargo(float.Parse(txt_precio_lista.Text), float.Parse(txt_recargo.Text));
+                precioFinal(float.Parse(txt_precio_lista.Text), float.Parse(txt_valor_recargo.Text), float.Parse(txt_valor_descuento.Text));
+                CalcularValorCuota(float.Parse(txt_recargo.Text), float.Parse(txt_precio_lista.Text));
             }
             else
             {
-                txt_recargo.Text = "0";
+                txt_recargo.Text = "0,00";              
             }
+        }
+
+        private void CalcularDescuento(int descuento, float preciolista)
+        {
+            if (preciolista > 0)
+            {
+                txt_valor_descuento.Text = (descuento * preciolista / 100).ToString("N2");
+            }
+            else
+            {
+                txt_valor_descuento.Text = "0,00";
+            }
+        }
+    
+        private void combo_descuento_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (combo_descuento.SelectedItem != null)
+            {
+                desc();
+                float preciolista, recargo, descuento;
+
+                // Verificar que los valores sean válidos antes de llamar a sumaFinal
+                if (float.TryParse(txt_precio_lista.Text, out preciolista) &&
+                    float.TryParse(txt_valor_recargo.Text, out recargo) &&
+                    float.TryParse(txt_valor_descuento.Text, out descuento))
+                {
+                    precioFinal(preciolista, recargo, descuento);
+                }
+                else
+                {
+
+                    // Se pueden agregar opciones
+                }
+            }
+        }
+
+        private void desc()
+        {
+            string descuentoStr = combo_descuento.SelectedItem.ToString();
+
+            if (int.TryParse(descuentoStr, out int descuento))
+            {               
+                if (float.TryParse(txt_precio_lista.Text, out float preciolista))
+                {
+                    CalcularDescuento(descuento, preciolista);
+                }
+                else
+                {
+                    // Si no se puede convertir a float, simplemente establecer el monto de descuento en cero
+                    txt_valor_descuento.Text = "0,00";
+                }
+            }
+            else
+            {
+                MessageBox.Show("El valor de descuento no es válido.");               
+            }
+        }
+
+        private void precioFinal(float preciolista, float recargo, float descuento)
+        {
+            txt_precio_final.Text = (preciolista + recargo - descuento).ToString("N2");
+        }
+
+        private void CalcularImporteRecargo(float recargo, float preciolist)
+        {
+            txt_valor_recargo.Text = (preciolist * recargo / 100).ToString("N2");
         }
 
         private void combo_cuotas_SelectedIndexChanged(object sender, EventArgs e)
         {
             string formaPago = combo_medios_pago.SelectedItem.ToString();
             CalcularRecargo(formaPago);
-            CalcularTotal(int.Parse(txt_recargo.Text), int.Parse(txt_precio_lista.Text));
+            CalcularValorCuota(float.Parse(txt_recargo.Text), float.Parse(txt_precio_lista.Text));
+            CalcularImporteRecargo(float.Parse(txt_precio_lista.Text), float.Parse(txt_recargo.Text));
+            
         }
 
-        private void CalcularTotal(int recargo, int precio)
+       private void CalcularValorCuota(float recargo, float precio)
         {
             // Calcular el precio final con el recargo
-            int precioFinal = precio + recargo * precio / 100;
-
-            // Mostrar el precio final
-            txt_precio_final.Text = precioFinal.ToString();
+            float precioFinal = precio + (precio * recargo / 100);
 
             // Calcular el valor de cada cuota y mostrarlo
             int cantidadCuotas = int.Parse(combo_cuotas.SelectedItem.ToString());
-            int valorCuota = precioFinal / cantidadCuotas;
+            float valorCuota = precioFinal / cantidadCuotas;
 
             // Mostrar el valor de cada cuota
-            txt_valor_cuota.Text = valorCuota.ToString();
+            txt_valor_cuota.Text = valorCuota.ToString("N2");
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
+              
         private void btn_buscar_perfumes_simi_Click(object sender, EventArgs e)
         {
             VerPerfumesSimilares verPerfumesSimilares = new VerPerfumesSimilares();
@@ -167,6 +293,9 @@ namespace Eterea_Parfums_Desktop
             this.Close();
         }
 
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

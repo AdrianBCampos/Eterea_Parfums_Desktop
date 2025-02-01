@@ -138,7 +138,7 @@ namespace Eterea_Parfums_Desktop
             Cliente cliente = new Cliente(0, txt_usuario.Text, txt_clave.Text, txt_nombre.Text, txt_apellido.Text,
                 int.Parse(txt_dni.Text), combo_con_iva.Text, DateTime.Parse(dateTime_nac.Text), txt_celular.Text, txt_email.Text,
                 pais, provincia, ciudad, int.Parse(txt_cp.Text), calle, int.Parse(txt_num_calle.Text),
-                txt_piso.Text, txt_depto.Text, txt_comentarios.Text,
+                txt_piso.Text, txt_depto.Text, richTextBox_comentario.Text,
                  activo, rol);
 
             if (ClienteControlador.crearCliente(cliente))
@@ -291,9 +291,9 @@ namespace Eterea_Parfums_Desktop
             }
 
             return string.IsNullOrEmpty(errorMsg);
-        }
+        }      
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
