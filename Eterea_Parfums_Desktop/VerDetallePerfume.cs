@@ -73,6 +73,9 @@ namespace Eterea_Parfums_Desktop
         
         private void cargarDataGridViewNotasDePerfume()
         {
+            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
+            dataGridViewTipoNota.RowHeadersVisible = false;
+
             //CARGAR DATAGRIDVIEW DE NOTAS DE PERFUME
             List<NotasDelPerfume> notas_del_perfume = NotasDelPerfumeControlador.getByIDPerfume(perfume.id);
             List<NotaConTipoDeNota> notas_con_tipo_de_nota = new List<NotaConTipoDeNota>();
@@ -107,6 +110,9 @@ namespace Eterea_Parfums_Desktop
 
         private void CargarDataGridViewAromas()
         {
+            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
+            dataGridViewAromas.RowHeadersVisible = false;
+
             // Limpiar filas anteriores del DataGridView
             dataGridViewAromas.Rows.Clear();
 

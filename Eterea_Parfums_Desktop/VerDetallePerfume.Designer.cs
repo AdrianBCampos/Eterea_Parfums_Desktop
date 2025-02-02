@@ -1139,7 +1139,7 @@
             // aroma
             // 
             this.aroma.FillWeight = 125F;
-            this.aroma.HeaderText = "Aroma";
+            this.aroma.HeaderText = "Aroma del Perfume";
             this.aroma.MinimumWidth = 6;
             this.aroma.Name = "aroma";
             // 

@@ -30,6 +30,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void cargarClientes(string filtroDni = "")
         {
+            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
+            dataGridView1.RowHeadersVisible = false;
+
             clientes = ClienteControlador.obtenerTodos();
 
             dataGridView1.Rows.Clear();

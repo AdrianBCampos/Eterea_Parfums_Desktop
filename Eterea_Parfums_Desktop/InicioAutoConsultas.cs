@@ -116,6 +116,9 @@ namespace Eterea_Parfums_Desktop
 
         private void VisualizarPerfumes(List<Perfume> perfumeMostrar)
         {
+            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
+            dataGridViewConsultas.RowHeadersVisible = false;
+
             dataGridViewConsultas.Rows.Clear();
             foreach (Perfume perfume in perfumeMostrar)
             {
