@@ -76,7 +76,7 @@
             this.lbl_dni.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_dni.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_dni.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_dni.Location = new System.Drawing.Point(61, 156);
+            this.lbl_dni.Location = new System.Drawing.Point(89, 156);
             this.lbl_dni.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_dni.Name = "lbl_dni";
             this.lbl_dni.Size = new System.Drawing.Size(64, 29);
@@ -89,7 +89,7 @@
             this.lbl_nombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_nombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_nombre.Location = new System.Drawing.Point(61, 87);
+            this.lbl_nombre.Location = new System.Drawing.Point(89, 87);
             this.lbl_nombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_nombre.Name = "lbl_nombre";
             this.lbl_nombre.Size = new System.Drawing.Size(114, 29);
@@ -102,7 +102,7 @@
             this.txt_dni_eliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.txt_dni_eliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_dni_eliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_dni_eliminar.Location = new System.Drawing.Point(214, 154);
+            this.txt_dni_eliminar.Location = new System.Drawing.Point(242, 154);
             this.txt_dni_eliminar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_dni_eliminar.Name = "txt_dni_eliminar";
             this.txt_dni_eliminar.Size = new System.Drawing.Size(207, 32);
@@ -115,7 +115,7 @@
             this.txt_nombre_cliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.txt_nombre_cliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_nombre_cliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_nombre_cliente.Location = new System.Drawing.Point(214, 85);
+            this.txt_nombre_cliente.Location = new System.Drawing.Point(242, 85);
             this.txt_nombre_cliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_nombre_cliente.Name = "txt_nombre_cliente";
             this.txt_nombre_cliente.Size = new System.Drawing.Size(211, 32);
