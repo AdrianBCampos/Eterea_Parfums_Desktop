@@ -1,6 +1,7 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 namespace Eterea_Parfums_Desktop
@@ -15,6 +16,10 @@ namespace Eterea_Parfums_Desktop
         private static string recargoSeisCuotas = "20";
         private static string recargoNueveCuotas = "28";
         private static string recargoDoceCuotas = "40";
+
+        private List<TipoDeAroma> tipo_de_aromas;
+        private List<TipoDeNota> tipo_de_notas;
+        private Perfume perfume;
 
         public VerDetallePerfume(Perfume perfumeSeleccionado)
         {
@@ -55,11 +60,72 @@ namespace Eterea_Parfums_Desktop
             string rutaCompletaImagen = Program.Ruta_Base + nombreImagen + ".jpg";
             img_perfume.Image = Image.FromFile(rutaCompletaImagen);
 
+            this.perfume = perfumeSeleccionado;
+
             ConfigurarDescuentos();
+            cargarDataGridViewNotasDePerfume();
+            CargarDataGridViewAromas();
         }
 
         public VerDetallePerfume()
         {
+        }
+        
+        private void cargarDataGridViewNotasDePerfume()
+        {
+            //CARGAR DATAGRIDVIEW DE NOTAS DE PERFUME
+            List<NotasDelPerfume> notas_del_perfume = NotasDelPerfumeControlador.getByIDPerfume(perfume.id);
+            List<NotaConTipoDeNota> notas_con_tipo_de_nota = new List<NotaConTipoDeNota>();
+
+            Nota nota = null;
+            TipoDeNota tipo_de_nota = null;
+
+            if (notas_del_perfume != null)
+            {
+                //dataGridViewNotasDelPerfume.DataSource = notas;
+                foreach (NotasDelPerfume nota_del_perfume in notas_del_perfume)
+                {
+                    notas_con_tipo_de_nota.Add(NotaConTipoDeNotaControlador.getByID(nota_del_perfume.notaConTipoDeNota.id));
+                }
+            }
+
+            if (notas_con_tipo_de_nota != null)
+            {
+                dataGridViewTipoNota.Rows.Clear();
+                foreach (NotaConTipoDeNota nota_con_tipo_de_nota_ in notas_con_tipo_de_nota)
+                {
+                    nota = NotaControlador.getById(nota_con_tipo_de_nota_.nota.id);
+                    tipo_de_nota = TipoDeNotaControlador.getById(nota_con_tipo_de_nota_.tipoDeNota.id);
+
+                    int rowIndex = dataGridViewTipoNota.Rows.Add();
+                    dataGridViewTipoNota.Rows[rowIndex].Cells[0].Value = nota_con_tipo_de_nota_.id;
+                    dataGridViewTipoNota.Rows[rowIndex].Cells[1].Value = tipo_de_nota.nombre_tipo_de_nota;
+                    dataGridViewTipoNota.Rows[rowIndex].Cells[2].Value = nota.nombre;                                     
+                }
+            }
+        }
+
+        private void CargarDataGridViewAromas()
+        {
+            // Limpiar filas anteriores del DataGridView
+            dataGridViewAromas.Rows.Clear();
+
+            // Obtener la lista de aromas asociados al perfume
+            List<AromaDelPerfume> aromasDelPerfume = AromaDelPerfumeControlador.getAllByIDPerfume(perfume.id);
+
+            if (aromasDelPerfume != null)
+            {
+                foreach (AromaDelPerfume aromaDelPerfume in aromasDelPerfume)
+                {
+                    // Obtener el tipo de aroma
+                    TipoDeAroma tipoDeAroma = TipoDeAromaControlador.getById(aromaDelPerfume.tipoDeAroma.id);
+
+                    // Agregar una fila al DataGridView con la información del aroma
+                    int rowIndex = dataGridViewAromas.Rows.Add();
+                    dataGridViewAromas.Rows[rowIndex].Cells[0].Value = aromaDelPerfume.tipoDeAroma.id; // ID del aroma
+                    dataGridViewAromas.Rows[rowIndex].Cells[1].Value = tipoDeAroma.nombre; // Nombre del tipo de aroma
+                }
+            }
         }
 
         private void ConfigurarDescuentos()
