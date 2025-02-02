@@ -935,6 +935,7 @@ namespace Eterea_Parfums_Desktop
                 this.DialogResult = DialogResult.OK;
             }
 
+            //PromoControlador.eliminarRegistrosPromoPerfumes(id_editar);
             PromoControlador.editarPromo(promoEditada);
 
         }
@@ -1094,7 +1095,7 @@ namespace Eterea_Parfums_Desktop
                     int idPerfume = Convert.ToInt32(fila.Cells[5].Value);
 
                     // Paso 3: Guardar la relación entre la promoción y el perfume en la base de datos
-                    PerfumeEnPromoControlador.guardarRelacionPromoPerfume(idPromo, idPerfume);
+                    PerfumeEnPromoControlador.guardarRelacionPromoPerfume(idPerfume, idPromo);
                 }
             }
 

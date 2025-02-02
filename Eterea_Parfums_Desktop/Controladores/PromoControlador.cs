@@ -248,13 +248,13 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         //ELIMINAR TODOS LOS REGISTROS DE LA RELACION DE LA PROMOCION CON LOS PERFUMES QUE INCLUYE
 
-        public static void eliminarRegistrosPromoPerfumes(int id_promo, SqlTransaction transaction)
+        public static void eliminarRegistrosPromoPerfumes(int id_editar, SqlTransaction transaction)
         {
             string query = "DELETE FROM dbo.perfumes_en_promo WHERE promocion_id = @id_editar";
 
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-            cmd.Parameters.AddWithValue("@id_editar", id_promo);
+            cmd.Parameters.AddWithValue("@id_editar", id_editar);
 
             cmd.Transaction = transaction;
 

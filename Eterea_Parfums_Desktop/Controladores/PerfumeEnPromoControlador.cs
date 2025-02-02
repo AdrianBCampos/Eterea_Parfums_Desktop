@@ -21,13 +21,14 @@ namespace Eterea_Parfums_Desktop.Controladores
             //Relacionar una promoción con uno o varios perfumes en la base de datos
 
             // Definir la consulta SQL para insertar la relación en la tabla Promo_Perfume
-            string query = "INSERT INTO dbo.perfumes_en_promo (perfume_id, promocion_id) VALUES (@promoId, @perfumeId)";
+            string query = "INSERT INTO dbo.perfumes_en_promo (perfume_id, promocion_id) VALUES (@perfumeId, @promoId)";
 
             // Utilizar parámetros para evitar SQL Injection
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
-            cmd.Parameters.AddWithValue("@promoId", idPromo);
             cmd.Parameters.AddWithValue("@perfumeId", idPerfume);
+            cmd.Parameters.AddWithValue("@promoId", idPromo);
+            
 
             try
             {
