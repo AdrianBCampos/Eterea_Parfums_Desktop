@@ -716,7 +716,7 @@
             this.lbl_crear_clientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_crear_clientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_crear_clientes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_crear_clientes.Location = new System.Drawing.Point(397, 18);
+            this.lbl_crear_clientes.Location = new System.Drawing.Point(388, 18);
             this.lbl_crear_clientes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_crear_clientes.Name = "lbl_crear_clientes";
             this.lbl_crear_clientes.Size = new System.Drawing.Size(200, 32);
@@ -994,6 +994,7 @@
             this.Controls.Add(this.pictureBox9);
             this.Controls.Add(this.pictureBox10);
             this.Name = "FormEditarClienteABM";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEditarClienteABM";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
