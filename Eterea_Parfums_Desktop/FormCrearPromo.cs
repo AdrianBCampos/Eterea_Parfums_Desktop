@@ -928,7 +928,7 @@ namespace Eterea_Parfums_Desktop
 
             //Se crea el objeto de la promoción a editar
 
-            Promocion promoEditada = new Promocion(id_editar, txt_nomb_promo.Text, dateTime_inicio_promo.Value, dateTime_fin_promo.Value, descuentoClave, activo);
+            Promocion promoEditada = new Promocion(idPromo, txt_nomb_promo.Text, dateTime_inicio_promo.Value, dateTime_fin_promo.Value, descuentoClave, activo);
 
             if (PromoControlador.editarPromo(promoEditada))
             {

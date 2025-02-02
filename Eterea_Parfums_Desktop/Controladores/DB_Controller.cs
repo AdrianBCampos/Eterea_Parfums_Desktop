@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
+
 using System.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Diagnostics;
+
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
