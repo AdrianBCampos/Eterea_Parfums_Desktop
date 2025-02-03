@@ -34,12 +34,7 @@ namespace Eterea_Parfums_Desktop
             { 10, "Descuento especial del 10%" }
         };
 
-
-        //Variable para guardar los datos de "Eliminar todo" y poder recuperarlos al "Deshacer"
         private List<DataGridViewRow> backupRows = new List<DataGridViewRow>();
-
-        //Variable para guardar la lista de perfumes agregados a una promo editada
-        private List<PerfumeDTO> listaAgregadaAPromo = new List<PerfumeDTO>();
 
 
         // Declarar el ToolTip a nivel de la clase
@@ -342,7 +337,7 @@ namespace Eterea_Parfums_Desktop
 
 
 
-        //Evento para permitir solo letras, números, espacios y el signo de % en el nombre de la promoción
+        //Evento para para permitir solo letras, números, espacios y el signo de % en el nombre de la promoción
 
         private void txt_nomb_promo_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -492,12 +487,6 @@ namespace Eterea_Parfums_Desktop
             lbl_error_fecha_finP.Visible = false;
             lbl_error_promo_act.Visible = false;
 
-            //Ocultar el boton para borrar el texto ingresado en la busqueda de promo por nombre
-            lbl_borrar_texto.Visible = false;
-
-            // Inicializar y configurar el ToolTip
-            toolTipBorrar = new ToolTip();
-            toolTipBorrar.SetToolTip(lbl_borrar_texto, "Borrar texto ingresado");
 
             // Llamar a los métodos de carga de datos
             cargarComboBoxDescuentos();
@@ -507,19 +496,18 @@ namespace Eterea_Parfums_Desktop
 
 
             // Asignar el id de la promo al campo interno id_editar
-            //id_editar = promo.id;
+            id_editar = promo.id;
 
 
             //Creamos la lista de perfumes utilizando PerfumeDTO
-            //List<PerfumeDTO> perfumes = new List<PerfumeDTO>();
+            List<PerfumeDTO> perfumes = new List<PerfumeDTO>();
 
 
             // Llamada al método que carga los perfumes por idPromo
             PerfumeEnPromoControlador controladorPerfume = new PerfumeEnPromoControlador();
-            listaAgregadaAPromo = controladorPerfume.CargarPerfumesPorIdPromocion(id_editar);
+            perfumes = controladorPerfume.CargarPerfumesPorIdPromocion(id_editar);
 
-            cargarPerfumesDePromo(listaAgregadaAPromo);
-            
+            cargarPerfumesDePromo(perfumes);
 
             // Cargar el combo box para activo
             combo_activo_promo.Items.Clear();
@@ -934,21 +922,15 @@ namespace Eterea_Parfums_Desktop
 
             //Se crea el objeto de la promoción a editar
 
-            Promocion promoEditada = new Promocion(idPromo, txt_nomb_promo.Text, dateTime_inicio_promo.Value, dateTime_fin_promo.Value, descuentoClave, activo);
+            Promocion promoEditada = new Promocion(id_editar, txt_nomb_promo.Text, dateTime_inicio_promo.Value, dateTime_fin_promo.Value, descuentoClave, activo);
 
-            // Ejecutar la edición con transacción
-            bool edicionExitosa = PromoControlador.editarPromo(promoEditada, listaAgregadaAPromo);
-
-            if (edicionExitosa)
+            if (PromoControlador.editarPromo(promoEditada))
             {
-                MessageBox.Show("La promoción ha sido editada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
             }
-            else
-            {
-                MessageBox.Show("Hubo un problema al editar la promoción. Inténtalo nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-           
+
+            PromoControlador.editarPromo(promoEditada);
+
         }
 
 
@@ -1106,7 +1088,7 @@ namespace Eterea_Parfums_Desktop
                     int idPerfume = Convert.ToInt32(fila.Cells[5].Value);
 
                     // Paso 3: Guardar la relación entre la promoción y el perfume en la base de datos
-                    PerfumeEnPromoControlador.guardarRelacionPromoPerfume(idPerfume, idPromo);
+                    PerfumeEnPromoControlador.guardarRelacionPromoPerfume(idPromo, idPerfume);
                 }
             }
 
