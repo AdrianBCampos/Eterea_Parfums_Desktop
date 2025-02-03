@@ -49,6 +49,9 @@ namespace Eterea_Parfums_Desktop
 
             txt_nomb_promo.KeyPress += txt_nomb_promo_KeyPress;
 
+            //Ocultar label del nombre de la promo a editar
+            lbl_nomb_promo_edit.Visible = false;
+
             // Ocultar etiquetas de error
             lbl_error_tipo_promo.Visible = false;
             lbl_error_nombP.Visible = false;
@@ -503,6 +506,14 @@ namespace Eterea_Parfums_Desktop
             List<PerfumeDTO> perfumes = new List<PerfumeDTO>();
 
 
+            //Ocultar el boton para borrar el texto ingresado en la busqueda de promo por nombre
+            lbl_borrar_texto.Visible = false;
+
+            // Inicializar y configurar el ToolTip
+            toolTipBorrar = new ToolTip();
+            toolTipBorrar.SetToolTip(lbl_borrar_texto, "Borrar texto ingresado");
+
+
             // Llamada al método que carga los perfumes por idPromo
             PerfumeEnPromoControlador controladorPerfume = new PerfumeEnPromoControlador();
             perfumes = controladorPerfume.CargarPerfumesPorIdPromocion(idPromo);
@@ -541,6 +552,7 @@ namespace Eterea_Parfums_Desktop
 
             // Asignar los valores de la promoción a los controles del formulario
             txt_nomb_promo.Text = promo.nombre;
+            lbl_nomb_promo_edit.Text = promo.nombre;
 
             // Primero, permitir cualquier fecha (evita restricciones previas)
             dateTime_inicio_promo.MinDate = DateTimePicker.MinimumDateTime;
@@ -562,7 +574,7 @@ namespace Eterea_Parfums_Desktop
 
             situacion = "Edicion";
 
-            lbl_crear_promo.Text = "Editar promoción";
+            lbl_crear_promo.Text = "Editar promoción: ";
             btn_crear_promo.Text = "Editar promoción";
 
         }
@@ -1183,11 +1195,6 @@ namespace Eterea_Parfums_Desktop
             this.Close(); // Cierra el formulario
         }
 
-
-
-
-
-
-
+     
     }
 }
