@@ -67,9 +67,9 @@ namespace Eterea_Parfums_Desktop.Controladores
                 }
                 DB_Controller.connection.Close(); // Cerrar la conexión también en caso de error
                 throw new Exception("Hay un error en la query: " + e.Message);
-               
+
             }
-         
+
         }
 
 
@@ -187,7 +187,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
         //EDIT ó PUT  -  EDITAR UNA PROMO
-        public static bool editarPromo(Promocion promo)
+        public static bool editarPromo(Promocion promo, List<PerfumeDTO> listaAgregadaAPromo)
         {
             string query = @"
                 UPDATE dbo.promocion
@@ -218,22 +218,24 @@ namespace Eterea_Parfums_Desktop.Controladores
                     cmd.ExecuteNonQuery();
                 }
 
-                // 🔴 Asegúrate de que la eliminación ocurre dentro de la transacción
+                // 2️⃣ Eliminar registros antiguos en `perfumes_en_promo`
                 eliminarRegistrosPromoPerfumes(promo.id, transaction);
 
-                // 🔵 Luego, agrega los nuevos registros dentro de la misma transacción
-                agregarRegistrosPromoPerfumes(promo.id, perfumeIds, transaction);
+                // 3️⃣ Agregar nuevos registros
+                agregarRegistrosPromoPerfumes(promo.id, listaAgregadaAPromo, transaction);
 
+                // 4️⃣ Confirmar cambios
                 transaction.Commit();
                 return true;
             }
             catch (Exception e)
             {
-                if (transaction != null)
+                if (transaction != null && transaction.Connection != null)
                 {
                     transaction.Rollback();
                 }
-                throw new Exception("Error al editar la promoción: " + e.Message);
+                MessageBox.Show("Error al editar la promoción: " + e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
             finally
             {
@@ -247,14 +249,13 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         //ELIMINAR TODOS LOS REGISTROS DE LA RELACION DE LA PROMOCION CON LOS PERFUMES QUE INCLUYE
 
-        public static void eliminarRegistrosPromoPerfumes(int id_editar, SqlTransaction transaction)
+        public static void eliminarRegistrosPromoPerfumes(int idPromo, SqlTransaction transaction)
         {
-            string query = "DELETE FROM dbo.perfumes_en_promo WHERE promocion_id = @id_editar";
+            string queryDelete = "DELETE FROM dbo.perfumes_en_promo WHERE promocion_id = @idPromo";
 
-
-            using (SqlCommand cmd = new SqlCommand(query, transaction.Connection, transaction)) // Usar la misma conexión
+            using (SqlCommand cmd = new SqlCommand(queryDelete, DB_Controller.connection, transaction))
             {
-                cmd.Parameters.AddWithValue("@id_editar", id_editar);
+                cmd.Parameters.AddWithValue("@idPromo", idPromo);
                 cmd.ExecuteNonQuery();
             }
 
@@ -265,48 +266,75 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         //METODO PARA GUARDAR EN LA BD LA RELACION DE LA PROMOCION CON LOS PERFUMES QUE ESTA INCLUYE
 
-        public static bool agregarRegistrosPromoPerfumes(int id_promo, List<int> perfumeIds)
+        /* public static bool agregarRegistrosPromoPerfumes(int id_promo, List<PerfumeDTO> perfumeIds, SqlTransaction transaccion)
+         {
+             string query = @"
+                     INSERT INTO dbo.perfumes_en_promo (perfume_id, promocion_id)
+                     VALUES (@perfumeId, @promoId)";
+
+             try
+             {
+                 DB_Controller.connection.Open();
+                 using (SqlTransaction transaction = DB_Controller.connection.BeginTransaction())
+                 {
+                     using (SqlCommand cmd = new SqlCommand(query, DB_Controller.connection, transaction))
+                     {
+                         foreach (PerfumeDTO perfume in perfumeIds)
+                         {
+                             cmd.Parameters.Clear();
+                             cmd.Parameters.AddWithValue("@perfumeId", perfume.id);
+                             cmd.Parameters.AddWithValue("@promoId", id_promo);
+                             cmd.ExecuteNonQuery();
+                         }
+                     }
+
+                     transaction.Commit(); // Confirmar cambios
+                 }
+                 return true;
+             }
+             catch (Exception e)
+             {
+                 if (DB_Controller.connection.State == System.Data.ConnectionState.Open)
+                 {
+                     DB_Controller.connection.Close();
+                 }
+                 throw new Exception("Error al agregar registros de perfumes a la promoción: " + e.Message);
+             }
+             finally
+             {
+                 if (DB_Controller.connection.State == System.Data.ConnectionState.Open)
+                 {
+                     DB_Controller.connection.Close(); // C
+
+                 }
+
+             }*/
+
+        public static bool agregarRegistrosPromoPerfumes(int idPromo, List<PerfumeDTO> listaAgregadaAPromo, SqlTransaction transaccion)
         {
             string query = @"
-                            INSERT INTO dbo.perfumes_en_promo (perfume_id, promocion_id)
-                            VALUES (@perfumeId, @promoId)";
+                INSERT INTO dbo.perfumes_en_promo (perfume_id, promocion_id)
+                VALUES (@perfumeId, @promoId)";
 
-            try
-            {
-                DB_Controller.connection.Open();
-                using (SqlTransaction transaction = DB_Controller.connection.BeginTransaction())
+           
+                using (SqlCommand cmd = new SqlCommand(query, DB_Controller.connection, transaccion))
                 {
-                    using (SqlCommand cmd = new SqlCommand(query, DB_Controller.connection, transaction))
+                    foreach (PerfumeDTO perfume in listaAgregadaAPromo)
                     {
-                        foreach (int perfumeId in perfumeIds)
-                        {
-                            cmd.Parameters.Clear();
-                            cmd.Parameters.AddWithValue("@perfumeId", perfumeId);
-                            cmd.Parameters.AddWithValue("@promoId", id_promo);
-                            cmd.ExecuteNonQuery();
-                        }
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.AddWithValue("@perfumeId", perfume.id);
+                        cmd.Parameters.AddWithValue("@promoId", idPromo);
+                        cmd.ExecuteNonQuery();
                     }
-
-                    transaction.Commit(); // Confirmar cambios
                 }
+
+                // ❌ NO HACER COMMIT AQUÍ (Se hace en `editarPromo`)
+                // transaccion.Commit();
+
                 return true;
             }
-            catch (Exception e)
-            {
-                if (DB_Controller.connection.State == System.Data.ConnectionState.Open)
-                {
-                    DB_Controller.connection.Close();
-                }
-                throw new Exception("Error al agregar registros de perfumes a la promoción: " + e.Message);
-            }
-            finally
-            {
-                if (DB_Controller.connection.State == System.Data.ConnectionState.Open)
-                {
-                    DB_Controller.connection.Close(); // Cerrar conexión en cualquier caso
-                }
-            }
-        }
+           
+    
 
 
 
@@ -314,8 +342,6 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
 
-
-       
 
 
 

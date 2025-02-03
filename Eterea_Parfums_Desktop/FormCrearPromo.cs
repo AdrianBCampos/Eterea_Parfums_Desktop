@@ -34,7 +34,12 @@ namespace Eterea_Parfums_Desktop
             { 10, "Descuento especial del 10%" }
         };
 
+
+        //Variable para guardar los datos de "Eliminar todo" y poder recuperarlos al "Deshacer"
         private List<DataGridViewRow> backupRows = new List<DataGridViewRow>();
+
+        //Variable para guardar la lista de perfumes agregados a una promo editada
+        private List<PerfumeDTO> listaAgregadaAPromo = new List<PerfumeDTO>();
 
 
         // Declarar el ToolTip a nivel de la clase
@@ -337,7 +342,7 @@ namespace Eterea_Parfums_Desktop
 
 
 
-        //Evento para para permitir solo letras, números, espacios y el signo de % en el nombre de la promoción
+        //Evento para permitir solo letras, números, espacios y el signo de % en el nombre de la promoción
 
         private void txt_nomb_promo_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -502,18 +507,19 @@ namespace Eterea_Parfums_Desktop
 
 
             // Asignar el id de la promo al campo interno id_editar
-            id_editar = promo.id;
+            //id_editar = promo.id;
 
 
             //Creamos la lista de perfumes utilizando PerfumeDTO
-            List<PerfumeDTO> perfumes = new List<PerfumeDTO>();
+            //List<PerfumeDTO> perfumes = new List<PerfumeDTO>();
 
 
             // Llamada al método que carga los perfumes por idPromo
             PerfumeEnPromoControlador controladorPerfume = new PerfumeEnPromoControlador();
-            perfumes = controladorPerfume.CargarPerfumesPorIdPromocion(id_editar);
+            listaAgregadaAPromo = controladorPerfume.CargarPerfumesPorIdPromocion(id_editar);
 
-            cargarPerfumesDePromo(perfumes);
+            cargarPerfumesDePromo(listaAgregadaAPromo);
+            
 
             // Cargar el combo box para activo
             combo_activo_promo.Items.Clear();
@@ -930,14 +936,19 @@ namespace Eterea_Parfums_Desktop
 
             Promocion promoEditada = new Promocion(idPromo, txt_nomb_promo.Text, dateTime_inicio_promo.Value, dateTime_fin_promo.Value, descuentoClave, activo);
 
-            if (PromoControlador.editarPromo(promoEditada))
+            // Ejecutar la edición con transacción
+            bool edicionExitosa = PromoControlador.editarPromo(promoEditada, listaAgregadaAPromo);
+
+            if (edicionExitosa)
             {
+                MessageBox.Show("La promoción ha sido editada exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
             }
-
-            //PromoControlador.eliminarRegistrosPromoPerfumes(id_editar);
-            PromoControlador.editarPromo(promoEditada);
-
+            else
+            {
+                MessageBox.Show("Hubo un problema al editar la promoción. Inténtalo nuevamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
 
 
