@@ -21,7 +21,7 @@ namespace Eterea_Parfums_Desktop
 
         string situacion;
 
-        int id_editar;
+        int idPromo;
 
 
 
@@ -496,7 +496,7 @@ namespace Eterea_Parfums_Desktop
 
 
             // Asignar el id de la promo al campo interno id_editar
-            id_editar = promo.id;
+            idPromo = promo.id;
 
 
             //Creamos la lista de perfumes utilizando PerfumeDTO
@@ -505,7 +505,7 @@ namespace Eterea_Parfums_Desktop
 
             // Llamada al método que carga los perfumes por idPromo
             PerfumeEnPromoControlador controladorPerfume = new PerfumeEnPromoControlador();
-            perfumes = controladorPerfume.CargarPerfumesPorIdPromocion(id_editar);
+            perfumes = controladorPerfume.CargarPerfumesPorIdPromocion(idPromo);
 
             cargarPerfumesDePromo(perfumes);
 
@@ -898,7 +898,7 @@ namespace Eterea_Parfums_Desktop
         private void editarPromo()
         {
             // ID de la promoción que se está editando
-            int idPromo = id_editar;
+            int idPromoEdit = idPromo;
 
             // Obtener la clave del descuento seleccionada (clave del diccionario)
             var seleccionTipoPromo = (KeyValuePair<int, string>)combo_tipo_promo.SelectedItem;
@@ -922,7 +922,7 @@ namespace Eterea_Parfums_Desktop
 
             //Se crea el objeto de la promoción a editar
 
-            Promocion promoEditada = new Promocion(id_editar, txt_nomb_promo.Text, dateTime_inicio_promo.Value, dateTime_fin_promo.Value, descuentoClave, activo);
+            Promocion promoEditada = new Promocion(idPromo, txt_nomb_promo.Text, dateTime_inicio_promo.Value, dateTime_fin_promo.Value, descuentoClave, activo);
 
             if (PromoControlador.editarPromo(promoEditada))
             {
@@ -1074,9 +1074,9 @@ namespace Eterea_Parfums_Desktop
 
         //Método para relacionar la promoción con los perfumes en los que aplica el descuento (llama a PerfumeEnPromoControlador.guardarRelacionPromoPerfume(idPromo, idPerfume))
 
-        private void asignarPerfumesAPromo()
+        private void asignarPerfumesAPromo(int idPromo)
         {
-            int idPromo = PromoControlador.obtenerMaxId();
+            
 
             // Paso 1: Recorrer las filas del DataGridView para obtener los IDs de los perfumes
             foreach (DataGridViewRow fila in dataGrid_perfumes_agregados_a_promo.Rows)
@@ -1088,7 +1088,7 @@ namespace Eterea_Parfums_Desktop
                     int idPerfume = Convert.ToInt32(fila.Cells[5].Value);
 
                     // Paso 3: Guardar la relación entre la promoción y el perfume en la base de datos
-                    PerfumeEnPromoControlador.guardarRelacionPromoPerfume(idPromo, idPerfume);
+                    PerfumeEnPromoControlador.guardarRelacionPromoPerfume(idPerfume, idPromo);
                 }
             }
 
@@ -1133,6 +1133,8 @@ namespace Eterea_Parfums_Desktop
 
             if (situacion == "Creacion")
             {
+                int idPromo = PromoControlador.obtenerMaxId()+1;
+
                 bool promoValidada = validarPromo(out string errorMsg);
                 if (promoValidada)
                 {
@@ -1146,16 +1148,18 @@ namespace Eterea_Parfums_Desktop
 
 
                     crearPromo();
-                    asignarPerfumesAPromo();
+                    asignarPerfumesAPromo(idPromo);
                 }
             }
             if (situacion == "Edicion")
             {
+                
+
                 bool promoValidada = validarPromo(out string errorMsg);
                 if (promoValidada)
                 {
                     editarPromo();
-                    asignarPerfumesAPromo();
+                    asignarPerfumesAPromo(idPromo);
                 }
                 else
                 {

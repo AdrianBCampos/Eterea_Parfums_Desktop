@@ -14,8 +14,11 @@ using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 {
+    
     public partial class Promos_UC : UserControl
     {
+        int idPromo;
+
         List<Promocion> promociones;
         public Promos_UC()
         {
@@ -120,7 +123,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 var idPromoCell = dataGridViewPromos.Rows[e.RowIndex].Cells[0].Value;
 
                 // Verificar si el ID de la promoción es válido
-                if (idPromoCell != null && int.TryParse(idPromoCell.ToString(), out int idPromo))
+                if (idPromoCell != null && int.TryParse(idPromoCell.ToString(), out idPromo))
                 {
               
                     // Crear una nueva instancia del formulario de edición
