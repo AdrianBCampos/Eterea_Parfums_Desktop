@@ -144,41 +144,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             return promo;
 
         }
-
-        public static List<Promocion> getByIDPerfume(int idPerfume)
-        {
-            string query = @"
-            SELECT p.id, p.nombre, p.fecha_inicio, p.fecha_fin, p.descuento, p.activo 
-            FROM promocion p
-            INNER JOIN perfumes_en_promo pep ON p.id = pep.promocion_id
-            WHERE pep.perfume_id = @idPerfume";
-
-            List<Promocion> listaPromociones = new List<Promocion>();
-
-            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-            cmd.Parameters.AddWithValue("@idPerfume", idPerfume);    
-
-            try
-            {
-                DB_Controller.connection.Open();
-                SqlDataReader r = cmd.ExecuteReader();
-
-                while (r.Read())
-                {
-                    listaPromociones.Add(new Promocion(r.GetInt32(0), r.GetString(1), r.GetDateTime(2), r.GetDateTime(3), r.GetInt32(4), r.GetInt32(5)));                  
-                }
-                r.Close();
-                DB_Controller.connection.Close();
-
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Hay un error en la query: " + e.Message);
-            }
-            return listaPromociones;
-
-        }
-
+        
 
         //EDIT ó PUT
         /* public static bool editarPromo(Promocion promo)

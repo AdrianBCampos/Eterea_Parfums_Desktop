@@ -27,6 +27,10 @@ namespace Eterea_Parfums_Desktop
             string rutaCompletaImagen = Program.Ruta_Base + nombreImagen + ".jpg";
             img_perfume.Image = Image.FromFile(rutaCompletaImagen);
 
+            string nombreImagen2 = perfumeSeleccionado.imagen1.ToString();
+            string rutaCompletaImagen2 = Program.Ruta_Base + nombreImagen + ".jpg";
+            pictureBox9.Image = Image.FromFile(rutaCompletaImagen);           
+
             //perfume = perfumeSeleccionado;
             CargarDataGridViewPromociones();
         }
@@ -52,7 +56,7 @@ namespace Eterea_Parfums_Desktop
             dataGridViewpromociones.Rows.Clear();
 
             // Obtener promociones asociadas al perfume
-            List<Promocion> promociones = PromoControlador.getByIDPerfume(perfume.id);
+            List<Promocion> promociones = PerfumeEnPromoControlador.getByIDPerfume(perfume.id);
 
             if (promociones != null && promociones.Count > 0)
             {
@@ -84,7 +88,7 @@ namespace Eterea_Parfums_Desktop
                 string nombre = filaSeleccionada.Cells[1].Value.ToString();
 
                 // Buscar la promoción en la lista
-                Promocion promocionSeleccionada = PromoControlador.getByIDPerfume(perfume.id)
+                Promocion promocionSeleccionada = PerfumeEnPromoControlador.getByIDPerfume(perfume.id)
                     .FirstOrDefault(p => p.id == idPromo);
 
                 if (promocionSeleccionada != null)
@@ -105,11 +109,11 @@ namespace Eterea_Parfums_Desktop
                     txt_nombre.Text = promocionSeleccionada.nombre;
                     txt_fecha_inicio.Text = promocionSeleccionada.fecha_inicio.ToShortDateString();
                     txt_fecha_fin.Text = promocionSeleccionada.fecha_fin.ToShortDateString();
-                    txt_descuento.Text = porcentajeDescuento.ToString("N2") + " %";
+                    txt_descuento.Text = porcentajeDescuento.ToString() + " %";
                     txt_valor_descuento.Text = valorDescuento.ToString("N2");
                     txt_precio_final.Text = precioFinal.ToString("N2");
-
-
+               
+                    pictureBox9.Visible = false;
                 }
             }
         }    
