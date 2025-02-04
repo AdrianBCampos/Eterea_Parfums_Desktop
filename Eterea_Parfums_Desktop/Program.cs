@@ -41,8 +41,13 @@ namespace Eterea_Parfums_Desktop
                 // Configurar rutas según el usuario
                 ConfigurarRutas(usuarioSeleccionado);
 
+                // Llamamos a ActualizarEstadoPromociones al inicio del programa
+                PromocionService.ActualizarEstadoPromociones();
+
                 // Iniciar la aplicación principal
-                Application.Run(new InicioAutoConsultas());
+
+                Application.Run(new MenuABM());
+                //Application.Run(new InicioAutoConsultas());
             }
             else
             {

@@ -21,13 +21,14 @@ namespace Eterea_Parfums_Desktop.Controladores
             //Relacionar una promoción con uno o varios perfumes en la base de datos
 
             // Definir la consulta SQL para insertar la relación en la tabla Promo_Perfume
-            string query = "INSERT INTO dbo.perfumes_en_promo (perfume_id, promocion_id) VALUES (@promoId, @perfumeId)";
+            string query = "INSERT INTO dbo.perfumes_en_promo (perfume_id, promocion_id) VALUES (@perfumeId, @promoId)";
 
             // Utilizar parámetros para evitar SQL Injection
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
-            cmd.Parameters.AddWithValue("@promoId", idPromo);
             cmd.Parameters.AddWithValue("@perfumeId", idPerfume);
+            cmd.Parameters.AddWithValue("@promoId", idPromo);
+            
 
             try
             {
@@ -43,6 +44,12 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         }
 
+
+
+
+
+
+
         //obtener los perfumes de una promo
 
         public List<PerfumeDTO> CargarPerfumesPorIdPromocion(int idPromo)
@@ -57,43 +64,85 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             List<PerfumeDTO> perfumes = new List<PerfumeDTO>();
 
-            using (SqlCommand cmd = new SqlCommand(query, DB_Controller.connection))
-            {
-                cmd.Parameters.AddWithValue("@idPromo", idPromo);
 
-                try
+            using (SqlConnection connection = new SqlConnection(DB_Controller.connection.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    DB_Controller.connection.Open();
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    cmd.Parameters.AddWithValue("@idPromo", idPromo);
+
+                    try
                     {
-                        while (reader.Read())
+                        connection.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
                         {
-                            PerfumeDTO perfume = new PerfumeDTO
+                            while (reader.Read())
                             {
-                                id = reader.GetInt32(0),
-                                marca = reader.GetString(1),
-                                nombre = reader.GetString(2),
-                                mililitros = reader.GetInt32(3),
-                                genero = reader.GetString(4)
-                            };
-                            perfumes.Add(perfume);
+                                PerfumeDTO perfume = new PerfumeDTO
+                                {
+                                    id = reader.GetInt32(0),
+                                    marca = reader.GetString(1),
+                                    nombre = reader.GetString(2),
+                                    mililitros = reader.GetInt32(3),
+                                    genero = reader.GetString(4)
+                                };
+                                perfumes.Add(perfume);
+
+                                // Mostrar en consola
+                                Console.WriteLine($"ID: {perfume.id}, Marca: {perfume.marca}, Nombre: {perfume.nombre}, " +
+                                                  $"Mililitros: {perfume.mililitros}, Género: {perfume.genero}");
+                            }
                         }
                     }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error al cargar los perfumes de la promoción.", ex);
-                }
-                finally
-                {
-                    DB_Controller.connection.Close();
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error al cargar los perfumes de la promoción: {ex.Message}");
+                        throw new Exception("Error al cargar los perfumes de la promoción.", ex);
+                    }
                 }
             }
-            // Verifica que los datos se están recuperando correctamente
-            MessageBox.Show($"Se recuperaron {perfumes.Count} perfumes.");
 
+            Console.WriteLine($"Total perfumes recuperados: {perfumes.Count}");
             return perfumes;
         }
+
+        /* using (SqlCommand cmd = new SqlCommand(query, DB_Controller.connection))
+         {
+             cmd.Parameters.AddWithValue("@idPromo", idPromo);
+
+             try
+             {
+                 DB_Controller.connection.Open();
+                 using (SqlDataReader reader = cmd.ExecuteReader())
+                 {
+                     while (reader.Read())
+                     {
+                         PerfumeDTO perfume = new PerfumeDTO
+                         {
+                             id = reader.GetInt32(0),
+                             marca = reader.GetString(1),
+                             nombre = reader.GetString(2),
+                             mililitros = reader.GetInt32(3),
+                             genero = reader.GetString(4)
+                         };
+                         perfumes.Add(perfume);
+                     }
+                 }
+             }
+             catch (Exception ex)
+             {
+                 throw new Exception("Error al cargar los perfumes de la promoción.", ex);
+             }
+             finally
+             {
+                 DB_Controller.connection.Close();
+             }
+         }
+         // Verifica que los datos se están recuperando correctamente
+         MessageBox.Show($"Se recuperaron {perfumes.Count} perfumes.");
+
+         return perfumes;
+     }*/
 
         public static List<Promocion> getByIDPerfume(int idPerfume)
         {
