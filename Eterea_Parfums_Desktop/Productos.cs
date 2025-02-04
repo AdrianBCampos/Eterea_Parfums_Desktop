@@ -69,10 +69,6 @@ namespace Eterea_Parfums_Desktop
             {
                 combo_marca.Items.Add(marca.nombre.ToString());
             }
-            if (combo_marca.Items.Count > 0)
-            {
-                combo_marca.SelectedIndex = 0;
-            }
         }
 
         private void CargarTiposDePerfume()
@@ -82,10 +78,6 @@ namespace Eterea_Parfums_Desktop
             foreach (TipoDePerfume tipo in tiposDePerfume)
             {
                 combo_tipo_de_perfume.Items.Add(tipo.tipo_de_perfume.ToString());
-            }
-            if (combo_tipo_de_perfume.Items.Count > 0)
-            {
-                combo_tipo_de_perfume.SelectedIndex = 0;
             }
         }
 
@@ -97,10 +89,6 @@ namespace Eterea_Parfums_Desktop
             {
                 combo_genero.Items.Add(genero.genero.ToString());
             }
-            if (combo_genero.Items.Count > 0)
-            {
-                combo_genero.SelectedIndex = 0;
-            }
         }
 
         private void CargarPaises()
@@ -111,10 +99,6 @@ namespace Eterea_Parfums_Desktop
             {
                 combo_pais.Items.Add(pais.nombre.ToString());
             }
-            if (combo_pais.Items.Count > 0)
-            {
-                combo_pais.SelectedIndex = 0;
-            }
         }
 
         private void CargarOpciones(ComboBox combo)
@@ -122,7 +106,6 @@ namespace Eterea_Parfums_Desktop
             combo.Items.Clear();
             combo.Items.Add("Si");
             combo.Items.Add("No");
-            combo.SelectedIndex = 0;
         }
 
         private void Cargar_Imagen(string nombreImg, PictureBox pictureBox)
@@ -221,9 +204,6 @@ namespace Eterea_Parfums_Desktop
             Perfume perfume = new Perfume(id_Perfume + 1, txt_codigo.Text, marca, txt_nombre.Text, tipo_de_perfume,
                 genero, int.Parse(txt_presentacion.Text), pais, spray, recargable, txt_descripcion.Text,
                 int.Parse(txt_anio_de_lanzamiento.Text), Double.Parse(txt_precio.Text), activo, nombre_foto_uno, nombre_foto_dos);
-
-
-
 
             if (PerfumeControlador.create(perfume))
             {

@@ -168,7 +168,6 @@ namespace Eterea_Parfums_Desktop
             else if (!(string.IsNullOrEmpty(lbl_nota.Text)))
             {
 
-                Console.WriteLine("Nota Ingresada: " + lbl_nota.Text);
                 Nota nota = NotaControlador.getByNombre(lbl_nota.Text);
                 tipoDeNotaMarcado = checkedListBoxNota.CheckedItems[0].ToString();
 
@@ -203,8 +202,8 @@ namespace Eterea_Parfums_Desktop
 
             if (checkedListBoxAroma.CheckedItems.Count == 0)
             {
-                lbl_error_seleccion_nota.Text = "Debe marcar al menos un tipo de aroma";
-                lbl_error_seleccion_nota.Visible = true;
+                lbl_error_seleccion_aroma.Text = "Debe marcar al menos un tipo de aroma";
+                lbl_error_seleccion_aroma.Visible = true;
                 return;
             }
 
