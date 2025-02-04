@@ -1115,19 +1115,19 @@ namespace Eterea_Parfums_Desktop
 
         //Método para limpiar el formulario
 
-        private void limpiarFormulario()
+      /*  private void limpiarFormulario()
         {
             combo_tipo_promo.SelectedIndex = -1; // Deseleccionar tipo de promoción
             txt_nomb_promo.Clear(); // Limpiar nombre
-            /*// Limpia fecha de inicio
+            // Limpia fecha de inicio
             dateTime_inicio_promo.CustomFormat = " ";
             dateTime_inicio_promo.Format = DateTimePickerFormat.Custom;
             // Limpia fecha de fin
             dateTime_fin_promo.CustomFormat = " ";
-            dateTime_fin_promo.Format = DateTimePickerFormat.Custom;*/
+            dateTime_fin_promo.Format = DateTimePickerFormat.Custom;
             combo_activo_promo.SelectedIndex = -1; // Para que el combo_box vuelva a quedar vacío
             inicializarDatePickers();
-        }
+        }*/
 
 
 
