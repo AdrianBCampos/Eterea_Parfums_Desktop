@@ -257,6 +257,7 @@ namespace Eterea_Parfums_Desktop
                 int rowIndex = e.RowIndex;
                 Perfume perfumeSeleccionado = Perfumes_Paginados[rowIndex];
                 completarFactura(perfumeSeleccionado);
+                //facturacionForm.ActualizarTotales();
 
             }
         }
@@ -320,14 +321,14 @@ namespace Eterea_Parfums_Desktop
         private void btn_facturacion_Click(object sender, EventArgs e)
         {
             Facturacion facturacion = new Facturacion();
-            facturacion.Show();
+            //facturacion.Show();
             this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            NumeroDeCaja numeroDeCaja = new NumeroDeCaja();
-            numeroDeCaja.Show();
+            //NumeroDeCaja numeroDeCaja = new NumeroDeCaja();
+            //numeroDeCaja.Show();
             this.Close();
         }
 

@@ -20,7 +20,7 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
             string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";
-            img_logo.Image = Image.FromFile(rutaCompletaImagen);           
+            img_logo.Image = Image.FromFile(rutaCompletaImagen);
 
             txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
 
@@ -33,9 +33,24 @@ namespace Eterea_Parfums_Desktop
             combo_forma_pago.Items.Add("Mercado Pago");
             combo_forma_pago.SelectedIndex = 0;
 
+
+            combo_descuento.Items.Clear();
+            combo_descuento.Items.AddRange(new object[] { 10, 20, 30, 40, 50 });
+            //combo_descuento.Items.Add(10);
+            //combo_descuento.Items.Add(20);
+            combo_descuento.SelectedIndex = 0;
+
+            combo_cuotas.Items.Clear();
+            combo_cuotas.Items.AddRange(new object[] { 1, 2, 3, 4, 5, 6 });
+            combo_cuotas.SelectedIndex = 0;
+
             //txt_recargo.Hide();
 
             txt_total.Text = "0,00";
+            txt_subtotal.Text = "0,00";
+            txt_monto_recargo.Text = "0,00";
+            txt_monto_descuento.Text = "0,00";
+            txt_iva.Text = "0,00";
 
             lbl_dniE.Hide();
         }
@@ -43,6 +58,8 @@ namespace Eterea_Parfums_Desktop
         private void Facturacion_Load(object sender, EventArgs e)
         {
             txt_numero_caja.Text = NumeroCaja;
+            txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -63,7 +80,7 @@ namespace Eterea_Parfums_Desktop
              // Validar la longitud del DNI
              if (txt_dni.Text.Length != 8)
              {
-                 MessageBox.Show("El número ingresado debe ser de 8 dígitos.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                 MessageBox.Show("El número ingresado debe ser de 8 o 11 dígitos.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                  return;
              }
             if (!txt_dni.Text.All(char.IsDigit))
@@ -81,6 +98,7 @@ namespace Eterea_Parfums_Desktop
                 // Si se encuentra el cliente, llenar los campos en el formulario actual
                 txt_nombre_cliente.Text = cliente.nombre + " " + cliente.apellido;
                 txt_condicion_iva.Text = cliente.condicion_frente_al_iva;
+                
             }
             else
             {
@@ -104,7 +122,7 @@ namespace Eterea_Parfums_Desktop
         {
             ConsultasPerfumeEmpleado consultasPerfumeEmpleado = new ConsultasPerfumeEmpleado(this);
             consultasPerfumeEmpleado.Show();
-            this.Hide();
+            //this.Hide();
         }
 
         private void dataGridViewFactura_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -131,12 +149,16 @@ namespace Eterea_Parfums_Desktop
 
 
                 Factura.Rows[e.RowIndex].Cells[6].Value = (precio * valorMultiplicador).ToString();
-                totalFactura();
+
+                ActualizarTotales();
+
+                //Meti este codigo dentro del metodo ActualizarTotales para no repetir codigo
+                /*totalFactura();
                 CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text));
 
                 desc();
                 sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
-
+                */
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == 3)
             {
@@ -151,12 +173,15 @@ namespace Eterea_Parfums_Desktop
                     double precio = Convert.ToDouble(Factura.Rows[rowIndex].Cells[5].Value);
 
                     Factura.Rows[e.RowIndex].Cells[6].Value = (precio * valorMultiplicador).ToString();
+
+                    //Meti este codigo dentro del metodo ActualizarTotales para no repetir codigo
+                    /*
                     totalFactura();
                     CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text));
 
                     desc();
                     sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
-
+                    */
                 }
                 else
                 {
@@ -245,5 +270,22 @@ namespace Eterea_Parfums_Desktop
         {
             return Factura;
         }
+
+        public void ActualizarTotales()
+        {
+            totalFactura();
+
+            float subtotal, recargo, descuento;
+
+            // Verificamos que los valores sean válidos para evitar errores de conversión
+            if (!float.TryParse(txt_subtotal.Text, out subtotal)) subtotal = 0;
+            if (!float.TryParse(txt_monto_recargo.Text, out recargo)) recargo = 0;
+            if (!float.TryParse(txt_monto_descuento.Text, out descuento)) descuento = 0;
+
+            CalcularImporteRecargo(subtotal, recargo);
+            desc();
+            sumaFinal(subtotal, recargo, descuento);
+        }
+
     }
 }

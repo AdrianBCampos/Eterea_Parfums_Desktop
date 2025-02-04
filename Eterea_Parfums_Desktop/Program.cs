@@ -48,7 +48,7 @@ namespace Eterea_Parfums_Desktop
             else if (entorno == "maxi")
             {
                 Ruta_Base = @"C:\Users\Maxi\source\repos";
-                Ruta_Base = @"C:\Users\Maxi\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                Ruta_Base = @"C:\Users\usuario\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
             }
             else if (entorno == "jose")
             {

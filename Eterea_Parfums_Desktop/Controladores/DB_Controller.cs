@@ -16,10 +16,9 @@ namespace Eterea_Parfums_Desktop.Controladores
             // Lista de posibles nombres de servidores
             List<string> serverNames = new List<string>
             {
-                @"DESKTOP-N6TI9JV\MSSQLSERVER02",
+                @"(localdb)\Local",
                 @"LocalHost",
-                @"(localdb)\Local"
-                
+                @"DESKTOP-N6TI9JV\MSSQLSERVER02"
             };
 
             string databaseName = "eterea";
