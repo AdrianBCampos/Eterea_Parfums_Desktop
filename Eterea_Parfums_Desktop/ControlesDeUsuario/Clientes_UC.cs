@@ -63,6 +63,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     dataGridView1.Rows[rowIndex].Cells[8].Value = "Editar";
                     dataGridView1.Rows[rowIndex].Cells[9].Value = "Eliminar";
                 }
+                dataGridView1.CellPainting += dataGridView1_CellPainting;
             }
         }
 
@@ -129,7 +130,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                 }
             }
-            dataGridView1.CellPainting += dataGridView1_CellPainting;
         }
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)

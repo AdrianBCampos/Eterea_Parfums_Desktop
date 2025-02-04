@@ -100,6 +100,9 @@
             this.lbl_recargable = new System.Windows.Forms.Label();
             this.txt_recargable = new System.Windows.Forms.TextBox();
             this.dataGridViewTipoNota = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbl_tipo_nota = new System.Windows.Forms.Label();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.lbl_tipo_perfume = new System.Windows.Forms.Label();
@@ -112,9 +115,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.pictureBox15 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nota = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewAromas = new System.Windows.Forms.DataGridView();
             this.idaroma = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aroma = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -295,6 +295,7 @@
             this.txt_precio_final.Size = new System.Drawing.Size(174, 27);
             this.txt_precio_final.TabIndex = 296;
             this.txt_precio_final.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            
             // 
             // lbl_precio_final
             // 
@@ -903,6 +904,27 @@
             this.dataGridViewTipoNota.Size = new System.Drawing.Size(417, 231);
             this.dataGridViewTipoNota.TabIndex = 349;
             // 
+            // id
+            // 
+            this.id.HeaderText = "Id";
+            this.id.MinimumWidth = 6;
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // tipo
+            // 
+            this.tipo.FillWeight = 125F;
+            this.tipo.HeaderText = "Tipo";
+            this.tipo.MinimumWidth = 6;
+            this.tipo.Name = "tipo";
+            // 
+            // nota
+            // 
+            this.nota.FillWeight = 125F;
+            this.nota.HeaderText = "Nota";
+            this.nota.MinimumWidth = 6;
+            this.nota.Name = "nota";
+            // 
             // lbl_tipo_nota
             // 
             this.lbl_tipo_nota.AutoSize = true;
@@ -1049,27 +1071,6 @@
             this.button1.Text = "X";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // id
-            // 
-            this.id.HeaderText = "Id";
-            this.id.MinimumWidth = 6;
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // tipo
-            // 
-            this.tipo.FillWeight = 125F;
-            this.tipo.HeaderText = "Tipo";
-            this.tipo.MinimumWidth = 6;
-            this.tipo.Name = "tipo";
-            // 
-            // nota
-            // 
-            this.nota.FillWeight = 125F;
-            this.nota.HeaderText = "Nota";
-            this.nota.MinimumWidth = 6;
-            this.nota.Name = "nota";
             // 
             // dataGridViewAromas
             // 

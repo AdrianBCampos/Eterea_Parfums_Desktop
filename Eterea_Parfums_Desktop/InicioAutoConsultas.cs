@@ -126,13 +126,13 @@ namespace Eterea_Parfums_Desktop
                 {
                     int rowIndex = dataGridViewConsultas.Rows.Add();
 
-                    //dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = perfume.sku.ToString();
                     dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = perfume.nombre.ToString();
                     dataGridViewConsultas.Rows[rowIndex].Cells[1].Value = (MarcaControlador.getById(perfume.marca.id)).nombre;
                     dataGridViewConsultas.Rows[rowIndex].Cells[2].Value = (GeneroControlador.getById(perfume.genero.id)).genero;
                     dataGridViewConsultas.Rows[rowIndex].Cells[3].Value = perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
                     dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = "Ver";
                 }
+                dataGridViewConsultas.CellPainting += dataGridViewConsultas_CellPainting;
             }
         }
 
@@ -253,11 +253,10 @@ namespace Eterea_Parfums_Desktop
 
                 VerDetallePerfume detallesForm = new VerDetallePerfume(perfumeSeleccionado);
                 detallesForm.Show();
-            }
-            dataGridViewConsultas.CellPainting += dataGridView1_CellPainting;
+            }            
         }
 
-        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        private void dataGridViewConsultas_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.ColumnIndex >= 0 && e.RowIndex >= 0 && dataGridViewConsultas.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
             {

@@ -353,14 +353,14 @@ namespace Eterea_Parfums_Desktop
               
         private void btn_buscar_perfumes_simi_Click(object sender, EventArgs e)
         {
-            VerPerfumesSimilares verPerfumesSimilares = new VerPerfumesSimilares();
+            VerPerfumesSimilares verPerfumesSimilares = new VerPerfumesSimilares(perfume);
             verPerfumesSimilares.Show();
             this.Close();
         }
 
         private void btn_ver_promociones_Click(object sender, EventArgs e)
         {
-            VerPromociones verPromociones = new VerPromociones();
+            VerPromociones verPromociones = new VerPromociones(perfume);
             verPromociones.Show();
             this.Close();
         }

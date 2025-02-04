@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.richTextBox_promo1 = new System.Windows.Forms.RichTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_ver_detalles = new System.Windows.Forms.Button();
@@ -54,6 +54,11 @@
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.lbl_filtro_genero = new System.Windows.Forms.Label();
+            this.combo_filtro_genero = new System.Windows.Forms.ComboBox();
+            this.lbl_filtro_marca = new System.Windows.Forms.Label();
+            this.combo_filtro_marca = new System.Windows.Forms.ComboBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsultas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -61,6 +66,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // richTextBox_promo1
@@ -78,9 +84,9 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(296, 64);
+            this.pictureBox1.Location = new System.Drawing.Point(296, 131);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(876, 426);
+            this.pictureBox1.Size = new System.Drawing.Size(876, 359);
             this.pictureBox1.TabIndex = 322;
             this.pictureBox1.TabStop = false;
             // 
@@ -90,12 +96,12 @@
             this.btn_ver_detalles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ver_detalles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ver_detalles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_ver_detalles.Location = new System.Drawing.Point(52, 457);
+            this.btn_ver_detalles.Location = new System.Drawing.Point(55, 444);
             this.btn_ver_detalles.Margin = new System.Windows.Forms.Padding(4);
             this.btn_ver_detalles.Name = "btn_ver_detalles";
-            this.btn_ver_detalles.Size = new System.Drawing.Size(197, 65);
+            this.btn_ver_detalles.Size = new System.Drawing.Size(197, 93);
             this.btn_ver_detalles.TabIndex = 321;
-            this.btn_ver_detalles.Text = "Ver Detalles";
+            this.btn_ver_detalles.Text = "Volver a Detalles del Perfume";
             this.btn_ver_detalles.UseVisualStyleBackColor = false;
             this.btn_ver_detalles.Click += new System.EventHandler(this.btn_ver_detalles_Click);
             // 
@@ -128,6 +134,7 @@
             this.btn_posterior.TabIndex = 337;
             this.btn_posterior.Text = ">>";
             this.btn_posterior.UseVisualStyleBackColor = false;
+            this.btn_posterior.Click += new System.EventHandler(this.btn_posterior_Click_1);
             // 
             // btn_anterior
             // 
@@ -142,6 +149,7 @@
             this.btn_anterior.TabIndex = 336;
             this.btn_anterior.Text = "<<";
             this.btn_anterior.UseVisualStyleBackColor = false;
+            this.btn_anterior.Click += new System.EventHandler(this.btn_anterior_Click_1);
             // 
             // lbl_paginacion_Info
             // 
@@ -173,25 +181,25 @@
             // 
             this.dataGridViewConsultas.AllowUserToAddRows = false;
             this.dataGridViewConsultas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridViewConsultas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridViewConsultas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewConsultas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewConsultas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.dataGridViewConsultas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewConsultas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewConsultas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewConsultas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewConsultas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.dataGridViewConsultas.ColumnHeadersHeight = 24;
             this.dataGridViewConsultas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nombre,
@@ -199,36 +207,37 @@
             this.genero,
             this.precio,
             this.agregar});
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewConsultas.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewConsultas.DefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridViewConsultas.EnableHeadersVisualStyles = false;
             this.dataGridViewConsultas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.dataGridViewConsultas.Location = new System.Drawing.Point(312, 83);
+            this.dataGridViewConsultas.Location = new System.Drawing.Point(312, 149);
             this.dataGridViewConsultas.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewConsultas.Name = "dataGridViewConsultas";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewConsultas.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewConsultas.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.dataGridViewConsultas.RowHeadersWidth = 51;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridViewConsultas.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridViewConsultas.RowsDefaultCellStyle = dataGridViewCellStyle20;
             this.dataGridViewConsultas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewConsultas.Size = new System.Drawing.Size(843, 388);
+            this.dataGridViewConsultas.Size = new System.Drawing.Size(843, 322);
             this.dataGridViewConsultas.TabIndex = 333;
+            this.dataGridViewConsultas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewConsultas_CellContentClick_1);
             // 
             // nombre
             // 
@@ -342,12 +351,73 @@
             this.label1.TabIndex = 364;
             this.label1.Text = "Perfumes Similares al Perfume:\r\n";
             // 
+            // lbl_filtro_genero
+            // 
+            this.lbl_filtro_genero.AutoSize = true;
+            this.lbl_filtro_genero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_filtro_genero.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_filtro_genero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_filtro_genero.Location = new System.Drawing.Point(752, 87);
+            this.lbl_filtro_genero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_filtro_genero.Name = "lbl_filtro_genero";
+            this.lbl_filtro_genero.Size = new System.Drawing.Size(143, 20);
+            this.lbl_filtro_genero.TabIndex = 369;
+            this.lbl_filtro_genero.Text = "Filtrar por genero:";
+            // 
+            // combo_filtro_genero
+            // 
+            this.combo_filtro_genero.FormattingEnabled = true;
+            this.combo_filtro_genero.Location = new System.Drawing.Point(924, 83);
+            this.combo_filtro_genero.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_filtro_genero.Name = "combo_filtro_genero";
+            this.combo_filtro_genero.Size = new System.Drawing.Size(198, 24);
+            this.combo_filtro_genero.TabIndex = 368;
+            this.combo_filtro_genero.SelectedIndexChanged += new System.EventHandler(this.combo_filtro_genero_SelectedIndexChanged);
+            // 
+            // lbl_filtro_marca
+            // 
+            this.lbl_filtro_marca.AutoSize = true;
+            this.lbl_filtro_marca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_filtro_marca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_filtro_marca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_filtro_marca.Location = new System.Drawing.Point(340, 87);
+            this.lbl_filtro_marca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_filtro_marca.Name = "lbl_filtro_marca";
+            this.lbl_filtro_marca.Size = new System.Drawing.Size(139, 20);
+            this.lbl_filtro_marca.TabIndex = 367;
+            this.lbl_filtro_marca.Text = "Filtrar por marca:";
+            // 
+            // combo_filtro_marca
+            // 
+            this.combo_filtro_marca.FormattingEnabled = true;
+            this.combo_filtro_marca.Location = new System.Drawing.Point(507, 83);
+            this.combo_filtro_marca.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_filtro_marca.Name = "combo_filtro_marca";
+            this.combo_filtro_marca.Size = new System.Drawing.Size(198, 24);
+            this.combo_filtro_marca.TabIndex = 366;
+            this.combo_filtro_marca.SelectedIndexChanged += new System.EventHandler(this.combo_filtro_marca_SelectedIndexChanged);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox2.Location = new System.Drawing.Point(296, 64);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(876, 61);
+            this.pictureBox2.TabIndex = 365;
+            this.pictureBox2.TabStop = false;
+            // 
             // VerPerfumesSimilares
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(1187, 562);
+            this.Controls.Add(this.lbl_filtro_genero);
+            this.Controls.Add(this.combo_filtro_genero);
+            this.Controls.Add(this.lbl_filtro_marca);
+            this.Controls.Add(this.combo_filtro_marca);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_nombre_perfume);
             this.Controls.Add(this.pictureBox4);
@@ -374,6 +444,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -402,5 +473,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn genero;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio;
         private System.Windows.Forms.DataGridViewButtonColumn agregar;
+        private System.Windows.Forms.Label lbl_filtro_genero;
+        private System.Windows.Forms.ComboBox combo_filtro_genero;
+        private System.Windows.Forms.Label lbl_filtro_marca;
+        private System.Windows.Forms.ComboBox combo_filtro_marca;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
