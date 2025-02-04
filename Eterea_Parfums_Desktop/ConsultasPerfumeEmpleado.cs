@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -120,8 +121,9 @@ namespace Eterea_Parfums_Desktop
                     //dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = perfume.sku.ToString();
                     dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = perfume.nombre.ToString();
                     dataGridViewConsultas.Rows[rowIndex].Cells[1].Value = (MarcaControlador.getById(perfume.marca.id)).nombre;
-                    dataGridViewConsultas.Rows[rowIndex].Cells[2].Value = perfume.precio_en_pesos.ToString();
-                    dataGridViewConsultas.Rows[rowIndex].Cells[3].Value = "Ver";
+                    dataGridViewConsultas.Rows[rowIndex].Cells[2].Value = (GeneroControlador.getById(perfume.genero.id)).genero;
+                    dataGridViewConsultas.Rows[rowIndex].Cells[3].Value = perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
+                    dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = "Ver";
                 }
             }
         }
@@ -238,7 +240,7 @@ namespace Eterea_Parfums_Desktop
         {
             var senderGrid = (DataGridView)sender;
 
-            if (e.RowIndex >= 0 && e.ColumnIndex == 3)
+            if (e.RowIndex >= 0 && e.ColumnIndex == 4)
             {
                 int rowIndex = e.RowIndex;
                 Perfume perfumeSeleccionado = Perfumes_Paginados[rowIndex];

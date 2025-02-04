@@ -223,13 +223,13 @@ namespace Eterea_Parfums_Desktop.Controladores
                  WHERE id = @id_editar"
             ;
 
-            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-            cmd.Parameters.AddWithValue("@id_editar", promo.id);
-            cmd.Parameters.AddWithValue("@nombre", promo.nombre);
-            cmd.Parameters.AddWithValue("@fechaInicio", promo.fecha_inicio);
-            cmd.Parameters.AddWithValue("@fechaFin", promo.fecha_fin);
-            cmd.Parameters.AddWithValue("@descuento", promo.descuento);
-            cmd.Parameters.AddWithValue("@activo", promo.activo);
+             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+             cmd.Parameters.AddWithValue("@id_editar", promo.id);
+             cmd.Parameters.AddWithValue("@nombre", promo.nombre);
+             cmd.Parameters.AddWithValue("@fechaInicio", promo.fecha_inicio);
+             cmd.Parameters.AddWithValue("@fechaFin", promo.fecha_fin);
+             cmd.Parameters.AddWithValue("@descuento", promo.descuento);
+             cmd.Parameters.AddWithValue("@activo", promo.activo);
 
             SqlTransaction transaction = null; // Declarar la transacción
 

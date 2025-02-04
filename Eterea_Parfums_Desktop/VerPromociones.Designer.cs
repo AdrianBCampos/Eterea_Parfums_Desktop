@@ -28,47 +28,126 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txt_nombre_perfume = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btn_buscar_perfumes_simi = new System.Windows.Forms.Button();
-            this.img_perfume = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_nombre_perfume = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.btn_ver_detalles = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.img_perfume = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.dataGridViewpromociones = new System.Windows.Forms.DataGridView();
+            this.lbl_descripcion = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbl_marca = new System.Windows.Forms.Label();
+            this.txt_nombre = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txt_fecha_inicio = new System.Windows.Forms.TextBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txt_fecha_fin = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lbl_detalles_descuento = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txt_valor_descuento = new System.Windows.Forms.TextBox();
+            this.lbl_valor_descuento = new System.Windows.Forms.Label();
+            this.lbl_descuento = new System.Windows.Forms.Label();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.txt_descuento = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txt_precio_final = new System.Windows.Forms.TextBox();
+            this.lbl_precio_final = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.lbl_promo1 = new System.Windows.Forms.Label();
-            this.lbl_promo2 = new System.Windows.Forms.Label();
-            this.lbl_promo3 = new System.Windows.Forms.Label();
-            this.pictureBox_promo1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox_promo2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox_promo3 = new System.Windows.Forms.PictureBox();
-            this.richTextBox_promo1 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox_promo2 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox_promo3 = new System.Windows.Forms.RichTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.img_perfume)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.lbl_precio_lista = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txt_precio_lista = new System.Windows.Forms.TextBox();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.agregar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_perfume)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewpromociones)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_promo1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_promo2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_promo3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.SuspendLayout();
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.Location = new System.Drawing.Point(291, 66);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(431, 271);
+            this.pictureBox1.TabIndex = 304;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label1.Location = new System.Drawing.Point(22, 16);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(372, 32);
+            this.label1.TabIndex = 372;
+            this.label1.Text = "Promociones del Perfume:\r\n";
             // 
             // txt_nombre_perfume
             // 
             this.txt_nombre_perfume.AutoSize = true;
-            this.txt_nombre_perfume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_nombre_perfume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.txt_nombre_perfume.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_nombre_perfume.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txt_nombre_perfume.Location = new System.Drawing.Point(13, 16);
+            this.txt_nombre_perfume.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_nombre_perfume.Location = new System.Drawing.Point(417, 15);
             this.txt_nombre_perfume.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_nombre_perfume.Name = "txt_nombre_perfume";
             this.txt_nombre_perfume.Size = new System.Drawing.Size(274, 32);
-            this.txt_nombre_perfume.TabIndex = 300;
+            this.txt_nombre_perfume.TabIndex = 367;
             this.txt_nombre_perfume.Text = "Nombre del Perfume";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox3.Location = new System.Drawing.Point(9, 7);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(1097, 53);
+            this.pictureBox3.TabIndex = 368;
+            this.pictureBox3.TabStop = false;
+            // 
+            // btn_ver_detalles
+            // 
+            this.btn_ver_detalles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
+            this.btn_ver_detalles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_ver_detalles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ver_detalles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.btn_ver_detalles.Location = new System.Drawing.Point(53, 378);
+            this.btn_ver_detalles.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_ver_detalles.Name = "btn_ver_detalles";
+            this.btn_ver_detalles.Size = new System.Drawing.Size(197, 93);
+            this.btn_ver_detalles.TabIndex = 366;
+            this.btn_ver_detalles.Text = "Volver a Detalles del Perfume";
+            this.btn_ver_detalles.UseVisualStyleBackColor = false;
+            this.btn_ver_detalles.Click += new System.EventHandler(this.btn_ver_detalles_Click);
             // 
             // button2
             // 
@@ -76,248 +155,556 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(847, 9);
+            this.button2.Location = new System.Drawing.Point(1111, 7);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(46, 40);
-            this.button2.TabIndex = 299;
+            this.button2.Size = new System.Drawing.Size(57, 53);
+            this.button2.TabIndex = 365;
             this.button2.Text = "X";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btn_buscar_perfumes_simi
-            // 
-            this.btn_buscar_perfumes_simi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.btn_buscar_perfumes_simi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_buscar_perfumes_simi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_buscar_perfumes_simi.Location = new System.Drawing.Point(56, 432);
-            this.btn_buscar_perfumes_simi.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_buscar_perfumes_simi.Name = "btn_buscar_perfumes_simi";
-            this.btn_buscar_perfumes_simi.Size = new System.Drawing.Size(183, 97);
-            this.btn_buscar_perfumes_simi.TabIndex = 303;
-            this.btn_buscar_perfumes_simi.Text = "Buscar Perfumes Similares";
-            this.btn_buscar_perfumes_simi.UseVisualStyleBackColor = false;
-            this.btn_buscar_perfumes_simi.Click += new System.EventHandler(this.btn_buscar_perfumes_simi_Click);
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // img_perfume
             // 
-            this.img_perfume.Location = new System.Drawing.Point(29, 84);
+            this.img_perfume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.img_perfume.Location = new System.Drawing.Point(27, 85);
             this.img_perfume.Margin = new System.Windows.Forms.Padding(4);
             this.img_perfume.Name = "img_perfume";
-            this.img_perfume.Size = new System.Drawing.Size(241, 330);
+            this.img_perfume.Size = new System.Drawing.Size(241, 252);
             this.img_perfume.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.img_perfume.TabIndex = 302;
+            this.img_perfume.TabIndex = 370;
             this.img_perfume.TabStop = false;
             // 
-            // pictureBox3
+            // pictureBox6
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox3.Location = new System.Drawing.Point(11, 60);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(277, 489);
-            this.pictureBox3.TabIndex = 301;
-            this.pictureBox3.TabStop = false;
+            this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox6.Location = new System.Drawing.Point(9, 66);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(277, 290);
+            this.pictureBox6.TabIndex = 369;
+            this.pictureBox6.TabStop = false;
             // 
-            // pictureBox1
+            // pictureBox10
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(294, 60);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(599, 489);
-            this.pictureBox1.TabIndex = 304;
-            this.pictureBox1.TabStop = false;
+            this.pictureBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox10.Location = new System.Drawing.Point(11, 362);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(277, 122);
+            this.pictureBox10.TabIndex = 371;
+            this.pictureBox10.TabStop = false;
+            // 
+            // dataGridViewpromociones
+            // 
+            this.dataGridViewpromociones.AllowUserToAddRows = false;
+            this.dataGridViewpromociones.AllowUserToResizeRows = false;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridViewpromociones.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            this.dataGridViewpromociones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewpromociones.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            this.dataGridViewpromociones.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewpromociones.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridViewpromociones.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewpromociones.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            this.dataGridViewpromociones.ColumnHeadersHeight = 24;
+            this.dataGridViewpromociones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.nombre,
+            this.agregar});
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewpromociones.DefaultCellStyle = dataGridViewCellStyle13;
+            this.dataGridViewpromociones.EnableHeadersVisualStyles = false;
+            this.dataGridViewpromociones.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
+            this.dataGridViewpromociones.Location = new System.Drawing.Point(306, 117);
+            this.dataGridViewpromociones.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridViewpromociones.Name = "dataGridViewpromociones";
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewpromociones.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.dataGridViewpromociones.RowHeadersWidth = 51;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridViewpromociones.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            this.dataGridViewpromociones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewpromociones.Size = new System.Drawing.Size(400, 199);
+            this.dataGridViewpromociones.TabIndex = 373;
+            this.dataGridViewpromociones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewpromociones_CellContentClick);
+            // 
+            // lbl_descripcion
+            // 
+            this.lbl_descripcion.AutoSize = true;
+            this.lbl_descripcion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_descripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_descripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_descripcion.Location = new System.Drawing.Point(302, 85);
+            this.lbl_descripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_descripcion.Name = "lbl_descripcion";
+            this.lbl_descripcion.Size = new System.Drawing.Size(124, 20);
+            this.lbl_descripcion.TabIndex = 374;
+            this.lbl_descripcion.Text = "Promociones:";
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.White;
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(316, 84);
+            this.pictureBox2.Location = new System.Drawing.Point(728, 67);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(556, 123);
-            this.pictureBox2.TabIndex = 305;
+            this.pictureBox2.Size = new System.Drawing.Size(440, 107);
+            this.pictureBox2.TabIndex = 375;
             this.pictureBox2.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label2.Location = new System.Drawing.Point(745, 85);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(345, 20);
+            this.label2.TabIndex = 376;
+            this.label2.Text = "Detalles de la Promoción Seleccionada:";
+            // 
+            // lbl_marca
+            // 
+            this.lbl_marca.AutoSize = true;
+            this.lbl_marca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_marca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_marca.Location = new System.Drawing.Point(745, 134);
+            this.lbl_marca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_marca.Name = "lbl_marca";
+            this.lbl_marca.Size = new System.Drawing.Size(66, 18);
+            this.lbl_marca.TabIndex = 378;
+            this.lbl_marca.Text = "Nombre:";
+            // 
+            // txt_nombre
+            // 
+            this.txt_nombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_nombre.Location = new System.Drawing.Point(833, 125);
+            this.txt_nombre.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_nombre.Name = "txt_nombre";
+            this.txt_nombre.Size = new System.Drawing.Size(308, 27);
+            this.txt_nombre.TabIndex = 377;
+            this.txt_nombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(745, 245);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(91, 18);
+            this.label3.TabIndex = 380;
+            this.label3.Text = "Fecha Inicio:";
+            // 
+            // txt_fecha_inicio
+            // 
+            this.txt_fecha_inicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_fecha_inicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_fecha_inicio.Location = new System.Drawing.Point(908, 236);
+            this.txt_fecha_inicio.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_fecha_inicio.Name = "txt_fecha_inicio";
+            this.txt_fecha_inicio.Size = new System.Drawing.Size(233, 27);
+            this.txt_fecha_inicio.TabIndex = 379;
+            this.txt_fecha_inicio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox4
             // 
-            this.pictureBox4.BackColor = System.Drawing.Color.White;
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox4.Location = new System.Drawing.Point(316, 240);
+            this.pictureBox4.Location = new System.Drawing.Point(728, 180);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(556, 123);
-            this.pictureBox4.TabIndex = 306;
+            this.pictureBox4.Size = new System.Drawing.Size(440, 157);
+            this.pictureBox4.TabIndex = 381;
             this.pictureBox4.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(745, 298);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 18);
+            this.label4.TabIndex = 383;
+            this.label4.Text = "Fecha Fin:";
+            // 
+            // txt_fecha_fin
+            // 
+            this.txt_fecha_fin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_fecha_fin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_fecha_fin.Location = new System.Drawing.Point(908, 289);
+            this.txt_fecha_fin.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_fecha_fin.Name = "txt_fecha_fin";
+            this.txt_fecha_fin.Size = new System.Drawing.Size(233, 27);
+            this.txt_fecha_fin.TabIndex = 382;
+            this.txt_fecha_fin.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label5.Location = new System.Drawing.Point(745, 196);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(200, 20);
+            this.label5.TabIndex = 384;
+            this.label5.Text = "Periodo de Promoción:";
+            // 
+            // lbl_detalles_descuento
+            // 
+            this.lbl_detalles_descuento.AutoSize = true;
+            this.lbl_detalles_descuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_detalles_descuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_detalles_descuento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_detalles_descuento.Location = new System.Drawing.Point(305, 358);
+            this.lbl_detalles_descuento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_detalles_descuento.Name = "lbl_detalles_descuento";
+            this.lbl_detalles_descuento.Size = new System.Drawing.Size(207, 20);
+            this.lbl_detalles_descuento.TabIndex = 392;
+            this.lbl_detalles_descuento.Text = "Detalles de Descuento:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(665, 396);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(24, 20);
+            this.label6.TabIndex = 390;
+            this.label6.Text = "%";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(485, 439);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(18, 20);
+            this.label7.TabIndex = 389;
+            this.label7.Text = "$";
+            // 
+            // txt_valor_descuento
+            // 
+            this.txt_valor_descuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_valor_descuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_valor_descuento.Location = new System.Drawing.Point(479, 436);
+            this.txt_valor_descuento.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_valor_descuento.Name = "txt_valor_descuento";
+            this.txt_valor_descuento.Size = new System.Drawing.Size(215, 27);
+            this.txt_valor_descuento.TabIndex = 388;
+            this.txt_valor_descuento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lbl_valor_descuento
+            // 
+            this.lbl_valor_descuento.AutoSize = true;
+            this.lbl_valor_descuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_valor_descuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_valor_descuento.Location = new System.Drawing.Point(306, 440);
+            this.lbl_valor_descuento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_valor_descuento.Name = "lbl_valor_descuento";
+            this.lbl_valor_descuento.Size = new System.Drawing.Size(122, 18);
+            this.lbl_valor_descuento.TabIndex = 387;
+            this.lbl_valor_descuento.Text = "Valor Descuento:";
+            // 
+            // lbl_descuento
+            // 
+            this.lbl_descuento.AutoSize = true;
+            this.lbl_descuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_descuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_descuento.Location = new System.Drawing.Point(306, 397);
+            this.lbl_descuento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_descuento.Name = "lbl_descuento";
+            this.lbl_descuento.Size = new System.Drawing.Size(84, 18);
+            this.lbl_descuento.TabIndex = 386;
+            this.lbl_descuento.Text = "Descuento:";
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox7.Location = new System.Drawing.Point(292, 343);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(430, 141);
+            this.pictureBox7.TabIndex = 391;
+            this.pictureBox7.TabStop = false;
+            // 
+            // txt_descuento
+            // 
+            this.txt_descuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_descuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_descuento.Location = new System.Drawing.Point(479, 393);
+            this.txt_descuento.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_descuento.Name = "txt_descuento";
+            this.txt_descuento.Size = new System.Drawing.Size(215, 27);
+            this.txt_descuento.TabIndex = 393;
+            this.txt_descuento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(914, 442);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(18, 20);
+            this.label8.TabIndex = 396;
+            this.label8.Text = "$";
+            // 
+            // txt_precio_final
+            // 
+            this.txt_precio_final.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_precio_final.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_precio_final.Location = new System.Drawing.Point(908, 439);
+            this.txt_precio_final.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_precio_final.Name = "txt_precio_final";
+            this.txt_precio_final.Size = new System.Drawing.Size(233, 27);
+            this.txt_precio_final.TabIndex = 395;
+            this.txt_precio_final.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lbl_precio_final
+            // 
+            this.lbl_precio_final.AutoSize = true;
+            this.lbl_precio_final.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_precio_final.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_precio_final.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_precio_final.Location = new System.Drawing.Point(737, 439);
+            this.lbl_precio_final.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_precio_final.Name = "lbl_precio_final";
+            this.lbl_precio_final.Size = new System.Drawing.Size(133, 25);
+            this.lbl_precio_final.TabIndex = 394;
+            this.lbl_precio_final.Text = "Precio Final:";
             // 
             // pictureBox5
             // 
-            this.pictureBox5.BackColor = System.Drawing.Color.White;
+            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox5.Location = new System.Drawing.Point(316, 395);
+            this.pictureBox5.Location = new System.Drawing.Point(729, 416);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(556, 123);
-            this.pictureBox5.TabIndex = 307;
+            this.pictureBox5.Size = new System.Drawing.Size(439, 68);
+            this.pictureBox5.TabIndex = 397;
             this.pictureBox5.TabStop = false;
             // 
-            // lbl_promo1
+            // pictureBox8
             // 
-            this.lbl_promo1.AutoSize = true;
-            this.lbl_promo1.BackColor = System.Drawing.Color.White;
-            this.lbl_promo1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_promo1.Location = new System.Drawing.Point(326, 94);
-            this.lbl_promo1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_promo1.Name = "lbl_promo1";
-            this.lbl_promo1.Size = new System.Drawing.Size(70, 18);
-            this.lbl_promo1.TabIndex = 308;
-            this.lbl_promo1.Text = "Promo 1:";
+            this.pictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox8.Location = new System.Drawing.Point(729, 343);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(439, 68);
+            this.pictureBox8.TabIndex = 398;
+            this.pictureBox8.TabStop = false;
             // 
-            // lbl_promo2
+            // lbl_precio_lista
             // 
-            this.lbl_promo2.AutoSize = true;
-            this.lbl_promo2.BackColor = System.Drawing.Color.White;
-            this.lbl_promo2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_promo2.Location = new System.Drawing.Point(326, 249);
-            this.lbl_promo2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_promo2.Name = "lbl_promo2";
-            this.lbl_promo2.Size = new System.Drawing.Size(70, 18);
-            this.lbl_promo2.TabIndex = 309;
-            this.lbl_promo2.Text = "Promo 2:";
+            this.lbl_precio_lista.AutoSize = true;
+            this.lbl_precio_lista.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_precio_lista.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_precio_lista.Location = new System.Drawing.Point(746, 368);
+            this.lbl_precio_lista.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_precio_lista.Name = "lbl_precio_lista";
+            this.lbl_precio_lista.Size = new System.Drawing.Size(110, 18);
+            this.lbl_precio_lista.TabIndex = 399;
+            this.lbl_precio_lista.Text = "Precio de Lista:";
             // 
-            // lbl_promo3
+            // label9
             // 
-            this.lbl_promo3.AutoSize = true;
-            this.lbl_promo3.BackColor = System.Drawing.Color.White;
-            this.lbl_promo3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_promo3.Location = new System.Drawing.Point(326, 406);
-            this.lbl_promo3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_promo3.Name = "lbl_promo3";
-            this.lbl_promo3.Size = new System.Drawing.Size(70, 18);
-            this.lbl_promo3.TabIndex = 310;
-            this.lbl_promo3.Text = "Promo 3:";
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(914, 367);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(18, 20);
+            this.label9.TabIndex = 401;
+            this.label9.Text = "$";
             // 
-            // pictureBox_promo1
+            // txt_precio_lista
             // 
-            this.pictureBox_promo1.Location = new System.Drawing.Point(757, 101);
-            this.pictureBox_promo1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox_promo1.Name = "pictureBox_promo1";
-            this.pictureBox_promo1.Size = new System.Drawing.Size(99, 87);
-            this.pictureBox_promo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_promo1.TabIndex = 311;
-            this.pictureBox_promo1.TabStop = false;
+            this.txt_precio_lista.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_precio_lista.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_precio_lista.Location = new System.Drawing.Point(908, 364);
+            this.txt_precio_lista.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_precio_lista.Name = "txt_precio_lista";
+            this.txt_precio_lista.Size = new System.Drawing.Size(233, 27);
+            this.txt_precio_lista.TabIndex = 400;
+            this.txt_precio_lista.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // pictureBox_promo2
+            // id
             // 
-            this.pictureBox_promo2.Location = new System.Drawing.Point(757, 258);
-            this.pictureBox_promo2.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox_promo2.Name = "pictureBox_promo2";
-            this.pictureBox_promo2.Size = new System.Drawing.Size(99, 87);
-            this.pictureBox_promo2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_promo2.TabIndex = 312;
-            this.pictureBox_promo2.TabStop = false;
+            this.id.HeaderText = "Id";
+            this.id.MinimumWidth = 6;
+            this.id.Name = "id";
+            this.id.Visible = false;
             // 
-            // pictureBox_promo3
+            // nombre
             // 
-            this.pictureBox_promo3.Location = new System.Drawing.Point(757, 414);
-            this.pictureBox_promo3.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox_promo3.Name = "pictureBox_promo3";
-            this.pictureBox_promo3.Size = new System.Drawing.Size(99, 87);
-            this.pictureBox_promo3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox_promo3.TabIndex = 313;
-            this.pictureBox_promo3.TabStop = false;
+            this.nombre.FillWeight = 125F;
+            this.nombre.HeaderText = "Nombre de la Promoción";
+            this.nombre.MinimumWidth = 6;
+            this.nombre.Name = "nombre";
             // 
-            // richTextBox_promo1
+            // agregar
             // 
-            this.richTextBox_promo1.BackColor = System.Drawing.Color.White;
-            this.richTextBox_promo1.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.richTextBox_promo1.Location = new System.Drawing.Point(400, 93);
-            this.richTextBox_promo1.Margin = new System.Windows.Forms.Padding(4);
-            this.richTextBox_promo1.Name = "richTextBox_promo1";
-            this.richTextBox_promo1.Size = new System.Drawing.Size(340, 102);
-            this.richTextBox_promo1.TabIndex = 314;
-            this.richTextBox_promo1.Text = "";
+            this.agregar.FillWeight = 50F;
+            this.agregar.HeaderText = "Ver mas";
+            this.agregar.MinimumWidth = 6;
+            this.agregar.Name = "agregar";
             // 
-            // richTextBox_promo2
+            // pictureBox9
             // 
-            this.richTextBox_promo2.BackColor = System.Drawing.Color.White;
-            this.richTextBox_promo2.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.richTextBox_promo2.Location = new System.Drawing.Point(400, 249);
-            this.richTextBox_promo2.Margin = new System.Windows.Forms.Padding(4);
-            this.richTextBox_promo2.Name = "richTextBox_promo2";
-            this.richTextBox_promo2.Size = new System.Drawing.Size(340, 102);
-            this.richTextBox_promo2.TabIndex = 315;
-            this.richTextBox_promo2.Text = "";
-            // 
-            // richTextBox_promo3
-            // 
-            this.richTextBox_promo3.BackColor = System.Drawing.Color.White;
-            this.richTextBox_promo3.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.richTextBox_promo3.Location = new System.Drawing.Point(400, 406);
-            this.richTextBox_promo3.Margin = new System.Windows.Forms.Padding(4);
-            this.richTextBox_promo3.Name = "richTextBox_promo3";
-            this.richTextBox_promo3.Size = new System.Drawing.Size(340, 102);
-            this.richTextBox_promo3.TabIndex = 316;
-            this.richTextBox_promo3.Text = "";
+            this.pictureBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox9.Location = new System.Drawing.Point(728, 66);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(440, 418);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 402;
+            this.pictureBox9.TabStop = false;
             // 
             // VerPromociones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(906, 561);
-            this.Controls.Add(this.richTextBox_promo3);
-            this.Controls.Add(this.richTextBox_promo2);
-            this.Controls.Add(this.richTextBox_promo1);
-            this.Controls.Add(this.pictureBox_promo3);
-            this.Controls.Add(this.pictureBox_promo2);
-            this.Controls.Add(this.pictureBox_promo1);
-            this.Controls.Add(this.lbl_promo3);
-            this.Controls.Add(this.lbl_promo2);
-            this.Controls.Add(this.lbl_promo1);
+            this.ClientSize = new System.Drawing.Size(1176, 491);
+            this.Controls.Add(this.pictureBox9);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txt_precio_lista);
+            this.Controls.Add(this.lbl_precio_lista);
+            this.Controls.Add(this.pictureBox8);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txt_precio_final);
+            this.Controls.Add(this.lbl_precio_final);
             this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txt_descuento);
+            this.Controls.Add(this.lbl_detalles_descuento);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txt_valor_descuento);
+            this.Controls.Add(this.lbl_valor_descuento);
+            this.Controls.Add(this.lbl_descuento);
+            this.Controls.Add(this.pictureBox7);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txt_fecha_fin);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txt_fecha_inicio);
+            this.Controls.Add(this.lbl_marca);
+            this.Controls.Add(this.txt_nombre);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.btn_buscar_perfumes_simi);
-            this.Controls.Add(this.img_perfume);
-            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.lbl_descripcion);
+            this.Controls.Add(this.dataGridViewpromociones);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txt_nombre_perfume);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.btn_ver_detalles);
             this.Controls.Add(this.button2);
+            this.Controls.Add(this.img_perfume);
+            this.Controls.Add(this.pictureBox6);
+            this.Controls.Add(this.pictureBox10);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBox4);
             this.Name = "VerPromociones";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VerPromociones";
-            ((System.ComponentModel.ISupportInitialize)(this.img_perfume)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.img_perfume)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewpromociones)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_promo1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_promo2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_promo3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label txt_nombre_perfume;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btn_buscar_perfumes_simi;
-        private System.Windows.Forms.PictureBox img_perfume;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label txt_nombre_perfume;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button btn_ver_detalles;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.PictureBox img_perfume;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.DataGridView dataGridViewpromociones;
+        private System.Windows.Forms.Label lbl_descripcion;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbl_marca;
+        private System.Windows.Forms.TextBox txt_nombre;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txt_fecha_inicio;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txt_fecha_fin;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbl_detalles_descuento;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txt_valor_descuento;
+        private System.Windows.Forms.Label lbl_valor_descuento;
+        private System.Windows.Forms.Label lbl_descuento;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.TextBox txt_descuento;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txt_precio_final;
+        private System.Windows.Forms.Label lbl_precio_final;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Label lbl_promo1;
-        private System.Windows.Forms.Label lbl_promo2;
-        private System.Windows.Forms.Label lbl_promo3;
-        private System.Windows.Forms.PictureBox pictureBox_promo1;
-        private System.Windows.Forms.PictureBox pictureBox_promo2;
-        private System.Windows.Forms.PictureBox pictureBox_promo3;
-        private System.Windows.Forms.RichTextBox richTextBox_promo1;
-        private System.Windows.Forms.RichTextBox richTextBox_promo2;
-        private System.Windows.Forms.RichTextBox richTextBox_promo3;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.Label lbl_precio_lista;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txt_precio_lista;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewButtonColumn agregar;
+        private System.Windows.Forms.PictureBox pictureBox9;
     }
 }

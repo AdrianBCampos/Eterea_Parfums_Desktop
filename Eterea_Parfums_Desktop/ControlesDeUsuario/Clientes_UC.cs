@@ -30,6 +30,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void cargarClientes(string filtroDni = "")
         {
+            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
+            dataGridView1.RowHeadersVisible = false;
+
             clientes = ClienteControlador.obtenerTodos();
 
             dataGridView1.Rows.Clear();
@@ -60,6 +63,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     dataGridView1.Rows[rowIndex].Cells[8].Value = "Editar";
                     dataGridView1.Rows[rowIndex].Cells[9].Value = "Eliminar";
                 }
+                dataGridView1.CellPainting += dataGridView1_CellPainting;
             }
         }
 
@@ -128,6 +132,32 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             }
         }
 
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0 && dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                e.Handled = true;
+                e.PaintBackground(e.CellBounds, true);
+
+                // Crear un rectángulo para el botón
+                Rectangle buttonRect = e.CellBounds;
+                buttonRect.Inflate(-2, -2); // Reducir tamaño para dar efecto de borde
+
+                // Definir colores personalizados
+                Color buttonColor = Color.FromArgb(228, 137, 164); // Color de fondo del botón
+                Color textColor = Color.FromArgb(250, 236, 239); // Color del texto
+
+                using (SolidBrush brush = new SolidBrush(buttonColor))
+                {
+                    e.Graphics.FillRectangle(brush, buttonRect);
+                }
+
+                // Dibujar el texto del botón
+                TextRenderer.DrawText(e.Graphics, (string)e.Value, e.CellStyle.Font, buttonRect, textColor,
+                                      TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+            }
+        }
+
         private void txt_buscar_dni_TextChanged(object sender, EventArgs e)
         {
             string filtroDni = txt_buscar_dni.Text.Trim();
@@ -145,6 +175,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             }
         }
 
-       
+        private void lbl_dni_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
