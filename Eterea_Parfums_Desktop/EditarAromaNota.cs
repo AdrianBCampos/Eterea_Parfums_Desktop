@@ -41,6 +41,7 @@ namespace Eterea_Parfums_Desktop
             cargarDataGridViewNotasDePerfume();
             lbl_error_seleccion_aroma.Visible = false;
             lbl_error_seleccion_nota.Visible = false;
+            lbl_nota.Text = "";
         }
 
         private void CargarDatosCheckBoxListAromas()
@@ -243,8 +244,9 @@ namespace Eterea_Parfums_Desktop
                     lbl_error_seleccion_nota.Visible = false;
                     notas_con_tipo_de_nota.Add(notaConTipoDeNota);
                     notas_del_perfume.Add(notasDelPerfume);
+                    MessageBox.Show("Se ha guardado la nota y el tipo de nota del perfume correctamente");
                 }
-                MessageBox.Show("Se ha guardado la nota y el tipo de nota del perfume correctamente");
+               
 
                 cargarDataGridViewNotasDePerfume(notas_con_tipo_de_nota);
 
@@ -361,20 +363,28 @@ namespace Eterea_Parfums_Desktop
 
         private void checkedListBoxNota_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Verifica si hay algún elemento marcado
-            if (checkedListBoxNota.CheckedItems.Count > 0)
+            // Verifica si hay algún elemento seleccionado
+            if (checkedListBoxNota.SelectedIndex != -1)
             {
-                // Obtiene el último elemento marcado
-                string ultimoMarcado = checkedListBoxNota.CheckedItems[checkedListBoxNota.CheckedItems.Count - 1].ToString();
+                // Desmarcar todos los elementos antes de marcar el nuevo
+                for (int i = 0; i < checkedListBoxNota.Items.Count; i++)
+                {
+                    if (i != checkedListBoxNota.SelectedIndex) // Evita desmarcar el que acaba de ser seleccionado
+                    {
+                        checkedListBoxNota.SetItemChecked(i, false);
+                    }
+                }
 
-                // Muestra el texto del último ítem marcado en el label
+                // Obtener el último elemento marcado
+                string ultimoMarcado = checkedListBoxNota.SelectedItem.ToString();
                 lbl_tipo_de_nota.Text = ultimoMarcado;
             }
             else
             {
-                // Si no hay elementos marcados, muestra un mensaje vacío o por defecto
                 lbl_tipo_de_nota.Text = "No hay elementos seleccionados.";
             }
+
+         
         }
 
         private void btn_x_cerrar_Click(object sender, EventArgs e)
