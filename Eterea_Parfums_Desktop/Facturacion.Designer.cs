@@ -108,7 +108,7 @@
             // img_logo
             // 
             this.img_logo.Location = new System.Drawing.Point(13, 14);
-            this.img_logo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.img_logo.Margin = new System.Windows.Forms.Padding(4);
             this.img_logo.Name = "img_logo";
             this.img_logo.Size = new System.Drawing.Size(115, 106);
             this.img_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -122,7 +122,7 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(936, 14);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button2.Size = new System.Drawing.Size(45, 39);
@@ -233,7 +233,7 @@
             // txt_dni
             // 
             this.txt_dni.Location = new System.Drawing.Point(95, 149);
-            this.txt_dni.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_dni.Margin = new System.Windows.Forms.Padding(4);
             this.txt_dni.Name = "txt_dni";
             this.txt_dni.Size = new System.Drawing.Size(233, 22);
             this.txt_dni.TabIndex = 290;
@@ -244,7 +244,7 @@
             this.btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_buscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_buscar.Location = new System.Drawing.Point(348, 139);
-            this.btn_buscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_buscar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_buscar.Name = "btn_buscar";
             this.btn_buscar.Size = new System.Drawing.Size(151, 39);
             this.btn_buscar.TabIndex = 293;
@@ -258,7 +258,7 @@
             this.btn_consultas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_consultas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_consultas.Location = new System.Drawing.Point(672, 138);
-            this.btn_consultas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_consultas.Margin = new System.Windows.Forms.Padding(4);
             this.btn_consultas.Name = "btn_consultas";
             this.btn_consultas.Size = new System.Drawing.Size(199, 39);
             this.btn_consultas.TabIndex = 294;
@@ -319,7 +319,7 @@
             this.Factura.EnableHeadersVisualStyles = false;
             this.Factura.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.Factura.Location = new System.Drawing.Point(23, 261);
-            this.Factura.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Factura.Margin = new System.Windows.Forms.Padding(4);
             this.Factura.Name = "Factura";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
@@ -462,7 +462,7 @@
             // 
             this.txt_subtotal.BackColor = System.Drawing.Color.White;
             this.txt_subtotal.Location = new System.Drawing.Point(685, 603);
-            this.txt_subtotal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_subtotal.Margin = new System.Windows.Forms.Padding(4);
             this.txt_subtotal.Name = "txt_subtotal";
             this.txt_subtotal.Size = new System.Drawing.Size(196, 22);
             this.txt_subtotal.TabIndex = 307;
@@ -496,7 +496,7 @@
             // 
             this.txt_monto_recargo.BackColor = System.Drawing.Color.White;
             this.txt_monto_recargo.Location = new System.Drawing.Point(685, 654);
-            this.txt_monto_recargo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_monto_recargo.Margin = new System.Windows.Forms.Padding(4);
             this.txt_monto_recargo.Name = "txt_monto_recargo";
             this.txt_monto_recargo.Size = new System.Drawing.Size(196, 22);
             this.txt_monto_recargo.TabIndex = 310;
@@ -530,7 +530,7 @@
             // 
             this.txt_monto_descuento.BackColor = System.Drawing.Color.White;
             this.txt_monto_descuento.Location = new System.Drawing.Point(685, 704);
-            this.txt_monto_descuento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_monto_descuento.Margin = new System.Windows.Forms.Padding(4);
             this.txt_monto_descuento.Name = "txt_monto_descuento";
             this.txt_monto_descuento.Size = new System.Drawing.Size(196, 22);
             this.txt_monto_descuento.TabIndex = 313;
@@ -564,7 +564,7 @@
             // 
             this.txt_iva.BackColor = System.Drawing.Color.White;
             this.txt_iva.Location = new System.Drawing.Point(685, 752);
-            this.txt_iva.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_iva.Margin = new System.Windows.Forms.Padding(4);
             this.txt_iva.Name = "txt_iva";
             this.txt_iva.Size = new System.Drawing.Size(196, 22);
             this.txt_iva.TabIndex = 316;
@@ -598,7 +598,7 @@
             // 
             this.txt_total.BackColor = System.Drawing.Color.White;
             this.txt_total.Location = new System.Drawing.Point(685, 799);
-            this.txt_total.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_total.Margin = new System.Windows.Forms.Padding(4);
             this.txt_total.Name = "txt_total";
             this.txt_total.Size = new System.Drawing.Size(196, 22);
             this.txt_total.TabIndex = 319;
@@ -631,8 +631,8 @@
             // txt_recargo
             // 
             this.txt_recargo.BackColor = System.Drawing.Color.White;
-            this.txt_recargo.Location = new System.Drawing.Point(905, 654);
-            this.txt_recargo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_recargo.Location = new System.Drawing.Point(902, 654);
+            this.txt_recargo.Margin = new System.Windows.Forms.Padding(4);
             this.txt_recargo.Name = "txt_recargo";
             this.txt_recargo.Size = new System.Drawing.Size(67, 22);
             this.txt_recargo.TabIndex = 321;
@@ -653,8 +653,8 @@
             // txt_descuento_porcentaje
             // 
             this.txt_descuento_porcentaje.BackColor = System.Drawing.Color.White;
-            this.txt_descuento_porcentaje.Location = new System.Drawing.Point(905, 705);
-            this.txt_descuento_porcentaje.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_descuento_porcentaje.Location = new System.Drawing.Point(902, 705);
+            this.txt_descuento_porcentaje.Margin = new System.Windows.Forms.Padding(4);
             this.txt_descuento_porcentaje.Name = "txt_descuento_porcentaje";
             this.txt_descuento_porcentaje.Size = new System.Drawing.Size(67, 22);
             this.txt_descuento_porcentaje.TabIndex = 323;
@@ -665,7 +665,7 @@
             this.combo_forma_pago.BackColor = System.Drawing.Color.White;
             this.combo_forma_pago.FormattingEnabled = true;
             this.combo_forma_pago.Location = new System.Drawing.Point(141, 607);
-            this.combo_forma_pago.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.combo_forma_pago.Margin = new System.Windows.Forms.Padding(4);
             this.combo_forma_pago.Name = "combo_forma_pago";
             this.combo_forma_pago.Size = new System.Drawing.Size(137, 24);
             this.combo_forma_pago.TabIndex = 325;
@@ -687,7 +687,7 @@
             this.combo_cuotas.BackColor = System.Drawing.Color.White;
             this.combo_cuotas.FormattingEnabled = true;
             this.combo_cuotas.Location = new System.Drawing.Point(367, 607);
-            this.combo_cuotas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.combo_cuotas.Margin = new System.Windows.Forms.Padding(4);
             this.combo_cuotas.Name = "combo_cuotas";
             this.combo_cuotas.Size = new System.Drawing.Size(139, 24);
             this.combo_cuotas.TabIndex = 327;
@@ -709,7 +709,7 @@
             this.combo_descuento.BackColor = System.Drawing.Color.White;
             this.combo_descuento.FormattingEnabled = true;
             this.combo_descuento.Location = new System.Drawing.Point(315, 677);
-            this.combo_descuento.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.combo_descuento.Margin = new System.Windows.Forms.Padding(4);
             this.combo_descuento.Name = "combo_descuento";
             this.combo_descuento.Size = new System.Drawing.Size(169, 24);
             this.combo_descuento.TabIndex = 329;
@@ -730,7 +730,7 @@
             // 
             this.txt_email.BackColor = System.Drawing.Color.White;
             this.txt_email.Location = new System.Drawing.Point(181, 743);
-            this.txt_email.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_email.Margin = new System.Windows.Forms.Padding(4);
             this.txt_email.Name = "txt_email";
             this.txt_email.Size = new System.Drawing.Size(311, 22);
             this.txt_email.TabIndex = 332;
@@ -765,7 +765,7 @@
             this.btn_enviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_enviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_enviar.Location = new System.Drawing.Point(49, 788);
-            this.btn_enviar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_enviar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_enviar.Name = "btn_enviar";
             this.btn_enviar.Size = new System.Drawing.Size(185, 39);
             this.btn_enviar.TabIndex = 334;
@@ -778,7 +778,7 @@
             this.btn_imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_imprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_imprimir.Location = new System.Drawing.Point(299, 788);
-            this.btn_imprimir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_imprimir.Margin = new System.Windows.Forms.Padding(4);
             this.btn_imprimir.Name = "btn_imprimir";
             this.btn_imprimir.Size = new System.Drawing.Size(185, 39);
             this.btn_imprimir.TabIndex = 335;

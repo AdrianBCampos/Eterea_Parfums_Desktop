@@ -24,6 +24,8 @@ namespace Eterea_Parfums_Desktop
 
             txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
 
+            combo_forma_pago.SelectedIndexChanged -= combo_forma_pago_SelectedIndexChanged;
+
             combo_forma_pago.Items.Clear();
             combo_forma_pago.Items.Add("Efectivo");
             combo_forma_pago.Items.Add("Visa Débito");
@@ -35,10 +37,8 @@ namespace Eterea_Parfums_Desktop
 
 
             combo_descuento.Items.Clear();
-            combo_descuento.Items.AddRange(new object[] { 10, 20, 30, 40, 50 });
-            //combo_descuento.Items.Add(10);
-            //combo_descuento.Items.Add(20);
-            combo_descuento.SelectedIndex = 0;
+            combo_descuento.Items.AddRange(new object[] { 0 ,10, 20, 30 });
+            combo_descuento.SelectedIndex = 1;
 
             combo_cuotas.Items.Clear();
             combo_cuotas.Items.AddRange(new object[] { 1, 2, 3, 4, 5, 6 });
@@ -51,6 +51,9 @@ namespace Eterea_Parfums_Desktop
             txt_monto_recargo.Text = "0,00";
             txt_monto_descuento.Text = "0,00";
             txt_iva.Text = "0,00";
+
+            combo_forma_pago.SelectedIndexChanged += combo_forma_pago_SelectedIndexChanged;
+            ActualizarDescuentosYCuotas();
 
             lbl_dniE.Hide();
         }
@@ -286,6 +289,34 @@ namespace Eterea_Parfums_Desktop
             desc();
             sumaFinal(subtotal, recargo, descuento);
         }
+        private void ActualizarDescuentosYCuotas()
+        {
+            string formaPago = combo_forma_pago.SelectedItem.ToString();
 
+            if (formaPago == "Efectivo")
+            {
+                txt_descuento_porcentaje.Text = "10";
+                combo_descuento.SelectedIndex = 1; // 10%
+                combo_cuotas.Enabled = false;
+            }
+            else if (formaPago == "Mercado Pago")
+            {
+                txt_descuento_porcentaje.Text = "0";
+                combo_descuento.SelectedIndex = 0; // 0%
+                combo_cuotas.Enabled = false;
+            }
+            else // tarjeta
+            {
+                
+                txt_descuento_porcentaje.Text = "0";
+                combo_descuento.SelectedIndex = 0; // 0%
+                combo_cuotas.Enabled = true;
+            }
+        }
+
+        private void combo_forma_pago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ActualizarDescuentosYCuotas();
+        }
     }
 }
