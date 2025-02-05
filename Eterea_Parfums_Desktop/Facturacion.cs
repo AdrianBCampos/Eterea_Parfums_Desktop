@@ -436,12 +436,8 @@ namespace Eterea_Parfums_Desktop
                 double precioTotal = double.Parse(txt_total.Text);
                 double recargoTarjeta = double.Parse(txt_monto_recargo.Text);
                 double descuento = double.Parse(txt_monto_descuento.Text);
-                int numeroDeCaja = int.Parse(txt_numero_caja.Text); 
-                string tipoConsumidor = txt_condicion_iva.ToString();
-                if (tipoConsumidor.Length > 20)
-                {
-                    tipoConsumidor = tipoConsumidor.Substring(0, 20); // Limitar a 20 caracteres
-                }
+                int numeroDeCaja = int.Parse(txt_numero_caja.Text);
+                string tipoConsumidor = clientefactura.condicion_frente_al_iva;
                 string origen = "V";
                 string facturaPdf = "";
 
