@@ -20,7 +20,6 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
             txt_nombre_perfume.Text = perfumeSeleccionado.nombre;
-            txt_precio_lista.Text = perfumeSeleccionado.precio_en_pesos.ToString("N2");
             this.perfume = perfumeSeleccionado;
 
             string nombreImagen = perfumeSeleccionado.imagen1.ToString();
@@ -112,9 +111,7 @@ namespace Eterea_Parfums_Desktop
                     txt_nombre.Text = promocionSeleccionada.nombre;
                     txt_fecha_inicio.Text = promocionSeleccionada.fecha_inicio.ToShortDateString();
                     txt_fecha_fin.Text = promocionSeleccionada.fecha_fin.ToShortDateString();
-                    txt_descuento.Text = porcentajeDescuento.ToString() + " %";
-                    txt_valor_descuento.Text = valorDescuento.ToString("N2");
-                    txt_precio_final.Text = precioFinal.ToString("N2");
+                    richTextBox_descripcion.Text = promocionSeleccionada.descripcion;                              
                
                     pictureBox9.Visible = false;
                 }
