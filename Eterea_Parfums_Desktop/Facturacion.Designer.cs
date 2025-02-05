@@ -74,7 +74,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txt_total = new System.Windows.Forms.TextBox();
             this.lbl_total = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.txt_rec = new System.Windows.Forms.Label();
             this.txt_recargo = new System.Windows.Forms.TextBox();
             this.txt_desc = new System.Windows.Forms.Label();
             this.txt_descuento_porcentaje = new System.Windows.Forms.TextBox();
@@ -616,17 +616,17 @@
             this.lbl_total.TabIndex = 318;
             this.lbl_total.Text = "Total:";
             // 
-            // label10
+            // txt_rec
             // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.White;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(943, 655);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(24, 20);
-            this.label10.TabIndex = 322;
-            this.label10.Text = "%";
+            this.txt_rec.AutoSize = true;
+            this.txt_rec.BackColor = System.Drawing.Color.White;
+            this.txt_rec.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_rec.Location = new System.Drawing.Point(925, 655);
+            this.txt_rec.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.txt_rec.Name = "txt_rec";
+            this.txt_rec.Size = new System.Drawing.Size(24, 20);
+            this.txt_rec.TabIndex = 322;
+            this.txt_rec.Text = "%";
             // 
             // txt_recargo
             // 
@@ -643,7 +643,7 @@
             this.txt_desc.AutoSize = true;
             this.txt_desc.BackColor = System.Drawing.Color.White;
             this.txt_desc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_desc.Location = new System.Drawing.Point(943, 706);
+            this.txt_desc.Location = new System.Drawing.Point(925, 706);
             this.txt_desc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_desc.Name = "txt_desc";
             this.txt_desc.Size = new System.Drawing.Size(24, 20);
@@ -691,6 +691,7 @@
             this.combo_cuotas.Name = "combo_cuotas";
             this.combo_cuotas.Size = new System.Drawing.Size(139, 24);
             this.combo_cuotas.TabIndex = 327;
+            this.combo_cuotas.SelectedIndexChanged += new System.EventHandler(this.combo_cuotas_SelectedIndexChanged);
             // 
             // lbl_cuotas
             // 
@@ -713,6 +714,7 @@
             this.combo_descuento.Name = "combo_descuento";
             this.combo_descuento.Size = new System.Drawing.Size(169, 24);
             this.combo_descuento.TabIndex = 329;
+            this.combo_descuento.SelectedIndexChanged += new System.EventHandler(this.combo_descuento_SelectedIndexChanged);
             // 
             // lbl_descuento
             // 
@@ -784,6 +786,7 @@
             this.btn_imprimir.TabIndex = 335;
             this.btn_imprimir.Text = "Imprimir Factura";
             this.btn_imprimir.UseVisualStyleBackColor = false;
+            this.btn_imprimir.Click += new System.EventHandler(this.btn_imprimir_Click);
             // 
             // lbl_nombre_cliente
             // 
@@ -887,7 +890,7 @@
             this.Controls.Add(this.lbl_forma_pago);
             this.Controls.Add(this.txt_desc);
             this.Controls.Add(this.txt_descuento_porcentaje);
-            this.Controls.Add(this.label10);
+            this.Controls.Add(this.txt_rec);
             this.Controls.Add(this.txt_recargo);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txt_total);
@@ -983,7 +986,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txt_total;
         private System.Windows.Forms.Label lbl_total;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label txt_rec;
         private System.Windows.Forms.TextBox txt_recargo;
         private System.Windows.Forms.Label txt_desc;
         private System.Windows.Forms.TextBox txt_descuento_porcentaje;

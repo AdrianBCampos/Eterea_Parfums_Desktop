@@ -43,7 +43,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         //CREAR UNA FACTURA AL IMPRIMIR LA VENTA
 
         public static bool crearFactura(int num_factura, DateTime fecha, int sucursal_id, int vendedor_id, int cliente_id, string forma_de_pago, double precio_total,
-            double recargo, double descuento, int numero_caja, string tipo_consumidor, string origen, string factura_pdf)
+            double recargo_tarjeta, double descuento, int numero_de_caja, string tipo_consumidor, string origen, string factura_pdf)
         {
 
             string query = "insert into dbo.Factura values" +
@@ -54,9 +54,9 @@ namespace Eterea_Parfums_Desktop.Controladores
                 "@cliente_id, " +
                 "@forma_de_pago, " +
                 "@precio_total, " +
-                "@recargo, " +
+                "@recargo_tarjeta, " +
                 "@descuento, " +
-                "@numero_caja, " +
+                "@numero_de_caja, " +
                 "@tipo_consumidor, " +
                 "@origen, " +
                 "@factura_pdf); ";
@@ -70,9 +70,9 @@ namespace Eterea_Parfums_Desktop.Controladores
             cmd.Parameters.AddWithValue("@cliente_id", cliente_id);
             cmd.Parameters.AddWithValue("@forma_de_pago", forma_de_pago);
             cmd.Parameters.AddWithValue("@precio_total", precio_total);
-            cmd.Parameters.AddWithValue("@recargo", recargo);
+            cmd.Parameters.AddWithValue("@recargo_tarjeta", recargo_tarjeta);
             cmd.Parameters.AddWithValue("@descuento", descuento);
-            cmd.Parameters.AddWithValue("@numero_caja", numero_caja);
+            cmd.Parameters.AddWithValue("@numero_de_caja", numero_de_caja);
             cmd.Parameters.AddWithValue("@tipo_consumidor", tipo_consumidor);
             cmd.Parameters.AddWithValue("@origen", origen);
             cmd.Parameters.AddWithValue("@factura_pdf", factura_pdf);

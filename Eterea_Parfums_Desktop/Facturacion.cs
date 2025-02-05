@@ -15,6 +15,7 @@ namespace Eterea_Parfums_Desktop
     public partial class Facturacion : Form
     {
         public string NumeroCaja { get; set; }
+        Cliente clientefactura = new Cliente();
 
         public Facturacion()
         {
@@ -95,7 +96,9 @@ namespace Eterea_Parfums_Desktop
 
             int dni = int.Parse(txt_dni.Text);
             Cliente cliente = ClienteControlador.obtenerPorDni(dni);
-
+            if (cliente != null) {
+            clientefactura = cliente;
+            }
             if (cliente != null)
             {
                 // Si se encuentra el cliente, llenar los campos en el formulario actual
@@ -119,6 +122,7 @@ namespace Eterea_Parfums_Desktop
                     txt_condicion_iva.Text = nuevoCliente.condicion_frente_al_iva;
                 }
             }
+            ActualizarTotales();
         }
 
         private void btn_consultas_Click(object sender, EventArgs e)
@@ -133,12 +137,14 @@ namespace Eterea_Parfums_Desktop
             if (e.RowIndex >= 0 && e.ColumnIndex == 7)
             {
                 Factura.Rows.RemoveAt(e.RowIndex);
+                ActualizarTotales();
+                /*
                 totalFactura();
                 CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text));
 
                 desc();
                 sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
-
+                */
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == 2)
             {
@@ -177,6 +183,7 @@ namespace Eterea_Parfums_Desktop
 
                     Factura.Rows[e.RowIndex].Cells[6].Value = (precio * valorMultiplicador).ToString();
 
+                    ActualizarTotales();
                     //Meti este codigo dentro del metodo ActualizarTotales para no repetir codigo
                     /*
                     totalFactura();
@@ -189,12 +196,14 @@ namespace Eterea_Parfums_Desktop
                 else
                 {
                     Factura.Rows.RemoveAt(e.RowIndex);
+                    ActualizarTotales();
+                    /*
                     totalFactura();
                     CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text));
 
                     desc();
                     sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
-
+                    */
 
                 }
 
@@ -252,6 +261,20 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
+        private void CalcularMontoRecargo()
+        {
+            if (float.TryParse(txt_rec.Text, out float porcentajeRecargo) && float.TryParse(txt_subtotal.Text, out float subtotal))
+            {
+                float montoRecargo = (porcentajeRecargo / 100) * subtotal;
+                txt_monto_recargo.Text = montoRecargo.ToString("0.00"); // Mostrar con dos decimales
+            }
+            else
+            {
+                txt_monto_recargo.Text = "0.00"; // Si hay un error en la conversión, dejarlo en cero
+            }
+        }
+
+
         private void CalcularDescuento(int desc, float subtotal)
         {
             if (subtotal > 0)
@@ -278,45 +301,187 @@ namespace Eterea_Parfums_Desktop
         {
             totalFactura();
 
-            float subtotal, recargo, descuento;
+            float subtotal, recargo, descuento, iva;
+
 
             // Verificamos que los valores sean válidos para evitar errores de conversión
             if (!float.TryParse(txt_subtotal.Text, out subtotal)) subtotal = 0;
             if (!float.TryParse(txt_monto_recargo.Text, out recargo)) recargo = 0;
             if (!float.TryParse(txt_monto_descuento.Text, out descuento)) descuento = 0;
 
-            CalcularImporteRecargo(subtotal, recargo);
+            if (!float.TryParse(txt_subtotal.Text, out subtotal) || subtotal == 0)
+            {
+                // Si el subtotal es 0, poner todos los montos a 0
+                txt_monto_recargo.Text = "0,00";
+                txt_monto_descuento.Text = "0,00";
+                txt_iva.Text = "0,00";
+                txt_total.Text = "0,00";
+                return; // Salir del método sin hacer más cálculos
+            }
+
+            //CalcularImporteRecargo(subtotal, recargo);
             desc();
+            CalcularMontoRecargo();
+            VerificarCondicionIVA(subtotal, recargo, descuento);
+            //CalcularIVA(subtotal, recargo, descuento);
+            if (!float.TryParse(txt_iva.Text, out iva)) iva = 0;
             sumaFinal(subtotal, recargo, descuento);
         }
+
+        private void CalcularIVA(float subtotal, float recargo, float descuento)
+        {
+            // Calcular el total base (subtotal + recargo - descuento)
+            float totalBase = subtotal + recargo - descuento;
+
+            // Calcular el IVA (21% del total base)
+            float iva = totalBase * 0.21f;
+
+            // Actualizar el monto del IVA en el txt_iva
+            txt_iva.Text = iva.ToString("0.00"); // Formato de 2 decimales
+        }
+
         private void ActualizarDescuentosYCuotas()
         {
             string formaPago = combo_forma_pago.SelectedItem.ToString();
 
             if (formaPago == "Efectivo")
             {
-                txt_descuento_porcentaje.Text = "10";
+                txt_desc.Text = "10";
                 combo_descuento.SelectedIndex = 1; // 10%
+                combo_cuotas.SelectedIndex = 0; // 1 cuota
                 combo_cuotas.Enabled = false;
             }
             else if (formaPago == "Mercado Pago")
             {
-                txt_descuento_porcentaje.Text = "0";
+                txt_desc.Text = "0";
                 combo_descuento.SelectedIndex = 0; // 0%
+                combo_cuotas.SelectedIndex = 0; // 1 cuota
                 combo_cuotas.Enabled = false;
             }
             else // tarjeta
             {
-                
-                txt_descuento_porcentaje.Text = "0";
+
+                txt_desc.Text = "0";
                 combo_descuento.SelectedIndex = 0; // 0%
                 combo_cuotas.Enabled = true;
+            }
+        }
+
+        // Método para calcular el recargo según las cuotas seleccionadas
+        private void CalcularRecargo()
+        {
+            if (combo_cuotas.SelectedItem != null)
+            {
+                int cuotas = Convert.ToInt32(combo_cuotas.SelectedItem);
+                float recargo = (cuotas - 1) * 5; // 5% de recargo por cada cuota extra
+                txt_rec.Text = recargo.ToString();
             }
         }
 
         private void combo_forma_pago_SelectedIndexChanged(object sender, EventArgs e)
         {
             ActualizarDescuentosYCuotas();
+            ActualizarTotales();
+        }
+
+        private void combo_cuotas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CalcularRecargo();
+            ActualizarTotales();
+        }
+
+        private void combo_descuento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (combo_descuento.SelectedItem != null && int.TryParse(combo_descuento.SelectedItem.ToString(), out int descuento))
+            {
+                txt_desc.Text = descuento.ToString(); // Establece el valor en txt_desc
+            }
+            else
+            {
+                // Si el valor seleccionado no es un número entero, establece el texto en 0
+                txt_desc.Text = "0";
+            }
+            ActualizarTotales();
+        }
+        private void VerificarCondicionIVA(float subtotal, float recargo, float descuento)
+        {
+            string nombreCliente = txt_condicion_iva.Text.Trim();
+
+            // Verificar si el cliente es Responsable Monotributo
+            if (nombreCliente.Contains("Responsable Monotributo"))
+            {
+                // Deshabilitar el campo de IVA
+                txt_iva.Enabled = false;
+                txt_iva.Text = "0,00";  // Opcional, puedes poner 0 si se desea mostrar un valor predeterminado
+            }
+            else
+            {
+                // Si no es monotributista, habilitar el campo de IVA
+                CalcularIVA(subtotal, recargo, descuento);
+                txt_iva.Enabled = true;
+            }
+        }
+
+        private void CrearFactura()
+        {
+            try
+            {
+                // Obtener los valores de los controles del formulario
+                int numFactura = int.Parse(txt_numero_factura.Text);
+                DateTime fecha = DateTime.Now; 
+                int sucursalId = Program.logueado.sucursal_id.id; 
+                int vendedorId = Program.logueado.id; 
+                int clienteId = clientefactura.id; 
+                string formaDePago = combo_forma_pago.SelectedItem.ToString();
+                double precioTotal = double.Parse(txt_total.Text);
+                double recargoTarjeta = double.Parse(txt_monto_recargo.Text);
+                double descuento = double.Parse(txt_monto_descuento.Text);
+                int numeroDeCaja = int.Parse(txt_numero_caja.Text); 
+                string tipoConsumidor = txt_condicion_iva.ToString();
+                if (tipoConsumidor.Length > 20)
+                {
+                    tipoConsumidor = tipoConsumidor.Substring(0, 20); // Limitar a 20 caracteres
+                }
+                string origen = "V";
+                string facturaPdf = "";
+
+                MessageBox.Show($"numFactura: {numFactura}\n" +
+                $"fecha: {fecha}\n" +
+                $"sucursalId: {sucursalId}\n" +
+                $"vendedorId: {vendedorId}\n" +
+                $"clienteId: {clienteId}\n" +
+                $"formaDePago: {formaDePago}\n" +
+                $"precioTotal: {precioTotal}\n" +
+                $"recargoTarjeta: {recargoTarjeta}\n" +
+                $"descuento: {descuento}\n" +
+                $"numeroDeCaja: {numeroDeCaja}\n" +
+                $"tipoConsumidor: {tipoConsumidor}\n" +
+                $"origen: {origen}\n" +
+                $"facturaPdf: {facturaPdf}");
+
+
+                // Llamar al método crearFactura desde FacturaControlador
+                bool exito = FacturaControlador.crearFactura(numFactura, fecha, sucursalId, vendedorId, clienteId, formaDePago,
+                    precioTotal, recargoTarjeta, descuento, numeroDeCaja, tipoConsumidor, origen, facturaPdf);
+
+                if (exito)
+                {
+                    MessageBox.Show("Factura creada exitosamente.");
+                }
+                else
+                {
+                    MessageBox.Show("Hubo un problema al crear la factura.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al crear la factura: " + ex.Message);
+            }
+        }
+
+        private void btn_imprimir_Click(object sender, EventArgs e)
+        {
+            CrearFactura();
         }
     }
 }
