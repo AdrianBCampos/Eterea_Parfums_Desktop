@@ -60,14 +60,14 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
         }
 
-        internal static NotaConTipoDeNota getByNotaAndTipoDeNota(NotaConTipoDeNota notaConTipoDeNota)
+        internal static NotaConTipoDeNota getByNotaAndTipoDeNota(Nota nota, TipoDeNota tipoDeNota)
         {
 
             NotaConTipoDeNota nota_con_tipo_de_nota = new NotaConTipoDeNota();
-            string query = "SELECT * FROM dbo.nota_con_tipo_de_nota WHERE nota_id = @nota_id AND tipo_de_nota_id = @tipo_de_nota_id";
+            string query = "SELECT TOP 1 * FROM dbo.nota_con_tipo_de_nota WHERE nota_id = @nota_id AND tipo_de_nota_id = @tipo_de_nota_id;";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-            cmd.Parameters.AddWithValue("@nota_id", notaConTipoDeNota.nota.id);
-            cmd.Parameters.AddWithValue("@tipo_de_nota_id", notaConTipoDeNota.tipoDeNota.id);
+            cmd.Parameters.AddWithValue("@nota_id", nota.id);
+            cmd.Parameters.AddWithValue("@tipo_de_nota_id", tipoDeNota.id);
             try
             {
                 DB_Controller.connection.Open();
@@ -75,8 +75,8 @@ namespace Eterea_Parfums_Desktop.Controladores
                 while (r.Read())
                 {
                     nota_con_tipo_de_nota.id = r.GetInt32(0);
-                    nota_con_tipo_de_nota.nota = notaConTipoDeNota.nota;
-                    nota_con_tipo_de_nota.tipoDeNota = notaConTipoDeNota.tipoDeNota;
+                    nota_con_tipo_de_nota.nota = nota;
+                    nota_con_tipo_de_nota.tipoDeNota = tipoDeNota;
                 }
                 r.Close();
                 DB_Controller.connection.Close();

@@ -121,6 +121,7 @@ namespace Eterea_Parfums_Desktop
             if (Validar_Datos_Stock())
             {
                 int cantidad = int.Parse(txt_cantidad_producto.Text);
+                //Si el stock ya existe, se actualiza la cantidad
                 if (StockControlador.getStock(perfume.id, idSucursal) != -1)
                 {
                     StockControlador.updateStock(perfume.id, idSucursal, cantidad);

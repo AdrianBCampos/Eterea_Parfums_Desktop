@@ -45,8 +45,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         public static void updateStock(int perfume_id, int sucursal_id, int cantidad)
         {
-            string query = "UPDATE dbo.stock SET cantidad = @cantidad WHERE " +
-                "perfume_id = @perfume_id AND sucursal_id = @sucursal_id";
+            string query = "UPDATE dbo.stock SET cantidad = cantidad + @cantidad WHERE perfume_id = @perfume_id AND sucursal_id = @sucursal_id;";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@cantidad", cantidad);
             cmd.Parameters.AddWithValue("@perfume_id", perfume_id);

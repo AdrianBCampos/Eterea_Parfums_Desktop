@@ -35,10 +35,10 @@ namespace Eterea_Parfums_Desktop
             CargarOpciones(combo_recargable);
             CargarOpciones(combo_activo);
             //FOTO DEL PERFUME POR DEFECTO
-            nombre_foto_uno = "imagen1.jpg";
-            nombre_foto_dos = "imagen2.jpg";
-            Cargar_Imagen(nombre_foto_uno, pictureBoxProducto1);
-            Cargar_Imagen(nombre_foto_dos, pictureBoxProducto2);
+            //string nombre_foto_avatar_uno = "imagen1.jpg";
+            //string nombre_foto_avatar_dos = "imagen2.jpg";
+            //Cargar_Imagen(nombre_foto_avatar_uno, pictureBoxProducto1);
+            //Cargar_Imagen(nombre_foto_avatar_dos, pictureBoxProducto2);
         }
 
         private void LblErrorSetVisibleFalse()
@@ -141,9 +141,10 @@ namespace Eterea_Parfums_Desktop
 
                 Perfume perfume = crear();
                 Console.WriteLine(perfume.id);
-                AromaNota aromaNota = new AromaNota(perfume);
-                aromaNota.Show();
                 this.Hide();
+                AromaNota aromaNota = new AromaNota(perfume, this);
+                aromaNota.Show();
+
             }
            
         }
@@ -204,11 +205,6 @@ namespace Eterea_Parfums_Desktop
             Perfume perfume = new Perfume(id_Perfume + 1, txt_codigo.Text, marca, txt_nombre.Text, tipo_de_perfume,
                 genero, int.Parse(txt_presentacion.Text), pais, spray, recargable, txt_descripcion.Text,
                 int.Parse(txt_anio_de_lanzamiento.Text), Double.Parse(txt_precio.Text), activo, nombre_foto_uno, nombre_foto_dos);
-
-            if (PerfumeControlador.create(perfume))
-            {
-                this.DialogResult = DialogResult.OK;
-            }
 
             return perfume;
 

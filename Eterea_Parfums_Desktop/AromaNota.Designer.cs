@@ -56,6 +56,7 @@
             this.lbl_error_seleccion_aroma = new System.Windows.Forms.Label();
             this.lbl_error_seleccion_nota = new System.Windows.Forms.Label();
             this.lbl_tipo_de_nota = new System.Windows.Forms.Label();
+            this.btn_x_cerrar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -331,12 +332,29 @@
             this.lbl_tipo_de_nota.TabIndex = 162;
             this.lbl_tipo_de_nota.Text = "label1";
             // 
+            // btn_x_cerrar
+            // 
+            this.btn_x_cerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_x_cerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.btn_x_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_x_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_x_cerrar.ForeColor = System.Drawing.Color.White;
+            this.btn_x_cerrar.Location = new System.Drawing.Point(773, 13);
+            this.btn_x_cerrar.Name = "btn_x_cerrar";
+            this.btn_x_cerrar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_x_cerrar.Size = new System.Drawing.Size(34, 32);
+            this.btn_x_cerrar.TabIndex = 300;
+            this.btn_x_cerrar.Text = "X";
+            this.btn_x_cerrar.UseVisualStyleBackColor = false;
+            this.btn_x_cerrar.Click += new System.EventHandler(this.btn_x_cerrar_Click);
+            // 
             // AromaNota
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(834, 471);
+            this.Controls.Add(this.btn_x_cerrar);
             this.Controls.Add(this.lbl_tipo_de_nota);
             this.Controls.Add(this.lbl_error_seleccion_nota);
             this.Controls.Add(this.lbl_error_seleccion_aroma);
@@ -401,5 +419,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nota;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
         private System.Windows.Forms.Label lbl_tipo_de_nota;
+        private System.Windows.Forms.Button btn_x_cerrar;
     }
 }

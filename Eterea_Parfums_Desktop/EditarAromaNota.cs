@@ -19,16 +19,20 @@ namespace Eterea_Parfums_Desktop
         private List<TipoDeNota> tipo_de_notas;
         private string filtro = "";
         private Perfume perfume;
+        private List<NotasDelPerfume> notas_del_perfume;
+        private List<NotaConTipoDeNota> notas_con_tipo_de_nota;
+        private NotasDelPerfume notasDelPerfume;
+        private EditarProducto formEditarProducto;
         public EditarAromaNota()
         {
             InitializeComponent();
          
         }
 
-        public EditarAromaNota(Perfume perfume)
+        public EditarAromaNota(Perfume perfume, EditarProducto formEditarProducto)
         {
             InitializeComponent();
-        
+            this.formEditarProducto = formEditarProducto;
             cargarTipoDeAromas();
             cargarTipoDeNotas();
             txt_nombre_perfume.Text = perfume.nombre;
@@ -126,13 +130,11 @@ namespace Eterea_Parfums_Desktop
         private void cargarDataGridViewNotasDePerfume()
         {
             //CARGAR DATAGRIDVIEW DE NOTAS DE PERFUME
-            List<NotasDelPerfume> notas_del_perfume = NotasDelPerfumeControlador.getByIDPerfume(perfume.id);
-            List<NotaConTipoDeNota> notas_con_tipo_de_nota = new List<NotaConTipoDeNota>();
+            notas_del_perfume = NotasDelPerfumeControlador.getByIDPerfume(perfume.id);
+            notas_con_tipo_de_nota = new List<NotaConTipoDeNota>();
 
             Nota nota = null;
             TipoDeNota tipo_de_nota = null;
-
-
 
             if (notas_del_perfume != null)
             {
@@ -162,8 +164,30 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
+        private void cargarDataGridViewNotasDePerfume(List<NotaConTipoDeNota> notaConTipoDeNotas)
+        {
+            Nota nota = null;
+            TipoDeNota tipo_de_nota = null;
 
-        
+            if (notaConTipoDeNotas != null)
+            {
+                dataGridViewNotasDelPerfume.Rows.Clear();
+                foreach (NotaConTipoDeNota nota_con_tipo_de_nota_ in notaConTipoDeNotas)
+                {
+                    nota = NotaControlador.getById(nota_con_tipo_de_nota_.nota.id);
+                    tipo_de_nota = TipoDeNotaControlador.getById(nota_con_tipo_de_nota_.tipoDeNota.id);
+
+                    int rowIndex = dataGridViewNotasDelPerfume.Rows.Add();
+                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[0].Value = nota_con_tipo_de_nota_.id;
+                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[1].Value = tipo_de_nota.nombre_tipo_de_nota;
+                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[2].Value = nota.nombre;
+                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[3].Value = "Eliminar";
+
+                }
+            }
+        }
+
+
 
         private void btn_agregar_Click(object sender, EventArgs e)
         {
@@ -190,24 +214,39 @@ namespace Eterea_Parfums_Desktop
             else if (!(string.IsNullOrEmpty(lbl_nota.Text)))
             {
 
-                Console.WriteLine("Nota Ingresada: " + lbl_nota.Text);
                 Nota nota = NotaControlador.getByNombre(lbl_nota.Text);
                 tipoDeNotaMarcado = checkedListBoxNota.CheckedItems[0].ToString();
                 TipoDeNota tipoDeNota = TipoDeNotaControlador.getByNombre(tipoDeNotaMarcado);
+                NotaConTipoDeNota notaConTipoDeNota = NotaConTipoDeNotaControlador.getByNotaAndTipoDeNota(nota, tipoDeNota);
+                notasDelPerfume = new NotasDelPerfume(perfume, notaConTipoDeNota);
+         
 
-                NotaConTipoDeNota notaConTipoDeNota = new NotaConTipoDeNota(NotaConTipoDeNotaControlador.getByMaxId() + 1, nota, tipoDeNota);
+                if (notas_con_tipo_de_nota == null)
+                {
+                    notas_con_tipo_de_nota = new List<NotaConTipoDeNota>();
+                }
 
-                NotaConTipoDeNotaControlador.create(notaConTipoDeNota);
+                if (notas_del_perfume == null)
+                {
+                    notas_del_perfume = new List<NotasDelPerfume>();
+                }
 
-                notaConTipoDeNota = NotaConTipoDeNotaControlador.getByNotaAndTipoDeNota(notaConTipoDeNota);
+                if (notas_con_tipo_de_nota.Any(x => x.id == notaConTipoDeNota.id))
+                {
+                    Console.WriteLine("Nota con tipo de nota id: " + notaConTipoDeNota.id);
+                    lbl_error_seleccion_nota.Text = "Esta convinacion ya fue agregada";
+                    lbl_error_seleccion_nota.Visible = true;
 
-                NotasDelPerfume notasDelPerfume = new NotasDelPerfume(perfume, notaConTipoDeNota);
-                //fata Id
-                NotasDelPerfumeControlador.create(notasDelPerfume);
-
+                }
+                else
+                {
+                    lbl_error_seleccion_nota.Visible = false;
+                    notas_con_tipo_de_nota.Add(notaConTipoDeNota);
+                    notas_del_perfume.Add(notasDelPerfume);
+                }
                 MessageBox.Show("Se ha guardado la nota y el tipo de nota del perfume correctamente");
 
-                cargarDataGridViewNotasDePerfume();
+                cargarDataGridViewNotasDePerfume(notas_con_tipo_de_nota);
 
             }
             else
@@ -222,12 +261,12 @@ namespace Eterea_Parfums_Desktop
         {
             var senderGrid = (DataGridView)sender;
             int id = int.Parse(dataGridViewNotasDelPerfume.Rows[e.RowIndex].Cells[0].Value.ToString());
-            NotasDelPerfumeControlador.delete(id);
             if (senderGrid.Columns[e.ColumnIndex].Name == "Eliminar")
             {
                 //ELIMINAMOS
-                NotaConTipoDeNotaControlador.delete(id);
-                cargarDataGridViewNotasDePerfume();
+                notas_con_tipo_de_nota = notas_con_tipo_de_nota.Where(x => x.id != id).ToList();
+                notas_del_perfume = notas_del_perfume.Where(x => x.notaConTipoDeNota.id != id).ToList();
+                cargarDataGridViewNotasDePerfume(notas_con_tipo_de_nota);
                 MessageBox.Show("Se ha eliminado la nota con el tipo de nota del perfume correctamente");
             }
          }
@@ -240,6 +279,8 @@ namespace Eterea_Parfums_Desktop
                 lbl_error_seleccion_aroma.Visible = true;
                 return;
             }
+
+            PerfumeControlador.update(perfume);
 
             // Lista de aromas marcados
             var listaDeAromasMarcados = checkedListBoxAroma.CheckedItems.Cast<string>().ToList();
@@ -276,7 +317,20 @@ namespace Eterea_Parfums_Desktop
                 }
             }
 
-            MessageBox.Show("Se han guardado los cambios en los aromas del perfume correctamente.");
+            // Eliminar todas las notas del perfume anteriores
+
+            NotasDelPerfumeControlador.delete(perfume.id);
+
+            // Insertar nuevas notas del perfume
+            if (notas_del_perfume != null)
+            {
+                foreach (NotasDelPerfume notasDelPerfume in notas_del_perfume)
+                {
+                    NotasDelPerfumeControlador.create(notasDelPerfume);
+                }
+            }
+
+            MessageBox.Show("Se han guardado los cambios del perfume correctamente.");
             this.Close();
         }
         
@@ -321,6 +375,12 @@ namespace Eterea_Parfums_Desktop
                 // Si no hay elementos marcados, muestra un mensaje vacío o por defecto
                 lbl_tipo_de_nota.Text = "No hay elementos seleccionados.";
             }
+        }
+
+        private void btn_x_cerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            formEditarProducto.Show();
         }
     }
 }
