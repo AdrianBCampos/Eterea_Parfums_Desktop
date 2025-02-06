@@ -30,7 +30,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         {
             Productos productos = new Productos();
             productos.Show();
-            this.Hide();
         }
 
         private void cargarPerfumes(string filtroPerfume = "")
@@ -113,17 +112,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 Pais pais = PaisControlador.getById(perfume_editar.pais.id);
                 perfume_editar = new Perfume(perfume_editar.id, perfume_editar.codigo, marca, perfume_editar.nombre, tipo_de_perfume, genero, perfume_editar.presentacion_ml, pais, perfume_editar.spray, perfume_editar.recargable, perfume_editar.descripcion, perfume_editar.anio_de_lanzamiento, perfume_editar.precio_en_pesos, perfume_editar.activo, perfume_editar.imagen1, perfume_editar.imagen2);
                 EditarProducto formEditarProductoABM = new EditarProducto(perfume_editar);
-
-                DialogResult dr = formEditarProductoABM.ShowDialog();
-
-                if (dr == DialogResult.OK)
-                {
-                    Trace.WriteLine("OK");
-
-                    //ACTUALIZAR LA LISTA
-                    cargarPerfumes();
-
-                }
+                //ACTUALIZAR LA LISTA
+                cargarPerfumes();
+                formEditarProductoABM.Show();
             }
 
 
