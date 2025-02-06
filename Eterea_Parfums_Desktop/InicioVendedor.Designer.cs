@@ -65,7 +65,7 @@
             this.txt_saludo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.txt_saludo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_saludo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_saludo.Location = new System.Drawing.Point(578, 74);
+            this.txt_saludo.Location = new System.Drawing.Point(578, 75);
             this.txt_saludo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_saludo.Name = "txt_saludo";
             this.txt_saludo.Size = new System.Drawing.Size(187, 25);
@@ -78,7 +78,7 @@
             this.txt_bienvenido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.txt_bienvenido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_bienvenido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_bienvenido.Location = new System.Drawing.Point(455, 74);
+            this.txt_bienvenido.Location = new System.Drawing.Point(455, 75);
             this.txt_bienvenido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_bienvenido.Name = "txt_bienvenido";
             this.txt_bienvenido.Size = new System.Drawing.Size(115, 25);
@@ -91,7 +91,7 @@
             this.btn_gestionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_gestionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_gestionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_gestionar.Location = new System.Drawing.Point(655, 184);
+            this.btn_gestionar.Location = new System.Drawing.Point(653, 184);
             this.btn_gestionar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_gestionar.Name = "btn_gestionar";
             this.btn_gestionar.Size = new System.Drawing.Size(269, 46);
@@ -129,9 +129,9 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox4.Location = new System.Drawing.Point(637, 119);
+            this.pictureBox4.Location = new System.Drawing.Point(635, 119);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(303, 173);
+            this.pictureBox4.Size = new System.Drawing.Size(305, 173);
             this.pictureBox4.TabIndex = 105;
             this.pictureBox4.TabStop = false;
             // 
@@ -173,7 +173,7 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(323, 60);
+            this.pictureBox2.Location = new System.Drawing.Point(323, 61);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(617, 53);
             this.pictureBox2.TabIndex = 348;
