@@ -118,7 +118,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             }
 
 
-            if (senderGrid.Columns[e.ColumnIndex].Name == "Eliminar")
+            else if (senderGrid.Columns[e.ColumnIndex].Name == "Eliminar")
             {
                 //ELIMINAMOS
             
