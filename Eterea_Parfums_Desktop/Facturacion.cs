@@ -426,10 +426,13 @@ namespace Eterea_Parfums_Desktop
         {
             try
             {
+                Empleado empleadoAFacturar = new Empleado();
+
                 // Obtener los valores de los controles del formulario
                 int numFactura = int.Parse(txt_numero_factura.Text);
-                DateTime fecha = DateTime.Now; 
-                int sucursalId = Program.logueado.sucursal_id.id; 
+                DateTime fecha = DateTime.Now;
+                int sucursalId = (EmpleadoControlador.obtenerPorId(Program.logueado.id)).sucursal_id.id;
+                //int sucursalId = Program.logueado.sucursal_id.id; 
                 int vendedorId = Program.logueado.id; 
                 int clienteId = clientefactura.id; 
                 string formaDePago = combo_forma_pago.SelectedItem.ToString();
