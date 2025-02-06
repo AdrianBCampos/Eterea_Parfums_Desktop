@@ -106,11 +106,6 @@ namespace Eterea_Parfums_Desktop
             combo_localidad.DrawMode = DrawMode.OwnerDrawFixed;
             combo_localidad.DrawItem += comboBoxdiseño_DrawItem;
             combo_localidad.DropDownStyle = ComboBoxStyle.DropDownList;
-
-           /* dateTime_nac.DrawMode = DrawMode.OwnerDrawFixed;
-            dateTime_nac.DrawItem += comboBoxdiseño_DrawItem;
-            dateTime_nac.DropDownStyle = ComboBoxStyle.DropDownList;    */    
-
         }
 
         private void btn_crear_cliente_Click(object sender, EventArgs e)
@@ -208,6 +203,7 @@ namespace Eterea_Parfums_Desktop
             lbl_activoE.Hide();
 
             // Validaciones individuales
+            //Usuario          
             if (string.IsNullOrEmpty(txt_usuario.Text))
             {
                 lbl_usuarioE.Text = "Debe indicar un nombre de usuario.";
@@ -215,6 +211,7 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_usuarioE.Text + Environment.NewLine;
             }
 
+            //Clave
             if (string.IsNullOrEmpty(txt_clave.Text))
             {
                 lbl_claveE.Text = "Debe generar una contraseña.";
@@ -222,6 +219,7 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_claveE.Text + Environment.NewLine;
             }
 
+            //Nombre
             if (string.IsNullOrEmpty(txt_nombre.Text))
             {
                 lbl_nombreE.Text = "Debe ingresar el nombre del cliente.";
@@ -229,6 +227,7 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_nombreE.Text + Environment.NewLine;
             }
 
+            //Apellido
             if (string.IsNullOrEmpty(txt_apellido.Text))
             {
                 lbl_apellidoE.Text = "Debe ingresar el apellido del cliente.";
@@ -236,6 +235,7 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_apellidoE.Text + Environment.NewLine;
             }
 
+            //DNI
             if (string.IsNullOrEmpty(txt_dni.Text))
             {
                 string error = "Debe ingresar el número de DNI del cliente." + Environment.NewLine;
@@ -249,6 +249,7 @@ namespace Eterea_Parfums_Desktop
                 lbl_dniE.Show();
             }
 
+            //Fecha Nacimiento
             if (!DateTime.TryParse(dateTime_nac.Text, out _))
             {
                 lbl_nacE.Text = "Debe ingresar una fecha de nacimiento válida.";
@@ -256,6 +257,7 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_nacE.Text + Environment.NewLine;
             }
 
+            //Celular
             if (string.IsNullOrEmpty(txt_celular.Text) || !int.TryParse(txt_celular.Text, out _))
             {
                 lbl_celularE.Text = "Debe ingresar un número de celular válido.";
@@ -263,6 +265,7 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_celularE.Text + Environment.NewLine;
             }
 
+            //Email
             if (string.IsNullOrEmpty(txt_email.Text) || !txt_email.Text.Contains("@"))
             {
                 lbl_emailE.Text = "Debe ingresar un correo electrónico válido.";
@@ -270,20 +273,15 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_emailE.Text + Environment.NewLine;
             }
 
+            //Codigo Postal
             if (string.IsNullOrEmpty(txt_cp.Text) || !int.TryParse(txt_cp.Text, out _))
             {
                 lbl_cpE.Text = "Debe ingresar un código postal válido.";
                 lbl_cpE.Show();
                 errorMsg += lbl_cpE.Text + Environment.NewLine;
-            }
+            }         
 
-            if (string.IsNullOrEmpty(txt_num_calle.Text) || !int.TryParse(txt_num_calle.Text, out _))
-            {
-                lbl_num_calleE.Text = "Debe ingresar un número de calle válido.";
-                lbl_num_calleE.Show();
-                errorMsg += lbl_num_calleE.Text + Environment.NewLine;
-            }
-
+            //Pais
             if (combo_pais.SelectedItem == null)
             {
                 lbl_paisE.Text = "Debe seleccionar un país.";
@@ -291,6 +289,7 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_paisE.Text + Environment.NewLine;
             }
 
+            //Provincia
             if (combo_provincia.SelectedItem == null)
             {
                 lbl_provinciaE.Text = "Debe seleccionar una provincia.";
@@ -298,6 +297,7 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_provinciaE.Text + Environment.NewLine;
             }
 
+            //Localidad
             if (combo_localidad.SelectedItem == null)
             {
                 lbl_localidadE.Text = "Debe seleccionar una localidad.";
@@ -305,6 +305,7 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_localidadE.Text + Environment.NewLine;
             }
 
+            //Nombre Calle
             if (combo_calle.SelectedItem == null)
             {
                 lbl_calleE.Text = "Debe seleccionar una calle.";
@@ -312,6 +313,15 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_calleE.Text + Environment.NewLine;
             }
 
+            //Numero Calle
+            if (string.IsNullOrEmpty(txt_num_calle.Text) || !int.TryParse(txt_num_calle.Text, out _))
+            {
+                lbl_num_calleE.Text = "Debe ingresar un número de calle válido.";
+                lbl_num_calleE.Show();
+                errorMsg += lbl_num_calleE.Text + Environment.NewLine;
+            }
+
+            //Estado
             if (combo_activo.SelectedItem == null)
             {
                 lbl_activoE.Text = "Debe seleccionar el estado activo/inactivo.";
