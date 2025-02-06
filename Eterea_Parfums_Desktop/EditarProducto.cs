@@ -19,8 +19,6 @@ namespace Eterea_Parfums_Desktop
         private Image imagen2;
         private string nombre_foto_uno;
         private string nombre_foto_dos;
-        //bool seUsoAvatar1 = false;
-        //bool seUsoAvatar2 = false;
         private Perfume perfume;
         private static readonly Random rnd = new Random();
         public EditarProducto()
@@ -85,26 +83,12 @@ namespace Eterea_Parfums_Desktop
                 combo_activo.Text = "No";
 
             }
-            //string nombre_foto_avatar_uno = "imagen1.jpg";
-            //string nombre_foto_avatar_dos = "imagen2.jpg";
             nombre_foto_uno = perfume.imagen1;
             nombre_foto_dos = perfume.imagen2;
             cargarImagen(nombre_foto_uno, pictureBoxProducto1);
             cargarImagen(nombre_foto_dos, pictureBoxProducto2);
 
             Console.WriteLine(nombre_foto_dos);
-
-           /* if (!cargarImagen(nombre_foto_uno, pictureBoxProducto1, out imagen1))
-            {
-                cargarImagen(nombre_foto_avatar_uno, pictureBoxProducto1, out imagen1);
-                seUsoAvatar1 = true; // Se usó la imagen de avatar
-            }
-
-            if (!cargarImagen(nombre_foto_dos, pictureBoxProducto2, out imagen2))
-            {
-                cargarImagen(nombre_foto_avatar_dos, pictureBoxProducto2, out imagen2);
-                seUsoAvatar2 = true; // Se usó la imagen de avatar
-            }*/
 
         }
 
@@ -120,22 +104,6 @@ namespace Eterea_Parfums_Desktop
                 MessageBox.Show("La imagen no se encontró en la ruta especificada: " + rutaCompletaImagen, "Error de carga de imagen", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        /* private bool cargarImagen(string nombreImg, PictureBox pictureBox, out Image imagen)
-         {
-             string rutaCompletaImagen = Program.Ruta_Base + nombreImg;
-
-             if (System.IO.File.Exists(rutaCompletaImagen))
-             {
-                 imagen = Image.FromFile(rutaCompletaImagen);
-                 pictureBox.Image = imagen; // Asignar la imagen al PictureBox
-                 return true;
-             }
-             else
-             {
-                 imagen = null; // Indicar que no se encontró la imagen
-                 return false;
-             }
-         }*/
 
         private bool Eliminar_Imagen_Existente(string nombreImg)
         {
@@ -534,29 +502,32 @@ namespace Eterea_Parfums_Desktop
 
             return true;
         }
+
+        internal void eliminarImgExistenteYGuardarNueva()
+        {
+            if (imagen1 != null)
+            {
+                Eliminar_Imagen_Existente(nombre_foto_uno);
+                saveImagenResources(out nombre_foto_uno, imagen1);
+            }
+
+            if (imagen2 != null)
+            {
+                Eliminar_Imagen_Existente(nombre_foto_dos);
+                saveImagenResources(out nombre_foto_dos, imagen2);
+            }
+        }
+
         private void btn_siguiente_Click(object sender, EventArgs e)
         {
             //Validar datos del perfume
             bool validacionDatosPerfume = ValidarPerfume();
             if (validacionDatosPerfume)
-            {
-                if(imagen1 != null)
-                {
-                    Eliminar_Imagen_Existente(nombre_foto_uno);
-                    saveImagenResources(out nombre_foto_uno, imagen1);
-                }
-
-                if (imagen2 != null)
-                {
-                    Eliminar_Imagen_Existente(nombre_foto_dos);
-                    saveImagenResources(out nombre_foto_dos, imagen2);
-                }   
-        
+            {      
                 Perfume perfume = editar();
                 this.Hide();
                 EditarAromaNota editarAromaNota = new EditarAromaNota(perfume, this);
-                editarAromaNota.Show();
-                
+                editarAromaNota.Show();                
 
             }
         }
@@ -583,7 +554,7 @@ namespace Eterea_Parfums_Desktop
         }
 
 
-        private Perfume editar()
+        internal Perfume editar()
         {
             int spray = 0;
             if (combo_spray.SelectedItem.ToString() == "Si")

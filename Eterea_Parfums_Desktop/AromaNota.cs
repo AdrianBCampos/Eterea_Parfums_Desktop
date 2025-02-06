@@ -32,6 +32,7 @@ namespace Eterea_Parfums_Desktop
         public AromaNota(Perfume perfume, Productos formProducto)
         {
             InitializeComponent();
+            this.formProducto = formProducto;
             cargarTipoDeAromas();
             cargarTipoDeNotas();
             txt_nombre_perfume.Text = perfume.nombre;
@@ -218,6 +219,10 @@ namespace Eterea_Parfums_Desktop
                 lbl_error_seleccion_aroma.Visible = true;
                 return;
             }
+            //Guardo la nueva imagen
+            formProducto.guardarNuevaImg();
+            //Actualizar el perfume con los datos que se han modificado
+            perfume = formProducto.crear();
             PerfumeControlador.create(perfume);
 
             var listaDeAromasMarcados = checkedListBoxAroma.CheckedItems;

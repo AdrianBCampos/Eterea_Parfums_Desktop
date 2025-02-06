@@ -282,6 +282,11 @@ namespace Eterea_Parfums_Desktop
                 return;
             }
 
+            //Elimino la imagen existente y guardo la nueva
+            formEditarProducto.eliminarImgExistenteYGuardarNueva();
+            //Actualizar el perfume con los datos que se han modificado
+            perfume = formEditarProducto.editar();
+            //Actualizar el perfume
             PerfumeControlador.update(perfume);
 
             // Lista de aromas marcados

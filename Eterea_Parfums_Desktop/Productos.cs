@@ -34,11 +34,6 @@ namespace Eterea_Parfums_Desktop
             CargarOpciones(combo_spray);
             CargarOpciones(combo_recargable);
             CargarOpciones(combo_activo);
-            //FOTO DEL PERFUME POR DEFECTO
-            //string nombre_foto_avatar_uno = "imagen1.jpg";
-            //string nombre_foto_avatar_dos = "imagen2.jpg";
-            //Cargar_Imagen(nombre_foto_avatar_uno, pictureBoxProducto1);
-            //Cargar_Imagen(nombre_foto_avatar_dos, pictureBoxProducto2);
         }
 
         private void LblErrorSetVisibleFalse()
@@ -108,17 +103,18 @@ namespace Eterea_Parfums_Desktop
             combo.Items.Add("No");
         }
 
-        private void Cargar_Imagen(string nombreImg, PictureBox pictureBox)
+        internal void guardarNuevaImg()
         {
-            string rutaCompletaImagen = Program.Ruta_Base + nombreImg;
-            if (System.IO.File.Exists(rutaCompletaImagen))
+            if (imagen1 != null)
             {
-                pictureBox.Image = Image.FromFile(rutaCompletaImagen);
+                saveImagenResources(out nombre_foto_uno, imagen1);
             }
-            else
+
+            if (imagen2 != null)
             {
-                MessageBox.Show("La imagen no se encontró en la ruta especificada: " + rutaCompletaImagen, "Error de carga de imagen", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                saveImagenResources(out nombre_foto_dos, imagen2);
             }
+
         }
 
         private void btn_siguiente_Click(object sender, EventArgs e)
@@ -129,22 +125,11 @@ namespace Eterea_Parfums_Desktop
 
             if (validacionDatosPerfume)
             {
-                if (imagen1 != null)
-                {
-                    saveImagenResources(out nombre_foto_uno, imagen1);
-                }
-
-                if (imagen2 != null)
-                {
-                    saveImagenResources(out nombre_foto_dos, imagen2);
-                }
-
                 Perfume perfume = crear();
                 Console.WriteLine(perfume.id);
                 this.Hide();
                 AromaNota aromaNota = new AromaNota(perfume, this);
                 aromaNota.Show();
-
             }
            
         }
@@ -172,9 +157,8 @@ namespace Eterea_Parfums_Desktop
         }
 
 
-        private Perfume crear()
+        internal Perfume crear()
         {
-            // ACA ANTES DE EJECUTAR CUALQUIER COSA, TIENEN QUE HACERSE LAS VALIDACIONES...
             int spray = 0;
             if (combo_spray.SelectedItem.ToString() == "Si")
             {
