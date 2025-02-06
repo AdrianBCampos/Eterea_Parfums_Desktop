@@ -61,7 +61,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static bool delete(int id)
         {
             bool result = false;
-            string query = "DELETE FROM dbo.notas_del_perfume WHERE nota_con_tipo_de_nota_id = @id";
+            string query = "DELETE FROM dbo.notas_del_perfume WHERE perfume_id = @id";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@id", id);
             try

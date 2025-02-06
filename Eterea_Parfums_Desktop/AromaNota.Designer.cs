@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle51 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle52 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle53 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle54 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbl_tipo_aroma_nota = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbl_nombre_perfume = new System.Windows.Forms.Label();
@@ -56,6 +61,7 @@
             this.lbl_error_seleccion_aroma = new System.Windows.Forms.Label();
             this.lbl_error_seleccion_nota = new System.Windows.Forms.Label();
             this.lbl_tipo_de_nota = new System.Windows.Forms.Label();
+            this.btn_x_cerrar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -122,6 +128,8 @@
             // 
             // pictureBox4
             // 
+            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox4.Location = new System.Drawing.Point(492, 114);
@@ -146,15 +154,50 @@
             // 
             // dataGridViewNotasDelPerfume
             // 
+            dataGridViewCellStyle51.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle51.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle51.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.dataGridViewNotasDelPerfume.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle51;
+            this.dataGridViewNotasDelPerfume.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewNotasDelPerfume.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle52.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle52.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle52.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle52.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle52.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle52.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle52.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewNotasDelPerfume.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle52;
             this.dataGridViewNotasDelPerfume.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewNotasDelPerfume.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.Tipo,
             this.Nota,
             this.Eliminar});
+            dataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle53.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle53.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle53.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle53.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle53.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewNotasDelPerfume.DefaultCellStyle = dataGridViewCellStyle53;
+            this.dataGridViewNotasDelPerfume.EnableHeadersVisualStyles = false;
             this.dataGridViewNotasDelPerfume.Location = new System.Drawing.Point(503, 128);
             this.dataGridViewNotasDelPerfume.Name = "dataGridViewNotasDelPerfume";
+            dataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle54.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle54.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle54.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle54.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle54.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewNotasDelPerfume.RowHeadersDefaultCellStyle = dataGridViewCellStyle54;
+            dataGridViewCellStyle55.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
+            dataGridViewCellStyle55.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle55.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.dataGridViewNotasDelPerfume.RowsDefaultCellStyle = dataGridViewCellStyle55;
             this.dataGridViewNotasDelPerfume.Size = new System.Drawing.Size(304, 244);
             this.dataGridViewNotasDelPerfume.TabIndex = 149;
             this.dataGridViewNotasDelPerfume.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewNotasDelPerfume_CellContentClick);
@@ -252,12 +295,14 @@
             this.lbl_nota.AutoSize = true;
             this.lbl_nota.Location = new System.Drawing.Point(292, 350);
             this.lbl_nota.Name = "lbl_nota";
-            this.lbl_nota.Size = new System.Drawing.Size(35, 13);
+            this.lbl_nota.Size = new System.Drawing.Size(30, 13);
             this.lbl_nota.TabIndex = 156;
-            this.lbl_nota.Text = "label1";
+            this.lbl_nota.Text = "Nota";
             // 
             // checkedListBoxAroma
             // 
+            this.checkedListBoxAroma.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            this.checkedListBoxAroma.CheckOnClick = true;
             this.checkedListBoxAroma.FormattingEnabled = true;
             this.checkedListBoxAroma.Location = new System.Drawing.Point(47, 162);
             this.checkedListBoxAroma.Name = "checkedListBoxAroma";
@@ -266,6 +311,8 @@
             // 
             // checkedListBoxNota
             // 
+            this.checkedListBoxNota.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            this.checkedListBoxNota.CheckOnClick = true;
             this.checkedListBoxNota.FormattingEnabled = true;
             this.checkedListBoxNota.Location = new System.Drawing.Point(278, 162);
             this.checkedListBoxNota.Name = "checkedListBoxNota";
@@ -327,9 +374,25 @@
             this.lbl_tipo_de_nota.AutoSize = true;
             this.lbl_tipo_de_nota.Location = new System.Drawing.Point(337, 350);
             this.lbl_tipo_de_nota.Name = "lbl_tipo_de_nota";
-            this.lbl_tipo_de_nota.Size = new System.Drawing.Size(35, 13);
+            this.lbl_tipo_de_nota.Size = new System.Drawing.Size(69, 13);
             this.lbl_tipo_de_nota.TabIndex = 162;
-            this.lbl_tipo_de_nota.Text = "label1";
+            this.lbl_tipo_de_nota.Text = "Tipo de Nota";
+            // 
+            // btn_x_cerrar
+            // 
+            this.btn_x_cerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_x_cerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.btn_x_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_x_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_x_cerrar.ForeColor = System.Drawing.Color.White;
+            this.btn_x_cerrar.Location = new System.Drawing.Point(773, 13);
+            this.btn_x_cerrar.Name = "btn_x_cerrar";
+            this.btn_x_cerrar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_x_cerrar.Size = new System.Drawing.Size(34, 32);
+            this.btn_x_cerrar.TabIndex = 300;
+            this.btn_x_cerrar.Text = "X";
+            this.btn_x_cerrar.UseVisualStyleBackColor = false;
+            this.btn_x_cerrar.Click += new System.EventHandler(this.btn_x_cerrar_Click);
             // 
             // AromaNota
             // 
@@ -337,6 +400,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(834, 471);
+            this.Controls.Add(this.btn_x_cerrar);
             this.Controls.Add(this.lbl_tipo_de_nota);
             this.Controls.Add(this.lbl_error_seleccion_nota);
             this.Controls.Add(this.lbl_error_seleccion_aroma);
@@ -401,5 +465,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nota;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
         private System.Windows.Forms.Label lbl_tipo_de_nota;
+        private System.Windows.Forms.Button btn_x_cerrar;
     }
 }
