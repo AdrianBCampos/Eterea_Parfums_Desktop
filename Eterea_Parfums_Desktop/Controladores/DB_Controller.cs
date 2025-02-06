@@ -18,8 +18,8 @@ namespace Eterea_Parfums_Desktop.Controladores
             builder.InitialCatalog = "eterea";  //NOMBRE DE LA BASE DE DATOS
             builder.IntegratedSecurity = true;  //TIENE O NO SEGURIDAD INTEGRADA CON WINDOWS
 
-            connectionString = builder.ToString();
-            connection = new SqlConnection(connectionString);
+                    connectionString = builder.ToString();
+                    connection = new SqlConnection(connectionString);
 
             Trace.WriteLine("Conexion a la BD: " + connection);
         }*/

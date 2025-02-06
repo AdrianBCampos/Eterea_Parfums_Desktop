@@ -21,7 +21,7 @@ namespace Eterea_Parfums_Desktop
 
         public static String Ruta_Base;
         public static String Ruta_Web;
-        public static String entorno = "adri";
+        public static String entorno = "jose";
 
         [STAThread]
         static void Main()
@@ -105,6 +105,7 @@ namespace Eterea_Parfums_Desktop
 
             //Application.Run(new FormCrearPromo());
             Application.Run(new InicioAutoConsultas());
+          
         }
 
         public static bool connectionIsValid()
