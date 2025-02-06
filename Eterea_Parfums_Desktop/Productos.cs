@@ -4,10 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.Modelos;
 
 namespace Eterea_Parfums_Desktop
@@ -23,9 +25,12 @@ namespace Eterea_Parfums_Desktop
         private string nombre_foto_uno;
         private string nombre_foto_dos;
         private static readonly Random rnd = new Random(); //genero una sola instancia
-        public Productos()
+        private PerfumesUC perfumesUC;
+        public Productos(PerfumesUC perfumesUC)
         {
             InitializeComponent();
+            //relaciono el form de productos con el PerfumesUC
+            this.perfumesUC = perfumesUC;
             LblErrorSetVisibleFalse();
             CargarMarcas();
             CargarTiposDePerfume();
@@ -128,7 +133,7 @@ namespace Eterea_Parfums_Desktop
                 Perfume perfume = crear();
                 Console.WriteLine(perfume.id);
                 this.Hide();
-                AromaNota aromaNota = new AromaNota(perfume, this);
+                AromaNota aromaNota = new AromaNota(perfume, this, perfumesUC);
                 aromaNota.Show();
             }
            

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.Modelos;
 
 namespace Eterea_Parfums_Desktop
@@ -23,16 +24,18 @@ namespace Eterea_Parfums_Desktop
         private List<NotaConTipoDeNota> notas_con_tipo_de_nota;
         private NotasDelPerfume notasDelPerfume;
         private EditarProducto formEditarProducto;
+        private PerfumesUC perfumesUC;
         public EditarAromaNota()
         {
             InitializeComponent();
          
         }
 
-        public EditarAromaNota(Perfume perfume, EditarProducto formEditarProducto)
+        public EditarAromaNota(Perfume perfume, EditarProducto formEditarProducto, PerfumesUC perfumesUC)
         {
             InitializeComponent();
             this.formEditarProducto = formEditarProducto;
+            this.perfumesUC = perfumesUC;
             cargarTipoDeAromas();
             cargarTipoDeNotas();
             txt_nombre_perfume.Text = perfume.nombre;
@@ -339,6 +342,8 @@ namespace Eterea_Parfums_Desktop
 
             MessageBox.Show("Se han guardado los cambios del perfume correctamente.");
             this.Close();
+            //Actualizar la lista de perfumes en el perfumesUC
+            perfumesUC.cargarPerfumes();
         }
         
 
