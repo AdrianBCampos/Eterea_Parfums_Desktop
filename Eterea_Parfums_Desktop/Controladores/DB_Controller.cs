@@ -23,7 +23,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                 @"DESKTOP-N6TI9JV\MSSQLSERVER02"
             };
 
-            string databaseName = "eterea1";
+            string databaseName = "eterea";
             bool integratedSecurity = true;
 
             foreach (var serverName in serverNames)
