@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
 
+
 namespace Eterea_Parfums_Desktop.Controladores
 {
     public static class DB_Controller
@@ -12,7 +13,13 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         /*public static void initialize()
         {
-            var builder = new SqlConnectionStringBuilder();
+            // Lista de posibles nombres de servidores
+            List<string> serverNames = new List<string>
+            {
+                @"(localdb)\Local",
+                @"LocalHost",
+                @"DESKTOP-N6TI9JV\MSSQLSERVER02"
+            };
 
             builder.DataSource = @"(localdb)\Local";  //NOMBRE DEL SERVIDOR
             builder.InitialCatalog = "eterea";  //NOMBRE DE LA BASE DE DATOS

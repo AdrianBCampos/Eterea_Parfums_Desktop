@@ -15,6 +15,9 @@ namespace Eterea_Parfums_Desktop
 {
     public partial class ConsultasPerfumeEmpleado : Form
     {
+
+        private Facturacion facturacionForm;
+
         private static Perfume filtro = new Perfume();
 
         private List<Perfume> Perfumes_Completo = new List<Perfume>();
@@ -34,9 +37,11 @@ namespace Eterea_Parfums_Desktop
         private static int current_pag = 1;
 
         public string NumeroCaja { get; set; }
-        public ConsultasPerfumeEmpleado()
+        public ConsultasPerfumeEmpleado(Facturacion facturacion)
         {
             InitializeComponent();
+
+            facturacionForm = facturacion;
 
             string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";
             img_logo.Image = Image.FromFile(rutaCompletaImagen);
@@ -53,6 +58,7 @@ namespace Eterea_Parfums_Desktop
             paginar(Perfumes_Completo);
             CargarMarcas();
             CargarGeneros();
+            this.facturacionForm = facturacionForm;
         }
 
         private void ConsultasPerfumeEmpleado_Load(object sender, EventArgs e)
@@ -248,19 +254,83 @@ namespace Eterea_Parfums_Desktop
                 VerDetallePerfume detallesForm = new VerDetallePerfume(perfumeSeleccionado);
                 detallesForm.Show();
             }
-        }        
+            else if (e.RowIndex >= 0 && e.ColumnIndex == 4)
+            {
+                int rowIndex = e.RowIndex;
+                Perfume perfumeSeleccionado = Perfumes_Paginados[rowIndex];
+                completarFactura(perfumeSeleccionado);
+                facturacionForm.ActualizarTotales();
+
+            }
+        }
+
+        private void completarFactura(Perfume perfumeSeleccionado)
+        {
+            // Buscar si el perfume ya está en la factura
+            DataGridViewRow existingRow = null;
+
+            foreach (DataGridViewRow row in facturacionForm.GetFacturaDataGrid().Rows)
+            {
+                if (row.Cells["Nombre_Perfume"].Value != null && row.Cells["Nombre_Perfume"].Value.ToString() == perfumeSeleccionado.nombre)
+                {
+                    existingRow = row;
+                    break;
+                }
+            }
+
+            if (existingRow != null)
+            {
+                // Si el perfume ya está en la factura, incrementar la cantidad
+                int cantidad = Convert.ToInt32(existingRow.Cells["Cantidad"].Value);
+                existingRow.Cells["Cantidad"].Value = cantidad + 1;
+
+                // Multiplicar el precio unitario por la cantidad para obtener el nuevo subtotal
+                float precioUnitario = float.Parse(existingRow.Cells["Precio_Unitario"].Value.ToString());
+                float nuevoSubtotal = precioUnitario * int.Parse(existingRow.Cells["Cantidad"].Value.ToString());
+                existingRow.Cells[6].Value = nuevoSubtotal;
+
+
+                // Recalcular el total y otros valores necesarios
+
+             /*   totalFactura();
+                CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_recargo.Text));
+                desc();
+                sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
+                */
+            }
+            else
+            {
+                // Si el perfume no está en la factura, agregar una nueva fila
+                int rowIndex = facturacionForm.GetFacturaDataGrid().Rows.Add();
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells[0].Value = perfumeSeleccionado.id.ToString();
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Nombre_Perfume"].Value = perfumeSeleccionado.nombre.ToString();
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Cantidad"].Value = 1;
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells[2].Value = "+";
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells[3].Value = "-";
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Precio_Unitario"].Value = perfumeSeleccionado.precio_en_pesos.ToString();
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Tot"].Value = perfumeSeleccionado.precio_en_pesos.ToString();
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Eliminar"].Value = "Eliminar";
+
+             /*   // Recalcular el total y otros valores necesarios
+                totalFactura();
+                CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_recargo.Text));
+                desc();
+                sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
+           */
+                }
+        }
 
         private void btn_facturacion_Click(object sender, EventArgs e)
         {
             Facturacion facturacion = new Facturacion();
-            facturacion.Show();
+            //facturacion.Show();
             this.Hide();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            NumeroDeCaja numeroDeCaja = new NumeroDeCaja();
-            numeroDeCaja.Show();
+            //NumeroDeCaja numeroDeCaja = new NumeroDeCaja();
+            //numeroDeCaja.Show();
             this.Close();
         }
 

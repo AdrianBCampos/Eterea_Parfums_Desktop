@@ -333,11 +333,35 @@ namespace Eterea_Parfums_Desktop.Controladores
                     localidad.id = r.GetInt32(12);
                     calle.id = r.GetInt32(14);
 
-                    cliente = new Cliente(r.GetInt32(0), r.GetString(1), "", r.GetString(3), r.GetString(4),
-                        r.GetInt32(5), r.GetString(6), r.GetDateTime(7), r.GetString(8), r.GetString(9), pais,
-                        provincia, localidad, r.GetInt32(13), calle, r.GetInt32(15),
-                        r.GetString(16), r.GetString(17), r.GetString(18),
-                         r.GetInt32(19), r.GetString(20));
+                    cliente = new Cliente(
+                        r.GetInt32(0),                                  // ID
+                        r.GetString(1),                                 // Usuario
+                        r.GetString(2),                                 // Clave
+                        r.GetString(3),                                 // Nombre
+                        r.GetString(4),                                 // Apellido
+                        r.GetInt32(5),                                  // DNI
+                        r.GetString(6),                                 // Condición frente al IVA
+                        r.GetDateTime(7),                               // Fecha de nacimiento
+                        r.GetString(8),                                 // Celular
+                        r.GetString(9),                                 // E-mail
+                        pais,                                           // País
+                        provincia,                                      // Provincia
+                        localidad,                                      // Localidad
+                        r.IsDBNull(13) ? 0 : r.GetInt32(13),            // Código postal
+                        calle,                                          // Calle
+                        r.IsDBNull(15) ? 0 : r.GetInt32(15),            // Numeración de calle
+                        r.IsDBNull(16) ? "" : r.GetString(16),          // Piso
+                        r.IsDBNull(17) ? "" : r.GetString(17),          // Departamento
+                        r.IsDBNull(18) ? "" : r.GetString(18),          // Comentarios domicilio
+                        r.GetInt32(19),                                 // Activo (corregido)
+                        r.GetString(20)                                 // Rol
+                    );
+
+                    /* cliente = new Cliente(r.GetInt32(0), r.GetString(1), "", r.GetString(3), r.GetString(4),
+                         r.GetInt32(5), r.GetString(6), r.GetDateTime(7), r.GetString(8), r.GetString(9), pais,
+                         provincia, localidad, r.GetInt32(13), calle, r.GetInt32(15),
+                         r.GetString(16), r.GetString(17), r.GetString(18),
+                          r.GetInt32(19), r.GetString(20)); */
                 }
                 r.Close();
                 DB_Controller.connection.Close();
