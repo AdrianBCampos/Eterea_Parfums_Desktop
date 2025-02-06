@@ -81,7 +81,36 @@ namespace Eterea_Parfums_Desktop
             combo_con_iva.Items.Add("Responsable Inscripto");
             combo_con_iva.Items.Add("Responsable no Inscripto");
             combo_con_iva.Items.Add("Responsable Monotributo");
-            
+
+            //Diseño del combo box
+            combo_activo.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_activo.DrawItem += comboBoxdiseño_DrawItem;
+            combo_activo.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_con_iva.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_con_iva.DrawItem += comboBoxdiseño_DrawItem;
+            combo_con_iva.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_calle.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_calle.DrawItem += comboBoxdiseño_DrawItem;
+            combo_calle.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_pais.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_pais.DrawItem += comboBoxdiseño_DrawItem;
+            combo_pais.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_provincia.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_provincia.DrawItem += comboBoxdiseño_DrawItem;
+            combo_provincia.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_localidad.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_localidad.DrawItem += comboBoxdiseño_DrawItem;
+            combo_localidad.DropDownStyle = ComboBoxStyle.DropDownList;
+
+           /* dateTime_nac.DrawMode = DrawMode.OwnerDrawFixed;
+            dateTime_nac.DrawItem += comboBoxdiseño_DrawItem;
+            dateTime_nac.DropDownStyle = ComboBoxStyle.DropDownList;    */    
+
         }
 
         private void btn_crear_cliente_Click(object sender, EventArgs e)
@@ -291,7 +320,48 @@ namespace Eterea_Parfums_Desktop
             }
 
             return string.IsNullOrEmpty(errorMsg);
-        }      
+        }
+
+
+        //Diseño del combo box
+        private void comboBoxdiseño_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0)
+                return;
+
+            // Obtener el ComboBox y el texto del ítem actual
+            ComboBox combo = sender as ComboBox;
+            string text = combo.Items[e.Index].ToString();
+
+            // Definir colores personalizados
+            Color backgroundColor;
+            Color textColor;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                // Color cuando el ítem está seleccionado
+                backgroundColor = Color.FromArgb(195, 156, 164);
+                textColor = Color.White;
+            }
+            else
+            {
+                // Color cuando el ítem NO está seleccionado
+                backgroundColor = Color.FromArgb(250, 236, 239); // Color personalizado
+                textColor = Color.FromArgb(195, 156, 164);
+            }
+
+            // Pintar el fondo del ítem
+            using (SolidBrush brush = new SolidBrush(backgroundColor))
+            {
+                e.Graphics.FillRectangle(brush, e.Bounds);
+            }
+
+            // Dibujar el texto
+            TextRenderer.DrawText(e.Graphics, text, e.Font, e.Bounds, textColor, TextFormatFlags.Left);
+
+            // Evitar problemas visuales
+            e.DrawFocusRectangle();
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {

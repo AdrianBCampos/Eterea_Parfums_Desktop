@@ -53,6 +53,15 @@ namespace Eterea_Parfums_Desktop
             paginar(Perfumes_Completo);
             CargarMarcas();
             CargarGeneros();
+
+            //Diseño del combo box
+            combo_filtro_genero.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_filtro_genero.DrawItem += comboBoxdiseño_DrawItem;
+            combo_filtro_genero.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_filtro_marca.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_filtro_marca.DrawItem += comboBoxdiseño_DrawItem;
+            combo_filtro_marca.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         public VerPerfumesSimilares()
@@ -156,31 +165,7 @@ namespace Eterea_Parfums_Desktop
             dataGridViewConsultas.CellPainting += dataGridView1_CellPainting;
         }
 
-        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
-        {
-            if (e.ColumnIndex >= 0 && e.RowIndex >= 0 && dataGridViewConsultas.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
-            {
-                e.Handled = true;
-                e.PaintBackground(e.CellBounds, true);
-
-                // Crear un rectángulo para el botón
-                Rectangle buttonRect = e.CellBounds;
-                buttonRect.Inflate(-2, -2); // Reducir tamaño para dar efecto de borde
-
-                // Definir colores personalizados
-                Color buttonColor = Color.FromArgb(228, 137, 164); // Color de fondo del botón
-                Color textColor = Color.FromArgb(250, 236, 239); // Color del texto
-
-                using (SolidBrush brush = new SolidBrush(buttonColor))
-                {
-                    e.Graphics.FillRectangle(brush, buttonRect);
-                }
-
-                // Dibujar el texto del botón
-                TextRenderer.DrawText(e.Graphics, (string)e.Value, e.CellStyle.Font, buttonRect, textColor,
-                                      TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
-            }
-        }
+       
 
         private void btn_anterior_Click_1(object sender, EventArgs e)
         {
@@ -264,5 +249,73 @@ namespace Eterea_Parfums_Desktop
             lbl_numero_pagina.Text = current_pag.ToString();
         }
 
+
+        //Diseño del boton del datagridview
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0 && dataGridViewConsultas.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                e.Handled = true;
+                e.PaintBackground(e.CellBounds, true);
+
+                // Crear un rectángulo para el botón
+                Rectangle buttonRect = e.CellBounds;
+                buttonRect.Inflate(-2, -2); // Reducir tamaño para dar efecto de borde
+
+                // Definir colores personalizados
+                Color buttonColor = Color.FromArgb(228, 137, 164); // Color de fondo del botón
+                Color textColor = Color.FromArgb(250, 236, 239); // Color del texto
+
+                using (SolidBrush brush = new SolidBrush(buttonColor))
+                {
+                    e.Graphics.FillRectangle(brush, buttonRect);
+                }
+
+                // Dibujar el texto del botón
+                TextRenderer.DrawText(e.Graphics, (string)e.Value, e.CellStyle.Font, buttonRect, textColor,
+                                      TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+            }
+        }
+
+        //Diseño del combo box
+        private void comboBoxdiseño_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0)
+                return;
+
+            // Obtener el ComboBox y el texto del ítem actual
+            ComboBox combo = sender as ComboBox;
+            combo.DropDownWidth = combo.Width + 5; // Ajustar tamaño para evitar borde azul
+            string text = combo.Items[e.Index].ToString();
+
+            // Definir colores personalizados
+            Color backgroundColor;
+            Color textColor;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                // Color cuando el ítem está seleccionado
+                backgroundColor = Color.FromArgb(195, 156, 164);
+                textColor = Color.White;
+            }
+            else
+            {
+                // Color cuando el ítem NO está seleccionado
+                backgroundColor = Color.FromArgb(250, 236, 239); // Color personalizado
+                textColor = Color.FromArgb(195, 156, 164);
+            }
+
+            // Pintar el fondo del ítem
+            using (SolidBrush brush = new SolidBrush(backgroundColor))
+            {
+                e.Graphics.FillRectangle(brush, e.Bounds);
+            }
+
+            // Dibujar el texto
+            TextRenderer.DrawText(e.Graphics, text, e.Font, e.Bounds, textColor, TextFormatFlags.Left);
+
+            // Evitar problemas visuales
+            e.DrawFocusRectangle();
+        }
     }
 }

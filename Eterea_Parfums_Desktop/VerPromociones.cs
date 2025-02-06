@@ -30,7 +30,7 @@ namespace Eterea_Parfums_Desktop
             string rutaCompletaImagen2 = Program.Ruta_Base + nombreImagen + ".jpg";
             pictureBox9.Image = Image.FromFile(rutaCompletaImagen);*/
 
-            string rutaCompletaImagen1 = Program.Ruta_Base + @"Diseño Promo.jpg";
+            string rutaCompletaImagen1 = Program.Ruta_Base + @"Diseño Promo.png";
             pictureBox9.Image = Image.FromFile(rutaCompletaImagen1);
 
             //perfume = perfumeSeleccionado;
