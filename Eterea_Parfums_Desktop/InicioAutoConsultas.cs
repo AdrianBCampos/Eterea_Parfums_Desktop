@@ -37,7 +37,7 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
-            string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";
+            string rutaCompletaImagen = Program.Ruta_Base + @"Diseño Logo2.png";
             img_logo.Image = Image.FromFile(rutaCompletaImagen);
 
             Perfumes_Completo = PerfumeControlador.getAll();

@@ -58,8 +58,8 @@ namespace Eterea_Parfums_Desktop
 
             string nombreImagen = perfumeSeleccionado.imagen1.ToString();
             string rutaCompletaImagen = Program.Ruta_Base + nombreImagen + ".jpg";
-            img_perfume.Image = Image.FromFile(rutaCompletaImagen);
-
+            img_perfume.Image = Image.FromFile(rutaCompletaImagen);             
+           
             this.perfume = perfumeSeleccionado;
 
             //Diseño del combo box
