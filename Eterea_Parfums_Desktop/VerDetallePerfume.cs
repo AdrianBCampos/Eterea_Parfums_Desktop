@@ -58,9 +58,22 @@ namespace Eterea_Parfums_Desktop
 
             string nombreImagen = perfumeSeleccionado.imagen1.ToString();
             string rutaCompletaImagen = Program.Ruta_Base + nombreImagen + ".jpg";
-            img_perfume.Image = Image.FromFile(rutaCompletaImagen);
-
+            img_perfume.Image = Image.FromFile(rutaCompletaImagen);             
+           
             this.perfume = perfumeSeleccionado;
+
+            //Diseño del combo box
+            combo_medios_pago.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_medios_pago.DrawItem += comboBoxdiseño_DrawItem;
+            combo_medios_pago.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_cuotas.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_cuotas.DrawItem += comboBoxdiseño_DrawItem;
+            combo_cuotas.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_descuento.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_descuento.DrawItem += comboBoxdiseño_DrawItem;
+            combo_descuento.DropDownStyle = ComboBoxStyle.DropDownList;     
 
             ConfigurarDescuentos();
             cargarDataGridViewNotasDePerfume();
@@ -350,7 +363,50 @@ namespace Eterea_Parfums_Desktop
             // Mostrar el valor de cada cuota
             txt_valor_cuota.Text = valorCuota.ToString("N2");
         }
-              
+
+
+        //Diseño del combo box
+        private void comboBoxdiseño_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0)
+                return;
+
+            // Obtener el ComboBox y el texto del ítem actual
+            ComboBox combo = sender as ComboBox;
+            combo.DropDownWidth = combo.Width + 5; // Ajustar tamaño para evitar borde azul
+            string text = combo.Items[e.Index].ToString();
+
+            // Definir colores personalizados
+            Color backgroundColor;
+            Color textColor;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                // Color cuando el ítem está seleccionado
+                backgroundColor = Color.FromArgb(195, 156, 164);
+                textColor = Color.White;
+            }
+            else
+            {
+                // Color cuando el ítem NO está seleccionado
+                backgroundColor = Color.FromArgb(250, 236, 239); // Color personalizado
+                textColor = Color.FromArgb(195, 156, 164);
+            }
+
+            // Pintar el fondo del ítem
+            using (SolidBrush brush = new SolidBrush(backgroundColor))
+            {
+                e.Graphics.FillRectangle(brush, e.Bounds);
+            }
+
+            // Dibujar el texto
+            TextRenderer.DrawText(e.Graphics, text, e.Font, e.Bounds, textColor, TextFormatFlags.Left);
+
+            // Evitar problemas visuales
+            e.DrawFocusRectangle();
+        }
+
+
         private void btn_buscar_perfumes_simi_Click(object sender, EventArgs e)
         {
             VerPerfumesSimilares verPerfumesSimilares = new VerPerfumesSimilares(perfume);

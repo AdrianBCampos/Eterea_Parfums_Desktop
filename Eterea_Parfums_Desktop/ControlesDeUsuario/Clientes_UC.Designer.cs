@@ -106,6 +106,7 @@
             // 
             // txt_buscar_dni
             // 
+            this.txt_buscar_dni.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_buscar_dni.Location = new System.Drawing.Point(657, 32);
             this.txt_buscar_dni.Margin = new System.Windows.Forms.Padding(4);
             this.txt_buscar_dni.Name = "txt_buscar_dni";
@@ -139,7 +140,7 @@
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;

@@ -170,7 +170,7 @@
             this.lbl_cond_iva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_cond_iva.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_cond_iva.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_cond_iva.Location = new System.Drawing.Point(26, 639);
+            this.lbl_cond_iva.Location = new System.Drawing.Point(26, 635);
             this.lbl_cond_iva.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_cond_iva.Name = "lbl_cond_iva";
             this.lbl_cond_iva.Size = new System.Drawing.Size(208, 20);
@@ -182,7 +182,7 @@
             this.lbl_paisE.AutoSize = true;
             this.lbl_paisE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_paisE.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_paisE.Location = new System.Drawing.Point(673, 276);
+            this.lbl_paisE.Location = new System.Drawing.Point(673, 275);
             this.lbl_paisE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_paisE.Name = "lbl_paisE";
             this.lbl_paisE.Size = new System.Drawing.Size(36, 16);
@@ -206,7 +206,7 @@
             this.lbl_celularE.AutoSize = true;
             this.lbl_celularE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_celularE.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_celularE.Location = new System.Drawing.Point(187, 434);
+            this.lbl_celularE.Location = new System.Drawing.Point(187, 430);
             this.lbl_celularE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_celularE.Name = "lbl_celularE";
             this.lbl_celularE.Size = new System.Drawing.Size(36, 16);
@@ -218,7 +218,7 @@
             this.lbl_nacE.AutoSize = true;
             this.lbl_nacE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_nacE.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_nacE.Location = new System.Drawing.Point(85, 586);
+            this.lbl_nacE.Location = new System.Drawing.Point(85, 588);
             this.lbl_nacE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_nacE.Name = "lbl_nacE";
             this.lbl_nacE.Size = new System.Drawing.Size(36, 16);
@@ -242,7 +242,7 @@
             this.lbl_apellidoE.AutoSize = true;
             this.lbl_apellidoE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_apellidoE.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_apellidoE.Location = new System.Drawing.Point(187, 299);
+            this.lbl_apellidoE.Location = new System.Drawing.Point(187, 297);
             this.lbl_apellidoE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_apellidoE.Name = "lbl_apellidoE";
             this.lbl_apellidoE.Size = new System.Drawing.Size(36, 16);
@@ -254,7 +254,7 @@
             this.lbl_nombreE.AutoSize = true;
             this.lbl_nombreE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_nombreE.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_nombreE.Location = new System.Drawing.Point(187, 247);
+            this.lbl_nombreE.Location = new System.Drawing.Point(187, 242);
             this.lbl_nombreE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_nombreE.Name = "lbl_nombreE";
             this.lbl_nombreE.Size = new System.Drawing.Size(36, 16);
@@ -291,7 +291,7 @@
             this.lbl_nac.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_nac.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_nac.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_nac.Location = new System.Drawing.Point(26, 532);
+            this.lbl_nac.Location = new System.Drawing.Point(26, 530);
             this.lbl_nac.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_nac.Name = "lbl_nac";
             this.lbl_nac.Size = new System.Drawing.Size(186, 20);
@@ -300,19 +300,27 @@
             // 
             // dateTime_nac
             // 
-            this.dateTime_nac.Location = new System.Drawing.Point(82, 559);
+            this.dateTime_nac.CalendarForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.dateTime_nac.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.dateTime_nac.CalendarTitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.dateTime_nac.CalendarTitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.dateTime_nac.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTime_nac.Location = new System.Drawing.Point(67, 557);
             this.dateTime_nac.Margin = new System.Windows.Forms.Padding(4);
             this.dateTime_nac.Name = "dateTime_nac";
-            this.dateTime_nac.Size = new System.Drawing.Size(320, 22);
+            this.dateTime_nac.Size = new System.Drawing.Size(357, 27);
             this.dateTime_nac.TabIndex = 131;
             // 
             // combo_pais
             // 
+            this.combo_pais.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.combo_pais.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_pais.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_pais.FormattingEnabled = true;
-            this.combo_pais.Location = new System.Drawing.Point(676, 247);
+            this.combo_pais.Location = new System.Drawing.Point(676, 243);
             this.combo_pais.Margin = new System.Windows.Forms.Padding(4);
             this.combo_pais.Name = "combo_pais";
-            this.combo_pais.Size = new System.Drawing.Size(262, 24);
+            this.combo_pais.Size = new System.Drawing.Size(262, 28);
             this.combo_pais.TabIndex = 130;
             // 
             // lbl_pais
@@ -343,10 +351,14 @@
             // 
             // txt_email
             // 
-            this.txt_email.Location = new System.Drawing.Point(190, 457);
+            this.txt_email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_email.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_email.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_email.Location = new System.Drawing.Point(190, 453);
             this.txt_email.Margin = new System.Windows.Forms.Padding(4);
             this.txt_email.Name = "txt_email";
-            this.txt_email.Size = new System.Drawing.Size(262, 22);
+            this.txt_email.Size = new System.Drawing.Size(262, 27);
             this.txt_email.TabIndex = 127;
             // 
             // lbl_Celular
@@ -364,10 +376,14 @@
             // 
             // txt_celular
             // 
-            this.txt_celular.Location = new System.Drawing.Point(190, 407);
+            this.txt_celular.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_celular.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_celular.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_celular.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_celular.Location = new System.Drawing.Point(190, 399);
             this.txt_celular.Margin = new System.Windows.Forms.Padding(4);
             this.txt_celular.Name = "txt_celular";
-            this.txt_celular.Size = new System.Drawing.Size(262, 22);
+            this.txt_celular.Size = new System.Drawing.Size(262, 27);
             this.txt_celular.TabIndex = 125;
             // 
             // lbl_dni
@@ -385,10 +401,14 @@
             // 
             // txt_dni
             // 
-            this.txt_dni.Location = new System.Drawing.Point(190, 323);
+            this.txt_dni.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_dni.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_dni.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_dni.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_dni.Location = new System.Drawing.Point(190, 319);
             this.txt_dni.Margin = new System.Windows.Forms.Padding(4);
             this.txt_dni.Name = "txt_dni";
-            this.txt_dni.Size = new System.Drawing.Size(262, 22);
+            this.txt_dni.Size = new System.Drawing.Size(262, 27);
             this.txt_dni.TabIndex = 123;
             // 
             // lbl_apellido
@@ -406,10 +426,14 @@
             // 
             // txt_apellido
             // 
-            this.txt_apellido.Location = new System.Drawing.Point(190, 272);
+            this.txt_apellido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_apellido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_apellido.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_apellido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_apellido.Location = new System.Drawing.Point(190, 266);
             this.txt_apellido.Margin = new System.Windows.Forms.Padding(4);
             this.txt_apellido.Name = "txt_apellido";
-            this.txt_apellido.Size = new System.Drawing.Size(262, 22);
+            this.txt_apellido.Size = new System.Drawing.Size(262, 27);
             this.txt_apellido.TabIndex = 121;
             // 
             // lbl_nombre
@@ -427,10 +451,14 @@
             // 
             // txt_nombre
             // 
-            this.txt_nombre.Location = new System.Drawing.Point(190, 220);
+            this.txt_nombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_nombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_nombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_nombre.Location = new System.Drawing.Point(190, 211);
             this.txt_nombre.Margin = new System.Windows.Forms.Padding(4);
             this.txt_nombre.Name = "txt_nombre";
-            this.txt_nombre.Size = new System.Drawing.Size(262, 22);
+            this.txt_nombre.Size = new System.Drawing.Size(262, 27);
             this.txt_nombre.TabIndex = 119;
             // 
             // lbl_clave
@@ -461,18 +489,26 @@
             // 
             // txt_usuario
             // 
-            this.txt_usuario.Location = new System.Drawing.Point(190, 89);
+            this.txt_usuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_usuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_usuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_usuario.Location = new System.Drawing.Point(190, 85);
             this.txt_usuario.Margin = new System.Windows.Forms.Padding(4);
             this.txt_usuario.Name = "txt_usuario";
-            this.txt_usuario.Size = new System.Drawing.Size(262, 22);
+            this.txt_usuario.Size = new System.Drawing.Size(262, 27);
             this.txt_usuario.TabIndex = 116;
             // 
             // txt_clave
             // 
-            this.txt_clave.Location = new System.Drawing.Point(190, 140);
+            this.txt_clave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_clave.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_clave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_clave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_clave.Location = new System.Drawing.Point(190, 137);
             this.txt_clave.Margin = new System.Windows.Forms.Padding(4);
             this.txt_clave.Name = "txt_clave";
-            this.txt_clave.Size = new System.Drawing.Size(262, 22);
+            this.txt_clave.Size = new System.Drawing.Size(262, 27);
             this.txt_clave.TabIndex = 115;
             // 
             // lbl_activoE
@@ -480,7 +516,7 @@
             this.lbl_activoE.AutoSize = true;
             this.lbl_activoE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_activoE.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_activoE.Location = new System.Drawing.Point(272, 790);
+            this.lbl_activoE.Location = new System.Drawing.Point(274, 788);
             this.lbl_activoE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_activoE.Name = "lbl_activoE";
             this.lbl_activoE.Size = new System.Drawing.Size(36, 16);
@@ -552,7 +588,7 @@
             this.lbl_cpE.AutoSize = true;
             this.lbl_cpE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_cpE.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_cpE.Location = new System.Drawing.Point(673, 116);
+            this.lbl_cpE.Location = new System.Drawing.Point(673, 113);
             this.lbl_cpE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_cpE.Name = "lbl_cpE";
             this.lbl_cpE.Size = new System.Drawing.Size(36, 16);
@@ -564,7 +600,7 @@
             this.lbl_localidadE.AutoSize = true;
             this.lbl_localidadE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_localidadE.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_localidadE.Location = new System.Drawing.Point(673, 171);
+            this.lbl_localidadE.Location = new System.Drawing.Point(673, 169);
             this.lbl_localidadE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_localidadE.Name = "lbl_localidadE";
             this.lbl_localidadE.Size = new System.Drawing.Size(36, 16);
@@ -576,7 +612,7 @@
             this.lbl_provinciaE.AutoSize = true;
             this.lbl_provinciaE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_provinciaE.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_provinciaE.Location = new System.Drawing.Point(673, 224);
+            this.lbl_provinciaE.Location = new System.Drawing.Point(673, 223);
             this.lbl_provinciaE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_provinciaE.Name = "lbl_provinciaE";
             this.lbl_provinciaE.Size = new System.Drawing.Size(36, 16);
@@ -585,46 +621,62 @@
             // 
             // txt_cp
             // 
-            this.txt_cp.Location = new System.Drawing.Point(676, 89);
+            this.txt_cp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_cp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_cp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_cp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_cp.Location = new System.Drawing.Point(676, 82);
             this.txt_cp.Margin = new System.Windows.Forms.Padding(4);
             this.txt_cp.Name = "txt_cp";
-            this.txt_cp.Size = new System.Drawing.Size(262, 22);
+            this.txt_cp.Size = new System.Drawing.Size(262, 27);
             this.txt_cp.TabIndex = 166;
             // 
             // combo_activo
             // 
+            this.combo_activo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.combo_activo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_activo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_activo.FormattingEnabled = true;
-            this.combo_activo.Location = new System.Drawing.Point(276, 755);
+            this.combo_activo.Location = new System.Drawing.Point(276, 752);
             this.combo_activo.Margin = new System.Windows.Forms.Padding(4);
             this.combo_activo.Name = "combo_activo";
-            this.combo_activo.Size = new System.Drawing.Size(262, 24);
+            this.combo_activo.Size = new System.Drawing.Size(262, 28);
             this.combo_activo.TabIndex = 165;
             // 
             // combo_calle
             // 
+            this.combo_calle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.combo_calle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_calle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_calle.FormattingEnabled = true;
-            this.combo_calle.Location = new System.Drawing.Point(676, 328);
+            this.combo_calle.Location = new System.Drawing.Point(676, 325);
             this.combo_calle.Margin = new System.Windows.Forms.Padding(4);
             this.combo_calle.Name = "combo_calle";
-            this.combo_calle.Size = new System.Drawing.Size(262, 24);
+            this.combo_calle.Size = new System.Drawing.Size(262, 28);
             this.combo_calle.TabIndex = 164;
             // 
             // combo_localidad
             // 
+            this.combo_localidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.combo_localidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_localidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_localidad.FormattingEnabled = true;
-            this.combo_localidad.Location = new System.Drawing.Point(676, 142);
+            this.combo_localidad.Location = new System.Drawing.Point(676, 136);
             this.combo_localidad.Margin = new System.Windows.Forms.Padding(4);
             this.combo_localidad.Name = "combo_localidad";
-            this.combo_localidad.Size = new System.Drawing.Size(262, 24);
+            this.combo_localidad.Size = new System.Drawing.Size(262, 28);
             this.combo_localidad.TabIndex = 163;
             // 
             // combo_provincia
             // 
+            this.combo_provincia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.combo_provincia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_provincia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_provincia.FormattingEnabled = true;
-            this.combo_provincia.Location = new System.Drawing.Point(676, 195);
+            this.combo_provincia.Location = new System.Drawing.Point(676, 190);
             this.combo_provincia.Margin = new System.Windows.Forms.Padding(4);
             this.combo_provincia.Name = "combo_provincia";
-            this.combo_provincia.Size = new System.Drawing.Size(262, 24);
+            this.combo_provincia.Size = new System.Drawing.Size(262, 28);
             this.combo_provincia.TabIndex = 162;
             // 
             // lbl_activo
@@ -633,7 +685,7 @@
             this.lbl_activo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_activo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_activo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_activo.Location = new System.Drawing.Point(140, 752);
+            this.lbl_activo.Location = new System.Drawing.Point(140, 754);
             this.lbl_activo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_activo.Name = "lbl_activo";
             this.lbl_activo.Size = new System.Drawing.Size(83, 29);
@@ -659,7 +711,7 @@
             this.lbl_depto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_depto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_depto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_depto.Location = new System.Drawing.Point(806, 427);
+            this.lbl_depto.Location = new System.Drawing.Point(806, 424);
             this.lbl_depto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_depto.Name = "lbl_depto";
             this.lbl_depto.Size = new System.Drawing.Size(127, 20);
@@ -668,10 +720,14 @@
             // 
             // txt_depto
             // 
-            this.txt_depto.Location = new System.Drawing.Point(810, 452);
+            this.txt_depto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_depto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_depto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_depto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_depto.Location = new System.Drawing.Point(810, 449);
             this.txt_depto.Margin = new System.Windows.Forms.Padding(4);
             this.txt_depto.Name = "txt_depto";
-            this.txt_depto.Size = new System.Drawing.Size(123, 22);
+            this.txt_depto.Size = new System.Drawing.Size(123, 27);
             this.txt_depto.TabIndex = 157;
             // 
             // lbl_piso
@@ -680,7 +736,7 @@
             this.lbl_piso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_piso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_piso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_piso.Location = new System.Drawing.Point(688, 428);
+            this.lbl_piso.Location = new System.Drawing.Point(688, 425);
             this.lbl_piso.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_piso.Name = "lbl_piso";
             this.lbl_piso.Size = new System.Drawing.Size(46, 20);
@@ -689,10 +745,14 @@
             // 
             // txt_piso
             // 
-            this.txt_piso.Location = new System.Drawing.Point(692, 452);
+            this.txt_piso.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_piso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_piso.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_piso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_piso.Location = new System.Drawing.Point(692, 449);
             this.txt_piso.Margin = new System.Windows.Forms.Padding(4);
             this.txt_piso.Name = "txt_piso";
-            this.txt_piso.Size = new System.Drawing.Size(90, 22);
+            this.txt_piso.Size = new System.Drawing.Size(90, 27);
             this.txt_piso.TabIndex = 155;
             // 
             // lbl_num_calle
@@ -701,7 +761,7 @@
             this.lbl_num_calle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_num_calle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_num_calle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_num_calle.Location = new System.Drawing.Point(506, 428);
+            this.lbl_num_calle.Location = new System.Drawing.Point(506, 425);
             this.lbl_num_calle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_num_calle.Name = "lbl_num_calle";
             this.lbl_num_calle.Size = new System.Drawing.Size(149, 20);
@@ -710,10 +770,14 @@
             // 
             // txt_num_calle
             // 
-            this.txt_num_calle.Location = new System.Drawing.Point(511, 452);
+            this.txt_num_calle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_num_calle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_num_calle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_num_calle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_num_calle.Location = new System.Drawing.Point(511, 449);
             this.txt_num_calle.Margin = new System.Windows.Forms.Padding(4);
             this.txt_num_calle.Name = "txt_num_calle";
-            this.txt_num_calle.Size = new System.Drawing.Size(144, 22);
+            this.txt_num_calle.Size = new System.Drawing.Size(144, 27);
             this.txt_num_calle.TabIndex = 153;
             // 
             // lbl_calle
@@ -770,11 +834,14 @@
             // 
             // combo_con_iva
             // 
+            this.combo_con_iva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.combo_con_iva.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_con_iva.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_con_iva.FormattingEnabled = true;
-            this.combo_con_iva.Location = new System.Drawing.Point(88, 669);
+            this.combo_con_iva.Location = new System.Drawing.Point(88, 664);
             this.combo_con_iva.Margin = new System.Windows.Forms.Padding(4);
             this.combo_con_iva.Name = "combo_con_iva";
-            this.combo_con_iva.Size = new System.Drawing.Size(314, 24);
+            this.combo_con_iva.Size = new System.Drawing.Size(314, 28);
             this.combo_con_iva.TabIndex = 176;
             // 
             // pictureBox4
@@ -849,9 +916,10 @@
             // 
             // richTextBox_comentario
             // 
-            this.richTextBox_comentario.BackColor = System.Drawing.SystemColors.Window;
+            this.richTextBox_comentario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.richTextBox_comentario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.richTextBox_comentario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox_comentario.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.richTextBox_comentario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.richTextBox_comentario.Location = new System.Drawing.Point(521, 558);
             this.richTextBox_comentario.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox_comentario.Name = "richTextBox_comentario";

@@ -55,7 +55,7 @@
             this.lbl_error_auth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_auth.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_error_auth.ForeColor = System.Drawing.Color.Red;
-            this.lbl_error_auth.Location = new System.Drawing.Point(405, 196);
+            this.lbl_error_auth.Location = new System.Drawing.Point(361, 196);
             this.lbl_error_auth.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_auth.Name = "lbl_error_auth";
             this.lbl_error_auth.Size = new System.Drawing.Size(86, 20);
@@ -68,10 +68,10 @@
             this.lbl_error_pass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_pass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_error_pass.ForeColor = System.Drawing.Color.Red;
-            this.lbl_error_pass.Location = new System.Drawing.Point(539, 196);
+            this.lbl_error_pass.Location = new System.Drawing.Point(495, 196);
             this.lbl_error_pass.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_pass.Name = "lbl_error_pass";
-            this.lbl_error_pass.Size = new System.Drawing.Size(59, 25);
+            this.lbl_error_pass.Size = new System.Drawing.Size(47, 20);
             this.lbl_error_pass.TabIndex = 74;
             this.lbl_error_pass.Text = "Error";
             // 
@@ -81,10 +81,10 @@
             this.lbl_error_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_user.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_error_user.ForeColor = System.Drawing.Color.Red;
-            this.lbl_error_user.Location = new System.Drawing.Point(539, 123);
+            this.lbl_error_user.Location = new System.Drawing.Point(495, 123);
             this.lbl_error_user.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_user.Name = "lbl_error_user";
-            this.lbl_error_user.Size = new System.Drawing.Size(59, 25);
+            this.lbl_error_user.Size = new System.Drawing.Size(47, 20);
             this.lbl_error_user.TabIndex = 73;
             this.lbl_error_user.Text = "Error";
             // 
@@ -94,7 +94,7 @@
             this.lbl_contraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_contraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_contraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_contraseña.Location = new System.Drawing.Point(400, 171);
+            this.lbl_contraseña.Location = new System.Drawing.Point(356, 171);
             this.lbl_contraseña.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_contraseña.Name = "lbl_contraseña";
             this.lbl_contraseña.Size = new System.Drawing.Size(128, 24);
@@ -107,7 +107,7 @@
             this.lbl_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_user.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_user.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_user.Location = new System.Drawing.Point(400, 97);
+            this.lbl_user.Location = new System.Drawing.Point(356, 97);
             this.lbl_user.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_user.Name = "lbl_user";
             this.lbl_user.Size = new System.Drawing.Size(87, 24);
@@ -116,19 +116,27 @@
             // 
             // txt_contraseña
             // 
-            this.txt_contraseña.Location = new System.Drawing.Point(544, 170);
+            this.txt_contraseña.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_contraseña.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_contraseña.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_contraseña.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_contraseña.Location = new System.Drawing.Point(500, 165);
             this.txt_contraseña.Margin = new System.Windows.Forms.Padding(4);
             this.txt_contraseña.Name = "txt_contraseña";
             this.txt_contraseña.PasswordChar = '*';
-            this.txt_contraseña.Size = new System.Drawing.Size(274, 22);
+            this.txt_contraseña.Size = new System.Drawing.Size(274, 27);
             this.txt_contraseña.TabIndex = 70;
             // 
             // txt_usuario
             // 
-            this.txt_usuario.Location = new System.Drawing.Point(544, 97);
+            this.txt_usuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_usuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_usuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_usuario.Location = new System.Drawing.Point(500, 91);
             this.txt_usuario.Margin = new System.Windows.Forms.Padding(4);
             this.txt_usuario.Name = "txt_usuario";
-            this.txt_usuario.Size = new System.Drawing.Size(274, 22);
+            this.txt_usuario.Size = new System.Drawing.Size(274, 27);
             this.txt_usuario.TabIndex = 69;
             // 
             // btn_login
@@ -137,7 +145,7 @@
             this.btn_login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_login.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_login.Location = new System.Drawing.Point(518, 243);
+            this.btn_login.Location = new System.Drawing.Point(474, 243);
             this.btn_login.Margin = new System.Windows.Forms.Padding(4);
             this.btn_login.Name = "btn_login";
             this.btn_login.Size = new System.Drawing.Size(183, 46);
@@ -150,7 +158,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(367, 61);
+            this.pictureBox1.Location = new System.Drawing.Point(323, 61);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(476, 169);
             this.pictureBox1.TabIndex = 79;
@@ -162,7 +170,7 @@
             this.img_logo.Location = new System.Drawing.Point(4, 7);
             this.img_logo.Margin = new System.Windows.Forms.Padding(4);
             this.img_logo.Name = "img_logo";
-            this.img_logo.Size = new System.Drawing.Size(356, 287);
+            this.img_logo.Size = new System.Drawing.Size(316, 287);
             this.img_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.img_logo.TabIndex = 80;
             this.img_logo.TabStop = false;
@@ -173,7 +181,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(797, 11);
+            this.button2.Location = new System.Drawing.Point(753, 11);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -187,7 +195,7 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(367, 7);
+            this.pictureBox2.Location = new System.Drawing.Point(323, 7);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(423, 48);
             this.pictureBox2.TabIndex = 83;
@@ -199,7 +207,7 @@
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label9.Location = new System.Drawing.Point(521, 18);
+            this.label9.Location = new System.Drawing.Point(477, 18);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(143, 25);
@@ -210,7 +218,7 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox3.Location = new System.Drawing.Point(367, 237);
+            this.pictureBox3.Location = new System.Drawing.Point(323, 237);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(476, 57);
             this.pictureBox3.TabIndex = 344;
@@ -222,11 +230,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(853, 307);
+            this.ClientSize = new System.Drawing.Size(804, 301);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.img_logo);
             this.Controls.Add(this.lbl_error_auth);
             this.Controls.Add(this.lbl_error_pass);
             this.Controls.Add(this.lbl_error_user);
@@ -237,6 +244,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btn_login);
             this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.img_logo);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
