@@ -55,9 +55,11 @@ namespace Eterea_Parfums_Desktop
             // Ocultar etiquetas de error
             lbl_error_tipo_promo.Visible = false;
             lbl_error_nombP.Visible = false;
+            lbl_error_desc_promo.Visible = false;
             lbl_error_fecha_iniP.Visible = false;
             lbl_error_fecha_finP.Visible = false;
             lbl_error_promo_act.Visible = false;
+            lbl_error_banner.Visible = false;
 
             //Ocultar el boton para borrar el texto ingresado en la busqueda de promo por nombre
             lbl_borrar_texto.Visible = false;
@@ -359,6 +361,27 @@ namespace Eterea_Parfums_Desktop
 
 
 
+        //Evento para para permitir solo letras, números, espacios y el signo de % en la descripción de la promoción
+
+        private void txt_descripcion_promo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != '%' && e.KeyChar != '\b')
+            {
+                e.Handled = true;
+                MessageBox.Show("Solo se permiten letras, números, espacios y el símbolo %.", "Entrada no válida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
 
         //Método para aplicar el filtro por nombre a la busqueda de perfumes cada vez que se detecte un cambio en el text_box
 
@@ -486,9 +509,11 @@ namespace Eterea_Parfums_Desktop
             // Ocultar etiquetas de error
             lbl_error_tipo_promo.Visible = false;
             lbl_error_nombP.Visible = false;
+            lbl_error_desc_promo.Visible = false;
             lbl_error_fecha_iniP.Visible = false;
             lbl_error_fecha_finP.Visible = false;
             lbl_error_promo_act.Visible = false;
+            lbl_error_banner.Visible = false;
 
 
             // Llamar a los métodos de carga de datos
@@ -553,6 +578,7 @@ namespace Eterea_Parfums_Desktop
             // Asignar los valores de la promoción a los controles del formulario
             txt_nomb_promo.Text = promo.nombre;
             lbl_nomb_promo_edit.Text = promo.nombre;
+            txt_descripcion_promo.Text = promo.descripcion;
 
             // Primero, permitir cualquier fecha (evita restricciones previas)
             dateTime_inicio_promo.MinDate = DateTimePicker.MinimumDateTime;
@@ -869,6 +895,7 @@ namespace Eterea_Parfums_Desktop
             // Obtener los datos de los controles
             KeyValuePair<int, string> tipoPromo = (KeyValuePair<int, string>)combo_tipo_promo.SelectedItem;
             string nombrePromo = txt_nomb_promo.Text;
+            string descripcionPromo = txt_descripcion_promo.Text;
             DateTime fechaInicio = dateTime_inicio_promo.Value;
             DateTime fechaFin = dateTime_fin_promo.Value;
             // Convertir el estado activo en un entero (1 para activo, 0 para no activo)
@@ -879,6 +906,7 @@ namespace Eterea_Parfums_Desktop
             {
                 descuento = tipoPromo.Key,
                 nombre = nombrePromo,
+                descripcion = descripcionPromo,
                 fecha_inicio = fechaInicio,
                 fecha_fin = fechaFin,
                 activo = esActiva
@@ -933,16 +961,16 @@ namespace Eterea_Parfums_Desktop
                 return;
 
             //Se crea el objeto de la promoción a editar
-            /*
-            Promocion promoEditada = new Promocion(idPromo, txt_nomb_promo.Text, dateTime_inicio_promo.Value, dateTime_fin_promo.Value, descuentoClave, activo);
+            
+            Promocion promoEditada = new Promocion(idPromo, txt_nomb_promo.Text, txt_descripcion_promo, dateTime_inicio_promo.Value, dateTime_fin_promo.Value, descuentoClave, activo);
 
             if (PromoControlador.editarPromo(promoEditada))
             {
                 this.DialogResult = DialogResult.OK;
             }
 
-            PromoControlador.editarPromo(promoEditada);
-            */
+            //PromoControlador.editarPromo(promoEditada);
+            
         }
 
 
@@ -1001,14 +1029,14 @@ namespace Eterea_Parfums_Desktop
             }
             else if (txt_nomb_promo.Text.Length < 4 || txt_nomb_promo.Text.Length > 80)
             {
-                errorMsg += "El nombre de la promoción debe tener entre 4 y 80 caracteres." + Environment.NewLine;
-                lbl_error_nombP.Text = "El nombre de la promoción debe tener entre 4 y 80 caracteres.";
+                errorMsg += "El nombre debe tener entre 4 y 80 caracteres." + Environment.NewLine;
+                lbl_error_nombP.Text = "El nombre debe tener entre 4 y 80 caracteres.";
                 lbl_error_nombP.Show();
             }
             else if (txt_nomb_promo.Text.Count(c => c == '%') > 1) // Permite solo un '%'
             {
-                errorMsg += "Solo se permite un símbolo % en el nombre de la promoción." + Environment.NewLine;
-                lbl_error_nombP.Text = "Solo se permite un símbolo % en el nombre de la promoción.";
+                errorMsg += "Solo se permite un símbolo % en el nombre." + Environment.NewLine;
+                lbl_error_nombP.Text = "Solo se permite un símbolo % en el nombre.";
                 lbl_error_nombP.Show();
             }
 
@@ -1016,6 +1044,33 @@ namespace Eterea_Parfums_Desktop
             {
 
                 lbl_error_nombP.Visible = false;
+
+            }
+
+            if (string.IsNullOrEmpty(txt_descripcion_promo.Text))
+            {
+                errorMsg += "Debes ingresar el nombre de la promoción" + Environment.NewLine;
+                lbl_error_desc_promo.Text = "Debes ingresar el nombre de la promoción";
+                lbl_error_desc_promo.Show();
+
+            }
+            else if (txt_descripcion_promo.Text.Length < 4 || txt_nomb_promo.Text.Length > 180)
+            {
+                errorMsg += "La descripción debe tener entre 4 y 180 caracteres." + Environment.NewLine;
+                lbl_error_desc_promo.Text = "La descripción debe tener entre 4 y 180 caracteres.";
+                lbl_error_desc_promo.Show();
+            }
+            else if (txt_descripcion_promo.Text.Count(c => c == '%') > 1) // Permite solo un '%'
+            {
+                errorMsg += "Solo se permite un símbolo % en la descripción." + Environment.NewLine;
+                lbl_error_desc_promo.Text = "Solo se permite un símbolo % en la descripción.";
+                lbl_error_desc_promo.Show();
+            }
+
+            else
+            {
+
+                lbl_error_desc_promo.Visible = false;
 
             }
 
@@ -1195,9 +1250,6 @@ namespace Eterea_Parfums_Desktop
             this.Close(); // Cierra el formulario
         }
 
-        private void pictureBox10_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }
