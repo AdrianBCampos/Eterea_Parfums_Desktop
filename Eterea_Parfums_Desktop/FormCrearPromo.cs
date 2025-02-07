@@ -1195,6 +1195,9 @@ namespace Eterea_Parfums_Desktop
             this.Close(); // Cierra el formulario
         }
 
-     
+        private void pictureBox10_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
