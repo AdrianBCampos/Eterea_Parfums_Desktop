@@ -4,10 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.Modelos;
 
 namespace Eterea_Parfums_Desktop
@@ -18,13 +20,17 @@ namespace Eterea_Parfums_Desktop
         public List<TipoDePerfume> tiposDePerfume;
         public List<Genero> generos;
         public List<Pais> paises;
-        private Image File;
-        private Image File2;
+        private Image imagen1;
+        private Image imagen2;
         private string nombre_foto_uno;
         private string nombre_foto_dos;
-        public Productos()
+        private static readonly Random rnd = new Random(); //genero una sola instancia
+        private PerfumesUC perfumesUC;
+        public Productos(PerfumesUC perfumesUC)
         {
             InitializeComponent();
+            //relaciono el form de productos con el PerfumesUC
+            this.perfumesUC = perfumesUC;
             LblErrorSetVisibleFalse();
             CargarMarcas();
             CargarTiposDePerfume();
@@ -102,6 +108,19 @@ namespace Eterea_Parfums_Desktop
             combo.Items.Add("No");
         }
 
+        internal void guardarNuevaImg()
+        {
+            if (imagen1 != null)
+            {
+                saveImagenResources(out nombre_foto_uno, imagen1);
+            }
+
+            if (imagen2 != null)
+            {
+                saveImagenResources(out nombre_foto_dos, imagen2);
+            }
+
+        }
 
         private void btn_siguiente_Click(object sender, EventArgs e)
         {
@@ -111,20 +130,16 @@ namespace Eterea_Parfums_Desktop
 
             if (validacionDatosPerfume)
             {
-
-                saveImagenResources(out nombre_foto_uno, File);
-                saveImagenResources(out nombre_foto_dos, File2);
-               
                 Perfume perfume = crear();
                 Console.WriteLine(perfume.id);
-                AromaNota aromaNota = new AromaNota(perfume);
-                aromaNota.Show();
                 this.Hide();
+                AromaNota aromaNota = new AromaNota(perfume, this, perfumesUC);
+                aromaNota.Show();
             }
            
         }
 
-        private void saveImagenResources(out string nombreFoto, Image File)
+        private void saveImagenResources(out string nombreFoto, Image imagen)
         {
             try
             {
@@ -132,7 +147,7 @@ namespace Eterea_Parfums_Desktop
                 int numero_aleatorio = numeroAleatorio();
                 Console.WriteLine(numero_aleatorio);
                 nombreFoto = txt_nombre.Text + numero_aleatorio + "-envase.jpg";
-                File.Save(Program.Ruta_Base + nombreFoto, System.Drawing.Imaging.ImageFormat.Jpeg);
+                imagen.Save(Program.Ruta_Base + nombreFoto, System.Drawing.Imaging.ImageFormat.Jpeg);
             }
             catch (Exception ex)
             {
@@ -143,15 +158,12 @@ namespace Eterea_Parfums_Desktop
 
         private int numeroAleatorio()
         {
-            Random rnd = new Random();
-            int numero = rnd.Next(1000, 9999);
-            return numero;
+            return  rnd.Next(1000, 9999);
         }
 
 
-        private Perfume crear()
+        internal Perfume crear()
         {
-            // ACA ANTES DE EJECUTAR CUALQUIER COSA, TIENEN QUE HACERSE LAS VALIDACIONES...
             int spray = 0;
             if (combo_spray.SelectedItem.ToString() == "Si")
             {
@@ -183,61 +195,45 @@ namespace Eterea_Parfums_Desktop
                 genero, int.Parse(txt_presentacion.Text), pais, spray, recargable, txt_descripcion.Text,
                 int.Parse(txt_anio_de_lanzamiento.Text), Double.Parse(txt_precio.Text), activo, nombre_foto_uno, nombre_foto_dos);
 
-
-
-
-            if (PerfumeControlador.create(perfume))
-            {
-                this.DialogResult = DialogResult.OK;
-            }
-
             return perfume;
 
         }
-
-        private bool EsCodigoBarraCODE128Valido(string codigo)
+        private bool EsCodigoBarraPerfumeValido(string codigo)
         {
-            // Validar que no esté vacío
-            if (string.IsNullOrEmpty(codigo))
+            if (string.IsNullOrEmpty(codigo) || codigo.Length != 13 || !codigo.All(char.IsDigit))
             {
                 return false;
             }
-
-            // Validar longitud mínima (CODE128 puede variar según el contenido)
-            if (codigo.Length < 1 || codigo.Length > 128) // Longitud típica entre 1 y 128
-            {
-                return false;
-            }
-
-            // Validar que solo contenga caracteres permitidos (ASCII 0-127)
-            foreach (char c in codigo)
-            {
-                if (c < 32 || c > 126) // Incluye caracteres ASCII imprimibles
-                {
-                    return false;
-                }
-            }
-
+            //return ValidarEAN13(codigo);
             return true;
+        }
+
+        private bool ValidarEAN13(string codigo)
+        {
+            int suma = 0;
+            for (int i = 0; i < 12; i++)
+            {
+                int digito = codigo[i] - '0';
+                suma += (i % 2 == 0) ? digito : digito * 3;
+            }
+            int digitoControlEsperado = (10 - (suma % 10)) % 10;
+            int digitoControlReal = codigo[12] - '0';
+
+            return digitoControlEsperado == digitoControlReal;
         }
 
         private bool ValidarPerfume()
         {
       
             string errorMsg = "";
+            if (!EsCodigoBarraPerfumeValido(txt_codigo.Text))
+            {
+                errorMsg += "El código no es válido. Debe ser un código EAN-13 correcto.\n";
+                lbl_error_codigo.Text = "El código no es válido. Debe tener 13 dígitos.";
+                lbl_error_codigo.Show();
+            }
+            else lbl_error_codigo.Visible = false;
 
-            if (string.IsNullOrEmpty(txt_codigo.Text))
-            {
-                errorMsg += "Debes ingresar el código CODE128" + Environment.NewLine;
-                lbl_error_codigo.Text = "Debes ingresar el código CODE128";
-                lbl_error_codigo.Show();
-            }
-            else if (!EsCodigoBarraCODE128Valido(txt_codigo.Text))
-            {
-                errorMsg += "El código CODE128 es inválido. Verifique su formato." + Environment.NewLine;
-                lbl_error_codigo.Text = "El código CODE128 es inválido. Verifique su formato.";
-                lbl_error_codigo.Show();
-            }
 
             if (combo_marca.SelectedItem == null || string.IsNullOrEmpty(combo_marca.Text))
             {
@@ -463,8 +459,8 @@ namespace Eterea_Parfums_Desktop
             ofd.Filter = "JPG(*.JPG)|*.JPG|PNG(*.png)|*.png";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                File = Image.FromFile(ofd.FileName);
-                pictureBoxProducto1.Image = File;
+                imagen1 = Image.FromFile(ofd.FileName);
+                pictureBoxProducto1.Image = imagen1;
 
             }
         }
@@ -475,8 +471,8 @@ namespace Eterea_Parfums_Desktop
             ofd.Filter = "JPG(*.JPG)|*.JPG|PNG(*.png)|*.png";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                File2 = Image.FromFile(ofd.FileName);
-                pictureBoxProducto2.Image = File2;
+                imagen2 = Image.FromFile(ofd.FileName);
+                pictureBoxProducto2.Image = imagen2;
 
             }
         }

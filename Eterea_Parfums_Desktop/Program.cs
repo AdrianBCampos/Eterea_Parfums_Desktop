@@ -21,7 +21,7 @@ namespace Eterea_Parfums_Desktop
 
         public static String Ruta_Base;
         public static String Ruta_Web;
-        public static String entorno = "adri";
+        public static String entorno = "jose";
 
         [STAThread]
         static void Main()
@@ -75,9 +75,13 @@ namespace Eterea_Parfums_Desktop
                         Ruta_Base = @"C:\Users\intersan\Desktop\TESIS\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
                         Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
                         break;
-                    case "maxi":
-                        Ruta_Base = @"C:\Users\Maxi\source\repos";
-                        Ruta_Web = @"C:\Users\Maxi\source\repos\Eterea_Parfums_Desktop\Resources\";
+                    case "luis":
+                        Ruta_Base = @"C:\Users\josel\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                        Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
+                        break;
+                case "maxi":
+                        Ruta_Base = @"C:\Users\usuario\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                        Ruta_Web = @"C:\Users\usuario\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
                         break;
                     default:
                         MessageBox.Show("Usuario no válido, no se configuraron rutas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -101,6 +105,7 @@ namespace Eterea_Parfums_Desktop
 
             //Application.Run(new FormCrearPromo());
             Application.Run(new InicioAutoConsultas());
+          
         }
 
         public static bool connectionIsValid()

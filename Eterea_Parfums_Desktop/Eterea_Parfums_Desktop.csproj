@@ -77,6 +77,7 @@
     <Compile Include="Controladores\AromaDelPerfumeControlador.cs" />
     <Compile Include="Controladores\CalleControlador.cs" />
     <Compile Include="Controladores\ClienteControlador.cs" />
+    <Compile Include="Controladores\FacturaControlador.cs" />
     <Compile Include="Controladores\GeneroControlador.cs" />
     <Compile Include="Controladores\LocalidadControlador.cs" />
     <Compile Include="Controladores\MarcaControlador.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Controladores\PerfumeEnPromoControlador.cs" />
     <Compile Include="Controladores\PromoControlador.cs" />
     <Compile Include="Controladores\ProvinciaControlador.cs" />
+    <Compile Include="Controladores\StockControlador.cs" />
     <Compile Include="Controladores\TipoDeAromaControlador.cs" />
     <Compile Include="Controladores\TipoDeNotaControlador.cs" />
     <Compile Include="Controladores\TipoDePerfumeControlador.cs" />
@@ -222,6 +224,7 @@
     <Compile Include="Modelos\AromaDelPerfume.cs" />
     <Compile Include="Modelos\Calle.cs" />
     <Compile Include="Modelos\Cliente.cs" />
+    <Compile Include="Modelos\Factura.cs" />
     <Compile Include="Modelos\Genero.cs" />
     <Compile Include="Modelos\Localidad.cs" />
     <Compile Include="Modelos\Marca.cs" />

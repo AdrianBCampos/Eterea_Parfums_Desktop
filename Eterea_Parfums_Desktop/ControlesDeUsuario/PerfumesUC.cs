@@ -20,24 +20,26 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         public PerfumesUC()
         {
             InitializeComponent();
+            txt_buscar_codigo.MaxLength = 13;
+            txt_buscar_codigo.KeyPress += txt_buscar_codigo_KeyPress;
+            txt_buscar_codigo.TextChanged += txt_buscar_codigo_TextChanged;
             cargarPerfumes();
         }
 
         private void btn_crear_perfume_Click(object sender, EventArgs e)
         {
-            Productos productos = new Productos();
+            Productos productos = new Productos(this);
             productos.Show();
-            this.Hide();
         }
 
-        private void cargarPerfumes()
+        internal void cargarPerfumes(string filtroPerfume = "")
         {
             perfumes = PerfumeControlador.getAll();
 
             dataGridViewPerfumes.Rows.Clear();
             foreach (Perfume perfume in perfumes)
             {
-                if (perfume.activo == 1)
+                if (perfume.activo == 1 && (string.IsNullOrEmpty(filtroPerfume) || perfume.codigo.Contains(filtroPerfume)))
                 {
                     int rowIndex = dataGridViewPerfumes.Rows.Add();
 
@@ -109,22 +111,14 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 Genero genero = GeneroControlador.getById(perfume_editar.genero.id);
                 Pais pais = PaisControlador.getById(perfume_editar.pais.id);
                 perfume_editar = new Perfume(perfume_editar.id, perfume_editar.codigo, marca, perfume_editar.nombre, tipo_de_perfume, genero, perfume_editar.presentacion_ml, pais, perfume_editar.spray, perfume_editar.recargable, perfume_editar.descripcion, perfume_editar.anio_de_lanzamiento, perfume_editar.precio_en_pesos, perfume_editar.activo, perfume_editar.imagen1, perfume_editar.imagen2);
-                EditarProducto formEditarProductoABM = new EditarProducto(perfume_editar);
-
-                DialogResult dr = formEditarProductoABM.ShowDialog();
-
-                if (dr == DialogResult.OK)
-                {
-                    Trace.WriteLine("OK");
-
-                    //ACTUALIZAR LA LISTA
-                    cargarPerfumes();
-
-                }
+                EditarProducto formEditarProductoABM = new EditarProducto(perfume_editar, this);
+                //ACTUALIZAR LA LISTA
+                cargarPerfumes();
+                formEditarProductoABM.Show();
             }
 
 
-            if (senderGrid.Columns[e.ColumnIndex].Name == "Eliminar")
+            else if (senderGrid.Columns[e.ColumnIndex].Name == "Eliminar")
             {
                 //ELIMINAMOS
             
@@ -141,6 +135,20 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             }
 
         }
-    
+
+        private void txt_buscar_codigo_TextChanged(object sender, EventArgs e)
+        {
+            string filtroCodigo = txt_buscar_codigo.Text.Trim();
+            cargarPerfumes(filtroCodigo);
+
+        }
+
+        private void txt_buscar_codigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignorar entrada no válida
+            }
+        }
     }
 }

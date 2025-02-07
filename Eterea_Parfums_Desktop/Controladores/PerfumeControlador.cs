@@ -11,39 +11,28 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Perfume> getAll()
         {
             List<Perfume> lista_perfumes = new List<Perfume>();
-
-            Marca marca = null;
-            TipoDePerfume tipo_de_perfume = null;
-            Genero genero = null;
-            Pais pais = null;
-            string query = null;
-
+            string query = "select * from dbo.perfume;";
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             try
             {
-                query = "select * from dbo.perfume;";
-                SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
                 DB_Controller.connection.Open();
                 SqlDataReader r = cmd.ExecuteReader();
 
                 while (r.Read())
                 {
 
-                    marca = new Marca(r.GetInt32(2), null);
-                    tipo_de_perfume = new TipoDePerfume(r.GetInt32(4), null);
-                    genero = new Genero(r.GetInt32(5), null);
-                    pais = new Pais(r.GetInt32(7), null);
+                    Marca marca = new Marca(r.GetInt32(2), null);
+                    TipoDePerfume tipo_de_perfume = new TipoDePerfume(r.GetInt32(4), null);
+                    Genero genero = new Genero(r.GetInt32(5), null);
+                    Pais pais = new Pais(r.GetInt32(7), null);
 
 
                     if (r.GetInt32(13) == 1)
                     {
-
-                        //string cod1 = r.GetInt64(1).ToString();
-
                         lista_perfumes.Add(new Perfume(r.GetInt32(0), r.GetString(1), marca, r.GetString(3),
                         tipo_de_perfume, genero, r.GetInt32(6), pais,
                         r.GetInt32(8), r.GetInt32(9), r.GetString(10), r.GetInt32(11), r.GetDouble(12),
                         r.GetInt32(13), r.GetString(14), r.GetString(15)));
-                        //Trace.WriteLine("Perfume encontrado, nombre: " + cod1);
                     }
 
 
@@ -65,7 +54,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
 
 
-            string query = "insert into dbo.perfume values " +
+            string query = "insert into dbo.perfume values" +
                  "(@id, " +
                 "@codigo, " +
                 "@marca, " +
@@ -90,7 +79,6 @@ namespace Eterea_Parfums_Desktop.Controladores
             cmd.Parameters.AddWithValue("@marca", perfume.marca.id);
             cmd.Parameters.AddWithValue("@nombre", perfume.nombre);
             cmd.Parameters.AddWithValue("@tipo_de_perfume", perfume.tipo_de_perfume.id);
-
             cmd.Parameters.AddWithValue("@genero", perfume.genero.id);
             cmd.Parameters.AddWithValue("@presentacion_ml", perfume.presentacion_ml);
             cmd.Parameters.AddWithValue("@pais", perfume.pais.id);
@@ -109,29 +97,19 @@ namespace Eterea_Parfums_Desktop.Controladores
 
                 DB_Controller.connection.Open();
                 cmd.ExecuteNonQuery();
+                DB_Controller.connection.Close();
                 return true;
             }
             catch (Exception e)
             {
+                throw new Exception("Hay un error en la query: " + e.Message);
 
-                //throw new Exception("Hay un error en la query: " + e.Message);
-                Trace.WriteLine(e.Message);
-                return false;
-            }
-            finally
-            {
-                cmd.Parameters.Clear();
-                DB_Controller.connection.Close();
             }
         }
 
 
         public static Perfume getByID(int id)
         {
-            Marca marca = null;
-            TipoDePerfume tipo_de_perfume = null;
-            Genero genero = null;
-            Pais pais = null;
             Perfume perfume = new Perfume();
             string query = "select * from dbo.perfume where id = @id;";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
@@ -142,14 +120,26 @@ namespace Eterea_Parfums_Desktop.Controladores
                 SqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
-                    marca = new Marca(r.GetInt32(2), null);
-                    tipo_de_perfume = new TipoDePerfume(r.GetInt32(4), null);
-                    genero = new Genero(r.GetInt32(5), null);
-                    pais = new Pais(r.GetInt32(7), null);
-                    perfume = new Perfume(r.GetInt32(0), r.GetString(1), marca, r.GetString(3),
-                        tipo_de_perfume, genero, r.GetInt32(6), pais,
-                        r.GetInt32(8), r.GetInt32(9), r.GetString(10), r.GetInt32(11), r.GetDouble(12),
-                        r.GetInt32(13), r.GetString(14), r.GetString(15));
+                    Marca marca = new Marca(r.GetInt32(2), null);
+                    TipoDePerfume tipo_de_perfume = new TipoDePerfume(r.GetInt32(4), null);
+                    Genero genero = new Genero(r.GetInt32(5), null);
+                    Pais pais = new Pais(r.GetInt32(7), null);
+                    perfume.id = r.GetInt32(0);
+                    perfume.codigo = r.GetString(1);
+                    perfume.marca = marca;
+                    perfume.nombre = r.GetString(3);
+                    perfume.tipo_de_perfume = tipo_de_perfume;
+                    perfume.genero = genero;
+                    perfume.presentacion_ml = r.GetInt32(6);
+                    perfume.pais = pais;
+                    perfume.spray = r.GetInt32(8);
+                    perfume.recargable = r.GetInt32(9);
+                    perfume.descripcion = r.GetString(10);
+                    perfume.anio_de_lanzamiento = r.GetInt32(11);
+                    perfume.precio_en_pesos = r.GetDouble(12);
+                    perfume.activo = r.GetInt32(13);
+                    perfume.imagen1 = r.GetString(14);
+                    perfume.imagen2 = r.GetString(15);
                 }
                 r.Close();
 
@@ -166,6 +156,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             return perfume;
         }
 
+        //GET ONE ByMaxId
         public static int GetByMaxId()
         {
             int MaxId = 0;
@@ -182,20 +173,14 @@ namespace Eterea_Parfums_Desktop.Controladores
                 }
 
                 r.Close();
-
-
+                DB_Controller.connection.Close();
+                return MaxId;
             }
             catch (Exception e)
             {
-                Trace.WriteLine("Error al consultar la DB: " + e.Message);
-            }
-            finally
-            {
-
-                DB_Controller.connection.Close();
+                throw new Exception("Hay un error en la query: " + e.Message);
             }
 
-            return MaxId;
         }
 
         public static bool update(Perfume perfume)
@@ -337,6 +322,54 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             }
             return list;
+        }
+
+        public static Perfume getByCodigo(string codigo)
+        {
+            Perfume perfume = new Perfume();
+            string query = "select * from dbo.perfume where codigo = @codigo;";
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+            cmd.Parameters.AddWithValue("@codigo", codigo);
+            try
+            {
+                DB_Controller.connection.Open();
+                SqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    Marca marca = new Marca(r.GetInt32(2), null);
+                    TipoDePerfume tipo_de_perfume = new TipoDePerfume(r.GetInt32(4), null);
+                    Genero genero = new Genero(r.GetInt32(5), null);
+                    Pais pais = new Pais(r.GetInt32(7), null);
+                    perfume.id = r.GetInt32(0);
+                    perfume.codigo = r.GetString(1);
+                    perfume.marca = marca;
+                    perfume.nombre = r.GetString(3);
+                    perfume.tipo_de_perfume = tipo_de_perfume;
+                    perfume.genero = genero;
+                    perfume.presentacion_ml = r.GetInt32(6);
+                    perfume.pais = pais;
+                    perfume.spray = r.GetInt32(8);
+                    perfume.recargable = r.GetInt32(9);
+                    perfume.descripcion = r.GetString(10);
+                    perfume.anio_de_lanzamiento = r.GetInt32(11);
+                    perfume.precio_en_pesos = r.GetDouble(12);
+                    perfume.activo = r.GetInt32(13);
+                    perfume.imagen1 = r.GetString(14);
+                    perfume.imagen2 = r.GetString(15);
+                }
+                r.Close();
+
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception("Hay un error en la query: " + e.Message);
+            }
+            finally
+            {
+                DB_Controller.connection.Close();
+            }
+            return perfume;
         }
     }
 }

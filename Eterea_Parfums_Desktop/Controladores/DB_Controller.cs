@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
 
+
 namespace Eterea_Parfums_Desktop.Controladores
 {
     public static class DB_Controller
@@ -12,14 +13,20 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         /*public static void initialize()
         {
-            var builder = new SqlConnectionStringBuilder();
+            // Lista de posibles nombres de servidores
+            List<string> serverNames = new List<string>
+            {
+                @"(localdb)\Local",
+                @"LocalHost",
+                @"DESKTOP-N6TI9JV\MSSQLSERVER02"
+            };
 
             builder.DataSource = @"(localdb)\Local";  //NOMBRE DEL SERVIDOR
             builder.InitialCatalog = "eterea";  //NOMBRE DE LA BASE DE DATOS
             builder.IntegratedSecurity = true;  //TIENE O NO SEGURIDAD INTEGRADA CON WINDOWS
 
-            connectionString = builder.ToString();
-            connection = new SqlConnection(connectionString);
+                    connectionString = builder.ToString();
+                    connection = new SqlConnection(connectionString);
 
             Trace.WriteLine("Conexion a la BD: " + connection);
         }*/
@@ -42,7 +49,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                     connectionString = "Data Source=LocalHost;Initial Catalog=eterea;Integrated Security=True;";
                     break;
                 case "Maxi":
-                    connectionString = "Data Source=DESKTOP-N6TI9JV\\MSSQLSERVER02;Initial Catalog=eterea;Integrated Security=True;";
+                    connectionString = "Data Source=(localdb)\\Local;Initial Catalog=eterea;Integrated Security=True;";
                     break;
                 case "Marino":
                     connectionString = "Data Source=(localdb)\\Local;Initial Catalog=eterea;Integrated Security=True;";

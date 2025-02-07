@@ -56,9 +56,10 @@
             this.btn_facturacion = new System.Windows.Forms.Button();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.agregar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ver = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Agregar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsultas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -84,7 +85,7 @@
             this.lbl_numero_caja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_numero_caja.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_numero_caja.ForeColor = System.Drawing.Color.Black;
-            this.lbl_numero_caja.Location = new System.Drawing.Point(133, 93);
+            this.lbl_numero_caja.Location = new System.Drawing.Point(133, 94);
             this.lbl_numero_caja.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_numero_caja.Name = "lbl_numero_caja";
             this.lbl_numero_caja.Size = new System.Drawing.Size(85, 24);
@@ -136,11 +137,11 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(1058, 12);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Location = new System.Drawing.Point(1059, 12);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(46, 40);
+            this.button2.Size = new System.Drawing.Size(45, 39);
             this.button2.TabIndex = 111;
             this.button2.Text = "X";
             this.button2.UseVisualStyleBackColor = false;
@@ -148,8 +149,8 @@
             // 
             // img_logo
             // 
-            this.img_logo.Location = new System.Drawing.Point(10, 12);
-            this.img_logo.Margin = new System.Windows.Forms.Padding(4);
+            this.img_logo.Location = new System.Drawing.Point(11, 12);
+            this.img_logo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.img_logo.Name = "img_logo";
             this.img_logo.Size = new System.Drawing.Size(115, 106);
             this.img_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -162,9 +163,9 @@
             this.btn_posterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_posterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_posterior.Location = new System.Drawing.Point(1045, 634);
-            this.btn_posterior.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_posterior.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_posterior.Name = "btn_posterior";
-            this.btn_posterior.Size = new System.Drawing.Size(42, 39);
+            this.btn_posterior.Size = new System.Drawing.Size(43, 39);
             this.btn_posterior.TabIndex = 307;
             this.btn_posterior.Text = ">>";
             this.btn_posterior.UseVisualStyleBackColor = false;
@@ -176,9 +177,9 @@
             this.btn_anterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_anterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_anterior.Location = new System.Drawing.Point(921, 635);
-            this.btn_anterior.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_anterior.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_anterior.Name = "btn_anterior";
-            this.btn_anterior.Size = new System.Drawing.Size(42, 39);
+            this.btn_anterior.Size = new System.Drawing.Size(43, 39);
             this.btn_anterior.TabIndex = 306;
             this.btn_anterior.Text = "<<";
             this.btn_anterior.UseVisualStyleBackColor = false;
@@ -235,9 +236,10 @@
             this.dataGridViewConsultas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nombre,
             this.marca,
-            this.Genero,
+            this.genero,
             this.precio,
-            this.agregar});
+            this.ver,
+            this.Agregar});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -248,8 +250,8 @@
             this.dataGridViewConsultas.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewConsultas.EnableHeadersVisualStyles = false;
             this.dataGridViewConsultas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.dataGridViewConsultas.Location = new System.Drawing.Point(28, 237);
-            this.dataGridViewConsultas.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridViewConsultas.Location = new System.Drawing.Point(28, 238);
+            this.dataGridViewConsultas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridViewConsultas.Name = "dataGridViewConsultas";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
@@ -266,7 +268,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridViewConsultas.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewConsultas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewConsultas.Size = new System.Drawing.Size(1059, 387);
+            this.dataGridViewConsultas.Size = new System.Drawing.Size(1059, 386);
             this.dataGridViewConsultas.TabIndex = 303;
             this.dataGridViewConsultas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewConsultas_CellContentClick_1);
             // 
@@ -275,6 +277,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox2.Location = new System.Drawing.Point(12, 219);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(1092, 466);
             this.pictureBox2.TabIndex = 302;
@@ -284,7 +287,7 @@
             // 
             this.lbl_filtro_genero.AutoSize = true;
             this.lbl_filtro_genero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_filtro_genero.Location = new System.Drawing.Point(842, 145);
+            this.lbl_filtro_genero.Location = new System.Drawing.Point(843, 145);
             this.lbl_filtro_genero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_filtro_genero.Name = "lbl_filtro_genero";
             this.lbl_filtro_genero.Size = new System.Drawing.Size(112, 16);
@@ -294,10 +297,10 @@
             // combo_filtro_genero
             // 
             this.combo_filtro_genero.FormattingEnabled = true;
-            this.combo_filtro_genero.Location = new System.Drawing.Point(846, 164);
-            this.combo_filtro_genero.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_filtro_genero.Location = new System.Drawing.Point(845, 164);
+            this.combo_filtro_genero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.combo_filtro_genero.Name = "combo_filtro_genero";
-            this.combo_filtro_genero.Size = new System.Drawing.Size(198, 24);
+            this.combo_filtro_genero.Size = new System.Drawing.Size(199, 24);
             this.combo_filtro_genero.TabIndex = 300;
             this.combo_filtro_genero.SelectedIndexChanged += new System.EventHandler(this.combo_filtro_genero_SelectedIndexChanged_1);
             // 
@@ -305,7 +308,7 @@
             // 
             this.lbl_filtro_marca.AutoSize = true;
             this.lbl_filtro_marca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_filtro_marca.Location = new System.Drawing.Point(558, 145);
+            this.lbl_filtro_marca.Location = new System.Drawing.Point(557, 145);
             this.lbl_filtro_marca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_filtro_marca.Name = "lbl_filtro_marca";
             this.lbl_filtro_marca.Size = new System.Drawing.Size(107, 16);
@@ -316,9 +319,9 @@
             // 
             this.combo_filtro_marca.FormattingEnabled = true;
             this.combo_filtro_marca.Location = new System.Drawing.Point(561, 164);
-            this.combo_filtro_marca.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_filtro_marca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.combo_filtro_marca.Name = "combo_filtro_marca";
-            this.combo_filtro_marca.Size = new System.Drawing.Size(198, 24);
+            this.combo_filtro_marca.Size = new System.Drawing.Size(199, 24);
             this.combo_filtro_marca.TabIndex = 298;
             this.combo_filtro_marca.SelectedIndexChanged += new System.EventHandler(this.combo_filtro_marca_SelectedIndexChanged_1);
             // 
@@ -326,7 +329,7 @@
             // 
             this.lbl_filtro_nombre.AutoSize = true;
             this.lbl_filtro_nombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_filtro_nombre.Location = new System.Drawing.Point(31, 147);
+            this.lbl_filtro_nombre.Location = new System.Drawing.Point(31, 146);
             this.lbl_filtro_nombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_filtro_nombre.Name = "lbl_filtro_nombre";
             this.lbl_filtro_nombre.Size = new System.Drawing.Size(124, 16);
@@ -336,7 +339,7 @@
             // txt_filtro_nombre
             // 
             this.txt_filtro_nombre.Location = new System.Drawing.Point(31, 166);
-            this.txt_filtro_nombre.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_filtro_nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_filtro_nombre.Name = "txt_filtro_nombre";
             this.txt_filtro_nombre.Size = new System.Drawing.Size(425, 22);
             this.txt_filtro_nombre.TabIndex = 296;
@@ -347,6 +350,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Location = new System.Drawing.Point(12, 128);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1092, 85);
             this.pictureBox1.TabIndex = 295;
@@ -357,8 +361,8 @@
             this.btn_facturacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_facturacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_facturacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_facturacion.Location = new System.Drawing.Point(446, 703);
-            this.btn_facturacion.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_facturacion.Location = new System.Drawing.Point(445, 703);
+            this.btn_facturacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_facturacion.Name = "btn_facturacion";
             this.btn_facturacion.Size = new System.Drawing.Size(219, 46);
             this.btn_facturacion.TabIndex = 308;
@@ -368,23 +372,23 @@
             // 
             // nombre
             // 
-            this.nombre.FillWeight = 125F;
+            this.nombre.FillWeight = 138.5417F;
             this.nombre.HeaderText = "Nombre del perfume";
             this.nombre.MinimumWidth = 6;
             this.nombre.Name = "nombre";
             // 
             // marca
             // 
-            this.marca.FillWeight = 125F;
+            this.marca.FillWeight = 138.5417F;
             this.marca.HeaderText = "Marca";
             this.marca.MinimumWidth = 6;
             this.marca.Name = "marca";
             // 
-            // Genero
+            // genero
             // 
-            this.Genero.HeaderText = "Genero";
-            this.Genero.MinimumWidth = 6;
-            this.Genero.Name = "Genero";
+            this.genero.HeaderText = "Genero";
+            this.genero.MinimumWidth = 6;
+            this.genero.Name = "genero";
             // 
             // precio
             // 
@@ -394,12 +398,24 @@
             this.precio.Name = "precio";
             this.precio.Width = 97;
             // 
-            // agregar
+            // ver
             // 
-            this.agregar.FillWeight = 50F;
-            this.agregar.HeaderText = "Ver mas";
-            this.agregar.MinimumWidth = 6;
-            this.agregar.Name = "agregar";
+            this.ver.FillWeight = 55.41667F;
+            this.ver.HeaderText = "Ver mas";
+            this.ver.MinimumWidth = 6;
+            this.ver.Name = "ver";
+            // 
+            // Agregar
+            // 
+            this.Agregar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Agregar.FillWeight = 55.41667F;
+            this.Agregar.HeaderText = "";
+            this.Agregar.MinimumWidth = 6;
+            this.Agregar.Name = "Agregar";
+            this.Agregar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Agregar.Text = "Agregar";
+            this.Agregar.UseColumnTextForButtonValue = true;
+            this.Agregar.Width = 21;
             // 
             // ConsultasPerfumeEmpleado
             // 
@@ -428,6 +444,7 @@
             this.Controls.Add(this.lbl_consultas);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.img_logo);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ConsultasPerfumeEmpleado";
             this.Text = "ConsultasPerfumeEmpleado";
             this.Load += new System.EventHandler(this.ConsultasPerfumeEmpleado_Load);
@@ -465,8 +482,9 @@
         private System.Windows.Forms.Button btn_facturacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn marca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Genero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genero;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio;
-        private System.Windows.Forms.DataGridViewButtonColumn agregar;
+        private System.Windows.Forms.DataGridViewButtonColumn ver;
+        private System.Windows.Forms.DataGridViewButtonColumn Agregar;
     }
 }

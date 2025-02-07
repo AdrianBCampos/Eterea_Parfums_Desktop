@@ -14,9 +14,9 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             List<TipoDeNota> tipo_de_notas = new List<TipoDeNota>();
             string query = "SELECT * FROM dbo.tipo_de_nota";
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             try
             {
-                SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
                 DB_Controller.connection.Open();
                 SqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
@@ -35,17 +35,18 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         public static TipoDeNota getById(int id)
         {
-            TipoDeNota tipo_de_nota = null;
+            TipoDeNota tipo_de_nota = new TipoDeNota();
             string query = "SELECT * FROM dbo.tipo_de_nota WHERE id = @id";
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             try
             {
-                SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
                 cmd.Parameters.AddWithValue("@id", id);
                 DB_Controller.connection.Open();
                 SqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
-                    tipo_de_nota = new TipoDeNota(r.GetInt32(0), r.GetString(1));
+                    tipo_de_nota.id = r.GetInt32(0);
+                    tipo_de_nota.nombre_tipo_de_nota = r.GetString(1);
                 }
                 r.Close();
                 DB_Controller.connection.Close();
@@ -59,17 +60,18 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         public static TipoDeNota getByNombre(string nombre)
         {
-            TipoDeNota tipo_de_nota = null;
+            TipoDeNota tipo_de_nota = new TipoDeNota();
             string query = "SELECT * FROM dbo.tipo_de_nota WHERE nombre = @nombre";
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             try
             {
-                SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
                 cmd.Parameters.AddWithValue("@nombre", nombre);
                 DB_Controller.connection.Open();
                 SqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
-                    tipo_de_nota = new TipoDeNota(r.GetInt32(0), r.GetString(1));
+                    tipo_de_nota.id = r.GetInt32(0);
+                    tipo_de_nota.nombre_tipo_de_nota = r.GetString(1);
                 }
                 r.Close();
                 DB_Controller.connection.Close();

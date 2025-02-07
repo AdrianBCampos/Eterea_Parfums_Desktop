@@ -37,7 +37,7 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
-            string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";
+            string rutaCompletaImagen = Program.Ruta_Base + @"Diseño Logo2.png";
             img_logo.Image = Image.FromFile(rutaCompletaImagen);
 
             Perfumes_Completo = PerfumeControlador.getAll();
@@ -52,6 +52,16 @@ namespace Eterea_Parfums_Desktop
 
             this.KeyPreview = true;
             btn_iniciar_sesion.Visible = false;
+
+
+            //Diseño del combo box
+            combo_filtro_genero.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_filtro_genero.DrawItem += comboBoxdiseño_DrawItem;
+            combo_filtro_genero.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_filtro_marca.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_filtro_marca.DrawItem += comboBoxdiseño_DrawItem;
+            combo_filtro_marca.DropDownStyle = ComboBoxStyle.DropDownList;          
         }
        
         private void InicioAutoConsultas_KeyDown_1(object sender, KeyEventArgs e)
@@ -256,6 +266,8 @@ namespace Eterea_Parfums_Desktop
             }            
         }
 
+
+        //Diseño del boton del datagridview
         private void dataGridViewConsultas_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.ColumnIndex >= 0 && e.RowIndex >= 0 && dataGridViewConsultas.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
@@ -280,6 +292,47 @@ namespace Eterea_Parfums_Desktop
                 TextRenderer.DrawText(e.Graphics, (string)e.Value, e.CellStyle.Font, buttonRect, textColor,
                                       TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
             }
+        }
+
+
+        //Diseño del combo box
+        private void comboBoxdiseño_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0)
+                return;
+
+            // Obtener el ComboBox y el texto del ítem actual
+            ComboBox combo = sender as ComboBox;
+            string text = combo.Items[e.Index].ToString();
+
+            // Definir colores personalizados
+            Color backgroundColor;
+            Color textColor;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                // Color cuando el ítem está seleccionado
+                backgroundColor = Color.FromArgb(195, 156, 164);
+                textColor = Color.White;
+            }
+            else
+            {
+                // Color cuando el ítem NO está seleccionado
+                backgroundColor = Color.FromArgb(250, 236, 239); // Color personalizado
+                textColor = Color.FromArgb(195, 156, 164);
+            }
+
+            // Pintar el fondo del ítem
+            using (SolidBrush brush = new SolidBrush(backgroundColor))
+            {
+                e.Graphics.FillRectangle(brush, e.Bounds);
+            }
+
+            // Dibujar el texto
+            TextRenderer.DrawText(e.Graphics, text, e.Font, e.Bounds, textColor, TextFormatFlags.Left);
+
+            // Evitar problemas visuales
+            e.DrawFocusRectangle();
         }
 
         private void btn_iniciar_sesion_Click(object sender, EventArgs e)

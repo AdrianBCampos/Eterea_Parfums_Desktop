@@ -147,7 +147,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Promocion> getByIDPerfume(int idPerfume)
         {
             string query = @"
-            SELECT p.id, p.nombre, p.fecha_inicio, p.fecha_fin, p.descuento, p.activo 
+            SELECT p.id, p.nombre, p.fecha_inicio, p.fecha_fin, p.descuento, p.activo, p.descripcion, p.banner
             FROM promocion p
             INNER JOIN perfumes_en_promo pep ON p.id = pep.promocion_id
             WHERE pep.perfume_id = @idPerfume";
@@ -164,7 +164,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
                 while (r.Read())
                 {
-                    listaPromociones.Add(new Promocion(r.GetInt32(0), r.GetString(1), r.GetDateTime(2), r.GetDateTime(3), r.GetInt32(4), r.GetInt32(5)));
+                    listaPromociones.Add(new Promocion(r.GetInt32(0), r.GetString(1), r.GetDateTime(2), r.GetDateTime(3), r.GetInt32(4), r.GetInt32(5), r.GetString(6), r.GetString(7)));
                 }
                 r.Close();
                 DB_Controller.connection.Close();

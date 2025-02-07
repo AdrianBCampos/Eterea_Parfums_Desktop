@@ -14,9 +14,9 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             List<Nota> notas = new List<Nota>();
             string query = "SELECT * FROM dbo.nota";
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             try
-            {
-                SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+            {        
                 DB_Controller.connection.Open();
                 SqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
@@ -37,15 +37,16 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             Nota nota = new Nota();
             string query = "SELECT * FROM dbo.nota WHERE id = @id";
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             try
-            {
-                SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+            {             
                 cmd.Parameters.AddWithValue("@id", id);
                 DB_Controller.connection.Open();
                 SqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
-                    nota = new Nota(r.GetInt32(0), r.GetString(1));
+                    nota.id = r.GetInt32(0);
+                    nota.nombre = r.GetString(1);
                 }
                 r.Close();
                 DB_Controller.connection.Close();
@@ -61,15 +62,16 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             Nota nota = new Nota();
             string query = "SELECT * FROM dbo.nota WHERE nombre = @nombre";
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             try
             {
-                SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
                 cmd.Parameters.AddWithValue("@nombre", nombre);
                 DB_Controller.connection.Open();
                 SqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
                 {
-                    nota = new Nota(r.GetInt32(0), r.GetString(1));
+                    nota.id = r.GetInt32(0);
+                    nota.nombre = r.GetString(1);
                 }
                 r.Close();
                 DB_Controller.connection.Close();
