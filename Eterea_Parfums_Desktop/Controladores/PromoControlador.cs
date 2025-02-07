@@ -21,12 +21,15 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             // Dar de alta una promoción en la base de datos
             string query = "insert into dbo.promocion values" +
-                           "(@id, " +
-                           "@nombre, " +
-                           "@fecha_inicio, " +
-                           "@fecha_fin, " +
+                            "(@id, " +
+                            "@nombre, " +
+                            "@fecha_inicio, " +
+                            "@fecha_fin, " +
                            "@descuento, " +
-                           "@activo);";
+                           "@activo, " +
+                           "@descripcion, " +
+                           "@banner);";
+
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
@@ -36,6 +39,8 @@ namespace Eterea_Parfums_Desktop.Controladores
             cmd.Parameters.AddWithValue("@fecha_fin", promo.fecha_fin);
             cmd.Parameters.AddWithValue("@descuento", promo.descuento);
             cmd.Parameters.AddWithValue("@activo", promo.activo);
+            cmd.Parameters.AddWithValue("@descripcion", promo.descripcion);
+            cmd.Parameters.AddWithValue("@banner", promo.banner);
 
             SqlTransaction transaction = null; // Declarar la transacción
 
@@ -199,7 +204,9 @@ namespace Eterea_Parfums_Desktop.Controladores
                      fecha_inicio = @fechaInicio,
                      fecha_fin = @fechaFin,
                      descuento = @descuento,
-                     activo = @activo
+                     activo = @activo,
+                     descripcion = @descripcion,
+                     banner = @banner
                  WHERE id = @id_editar"
             ;
 
@@ -210,6 +217,9 @@ namespace Eterea_Parfums_Desktop.Controladores
              cmd.Parameters.AddWithValue("@fechaFin", promo.fecha_fin);
              cmd.Parameters.AddWithValue("@descuento", promo.descuento);
              cmd.Parameters.AddWithValue("@activo", promo.activo);
+            cmd.Parameters.AddWithValue("@descripcion", promo.descripcion);
+            cmd.Parameters.AddWithValue("@banner", promo.banner);
+
 
             SqlTransaction transaction = null; // Declarar la transacción
 

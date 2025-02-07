@@ -13,6 +13,10 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Drawing.Imaging;
+
+
 
 namespace Eterea_Parfums_Desktop
 {
@@ -22,6 +26,9 @@ namespace Eterea_Parfums_Desktop
         string situacion;
 
         int idPromo;
+
+        Image File;
+        int num = 0;
 
 
 
@@ -40,7 +47,8 @@ namespace Eterea_Parfums_Desktop
         // Declarar el ToolTip a nivel de la clase
         private ToolTip toolTipBorrar;
 
-
+        //Crear variable local para guardar la promocion que se esta editando y obtener el nombre de la imagen
+        Promocion nombBanner = new Promocion();
 
         public FormCrearPromo()
         {
@@ -505,6 +513,7 @@ namespace Eterea_Parfums_Desktop
             InitializeComponent();
 
             txt_nomb_promo.KeyPress += txt_nomb_promo_KeyPress;
+            txt_descripcion_promo.KeyPress += txt_descripcion_promo_KeyPress;
 
             // Ocultar etiquetas de error
             lbl_error_tipo_promo.Visible = false;
@@ -597,6 +606,14 @@ namespace Eterea_Parfums_Desktop
             {
                 combo_activo_promo.SelectedItem = "No";
             }
+
+
+            //borrado banner
+            nombBanner = PromoControlador.obtenerPorId(idPromo);
+
+            string nombreBanner = nombBanner.banner;
+            string rutaCompletaImagen = Program.Ruta_Base + nombreBanner + ".jpg";
+            pictBox_banner.Image = Image.FromFile(rutaCompletaImagen);
 
             situacion = "Edicion";
 
@@ -873,6 +890,15 @@ namespace Eterea_Parfums_Desktop
 
 
 
+        private int numeroAleatorio()
+        {
+            Random rnd = new Random();
+            int numero = rnd.Next(1000, 9999);
+            return numero;
+        }
+
+
+
 
 
 
@@ -881,36 +907,39 @@ namespace Eterea_Parfums_Desktop
         private void crearPromo()
         {
             // Validar los datos ingresados
-            /* if (!validarPromo(out string errorMsg))
-             {
-                 MessageBox.Show(
-                     "No se pudo crear la promoción debido a los siguientes errores:\n" + errorMsg,
-                     "Errores en la creación",
-                     MessageBoxButtons.OK,
-                     MessageBoxIcon.Error
-                 );
-                 return;
-             }*/
+            if (!validarPromo(out string errorMsg))
+            {
+                MessageBox.Show(
+                    "No se pudo crear la promoción debido a los siguientes errores:\n" + errorMsg,
+                    "Errores en la creación",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                return;
+            }
 
             // Obtener los datos de los controles
             KeyValuePair<int, string> tipoPromo = (KeyValuePair<int, string>)combo_tipo_promo.SelectedItem;
             string nombrePromo = txt_nomb_promo.Text;
-            string descripcionPromo = txt_descripcion_promo.Text;
             DateTime fechaInicio = dateTime_inicio_promo.Value;
             DateTime fechaFin = dateTime_fin_promo.Value;
             // Convertir el estado activo en un entero (1 para activo, 0 para no activo)
             int esActiva = combo_activo_promo.SelectedItem.ToString() == "Si" ? 1 : 0;
+            string descripcionPromo = txt_descripcion_promo.Text;
+            string bannerPromo = txt_nomb_promo.Text + num + "-banner";
 
             // Crear un objeto Promoción con los datos capturados
             Promocion nuevaPromo = new Promocion
-            {
-                descuento = tipoPromo.Key,
-                nombre = nombrePromo,
-                descripcion = descripcionPromo,
-                fecha_inicio = fechaInicio,
-                fecha_fin = fechaFin,
-                activo = esActiva
-            };
+            (
+                0,
+                nombrePromo,
+                fechaInicio,
+                fechaFin,
+                tipoPromo.Key,
+                esActiva,
+                descripcionPromo,
+                bannerPromo
+            );
 
             if (PromoControlador.crearPromocion(nuevaPromo))
             {
@@ -931,7 +960,7 @@ namespace Eterea_Parfums_Desktop
 
 
 
-
+       
 
         //Método que ejecuta las acciones para editar la promoción (llama a PromoControlador.editarPromo(promoEditada))
 
@@ -947,6 +976,26 @@ namespace Eterea_Parfums_Desktop
             // Obtener el valor de "Activo" (1 si está activo, 0 si no)
             int activo = combo_activo_promo.SelectedIndex == 0 ? 1 : 0; // 0 = No activo, 1 = Activo
 
+            Promocion promoActual = PromoControlador.obtenerPorId(idPromo);
+            string nombreBanner = promoActual.banner;
+
+            //Verificar si se cargó una nueva imagen
+            if (nuevaImagenCargada)
+            {
+                try
+                {
+                    num = numeroAleatorio();
+                    File.Save(Program.Ruta_Base + txt_nomb_promo.Text + num + "-banner.jpg",
+                        System.Drawing.Imaging.ImageFormat.Jpeg);
+                    nombreBanner = txt_nomb_promo.Text + num + "-banner"; // Usar el nuevo nombre de la foto
+                }
+                catch (Exception ex)
+                {
+                    // Manejar la excepción si no se pudo guardar la nueva foto
+                    MessageBox.Show("No se pudo guardar la nueva foto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
 
             // Confirmar con el usuario
             DialogResult resultado = MessageBox.Show(
@@ -962,7 +1011,7 @@ namespace Eterea_Parfums_Desktop
 
             //Se crea el objeto de la promoción a editar
             
-            Promocion promoEditada = new Promocion(idPromo, txt_nomb_promo.Text, txt_descripcion_promo, dateTime_inicio_promo.Value, dateTime_fin_promo.Value, descuentoClave, activo);
+            Promocion promoEditada = new Promocion(idPromo, txt_nomb_promo.Text,  dateTime_inicio_promo.Value, dateTime_fin_promo.Value, descuentoClave, activo, txt_descripcion_promo.Text, nombreBanner);
 
             if (PromoControlador.editarPromo(promoEditada))
             {
@@ -982,15 +1031,19 @@ namespace Eterea_Parfums_Desktop
 
 
 
+
+
         //Método para limpiar los mensajes de error
 
         private void limpiarMensajesError()
         {
             lbl_error_tipo_promo.Visible = false;
             lbl_error_nombP.Visible = false;
+            lbl_error_desc_promo.Visible = false;
             lbl_error_fecha_iniP.Visible = false;
             lbl_error_fecha_finP.Visible = false;
             lbl_error_promo_act.Visible = false;
+            lbl_error_banner.Visible = false;
 
         }
 
@@ -1049,8 +1102,8 @@ namespace Eterea_Parfums_Desktop
 
             if (string.IsNullOrEmpty(txt_descripcion_promo.Text))
             {
-                errorMsg += "Debes ingresar el nombre de la promoción" + Environment.NewLine;
-                lbl_error_desc_promo.Text = "Debes ingresar el nombre de la promoción";
+                errorMsg += "Debes ingresar una descripción para la promoción" + Environment.NewLine;
+                lbl_error_desc_promo.Text = "Debes ingresar una descripción para la promoción";
                 lbl_error_desc_promo.Show();
 
             }
@@ -1205,6 +1258,19 @@ namespace Eterea_Parfums_Desktop
                 bool promoValidada = validarPromo(out string errorMsg);
                 if (promoValidada)
                 {
+                    try
+                    {
+                        num = numeroAleatorio();
+                        File.Save(Program.Ruta_Base + txt_nomb_promo.Text + num + "-banner.jpg",
+                            System.Drawing.Imaging.ImageFormat.Jpeg);
+                    }
+                    catch (Exception ex)
+                    {
+                        //NO SE PUDO GUARDAR LA FOTO
+                        throw new Exception(ex.Message);
+                    }
+
+
                     string nombrePromo = txt_nomb_promo.Text.Trim();
 
                     if (PromoControlador.ExisteNombrePromo(nombrePromo))
@@ -1251,5 +1317,28 @@ namespace Eterea_Parfums_Desktop
         }
 
 
+
+
+
+
+
+
+        // Variable booleana para controlar si se cargó una nueva imagen
+        private bool nuevaImagenCargada = false;
+
+
+        //Acción del botón "Seleccionar imagen"
+        private void btn_selec_banner_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "JPG(*.JPG)|*.JPG";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                File = Image.FromFile(ofd.FileName);
+                pictBox_banner.Image = File;
+
+            }
+            nuevaImagenCargada = true;
+        }
     }
 }
