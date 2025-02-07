@@ -80,8 +80,8 @@ namespace Eterea_Parfums_Desktop
                         Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
                         break;
                 case "maxi":
-                        Ruta_Base = @"C:\Users\Maxi\source\repos";
-                        Ruta_Web = @"C:\Users\Maxi\source\repos\Eterea_Parfums_Desktop\Resources\";
+                        Ruta_Base = @"C:\Users\usuario\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                        Ruta_Web = @"C:\Users\usuario\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
                         break;
                     default:
                         MessageBox.Show("Usuario no válido, no se configuraron rutas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

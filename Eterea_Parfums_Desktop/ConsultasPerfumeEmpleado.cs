@@ -130,6 +130,7 @@ namespace Eterea_Parfums_Desktop
                     dataGridViewConsultas.Rows[rowIndex].Cells[2].Value = (GeneroControlador.getById(perfume.genero.id)).genero;
                     dataGridViewConsultas.Rows[rowIndex].Cells[3].Value = perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
                     dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = "Ver";
+                    dataGridViewConsultas.Rows[rowIndex].Cells[5].Value = "Agregar";
                 }
             }
         }
@@ -254,7 +255,7 @@ namespace Eterea_Parfums_Desktop
                 VerDetallePerfume detallesForm = new VerDetallePerfume(perfumeSeleccionado);
                 detallesForm.Show();
             }
-            else if (e.RowIndex >= 0 && e.ColumnIndex == 4)
+            else if (e.RowIndex >= 0 && e.ColumnIndex == 5)
             {
                 int rowIndex = e.RowIndex;
                 Perfume perfumeSeleccionado = Perfumes_Paginados[rowIndex];

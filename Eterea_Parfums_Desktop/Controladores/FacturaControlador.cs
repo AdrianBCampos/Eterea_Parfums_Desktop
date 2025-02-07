@@ -18,13 +18,14 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
 
-            using (SqlConnection connection = new SqlConnection(DB_Controller.connectionString))
+            // 🔹 Usamos "using" para que la conexión se cierre automáticamente
+            using (SqlConnection conexion = new SqlConnection(DB_Controller.connection.ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand(query, connection))
+                using (SqlCommand cmd = new SqlCommand(query, conexion))
                 {
-                    connection.Open();
+                    conexion.Open();
                     var result = cmd.ExecuteScalar();
-                    connection.Close();
+                    conexion.Close();
 
                     if (result != null && result != DBNull.Value)
                     {

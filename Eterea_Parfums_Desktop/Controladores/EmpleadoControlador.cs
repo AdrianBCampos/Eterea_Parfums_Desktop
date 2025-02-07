@@ -13,6 +13,8 @@ namespace Eterea_Parfums_Desktop.Controladores
     {
         public static bool auth(string usr, string pass)//, bool hasheado)
         {
+
+
             Empleado empleado = new Empleado();
             string query = "select * from dbo.empleado where " +
                 "usuario = @user and clave = @pass;";
@@ -45,7 +47,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                     Localidad localidad = LocalidadControlador.getById(r.GetInt32(11));
                     Calle calle = CalleControlador.getById(r.GetInt32(13));
                     Sucursal sucursal = SucursalControlador.getById(r.GetInt32(18));
-
+                    
 
                     empleado = new Empleado(r.GetInt32(0), r.GetString(1), r.GetString(2), r.GetString(3), r.GetString(4),
                        r.GetInt32(5), r.GetDateTime(6), r.GetString(7), r.GetString(8), pais,
