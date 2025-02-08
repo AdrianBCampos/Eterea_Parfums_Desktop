@@ -919,10 +919,16 @@ namespace Eterea_Parfums_Desktop
         private bool crearPromo()
         {
             // Validar los datos ingresados
-            if (!validarPromo(out _))
-            {
-                return false; // Retorna falso si la validación falla
-            }
+            /* if (!validarPromo(out string errorMsg))
+             {
+                 MessageBox.Show(
+                     "No se pudo crear la promoción debido a los siguientes errores:\n" + errorMsg,
+                     "Errores en la creación",
+                     MessageBoxButtons.OK,
+                     MessageBoxIcon.Error
+                 );
+                 return;
+             }*/
 
             try
             {
