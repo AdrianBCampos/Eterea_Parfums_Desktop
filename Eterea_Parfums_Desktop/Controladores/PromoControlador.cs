@@ -72,7 +72,6 @@ namespace Eterea_Parfums_Desktop.Controladores
                 }
                 DB_Controller.connection.Close(); // Cerrar la conexión también en caso de error
                 throw new Exception("Hay un error en la query: " + e.Message);
-                return false;
             }
 
         }
