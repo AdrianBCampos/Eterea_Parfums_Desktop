@@ -961,7 +961,6 @@ namespace Eterea_Parfums_Desktop
                );
 
         }
-    
         // Validar los datos ingresados
         /* if (!validarPromo(out string errorMsg))
          {
