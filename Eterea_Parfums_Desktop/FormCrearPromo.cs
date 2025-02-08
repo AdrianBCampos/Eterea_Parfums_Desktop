@@ -916,7 +916,7 @@ namespace Eterea_Parfums_Desktop
 
         //Método que ejecuta las acciones para crear la promoción (llama a PromoControlador.crearPromo(promoEditada))
 
-        private bool crearPromo()
+        private void crearPromo()
         {
             // Validar los datos ingresados
             /* if (!validarPromo(out string errorMsg))
@@ -928,56 +928,100 @@ namespace Eterea_Parfums_Desktop
                      MessageBoxIcon.Error
                  );
                  return;
-             }
+             }*/
 
-            try
+            // Obtener los datos de los controles
+            KeyValuePair<int, string> tipoPromo = (KeyValuePair<int, string>)combo_tipo_promo.SelectedItem;
+            string nombrePromo = txt_nomb_promo.Text;
+            DateTime fechaInicio = dateTime_inicio_promo.Value;
+            DateTime fechaFin = dateTime_fin_promo.Value;
+            // Convertir el estado activo en un entero (1 para activo, 0 para no activo)
+            int esActiva = combo_activo_promo.SelectedItem.ToString() == "Si" ? 1 : 0;
+
+            // Crear un objeto Promoción con los datos capturados
+            Promocion nuevaPromo = new Promocion
             {
-                // Obtener los datos de los controles
-                KeyValuePair<int, string> tipoPromo = (KeyValuePair<int, string>)combo_tipo_promo.SelectedItem;
-                string nombrePromo = txt_nomb_promo.Text;
-                DateTime fechaInicio = dateTime_inicio_promo.Value;
-                DateTime fechaFin = dateTime_fin_promo.Value;
-                int esActiva = combo_activo_promo.SelectedItem.ToString() == "Si" ? 1 : 0;
-                string descripcionPromo = txt_descripcion_promo.Text;
-                string bannerPromo = txt_nomb_promo.Text + num + "-banner";
+                descuento = tipoPromo.Key,
+                nombre = nombrePromo,
+                fecha_inicio = fechaInicio,
+                fecha_fin = fechaFin,
+                activo = esActiva
+            };
 
-                // Crear un objeto Promoción con los datos capturados
-                Promocion nuevaPromo = new Promocion
-                (
-                    0,
-                    nombrePromo,
-                    fechaInicio,
-                    fechaFin,
-                    tipoPromo.Key,
-                    esActiva,
-                    descripcionPromo,
-                    bannerPromo
-                );
-
-                // Intentar crear la promoción
-                bool creada = PromoControlador.crearPromocion(nuevaPromo);
-                if (creada)
-                {
-                    this.DialogResult = DialogResult.OK;
-                    return true; // Retorna true si la creación fue exitosa
-                }
-                else
-                {
-
-                    lbl_error_nombP.Text = "Error al crear la promoción.";
-                    lbl_error_nombP.Show();
-                    return false; // Retorna false si la creación falló
-                }
+            if (PromoControlador.crearPromocion(nuevaPromo))
+            {
+                this.DialogResult = DialogResult.OK;
             }
-            catch (Exception ex)
+
+            MessageBox.Show(
+                   "La promoción se creó exitosamente.",
+                   "Promoción creada",
+                   MessageBoxButtons.OK,
+                   MessageBoxIcon.Information
+               );
+
+        }
+    
+        // Validar los datos ingresados
+        /* if (!validarPromo(out string errorMsg))
+         {
+             MessageBox.Show(
+                 "No se pudo crear la promoción debido a los siguientes errores:\n" + errorMsg,
+                 "Errores en la creación",
+                 MessageBoxButtons.OK,
+                 MessageBoxIcon.Error
+             );
+             return;
+         }
+
+        try
+        {
+            // Obtener los datos de los controles
+            KeyValuePair<int, string> tipoPromo = (KeyValuePair<int, string>)combo_tipo_promo.SelectedItem;
+            string nombrePromo = txt_nomb_promo.Text;
+            DateTime fechaInicio = dateTime_inicio_promo.Value;
+            DateTime fechaFin = dateTime_fin_promo.Value;
+            int esActiva = combo_activo_promo.SelectedItem.ToString() == "Si" ? 1 : 0;
+            string descripcionPromo = txt_descripcion_promo.Text;
+            string bannerPromo = txt_nomb_promo.Text + num + "-banner";
+
+            // Crear un objeto Promoción con los datos capturados
+            Promocion nuevaPromo = new Promocion
+            (
+                0,
+                nombrePromo,
+                fechaInicio,
+                fechaFin,
+                tipoPromo.Key,
+                esActiva,
+                descripcionPromo,
+                bannerPromo
+            );
+
+            // Intentar crear la promoción
+            bool creada = PromoControlador.crearPromocion(nuevaPromo);
+            if (creada)
             {
-                // Mostrar error en Label en vez de MessageBox
-                lbl_error_nombP.Text = "Error inesperado: " + ex.Message;
+                this.DialogResult = DialogResult.OK;
+                return true; // Retorna true si la creación fue exitosa
+            }
+            else
+            {
+
+                lbl_error_nombP.Text = "Error al crear la promoción.";
                 lbl_error_nombP.Show();
-                
-                return false; // Retorna false si hubo una excepción
+                return false; // Retorna false si la creación falló
             }
-        }*/
+        }
+        catch (Exception ex)
+        {
+            // Mostrar error en Label en vez de MessageBox
+            lbl_error_nombP.Text = "Error inesperado: " + ex.Message;
+            lbl_error_nombP.Show();
+
+            return false; // Retorna false si hubo una excepción
+        }
+    }*/
 
 
 
