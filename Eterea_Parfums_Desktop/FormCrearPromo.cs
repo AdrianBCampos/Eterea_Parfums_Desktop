@@ -928,7 +928,7 @@ namespace Eterea_Parfums_Desktop
                      MessageBoxIcon.Error
                  );
                  return;
-             }*/
+             }
 
             try
             {
@@ -977,7 +977,7 @@ namespace Eterea_Parfums_Desktop
                 
                 return false; // Retorna false si hubo una excepción
             }
-        }
+        }*/
 
 
 
@@ -1189,17 +1189,17 @@ namespace Eterea_Parfums_Desktop
 
         //Método para validar los campos a completar en la edición de la promoción
 
+
         private bool validarPromo(out string errorMsg)
         {
             errorMsg = "";
             limpiarMensajesError();
-            bool esValido = true; // Nueva variable para verificar si la validación pasa
 
             if (combo_tipo_promo.SelectedItem == null || string.IsNullOrEmpty(combo_tipo_promo.Text))
             {
+                errorMsg += "Debes seleccionar el tipo de promoción" + Environment.NewLine;
                 lbl_error_tipo_promo.Text = "Debes seleccionar el tipo de promoción";
                 lbl_error_tipo_promo.Show();
-                esValido = false;
             }
             else
             {
@@ -1208,108 +1208,252 @@ namespace Eterea_Parfums_Desktop
 
             if (string.IsNullOrEmpty(txt_nomb_promo.Text))
             {
+                errorMsg += "Debes ingresar el nombre de la promoción" + Environment.NewLine;
                 lbl_error_nombP.Text = "Debes ingresar el nombre de la promoción";
                 lbl_error_nombP.Show();
-                esValido = false;
+
             }
             else if (txt_nomb_promo.Text.Length < 4 || txt_nomb_promo.Text.Length > 80)
             {
-                lbl_error_nombP.Text = "El nombre debe tener entre 4 y 80 caracteres.";
+                errorMsg += "El nombre de la promoción debe tener entre 4 y 80 caracteres." + Environment.NewLine;
+                lbl_error_nombP.Text = "El nombre de la promoción debe tener entre 4 y 80 caracteres.";
                 lbl_error_nombP.Show();
-                esValido = false;
             }
-            else if (txt_nomb_promo.Text.Count(c => c == '%') > 1 ||
-                     new[] { '.', ',', '"', '-', ':', '(', ')' }.Any(c => txt_nomb_promo.Text.Count(ch => ch == c) > 6))
+            else if (txt_nomb_promo.Text.Count(c => c == '%') > 1) // Permite solo un '%'
             {
-                lbl_error_nombP.Text = "Solo un símbolo '%' y hasta 6 de c/u de: ., ,, \", -, :, (, ).";
+                errorMsg += "Solo se permite un símbolo % en el nombre de la promoción." + Environment.NewLine;
+                lbl_error_nombP.Text = "Solo se permite un símbolo % en el nombre de la promoción.";
                 lbl_error_nombP.Show();
-                esValido = false;
             }
+
             else
             {
+
                 lbl_error_nombP.Visible = false;
+
             }
+
 
             if (string.IsNullOrEmpty(txt_descripcion_promo.Text))
             {
+                errorMsg += "Debes ingresar una descripción para la promoción" + Environment.NewLine;
                 lbl_error_desc_promo.Text = "Debes ingresar una descripción para la promoción";
                 lbl_error_desc_promo.Show();
-                esValido = false;
+                
             }
             else if (txt_descripcion_promo.Text.Length < 4 || txt_descripcion_promo.Text.Length > 180)
             {
+                errorMsg += "La descripción debe tener entre 4 y 180 caracteres." + Environment.NewLine;
                 lbl_error_desc_promo.Text = "La descripción debe tener entre 4 y 180 caracteres.";
                 lbl_error_desc_promo.Show();
-                esValido = false;
+                
             }
             else if (txt_descripcion_promo.Text.Count(c => c == '%') > 1 ||
                      new[] { '.', ',', '"', '-', ':', '(', ')' }.Any(c => txt_descripcion_promo.Text.Count(ch => ch == c) > 6))
             {
+                errorMsg += "Solo un símbolo '%' y hasta 6 de c/u de: ., ,, \", -, :, (, )." + Environment.NewLine;
                 lbl_error_desc_promo.Text = "Solo un símbolo '%' y hasta 6 de c/u de: ., ,, \", -, :, (, ).";
                 lbl_error_desc_promo.Show();
-                esValido = false;
+                
             }
             else
             {
                 lbl_error_desc_promo.Visible = false;
             }
 
-            // Validación de fecha de inicio
+            // Validación de la fecha de inicio
             if (dateTime_inicio_promo.Format == DateTimePickerFormat.Custom && dateTime_inicio_promo.CustomFormat == " ")
             {
+                errorMsg += "Debes seleccionar una fecha de inicio para la promoción" + Environment.NewLine;
                 lbl_error_fecha_iniP.Text = "Debes seleccionar una fecha de inicio";
                 lbl_error_fecha_iniP.Show();
-                esValido = false;
             }
             else
             {
                 lbl_error_fecha_iniP.Visible = false;
             }
 
-            // Validación de fecha de finalización
+            // Validación de la fecha de finalización
             if (dateTime_fin_promo.Format == DateTimePickerFormat.Custom && dateTime_fin_promo.CustomFormat == " ")
             {
+                errorMsg += "Debes seleccionar una fecha de finalización para la promoción" + Environment.NewLine;
                 lbl_error_fecha_finP.Text = "Debes seleccionar una fecha de finalización";
                 lbl_error_fecha_finP.Show();
-                esValido = false;
             }
             else if (dateTime_fin_promo.Value <= dateTime_inicio_promo.Value)
             {
+                errorMsg += "La fecha de finalización debe ser posterior a la fecha de inicio" + Environment.NewLine;
                 lbl_error_fecha_finP.Text = "La fecha de finalización debe ser posterior a la fecha de inicio";
                 lbl_error_fecha_finP.Show();
-                esValido = false;
             }
             else
             {
                 lbl_error_fecha_finP.Visible = false;
             }
 
-            // Validación de si la promoción está activa
             if (combo_activo_promo.SelectedItem == null || string.IsNullOrEmpty(combo_activo_promo.Text))
             {
+                errorMsg += "Debes seleccionar si la promoción está activa" + Environment.NewLine;
                 lbl_error_promo_act.Text = "Debes seleccionar si la promoción está activa";
                 lbl_error_promo_act.Show();
-                esValido = false;
             }
             else
             {
                 lbl_error_promo_act.Visible = false;
             }
 
+
             // Validación de la imagen
             if (pictBox_banner.Image == null)
             {
+                errorMsg += "Debes cargar una Imagen" + Environment.NewLine;
                 lbl_error_banner.Text = "Debes cargar una Imagen";
                 lbl_error_banner.Show();
-                esValido = false;
+               
             }
             else
             {
                 lbl_error_banner.Visible = false;
             }
 
-            return esValido;
+
+            if (string.IsNullOrEmpty(errorMsg))
+            {
+                lbl_error_tipo_promo.Visible = false;
+                lbl_error_nombP.Visible = false;
+                lbl_error_desc_promo.Visible = false;
+                lbl_error_fecha_iniP.Visible = false;
+                lbl_error_fecha_finP.Visible = false;
+                lbl_error_promo_act.Visible = false;
+                lbl_error_banner.Visible = false;
+            }
+
+            // Devolver si hay errores o no
+            return string.IsNullOrEmpty(errorMsg);
         }
+
+
+        /* private bool validarPromo(out string errorMsg)
+         {
+             errorMsg = "";
+             limpiarMensajesError();
+             bool esValido = true; // Nueva variable para verificar si la validación pasa
+
+             if (combo_tipo_promo.SelectedItem == null || string.IsNullOrEmpty(combo_tipo_promo.Text))
+             {
+                 lbl_error_tipo_promo.Text = "Debes seleccionar el tipo de promoción";
+                 lbl_error_tipo_promo.Show();
+                 esValido = false;
+             }
+             else
+             {
+                 lbl_error_tipo_promo.Visible = false;
+             }
+
+             if (string.IsNullOrEmpty(txt_nomb_promo.Text))
+             {
+                 lbl_error_nombP.Text = "Debes ingresar el nombre de la promoción";
+                 lbl_error_nombP.Show();
+                 esValido = false;
+             }
+             else if (txt_nomb_promo.Text.Length < 4 || txt_nomb_promo.Text.Length > 80)
+             {
+                 lbl_error_nombP.Text = "El nombre debe tener entre 4 y 80 caracteres.";
+                 lbl_error_nombP.Show();
+                 esValido = false;
+             }
+             else if (txt_nomb_promo.Text.Count(c => c == '%') > 1 ||
+                      new[] { '.', ',', '"', '-', ':', '(', ')' }.Any(c => txt_nomb_promo.Text.Count(ch => ch == c) > 6))
+             {
+                 lbl_error_nombP.Text = "Solo un símbolo '%' y hasta 6 de c/u de: ., ,, \", -, :, (, ).";
+                 lbl_error_nombP.Show();
+                 esValido = false;
+             }
+             else
+             {
+                 lbl_error_nombP.Visible = false;
+             }
+
+             if (string.IsNullOrEmpty(txt_descripcion_promo.Text))
+             {
+                 lbl_error_desc_promo.Text = "Debes ingresar una descripción para la promoción";
+                 lbl_error_desc_promo.Show();
+                 esValido = false;
+             }
+             else if (txt_descripcion_promo.Text.Length < 4 || txt_descripcion_promo.Text.Length > 180)
+             {
+                 lbl_error_desc_promo.Text = "La descripción debe tener entre 4 y 180 caracteres.";
+                 lbl_error_desc_promo.Show();
+                 esValido = false;
+             }
+             else if (txt_descripcion_promo.Text.Count(c => c == '%') > 1 ||
+                      new[] { '.', ',', '"', '-', ':', '(', ')' }.Any(c => txt_descripcion_promo.Text.Count(ch => ch == c) > 6))
+             {
+                 lbl_error_desc_promo.Text = "Solo un símbolo '%' y hasta 6 de c/u de: ., ,, \", -, :, (, ).";
+                 lbl_error_desc_promo.Show();
+                 esValido = false;
+             }
+             else
+             {
+                 lbl_error_desc_promo.Visible = false;
+             }
+
+             // Validación de fecha de inicio
+             if (dateTime_inicio_promo.Format == DateTimePickerFormat.Custom && dateTime_inicio_promo.CustomFormat == " ")
+             {
+                 lbl_error_fecha_iniP.Text = "Debes seleccionar una fecha de inicio";
+                 lbl_error_fecha_iniP.Show();
+                 esValido = false;
+             }
+             else
+             {
+                 lbl_error_fecha_iniP.Visible = false;
+             }
+
+             // Validación de fecha de finalización
+             if (dateTime_fin_promo.Format == DateTimePickerFormat.Custom && dateTime_fin_promo.CustomFormat == " ")
+             {
+                 lbl_error_fecha_finP.Text = "Debes seleccionar una fecha de finalización";
+                 lbl_error_fecha_finP.Show();
+                 esValido = false;
+             }
+             else if (dateTime_fin_promo.Value <= dateTime_inicio_promo.Value)
+             {
+                 lbl_error_fecha_finP.Text = "La fecha de finalización debe ser posterior a la fecha de inicio";
+                 lbl_error_fecha_finP.Show();
+                 esValido = false;
+             }
+             else
+             {
+                 lbl_error_fecha_finP.Visible = false;
+             }
+
+             // Validación de si la promoción está activa
+             if (combo_activo_promo.SelectedItem == null || string.IsNullOrEmpty(combo_activo_promo.Text))
+             {
+                 lbl_error_promo_act.Text = "Debes seleccionar si la promoción está activa";
+                 lbl_error_promo_act.Show();
+                 esValido = false;
+             }
+             else
+             {
+                 lbl_error_promo_act.Visible = false;
+             }
+
+             // Validación de la imagen
+             if (pictBox_banner.Image == null)
+             {
+                 lbl_error_banner.Text = "Debes cargar una Imagen";
+                 lbl_error_banner.Show();
+                 esValido = false;
+             }
+             else
+             {
+                 lbl_error_banner.Visible = false;
+             }
+
+             return esValido;
+         }*/
 
 
 
