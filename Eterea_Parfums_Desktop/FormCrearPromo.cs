@@ -1193,6 +1193,9 @@ namespace Eterea_Parfums_Desktop
                 }
             }
 
+            nombreBannerNuevo = Path.GetFileNameWithoutExtension($"{nombrePromoSanitizado}{num}-banner");
+
+
             // **Actualizar los datos de la promoción**
             Promocion promoEditada = new Promocion(idPromo, txt_nomb_promo.Text, dateTime_inicio_promo.Value, dateTime_fin_promo.Value, descuentoClave, activo, txt_descripcion_promo.Text, nombreBannerNuevo);
 
@@ -1586,7 +1589,7 @@ namespace Eterea_Parfums_Desktop
                     try
                     {
                         num = numeroAleatorio();
-                        banner.Save(Program.Ruta_Base + txt_nomb_promo.Text + num + "-banner.jpg",
+                        banner.Save(Program.Ruta_Base + txt_nomb_promo.Text + num + "-banner",
                             System.Drawing.Imaging.ImageFormat.Jpeg);
                     }
                     catch (Exception ex)
