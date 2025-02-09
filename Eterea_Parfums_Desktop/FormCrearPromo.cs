@@ -1193,8 +1193,6 @@ namespace Eterea_Parfums_Desktop
                 }
             }
 
-            nombreBannerNuevo = Path.GetFileNameWithoutExtension($"{nombrePromoSanitizado}{num}-banner");
-
 
             // **Actualizar los datos de la promoción**
             Promocion promoEditada = new Promocion(idPromo, txt_nomb_promo.Text, dateTime_inicio_promo.Value, dateTime_fin_promo.Value, descuentoClave, activo, txt_descripcion_promo.Text, nombreBannerNuevo);
