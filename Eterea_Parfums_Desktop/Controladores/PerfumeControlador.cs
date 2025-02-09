@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Windows.Forms;
 using Eterea_Parfums_Desktop.Modelos;
 
 namespace Eterea_Parfums_Desktop.Controladores
@@ -370,6 +371,11 @@ namespace Eterea_Parfums_Desktop.Controladores
                 DB_Controller.connection.Close();
             }
             return perfume;
+        }
+
+        internal static Perfume GetByCodigo(string codigo)
+        {
+            throw new NotImplementedException();
         }
     }
 }

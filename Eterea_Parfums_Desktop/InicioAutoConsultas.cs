@@ -1,4 +1,6 @@
-﻿using Eterea_Parfums_Desktop.Controladores;
+﻿using AForge.Video;
+using AForge.Video.DirectShow;
+using Eterea_Parfums_Desktop.Controladores;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
@@ -6,15 +8,18 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZXing;
 
 namespace Eterea_Parfums_Desktop
 {
     public partial class InicioAutoConsultas : Form
     {
+
         private static Perfume filtro = new Perfume();
 
         private List<Perfume> Perfumes_Completo = new List<Perfume>();
@@ -33,9 +38,17 @@ namespace Eterea_Parfums_Desktop
         private static int last_pag = 0;
         private static int current_pag = 1;
 
+        private BarcodeScannerWatcher watcher;
+
         public InicioAutoConsultas()
         {
             InitializeComponent();
+
+            string path = @"C:\Users\intersan\Desktop\TESIS\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\txt_scan.txt";
+            // Asegúrate de usar la ruta correcta
+            watcher = new BarcodeScannerWatcher(path);
+
+
 
             string rutaCompletaImagen = Program.Ruta_Base + @"Diseño Logo2.png";
             img_logo.Image = Image.FromFile(rutaCompletaImagen);
@@ -63,7 +76,18 @@ namespace Eterea_Parfums_Desktop
             combo_filtro_marca.DrawItem += comboBoxdiseño_DrawItem;
             combo_filtro_marca.DropDownStyle = ComboBoxStyle.DropDownList;          
         }
-       
+
+        private void txt_scan_TextChanged(object sender, EventArgs e)
+        {
+            GuardarTextoEnArchivo(txt_scan.Text);
+        }
+
+        private void GuardarTextoEnArchivo(string texto)
+        {
+            string rutaArchivo = @"C:\Users\intersan\Desktop\TESIS\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\txt_scan.txt";
+            File.WriteAllText(rutaArchivo, texto);
+        }
+
         private void InicioAutoConsultas_KeyDown_1(object sender, KeyEventArgs e)
         {
             // Detectar si se presionan las teclas Ctrl + L
@@ -123,6 +147,8 @@ namespace Eterea_Parfums_Desktop
                 btn_posterior.Show();
             }
         }
+
+      
 
         private void VisualizarPerfumes(List<Perfume> perfumeMostrar)
         {
@@ -342,6 +368,9 @@ namespace Eterea_Parfums_Desktop
             this.Hide();
         }
 
+       
+    
+
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -354,6 +383,6 @@ namespace Eterea_Parfums_Desktop
             this.Hide();
         }
 
-        
+
     }
 }

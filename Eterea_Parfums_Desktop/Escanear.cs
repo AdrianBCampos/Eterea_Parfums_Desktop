@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.Modelos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,5 +25,11 @@ namespace Eterea_Parfums_Desktop
             inicioAutoConsultas.Show();
             this.Close();
         }
+
+        private void btn_enviar_Click(object sender, EventArgs e)
+        {
+           
+        }
+
     }
 }

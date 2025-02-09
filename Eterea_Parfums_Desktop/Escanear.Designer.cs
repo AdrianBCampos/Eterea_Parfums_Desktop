@@ -44,9 +44,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(21, 131);
+            this.pictureBox1.Location = new System.Drawing.Point(16, 106);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(621, 173);
+            this.pictureBox1.Size = new System.Drawing.Size(466, 141);
             this.pictureBox1.TabIndex = 282;
             this.pictureBox1.TabStop = false;
             // 
@@ -55,10 +56,9 @@
             this.btn_volver_escanear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_volver_escanear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_volver_escanear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_volver_escanear.Location = new System.Drawing.Point(227, 324);
-            this.btn_volver_escanear.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_volver_escanear.Location = new System.Drawing.Point(170, 263);
             this.btn_volver_escanear.Name = "btn_volver_escanear";
-            this.btn_volver_escanear.Size = new System.Drawing.Size(229, 46);
+            this.btn_volver_escanear.Size = new System.Drawing.Size(172, 37);
             this.btn_volver_escanear.TabIndex = 298;
             this.btn_volver_escanear.Text = "Volver a Escanear";
             this.btn_volver_escanear.UseVisualStyleBackColor = false;
@@ -68,13 +68,13 @@
             this.btn_enviar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_enviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_enviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_enviar.Location = new System.Drawing.Point(244, 235);
-            this.btn_enviar.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_enviar.Location = new System.Drawing.Point(183, 191);
             this.btn_enviar.Name = "btn_enviar";
-            this.btn_enviar.Size = new System.Drawing.Size(183, 46);
+            this.btn_enviar.Size = new System.Drawing.Size(137, 37);
             this.btn_enviar.TabIndex = 299;
             this.btn_enviar.Text = "Enviar";
             this.btn_enviar.UseVisualStyleBackColor = false;
+            this.btn_enviar.Click += new System.EventHandler(this.btn_enviar_Click);
             // 
             // button2
             // 
@@ -82,11 +82,10 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(595, 13);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Location = new System.Drawing.Point(446, 11);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(46, 40);
+            this.button2.Size = new System.Drawing.Size(34, 32);
             this.button2.TabIndex = 300;
             this.button2.Text = "X";
             this.button2.UseVisualStyleBackColor = false;
@@ -97,20 +96,18 @@
             this.lbl_numero_codigo.AutoSize = true;
             this.lbl_numero_codigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_numero_codigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_numero_codigo.Location = new System.Drawing.Point(133, 151);
-            this.lbl_numero_codigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_numero_codigo.Location = new System.Drawing.Point(100, 123);
             this.lbl_numero_codigo.Name = "lbl_numero_codigo";
-            this.lbl_numero_codigo.Size = new System.Drawing.Size(407, 20);
+            this.lbl_numero_codigo.Size = new System.Drawing.Size(347, 17);
             this.lbl_numero_codigo.TabIndex = 301;
             this.lbl_numero_codigo.Text = "Ingresar el número de código de barras manualmente";
             // 
             // txt_codigo_barras
             // 
             this.txt_codigo_barras.BackColor = System.Drawing.Color.White;
-            this.txt_codigo_barras.Location = new System.Drawing.Point(178, 194);
-            this.txt_codigo_barras.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_codigo_barras.Location = new System.Drawing.Point(134, 158);
             this.txt_codigo_barras.Name = "txt_codigo_barras";
-            this.txt_codigo_barras.Size = new System.Drawing.Size(308, 22);
+            this.txt_codigo_barras.Size = new System.Drawing.Size(232, 20);
             this.txt_codigo_barras.TabIndex = 302;
             this.txt_codigo_barras.Text = "N°_";
             // 
@@ -118,9 +115,10 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(177)))), ((int)(((byte)(184)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(21, 73);
+            this.pictureBox2.Location = new System.Drawing.Point(16, 59);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(621, 52);
+            this.pictureBox2.Size = new System.Drawing.Size(466, 42);
             this.pictureBox2.TabIndex = 303;
             this.pictureBox2.TabStop = false;
             // 
@@ -129,19 +127,18 @@
             this.lbl_lector.AutoSize = true;
             this.lbl_lector.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(177)))), ((int)(((byte)(184)))));
             this.lbl_lector.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_lector.Location = new System.Drawing.Point(34, 89);
-            this.lbl_lector.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_lector.Location = new System.Drawing.Point(26, 72);
             this.lbl_lector.Name = "lbl_lector";
-            this.lbl_lector.Size = new System.Drawing.Size(540, 22);
+            this.lbl_lector.Size = new System.Drawing.Size(456, 18);
             this.lbl_lector.TabIndex = 304;
             this.lbl_lector.Text = "El lector no funciona o no se pudo leer el código de barras.";
             // 
             // Escanear
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(654, 384);
+            this.ClientSize = new System.Drawing.Size(490, 312);
             this.Controls.Add(this.lbl_lector);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.txt_codigo_barras);
@@ -150,6 +147,7 @@
             this.Controls.Add(this.btn_enviar);
             this.Controls.Add(this.btn_volver_escanear);
             this.Controls.Add(this.pictureBox1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Escanear";
             this.Text = "Escanear";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
