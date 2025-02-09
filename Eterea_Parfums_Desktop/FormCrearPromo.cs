@@ -937,6 +937,8 @@ namespace Eterea_Parfums_Desktop
             DateTime fechaFin = dateTime_fin_promo.Value;
             // Convertir el estado activo en un entero (1 para activo, 0 para no activo)
             int esActiva = combo_activo_promo.SelectedItem.ToString() == "Si" ? 1 : 0;
+            string descripcionPromo = txt_descripcion_promo.Text;
+            string bannerPromo = txt_nomb_promo.Text + num + "-banner";
 
             // Crear un objeto Promoción con los datos capturados
             Promocion nuevaPromo = new Promocion
@@ -945,7 +947,9 @@ namespace Eterea_Parfums_Desktop
                 nombre = nombrePromo,
                 fecha_inicio = fechaInicio,
                 fecha_fin = fechaFin,
-                activo = esActiva
+                activo = esActiva,
+                descripcion = descripcionPromo,
+                banner = bannerPromo
             };
 
             if (PromoControlador.crearPromocion(nuevaPromo))
@@ -1563,28 +1567,14 @@ namespace Eterea_Parfums_Desktop
 
         //Acción del botón crear/editar
 
-        // Acción del botón crear/editar
         private void btn_crear_promo_Click(object sender, EventArgs e)
         {
+
             if (situacion == "Creacion")
             {
-                int idPromo = PromoControlador.obtenerMaxId() + 1;
-
                 bool promoValidada = validarPromo(out string errorMsg);
                 if (promoValidada)
                 {
-                    try
-                    {
-                        num = numeroAleatorio();
-                        banner.Save(Program.Ruta_Base + txt_nomb_promo.Text + num + "-banner.jpg",
-                            System.Drawing.Imaging.ImageFormat.Jpeg);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("No se pudo guardar la foto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return; // Salimos para evitar continuar con la creación
-                    }
-
                     string nombrePromo = txt_nomb_promo.Text.Trim();
 
                     if (PromoControlador.ExisteNombrePromo(nombrePromo))
@@ -1593,36 +1583,38 @@ namespace Eterea_Parfums_Desktop
                         return;
                     }
 
-                    bool creadaConExito = crearPromo(); // Asumiendo que este método devuelve bool
-                    if (creadaConExito)
+                    try
                     {
-                        asignarPerfumesAPromo(idPromo);
+                        num = numeroAleatorio();
+                        banner.Save(Program.Ruta_Base + txt_nomb_promo.Text + num + "-banner.jpg",
+                            System.Drawing.Imaging.ImageFormat.Jpeg);
                     }
-                }
-                else
-                {
-                    MessageBox.Show(errorMsg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    catch (Exception ex)
+                    {
+                        //NO SE PUDO GUARDAR LA FOTO
+                        throw new Exception(ex.Message);
+                    }
+
+
+                    crearPromo();
+                    asignarPerfumesAPromo(idPromo);
                 }
             }
-            else if (situacion == "Edicion")
+            if (situacion == "Edicion")
             {
                 bool promoValidada = validarPromo(out string errorMsg);
                 if (promoValidada)
                 {
-                    bool editadaConExito = editarPromo(); // Asumiendo que este método devuelve bool
-                    if (editadaConExito)
-                    {
-                        asignarPerfumesAPromo(idPromo);
-                    }
+                    editarPromo();
+                    asignarPerfumesAPromo(idPromo);
                 }
                 else
                 {
                     MessageBox.Show(errorMsg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+
         }
-
-
 
 
 
