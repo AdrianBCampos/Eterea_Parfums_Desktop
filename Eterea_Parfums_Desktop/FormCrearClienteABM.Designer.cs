@@ -182,7 +182,7 @@
             this.lbl_paisE.AutoSize = true;
             this.lbl_paisE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_paisE.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_paisE.Location = new System.Drawing.Point(673, 275);
+            this.lbl_paisE.Location = new System.Drawing.Point(673, 106);
             this.lbl_paisE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_paisE.Name = "lbl_paisE";
             this.lbl_paisE.Size = new System.Drawing.Size(36, 16);
@@ -317,7 +317,7 @@
             this.combo_pais.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combo_pais.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_pais.FormattingEnabled = true;
-            this.combo_pais.Location = new System.Drawing.Point(676, 243);
+            this.combo_pais.Location = new System.Drawing.Point(676, 74);
             this.combo_pais.Margin = new System.Windows.Forms.Padding(4);
             this.combo_pais.Name = "combo_pais";
             this.combo_pais.Size = new System.Drawing.Size(262, 28);
@@ -329,7 +329,7 @@
             this.lbl_pais.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_pais.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_pais.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_pais.Location = new System.Drawing.Point(507, 251);
+            this.lbl_pais.Location = new System.Drawing.Point(507, 82);
             this.lbl_pais.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_pais.Name = "lbl_pais";
             this.lbl_pais.Size = new System.Drawing.Size(46, 20);
@@ -588,7 +588,7 @@
             this.lbl_cpE.AutoSize = true;
             this.lbl_cpE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_cpE.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_cpE.Location = new System.Drawing.Point(673, 113);
+            this.lbl_cpE.Location = new System.Drawing.Point(673, 276);
             this.lbl_cpE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_cpE.Name = "lbl_cpE";
             this.lbl_cpE.Size = new System.Drawing.Size(36, 16);
@@ -600,7 +600,7 @@
             this.lbl_localidadE.AutoSize = true;
             this.lbl_localidadE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_localidadE.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_localidadE.Location = new System.Drawing.Point(673, 169);
+            this.lbl_localidadE.Location = new System.Drawing.Point(673, 220);
             this.lbl_localidadE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_localidadE.Name = "lbl_localidadE";
             this.lbl_localidadE.Size = new System.Drawing.Size(36, 16);
@@ -612,7 +612,7 @@
             this.lbl_provinciaE.AutoSize = true;
             this.lbl_provinciaE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_provinciaE.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_provinciaE.Location = new System.Drawing.Point(673, 223);
+            this.lbl_provinciaE.Location = new System.Drawing.Point(673, 164);
             this.lbl_provinciaE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_provinciaE.Name = "lbl_provinciaE";
             this.lbl_provinciaE.Size = new System.Drawing.Size(36, 16);
@@ -625,7 +625,7 @@
             this.txt_cp.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_cp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_cp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_cp.Location = new System.Drawing.Point(676, 82);
+            this.txt_cp.Location = new System.Drawing.Point(676, 245);
             this.txt_cp.Margin = new System.Windows.Forms.Padding(4);
             this.txt_cp.Name = "txt_cp";
             this.txt_cp.Size = new System.Drawing.Size(262, 27);
@@ -661,7 +661,7 @@
             this.combo_localidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combo_localidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_localidad.FormattingEnabled = true;
-            this.combo_localidad.Location = new System.Drawing.Point(676, 136);
+            this.combo_localidad.Location = new System.Drawing.Point(676, 187);
             this.combo_localidad.Margin = new System.Windows.Forms.Padding(4);
             this.combo_localidad.Name = "combo_localidad";
             this.combo_localidad.Size = new System.Drawing.Size(262, 28);
@@ -673,7 +673,7 @@
             this.combo_provincia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combo_provincia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_provincia.FormattingEnabled = true;
-            this.combo_provincia.Location = new System.Drawing.Point(676, 190);
+            this.combo_provincia.Location = new System.Drawing.Point(676, 131);
             this.combo_provincia.Margin = new System.Windows.Forms.Padding(4);
             this.combo_provincia.Name = "combo_provincia";
             this.combo_provincia.Size = new System.Drawing.Size(262, 28);
@@ -799,7 +799,7 @@
             this.lbl_cp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_cp.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_cp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_cp.Location = new System.Drawing.Point(507, 92);
+            this.lbl_cp.Location = new System.Drawing.Point(507, 255);
             this.lbl_cp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_cp.Name = "lbl_cp";
             this.lbl_cp.Size = new System.Drawing.Size(126, 20);
@@ -812,7 +812,7 @@
             this.lbl_Localidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_Localidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Localidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_Localidad.Location = new System.Drawing.Point(507, 146);
+            this.lbl_Localidad.Location = new System.Drawing.Point(507, 197);
             this.lbl_Localidad.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_Localidad.Name = "lbl_Localidad";
             this.lbl_Localidad.Size = new System.Drawing.Size(90, 20);
@@ -825,7 +825,7 @@
             this.lbl_provincia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_provincia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_provincia.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_provincia.Location = new System.Drawing.Point(507, 199);
+            this.lbl_provincia.Location = new System.Drawing.Point(507, 140);
             this.lbl_provincia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_provincia.Name = "lbl_provincia";
             this.lbl_provincia.Size = new System.Drawing.Size(87, 20);
@@ -989,6 +989,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(970, 819);
+            this.Controls.Add(this.lbl_cpE);
+            this.Controls.Add(this.txt_cp);
+            this.Controls.Add(this.lbl_cp);
+            this.Controls.Add(this.lbl_paisE);
+            this.Controls.Add(this.combo_pais);
+            this.Controls.Add(this.lbl_pais);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.richTextBox_comentario);
             this.Controls.Add(this.lbl_localidadE);
@@ -1001,9 +1007,7 @@
             this.Controls.Add(this.lbl_pisoE);
             this.Controls.Add(this.lbl_num_calleE);
             this.Controls.Add(this.lbl_calleE);
-            this.Controls.Add(this.lbl_cpE);
             this.Controls.Add(this.lbl_provinciaE);
-            this.Controls.Add(this.txt_cp);
             this.Controls.Add(this.combo_activo);
             this.Controls.Add(this.combo_calle);
             this.Controls.Add(this.combo_provincia);
@@ -1016,11 +1020,9 @@
             this.Controls.Add(this.lbl_num_calle);
             this.Controls.Add(this.txt_num_calle);
             this.Controls.Add(this.lbl_calle);
-            this.Controls.Add(this.lbl_cp);
             this.Controls.Add(this.lbl_provincia);
             this.Controls.Add(this.lbl_cond_ivaE);
             this.Controls.Add(this.lbl_cond_iva);
-            this.Controls.Add(this.lbl_paisE);
             this.Controls.Add(this.lbl_emailE);
             this.Controls.Add(this.lbl_celularE);
             this.Controls.Add(this.lbl_nacE);
@@ -1031,8 +1033,6 @@
             this.Controls.Add(this.lbl_usuarioE);
             this.Controls.Add(this.lbl_nac);
             this.Controls.Add(this.dateTime_nac);
-            this.Controls.Add(this.combo_pais);
-            this.Controls.Add(this.lbl_pais);
             this.Controls.Add(this.lbl_email);
             this.Controls.Add(this.txt_email);
             this.Controls.Add(this.lbl_Celular);

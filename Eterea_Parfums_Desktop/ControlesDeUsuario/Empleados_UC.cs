@@ -29,10 +29,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void cargarEmpleados(string filtroDni = "")
         {
+            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
+            dataGridView1.RowHeadersVisible = false;
+
             empleados = EmpleadoControlador.obtenerTodos();
-
-
-
 
             dataGridView1.Rows.Clear();
             foreach (Empleado empleado in empleados)
@@ -67,11 +67,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     dataGridView1.Rows[rowIndex].Cells[8].Value = "Editar";
                     dataGridView1.Rows[rowIndex].Cells[9].Value = "Eliminar";
                 }
+                dataGridView1.CellPainting += dataGridView1_CellPainting;
             }
         }
-
-
-        private void btn_new_Click_1(object sender, EventArgs e)
+        private void btn_crear_empleado_Click(object sender, EventArgs e)
         {
             FormEmpleado frmVend = new FormEmpleado();
             DialogResult dr = frmVend.ShowDialog();
@@ -134,7 +133,33 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                 }
             }
+           
+        }
 
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0 && dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                e.Handled = true;
+                e.PaintBackground(e.CellBounds, true);
+
+                // Crear un rectángulo para el botón
+                Rectangle buttonRect = e.CellBounds;
+                buttonRect.Inflate(-2, -2); // Reducir tamaño para dar efecto de borde
+
+                // Definir colores personalizados
+                Color buttonColor = Color.FromArgb(228, 137, 164); // Color de fondo del botón
+                Color textColor = Color.FromArgb(250, 236, 239); // Color del texto
+
+                using (SolidBrush brush = new SolidBrush(buttonColor))
+                {
+                    e.Graphics.FillRectangle(brush, buttonRect);
+                }
+
+                // Dibujar el texto del botón
+                TextRenderer.DrawText(e.Graphics, (string)e.Value, e.CellStyle.Font, buttonRect, textColor,
+                                      TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+            }
         }
 
         /*       private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
@@ -207,5 +232,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 e.Handled = true; // Ignorar entrada no válida
             }
         }
+
     }
 }

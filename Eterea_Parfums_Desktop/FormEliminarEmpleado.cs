@@ -28,9 +28,9 @@ namespace Eterea_Parfums_Desktop
 
             id_eliminar = id;
 
-            txt_dni.Text = eliminado.dni.ToString();
+            txt_dni_eliminar.Text = eliminado.dni.ToString();
             txt_rol.Text = eliminado.rol.ToString();
-            txt_nombre.Text = eliminado.nombre.ToString();
+            txt_nombre_empleado.Text = eliminado.nombre.ToString() + " " + eliminado.apellido.ToString();
 
         }
 
@@ -48,14 +48,14 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
-        private void btn_eliminar_Click_1(object sender, EventArgs e)
-        {
-            eliminar();
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btn_eliminar_cliente_Click(object sender, EventArgs e)
+        {
+            eliminar();
         }
     }
 }
