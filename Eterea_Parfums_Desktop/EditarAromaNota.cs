@@ -391,7 +391,7 @@ namespace Eterea_Parfums_Desktop
             }
             else
             {
-                lbl_tipo_de_nota.Text = "No hay elementos seleccionados.";
+                lbl_tipo_de_nota.Text = "";
             }
 
          
