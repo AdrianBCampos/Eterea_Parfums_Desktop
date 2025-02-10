@@ -38,16 +38,21 @@ namespace Eterea_Parfums_Desktop
         private static int last_pag = 0;
         private static int current_pag = 1;
 
-        private BarcodeScannerWatcher watcher;
+        //private BarcodeScannerWatcher watcher;
+
+     
+
 
         public InicioAutoConsultas()
         {
             InitializeComponent();
 
-            string path = @"C:\Users\intersan\Desktop\TESIS\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\txt_scan.txt";
-            // Asegúrate de usar la ruta correcta
-            watcher = new BarcodeScannerWatcher(path);
-
+            /* string path = @"C:\Users\intersan\Desktop\TESIS\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\txt_scan.txt";
+             // Asegúrate de usar la ruta correcta
+             watcher = new BarcodeScannerWatcher(path);*/
+            //Ocultar campos de escaneo 
+            lbl_codigoBarras.Visible = false;
+            txt_scan.Visible = false;
 
 
             string rutaCompletaImagen = Program.Ruta_Base + @"Diseño Logo2.png";
@@ -378,10 +383,64 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_escanear_Click(object sender, EventArgs e)
         {
-            Escanear escanear = new Escanear();
-            escanear.Show();
-            this.Hide();
+            /* Escanear escanear = new Escanear();
+             escanear.Show();
+             this.Hide();*/
+
+            // Ocultar el botón y mostrar el TextBox
+            btn_escanear.Visible = false;
+            txt_scan.Visible = true;
+            txt_scan.Focus(); // Poner el cursor en el TextBox
+            lbl_codigoBarras.Visible = true;
         }
+
+        // Evento para capturar el código escaneado
+        private void txt_scan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+
+                string codigoBarras = txt_scan.Text.Trim();
+
+                if (!string.IsNullOrEmpty(codigoBarras))
+                {
+                    txt_scan.Enabled = false;
+
+                    Perfume perfumeEncontrado = PerfumeControlador.getByCodigo(codigoBarras);
+
+                    if (perfumeEncontrado != null)
+                    {
+                        VerDetallePerfume formDetalle = new VerDetallePerfume(perfumeEncontrado);
+                        formDetalle.ShowDialog(); // Bloquea la ejecución hasta que se cierre
+
+                        // Cuando se cierra VerDetallePerfume, se vuelve a mostrar el botón Escanear
+                        btn_escanear.Visible = true;
+                        txt_scan.Visible = false;
+                        lbl_codigoBarras.Visible = false;
+                    }
+                    else
+                    {
+                        Escanear formEscanear = new Escanear();
+                        formEscanear.ShowDialog();
+                    }
+                }
+                else
+                {
+                    Escanear formEscanear = new Escanear();
+                    formEscanear.ShowDialog();
+                }
+
+                txt_scan.Clear();
+                txt_scan.Enabled = true;
+                txt_scan.Focus();
+            }
+        }
+
+
+
+
+
 
 
     }
