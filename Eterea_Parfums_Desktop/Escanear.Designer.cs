@@ -45,7 +45,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Location = new System.Drawing.Point(16, 106);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(466, 141);
             this.pictureBox1.TabIndex = 282;
@@ -109,14 +109,14 @@
             this.txt_codigo_barras.Name = "txt_codigo_barras";
             this.txt_codigo_barras.Size = new System.Drawing.Size(232, 20);
             this.txt_codigo_barras.TabIndex = 302;
-            this.txt_codigo_barras.Text = "N°_";
+            this.txt_codigo_barras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_codigo_barras_KeyPress);
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(177)))), ((int)(((byte)(184)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox2.Location = new System.Drawing.Point(16, 59);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(466, 42);
             this.pictureBox2.TabIndex = 303;
@@ -147,9 +147,10 @@
             this.Controls.Add(this.btn_enviar);
             this.Controls.Add(this.btn_volver_escanear);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Escanear";
             this.Text = "Escanear";
+            this.Load += new System.EventHandler(this.Escanear_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);

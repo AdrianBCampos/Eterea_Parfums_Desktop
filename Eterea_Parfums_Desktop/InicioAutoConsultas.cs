@@ -421,13 +421,13 @@ namespace Eterea_Parfums_Desktop
                     }
                     else
                     {
-                        Escanear formEscanear = new Escanear();
+                        Escanear formEscanear = new Escanear(this);
                         formEscanear.ShowDialog();
                     }
                 }
                 else
                 {
-                    Escanear formEscanear = new Escanear();
+                    Escanear formEscanear = new Escanear(this);
                     formEscanear.ShowDialog();
                 }
 
@@ -438,8 +438,17 @@ namespace Eterea_Parfums_Desktop
         }
 
 
+        public void MostrarErrorCodigo()
+        {
+            MessageBox.Show("Error al leer el código de barras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
-
+        public void RestaurarUI()
+        {
+            btn_escanear.Visible = true;  // Mostrar botón Escanear
+            txt_scan.Visible = false;     // Ocultar txt_scan
+            lbl_codigoBarras.Visible = false;  // Ocultar lbl_codigoBarras
+        }
 
 
 

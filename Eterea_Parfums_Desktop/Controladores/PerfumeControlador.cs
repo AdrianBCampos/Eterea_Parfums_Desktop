@@ -327,7 +327,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         public static Perfume getByCodigo(string codigo)
         {
-            Perfume perfume = new Perfume();
+            Perfume perfume = null; // Inicialmente null
             string query = "select * from dbo.perfume where codigo = @codigo;";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@codigo", codigo);
@@ -335,8 +335,10 @@ namespace Eterea_Parfums_Desktop.Controladores
             {
                 DB_Controller.connection.Open();
                 SqlDataReader r = cmd.ExecuteReader();
-                while (r.Read())
+                if (r.Read())
                 {
+                    perfume = new Perfume();
+
                     Marca marca = new Marca(r.GetInt32(2), null);
                     TipoDePerfume tipo_de_perfume = new TipoDePerfume(r.GetInt32(4), null);
                     Genero genero = new Genero(r.GetInt32(5), null);
@@ -373,9 +375,6 @@ namespace Eterea_Parfums_Desktop.Controladores
             return perfume;
         }
 
-        internal static Perfume GetByCodigo(string codigo)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }
