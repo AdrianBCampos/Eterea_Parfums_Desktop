@@ -882,7 +882,7 @@ namespace Eterea_Parfums_Desktop
             // Convertir el estado activo en un entero (1 para activo, 0 para no activo)
             int esActiva = combo_activo_promo.SelectedItem.ToString() == "Si" ? 1 : 0;
             string descripcionPromo = txt_descripcion_promo.Text;
-            string bannerPromo = txt_nomb_promo.Text + num + "-banner";
+            string bannerPromo = $"{txt_nomb_promo.Text}-{num}-banner";
 
             // Crear un objeto Promoción con los datos capturados
             Promocion nuevaPromo = new Promocion
@@ -938,11 +938,11 @@ namespace Eterea_Parfums_Desktop
                 try
                 {
                     num = numeroAleatorio();
-                    nuevaRuta = Path.Combine(Program.Ruta_Base, $"{nombrePromoSanitizado}{num}-banner.jpg");
+                    nuevaRuta = Path.Combine(Program.Ruta_Base, $"{nombrePromoSanitizado}-{num}-banner.jpg");
 
                     // Guardar la nueva imagen correctamente
                     pictBox_banner.Image.Save(nuevaRuta, ImageFormat.Jpeg);
-                    nombreBannerNuevo = $"{nombrePromoSanitizado}{num}-banner";
+                    nombreBannerNuevo = $"{nombrePromoSanitizado}-{num}-banner";
                     nuevaImagenGuardada = true; // Marcamos que hay una imagen nueva
                 }
                 catch (Exception ex)
@@ -958,7 +958,7 @@ namespace Eterea_Parfums_Desktop
                 if (!string.IsNullOrEmpty(nombreBannerAnterior) && promoActual.nombre != txt_nomb_promo.Text)
                 {
                     string rutaAnterior = Path.Combine(Program.Ruta_Base, nombreBannerAnterior + ".jpg");
-                    string rutaNueva = Path.Combine(Program.Ruta_Base, $"{nombrePromoSanitizado}-banner.jpg");
+                    //string rutaNueva = Path.Combine(Program.Ruta_Base, $"{nombrePromoSanitizado}-banner.jpg");
 
                     try
                     {
@@ -972,13 +972,35 @@ namespace Eterea_Parfums_Desktop
                             GC.Collect();
                             GC.WaitForPendingFinalizers();
 
+                            // Extraer el número aleatorio correctamente
+                            string nombreAnterior = Path.GetFileNameWithoutExtension(rutaAnterior); // "promo-1234-banner"
+                            string[] partesNombre = nombreAnterior.Split('-');
+
+                            // Buscar el último número en el nombre del archivo
+                            string numAleatorio = partesNombre.Reverse().FirstOrDefault(p => int.TryParse(p, out _)) ?? new Random().Next(1000, 9999).ToString();
+
+                            // **Nuevo nombre del banner con el mismo número aleatorio**
+                            string nuevoNombreBanner = $"{nombrePromoSanitizado}-{numAleatorio}-banner";
+                            string rutaNuevaEdit = Path.Combine(Path.GetDirectoryName(rutaAnterior), nuevoNombreBanner + ".jpg");
+                            
                             // **Renombrar el archivo**
+                            File.Move(rutaAnterior, rutaNuevaEdit);
+                            Console.WriteLine($"Imagen renombrada: {rutaAnterior} -> {rutaNuevaEdit}");
+
+                            // **Actualizar el nombre en la base de datos**
+                            nombreBannerNuevo = nuevoNombreBanner;
+
+                            // **Recargar la imagen con el nuevo nombre**
+                            pictBox_banner.Image = Image.FromFile(rutaNuevaEdit);
+
+
+                            /*// **Renombrar el archivo**
                             File.Move(rutaAnterior, rutaNueva);
                             Console.WriteLine($"Imagen renombrada: {rutaAnterior} -> {rutaNueva}");
                             nombreBannerNuevo = $"{nombrePromoSanitizado}-banner"; // Actualizar el nombre en la DB
 
                             // **Recargar la imagen con el nuevo nombre**
-                            pictBox_banner.Image = Image.FromFile(rutaNueva);
+                            pictBox_banner.Image = Image.FromFile(rutaNueva);*/
                         }
                     }
                     catch (IOException ex)
@@ -1337,8 +1359,8 @@ namespace Eterea_Parfums_Desktop
                     try
                     {
                         num = numeroAleatorio();
-                        banner.Save(Program.Ruta_Base + txt_nomb_promo.Text + num + "-banner.jpg",
-                            System.Drawing.Imaging.ImageFormat.Jpeg);
+                        string bannerNombre = $"{nombrePromo}-{num}-banner.jpg"; // Nombre corregido con guion
+                        banner.Save(Program.Ruta_Base + bannerNombre, System.Drawing.Imaging.ImageFormat.Jpeg);
                     }
                     catch (Exception ex)
                     {

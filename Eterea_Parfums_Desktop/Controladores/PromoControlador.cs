@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -300,18 +301,17 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
 
-     
+
 
 
         //METODO PARA ELIMINAR UNA PROMOCION
 
         public static bool eliminarPromo(int id_promo)
         {
+            // Obtener el nombre del banner antes de eliminar la promoción
+            string bannerPromo = obtenerNombreImagen(id_promo); // Nuevo método para obtener el nombre del banner
 
-
-            //Borrar definitivamente una promo de la base de datos
             string query = "DELETE FROM dbo.promocion WHERE id = @id";
-
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@id", id_promo);
 
@@ -324,34 +324,71 @@ namespace Eterea_Parfums_Desktop.Controladores
 
                 // Iniciar la transacción
                 transaction = DB_Controller.connection.BeginTransaction();
-
-                // Asociar la transacción al comando
                 cmd.Transaction = transaction;
 
-                // Eliminar relaciones de perfumes en la promoción
+                // **Eliminar la imagen antes de eliminar la promoción de la BD**
+                if (!string.IsNullOrEmpty(bannerPromo))
+                {
+                    string rutaImagen = Path.Combine(Program.Ruta_Base, bannerPromo + ".jpg");
+                    if (File.Exists(rutaImagen))
+                    {
+                        try
+                        {
+                            // **Liberar la imagen del PictureBox antes de eliminar el archivo**
+                            Form formPrincipal = Application.OpenForms["NombreDelFormulario"];
+                            if (formPrincipal != null)
+                            {
+                                PictureBox pictBox = formPrincipal.Controls.Find("pictBox_banner", true).FirstOrDefault() as PictureBox;
+                                if (pictBox != null && pictBox.Image != null)
+                                {
+                                    pictBox.Image.Dispose();
+                                    pictBox.Image = null;
+                                }
+                            }
+
+                            // **Forzar recolección de basura para liberar el archivo**
+                            GC.Collect();
+                            GC.WaitForPendingFinalizers();
+
+                            // **Ahora se elimina el archivo**
+                            File.Delete(rutaImagen);
+                        Console.WriteLine($"Imagen eliminada: {rutaImagen}");
+                    }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"No se pudo eliminar la imagen: {ex.Message}");
+                        }
+                    }
+                }
+
+                // **Eliminar relaciones de perfumes en la promoción**
                 PerfumeEnPromoControlador.eliminarRegistrosPromoPerfumes(id_promo, transaction);
 
-                // Ejecutar la eliminación de la promoción
+                // **Ejecutar la eliminación de la promoción**
                 cmd.ExecuteNonQuery();
 
-                // Confirmar la transacción
+                // **Confirmar la transacción después de eliminar la imagen y la promoción**
                 transaction.Commit();
 
                 return true;
             }
             catch (Exception e)
             {
-                // Revertir la transacción en caso de error
-                transaction?.Rollback();
-                throw new Exception("Error al eliminar la promoción: " + e.Message);
+                // **Si hay un error, solo hacer rollback si la transacción no se ha confirmado**
+                if (transaction != null && transaction.Connection != null)
+                {
+                    transaction.Rollback();
+                }
+                throw new Exception("Ocurrió un error al eliminar la promoción: " + e.Message);
             }
             finally
             {
-                // Asegurarse de cerrar la conexión
+                // **Cerrar la conexión siempre**
                 if (DB_Controller.connection.State == System.Data.ConnectionState.Open)
                     DB_Controller.connection.Close();
             }
         }
+
 
 
 
