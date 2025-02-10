@@ -47,12 +47,18 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
-            /* string path = @"C:\Users\intersan\Desktop\TESIS\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\txt_scan.txt";
-             // Asegúrate de usar la ruta correcta
-             watcher = new BarcodeScannerWatcher(path);*/
             //Ocultar campos de escaneo 
             lbl_codigoBarras.Visible = false;
             txt_scan.Visible = false;
+
+            // Configurar evento Click en todos los controles del formulario excepto en txt_scan y lbl_codigoBarras
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl != txt_scan && ctrl != lbl_codigoBarras && ctrl != btn_escanear)
+                {
+                    ctrl.Click += Form_Click;
+                }
+            }
 
 
             string rutaCompletaImagen = Program.Ruta_Base + @"Diseño Logo2.png";
@@ -436,6 +442,17 @@ namespace Eterea_Parfums_Desktop
                 txt_scan.Focus();
             }
         }
+
+
+        private void Form_Click(object sender, EventArgs e)
+        {
+            // Si txt_scan está visible y se hace clic fuera de él, oculta los controles de escaneo
+            if (txt_scan.Visible)
+            {
+                RestaurarUI();
+            }
+        }
+
 
 
         public void MostrarErrorCodigo()
