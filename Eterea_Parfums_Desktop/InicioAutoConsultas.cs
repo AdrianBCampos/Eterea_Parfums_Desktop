@@ -76,6 +76,7 @@ namespace Eterea_Parfums_Desktop
 
             this.KeyPreview = true;
             btn_iniciar_sesion.Visible = false;
+            btn_cerrar_programa.Visible = false;
 
 
             //Diseño del combo box
@@ -107,8 +108,29 @@ namespace Eterea_Parfums_Desktop
                 Login login = new Login();
                 login.Show();
                 this.Hide();
+                return; // Importante: evitar que siga evaluando otras teclas después de ocultar el formulario
+            }
+
+            // Detectar si se presionan las teclas Ctrl + X
+            if (e.Control && e.KeyCode == Keys.X)
+            {
+                DialogResult result = MessageBox.Show(
+                    "¿Está seguro que desea cerrar la aplicación?",
+                    "Confirmar salida",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
             }
         }
+
+
+
+
 
         private void CargarMarcas()
         {

@@ -480,6 +480,7 @@
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox7);
+            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "InicioAutoConsultas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
