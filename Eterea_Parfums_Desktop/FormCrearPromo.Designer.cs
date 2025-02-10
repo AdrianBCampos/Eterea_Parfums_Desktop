@@ -106,6 +106,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lbl_error_banner = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_resultado_busqueda_perfumes)).BeginInit();
@@ -793,7 +794,6 @@
             this.txt_descripcion_promo.Size = new System.Drawing.Size(197, 42);
             this.txt_descripcion_promo.TabIndex = 323;
             this.txt_descripcion_promo.Text = "";
-            this.txt_descripcion_promo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_descripcion_promo_KeyPress);
             // 
             // lbl_error_desc_promo
             // 
@@ -920,6 +920,11 @@
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
             // 
             // FormCrearPromo
             // 
@@ -1075,5 +1080,6 @@
         public System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lbl_error_banner;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
     }
 }

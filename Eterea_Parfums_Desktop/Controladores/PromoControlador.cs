@@ -193,6 +193,46 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
 
+
+
+        //Método para obtener el nombre de la imagen del banner de la foto buscandola por su id
+
+        public static string obtenerNombreImagen(int promoId)
+        {
+            string nombreArchivo = string.Empty;
+
+            string query = "SELECT banner FROM dbo.promocion WHERE id = @id;";
+
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+            cmd.Parameters.AddWithValue("@id", promoId);
+
+            try
+            {
+                DB_Controller.connection.Open();
+                SqlDataReader r = cmd.ExecuteReader();
+
+                if (r.Read()) // Si hay un resultado
+                {
+                    nombreArchivo = r.IsDBNull(0) ? string.Empty : r.GetString(0);
+                }
+
+                r.Close();
+                DB_Controller.connection.Close();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error al obtener el nombre de la imagen: " + e.Message);
+            }
+
+            return nombreArchivo;
+        }
+
+
+
+
+
+
+
         //EDIT ó PUT  -  EDITAR UNA PROMO
         public static bool editarPromo(Promocion promo)
         {

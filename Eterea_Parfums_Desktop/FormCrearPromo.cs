@@ -55,7 +55,9 @@ namespace Eterea_Parfums_Desktop
 
             InitializeComponent();
 
-            txt_nomb_promo.KeyPress += txt_nomb_promo_KeyPress;
+            //txt_nomb_promo.KeyPress += txt_nomb_promo_KeyPress;
+            //txt_descripcion_promo.KeyPress += txt_descripcion_promo_KeyPress;
+
 
             //Ocultar label del nombre de la promo a editar
             lbl_nomb_promo_edit.Visible = false;
@@ -93,8 +95,7 @@ namespace Eterea_Parfums_Desktop
 
 
 
-
-
+       
 
 
 
@@ -346,9 +347,8 @@ namespace Eterea_Parfums_Desktop
 
 
 
-
-
-
+        
+/*
 
         //Evento para para permitir solo letras, números, espacios y los signos de % . , "" - (): en el nombre de la promoción
 
@@ -391,8 +391,8 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
-
-
+        */
+        
 
 
 
@@ -524,8 +524,8 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
-            txt_nomb_promo.KeyPress += txt_nomb_promo_KeyPress;
-            txt_descripcion_promo.KeyPress += txt_descripcion_promo_KeyPress;
+            //txt_nomb_promo.KeyPress += txt_nomb_promo_KeyPress;
+            //txt_descripcion_promo.KeyPress += txt_descripcion_promo_KeyPress;
 
             // Ocultar etiquetas de error
             lbl_error_tipo_promo.Visible = false;
@@ -1243,6 +1243,9 @@ namespace Eterea_Parfums_Desktop
             errorMsg = "";
             limpiarMensajesError();
 
+            // Definir caracteres permitidos
+            string caracteresPermitidos = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,\"-:()";
+
             if (combo_tipo_promo.SelectedItem == null || string.IsNullOrEmpty(combo_tipo_promo.Text))
             {
                 errorMsg += "Debes seleccionar el tipo de promoción" + Environment.NewLine;
@@ -1265,6 +1268,12 @@ namespace Eterea_Parfums_Desktop
             {
                 errorMsg += "El nombre de la promoción debe tener entre 4 y 80 caracteres." + Environment.NewLine;
                 lbl_error_nombP.Text = "El nombre de la promoción debe tener entre 4 y 80 caracteres.";
+                lbl_error_nombP.Show();
+            }
+            else if (!EsTextoValido(txt_nomb_promo.Text, caracteresPermitidos))
+            {
+                errorMsg += "Solo letras, números, espacios y los caracteres: ., ,, \", -, :, (, )." + Environment.NewLine;
+                lbl_error_nombP.Text = "Solo letras, números, espacios y los caracteres: ., ,, \", -, :, (, ).";
                 lbl_error_nombP.Show();
             }
             else if (txt_nomb_promo.Text.Count(c => c == '%') > 1) // Permite solo un '%'
@@ -1295,6 +1304,12 @@ namespace Eterea_Parfums_Desktop
                 lbl_error_desc_promo.Text = "La descripción debe tener entre 4 y 180 caracteres.";
                 lbl_error_desc_promo.Show();
                 
+            }
+            else if (!EsTextoValido(txt_descripcion_promo.Text, caracteresPermitidos))
+            {
+                errorMsg += "Solo letras, números, espacios y los caracteres: ., ,, \", -, :, (, )." + Environment.NewLine;
+                lbl_error_desc_promo.Text = "Solo letras, números, espacios y los caracteres: ., ,, \", -, :, (, ).";
+                lbl_error_desc_promo.Show();
             }
             else if (txt_descripcion_promo.Text.Count(c => c == '%') > 1 ||
                      new[] { '.', ',', '"', '-', ':', '(', ')' }.Any(c => txt_descripcion_promo.Text.Count(ch => ch == c) > 6))
@@ -1380,6 +1395,12 @@ namespace Eterea_Parfums_Desktop
             return string.IsNullOrEmpty(errorMsg);
         }
 
+
+        // Función auxiliar para verificar que el texto solo contenga caracteres permitidos
+        private bool EsTextoValido(string texto, string caracteresPermitidos)
+        {
+            return texto.All(c => char.IsLetterOrDigit(c) || caracteresPermitidos.Contains(c));
+        }
 
         /* private bool validarPromo(out string errorMsg)
          {
@@ -1570,6 +1591,7 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_crear_promo_Click(object sender, EventArgs e)
         {
+         
 
             if (situacion == "Creacion")
             {
@@ -1587,7 +1609,7 @@ namespace Eterea_Parfums_Desktop
                     try
                     {
                         num = numeroAleatorio();
-                        banner.Save(Program.Ruta_Base + txt_nomb_promo.Text + num + "-banner",
+                        banner.Save(Program.Ruta_Base + txt_nomb_promo.Text + num + "-banner.jpg",
                             System.Drawing.Imaging.ImageFormat.Jpeg);
                     }
                     catch (Exception ex)
@@ -1598,7 +1620,8 @@ namespace Eterea_Parfums_Desktop
 
 
                     crearPromo();
-                    asignarPerfumesAPromo(idPromo);
+                    int idPromoCreada = PromoControlador.obtenerMaxId();
+                    asignarPerfumesAPromo(idPromoCreada);
                 }
             }
             if (situacion == "Edicion")
@@ -1653,5 +1676,7 @@ namespace Eterea_Parfums_Desktop
             }
             nuevaImagenCargada = true;
         }
+
+
     }
 }
