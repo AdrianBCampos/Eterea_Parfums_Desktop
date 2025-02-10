@@ -910,7 +910,7 @@
             // 
             this.lbl_error_banner.AutoSize = true;
             this.lbl_error_banner.ForeColor = System.Drawing.Color.Red;
-            this.lbl_error_banner.Location = new System.Drawing.Point(683, 187);
+            this.lbl_error_banner.Location = new System.Drawing.Point(724, 155);
             this.lbl_error_banner.Name = "lbl_error_banner";
             this.lbl_error_banner.Size = new System.Drawing.Size(28, 13);
             this.lbl_error_banner.TabIndex = 334;
