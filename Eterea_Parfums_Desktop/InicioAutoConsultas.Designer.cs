@@ -430,23 +430,23 @@
             this.lbl_codigoBarras.AccessibleRole = System.Windows.Forms.AccessibleRole.PageTabList;
             this.lbl_codigoBarras.AutoSize = true;
             this.lbl_codigoBarras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_codigoBarras.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_codigoBarras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lbl_codigoBarras.Location = new System.Drawing.Point(30, 464);
+            this.lbl_codigoBarras.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_codigoBarras.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbl_codigoBarras.Location = new System.Drawing.Point(18, 464);
             this.lbl_codigoBarras.Name = "lbl_codigoBarras";
-            this.lbl_codigoBarras.Size = new System.Drawing.Size(113, 17);
+            this.lbl_codigoBarras.Size = new System.Drawing.Size(159, 18);
             this.lbl_codigoBarras.TabIndex = 303;
-            this.lbl_codigoBarras.Text = "Escanear ahora:";
+            this.lbl_codigoBarras.Text = "ESCANEAR AHORA";
             // 
             // txt_scan
             // 
             this.txt_scan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.txt_scan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_scan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_scan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_scan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.txt_scan.Location = new System.Drawing.Point(29, 484);
             this.txt_scan.Name = "txt_scan";
-            this.txt_scan.Size = new System.Drawing.Size(136, 23);
+            this.txt_scan.Size = new System.Drawing.Size(136, 26);
             this.txt_scan.TabIndex = 304;
             this.txt_scan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_scan_KeyPress);
             // 

@@ -31,14 +31,12 @@ namespace Eterea_Parfums_Desktop
         private void button2_Click(object sender, EventArgs e)
         {
             InicioAutoConsultas inicioAutoConsultas = new InicioAutoConsultas();
-            inicioAutoConsultas.Show();
+         
             this.Close();
+            _inicioAutoConsultas?.RestaurarUI();  // Llamar al método de restauración de UI
         }
 
-        private void btn_enviar_Click(object sender, EventArgs e)
-        {
-           
-        }
+
 
         private void Escanear_Load(object sender, EventArgs e)
         {
@@ -85,7 +83,6 @@ namespace Eterea_Parfums_Desktop
                 }
             }
         }
-
 
 
     }
