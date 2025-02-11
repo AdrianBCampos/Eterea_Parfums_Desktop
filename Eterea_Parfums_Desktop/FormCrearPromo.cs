@@ -929,6 +929,22 @@ namespace Eterea_Parfums_Desktop
                 return false;
             }
 
+            // **Confirmar la edición antes de continuar**
+            DialogResult resultado = MessageBox.Show(
+                "¿Estás seguro de que deseas editar esta promoción?",
+                "Confirmación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (resultado == DialogResult.No)
+            {
+                MessageBox.Show("Edición cancelada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // **Cerrar el formulario**
+                this.Close();
+                return false;
+            }
+
             string nuevaRuta = "";
             bool nuevaImagenGuardada = false;
 
@@ -951,6 +967,8 @@ namespace Eterea_Parfums_Desktop
                     return false;
                 }
             }
+
+
 
             else
             {
@@ -1012,7 +1030,7 @@ namespace Eterea_Parfums_Desktop
 
 
 
-            // **Confirmar la edición antes de continuar**
+            /*// **Confirmar la edición antes de continuar**
             DialogResult resultado = MessageBox.Show(
                 "¿Estás seguro de que deseas editar esta promoción?",
                 "Confirmación",
@@ -1039,7 +1057,7 @@ namespace Eterea_Parfums_Desktop
                 // **Cerrar el formulario**
                 this.Close();
                 return false;
-            }
+            }*/
 
             // **Eliminar la imagen anterior SOLO después de confirmar la edición**
             if (nuevaImagenGuardada && !string.IsNullOrEmpty(nombreBannerAnterior))
@@ -1379,15 +1397,20 @@ namespace Eterea_Parfums_Desktop
                 bool promoValidada = validarPromo(out string errorMsg);
                 if (promoValidada)
                 {
-                    editarPromo();
-                    asignarPerfumesAPromo(idPromo);
+                    if (editarPromo()) // Solo continúa si la edición fue confirmada
+                    {
+                        asignarPerfumesAPromo(idPromo);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Edición cancelada. No se asignarán perfumes a la promoción.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                 {
                     MessageBox.Show(errorMsg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-
         }
 
 
