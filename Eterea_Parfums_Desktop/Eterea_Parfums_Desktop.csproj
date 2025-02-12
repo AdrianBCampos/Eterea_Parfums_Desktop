@@ -68,6 +68,7 @@
     <Compile Include="Controladores\AromaDelPerfumeControlador.cs" />
     <Compile Include="Controladores\CalleControlador.cs" />
     <Compile Include="Controladores\ClienteControlador.cs" />
+    <Compile Include="Controladores\DetalleFacturaControlador.cs" />
     <Compile Include="Controladores\FacturaControlador.cs" />
     <Compile Include="Controladores\GeneroControlador.cs" />
     <Compile Include="Controladores\LocalidadControlador.cs" />
@@ -206,6 +207,12 @@
     <Compile Include="InformesDeVentas2.Designer.cs">
       <DependentUpon>InformesDeVentas2.cs</DependentUpon>
     </Compile>
+    <Compile Include="InformesDeVentas3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformesDeVentas3.Designer.cs">
+      <DependentUpon>InformesDeVentas3.cs</DependentUpon>
+    </Compile>
     <Compile Include="MenuABM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,6 +222,7 @@
     <Compile Include="Modelos\AromaDelPerfume.cs" />
     <Compile Include="Modelos\Calle.cs" />
     <Compile Include="Modelos\Cliente.cs" />
+    <Compile Include="Modelos\DetalleFactura.cs" />
     <Compile Include="Modelos\Factura.cs" />
     <Compile Include="Modelos\Genero.cs" />
     <Compile Include="Modelos\Localidad.cs" />
@@ -382,6 +390,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InformesDeVentas2.resx">
       <DependentUpon>InformesDeVentas2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformesDeVentas3.resx">
+      <DependentUpon>InformesDeVentas3.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuABM.resx">
       <DependentUpon>MenuABM.cs</DependentUpon>

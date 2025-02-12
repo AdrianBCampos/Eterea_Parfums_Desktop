@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Eterea_Parfums_Desktop.Modelos;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
@@ -93,6 +94,79 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
 
+        }
+
+        public static List<Factura> getAllIntervaloFechas(DateTime fecha_inicio, DateTime fecha_final)
+        {
+            List<Factura> facturas = new List<Factura>();
+            string query = "SELECT * FROM dbo.factura WHERE fecha BETWEEN @fecha_inicio AND @fecha_final";
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+            cmd.Parameters.AddWithValue("@fecha_inicio", fecha_inicio);
+            cmd.Parameters.AddWithValue("@fecha_final", fecha_final);
+
+            try
+            {
+                DB_Controller.connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    Sucursal sucursal = SucursalControlador.getById(reader.GetInt32(2));
+                    Empleado empleado = EmpleadoControlador.obtenerPorId(reader.GetInt32(3));
+                    Cliente cliente = ClienteControlador.obtenerPorId(reader.GetInt32(4));
+
+                    Factura factura = new Factura(reader.GetInt32(0), reader.GetDateTime(1), sucursal, empleado, cliente, reader.GetString(5), reader.GetDouble(6),
+                        reader.GetDouble(7), reader.GetDouble(8), reader.GetInt32(9), reader.GetString(10), reader.GetString(11), "");
+
+                    facturas.Add(factura);
+                }
+                reader.Close();
+                DB_Controller.connection.Close();
+                return facturas;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Hay un error en la query: " + e.Message);
+            }
+            
+        }
+
+
+        public static Factura getById(int id)
+        {
+            Factura factura = new Factura();
+            string query = "SELECT * FROM dbo.factura WHERE num_factura = @id";
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+            cmd.Parameters.AddWithValue("@id", id);
+            try
+            {
+                DB_Controller.connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    factura.num_factura = reader.GetInt32(0);
+                    factura.fecha = reader.GetDateTime(1);
+                    factura.sucursal_id = SucursalControlador.getById(reader.GetInt32(2));
+                    factura.empleado_id = EmpleadoControlador.obtenerPorId(reader.GetInt32(3));
+                    factura.cliente_id = ClienteControlador.obtenerPorId(reader.GetInt32(4));
+                    factura.forma_de_pago = reader.GetString(5);
+                    factura.precio_total = reader.GetDouble(6);
+                    factura.recargo_tarjeta = reader.GetDouble(7);
+                    factura.descuento = reader.GetDouble(8);
+                    factura.numero_de_caja = reader.GetInt32(9);
+                    factura.tipo_de_consumidor = reader.GetString(10);
+                    factura.origen = reader.GetString(11);
+                    factura.facura_pdf = reader.GetString(12);
+                }
+                reader.Close();
+                DB_Controller.connection.Close();
+                return factura;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return factura;
         }
     }
 }
