@@ -99,10 +99,6 @@ namespace Eterea_Parfums_Desktop
                 else
                 {
                     txt_datos_producto.Text = perfume.nombre; // Muestra el nombre del perfume si existe
-                    if (StockControlador.getStock(perfume.id, idSucursal) != -1)
-                    {
-                        txt_cantidad_producto.Text = StockControlador.getStock(perfume.id, idSucursal).ToString();
-                    }
                 }
             }
         }

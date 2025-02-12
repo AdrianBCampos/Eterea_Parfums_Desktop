@@ -44,7 +44,6 @@ namespace Eterea_Parfums_Desktop
             cargarDataGridViewNotasDePerfume();
             lbl_error_seleccion_aroma.Visible = false;
             lbl_error_seleccion_nota.Visible = false;
-            lbl_nota.Text = "";
         }
 
         private void CargarDatosCheckBoxListAromas()
@@ -121,7 +120,9 @@ namespace Eterea_Parfums_Desktop
                 }
                 else
                 {
-                    lbl_nota.Text = "No se encontraron notas que coincidan.";
+                    MessageBox.Show("No se encontró ninguna nota con ese nombre");
+                    lbl_buscar_nota.Text = "";
+                    txt_nota.Text = "";
                 }
             }
             else
@@ -190,12 +191,9 @@ namespace Eterea_Parfums_Desktop
                 }
             }
         }
-
-
-
         private void btn_agregar_Click(object sender, EventArgs e)
         {
-             string tipoDeNotaMarcado = null;
+            string tipoDeNotaMarcado = null;
 
             if (checkedListBoxNota.CheckedItems.Count == 0)
             {
@@ -203,19 +201,7 @@ namespace Eterea_Parfums_Desktop
                 lbl_error_seleccion_nota.Visible = true;
                 return;
             }
-            else if (!(checkedListBoxNota.CheckedItems.Count == 1))
-            {
-                lbl_error_seleccion_nota.Text = "marcar un solo tipo de nota";
-                lbl_error_seleccion_nota.Visible = true;
-                return;
-            }
-            else if (checkedListBoxNota.CheckedItems.Count > 1)
-            {
-                lbl_error_seleccion_nota.Text = "marcar un solo tipo de nota";
-                lbl_error_seleccion_nota.Visible = true;
-                return;
-            }
-            else if (!(string.IsNullOrEmpty(lbl_nota.Text)))
+            else if (!(string.IsNullOrEmpty(lbl_nota.Text) || lbl_nota.Text == "Nota"))
             {
 
                 Nota nota = NotaControlador.getByNombre(lbl_nota.Text);
@@ -223,13 +209,13 @@ namespace Eterea_Parfums_Desktop
                 TipoDeNota tipoDeNota = TipoDeNotaControlador.getByNombre(tipoDeNotaMarcado);
                 NotaConTipoDeNota notaConTipoDeNota = NotaConTipoDeNotaControlador.getByNotaAndTipoDeNota(nota, tipoDeNota);
                 notasDelPerfume = new NotasDelPerfume(perfume, notaConTipoDeNota);
-         
+
 
                 if (notas_con_tipo_de_nota == null)
                 {
                     notas_con_tipo_de_nota = new List<NotaConTipoDeNota>();
-                }
 
+                }
                 if (notas_del_perfume == null)
                 {
                     notas_del_perfume = new List<NotasDelPerfume>();
@@ -248,18 +234,17 @@ namespace Eterea_Parfums_Desktop
                     notas_con_tipo_de_nota.Add(notaConTipoDeNota);
                     notas_del_perfume.Add(notasDelPerfume);
                     MessageBox.Show("Se ha guardado la nota y el tipo de nota del perfume correctamente");
+                    cargarDataGridViewNotasDePerfume(notas_con_tipo_de_nota);
                 }
-               
-
-                cargarDataGridViewNotasDePerfume(notas_con_tipo_de_nota);
-
+                
             }
-            else
-            {
-                lbl_error_seleccion_nota.Text = "Debe ingresar una nota";
-                lbl_error_seleccion_nota.Visible = true;
-                return;
-            }
+             else
+             {
+                  lbl_error_seleccion_nota.Text = "Debe ingresar una nota";
+                  lbl_error_seleccion_nota.Visible = true;
+                  return;
+             }
+            
         }
 
         private void dataGridViewNotasDelPerfume_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -345,62 +330,36 @@ namespace Eterea_Parfums_Desktop
             //Actualizar la lista de perfumes en el perfumesUC
             perfumesUC.cargarPerfumes();
         }
-        
-
-        private void dataGridViewNotasDelPerfume_SelectionChanged(object sender, EventArgs e)
-        {
-            checkedListBoxNota.ClearSelected();
-            if (dataGridViewNotasDelPerfume.SelectedRows.Count > 0)
-            {
-
-                for (int index = 0; index < checkedListBoxNota.Items.Count; index++)
-                {
-                    checkedListBoxNota.SetItemChecked(index, false);
-                }
-                string tipoDeNota = dataGridViewNotasDelPerfume.SelectedRows[0].Cells[1].Value.ToString();
-               
-
-                for (int index = 0; index < checkedListBoxNota.Items.Count; index++)
-                {
-                    if (checkedListBoxNota.Items[index].ToString() == tipoDeNota)
-                    {
-                        checkedListBoxNota.SetItemChecked(index, true);
-                        break; // Optimización: salir del bucle una vez encontrado
-                    }
-                }
-            }
-        }
-
-        private void checkedListBoxNota_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Verifica si hay algún elemento seleccionado
-            if (checkedListBoxNota.SelectedIndex != -1)
-            {
-                // Desmarcar todos los elementos antes de marcar el nuevo
-                for (int i = 0; i < checkedListBoxNota.Items.Count; i++)
-                {
-                    if (i != checkedListBoxNota.SelectedIndex) // Evita desmarcar el que acaba de ser seleccionado
-                    {
-                        checkedListBoxNota.SetItemChecked(i, false);
-                    }
-                }
-
-                // Obtener el último elemento marcado
-                string ultimoMarcado = checkedListBoxNota.SelectedItem.ToString();
-                lbl_tipo_de_nota.Text = ultimoMarcado;
-            }
-            else
-            {
-                lbl_tipo_de_nota.Text = "No hay elementos seleccionados.";
-            }
-
-         
-        }
-
         private void btn_x_cerrar_Click(object sender, EventArgs e)
         {
             this.Close();
             formEditarProducto.Show();
+        }
+
+        private void checkedListBoxNota_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            this.BeginInvoke(new Action(() =>
+            {
+                // Verifica si hay al menos un elemento marcado
+                if (checkedListBoxNota.CheckedItems.Count == 0)
+                {
+                    lbl_tipo_de_nota.Text = "";
+                }
+                else
+                {
+                    // Desmarcar todos los elementos antes de marcar el nuevo
+                    for (int i = 0; i < checkedListBoxNota.Items.Count; i++)
+                    {
+                        if (i != checkedListBoxNota.SelectedIndex) // Evita desmarcar el que acaba de ser seleccionado
+                        {
+                            checkedListBoxNota.SetItemChecked(i, false);
+                        }
+                    }
+                    // Obtener el último elemento marcado
+                    string ultimoMarcado = checkedListBoxNota.SelectedItem.ToString();
+                    lbl_tipo_de_nota.Text = ultimoMarcado;
+                }
+            }));
         }
     }
 }
