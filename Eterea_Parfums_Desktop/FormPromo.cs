@@ -600,6 +600,8 @@ namespace Eterea_Parfums_Desktop
 
 
 
+   
+
         //Método para cargar los datos en el dataGridView de los perfumes agregados a la promo
 
         private void cargarPerfumesDePromo(List<PerfumeDTO> perfumes)
@@ -646,7 +648,6 @@ namespace Eterea_Parfums_Desktop
 
 
 
-
         //Método para detectar cambios en el combo_box de tipo de promoción
 
         private void combo_tipo_promo_edit_SelectedIndexChanged(object sender, EventArgs e)
@@ -671,38 +672,29 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_agregar_todos_Click_1(object sender, EventArgs e)
         {
-            // Iterar por todas las filas del dataGrid_resultado_busqueda_perfumes
+            int perfumesAgregados = 0;
+
             foreach (DataGridViewRow sourceRow in dataGrid_resultado_busqueda_perfumes.Rows)
             {
-                // Obtener el ID del perfume de la fila actual
                 int idPerfume = Convert.ToInt32(sourceRow.Cells[5].Value);
 
-                // Verificar si el perfume ya está en el dataGrid_perfumes_agregados_a_promo
-                bool perfumeYaAgregado = false;
-                foreach (DataGridViewRow targetRow in dataGrid_perfumes_agregados_a_promo.Rows)
+                // Si el perfume no está agregado, lo agregamos
+                if (!EsPerfumeDuplicado(idPerfume))
                 {
-                    if (Convert.ToInt32(targetRow.Cells[5].Value) == idPerfume)
-                    {
-                        perfumeYaAgregado = true;
-                        break; // Si el perfume ya está agregado, no seguimos buscando
-                    }
-                }
-
-                // Si el perfume no está agregado, lo agregamos al dataGrid_perfumes_agregados_a_promo
-                if (!perfumeYaAgregado)
-                {
-                    int newRowIndex = dataGrid_perfumes_agregados_a_promo.Rows.Add();
-                    dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[0].Value = sourceRow.Cells[0].Value;
-                    dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[1].Value = sourceRow.Cells[1].Value;
-                    dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[2].Value = sourceRow.Cells[2].Value;
-                    dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[3].Value = sourceRow.Cells[3].Value;
-                    dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[4].Value = "Elimninar";
-                    dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[5].Value = idPerfume;
+                    AgregarPerfumeAPromocion(sourceRow, idPerfume);
+                    perfumesAgregados++;
                 }
             }
 
-            // Mostrar un mensaje al final del proceso
-            MessageBox.Show("Todos los perfumes han sido agregados correctamente (excepto los duplicados).", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            // 🔹 Mostrar mensaje único al final
+            if (perfumesAgregados > 0)
+            {
+                MessageBox.Show($"Se han agregado {perfumesAgregados} perfumes correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("No se agregó ningún perfume porque ya estaban en la promoción.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
 
@@ -713,38 +705,51 @@ namespace Eterea_Parfums_Desktop
 
 
 
-        //Acción del botón "Agregar" del dataGridView de resultado de busqueda de perfumes
 
+        // Acción del botón "Agregar" en el DataGridView de resultados de búsqueda de perfumes
         private void dataGrid_perfumes_agregados_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
             if (e.ColumnIndex == dataGrid_resultado_busqueda_perfumes.Columns["Agregar"].Index && e.RowIndex >= 0)
             {
-                // Obtener los datos de la fila seleccionada
+                // Obtener el ID del perfume seleccionado
                 DataGridViewRow selectedRow = dataGrid_resultado_busqueda_perfumes.Rows[e.RowIndex];
                 int idPerfume = Convert.ToInt32(selectedRow.Cells["Id"].Value);
 
-                // Verificar si el perfume ya está en el dataGrid_perfumes_agregados_a_promo
-                foreach (DataGridViewRow row in dataGrid_perfumes_agregados_a_promo.Rows)
+                // Verificar si ya fue agregado
+                if (EsPerfumeDuplicado(idPerfume))
                 {
-                    if (Convert.ToInt32(row.Cells["IdOK"].Value) == idPerfume)
-                    {
-                        MessageBox.Show("El perfume ya ha sido agregado a la promoción.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        return;
-                    }
+                    MessageBox.Show("El perfume ya ha sido agregado a la promoción.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
                 }
 
-                // Si no está repetido, agregarlo al dataGrid_perfumes_agregados_a_promo
-                int newRowIndex = dataGrid_perfumes_agregados_a_promo.Rows.Add();
-                dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[0].Value = selectedRow.Cells[0].Value;
-                dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[1].Value = selectedRow.Cells[1].Value;
-                dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[2].Value = selectedRow.Cells[2].Value;
-                dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[3].Value = selectedRow.Cells[3].Value;
-                dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[4].Value = "Elimninar";
-                dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[5].Value = idPerfume;
-
-                MessageBox.Show("Perfume agregado correctamente a la promoción.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Agregar el perfume a la lista de perfumes agregados a la promoción
+                AgregarPerfumeAPromocion(selectedRow, idPerfume);
             }
+        }
+
+        // Método para verificar si el perfume ya ha sido agregado
+        private bool EsPerfumeDuplicado(int idPerfume)
+        {
+            foreach (DataGridViewRow row in dataGrid_perfumes_agregados_a_promo.Rows)
+            {
+                if (Convert.ToInt32(row.Cells["IdOK"].Value) == idPerfume)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Método para agregar el perfume al DataGridView de perfumes agregados
+        private void AgregarPerfumeAPromocion(DataGridViewRow sourceRow, int idPerfume)
+        {
+            int newRowIndex = dataGrid_perfumes_agregados_a_promo.Rows.Add();
+            dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[0].Value = sourceRow.Cells[0].Value;
+            dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[1].Value = sourceRow.Cells[1].Value;
+            dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[2].Value = sourceRow.Cells[2].Value;
+            dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[3].Value = sourceRow.Cells[3].Value;
+            dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[4].Value = "Eliminar";
+            dataGrid_perfumes_agregados_a_promo.Rows[newRowIndex].Cells[5].Value = idPerfume;
         }
 
 
@@ -753,31 +758,37 @@ namespace Eterea_Parfums_Desktop
 
 
 
-        //Acción del botón "Eliminar" del dataGridView de los perfumes a los que aplica la promo
-
+        // ✅ Acción del botón "Eliminar" en el DataGridView de perfumes en la promoción
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Verifica que la celda clickeada sea la del botón "Eliminar"
-            if (e.ColumnIndex == 4 && e.RowIndex >= 0)
+            if (!EsCeldaEliminar(e)) return;
+
+            string nombrePerfume = dataGrid_perfumes_agregados_a_promo.Rows[e.RowIndex].Cells[1].Value.ToString();
+            string mililitrosPerfume = dataGrid_perfumes_agregados_a_promo.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+            if (ConfirmarEliminacionPerfume(nombrePerfume, mililitrosPerfume))
             {
-                // Obtener el nombre del perfume desde la fila seleccionada
-                string nombrePerfume = dataGrid_perfumes_agregados_a_promo.Rows[e.RowIndex].Cells[1].Value.ToString();  // Columna 1 es el nombre del perfume
-                string mililitrosPerfume = dataGrid_perfumes_agregados_a_promo.Rows[e.RowIndex].Cells[2].Value.ToString();  // Columna 2 es la cantidad de mililitros
-
-                // Confirmación de eliminación
-                DialogResult resultado = MessageBox.Show(
-                   $"¿Estás seguro de que deseas eliminar el perfume '{nombrePerfume}'de '{mililitrosPerfume}'ml del listado?",
-                    "Confirmar eliminación",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question
-                );
-
-                if (resultado == DialogResult.Yes)
-                {
-                    // Elimina la fila seleccionada del DataGridView
-                    dataGrid_perfumes_agregados_a_promo.Rows.RemoveAt(e.RowIndex);
-                }
+                dataGrid_perfumes_agregados_a_promo.Rows.RemoveAt(e.RowIndex);
             }
+        }
+
+        // ✅ Método para verificar si la celda clickeada es la de "Eliminar"
+        private bool EsCeldaEliminar(DataGridViewCellEventArgs e)
+        {
+            return e.ColumnIndex == 4 && e.RowIndex >= 0;
+        }
+
+        // ✅ Método para confirmar la eliminación del perfume
+        private bool ConfirmarEliminacionPerfume(string nombrePerfume, string mililitrosPerfume)
+        {
+            DialogResult resultado = MessageBox.Show(
+                $"¿Estás seguro de que deseas eliminar el perfume '{nombrePerfume}' de '{mililitrosPerfume}'ml del listado?",
+                "Confirmar eliminación",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            return resultado == DialogResult.Yes;
         }
 
 
@@ -791,8 +802,20 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_eliminar_todos_Click(object sender, EventArgs e)
         {
+            if (!ConfirmarEliminacion()) return;
 
-            // Confirmar la acción con el usuario
+            // Respaldar antes de eliminar
+            RespaldarPerfumesAgregados();
+
+            // Eliminar todos los perfumes del DataGridView
+            EliminarTodosLosPerfumes();
+
+            MessageBox.Show("Todos los perfumes han sido eliminados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        // Método para confirmar la eliminación con el usuario
+        private bool ConfirmarEliminacion()
+        {
             DialogResult resultado = MessageBox.Show(
                 "¿Estás seguro de que deseas eliminar todos los perfumes agregados?",
                 "Confirmación",
@@ -800,27 +823,29 @@ namespace Eterea_Parfums_Desktop
                 MessageBoxIcon.Question
             );
 
-            if (resultado == DialogResult.Yes)
-            {
-                // Realiza un respaldo de las filas actuales
-                backupRows.Clear(); // Limpiar el respaldo anterior
-                foreach (DataGridViewRow row in dataGrid_perfumes_agregados_a_promo.Rows)
-                {
-                    // Agregar la fila al respaldo (asegurarse de no agregar filas vacías)
-                    if (!row.IsNewRow)
-                    {
-                        backupRows.Add(row);
-                    }
-                }
-
-                // Elimina todas las filas del DataGridView
-                dataGrid_perfumes_agregados_a_promo.Rows.Clear();
-
-                MessageBox.Show("Todos los perfumes han sido eliminados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            }
-
+            return resultado == DialogResult.Yes;
         }
+
+        // Método para respaldar los perfumes antes de eliminarlos
+        private void RespaldarPerfumesAgregados()
+        {
+            backupRows.Clear(); // Limpiar el respaldo anterior
+
+            foreach (DataGridViewRow row in dataGrid_perfumes_agregados_a_promo.Rows)
+            {
+                if (!row.IsNewRow)
+                {
+                    backupRows.Add(row);
+                }
+            }
+        }
+
+        // Método para eliminar todas las filas del DataGridView
+        private void EliminarTodosLosPerfumes()
+        {
+            dataGrid_perfumes_agregados_a_promo.Rows.Clear();
+        }
+
 
 
 
@@ -829,15 +854,30 @@ namespace Eterea_Parfums_Desktop
 
         //Acción del botón para volver atras si se eliminaron todos los perfumes de la promo por error
 
+ 
         private void btrn_deshacer_eliminacion_Click(object sender, EventArgs e)
+        {
+            if (!HayDatosParaRestaurar()) return;
+
+            RestaurarPerfumesEliminados();
+
+            MessageBox.Show("Se ha deshecho la eliminación de los perfumes.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        // Método para verificar si hay datos en el respaldo
+        private bool HayDatosParaRestaurar()
         {
             if (backupRows.Count == 0)
             {
                 MessageBox.Show("No hay datos para deshacer la eliminación.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                return false;
             }
+            return true;
+        }
 
-            // Restaurar las filas del respaldo al DataGridView
+        // Método para restaurar los perfumes eliminados desde el respaldo
+        private void RestaurarPerfumesEliminados()
+        {
             foreach (DataGridViewRow row in backupRows)
             {
                 int rowIndex = dataGrid_perfumes_agregados_a_promo.Rows.Add();
@@ -849,9 +889,8 @@ namespace Eterea_Parfums_Desktop
 
             // Limpiar el respaldo una vez restaurado
             backupRows.Clear();
-
-            MessageBox.Show("Se ha deshecho la eliminación de los perfumes.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
 
 
 
@@ -870,67 +909,116 @@ namespace Eterea_Parfums_Desktop
 
 
 
-        //Método que ejecuta las acciones para crear la promoción (llama a PromoControlador.crearPromo(promoEditada))
+        //Método para obtener los datos del formulario
 
-        private void crearPromo()
+        private Promocion ObtenerDatosPromo()
         {
-
-            // Obtener los datos de los controles
             KeyValuePair<int, string> tipoPromo = (KeyValuePair<int, string>)combo_tipo_promo.SelectedItem;
-            string nombrePromo = txt_nomb_promo.Text;
-            DateTime fechaInicio = dateTime_inicio_promo.Value;
-            DateTime fechaFin = dateTime_fin_promo.Value;
-            // Convertir el estado activo en un entero (1 para activo, 0 para no activo)
-            int esActiva = combo_activo_promo.SelectedItem.ToString() == "Si" ? 1 : 0;
-            string descripcionPromo = txt_descripcion_promo.Text;
-            string bannerPromo = $"{txt_nomb_promo.Text}-{num}-banner";
-
-            // Crear un objeto Promoción con los datos capturados
-            Promocion nuevaPromo = new Promocion
+            return new Promocion
             {
                 descuento = tipoPromo.Key,
-                nombre = nombrePromo,
-                fecha_inicio = fechaInicio,
-                fecha_fin = fechaFin,
-                activo = esActiva,
-                descripcion = descripcionPromo,
-                banner = bannerPromo
+                nombre = txt_nomb_promo.Text,
+                fecha_inicio = dateTime_inicio_promo.Value,
+                fecha_fin = dateTime_fin_promo.Value,
+                activo = combo_activo_promo.SelectedIndex == 0 ? 1 : 0,
+                descripcion = txt_descripcion_promo.Text,
+                banner = $"{txt_nomb_promo.Text}-{num}-banner"
             };
-
-            if (PromoControlador.crearPromocion(nuevaPromo))
-            {
-                this.DialogResult = DialogResult.OK;
-            }
-
-            MessageBox.Show(
-                   "La promoción se creó exitosamente.",
-                   "Promoción creada",
-                   MessageBoxButtons.OK,
-                   MessageBoxIcon.Information
-               );
-
         }
-        
-        private bool editarPromo()
+
+
+
+
+
+
+
+
+
+        //Método para guardar la imagen de la promoción
+
+        private string GuardarImagenPromo(string nombrePromoSanitizado)
         {
-            int idPromoEdit = idPromo;
-            var seleccionTipoPromo = (KeyValuePair<int, string>)combo_tipo_promo.SelectedItem;
-            int descuentoClave = seleccionTipoPromo.Key;
-            int activo = combo_activo_promo.SelectedIndex == 0 ? 1 : 0;
-
-            Promocion promoActual = PromoControlador.obtenerPorId(idPromo);
-            string nombreBannerAnterior = promoActual.banner;
-            string nombreBannerNuevo = nombreBannerAnterior;
-
-            string nombrePromoSanitizado = string.Join("_", txt_nomb_promo.Text.Split(Path.GetInvalidFileNameChars()));
-
-            if (string.IsNullOrWhiteSpace(nombrePromoSanitizado))
+            if (nuevaImagenCargada && pictBox_banner.Image != null)
             {
-                MessageBox.Show("El nombre de la promoción no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                try
+                {
+                    num = numeroAleatorio();
+                    string nuevaRuta = Path.Combine(Program.Ruta_Base, $"{nombrePromoSanitizado}-{num}-banner.jpg");
+
+                    pictBox_banner.Image.Save(nuevaRuta, ImageFormat.Jpeg);
+                    return $"{nombrePromoSanitizado}-{num}-banner";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No se pudo guardar la nueva foto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            return null;
+        }
+
+
+
+
+
+
+
+
+        //Método para eliminar una imagen
+
+        private bool EliminarImagen(string rutaImagen)
+        {
+            try
+            {
+                if (!ExisteImagen(rutaImagen))
+                {
+                    return false;
+                }
+
+                // 🔹 Liberar el PictureBox antes de eliminar la imagen
+                pictBox_banner.Image?.Dispose();
+                pictBox_banner.Image = null;
+
+                // 🔹 Forzar la recolección de basura para asegurarnos de que el archivo se libere
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+
+                // 🔹 Intentar eliminar la imagen
+                File.Delete(rutaImagen);
+                Console.WriteLine($"Imagen eliminada correctamente: {rutaImagen}");
+
+                return true;
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show($"No se pudo eliminar la imagen porque está en uso: {ex.Message}",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error inesperado al eliminar la imagen: {ex.Message}",
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            // **Confirmar la edición antes de continuar**
+            return false;
+        }
+
+        // ✅ Método para verificar si la imagen existe
+        private bool ExisteImagen(string rutaImagen)
+        {
+            return !string.IsNullOrEmpty(rutaImagen) && File.Exists(rutaImagen);
+        }
+
+
+
+
+
+
+
+
+
+        //Método para confirmar la edición
+        private bool ConfirmarEdicion()
+        {
             DialogResult resultado = MessageBox.Show(
                 "¿Estás seguro de que deseas editar esta promoción?",
                 "Confirmación",
@@ -941,80 +1029,87 @@ namespace Eterea_Parfums_Desktop
             if (resultado == DialogResult.No)
             {
                 MessageBox.Show("Edición cancelada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                // **Cerrar el formulario**
                 this.Close();
                 return false;
             }
+            return true;
+        }
 
-            string nuevaRuta = "";
-            bool nuevaImagenGuardada = false;
 
-            // **Guardar la nueva imagen pero NO eliminar la anterior aún**
-            if (nuevaImagenCargada && pictBox_banner.Image != null)
+
+
+
+
+
+
+        /*//Método para renombrar una imagen
+
+        private string RenombrarImagen(string nombreBannerAnterior, string nombrePromoSanitizado)
+        {
+            if (!string.IsNullOrEmpty(nombreBannerAnterior))
             {
-                try
-                {
-                    num = numeroAleatorio();
-                    nuevaRuta = Path.Combine(Program.Ruta_Base, $"{nombrePromoSanitizado}-{num}-banner.jpg");
+                string rutaAnterior = Path.Combine(Program.Ruta_Base, nombreBannerAnterior + ".jpg");
 
-                    // Guardar la nueva imagen correctamente
-                    pictBox_banner.Image.Save(nuevaRuta, ImageFormat.Jpeg);
-                    nombreBannerNuevo = $"{nombrePromoSanitizado}-{num}-banner";
-                    nuevaImagenGuardada = true; // Marcamos que hay una imagen nueva
-                }
-                catch (Exception ex)
+                if (File.Exists(rutaAnterior))
                 {
-                    MessageBox.Show("No se pudo guardar la nueva foto: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
+                    pictBox_banner.Image?.Dispose();
+                    pictBox_banner.Image = null;
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
+
+                    string[] partesNombre = Path.GetFileNameWithoutExtension(rutaAnterior).Split('-');
+                    string numAleatorio = partesNombre.Reverse().FirstOrDefault(p => int.TryParse(p, out _)) ?? new Random().Next(1000, 9999).ToString();
+
+                    string nuevoNombreBanner = $"{nombrePromoSanitizado}-{numAleatorio}-banner";
+                    string rutaNuevaEdit = Path.Combine(Path.GetDirectoryName(rutaAnterior), nuevoNombreBanner + ".jpg");
+
+                    File.Move(rutaAnterior, rutaNuevaEdit);
+                    Console.WriteLine($"Imagen renombrada: {rutaAnterior} -> {rutaNuevaEdit}");
+
+                    pictBox_banner.Image = Image.FromFile(rutaNuevaEdit);
+                    return nuevoNombreBanner;
                 }
             }
+            return nombreBannerAnterior;
+        }*/
 
 
 
-            else
+
+
+
+
+
+        //Metodo para actualizar el nombre de una imagen al haberse editado el nombre de la promocion
+
+        private string ActualizarNombreImagenPromo(string nombreBannerAnterior, string nombrePromoSanitizado)
+        {
+            if (!string.IsNullOrEmpty(nombreBannerAnterior))
             {
-                // **Si no se ha cargado una nueva imagen, verificar si se cambió el nombre de la promo**
-                if (!string.IsNullOrEmpty(nombreBannerAnterior) && promoActual.nombre != txt_nomb_promo.Text)
+                string rutaAnterior = Path.Combine(Program.Ruta_Base, nombreBannerAnterior + ".jpg");
+
+                if (File.Exists(rutaAnterior))
                 {
-                    string rutaAnterior = Path.Combine(Program.Ruta_Base, nombreBannerAnterior + ".jpg");
-                    //string rutaNueva = Path.Combine(Program.Ruta_Base, $"{nombrePromoSanitizado}-banner.jpg");
+                    pictBox_banner.Image?.Dispose();
+                    pictBox_banner.Image = null;
+                    GC.Collect();
+                    GC.WaitForPendingFinalizers();
+
+                    // Extraer el número aleatorio del nombre anterior
+                    string[] partesNombre = Path.GetFileNameWithoutExtension(rutaAnterior).Split('-');
+                    string numAleatorio = partesNombre.Reverse().FirstOrDefault(p => int.TryParse(p, out _)) ?? new Random().Next(1000, 9999).ToString();
+
+                    // Nuevo nombre con el mismo número aleatorio
+                    string nuevoNombreBanner = $"{nombrePromoSanitizado}-{numAleatorio}-banner";
+                    string rutaNueva = Path.Combine(Path.GetDirectoryName(rutaAnterior), nuevoNombreBanner + ".jpg");
 
                     try
                     {
-                        if (File.Exists(rutaAnterior))
-                        {
-                            // **Liberar la imagen antes de intentar renombrar**
-                            pictBox_banner.Image?.Dispose();
-                            pictBox_banner.Image = null;
+                        File.Move(rutaAnterior, rutaNueva);
+                        Console.WriteLine($"Imagen renombrada: {rutaAnterior} -> {rutaNueva}");
 
-                            // **Forzar la recolección de basura para liberar el archivo**
-                            GC.Collect();
-                            GC.WaitForPendingFinalizers();
-
-                            // Extraer el número aleatorio correctamente
-                            string nombreAnterior = Path.GetFileNameWithoutExtension(rutaAnterior); // "promo-1234-banner"
-                            string[] partesNombre = nombreAnterior.Split('-');
-
-                            // Buscar el último número en el nombre del archivo
-                            string numAleatorio = partesNombre.Reverse().FirstOrDefault(p => int.TryParse(p, out _)) ?? new Random().Next(1000, 9999).ToString();
-
-                            // **Nuevo nombre del banner con el mismo número aleatorio**
-                            string nuevoNombreBanner = $"{nombrePromoSanitizado}-{numAleatorio}-banner";
-                            string rutaNuevaEdit = Path.Combine(Path.GetDirectoryName(rutaAnterior), nuevoNombreBanner + ".jpg");
-                            
-                            // **Renombrar el archivo**
-                            File.Move(rutaAnterior, rutaNuevaEdit);
-                            Console.WriteLine($"Imagen renombrada: {rutaAnterior} -> {rutaNuevaEdit}");
-
-                            // **Actualizar el nombre en la base de datos**
-                            nombreBannerNuevo = nuevoNombreBanner;
-
-                            // **Recargar la imagen con el nuevo nombre**
-                            pictBox_banner.Image = Image.FromFile(rutaNuevaEdit);
-
-
- 
-                        }
+                        pictBox_banner.Image = Image.FromFile(rutaNueva);
+                        return nuevoNombreBanner;
                     }
                     catch (IOException ex)
                     {
@@ -1022,45 +1117,90 @@ namespace Eterea_Parfums_Desktop
                     }
                 }
             }
-            // **Eliminar la imagen anterior SOLO después de confirmar la edición**
-            if (nuevaImagenGuardada && !string.IsNullOrEmpty(nombreBannerAnterior))
+            return nombreBannerAnterior;
+        }
+
+
+
+
+
+        //Método que ejecuta las acciones para crear la promoción (llama a PromoControlador.crearPromo(promoEditada))
+
+        private void crearPromo()
+        {
+            // Obtener datos del formulario
+            Promocion nuevaPromo = ObtenerDatosPromo();
+
+            // Generar un nombre de imagen si se cargó una
+            string nombrePromoSanitizado = string.Join("_", txt_nomb_promo.Text.Split(Path.GetInvalidFileNameChars()));
+            string bannerPromo = GuardarImagenPromo(nombrePromoSanitizado);
+
+            // Asignar el nombre de la imagen a la nueva promoción
+            nuevaPromo.banner = bannerPromo ?? $"{nombrePromoSanitizado}-{num}-banner";
+
+            // Crear la promoción en la base de datos
+            if (PromoControlador.crearPromocion(nuevaPromo))
             {
-                string rutaAnterior = Path.Combine(Program.Ruta_Base, nombreBannerAnterior + ".jpg");
+                this.DialogResult = DialogResult.OK;
+                MessageBox.Show("La promoción se creó exitosamente.", "Promoción creada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
-                try
-                {
-                    // **Liberar la imagen antes de eliminarla**
-                    pictBox_banner.Image?.Dispose();
-                    pictBox_banner.Image = null;
 
-                    // **Forzar la recolección de basura para liberar el archivo**
-                    GC.Collect();
-                    GC.WaitForPendingFinalizers();
 
-                    // **Eliminar el archivo automáticamente**
-                    File.Delete(rutaAnterior);
-                    Console.WriteLine("Imagen anterior eliminada correctamente.");
-                }
-                catch (IOException ex)
-                {
-                    MessageBox.Show($"No se pudo eliminar la imagen anterior porque está en uso: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+
+        //Método editarPromo
+
+        private bool editarPromo()
+        {
+            if (!ConfirmarEdicion()) return false;
+
+
+            int idPromoEdit = idPromo;
+            var seleccionTipoPromo = (KeyValuePair<int, string>)combo_tipo_promo.SelectedItem;
+            int descuentoClave = seleccionTipoPromo.Key;
+            int activo = combo_activo_promo.SelectedIndex == 0 ? 1 : 0;
+
+            Promocion promoActual = PromoControlador.obtenerPorId(idPromo);
+            string nombreBannerAnterior = promoActual.banner;
+
+            string nombrePromoSanitizado = string.Join("_", txt_nomb_promo.Text.Split(Path.GetInvalidFileNameChars()));
+
+            if (string.IsNullOrWhiteSpace(nombrePromoSanitizado))
+            {
+                MessageBox.Show("El nombre de la promoción no puede estar vacío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
 
-            // **Actualizar los datos de la promoción**
+            // Si se cargó una nueva imagen, se guarda y se actualiza el banner
+            string nombreBannerNuevo = GuardarImagenPromo(nombrePromoSanitizado) ?? nombreBannerAnterior;
+
+            // Si no se cargó una nueva imagen pero se cambió el nombre de la promo, renombrar la imagen anterior
+            if (nombreBannerNuevo == nombreBannerAnterior && promoActual.nombre != txt_nomb_promo.Text)
+            {
+                nombreBannerNuevo = ActualizarNombreImagenPromo(nombreBannerAnterior, nombrePromoSanitizado);
+            }
+
+            // Si se guardó una nueva imagen, eliminar la anterior
+            if (nombreBannerNuevo != nombreBannerAnterior)
+            {
+                EliminarImagen(Path.Combine(Program.Ruta_Base, nombreBannerAnterior + ".jpg"));
+            }
+
+            // Actualizar la promoción en la base de datos
             Promocion promoEditada = new Promocion(idPromo, txt_nomb_promo.Text, dateTime_inicio_promo.Value, dateTime_fin_promo.Value, descuentoClave, activo, txt_descripcion_promo.Text, nombreBannerNuevo);
 
             if (PromoControlador.editarPromo(promoEditada))
             {
                 this.DialogResult = DialogResult.OK;
+                CargarImagenPromo(nombreBannerNuevo);
                 return true;
             }
 
-            return false; // Si llega hasta aquí, algo falló y se retorna false.
+            return false;
         }
-
-
 
 
 
@@ -1089,201 +1229,216 @@ namespace Eterea_Parfums_Desktop
 
 
 
-        //Método para validar los campos a completar en la edición de la promoción
-
-
         private bool validarPromo(out string errorMsg)
         {
             errorMsg = "";
             limpiarMensajesError();
 
-            // Definir caracteres permitidos
-            string caracteresPermitidos = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 %.,-:()";
+            bool esValido = true;
 
+            if (!ValidarTipoPromo(ref errorMsg)) esValido = false;
+            if (!ValidarNombrePromo(ref errorMsg)) esValido = false;
+            if (!ValidarDescripcionPromo(ref errorMsg)) esValido = false;
+            if (!ValidarFechasPromo(ref errorMsg)) esValido = false;
+            if (!ValidarEstadoPromo(ref errorMsg)) esValido = false;
+            if (!ValidarImagenPromo(ref errorMsg)) esValido = false;
+
+            return esValido;
+        }
+
+        // ✅ MÉTODOS DE VALIDACIÓN INDIVIDUAL
+
+        private bool ValidarTipoPromo(ref string errorMsg)
+        {
             if (combo_tipo_promo.SelectedItem == null || string.IsNullOrEmpty(combo_tipo_promo.Text))
             {
-                errorMsg += "Debes seleccionar el tipo de promoción" + Environment.NewLine;
-                lbl_error_tipo_promo.Text = "Debes seleccionar el tipo de promoción";
-                lbl_error_tipo_promo.Show();
+                MostrarError(lbl_error_tipo_promo, "Debes seleccionar el tipo de promoción", ref errorMsg);
+                return false;
             }
-            else
+            OcultarError(lbl_error_tipo_promo);
+            return true;
+        }
+
+        private bool ValidarNombrePromo(ref string errorMsg)
+        {
+            string caracteresPermitidos = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 %.,-:()";
+            string nombre = txt_nomb_promo.Text;
+            bool esValido = true;
+
+            if (string.IsNullOrEmpty(nombre))
             {
-                lbl_error_tipo_promo.Visible = false;
+                MostrarError(lbl_error_nombP, "Debes ingresar el nombre de la promoción", ref errorMsg);
+                esValido = false;
+            }
+            if (nombre.Length < 4 || nombre.Length > 80)
+            {
+                MostrarError(lbl_error_nombP, "El nombre de la promoción debe tener entre 4 y 80 caracteres.", ref errorMsg);
+                esValido = false;
+            }
+            if (!EsTextoValido(nombre, caracteresPermitidos))
+            {
+                MostrarError(lbl_error_nombP, "Solo letras, números, espacios y los caracteres: %, ., ,, -, :, (, ).", ref errorMsg);
+                esValido = false;
+            }
+            if (nombre.Count(c => c == '%') > 1)
+            {
+                MostrarError(lbl_error_nombP, "Solo se permite un símbolo % en el nombre de la promoción.", ref errorMsg);
+                esValido = false;
             }
 
-            if (string.IsNullOrEmpty(txt_nomb_promo.Text))
-            {
-                errorMsg += "Debes ingresar el nombre de la promoción" + Environment.NewLine;
-                lbl_error_nombP.Text = "Debes ingresar el nombre de la promoción";
-                lbl_error_nombP.Show();
+            if (esValido) OcultarError(lbl_error_nombP);
+            return esValido;
+        }
 
-            }
-            else if (txt_nomb_promo.Text.Length < 4 || txt_nomb_promo.Text.Length > 80)
-            {
-                errorMsg += "El nombre de la promoción debe tener entre 4 y 80 caracteres." + Environment.NewLine;
-                lbl_error_nombP.Text = "El nombre de la promoción debe tener entre 4 y 80 caracteres.";
-                lbl_error_nombP.Show();
-            }
-            else if (!EsTextoValido(txt_nomb_promo.Text, caracteresPermitidos))
-            {
-                errorMsg += "Solo letras, números, espacios y los caracteres: %, ., ,, -, :, (, )." + Environment.NewLine;
-                lbl_error_nombP.Text = "Solo letras, números, espacios y los caracteres: %, ., ,, -, :, (, ).";
-                lbl_error_nombP.Show();
-            }
-            else if (txt_nomb_promo.Text.Count(c => c == '%') > 1) // Permite solo un '%'
-            {
-                errorMsg += "Solo se permite un símbolo % en el nombre de la promoción." + Environment.NewLine;
-                lbl_error_nombP.Text = "Solo se permite un símbolo % en el nombre de la promoción.";
-                lbl_error_nombP.Show();
-            }
+        private bool ValidarDescripcionPromo(ref string errorMsg)
+        {
+            string caracteresPermitidos = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 %.,-:()";
+            string descripcion = txt_descripcion_promo.Text;
+            bool esValido = true;
 
-            else
+            if (string.IsNullOrEmpty(descripcion))
             {
-
-                lbl_error_nombP.Visible = false;
-
+                MostrarError(lbl_error_desc_promo, "Debes ingresar una descripción para la promoción", ref errorMsg);
+                esValido = false;
+            }
+            if (descripcion.Length < 4 || descripcion.Length > 180)
+            {
+                MostrarError(lbl_error_desc_promo, "La descripción debe tener entre 4 y 180 caracteres.", ref errorMsg);
+                esValido = false;
+            }
+            if (!EsTextoValido(descripcion, caracteresPermitidos))
+            {
+                MostrarError(lbl_error_desc_promo, "Solo letras, números, espacios y los caracteres: %, ., ,, -, :, (, ).", ref errorMsg);
+                esValido = false;
+            }
+            if (descripcion.Count(c => c == '%') > 1 || new[] { '.', ',', '-', ':', '(', ')' }.Any(c => descripcion.Count(ch => ch == c) > 2))
+            {
+                MostrarError(lbl_error_desc_promo, "Solo un símbolo '%' y hasta 2 de c/u de: ., ,, -, :, (, ).", ref errorMsg);
+                esValido = false;
             }
 
+            if (esValido) OcultarError(lbl_error_desc_promo);
+            return esValido;
+        }
 
-            if (string.IsNullOrEmpty(txt_descripcion_promo.Text))
-            {
-                errorMsg += "Debes ingresar una descripción para la promoción" + Environment.NewLine;
-                lbl_error_desc_promo.Text = "Debes ingresar una descripción para la promoción";
-                lbl_error_desc_promo.Show();
-                
-            }
-            else if (txt_descripcion_promo.Text.Length < 4 || txt_descripcion_promo.Text.Length > 180)
-            {
-                errorMsg += "La descripción debe tener entre 4 y 180 caracteres." + Environment.NewLine;
-                lbl_error_desc_promo.Text = "La descripción debe tener entre 4 y 180 caracteres.";
-                lbl_error_desc_promo.Show();
-                
-            }
-            else if (!EsTextoValido(txt_descripcion_promo.Text, caracteresPermitidos))
-            {
-                errorMsg += "Solo letras, números, espacios y los caracteres: %, ., ,, -, :, (, )." + Environment.NewLine;
-                lbl_error_desc_promo.Text = "Solo letras, números, espacios y los caracteres: %, ., ,, -, :, (, ).";
-                lbl_error_desc_promo.Show();
-            }
-            else if (txt_descripcion_promo.Text.Count(c => c == '%') > 1 ||
-                     new[] { '.', ',', '-', ':', '(', ')' }.Any(c => txt_descripcion_promo.Text.Count(ch => ch == c) > 2))
-            {
-                errorMsg += "Solo un símbolo '%' y hasta 2 de c/u de: ., ,, -, :, (, )." + Environment.NewLine;
-                lbl_error_desc_promo.Text = "Solo un símbolo '%' y hasta 2 de c/u de: ., ,, -, :, (, ).";
-                lbl_error_desc_promo.Show();
-                
-            }
-            else
-            {
-                lbl_error_desc_promo.Visible = false;
-            }
+        private bool ValidarFechasPromo(ref string errorMsg)
+        {
+            bool esValido = true;
 
-            // Validación de la fecha de inicio
             if (dateTime_inicio_promo.Format == DateTimePickerFormat.Custom && dateTime_inicio_promo.CustomFormat == " ")
             {
-                errorMsg += "Debes seleccionar una fecha de inicio para la promoción" + Environment.NewLine;
-                lbl_error_fecha_iniP.Text = "Debes seleccionar una fecha de inicio";
-                lbl_error_fecha_iniP.Show();
+                MostrarError(lbl_error_fecha_iniP, "Debes seleccionar una fecha de inicio", ref errorMsg);
+                esValido = false;
             }
             else
             {
-                lbl_error_fecha_iniP.Visible = false;
+                OcultarError(lbl_error_fecha_iniP);
             }
 
-            // Validación de la fecha de finalización
             if (dateTime_fin_promo.Format == DateTimePickerFormat.Custom && dateTime_fin_promo.CustomFormat == " ")
             {
-                errorMsg += "Debes seleccionar una fecha de finalización para la promoción" + Environment.NewLine;
-                lbl_error_fecha_finP.Text = "Debes seleccionar una fecha de finalización";
-                lbl_error_fecha_finP.Show();
+                MostrarError(lbl_error_fecha_finP, "Debes seleccionar una fecha de finalización", ref errorMsg);
+                esValido = false;
             }
             else if (dateTime_fin_promo.Value <= dateTime_inicio_promo.Value)
             {
-                errorMsg += "La fecha de finalización debe ser posterior a la fecha de inicio" + Environment.NewLine;
-                lbl_error_fecha_finP.Text = "La fecha de finalización debe ser posterior a la fecha de inicio";
-                lbl_error_fecha_finP.Show();
+                MostrarError(lbl_error_fecha_finP, "La fecha de finalización debe ser posterior a la fecha de inicio", ref errorMsg);
+                esValido = false;
             }
             else
             {
-                lbl_error_fecha_finP.Visible = false;
+                OcultarError(lbl_error_fecha_finP);
             }
 
-            if (combo_activo_promo.SelectedItem == null || string.IsNullOrEmpty(combo_activo_promo.Text))
-            {
-                errorMsg += "Debes seleccionar si la promoción está activa" + Environment.NewLine;
-                lbl_error_promo_act.Text = "Debes seleccionar si la promoción está activa";
-                lbl_error_promo_act.Show();
-            }
-            else
-            {
-                lbl_error_promo_act.Visible = false;
-            }
-
-
-            // Validación de la imagen
-            if (pictBox_banner.Image == null)
-            {
-                errorMsg += "Debes cargar una Imagen" + Environment.NewLine;
-                lbl_error_banner.Text = "Debes cargar una Imagen";
-                lbl_error_banner.Show();
-               
-            }
-            else
-            {
-                lbl_error_banner.Visible = false;
-            }
-
-
-            if (string.IsNullOrEmpty(errorMsg))
-            {
-                lbl_error_tipo_promo.Visible = false;
-                lbl_error_nombP.Visible = false;
-                lbl_error_desc_promo.Visible = false;
-                lbl_error_fecha_iniP.Visible = false;
-                lbl_error_fecha_finP.Visible = false;
-                lbl_error_promo_act.Visible = false;
-                lbl_error_banner.Visible = false;
-            }
-
-            // Devolver si hay errores o no
-            return string.IsNullOrEmpty(errorMsg);
+            return esValido;
         }
 
+        private bool ValidarEstadoPromo(ref string errorMsg)
+        {
+            if (combo_activo_promo.SelectedItem == null || string.IsNullOrEmpty(combo_activo_promo.Text))
+            {
+                MostrarError(lbl_error_promo_act, "Debes seleccionar si la promoción está activa", ref errorMsg);
+                return false;
+            }
+            OcultarError(lbl_error_promo_act);
+            return true;
+        }
 
-        // Función auxiliar para verificar que el texto solo contenga caracteres permitidos
+        private bool ValidarImagenPromo(ref string errorMsg)
+        {
+            if (pictBox_banner.Image == null)
+            {
+                MostrarError(lbl_error_banner, "Debes cargar una Imagen", ref errorMsg);
+                return false;
+            }
+            OcultarError(lbl_error_banner);
+            return true;
+        }
+
+        // ✅ MÉTODO PARA MOSTRAR ERRORES DE VALIDACIÓN
+
+        private void MostrarError(Label lbl, string mensaje, ref string errorMsg)
+        {
+            if (!errorMsg.Contains(mensaje))
+            {
+                errorMsg += mensaje + Environment.NewLine;
+            }
+            lbl.Text = mensaje;
+            lbl.Show();
+        }
+
+        // ✅ MÉTODO PARA OCULTAR ERRORES DE VALIDACIÓN
+
+        private void OcultarError(Label lbl)
+        {
+            lbl.Visible = false;
+        }
+
+        // ✅ MÉTODO AUXILIAR PARA VALIDAR CARACTERES PERMITIDOS
+
         private bool EsTextoValido(string texto, string caracteresPermitidos)
         {
             return texto.All(c => char.IsLetterOrDigit(c) || caracteresPermitidos.Contains(c));
         }
 
+
+
+
+
+
        
 
-
-
-
-
-
-
-        //Método para relacionar la promoción con los perfumes en los que aplica el descuento (llama a PerfumeEnPromoControlador.guardarRelacionPromoPerfume(idPromo, idPerfume))
-
+        // Método principal para asignar perfumes a la promoción
         private void asignarPerfumesAPromo(int idPromo)
         {
-            
+            List<int> idsPerfumes = ObtenerIdsPerfumesEnPromo();
 
-            // Paso 1: Recorrer las filas del DataGridView para obtener los IDs de los perfumes
+            GuardarRelacionPromoPerfume(idPromo, idsPerfumes);
+        }
+
+        // ✅ Método para obtener los IDs de los perfumes en la promoción
+        private List<int> ObtenerIdsPerfumesEnPromo()
+        {
+            List<int> idsPerfumes = new List<int>();
+
             foreach (DataGridViewRow fila in dataGrid_perfumes_agregados_a_promo.Rows)
             {
-                // Verifica que la fila no sea vacía
-                if (fila.Cells[5].Value != null)
+                if (fila.Cells[5].Value != null && int.TryParse(fila.Cells[5].Value.ToString(), out int idPerfume))
                 {
-                    // Paso 2: Obtener el ID del perfume de la celda correspondiente
-                    int idPerfume = Convert.ToInt32(fila.Cells[5].Value);
-
-                    // Paso 3: Guardar la relación entre la promoción y el perfume en la base de datos
-                    PerfumeEnPromoControlador.guardarRelacionPromoPerfume(idPerfume, idPromo);
+                    idsPerfumes.Add(idPerfume);
                 }
             }
 
+            return idsPerfumes;
+        }
+
+        // ✅ Método para guardar la relación entre la promoción y los perfumes
+        private void GuardarRelacionPromoPerfume(int idPromo, List<int> idsPerfumes)
+        {
+            foreach (int idPerfume in idsPerfumes)
+            {
+                PerfumeEnPromoControlador.guardarRelacionPromoPerfume(idPerfume, idPromo);
+            }
         }
 
 
@@ -1320,58 +1475,94 @@ namespace Eterea_Parfums_Desktop
 
         //Acción del botón crear/editar
 
+        // Acción del botón crear/editar
         private void btn_crear_promo_Click(object sender, EventArgs e)
         {
-         
+            bool esCreacion = (situacion == "Creacion");
 
-            if (situacion == "Creacion")
+            if (!ValidarYVerificarPromo(out string errorMsg, esCreacion))
             {
-                bool promoValidada = validarPromo(out string errorMsg);
-                if (promoValidada)
-                {
-                    string nombrePromo = txt_nomb_promo.Text.Trim();
-
-                    if (PromoControlador.ExisteNombrePromo(nombrePromo))
-                    {
-                        MessageBox.Show("Ya existe una promoción con este nombre. Elija otro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    try
-                    {
-                        num = numeroAleatorio();
-                        string bannerNombre = $"{nombrePromo}-{num}-banner.jpg"; // Nombre corregido con guion
-                        banner.Save(Program.Ruta_Base + bannerNombre, System.Drawing.Imaging.ImageFormat.Jpeg);
-                    }
-                    catch (Exception ex)
-                    {
-                        //NO SE PUDO GUARDAR LA FOTO
-                        throw new Exception(ex.Message);
-                    }
-
-
-                    crearPromo();
-                    int idPromoCreada = PromoControlador.obtenerMaxId();
-                    asignarPerfumesAPromo(idPromoCreada);
-                }
+                return;
             }
-            if (situacion == "Edicion")
+
+            if (esCreacion)
             {
-                bool promoValidada = validarPromo(out string errorMsg);
-                if (promoValidada)
-                {
-                    if (editarPromo()) // Solo continúa si la edición fue confirmada
-                    {
-                        asignarPerfumesAPromo(idPromo);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Edición cancelada. No se asignarán perfumes a la promoción.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-                
+                ProcesarCreacionPromo();
+            }
+            else
+            {
+                ProcesarEdicionPromo();
             }
         }
+
+        // ✅ Método para validar la promoción y verificar si el nombre ya existe
+        private bool ValidarYVerificarPromo(out string errorMsg, bool esCreacion)
+        {
+            bool promoValidada = validarPromo(out errorMsg);
+
+            if (!promoValidada)
+            {
+                return false;
+            }
+
+            string nombrePromo = txt_nomb_promo.Text.Trim();
+
+            // ✅ Verificar si el nombre de la promoción ya existe **solo en creación**
+            if (esCreacion && PromoControlador.ExisteNombrePromo(nombrePromo))
+            {
+                MessageBox.Show("Ya existe una promoción con este nombre. Elija otro.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            return true;
+        }
+
+
+        // ✅ Método para procesar la creación de una promoción
+        private void ProcesarCreacionPromo()
+        {
+            try
+            {
+                num = numeroAleatorio();
+                string bannerNombre = $"{txt_nomb_promo.Text.Trim()}-{num}-banner.jpg";
+
+                // Guardar imagen del banner
+                banner.Save(Program.Ruta_Base + bannerNombre, System.Drawing.Imaging.ImageFormat.Jpeg);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo guardar la imagen: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Crear la promoción
+            crearPromo();
+
+            // Obtener el ID de la nueva promoción y asignarle perfumes
+            int idPromoCreada = PromoControlador.obtenerMaxId();
+            asignarPerfumesAPromo(idPromoCreada);
+        }
+
+        // ✅ Método para procesar la edición de una promoción
+        private void ProcesarEdicionPromo()
+        {
+            if (editarPromo()) // Solo continúa si la edición fue confirmada
+            {
+                asignarPerfumesAPromo(idPromo);
+
+                // 🔹 Mostrar mensaje de éxito
+                MessageBox.Show("La promoción se ha editada correctamente.", "Edición exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // 🔹 Cerrar el formulario después de la edición
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Edición cancelada. No se asignarán perfumes a la promoción.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
 
 
 
@@ -1412,30 +1603,47 @@ namespace Eterea_Parfums_Desktop
 
 
 
+        //Método para cargar la imagen al formPromo "editar"
 
-
-        private void CargarImagenPromo(string nombreImagen)
+        private bool CargarImagenPromo(string nombreImagen)
         {
             try
             {
-                string rutaImagen = Path.Combine(Program.Ruta_Base, nombreImagen + ".jpg");
+                string rutaImagen = ObtenerRutaImagen(nombreImagen);
 
                 if (File.Exists(rutaImagen))
                 {
-                    pictBox_banner.Image = Image.FromFile(rutaImagen);
+                    using (FileStream fs = new FileStream(rutaImagen, FileMode.Open, FileAccess.Read))
+                    {
+                        pictBox_banner.Image = Image.FromStream(fs);
+                    }
+                    return true;
                 }
                 else
                 {
-                    MessageBox.Show("No se encontró la imagen: " + nombreImagen, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    pictBox_banner.Image = null; // No asignar imagen si no se encuentra
+                    MessageBox.Show("No se encontró la imagen: " + nombreImagen + ". Se cargará una imagen por defecto.",
+                                    "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    // Cargar la imagen desde Resources
+                    pictBox_banner.Image = Properties.Resources.imagen_por_defecto; // Asegúrate de usar el nombre correcto
+                    return false;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar la imagen: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                pictBox_banner.Image = null; // Evitar que la aplicación se cierre
+                pictBox_banner.Image = Properties.Resources.imagen_por_defecto; // Usar imagen por defecto en caso de error
+                return false;
             }
         }
+
+
+        // ✅ Método para obtener la ruta de la imagen basada en el nombre
+        private string ObtenerRutaImagen(string nombreImagen)
+        {
+            return Path.Combine(Program.Ruta_Base, nombreImagen + ".jpg");
+        }
+
 
 
 

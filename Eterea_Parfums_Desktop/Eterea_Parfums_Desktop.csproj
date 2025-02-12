@@ -439,6 +439,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="VerDetallePerfume.resx">
       <DependentUpon>VerDetallePerfume.cs</DependentUpon>
@@ -466,6 +467,7 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Resources\CerrarSesion.png" />
+    <Content Include="Resources\imagen_por_defecto.jpg" />
     <Content Include="Resources\LogoEterea.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
