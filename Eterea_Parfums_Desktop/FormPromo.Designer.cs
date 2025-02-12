@@ -1,6 +1,6 @@
 ﻿namespace Eterea_Parfums_Desktop
 {
-    partial class FormCrearPromo
+    partial class FormPromo
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -90,8 +91,22 @@
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.lbl_nomb_promo_edit = new System.Windows.Forms.Label();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txt_descripcion_promo = new System.Windows.Forms.RichTextBox();
+            this.lbl_error_desc_promo = new System.Windows.Forms.Label();
+            this.pictBox_banner = new System.Windows.Forms.PictureBox();
+            this.btn_selec_banner = new System.Windows.Forms.Button();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.pictureBox13 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lbl_error_banner = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_resultado_busqueda_perfumes)).BeginInit();
@@ -100,17 +115,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictBox_banner)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 82);
+            this.pictureBox1.Location = new System.Drawing.Point(16, 100);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(255, 254);
+            this.pictureBox1.Size = new System.Drawing.Size(318, 146);
             this.pictureBox1.TabIndex = 100;
             this.pictureBox1.TabStop = false;
             // 
@@ -120,7 +140,7 @@
             this.lbl_crear_promo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_crear_promo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_crear_promo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_crear_promo.Location = new System.Drawing.Point(14, 16);
+            this.lbl_crear_promo.Location = new System.Drawing.Point(21, 24);
             this.lbl_crear_promo.Name = "lbl_crear_promo";
             this.lbl_crear_promo.Size = new System.Drawing.Size(147, 20);
             this.lbl_crear_promo.TabIndex = 101;
@@ -130,7 +150,7 @@
             // 
             this.lbl_tipo_promo.AutoSize = true;
             this.lbl_tipo_promo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_tipo_promo.Location = new System.Drawing.Point(22, 106);
+            this.lbl_tipo_promo.Location = new System.Drawing.Point(22, 113);
             this.lbl_tipo_promo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_tipo_promo.Name = "lbl_tipo_promo";
             this.lbl_tipo_promo.Size = new System.Drawing.Size(98, 13);
@@ -152,29 +172,29 @@
             // 
             this.lbl_fecha_ini_promo.AutoSize = true;
             this.lbl_fecha_ini_promo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_fecha_ini_promo.Location = new System.Drawing.Point(22, 198);
+            this.lbl_fecha_ini_promo.Location = new System.Drawing.Point(349, 115);
             this.lbl_fecha_ini_promo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_fecha_ini_promo.Name = "lbl_fecha_ini_promo";
-            this.lbl_fecha_ini_promo.Size = new System.Drawing.Size(82, 13);
+            this.lbl_fecha_ini_promo.Size = new System.Drawing.Size(35, 13);
             this.lbl_fecha_ini_promo.TabIndex = 104;
-            this.lbl_fecha_ini_promo.Text = "Fecha de inicio:";
+            this.lbl_fecha_ini_promo.Text = "Inicio:";
             // 
             // lbl_fecha_fin_promo
             // 
             this.lbl_fecha_fin_promo.AutoSize = true;
             this.lbl_fecha_fin_promo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_fecha_fin_promo.Location = new System.Drawing.Point(22, 249);
+            this.lbl_fecha_fin_promo.Location = new System.Drawing.Point(349, 163);
             this.lbl_fecha_fin_promo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_fecha_fin_promo.Name = "lbl_fecha_fin_promo";
-            this.lbl_fecha_fin_promo.Size = new System.Drawing.Size(110, 13);
+            this.lbl_fecha_fin_promo.Size = new System.Drawing.Size(24, 13);
             this.lbl_fecha_fin_promo.TabIndex = 105;
-            this.lbl_fecha_fin_promo.Text = "Fecha de finalización:";
+            this.lbl_fecha_fin_promo.Text = "Fin:";
             // 
             // lbl_activo_promo
             // 
             this.lbl_activo_promo.AutoSize = true;
             this.lbl_activo_promo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_activo_promo.Location = new System.Drawing.Point(22, 296);
+            this.lbl_activo_promo.Location = new System.Drawing.Point(349, 202);
             this.lbl_activo_promo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_activo_promo.Name = "lbl_activo_promo";
             this.lbl_activo_promo.Size = new System.Drawing.Size(37, 13);
@@ -184,38 +204,38 @@
             // combo_tipo_promo
             // 
             this.combo_tipo_promo.FormattingEnabled = true;
-            this.combo_tipo_promo.Location = new System.Drawing.Point(132, 102);
+            this.combo_tipo_promo.Location = new System.Drawing.Point(128, 109);
             this.combo_tipo_promo.Margin = new System.Windows.Forms.Padding(2);
             this.combo_tipo_promo.Name = "combo_tipo_promo";
-            this.combo_tipo_promo.Size = new System.Drawing.Size(121, 21);
+            this.combo_tipo_promo.Size = new System.Drawing.Size(197, 21);
             this.combo_tipo_promo.TabIndex = 107;
             this.combo_tipo_promo.SelectedIndexChanged += new System.EventHandler(this.combo_tipo_promo_edit_SelectedIndexChanged);
             // 
             // combo_activo_promo
             // 
             this.combo_activo_promo.FormattingEnabled = true;
-            this.combo_activo_promo.Location = new System.Drawing.Point(132, 291);
+            this.combo_activo_promo.Location = new System.Drawing.Point(392, 199);
             this.combo_activo_promo.Margin = new System.Windows.Forms.Padding(2);
             this.combo_activo_promo.Name = "combo_activo_promo";
-            this.combo_activo_promo.Size = new System.Drawing.Size(121, 21);
+            this.combo_activo_promo.Size = new System.Drawing.Size(253, 21);
             this.combo_activo_promo.TabIndex = 110;
             // 
             // txt_nomb_promo
             // 
-            this.txt_nomb_promo.Location = new System.Drawing.Point(132, 147);
+            this.txt_nomb_promo.Location = new System.Drawing.Point(128, 148);
             this.txt_nomb_promo.Margin = new System.Windows.Forms.Padding(2);
             this.txt_nomb_promo.Name = "txt_nomb_promo";
-            this.txt_nomb_promo.Size = new System.Drawing.Size(121, 20);
+            this.txt_nomb_promo.Size = new System.Drawing.Size(197, 20);
             this.txt_nomb_promo.TabIndex = 111;
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(273, 82);
+            this.pictureBox2.Location = new System.Drawing.Point(16, 295);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(574, 254);
+            this.pictureBox2.Size = new System.Drawing.Size(558, 228);
             this.pictureBox2.TabIndex = 112;
             this.pictureBox2.TabStop = false;
             // 
@@ -223,7 +243,7 @@
             // 
             this.lbl_buscar_nomb.AutoSize = true;
             this.lbl_buscar_nomb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_buscar_nomb.Location = new System.Drawing.Point(287, 164);
+            this.lbl_buscar_nomb.Location = new System.Drawing.Point(31, 370);
             this.lbl_buscar_nomb.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_buscar_nomb.Name = "lbl_buscar_nomb";
             this.lbl_buscar_nomb.Size = new System.Drawing.Size(78, 13);
@@ -232,7 +252,7 @@
             // 
             // txt_buscar_nombP
             // 
-            this.txt_buscar_nombP.Location = new System.Drawing.Point(287, 181);
+            this.txt_buscar_nombP.Location = new System.Drawing.Point(31, 387);
             this.txt_buscar_nombP.Margin = new System.Windows.Forms.Padding(2);
             this.txt_buscar_nombP.Name = "txt_buscar_nombP";
             this.txt_buscar_nombP.Size = new System.Drawing.Size(134, 20);
@@ -279,7 +299,7 @@
             this.dataGrid_resultado_busqueda_perfumes.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGrid_resultado_busqueda_perfumes.EnableHeadersVisualStyles = false;
             this.dataGrid_resultado_busqueda_perfumes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.dataGrid_resultado_busqueda_perfumes.Location = new System.Drawing.Point(451, 90);
+            this.dataGrid_resultado_busqueda_perfumes.Location = new System.Drawing.Point(180, 303);
             this.dataGrid_resultado_busqueda_perfumes.Name = "dataGrid_resultado_busqueda_perfumes";
             this.dataGrid_resultado_busqueda_perfumes.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -298,7 +318,7 @@
             this.dataGrid_resultado_busqueda_perfumes.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGrid_resultado_busqueda_perfumes.RowTemplate.Height = 28;
             this.dataGrid_resultado_busqueda_perfumes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGrid_resultado_busqueda_perfumes.Size = new System.Drawing.Size(383, 210);
+            this.dataGrid_resultado_busqueda_perfumes.Size = new System.Drawing.Size(383, 179);
             this.dataGrid_resultado_busqueda_perfumes.TabIndex = 222;
             this.dataGrid_resultado_busqueda_perfumes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_perfumes_agregados_CellContentClick);
             // 
@@ -353,7 +373,7 @@
             // 
             this.lbl_buscar_marca.AutoSize = true;
             this.lbl_buscar_marca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_buscar_marca.Location = new System.Drawing.Point(287, 103);
+            this.lbl_buscar_marca.Location = new System.Drawing.Point(31, 312);
             this.lbl_buscar_marca.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_buscar_marca.Name = "lbl_buscar_marca";
             this.lbl_buscar_marca.Size = new System.Drawing.Size(72, 13);
@@ -364,7 +384,7 @@
             // 
             this.lbl_buscar_genero.AutoSize = true;
             this.lbl_buscar_genero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_buscar_genero.Location = new System.Drawing.Point(287, 225);
+            this.lbl_buscar_genero.Location = new System.Drawing.Point(31, 423);
             this.lbl_buscar_genero.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl_buscar_genero.Name = "lbl_buscar_genero";
             this.lbl_buscar_genero.Size = new System.Drawing.Size(76, 13);
@@ -376,7 +396,7 @@
             this.btn_crear_promo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_crear_promo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_crear_promo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_crear_promo.Location = new System.Drawing.Point(1126, 351);
+            this.btn_crear_promo.Location = new System.Drawing.Point(855, 538);
             this.btn_crear_promo.Margin = new System.Windows.Forms.Padding(5);
             this.btn_crear_promo.Name = "btn_crear_promo";
             this.btn_crear_promo.Size = new System.Drawing.Size(126, 24);
@@ -391,7 +411,7 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(1217, 10);
+            this.button1.Location = new System.Drawing.Point(943, 17);
             this.button1.Name = "button1";
             this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button1.Size = new System.Drawing.Size(35, 32);
@@ -404,37 +424,37 @@
             // 
             this.lbl_titulo_agregar_perfume_a_promo.AutoSize = true;
             this.lbl_titulo_agregar_perfume_a_promo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_titulo_agregar_perfume_a_promo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_titulo_agregar_perfume_a_promo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_titulo_agregar_perfume_a_promo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_titulo_agregar_perfume_a_promo.Location = new System.Drawing.Point(855, 57);
+            this.lbl_titulo_agregar_perfume_a_promo.Location = new System.Drawing.Point(582, 266);
             this.lbl_titulo_agregar_perfume_a_promo.Margin = new System.Windows.Forms.Padding(5);
             this.lbl_titulo_agregar_perfume_a_promo.MaximumSize = new System.Drawing.Size(300, 32);
             this.lbl_titulo_agregar_perfume_a_promo.Name = "lbl_titulo_agregar_perfume_a_promo";
-            this.lbl_titulo_agregar_perfume_a_promo.Size = new System.Drawing.Size(207, 13);
+            this.lbl_titulo_agregar_perfume_a_promo.Size = new System.Drawing.Size(238, 15);
             this.lbl_titulo_agregar_perfume_a_promo.TabIndex = 296;
             this.lbl_titulo_agregar_perfume_a_promo.Text = "Perfumes incluidos en la promición:";
             this.lbl_titulo_agregar_perfume_a_promo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dateTime_inicio_promo
             // 
-            this.dateTime_inicio_promo.Location = new System.Drawing.Point(132, 192);
+            this.dateTime_inicio_promo.Location = new System.Drawing.Point(391, 109);
             this.dateTime_inicio_promo.Name = "dateTime_inicio_promo";
-            this.dateTime_inicio_promo.Size = new System.Drawing.Size(121, 20);
+            this.dateTime_inicio_promo.Size = new System.Drawing.Size(254, 20);
             this.dateTime_inicio_promo.TabIndex = 297;
             this.dateTime_inicio_promo.ValueChanged += new System.EventHandler(this.dateTime_inicio_promo_ValueChanged);
             // 
             // dateTime_fin_promo
             // 
-            this.dateTime_fin_promo.Location = new System.Drawing.Point(132, 245);
+            this.dateTime_fin_promo.Location = new System.Drawing.Point(391, 159);
             this.dateTime_fin_promo.Name = "dateTime_fin_promo";
-            this.dateTime_fin_promo.Size = new System.Drawing.Size(121, 20);
+            this.dateTime_fin_promo.Size = new System.Drawing.Size(254, 20);
             this.dateTime_fin_promo.TabIndex = 298;
             this.dateTime_fin_promo.ValueChanged += new System.EventHandler(this.dateTime_fin_promo_ValueChanged);
             // 
             // combo_buscar_generoP
             // 
             this.combo_buscar_generoP.FormattingEnabled = true;
-            this.combo_buscar_generoP.Location = new System.Drawing.Point(287, 242);
+            this.combo_buscar_generoP.Location = new System.Drawing.Point(31, 440);
             this.combo_buscar_generoP.Name = "combo_buscar_generoP";
             this.combo_buscar_generoP.Size = new System.Drawing.Size(134, 21);
             this.combo_buscar_generoP.TabIndex = 299;
@@ -443,7 +463,7 @@
             // combo_buscar_marcaP
             // 
             this.combo_buscar_marcaP.FormattingEnabled = true;
-            this.combo_buscar_marcaP.Location = new System.Drawing.Point(287, 120);
+            this.combo_buscar_marcaP.Location = new System.Drawing.Point(31, 329);
             this.combo_buscar_marcaP.Name = "combo_buscar_marcaP";
             this.combo_buscar_marcaP.Size = new System.Drawing.Size(134, 21);
             this.combo_buscar_marcaP.TabIndex = 300;
@@ -454,7 +474,7 @@
             this.btn_quitar_filtros.BackColor = System.Drawing.Color.RosyBrown;
             this.btn_quitar_filtros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_quitar_filtros.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_quitar_filtros.Location = new System.Drawing.Point(308, 300);
+            this.btn_quitar_filtros.Location = new System.Drawing.Point(49, 483);
             this.btn_quitar_filtros.Name = "btn_quitar_filtros";
             this.btn_quitar_filtros.Size = new System.Drawing.Size(97, 24);
             this.btn_quitar_filtros.TabIndex = 301;
@@ -464,10 +484,11 @@
             // 
             // lbl_borrar_texto
             // 
-            this.lbl_borrar_texto.BackColor = System.Drawing.Color.Gainsboro;
+            this.lbl_borrar_texto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.lbl_borrar_texto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_borrar_texto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_borrar_texto.Location = new System.Drawing.Point(402, 181);
+            this.lbl_borrar_texto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbl_borrar_texto.Location = new System.Drawing.Point(146, 387);
             this.lbl_borrar_texto.Margin = new System.Windows.Forms.Padding(0);
             this.lbl_borrar_texto.Name = "lbl_borrar_texto";
             this.lbl_borrar_texto.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -481,7 +502,7 @@
             // 
             this.lbl_error_tipo_promo.AutoSize = true;
             this.lbl_error_tipo_promo.ForeColor = System.Drawing.Color.Red;
-            this.lbl_error_tipo_promo.Location = new System.Drawing.Point(25, 128);
+            this.lbl_error_tipo_promo.Location = new System.Drawing.Point(18, 130);
             this.lbl_error_tipo_promo.Name = "lbl_error_tipo_promo";
             this.lbl_error_tipo_promo.Size = new System.Drawing.Size(28, 13);
             this.lbl_error_tipo_promo.TabIndex = 303;
@@ -491,7 +512,7 @@
             // 
             this.lbl_error_nombP.AutoSize = true;
             this.lbl_error_nombP.ForeColor = System.Drawing.Color.Red;
-            this.lbl_error_nombP.Location = new System.Drawing.Point(25, 173);
+            this.lbl_error_nombP.Location = new System.Drawing.Point(18, 169);
             this.lbl_error_nombP.Name = "lbl_error_nombP";
             this.lbl_error_nombP.Size = new System.Drawing.Size(28, 13);
             this.lbl_error_nombP.TabIndex = 304;
@@ -501,7 +522,7 @@
             // 
             this.lbl_error_fecha_iniP.AutoSize = true;
             this.lbl_error_fecha_iniP.ForeColor = System.Drawing.Color.Red;
-            this.lbl_error_fecha_iniP.Location = new System.Drawing.Point(25, 220);
+            this.lbl_error_fecha_iniP.Location = new System.Drawing.Point(345, 137);
             this.lbl_error_fecha_iniP.Name = "lbl_error_fecha_iniP";
             this.lbl_error_fecha_iniP.Size = new System.Drawing.Size(28, 13);
             this.lbl_error_fecha_iniP.TabIndex = 305;
@@ -511,7 +532,7 @@
             // 
             this.lbl_error_fecha_finP.AutoSize = true;
             this.lbl_error_fecha_finP.ForeColor = System.Drawing.Color.Red;
-            this.lbl_error_fecha_finP.Location = new System.Drawing.Point(25, 271);
+            this.lbl_error_fecha_finP.Location = new System.Drawing.Point(345, 185);
             this.lbl_error_fecha_finP.Name = "lbl_error_fecha_finP";
             this.lbl_error_fecha_finP.Size = new System.Drawing.Size(28, 13);
             this.lbl_error_fecha_finP.TabIndex = 306;
@@ -521,7 +542,7 @@
             // 
             this.lbl_error_promo_act.AutoSize = true;
             this.lbl_error_promo_act.ForeColor = System.Drawing.Color.Red;
-            this.lbl_error_promo_act.Location = new System.Drawing.Point(25, 315);
+            this.lbl_error_promo_act.Location = new System.Drawing.Point(347, 223);
             this.lbl_error_promo_act.Name = "lbl_error_promo_act";
             this.lbl_error_promo_act.Size = new System.Drawing.Size(28, 13);
             this.lbl_error_promo_act.TabIndex = 307;
@@ -566,7 +587,7 @@
             this.dataGrid_perfumes_agregados_a_promo.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGrid_perfumes_agregados_a_promo.EnableHeadersVisualStyles = false;
             this.dataGrid_perfumes_agregados_a_promo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.dataGrid_perfumes_agregados_a_promo.Location = new System.Drawing.Point(860, 90);
+            this.dataGrid_perfumes_agregados_a_promo.Location = new System.Drawing.Point(588, 303);
             this.dataGrid_perfumes_agregados_a_promo.Name = "dataGrid_perfumes_agregados_a_promo";
             this.dataGrid_perfumes_agregados_a_promo.ReadOnly = true;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -585,7 +606,7 @@
             this.dataGrid_perfumes_agregados_a_promo.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGrid_perfumes_agregados_a_promo.RowTemplate.Height = 28;
             this.dataGrid_perfumes_agregados_a_promo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGrid_perfumes_agregados_a_promo.Size = new System.Drawing.Size(383, 210);
+            this.dataGrid_perfumes_agregados_a_promo.Size = new System.Drawing.Size(383, 179);
             this.dataGrid_perfumes_agregados_a_promo.TabIndex = 311;
             this.dataGrid_perfumes_agregados_a_promo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -640,10 +661,10 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox4.Location = new System.Drawing.Point(852, 82);
+            this.pictureBox4.Location = new System.Drawing.Point(579, 295);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(400, 254);
+            this.pictureBox4.Size = new System.Drawing.Size(402, 228);
             this.pictureBox4.TabIndex = 310;
             this.pictureBox4.TabStop = false;
             // 
@@ -651,13 +672,13 @@
             // 
             this.lbl_titulo_busqueda_perfumes.AutoSize = true;
             this.lbl_titulo_busqueda_perfumes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_titulo_busqueda_perfumes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_titulo_busqueda_perfumes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_titulo_busqueda_perfumes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_titulo_busqueda_perfumes.Location = new System.Drawing.Point(276, 57);
+            this.lbl_titulo_busqueda_perfumes.Location = new System.Drawing.Point(20, 266);
             this.lbl_titulo_busqueda_perfumes.Margin = new System.Windows.Forms.Padding(5);
-            this.lbl_titulo_busqueda_perfumes.MaximumSize = new System.Drawing.Size(300, 32);
+            this.lbl_titulo_busqueda_perfumes.MaximumSize = new System.Drawing.Size(350, 32);
             this.lbl_titulo_busqueda_perfumes.Name = "lbl_titulo_busqueda_perfumes";
-            this.lbl_titulo_busqueda_perfumes.Size = new System.Drawing.Size(288, 13);
+            this.lbl_titulo_busqueda_perfumes.Size = new System.Drawing.Size(329, 15);
             this.lbl_titulo_busqueda_perfumes.TabIndex = 312;
             this.lbl_titulo_busqueda_perfumes.Text = "Buscar los perfumes para agregar a la promoción:";
             this.lbl_titulo_busqueda_perfumes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -667,7 +688,7 @@
             this.btn_agregar_todos.BackColor = System.Drawing.Color.RosyBrown;
             this.btn_agregar_todos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_agregar_todos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_agregar_todos.Location = new System.Drawing.Point(451, 300);
+            this.btn_agregar_todos.Location = new System.Drawing.Point(180, 482);
             this.btn_agregar_todos.Name = "btn_agregar_todos";
             this.btn_agregar_todos.Size = new System.Drawing.Size(383, 24);
             this.btn_agregar_todos.TabIndex = 313;
@@ -680,7 +701,7 @@
             this.btn_eliminar_todos.BackColor = System.Drawing.Color.RosyBrown;
             this.btn_eliminar_todos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_eliminar_todos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_eliminar_todos.Location = new System.Drawing.Point(860, 300);
+            this.btn_eliminar_todos.Location = new System.Drawing.Point(588, 482);
             this.btn_eliminar_todos.Name = "btn_eliminar_todos";
             this.btn_eliminar_todos.Size = new System.Drawing.Size(191, 24);
             this.btn_eliminar_todos.TabIndex = 314;
@@ -693,7 +714,7 @@
             this.btrn_deshacer_eliminacion.BackColor = System.Drawing.Color.RosyBrown;
             this.btrn_deshacer_eliminacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btrn_deshacer_eliminacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btrn_deshacer_eliminacion.Location = new System.Drawing.Point(1052, 300);
+            this.btrn_deshacer_eliminacion.Location = new System.Drawing.Point(780, 482);
             this.btrn_deshacer_eliminacion.Name = "btrn_deshacer_eliminacion";
             this.btrn_deshacer_eliminacion.Size = new System.Drawing.Size(191, 24);
             this.btrn_deshacer_eliminacion.TabIndex = 315;
@@ -704,27 +725,27 @@
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.pictureBox3.Location = new System.Drawing.Point(12, 10);
+            this.pictureBox3.Location = new System.Drawing.Point(16, 18);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(1199, 32);
+            this.pictureBox3.Size = new System.Drawing.Size(922, 32);
             this.pictureBox3.TabIndex = 316;
             this.pictureBox3.TabStop = false;
             // 
             // pictureBox5
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.pictureBox5.Location = new System.Drawing.Point(273, 49);
+            this.pictureBox5.Location = new System.Drawing.Point(16, 261);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(574, 27);
+            this.pictureBox5.Size = new System.Drawing.Size(558, 27);
             this.pictureBox5.TabIndex = 317;
             this.pictureBox5.TabStop = false;
             // 
             // pictureBox6
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.pictureBox6.Location = new System.Drawing.Point(852, 49);
+            this.pictureBox6.Location = new System.Drawing.Point(579, 261);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(400, 27);
+            this.pictureBox6.Size = new System.Drawing.Size(402, 27);
             this.pictureBox6.TabIndex = 318;
             this.pictureBox6.TabStop = false;
             // 
@@ -734,45 +755,195 @@
             this.lbl_nomb_promo_edit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_nomb_promo_edit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_nomb_promo_edit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_nomb_promo_edit.Location = new System.Drawing.Point(163, 18);
+            this.lbl_nomb_promo_edit.Location = new System.Drawing.Point(170, 26);
             this.lbl_nomb_promo_edit.Name = "lbl_nomb_promo_edit";
             this.lbl_nomb_promo_edit.Size = new System.Drawing.Size(162, 16);
             this.lbl_nomb_promo_edit.TabIndex = 319;
             this.lbl_nomb_promo_edit.Text = "nombre de promo a editar";
             // 
-            // pictureBox7
-            // 
-            this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.pictureBox7.Location = new System.Drawing.Point(12, 49);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(256, 27);
-            this.pictureBox7.TabIndex = 320;
-            this.pictureBox7.TabStop = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label1.Location = new System.Drawing.Point(14, 57);
+            this.label1.Location = new System.Drawing.Point(22, 73);
             this.label1.Margin = new System.Windows.Forms.Padding(5);
             this.label1.MaximumSize = new System.Drawing.Size(300, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 13);
+            this.label1.Size = new System.Drawing.Size(156, 15);
             this.label1.TabIndex = 321;
             this.label1.Text = "Datos de la promoción:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // FormCrearPromo
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label2.Location = new System.Drawing.Point(22, 185);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.TabIndex = 322;
+            this.label2.Text = "Descripción:";
+            // 
+            // txt_descripcion_promo
+            // 
+            this.txt_descripcion_promo.Location = new System.Drawing.Point(128, 187);
+            this.txt_descripcion_promo.Name = "txt_descripcion_promo";
+            this.txt_descripcion_promo.Size = new System.Drawing.Size(197, 42);
+            this.txt_descripcion_promo.TabIndex = 323;
+            this.txt_descripcion_promo.Text = "";
+            // 
+            // lbl_error_desc_promo
+            // 
+            this.lbl_error_desc_promo.AutoSize = true;
+            this.lbl_error_desc_promo.ForeColor = System.Drawing.Color.Red;
+            this.lbl_error_desc_promo.Location = new System.Drawing.Point(18, 228);
+            this.lbl_error_desc_promo.Name = "lbl_error_desc_promo";
+            this.lbl_error_desc_promo.Size = new System.Drawing.Size(28, 13);
+            this.lbl_error_desc_promo.TabIndex = 324;
+            this.lbl_error_desc_promo.Text = "error";
+            // 
+            // pictBox_banner
+            // 
+            this.pictBox_banner.Location = new System.Drawing.Point(676, 109);
+            this.pictBox_banner.Name = "pictBox_banner";
+            this.pictBox_banner.Size = new System.Drawing.Size(283, 100);
+            this.pictBox_banner.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictBox_banner.TabIndex = 325;
+            this.pictBox_banner.TabStop = false;
+            // 
+            // btn_selec_banner
+            // 
+            this.btn_selec_banner.BackColor = System.Drawing.Color.RosyBrown;
+            this.btn_selec_banner.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_selec_banner.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_selec_banner.Location = new System.Drawing.Point(676, 209);
+            this.btn_selec_banner.Name = "btn_selec_banner";
+            this.btn_selec_banner.Size = new System.Drawing.Size(283, 24);
+            this.btn_selec_banner.TabIndex = 326;
+            this.btn_selec_banner.Text = "Seleccionar imagen";
+            this.btn_selec_banner.UseVisualStyleBackColor = false;
+            this.btn_selec_banner.Click += new System.EventHandler(this.btn_selec_banner_Click);
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox9.Location = new System.Drawing.Point(16, 67);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(318, 27);
+            this.pictureBox9.TabIndex = 327;
+            this.pictureBox9.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox10.Location = new System.Drawing.Point(338, 67);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(318, 27);
+            this.pictureBox10.TabIndex = 328;
+            this.pictureBox10.TabStop = false;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox11.Location = new System.Drawing.Point(660, 67);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(318, 27);
+            this.pictureBox11.TabIndex = 329;
+            this.pictureBox11.TabStop = false;
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox12.Location = new System.Drawing.Point(338, 100);
+            this.pictureBox12.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(318, 146);
+            this.pictureBox12.TabIndex = 330;
+            this.pictureBox12.TabStop = false;
+            // 
+            // pictureBox13
+            // 
+            this.pictureBox13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox13.Location = new System.Drawing.Point(660, 100);
+            this.pictureBox13.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(318, 146);
+            this.pictureBox13.TabIndex = 331;
+            this.pictureBox13.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label4.Location = new System.Drawing.Point(346, 73);
+            this.label4.Margin = new System.Windows.Forms.Padding(5);
+            this.label4.MaximumSize = new System.Drawing.Size(300, 32);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 15);
+            this.label4.TabIndex = 332;
+            this.label4.Text = "Vigencia:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label5.Location = new System.Drawing.Point(673, 73);
+            this.label5.Margin = new System.Windows.Forms.Padding(5);
+            this.label5.MaximumSize = new System.Drawing.Size(300, 32);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 15);
+            this.label5.TabIndex = 333;
+            this.label5.Text = "Banner:";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbl_error_banner
+            // 
+            this.lbl_error_banner.AutoSize = true;
+            this.lbl_error_banner.ForeColor = System.Drawing.Color.Red;
+            this.lbl_error_banner.Location = new System.Drawing.Point(677, 104);
+            this.lbl_error_banner.Name = "lbl_error_banner";
+            this.lbl_error_banner.Size = new System.Drawing.Size(28, 13);
+            this.lbl_error_banner.TabIndex = 334;
+            this.lbl_error_banner.Text = "error";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
+            // 
+            // FormPromo
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(1271, 395);
+            this.ClientSize = new System.Drawing.Size(997, 578);
+            this.Controls.Add(this.lbl_error_banner);
+            this.Controls.Add(this.btn_selec_banner);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.pictureBox11);
+            this.Controls.Add(this.pictureBox10);
+            this.Controls.Add(this.pictBox_banner);
+            this.Controls.Add(this.lbl_error_desc_promo);
+            this.Controls.Add(this.txt_descripcion_promo);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.lbl_nomb_promo_edit);
             this.Controls.Add(this.btrn_deshacer_eliminacion);
             this.Controls.Add(this.btn_eliminar_todos);
@@ -813,9 +984,12 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.pictureBox9);
+            this.Controls.Add(this.pictureBox12);
+            this.Controls.Add(this.pictureBox13);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
-            this.Name = "FormCrearPromo";
+            this.Name = "FormPromo";
             this.Padding = new System.Windows.Forms.Padding(5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -826,7 +1000,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictBox_banner)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -886,7 +1065,21 @@
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Label lbl_nomb_promo_edit;
-        private System.Windows.Forms.PictureBox pictureBox7;
         public System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RichTextBox txt_descripcion_promo;
+        private System.Windows.Forms.Label lbl_error_desc_promo;
+        private System.Windows.Forms.PictureBox pictBox_banner;
+        private System.Windows.Forms.Button btn_selec_banner;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.PictureBox pictureBox12;
+        private System.Windows.Forms.PictureBox pictureBox13;
+        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbl_error_banner;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
     }
 }

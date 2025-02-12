@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,11 +46,27 @@ namespace Eterea_Parfums_Desktop
             {
                 try
                 {
+                    // Primero obtenemos el nombre del archivo de la promo antes de eliminarla
+                    string nombreArchivoImagen = PromoControlador.obtenerNombreImagen(promoId);
+
+
                     // Llamar al método para eliminar la promoción
                     bool resultado = PromoControlador.eliminarPromo(promoId);
 
                     if (resultado)
                     {
+                        // Eliminar la imagen si existe
+                        if (!string.IsNullOrEmpty(nombreArchivoImagen))
+                        {
+                            string rutaImagen = Path.Combine(Program.Ruta_Base, nombreArchivoImagen + ".jpg");
+                            
+
+                            if (File.Exists(rutaImagen))
+                            {
+                                File.Delete(rutaImagen);
+                            }
+                        }
+
                         MessageBox.Show(
                             "La promoción se eliminó con éxito.",
                             "Éxito",
@@ -57,13 +74,8 @@ namespace Eterea_Parfums_Desktop
                             MessageBoxIcon.Information
                         );
 
-                      
-
                         // Cerrar el formulario de eliminación
                         this.Close();
-                       
-                        
-
 
                     }
                 }

@@ -46,8 +46,8 @@ namespace Eterea_Parfums_Desktop
 
                 // Iniciar la aplicación principal
 
-                //Application.Run(new MenuABM());
-                Application.Run(new InicioAutoConsultas());
+                Application.Run(new MenuABM());
+                //Application.Run(new InicioAutoConsultas());
             }
             else
             {
@@ -88,62 +88,6 @@ namespace Eterea_Parfums_Desktop
                         break;
                 }
             }
-
-            /*DB_Controller.initialize();
-
-            if (connectionIsValid())
-            {
-                if (debug_mode == 1)
-                {
-                    Trace.WriteLine("Conexion a la DB creada con exito.");
-                }
-
-            }
-
-            // Llamamos a ActualizarEstadoPromociones al inicio del programa
-            PromocionService.ActualizarEstadoPromociones();
-
-            //Application.Run(new FormCrearPromo());
-            Application.Run(new InicioAutoConsultas());
-          
-        }
-
-        public static bool connectionIsValid()
-        {
-            try
-            {
-                DB_Controller.connection.Open();
-                DB_Controller.connection.Close();
-                return true;
-            }
-            catch (Exception e)
-            {
-                if (debug_mode == 1)
-                {
-                    Trace.WriteLine("Conexion a la DB con error." + e.Message);
-
-                }
-                return false;
-            }*/
-            /*
-            // Mostrar el formulario de selección de usuario
-            FormSeleccionarUsuario formSeleccionarUsuario = new FormSeleccionarUsuario();
-            if (formSeleccionarUsuario.ShowDialog() == DialogResult.OK)
-            {
-                // Configurar la conexión basada en el usuario seleccionado
-                DB_Controller.ConfigurarConexion(formSeleccionarUsuario.UsuarioSeleccionado);
-
-                // Llamamos a ActualizarEstadoPromociones al inicio del programa
-                PromocionService.ActualizarEstadoPromociones();
-
-                //Application.Run(new FormCrearPromo());
-                Application.Run(new InicioAutoConsultas());
-            }*/
-
-        
-
-
-
 
     }
 }

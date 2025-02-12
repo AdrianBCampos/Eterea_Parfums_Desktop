@@ -58,7 +58,7 @@ namespace Eterea_Parfums_Desktop
             paginar(Perfumes_Completo);
             CargarMarcas();
             CargarGeneros();
-            this.facturacionForm = facturacionForm;
+            //this.facturacionForm = facturacionForm;
         }
 
         private void ConsultasPerfumeEmpleado_Load(object sender, EventArgs e)

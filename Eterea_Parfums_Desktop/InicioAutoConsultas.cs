@@ -1,4 +1,6 @@
-﻿using Eterea_Parfums_Desktop.Controladores;
+﻿using AForge.Video;
+using AForge.Video.DirectShow;
+using Eterea_Parfums_Desktop.Controladores;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
@@ -6,15 +8,18 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZXing;
 
 namespace Eterea_Parfums_Desktop
 {
     public partial class InicioAutoConsultas : Form
     {
+
         private static Perfume filtro = new Perfume();
 
         private List<Perfume> Perfumes_Completo = new List<Perfume>();
@@ -33,9 +38,28 @@ namespace Eterea_Parfums_Desktop
         private static int last_pag = 0;
         private static int current_pag = 1;
 
+        //private BarcodeScannerWatcher watcher;
+
+     
+
+
         public InicioAutoConsultas()
         {
             InitializeComponent();
+
+            //Ocultar campos de escaneo 
+            lbl_codigoBarras.Visible = false;
+            txt_scan.Visible = false;
+
+            // Configurar evento Click en todos los controles del formulario excepto en txt_scan y lbl_codigoBarras
+            foreach (Control ctrl in this.Controls)
+            {
+                if (ctrl != txt_scan && ctrl != lbl_codigoBarras && ctrl != btn_escanear)
+                {
+                    ctrl.Click += Form_Click;
+                }
+            }
+
 
             string rutaCompletaImagen = Program.Ruta_Base + @"Diseño Logo2.png";
             img_logo.Image = Image.FromFile(rutaCompletaImagen);
@@ -52,6 +76,7 @@ namespace Eterea_Parfums_Desktop
 
             this.KeyPreview = true;
             btn_iniciar_sesion.Visible = false;
+            btn_cerrar_programa.Visible = false;
 
 
             //Diseño del combo box
@@ -63,7 +88,18 @@ namespace Eterea_Parfums_Desktop
             combo_filtro_marca.DrawItem += comboBoxdiseño_DrawItem;
             combo_filtro_marca.DropDownStyle = ComboBoxStyle.DropDownList;          
         }
-       
+
+        private void txt_scan_TextChanged(object sender, EventArgs e)
+        {
+            GuardarTextoEnArchivo(txt_scan.Text);
+        }
+
+        private void GuardarTextoEnArchivo(string texto)
+        {
+            string rutaArchivo = @"C:\Users\intersan\Desktop\TESIS\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\txt_scan.txt";
+            File.WriteAllText(rutaArchivo, texto);
+        }
+
         private void InicioAutoConsultas_KeyDown_1(object sender, KeyEventArgs e)
         {
             // Detectar si se presionan las teclas Ctrl + L
@@ -72,8 +108,29 @@ namespace Eterea_Parfums_Desktop
                 Login login = new Login();
                 login.Show();
                 this.Hide();
+                return; // Importante: evitar que siga evaluando otras teclas después de ocultar el formulario
+            }
+
+            // Detectar si se presionan las teclas Ctrl + X
+            if (e.Control && e.KeyCode == Keys.X)
+            {
+                DialogResult result = MessageBox.Show(
+                    "¿Está seguro que desea cerrar la aplicación?",
+                    "Confirmar salida",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
             }
         }
+
+
+
+
 
         private void CargarMarcas()
         {
@@ -123,6 +180,8 @@ namespace Eterea_Parfums_Desktop
                 btn_posterior.Show();
             }
         }
+
+      
 
         private void VisualizarPerfumes(List<Perfume> perfumeMostrar)
         {
@@ -342,6 +401,9 @@ namespace Eterea_Parfums_Desktop
             this.Hide();
         }
 
+       
+    
+
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -349,11 +411,85 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_escanear_Click(object sender, EventArgs e)
         {
-            Escanear escanear = new Escanear();
-            escanear.Show();
-            this.Hide();
+            /* Escanear escanear = new Escanear();
+             escanear.Show();
+             this.Hide();*/
+
+            // Ocultar el botón y mostrar el TextBox
+            btn_escanear.Visible = false;
+            txt_scan.Visible = true;
+            txt_scan.Focus(); // Poner el cursor en el TextBox
+            lbl_codigoBarras.Visible = true;
         }
 
-        
+        // Evento para capturar el código escaneado
+        private void txt_scan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+
+                string codigoBarras = txt_scan.Text.Trim();
+
+                if (!string.IsNullOrEmpty(codigoBarras))
+                {
+                    txt_scan.Enabled = false;
+
+                    Perfume perfumeEncontrado = PerfumeControlador.getByCodigo(codigoBarras);
+
+                    if (perfumeEncontrado != null)
+                    {
+                        VerDetallePerfume formDetalle = new VerDetallePerfume(perfumeEncontrado);
+                        formDetalle.ShowDialog(); // Bloquea la ejecución hasta que se cierre
+
+                        // Cuando se cierra VerDetallePerfume, se vuelve a mostrar el botón Escanear
+                        btn_escanear.Visible = true;
+                        txt_scan.Visible = false;
+                        lbl_codigoBarras.Visible = false;
+                    }
+                    else
+                    {
+                        Escanear formEscanear = new Escanear(this);
+                        formEscanear.ShowDialog();
+                    }
+                }
+                else
+                {
+                    Escanear formEscanear = new Escanear(this);
+                    formEscanear.ShowDialog();
+                }
+
+                txt_scan.Clear();
+                txt_scan.Enabled = true;
+                txt_scan.Focus();
+            }
+        }
+
+
+        private void Form_Click(object sender, EventArgs e)
+        {
+            // Si txt_scan está visible y se hace clic fuera de él, oculta los controles de escaneo
+            if (txt_scan.Visible)
+            {
+                RestaurarUI();
+            }
+        }
+
+
+
+        public void MostrarErrorCodigo()
+        {
+            MessageBox.Show("Error al leer el código de barras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void RestaurarUI()
+        {
+            btn_escanear.Visible = true;  // Mostrar botón Escanear
+            txt_scan.Visible = false;     // Ocultar txt_scan
+            lbl_codigoBarras.Visible = false;  // Ocultar lbl_codigoBarras
+        }
+
+
+
     }
 }

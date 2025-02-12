@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,12 +22,15 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             // Dar de alta una promoción en la base de datos
             string query = "insert into dbo.promocion values" +
-                           "(@id, " +
-                           "@nombre, " +
-                           "@fecha_inicio, " +
-                           "@fecha_fin, " +
+                            "(@id, " +
+                            "@nombre, " +
+                            "@fecha_inicio, " +
+                            "@fecha_fin, " +
                            "@descuento, " +
-                           "@activo);";
+                           "@activo, " +
+                           "@descripcion, " +
+                           "@banner);";
+
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
@@ -36,6 +40,8 @@ namespace Eterea_Parfums_Desktop.Controladores
             cmd.Parameters.AddWithValue("@fecha_fin", promo.fecha_fin);
             cmd.Parameters.AddWithValue("@descuento", promo.descuento);
             cmd.Parameters.AddWithValue("@activo", promo.activo);
+            cmd.Parameters.AddWithValue("@descripcion", promo.descripcion);
+            cmd.Parameters.AddWithValue("@banner", promo.banner);
 
             SqlTransaction transaction = null; // Declarar la transacción
 
@@ -67,7 +73,6 @@ namespace Eterea_Parfums_Desktop.Controladores
                 }
                 DB_Controller.connection.Close(); // Cerrar la conexión también en caso de error
                 throw new Exception("Hay un error en la query: " + e.Message);
-
             }
 
         }
@@ -189,6 +194,46 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
 
+
+
+        //Método para obtener el nombre de la imagen del banner de la foto buscandola por su id
+
+        public static string obtenerNombreImagen(int promoId)
+        {
+            string nombreArchivo = string.Empty;
+
+            string query = "SELECT banner FROM dbo.promocion WHERE id = @id;";
+
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+            cmd.Parameters.AddWithValue("@id", promoId);
+
+            try
+            {
+                DB_Controller.connection.Open();
+                SqlDataReader r = cmd.ExecuteReader();
+
+                if (r.Read()) // Si hay un resultado
+                {
+                    nombreArchivo = r.IsDBNull(0) ? string.Empty : r.GetString(0);
+                }
+
+                r.Close();
+                DB_Controller.connection.Close();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error al obtener el nombre de la imagen: " + e.Message);
+            }
+
+            return nombreArchivo;
+        }
+
+
+
+
+
+
+
         //EDIT ó PUT  -  EDITAR UNA PROMO
         public static bool editarPromo(Promocion promo)
         {
@@ -199,7 +244,9 @@ namespace Eterea_Parfums_Desktop.Controladores
                      fecha_inicio = @fechaInicio,
                      fecha_fin = @fechaFin,
                      descuento = @descuento,
-                     activo = @activo
+                     activo = @activo,
+                     descripcion = @descripcion,
+                     banner = @banner
                  WHERE id = @id_editar"
             ;
 
@@ -210,6 +257,9 @@ namespace Eterea_Parfums_Desktop.Controladores
              cmd.Parameters.AddWithValue("@fechaFin", promo.fecha_fin);
              cmd.Parameters.AddWithValue("@descuento", promo.descuento);
              cmd.Parameters.AddWithValue("@activo", promo.activo);
+            cmd.Parameters.AddWithValue("@descripcion", promo.descripcion);
+            cmd.Parameters.AddWithValue("@banner", promo.banner);
+
 
             SqlTransaction transaction = null; // Declarar la transacción
 
@@ -227,7 +277,8 @@ namespace Eterea_Parfums_Desktop.Controladores
                 cmd.ExecuteNonQuery();
 
                 // Llamar a eliminar registros, pasándole la transacción
-                eliminarRegistrosPromoPerfumes(promo.id, transaction);
+                PerfumeEnPromoControlador.eliminarRegistrosPromoPerfumes(promo.id, transaction);
+                
 
                 // Confirmar la transacción si todo fue bien
                 transaction.Commit();
@@ -250,60 +301,6 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
 
-        //ELIMINAR TODOS LOS REGISTROS DE LA RELACION DE LA PROMOCION CON LOS PERFUMES QUE INCLUYE
-
-        public static void eliminarRegistrosPromoPerfumes(int id_promo, SqlTransaction transaction)
-        {
-            string query = "DELETE FROM dbo.perfumes_en_promo WHERE promocion_id = @id_editar";
-
-
-            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-            cmd.Parameters.AddWithValue("@id_editar", id_promo);
-
-            cmd.Transaction = transaction;
-
-            cmd.ExecuteNonQuery();
-
-        }
-
-
-
-
-        //METODO PARA GUARDAR EN LA BD LA RELACION DE LA PROMOCION CON LOS PERFUMES QUE ESTA INCLUYE
-
-        public static bool agregarRegistrosPromoPerfumes(int id_promo, List<int> perfumeIds)
-        {
-            string query = @"
-        INSERT INTO dbo.perfumes_en_promo (perfume_id, promocion_id)
-        VALUES (@perfumeId, @promoId)";
-
-            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-
-            try
-            {
-                DB_Controller.connection.Open();
-
-                foreach (int perfumeId in perfumeIds)
-                {
-                    cmd.Parameters.Clear(); // Limpia los parámetros para cada iteración
-                    cmd.Parameters.AddWithValue("@perfumeId", perfumeId);
-                    cmd.Parameters.AddWithValue("@promoId", id_promo);
-                    cmd.ExecuteNonQuery();
-                }
-
-                DB_Controller.connection.Close();
-                return true;
-            }
-            catch (Exception e)
-            {
-                if (DB_Controller.connection.State == System.Data.ConnectionState.Open)
-                {
-                    DB_Controller.connection.Close();
-                }
-                throw new Exception("Error al agregar registros de perfumes a la promoción: " + e.Message);
-            }
-        }
-
 
 
 
@@ -311,11 +308,10 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         public static bool eliminarPromo(int id_promo)
         {
+            // Obtener el nombre del banner antes de eliminar la promoción
+            string bannerPromo = obtenerNombreImagen(id_promo); // Nuevo método para obtener el nombre del banner
 
-
-            //Borrar definitivamente una promo de la base de datos
             string query = "DELETE FROM dbo.promocion WHERE id = @id";
-
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@id", id_promo);
 
@@ -328,34 +324,71 @@ namespace Eterea_Parfums_Desktop.Controladores
 
                 // Iniciar la transacción
                 transaction = DB_Controller.connection.BeginTransaction();
-
-                // Asociar la transacción al comando
                 cmd.Transaction = transaction;
 
-                // Eliminar relaciones de perfumes en la promoción
-                eliminarRegistrosPromoPerfumes(id_promo, transaction);
+                // **Eliminar la imagen antes de eliminar la promoción de la BD**
+                if (!string.IsNullOrEmpty(bannerPromo))
+                {
+                    string rutaImagen = Path.Combine(Program.Ruta_Base, bannerPromo + ".jpg");
+                    if (File.Exists(rutaImagen))
+                    {
+                        try
+                        {
+                            // **Liberar la imagen del PictureBox antes de eliminar el archivo**
+                            Form formPrincipal = Application.OpenForms["NombreDelFormulario"];
+                            if (formPrincipal != null)
+                            {
+                                PictureBox pictBox = formPrincipal.Controls.Find("pictBox_banner", true).FirstOrDefault() as PictureBox;
+                                if (pictBox != null && pictBox.Image != null)
+                                {
+                                    pictBox.Image.Dispose();
+                                    pictBox.Image = null;
+                                }
+                            }
 
-                // Ejecutar la eliminación de la promoción
+                            // **Forzar recolección de basura para liberar el archivo**
+                            GC.Collect();
+                            GC.WaitForPendingFinalizers();
+
+                            // **Ahora se elimina el archivo**
+                            File.Delete(rutaImagen);
+                        Console.WriteLine($"Imagen eliminada: {rutaImagen}");
+                    }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"No se pudo eliminar la imagen: {ex.Message}");
+                        }
+                    }
+                }
+
+                // **Eliminar relaciones de perfumes en la promoción**
+                PerfumeEnPromoControlador.eliminarRegistrosPromoPerfumes(id_promo, transaction);
+
+                // **Ejecutar la eliminación de la promoción**
                 cmd.ExecuteNonQuery();
 
-                // Confirmar la transacción
+                // **Confirmar la transacción después de eliminar la imagen y la promoción**
                 transaction.Commit();
 
                 return true;
             }
             catch (Exception e)
             {
-                // Revertir la transacción en caso de error
-                transaction?.Rollback();
-                throw new Exception("Error al eliminar la promoción: " + e.Message);
+                // **Si hay un error, solo hacer rollback si la transacción no se ha confirmado**
+                if (transaction != null && transaction.Connection != null)
+                {
+                    transaction.Rollback();
+                }
+                throw new Exception("Ocurrió un error al eliminar la promoción: " + e.Message);
             }
             finally
             {
-                // Asegurarse de cerrar la conexión
+                // **Cerrar la conexión siempre**
                 if (DB_Controller.connection.State == System.Data.ConnectionState.Open)
                     DB_Controller.connection.Close();
             }
         }
+
 
 
 

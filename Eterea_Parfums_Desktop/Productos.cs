@@ -200,7 +200,7 @@ namespace Eterea_Parfums_Desktop
         }
         private bool EsCodigoBarraPerfumeValido(string codigo)
         {
-            if (string.IsNullOrEmpty(codigo) || codigo.Length != 13 || !codigo.All(char.IsDigit))
+            if (string.IsNullOrEmpty(codigo) || codigo.Length != 12 || !codigo.All(char.IsDigit))
             {
                 return false;
             }
@@ -211,7 +211,7 @@ namespace Eterea_Parfums_Desktop
         private bool ValidarEAN13(string codigo)
         {
             int suma = 0;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < 13; i++)
             {
                 int digito = codigo[i] - '0';
                 suma += (i % 2 == 0) ? digito : digito * 3;
