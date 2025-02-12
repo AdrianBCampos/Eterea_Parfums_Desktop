@@ -174,11 +174,11 @@
     <Compile Include="FormCrearClienteFactura.Designer.cs">
       <DependentUpon>FormCrearClienteFactura.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCrearPromo.cs">
+    <Compile Include="FormPromo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCrearPromo.Designer.cs">
-      <DependentUpon>FormCrearPromo.cs</DependentUpon>
+    <Compile Include="FormPromo.Designer.cs">
+      <DependentUpon>FormPromo.cs</DependentUpon>
     </Compile>
     <Compile Include="FormEditarClienteABM.cs">
       <SubType>Form</SubType>
@@ -369,8 +369,8 @@
     <EmbeddedResource Include="FormCrearClienteABM.resx">
       <DependentUpon>FormCrearClienteABM.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCrearPromo.resx">
-      <DependentUpon>FormCrearPromo.cs</DependentUpon>
+    <EmbeddedResource Include="FormPromo.resx">
+      <DependentUpon>FormPromo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCrearClienteFactura.resx">
       <DependentUpon>FormCrearClienteFactura.cs</DependentUpon>

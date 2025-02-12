@@ -100,7 +100,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void btn_crear_promo_Click(object sender, EventArgs e)
         {
-            FormCrearPromo crearPromo = new FormCrearPromo();
+            FormPromo crearPromo = new FormPromo();
 
             DialogResult dr = crearPromo.ShowDialog();
 
@@ -128,7 +128,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
               
                     // Crear una nueva instancia del formulario de edición
                     Promocion promocion_editar = PromoControlador.obtenerPorId(idPromo);
-                    FormCrearPromo formEditarPromo = new FormCrearPromo(promocion_editar);
+                    FormPromo formEditarPromo = new FormPromo(promocion_editar);
                     DialogResult dr = formEditarPromo.ShowDialog();
 
                     if (dr == DialogResult.OK)

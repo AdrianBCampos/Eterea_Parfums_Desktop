@@ -20,7 +20,7 @@ using System.Drawing.Imaging;
 
 namespace Eterea_Parfums_Desktop
 {
-    public partial class FormCrearPromo : Form
+    public partial class FormPromo : Form
     {
 
         string situacion;
@@ -50,7 +50,7 @@ namespace Eterea_Parfums_Desktop
         //Crear variable local para guardar la promocion que se esta editando y obtener el nombre de la imagen
         Promocion nombBanner = new Promocion();
 
-        public FormCrearPromo()
+        public FormPromo()
         {
 
             InitializeComponent();
@@ -475,7 +475,7 @@ namespace Eterea_Parfums_Desktop
 
 
         //SOBRECARGAR EL CONSTRUCTOR PARA INICIAR EL FORM CON LA INFO CARGADA, PARA EDITAR
-        public FormCrearPromo(Promocion promo)
+        public FormPromo(Promocion promo)
         {
             InitializeComponent();
 
@@ -1012,13 +1012,7 @@ namespace Eterea_Parfums_Desktop
                             pictBox_banner.Image = Image.FromFile(rutaNuevaEdit);
 
 
-                            /*// **Renombrar el archivo**
-                            File.Move(rutaAnterior, rutaNueva);
-                            Console.WriteLine($"Imagen renombrada: {rutaAnterior} -> {rutaNueva}");
-                            nombreBannerNuevo = $"{nombrePromoSanitizado}-banner"; // Actualizar el nombre en la DB
-
-                            // **Recargar la imagen con el nuevo nombre**
-                            pictBox_banner.Image = Image.FromFile(rutaNueva);*/
+ 
                         }
                     }
                     catch (IOException ex)
@@ -1027,38 +1021,6 @@ namespace Eterea_Parfums_Desktop
                     }
                 }
             }
-
-
-
-            /*// **Confirmar la edición antes de continuar**
-            DialogResult resultado = MessageBox.Show(
-                "¿Estás seguro de que deseas editar esta promoción?",
-                "Confirmación",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
-
-            if (resultado == DialogResult.No)
-            {
-                // **Si el usuario cancela, eliminamos la nueva imagen guardada para evitar archivos basura**
-                if (nuevaImagenGuardada && File.Exists(nuevaRuta))
-                {
-                    try
-                    {
-                        File.Delete(nuevaRuta);
-                    }
-                    catch (IOException ex)
-                    {
-                        MessageBox.Show($"No se pudo eliminar la nueva imagen: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-
-                MessageBox.Show("Edición cancelada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                // **Cerrar el formulario**
-                this.Close();
-                return false;
-            }*/
-
             // **Eliminar la imagen anterior SOLO después de confirmar la edición**
             if (nuevaImagenGuardada && !string.IsNullOrEmpty(nombreBannerAnterior))
             {
@@ -1135,7 +1097,7 @@ namespace Eterea_Parfums_Desktop
             limpiarMensajesError();
 
             // Definir caracteres permitidos
-            string caracteresPermitidos = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 %.,\"-:()";
+            string caracteresPermitidos = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 %.,-:()";
 
             if (combo_tipo_promo.SelectedItem == null || string.IsNullOrEmpty(combo_tipo_promo.Text))
             {
@@ -1163,8 +1125,8 @@ namespace Eterea_Parfums_Desktop
             }
             else if (!EsTextoValido(txt_nomb_promo.Text, caracteresPermitidos))
             {
-                errorMsg += "Solo letras, números, espacios y los caracteres: %, ., ,, \", -, :, (, )." + Environment.NewLine;
-                lbl_error_nombP.Text = "Solo letras, números, espacios y los caracteres: %, ., ,, \", -, :, (, ).";
+                errorMsg += "Solo letras, números, espacios y los caracteres: %, ., ,, -, :, (, )." + Environment.NewLine;
+                lbl_error_nombP.Text = "Solo letras, números, espacios y los caracteres: %, ., ,, -, :, (, ).";
                 lbl_error_nombP.Show();
             }
             else if (txt_nomb_promo.Text.Count(c => c == '%') > 1) // Permite solo un '%'
@@ -1198,15 +1160,15 @@ namespace Eterea_Parfums_Desktop
             }
             else if (!EsTextoValido(txt_descripcion_promo.Text, caracteresPermitidos))
             {
-                errorMsg += "Solo letras, números, espacios y los caracteres: %, ., ,, \", -, :, (, )." + Environment.NewLine;
-                lbl_error_desc_promo.Text = "Solo letras, números, espacios y los caracteres: %, ., ,, \", -, :, (, ).";
+                errorMsg += "Solo letras, números, espacios y los caracteres: %, ., ,, -, :, (, )." + Environment.NewLine;
+                lbl_error_desc_promo.Text = "Solo letras, números, espacios y los caracteres: %, ., ,, -, :, (, ).";
                 lbl_error_desc_promo.Show();
             }
             else if (txt_descripcion_promo.Text.Count(c => c == '%') > 1 ||
-                     new[] { '.', ',', '"', '-', ':', '(', ')' }.Any(c => txt_descripcion_promo.Text.Count(ch => ch == c) > 6))
+                     new[] { '.', ',', '-', ':', '(', ')' }.Any(c => txt_descripcion_promo.Text.Count(ch => ch == c) > 2))
             {
-                errorMsg += "Solo un símbolo '%' y hasta 6 de c/u de: ., ,, \", -, :, (, )." + Environment.NewLine;
-                lbl_error_desc_promo.Text = "Solo un símbolo '%' y hasta 6 de c/u de: ., ,, \", -, :, (, ).";
+                errorMsg += "Solo un símbolo '%' y hasta 2 de c/u de: ., ,, -, :, (, )." + Environment.NewLine;
+                lbl_error_desc_promo.Text = "Solo un símbolo '%' y hasta 2 de c/u de: ., ,, -, :, (, ).";
                 lbl_error_desc_promo.Show();
                 
             }
@@ -1406,10 +1368,7 @@ namespace Eterea_Parfums_Desktop
                         MessageBox.Show("Edición cancelada. No se asignarán perfumes a la promoción.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                else
-                {
-                    MessageBox.Show(errorMsg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                
             }
         }
 
