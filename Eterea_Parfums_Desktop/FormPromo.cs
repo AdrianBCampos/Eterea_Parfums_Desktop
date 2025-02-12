@@ -580,7 +580,8 @@ namespace Eterea_Parfums_Desktop
 
             string nombreBanner = nombBanner.banner;
             string rutaCompletaImagen = Program.Ruta_Base + nombreBanner + ".jpg";
-            pictBox_banner.Image = Image.FromFile(rutaCompletaImagen);
+            //pictBox_banner.Image = Image.FromFile(rutaCompletaImagen);
+            CargarImagenPromo(nombreBanner);
 
             situacion = "Edicion";
 
@@ -1408,6 +1409,34 @@ namespace Eterea_Parfums_Desktop
             }
             nuevaImagenCargada = true;
         }
+
+
+
+
+
+        private void CargarImagenPromo(string nombreImagen)
+        {
+            try
+            {
+                string rutaImagen = Path.Combine(Program.Ruta_Base, nombreImagen + ".jpg");
+
+                if (File.Exists(rutaImagen))
+                {
+                    pictBox_banner.Image = Image.FromFile(rutaImagen);
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró la imagen: " + nombreImagen, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    pictBox_banner.Image = null; // No asignar imagen si no se encuentra
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar la imagen: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                pictBox_banner.Image = null; // Evitar que la aplicación se cierre
+            }
+        }
+
 
 
     }
