@@ -62,7 +62,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BarcodeScannerWatcher.cs" />
     <Compile Include="BuscarPedidos.cs">
       <SubType>Form</SubType>
     </Compile>
