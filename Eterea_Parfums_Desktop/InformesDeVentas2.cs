@@ -187,7 +187,7 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
-        private void btn_imprimir_Click(object sender, EventArgs e)
+       /* private void btn_imprimir_Click(object sender, EventArgs e)
         {
             SaveFileDialog guardarFactura = new SaveFileDialog();
             guardarFactura.FileName = DateTime.Now.ToString("ddMMyyyyHHss") + ".pdf";
@@ -246,7 +246,7 @@ namespace Eterea_Parfums_Desktop
                     stream.Close();
                 }
             }
-        }
+        }*/
 
         private void btn_exportar_pdf_Click(object sender, EventArgs e)
         {
