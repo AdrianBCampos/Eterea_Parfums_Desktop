@@ -17,18 +17,22 @@ namespace Eterea_Parfums_Desktop.Controladores
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@num_factura", num_factura);
 
+
+
             try
             {
                 DB_Controller.connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    DetalleFactura detalle = new DetalleFactura();
-                    detalle.factura = FacturaControlador.getById(reader.GetInt32(0));
-                    detalle.perfume = PerfumeControlador.getByID(reader.GetInt32(1));
-                    detalle.cantidad = reader.GetInt32(2);
-                    detalle.precio_unitario = reader.GetDouble(3);
-                    detalle.promocion = PromoControlador.obtenerPorId(reader.GetInt32(4));
+
+                    Factura factura = new Factura();
+                    Perfume perfume = new Perfume();
+                    Promocion promocion = new Promocion();
+                    factura.num_factura = reader.GetInt32(0);
+                    perfume.id = reader.GetInt32(1);
+                    promocion.id = reader.GetInt32(4);
+                    DetalleFactura detalle = new DetalleFactura(factura, perfume, reader.GetInt32(2), reader.GetDouble(3), promocion);
                     detalles.Add(detalle);
                 }
                 reader.Close();

@@ -87,6 +87,7 @@
             this.btn_exportar_pdf.TabIndex = 94;
             this.btn_exportar_pdf.Text = "Exportar PDF";
             this.btn_exportar_pdf.UseVisualStyleBackColor = false;
+            this.btn_exportar_pdf.Click += new System.EventHandler(this.btn_exportar_pdf_Click);
             // 
             // pictureBox2
             // 

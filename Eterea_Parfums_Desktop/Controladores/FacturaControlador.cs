@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -97,12 +98,14 @@ namespace Eterea_Parfums_Desktop.Controladores
         }
 
         public static List<Factura> getAllIntervaloFechas(DateTime fecha_inicio, DateTime fecha_final)
-        {
+        {      
             List<Factura> facturas = new List<Factura>();
             string query = "SELECT * FROM dbo.factura WHERE fecha BETWEEN @fecha_inicio AND @fecha_final";
+            // Modificar fecha_final para incluir todo el día
+            DateTime fecha_final_modificada = fecha_final.AddDays(1).AddTicks(-1);
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-            cmd.Parameters.AddWithValue("@fecha_inicio", fecha_inicio);
-            cmd.Parameters.AddWithValue("@fecha_final", fecha_final);
+            cmd.Parameters.Add("@fecha_inicio", SqlDbType.DateTime).Value = fecha_inicio;
+            cmd.Parameters.Add("@fecha_final", SqlDbType.DateTime).Value = fecha_final_modificada;
 
             try
             {
@@ -110,10 +113,12 @@ namespace Eterea_Parfums_Desktop.Controladores
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-
-                    Sucursal sucursal = SucursalControlador.getById(reader.GetInt32(2));
-                    Empleado empleado = EmpleadoControlador.obtenerPorId(reader.GetInt32(3));
-                    Cliente cliente = ClienteControlador.obtenerPorId(reader.GetInt32(4));
+                    Sucursal sucursal = new Sucursal();
+                    Empleado empleado = new Empleado();
+                    Cliente cliente = new Cliente();
+                    sucursal.id = reader.GetInt32(2);
+                    empleado.id = reader.GetInt32(3);
+                    cliente.id = reader.GetInt32(4);
 
                     Factura factura = new Factura(reader.GetInt32(0), reader.GetDateTime(1), sucursal, empleado, cliente, reader.GetString(5), reader.GetDouble(6),
                         reader.GetDouble(7), reader.GetDouble(8), reader.GetInt32(9), reader.GetString(10), reader.GetString(11), "");
@@ -126,11 +131,10 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
             catch (Exception e)
             {
-                throw new Exception("Hay un error en la query: " + e.Message);
-            }
-            
-        }
-
+              throw new Exception("Hay un error en la query: " + e.Message);
+            }    
+        
+         }
 
         public static Factura getById(int id)
         {
