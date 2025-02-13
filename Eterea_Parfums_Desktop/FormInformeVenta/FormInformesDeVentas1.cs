@@ -12,6 +12,9 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using Eterea_Parfums_Desktop.Controladores;
 using Eterea_Parfums_Desktop.Modelos;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using iTextSharp.tool.xml;
 
 namespace Eterea_Parfums_Desktop
 {
@@ -19,9 +22,12 @@ namespace Eterea_Parfums_Desktop
     {
         private DateTime fechaInicio;
         private DateTime fechaFinal;
+        
         public FormInformesDeVentas1()
         {
             InitializeComponent();
+            lbl_error_fecha_inicio.Visible = false;
+            lbl_error_fecha_final.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -105,14 +111,14 @@ namespace Eterea_Parfums_Desktop
                     }
                     else
                     {
-                        //fecha_inicio = string.Empty;
+                        textBox.Text = string.Empty;
                         lbl_error_fecha_inicio.Text = "Formato de fecha inválido. Use YYYY-MM-DD.";
                         lbl_error_fecha_inicio.Visible = true;
                     }
                 }
                 else if (textBox.Text.Length > 10)
                 {
-                    //fecha_inicio = string.Empty;
+                    textBox.Text = string.Empty;
                     lbl_error_fecha_inicio.Text = "Formato de fecha inválido. Use YYYY-MM-DD.";
                     lbl_error_fecha_inicio.Visible = true;
                 }
@@ -135,14 +141,14 @@ namespace Eterea_Parfums_Desktop
                     }
                     else
                     {
-                        //fecha_fin = string.Empty;
+                        textBox.Text = string.Empty;
                         lbl_error_fecha_final.Text = "Formato de fecha inválido. Use YYYY-MM-DD.";
                         lbl_error_fecha_final.Visible = true;
                     }
                 }
                 else if (textBox.Text.Length > 10)
                 {
-                    // fecha_fin = string.Empty;
+                    textBox.Text = string.Empty;
                     lbl_error_fecha_final.Text = "Formato de fecha inválido. Use YYYY-MM-DD.";
                     lbl_error_fecha_final.Visible = true;
                 }
@@ -187,55 +193,97 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
-       /* private void btn_imprimir_Click(object sender, EventArgs e)
+
+        private void btn_exportar_pdf_Click(object sender, EventArgs e)
         {
-            SaveFileDialog guardarFactura = new SaveFileDialog();
-            guardarFactura.FileName = DateTime.Now.ToString("ddMMyyyyHHss") + ".pdf";
-            guardarFactura.Filter = "Archivos PDF (*.pdf)|*.pdf"; // Filtro para archivos PDF
-            guardarFactura.DefaultExt = "pdf"; // Extensión por defecto
-            guardarFactura.AddExtension = true; // Agrega la extensión si el usuario no la pone
+            string mensaje = "";
+            bool error = false;
 
-
-            string PaginaHTML_Texto = Properties.Resources.PlantillaFactura.ToString();
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CLIENTE", txt_nombre_cliente.Text);
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NUMEROFACTURA", txt_numero_factura.Text);
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
-
-            string filas = string.Empty;
-            decimal total = 0;
-            foreach (DataGridViewRow row in Factura.Rows)
+            if (string.IsNullOrEmpty(txt_fecha_inicial.Text))
             {
-                filas += "<tr>";
-                filas += "<td>" + row.Cells["Cantidad"].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells["Nombre_Perfume"].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells["Precio_Unitario"].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells["Tot"].Value.ToString() + "</td>";
-                filas += "</tr>";
-                total += decimal.Parse(row.Cells["Tot"].Value.ToString());
+                mensaje += "Debe ingresar una fecha inicial.\n";
+                lbl_error_fecha_inicio.Text = "Debe ingresar una fecha inicial.";
+                lbl_error_fecha_inicio.Show();
+                error = true;
             }
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FILAS", filas);
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TOTAL", total.ToString());
+            else
+            {
+                lbl_error_fecha_inicio.Visible = false;
+            }
 
+            if (string.IsNullOrEmpty(txt_fecha_final.Text))
+            {
+                mensaje += "Debe ingresar una fecha final.\n";
+                lbl_error_fecha_final.Text = "Debe ingresar una fecha final.";
+                lbl_error_fecha_final.Show();
+                error = true;
+            }
+            else
+            {
+                lbl_error_fecha_final.Visible = false;
+            }
 
+            if (error) return;
+
+            DateTime fechaInicio, fechaFinal;
+            if (!DateTime.TryParse(txt_fecha_inicial.Text, out fechaInicio) ||
+                !DateTime.TryParse(txt_fecha_final.Text, out fechaFinal))
+            {
+                MessageBox.Show("Formato de fecha incorrecto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (fechaInicio > fechaFinal)
+            {
+                MessageBox.Show("La fecha inicial no puede ser mayor que la fecha final.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            SaveFileDialog guardarFactura = new SaveFileDialog
+            {
+                FileName = DateTime.Now.ToString("ddMMyyyyHHmmss") + ".pdf",
+                Filter = "Archivos PDF (*.pdf)|*.pdf",
+                DefaultExt = "pdf",
+                AddExtension = true
+            };
+
+            int sucursalId = EmpleadoControlador.obtenerPorId(Program.logueado.id).sucursal_id.id;
+            Sucursal sucursal = SucursalControlador.getById(sucursalId);
+
+            string PaginaHTML_Texto = Properties.Resources.PlantillaInformeVentas.ToString();
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUCURSAL", sucursal.nombre)
+                                               .Replace("@CALLE", sucursal.calle_id.nombre)
+                                               .Replace("@NUMERO", sucursal.numeracion_calle.ToString())
+                                               .Replace("@PROVINCIA", sucursal.provincia_id.nombre)
+                                               .Replace("@PAIS", sucursal.pais_id.nombre)
+                                               .Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"))
+                                               .Replace("@FECHA_INICIO", txt_fecha_inicial.Text)
+                                               .Replace("@FECHA_FINAL", txt_fecha_final.Text)
+                                               .Replace("@CANTIDAD", txt_cantidad_ventas.Text)
+                                               .Replace("@MONTO_TOTAL_VENTAS", txt_monto_total.Text)
+                                               .Replace("@PERFUME_MAS_VENDIDO", txt_mas_vendido.Text)
+                                               .Replace("@PERFUME_MENOS_VENDIDO", txt_menos_vendido.Text);
 
             if (guardarFactura.ShowDialog() == DialogResult.OK)
             {
                 using (FileStream stream = new FileStream(guardarFactura.FileName, FileMode.Create))
                 {
-                    //Creamos un nuevo documento y lo definimos como PDF
                     Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
-
                     PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
                     pdfDoc.Open();
 
-                    //Agregamos la imagen del banner al documento
-                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.LogoEtereaFactura, System.Drawing.Imaging.ImageFormat.Png);
-                    img.ScaleToFit(60, 60);
-                    img.Alignment = iTextSharp.text.Image.UNDERLYING;
-
-                    //img.SetAbsolutePosition(10,100);
-                    img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
-                    pdfDoc.Add(img);
+                    try
+                    {
+                        iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.LogoEtereaFactura, System.Drawing.Imaging.ImageFormat.Png);
+                        img.ScaleToFit(60, 60);
+                        img.Alignment = iTextSharp.text.Image.UNDERLYING;
+                        img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
+                        pdfDoc.Add(img);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al cargar la imagen: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
 
                     using (StringReader sr = new StringReader(PaginaHTML_Texto))
                     {
@@ -245,12 +293,9 @@ namespace Eterea_Parfums_Desktop
                     pdfDoc.Close();
                     stream.Close();
                 }
+
+                MessageBox.Show("PDF generado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }*/
-
-        private void btn_exportar_pdf_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
