@@ -138,7 +138,7 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(1059, 12);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button2.Size = new System.Drawing.Size(45, 39);
@@ -150,7 +150,7 @@
             // img_logo
             // 
             this.img_logo.Location = new System.Drawing.Point(11, 12);
-            this.img_logo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.img_logo.Margin = new System.Windows.Forms.Padding(4);
             this.img_logo.Name = "img_logo";
             this.img_logo.Size = new System.Drawing.Size(115, 106);
             this.img_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -163,7 +163,7 @@
             this.btn_posterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_posterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_posterior.Location = new System.Drawing.Point(1045, 634);
-            this.btn_posterior.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_posterior.Margin = new System.Windows.Forms.Padding(4);
             this.btn_posterior.Name = "btn_posterior";
             this.btn_posterior.Size = new System.Drawing.Size(43, 39);
             this.btn_posterior.TabIndex = 307;
@@ -177,7 +177,7 @@
             this.btn_anterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_anterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_anterior.Location = new System.Drawing.Point(921, 635);
-            this.btn_anterior.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_anterior.Margin = new System.Windows.Forms.Padding(4);
             this.btn_anterior.Name = "btn_anterior";
             this.btn_anterior.Size = new System.Drawing.Size(43, 39);
             this.btn_anterior.TabIndex = 306;
@@ -251,7 +251,7 @@
             this.dataGridViewConsultas.EnableHeadersVisualStyles = false;
             this.dataGridViewConsultas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.dataGridViewConsultas.Location = new System.Drawing.Point(28, 238);
-            this.dataGridViewConsultas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewConsultas.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewConsultas.Name = "dataGridViewConsultas";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
@@ -298,7 +298,7 @@
             // 
             this.combo_filtro_genero.FormattingEnabled = true;
             this.combo_filtro_genero.Location = new System.Drawing.Point(845, 164);
-            this.combo_filtro_genero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.combo_filtro_genero.Margin = new System.Windows.Forms.Padding(4);
             this.combo_filtro_genero.Name = "combo_filtro_genero";
             this.combo_filtro_genero.Size = new System.Drawing.Size(199, 24);
             this.combo_filtro_genero.TabIndex = 300;
@@ -319,7 +319,7 @@
             // 
             this.combo_filtro_marca.FormattingEnabled = true;
             this.combo_filtro_marca.Location = new System.Drawing.Point(561, 164);
-            this.combo_filtro_marca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.combo_filtro_marca.Margin = new System.Windows.Forms.Padding(4);
             this.combo_filtro_marca.Name = "combo_filtro_marca";
             this.combo_filtro_marca.Size = new System.Drawing.Size(199, 24);
             this.combo_filtro_marca.TabIndex = 298;
@@ -339,7 +339,7 @@
             // txt_filtro_nombre
             // 
             this.txt_filtro_nombre.Location = new System.Drawing.Point(31, 166);
-            this.txt_filtro_nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_filtro_nombre.Margin = new System.Windows.Forms.Padding(4);
             this.txt_filtro_nombre.Name = "txt_filtro_nombre";
             this.txt_filtro_nombre.Size = new System.Drawing.Size(425, 22);
             this.txt_filtro_nombre.TabIndex = 296;
@@ -362,7 +362,7 @@
             this.btn_facturacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_facturacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_facturacion.Location = new System.Drawing.Point(445, 703);
-            this.btn_facturacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_facturacion.Margin = new System.Windows.Forms.Padding(4);
             this.btn_facturacion.Name = "btn_facturacion";
             this.btn_facturacion.Size = new System.Drawing.Size(219, 46);
             this.btn_facturacion.TabIndex = 308;
@@ -409,13 +409,13 @@
             // 
             this.Agregar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Agregar.FillWeight = 55.41667F;
-            this.Agregar.HeaderText = "";
+            this.Agregar.HeaderText = "Añadir";
             this.Agregar.MinimumWidth = 6;
             this.Agregar.Name = "Agregar";
             this.Agregar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Agregar.Text = "Agregar";
             this.Agregar.UseColumnTextForButtonValue = true;
-            this.Agregar.Width = 21;
+            this.Agregar.Width = 76;
             // 
             // ConsultasPerfumeEmpleado
             // 

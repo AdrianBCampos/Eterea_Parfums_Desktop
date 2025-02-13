@@ -9,6 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Eterea_Parfums_Desktop.Controladores;
 using Eterea_Parfums_Desktop.Modelos;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.tool.xml;
+using System.IO;
+using static System.Net.WebRequestMethods;
+
 
 namespace Eterea_Parfums_Desktop
 {
@@ -21,7 +27,7 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
             string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";
-            img_logo.Image = Image.FromFile(rutaCompletaImagen);
+            img_logo.Image = System.Drawing.Image.FromFile(rutaCompletaImagen);
 
             txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
 
@@ -227,8 +233,7 @@ namespace Eterea_Parfums_Desktop
                 }
             }
             // Mostrar la suma en un TextBox
-            txt_subtotal.Text = sumaPrecios.ToString("N2");
-
+                txt_subtotal.Text = sumaPrecios.ToString("N2");
         }
 
         private void CalcularImporteRecargo(float recargo, float subtotal)
@@ -289,8 +294,15 @@ namespace Eterea_Parfums_Desktop
 
         private void sumaFinal(float subtotal, float recargo, float descuento)
         {
-            txt_total.Text = (subtotal + recargo - descuento).ToString("N2");
+            string condicionCliente = txt_condicion_iva.Text.Trim();
 
+            // Verificar si el cliente es Responsable Monotributo
+            if (condicionCliente.Contains("Responsable Monotributo"))
+            {
+                txt_total.Text = (subtotal + recargo - descuento - CalcularIVA(subtotal,recargo,descuento)).ToString("N2");
+            } else { 
+                txt_total.Text = (subtotal + recargo - descuento).ToString("N2");
+            }
         }
         public DataGridView GetFacturaDataGrid()
         {
@@ -303,7 +315,8 @@ namespace Eterea_Parfums_Desktop
 
             float subtotal, recargo, descuento, iva;
 
-
+            desc();
+            CalcularMontoRecargo();
             // Verificamos que los valores sean válidos para evitar errores de conversión
             if (!float.TryParse(txt_subtotal.Text, out subtotal)) subtotal = 0;
             if (!float.TryParse(txt_monto_recargo.Text, out recargo)) recargo = 0;
@@ -320,15 +333,14 @@ namespace Eterea_Parfums_Desktop
             }
 
             //CalcularImporteRecargo(subtotal, recargo);
-            desc();
-            CalcularMontoRecargo();
-            VerificarCondicionIVA(subtotal, recargo, descuento);
+            
             //CalcularIVA(subtotal, recargo, descuento);
-            if (!float.TryParse(txt_iva.Text, out iva)) iva = 0;
+            //if (!float.TryParse(txt_iva.Text, out iva)) iva = 0;
             sumaFinal(subtotal, recargo, descuento);
+            VerificarCondicionIVA(subtotal, recargo, descuento);
         }
 
-        private void CalcularIVA(float subtotal, float recargo, float descuento)
+        private float CalcularIVA(float subtotal, float recargo, float descuento)
         {
             // Calcular el total base (subtotal + recargo - descuento)
             float totalBase = subtotal + recargo - descuento;
@@ -337,7 +349,8 @@ namespace Eterea_Parfums_Desktop
             float iva = totalBase * 0.21f;
 
             // Actualizar el monto del IVA en el txt_iva
-            txt_iva.Text = iva.ToString("0.00"); // Formato de 2 decimales
+            return iva;
+            //txt_iva.Text = iva.ToString("0.00"); // Formato de 2 decimales
         }
 
         private void ActualizarDescuentosYCuotas()
@@ -405,20 +418,25 @@ namespace Eterea_Parfums_Desktop
         }
         private void VerificarCondicionIVA(float subtotal, float recargo, float descuento)
         {
-            string nombreCliente = txt_condicion_iva.Text.Trim();
+            string condicionCliente = txt_condicion_iva.Text.Trim();
 
             // Verificar si el cliente es Responsable Monotributo
-            if (nombreCliente.Contains("Responsable Monotributo"))
+            if (condicionCliente.Contains("Responsable Monotributo"))
             {
                 // Deshabilitar el campo de IVA
-                txt_iva.Enabled = false;
-                txt_iva.Text = "0,00";  // Opcional, puedes poner 0 si se desea mostrar un valor predeterminado
+                txt_iva.Enabled = true;
+                txt_iva.Text = CalcularIVA(subtotal, recargo, descuento).ToString("0.00");
             }
-            else
+            else if (condicionCliente.Contains("Consumidor Final"))
             {
                 // Si no es monotributista, habilitar el campo de IVA
-                CalcularIVA(subtotal, recargo, descuento);
+                txt_iva.Enabled = false;
+                txt_iva.Text = "0,00";
+            }
+            else if (condicionCliente.Contains("Responsable Inscripto") || condicionCliente.Contains("Responsable no Inscripto"))
+            {
                 txt_iva.Enabled = true;
+                txt_iva.Text = CalcularIVA(subtotal, recargo, descuento).ToString("0.00");
             }
         }
 
@@ -466,6 +484,14 @@ namespace Eterea_Parfums_Desktop
                 if (exito)
                 {
                     MessageBox.Show("Factura creada exitosamente.");
+
+                    // Cerrar el formulario actual y abrir uno nuevo
+                    this.Close(); // Cierra el formulario actual
+
+                    Facturacion nuevaFacturacion = new Facturacion();
+
+                    // Mostrar el nuevo formulario
+                    nuevaFacturacion.Show();
                 }
                 else
                 {
@@ -480,7 +506,64 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_imprimir_Click(object sender, EventArgs e)
         {
-            CrearFactura();
+            SaveFileDialog guardarFactura = new SaveFileDialog();
+            guardarFactura.FileName = DateTime.Now.ToString("ddMMyyyyHHss") + ".pdf";
+            guardarFactura.Filter = "Archivos PDF (*.pdf)|*.pdf"; // Filtro para archivos PDF
+            guardarFactura.DefaultExt = "pdf"; // Extensión por defecto
+            guardarFactura.AddExtension = true; // Agrega la extensión si el usuario no la pone
+            
+
+            string PaginaHTML_Texto = Properties.Resources.PlantillaFactura.ToString();
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CLIENTE", txt_nombre_cliente.Text);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NUMEROFACTURA", txt_numero_factura.Text);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
+
+            string filas = string.Empty;
+            decimal total = 0;
+            foreach (DataGridViewRow row in Factura.Rows)
+            {
+                filas += "<tr>";
+                filas += "<td>" + row.Cells["Cantidad"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Nombre_Perfume"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Precio_Unitario"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Tot"].Value.ToString() + "</td>";
+                filas += "</tr>";
+                total += decimal.Parse(row.Cells["Tot"].Value.ToString());
+            }
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FILAS", filas);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TOTAL", total.ToString());
+
+
+
+            if (guardarFactura.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream stream = new FileStream(guardarFactura.FileName, FileMode.Create))
+                {
+                    //Creamos un nuevo documento y lo definimos como PDF
+                    Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
+
+                    PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+                    pdfDoc.Open();
+
+                    //Agregamos la imagen del banner al documento
+                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.LogoEtereaFactura, System.Drawing.Imaging.ImageFormat.Png);
+                    img.ScaleToFit(60, 60);
+                    img.Alignment = iTextSharp.text.Image.UNDERLYING;
+
+                    //img.SetAbsolutePosition(10,100);
+                    img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
+                    pdfDoc.Add(img);
+
+                    using (StringReader sr = new StringReader(PaginaHTML_Texto))
+                    {
+                        XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                    }
+
+                    pdfDoc.Close();
+                    stream.Close();
+                }
+            }
+           // CrearFactura();
         }
     }
 }

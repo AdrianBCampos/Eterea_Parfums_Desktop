@@ -63,6 +63,49 @@ namespace Eterea_Parfums_Desktop.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LogoEtereaFactura {
+            get {
+                object obj = ResourceManager.GetObject("LogoEtereaFactura", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html lang=&quot;es&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;title&gt;Factura Eterea Parfums&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        body {
+        ///            font-family: Arial, sans-serif;
+        ///        }
+        ///
+        ///        .factura {
+        ///            width: 80%;
+        ///            margin: auto;
+        ///            border: 1px solid #000;
+        ///            padding: 20px;
+        ///        }
+        ///
+        ///        .encabezado, .detalle, .footer {
+        ///            margin-bottom: 20px;
+        ///        }
+        ///
+        ///            .encabezado h1 {
+        ///                text-align: center;
+        ///            }
+        ///
+        ///        table {        /// [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string PlantillaFactura {
+            get {
+                return ResourceManager.GetString("PlantillaFactura", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap imagen_por_defecto {
             get {
                 object obj = ResourceManager.GetObject("imagen_por_defecto", resourceCulture);
