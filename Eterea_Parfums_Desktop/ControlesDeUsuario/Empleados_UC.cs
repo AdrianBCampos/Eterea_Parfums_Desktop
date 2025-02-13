@@ -72,7 +72,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         }
         private void btn_crear_empleado_Click(object sender, EventArgs e)
         {
-            FormEmpleado frmVend = new FormEmpleado();
+            FormCrearEmpleado frmVend = new FormCrearEmpleado();
             DialogResult dr = frmVend.ShowDialog();
 
             if (dr == DialogResult.OK)

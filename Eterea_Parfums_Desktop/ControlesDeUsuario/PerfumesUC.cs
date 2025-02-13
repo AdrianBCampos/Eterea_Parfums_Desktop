@@ -28,7 +28,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
      
         private void btn_crear_perfume_Click_1(object sender, EventArgs e)
         {
-            Productos productos = new Productos(this);
+            FormCrearPerfume1 productos = new FormCrearPerfume1(this);
             productos.Show();
         }
 
@@ -114,7 +114,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 Genero genero = GeneroControlador.getById(perfume_editar.genero.id);
                 Pais pais = PaisControlador.getById(perfume_editar.pais.id);
                 perfume_editar = new Perfume(perfume_editar.id, perfume_editar.codigo, marca, perfume_editar.nombre, tipo_de_perfume, genero, perfume_editar.presentacion_ml, pais, perfume_editar.spray, perfume_editar.recargable, perfume_editar.descripcion, perfume_editar.anio_de_lanzamiento, perfume_editar.precio_en_pesos, perfume_editar.activo, perfume_editar.imagen1, perfume_editar.imagen2);
-                EditarProducto formEditarProductoABM = new EditarProducto(perfume_editar, this);
+                FormEditarPerfume1 formEditarProductoABM = new FormEditarPerfume1(perfume_editar, this);
                 //ACTUALIZAR LA LISTA
                 cargarPerfumes();
                 formEditarProductoABM.Show();
@@ -128,7 +128,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                 int id = int.Parse(dataGridViewPerfumes.Rows[e.RowIndex].Cells[0].Value.ToString());
                 Perfume perfume = PerfumeControlador.getByID(id);
-                FormEliminarProductoABM formEliminarProductoABM = new FormEliminarProductoABM(perfume);
+                FormEliminarPerfume formEliminarProductoABM = new FormEliminarPerfume(perfume);
                 DialogResult dr = formEliminarProductoABM.ShowDialog();
                 if (dr == DialogResult.OK)
                 {
