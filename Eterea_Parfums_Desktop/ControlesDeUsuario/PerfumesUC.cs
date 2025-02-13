@@ -25,8 +25,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             txt_buscar_codigo.TextChanged += txt_buscar_codigo_TextChanged;
             cargarPerfumes();
         }
-
-        private void btn_crear_perfume_Click(object sender, EventArgs e)
+     
+        private void btn_crear_perfume_Click_1(object sender, EventArgs e)
         {
             Productos productos = new Productos(this);
             productos.Show();
@@ -34,6 +34,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         internal void cargarPerfumes(string filtroPerfume = "")
         {
+            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
+            dataGridViewPerfumes.RowHeadersVisible = false;
+
             perfumes = PerfumeControlador.getAll();
 
             dataGridViewPerfumes.Rows.Clear();
@@ -87,12 +90,12 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     dataGridViewPerfumes.Rows[rowIndex].Cells[13].Value = "Eliminar";
                 }
 
-
+                dataGridViewPerfumes.CellPainting += dataGridView1_CellPainting;
 
             }
         }
 
-        private void dataGridViewPerfumes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewPerfumes_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
 
@@ -121,7 +124,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             else if (senderGrid.Columns[e.ColumnIndex].Name == "Eliminar")
             {
                 //ELIMINAMOS
-            
+
 
                 int id = int.Parse(dataGridViewPerfumes.Rows[e.RowIndex].Cells[0].Value.ToString());
                 Perfume perfume = PerfumeControlador.getByID(id);
@@ -133,7 +136,32 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     cargarPerfumes();
                 }
             }
+        }
 
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0 && dataGridViewPerfumes.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                e.Handled = true;
+                e.PaintBackground(e.CellBounds, true);
+
+                // Crear un rectángulo para el botón
+                Rectangle buttonRect = e.CellBounds;
+                buttonRect.Inflate(-2, -2); // Reducir tamaño para dar efecto de borde
+
+                // Definir colores personalizados
+                Color buttonColor = Color.FromArgb(228, 137, 164); // Color de fondo del botón
+                Color textColor = Color.FromArgb(250, 236, 239); // Color del texto
+
+                using (SolidBrush brush = new SolidBrush(buttonColor))
+                {
+                    e.Graphics.FillRectangle(brush, buttonRect);
+                }
+
+                // Dibujar el texto del botón
+                TextRenderer.DrawText(e.Graphics, (string)e.Value, e.CellStyle.Font, buttonRect, textColor,
+                                      TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+            }
         }
 
         private void txt_buscar_codigo_TextChanged(object sender, EventArgs e)
@@ -150,5 +178,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 e.Handled = true; // Ignorar entrada no válida
             }
         }
+
+        
     }
 }

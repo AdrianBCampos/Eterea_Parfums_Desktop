@@ -174,10 +174,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 e.Handled = true; // Ignorar entrada no válida
             }
         }
-
-        private void lbl_dni_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

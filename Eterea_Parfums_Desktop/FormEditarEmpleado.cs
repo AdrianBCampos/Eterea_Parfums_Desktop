@@ -192,7 +192,7 @@ namespace Eterea_Parfums_Desktop
             txt_num_calle.Text = empleado.numeracion_calle.ToString();
             txt_piso.Text = empleado.piso.ToString();
             txt_departamento.Text = empleado.departamento.ToString();
-            txt_comentarios_domicilio.Text = empleado.comentarios_domicilio.ToString();
+            richTextBox_comentario.Text = empleado.comentarios_domicilio.ToString();
 
 
             combo_sucursal.Text = empleado.sucursal_id.nombre.ToString();
@@ -232,6 +232,35 @@ namespace Eterea_Parfums_Desktop
             label1.Text = "Editar Vendedor";
             btn_crear.Text = "Editar";
 
+
+            //Diseño del combo box
+            combo_activo.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_activo.DrawItem += comboBoxdiseño_DrawItem;
+            combo_activo.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_rol.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_rol.DrawItem += comboBoxdiseño_DrawItem;
+            combo_rol.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_sucursal.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_sucursal.DrawItem += comboBoxdiseño_DrawItem;
+            combo_sucursal.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_calle.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_calle.DrawItem += comboBoxdiseño_DrawItem;
+            combo_calle.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_pais.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_pais.DrawItem += comboBoxdiseño_DrawItem;
+            combo_pais.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_provincia.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_provincia.DrawItem += comboBoxdiseño_DrawItem;
+            combo_provincia.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_localidad.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_localidad.DrawItem += comboBoxdiseño_DrawItem;
+            combo_localidad.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void editar()
@@ -257,7 +286,7 @@ namespace Eterea_Parfums_Desktop
             Empleado empleado = new Empleado(id_editar, txt_usuario.Text, txt_contraseña.Text, txt_nombre.Text, txt_apellido.Text,
                 int.Parse(txt_dni.Text), DateTime.Parse(dateTime_nac.Text), txt_celular.Text, txt_e_mail.Text,
                 pais, provincia, localidad, int.Parse(txt_cp.Text), calle, int.Parse(txt_num_calle.Text),
-                txt_piso.Text, txt_departamento.Text, txt_comentarios_domicilio.Text,
+                txt_piso.Text, txt_departamento.Text, richTextBox_comentario.Text,
                  sucursal, DateTime.Parse(dateTime_ing.Text), int.Parse(txt_sueldo.Text), activo, rol);
 
             if (EmpleadoControlador.editarEmpleado(empleado))
@@ -449,20 +478,14 @@ namespace Eterea_Parfums_Desktop
             }
 
             return string.IsNullOrEmpty(errorMsg);
-        }
-
-
-        private void label1_Click(object sender, EventArgs e)
+        }       
+       
+        private void FormEditarEmpleado_Load(object sender, EventArgs e)
         {
 
         }
-
-        private void btn_cancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btn_crear_Click_1(object sender, EventArgs e)
+      
+        private void btn_crear_Click(object sender, EventArgs e)
         {
             string errorMsg;
 
@@ -476,116 +499,49 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
-        private void FormEditarEmpleado_Load(object sender, EventArgs e)
+        //Diseño del combo box
+        private void comboBoxdiseño_DrawItem(object sender, DrawItemEventArgs e)
         {
+            if (e.Index < 0)
+                return;
 
+            // Obtener el ComboBox y el texto del ítem actual
+            ComboBox combo = sender as ComboBox;
+            string text = combo.Items[e.Index].ToString();
+
+            // Definir colores personalizados
+            Color backgroundColor;
+            Color textColor;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                // Color cuando el ítem está seleccionado
+                backgroundColor = Color.FromArgb(195, 156, 164);
+                textColor = Color.White;
+            }
+            else
+            {
+                // Color cuando el ítem NO está seleccionado
+                backgroundColor = Color.FromArgb(250, 236, 239); // Color personalizado
+                textColor = Color.FromArgb(195, 156, 164);
+            }
+
+            // Pintar el fondo del ítem
+            using (SolidBrush brush = new SolidBrush(backgroundColor))
+            {
+                e.Graphics.FillRectangle(brush, e.Bounds);
+            }
+
+            // Dibujar el texto
+            TextRenderer.DrawText(e.Graphics, text, e.Font, e.Bounds, textColor, TextFormatFlags.Left);
+
+            // Evitar problemas visuales
+            e.DrawFocusRectangle();
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label15_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label17_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label16_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label19_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label20_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label21_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label22_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label23_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
     }
 }

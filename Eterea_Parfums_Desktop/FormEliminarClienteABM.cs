@@ -31,7 +31,7 @@ namespace Eterea_Parfums_Desktop
 
             id_eliminar = id;
 
-            txt_nombre_cliente.Text = eliminado.nombre.ToString();
+            txt_nombre_cliente.Text = eliminado.nombre.ToString() + " " + eliminado.apellido.ToString();        
             txt_dni_eliminar.Text = eliminado.dni.ToString();
             
         }

@@ -30,6 +30,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void cargarPromociones(string filtroNombre = "")
         {
+            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
+            dataGridViewPromos.RowHeadersVisible = false;
+
             promociones = PromoControlador.obtenerTodos();
 
             dataGridViewPromos.Rows.Clear();
@@ -64,6 +67,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     dataGridViewPromos.Rows[rowIndex].Cells[6].Value = "Editar";
                     dataGridViewPromos.Rows[rowIndex].Cells[7].Value = "Eliminar";
                 }
+                dataGridViewPromos.CellPainting += dataGridView1_CellPainting;
             }
         }
 
@@ -90,13 +94,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void txt_buscar_nombre_TextChanged(object sender, EventArgs e)
         {
-            string filtroNombre = textbox_nombrePromo.Text.Trim();
+            string filtroNombre = txt_filtro_nombre.Text.Trim();
 
             // Actualiza el DataGridView con el filtro
             cargarPromociones(filtroNombre);
         }
-
-
 
         private void btn_crear_promo_Click(object sender, EventArgs e)
         {
@@ -114,7 +116,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             }
         }
 
-        private void dataGridViewPromos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void dataGridViewPromos_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             // Verificar si el clic fue en la columna de editar (puedes verificar el índice de la columna)
             if (e.ColumnIndex == dataGridViewPromos.Columns[6].Index && e.RowIndex >= 0)
@@ -125,7 +128,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 // Verificar si el ID de la promoción es válido
                 if (idPromoCell != null && int.TryParse(idPromoCell.ToString(), out idPromo))
                 {
-              
+
                     // Crear una nueva instancia del formulario de edición
                     Promocion promocion_editar = PromoControlador.obtenerPorId(idPromo);
                     FormPromo formEditarPromo = new FormPromo(promocion_editar);
@@ -167,9 +170,33 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     MessageBox.Show("No se pudo obtener el ID de la promoción.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
         }
 
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0 && dataGridViewPromos.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                e.Handled = true;
+                e.PaintBackground(e.CellBounds, true);
+
+                // Crear un rectángulo para el botón
+                Rectangle buttonRect = e.CellBounds;
+                buttonRect.Inflate(-2, -2); // Reducir tamaño para dar efecto de borde
+
+                // Definir colores personalizados
+                Color buttonColor = Color.FromArgb(228, 137, 164); // Color de fondo del botón
+                Color textColor = Color.FromArgb(250, 236, 239); // Color del texto
+
+                using (SolidBrush brush = new SolidBrush(buttonColor))
+                {
+                    e.Graphics.FillRectangle(brush, buttonRect);
+                }
+
+                // Dibujar el texto del botón
+                TextRenderer.DrawText(e.Graphics, (string)e.Value, e.CellStyle.Font, buttonRect, textColor,
+                                      TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+            }
+        }
     }
  }
 
