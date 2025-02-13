@@ -17,8 +17,7 @@ namespace Eterea_Parfums_Desktop
         private static string recargoNueveCuotas = "28";
         private static string recargoDoceCuotas = "40";
 
-        private List<TipoDeAroma> tipo_de_aromas;
-        private List<TipoDeNota> tipo_de_notas;
+        
         private Perfume perfume;
 
         public FormVerDetallePerfume(Perfume perfumeSeleccionado)
