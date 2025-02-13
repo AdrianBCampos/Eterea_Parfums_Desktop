@@ -23,5 +23,12 @@ namespace Eterea_Parfums_Desktop
             InicioAdministrador.Show();
             this.Close();
         }
+
+        private void btn_continuar_Click(object sender, EventArgs e)
+        {
+            InformesDeVentas2 InformesDeVentas2 = new InformesDeVentas2();
+            InformesDeVentas2.Show();
+            this.Hide();
+        }
     }
 }

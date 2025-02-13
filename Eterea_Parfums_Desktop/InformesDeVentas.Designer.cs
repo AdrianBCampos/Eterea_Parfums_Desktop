@@ -40,10 +40,11 @@
             // txt_tipo_informe
             // 
             this.txt_tipo_informe.FormattingEnabled = true;
-            this.txt_tipo_informe.Location = new System.Drawing.Point(399, 193);
-            this.txt_tipo_informe.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_tipo_informe.Items.AddRange(new object[] {
+            "Ventas en un período"});
+            this.txt_tipo_informe.Location = new System.Drawing.Point(299, 157);
             this.txt_tipo_informe.Name = "txt_tipo_informe";
-            this.txt_tipo_informe.Size = new System.Drawing.Size(301, 24);
+            this.txt_tipo_informe.Size = new System.Drawing.Size(227, 21);
             this.txt_tipo_informe.TabIndex = 94;
             // 
             // lbl_tipo_informe
@@ -52,10 +53,9 @@
             this.lbl_tipo_informe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_tipo_informe.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_tipo_informe.ForeColor = System.Drawing.Color.Black;
-            this.lbl_tipo_informe.Location = new System.Drawing.Point(106, 193);
-            this.lbl_tipo_informe.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_tipo_informe.Location = new System.Drawing.Point(80, 157);
             this.lbl_tipo_informe.Name = "lbl_tipo_informe";
-            this.lbl_tipo_informe.Size = new System.Drawing.Size(281, 24);
+            this.lbl_tipo_informe.Size = new System.Drawing.Size(225, 18);
             this.lbl_tipo_informe.TabIndex = 93;
             this.lbl_tipo_informe.Text = "Seleccionar Tipo de Informe:";
             // 
@@ -65,11 +65,10 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(740, 13);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Location = new System.Drawing.Point(555, 11);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(46, 40);
+            this.button2.Size = new System.Drawing.Size(34, 32);
             this.button2.TabIndex = 92;
             this.button2.Text = "X";
             this.button2.UseVisualStyleBackColor = false;
@@ -81,10 +80,9 @@
             this.lbl_informe_ventas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_informe_ventas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_informe_ventas.ForeColor = System.Drawing.Color.Black;
-            this.lbl_informe_ventas.Location = new System.Drawing.Point(273, 65);
-            this.lbl_informe_ventas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_informe_ventas.Location = new System.Drawing.Point(205, 53);
             this.lbl_informe_ventas.Name = "lbl_informe_ventas";
-            this.lbl_informe_ventas.Size = new System.Drawing.Size(262, 24);
+            this.lbl_informe_ventas.Size = new System.Drawing.Size(210, 18);
             this.lbl_informe_ventas.TabIndex = 89;
             this.lbl_informe_ventas.Text = "Generar Informe de Ventas";
             // 
@@ -92,9 +90,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(80, 121);
+            this.pictureBox1.Location = new System.Drawing.Point(60, 98);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(647, 169);
+            this.pictureBox1.Size = new System.Drawing.Size(485, 137);
             this.pictureBox1.TabIndex = 91;
             this.pictureBox1.TabStop = false;
             // 
@@ -103,26 +102,27 @@
             this.btn_continuar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_continuar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_continuar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_continuar.Location = new System.Drawing.Point(312, 345);
-            this.btn_continuar.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_continuar.Location = new System.Drawing.Point(234, 280);
             this.btn_continuar.Name = "btn_continuar";
-            this.btn_continuar.Size = new System.Drawing.Size(183, 46);
+            this.btn_continuar.Size = new System.Drawing.Size(137, 37);
             this.btn_continuar.TabIndex = 90;
             this.btn_continuar.Text = "Continuar";
             this.btn_continuar.UseVisualStyleBackColor = false;
+            this.btn_continuar.Click += new System.EventHandler(this.btn_continuar_Click);
             // 
             // InformesDeVentas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(800, 448);
+            this.ClientSize = new System.Drawing.Size(600, 364);
             this.Controls.Add(this.txt_tipo_informe);
             this.Controls.Add(this.lbl_tipo_informe);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.lbl_informe_ventas);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btn_continuar);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "InformesDeVentas";
             this.Text = "InformesDeVentas";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
