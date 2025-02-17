@@ -257,12 +257,15 @@ namespace Eterea_Parfums_Desktop
                                                .Replace("@PROVINCIA", sucursal.provincia_id.nombre)
                                                .Replace("@PAIS", sucursal.pais_id.nombre)
                                                .Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"))
-                                               .Replace("@FECHA_INICIO", txt_fecha_inicial.Text)
-                                               .Replace("@FECHA_FINAL", txt_fecha_final.Text)
+                                               .Replace("@INICIO", txt_fecha_inicial.Text)
+                                               .Replace("@FINAL", txt_fecha_final.Text)
                                                .Replace("@CANTIDAD", txt_cantidad_ventas.Text)
                                                .Replace("@MONTO_TOTAL_VENTAS", txt_monto_total.Text)
                                                .Replace("@PERFUME_MAS_VENDIDO", txt_mas_vendido.Text)
                                                .Replace("@PERFUME_MENOS_VENDIDO", txt_menos_vendido.Text);
+            Console.WriteLine(sucursal.provincia_id.nombre + sucursal.numeracion_calle.ToString() + sucursal.provincia_id.nombre);
+
+            Console.WriteLine(PaginaHTML_Texto);
 
             if (guardarFactura.ShowDialog() == DialogResult.OK)
             {

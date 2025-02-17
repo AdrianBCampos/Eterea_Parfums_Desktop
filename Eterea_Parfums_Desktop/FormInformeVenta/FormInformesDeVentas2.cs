@@ -16,5 +16,10 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
         }
+
+        private void btn_exportar_pdf_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
