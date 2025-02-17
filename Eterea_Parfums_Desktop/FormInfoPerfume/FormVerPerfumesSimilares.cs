@@ -47,9 +47,15 @@ namespace Eterea_Parfums_Desktop
             string rutaCompletaImagen = Program.Ruta_Base + nombreImagen + ".jpg";
             img_perfume.Image = Image.FromFile(rutaCompletaImagen);
 
+            // Llamamos a la función que obtiene los perfumes similares
+            Perfumes_Completo = PerfumeControlador.getPerfumesSimilares(perfumeSeleccionado);
+
+
             total = Perfumes_Completo.Count;
             last_pag = (int)Math.Ceiling((double)total / paginador);
             lbl_numero_pagina.Text = current_pag.ToString();
+
+            //Mostrar los perfumes ene
             paginar(Perfumes_Completo);
             CargarMarcas();
             CargarGeneros();
