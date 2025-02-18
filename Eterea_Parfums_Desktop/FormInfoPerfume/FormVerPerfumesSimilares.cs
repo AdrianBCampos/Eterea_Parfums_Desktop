@@ -50,6 +50,15 @@ namespace Eterea_Parfums_Desktop
             // Llamamos a la función que obtiene los perfumes similares
             Perfumes_Completo = PerfumeControlador.getPerfumesSimilares(perfumeSeleccionado);
 
+            // Si no hay resultados, mostrar mensaje y cerrar el formulario
+            if (Perfumes_Completo.Count == 0)
+            {
+                MessageBox.Show("No se encontraron perfumes similares para el perfume seleccionado.", "Sin coincidencias", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close(); // Cierra la ventana actual
+                return; // Sale del constructor para no seguir ejecutando el código
+            }
+
+
 
             total = Perfumes_Completo.Count;
             last_pag = (int)Math.Ceiling((double)total / paginador);

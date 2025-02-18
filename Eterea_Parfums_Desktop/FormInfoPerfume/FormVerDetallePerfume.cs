@@ -408,10 +408,17 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_buscar_perfumes_simi_Click(object sender, EventArgs e)
         {
+            // Intentar abrir el formulario de perfumes similares
             FormVerPerfumesSimilares verPerfumesSimilares = new FormVerPerfumesSimilares(perfume);
-            verPerfumesSimilares.Show();
-            this.Close();
+
+            // Si el formulario no se cerró por falta de datos, mostrarlo
+            if (!verPerfumesSimilares.IsDisposed)
+            {
+                verPerfumesSimilares.Show();
+                this.Close(); // Cerrar el formulario actual solo si el otro se abrió con éxito
+            }
         }
+
 
         private void btn_ver_promociones_Click(object sender, EventArgs e)
         {
