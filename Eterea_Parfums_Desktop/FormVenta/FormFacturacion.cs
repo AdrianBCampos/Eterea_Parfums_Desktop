@@ -530,8 +530,17 @@ namespace Eterea_Parfums_Desktop
                 filas += "</tr>";
                 total += decimal.Parse(row.Cells["Tot"].Value.ToString());
             }
+
+            double precioTotal = double.Parse(txt_total.Text);
+            double precioSubtotal = double.Parse(txt_subtotal.Text);
+            double recargoTarjeta = double.Parse(txt_monto_recargo.Text);
+            double descuento = double.Parse(txt_monto_descuento.Text);
+
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FILAS", filas);
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TOTAL", total.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL", precioSubtotal.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@RECARGO", recargoTarjeta.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DESCUENTO", descuento.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TOTAL", precioTotal.ToString());
 
 
 
