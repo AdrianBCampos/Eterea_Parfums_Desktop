@@ -485,13 +485,6 @@ namespace Eterea_Parfums_Desktop
                 {
                     MessageBox.Show("Factura creada exitosamente.");
 
-                    // Cerrar el formulario actual y abrir uno nuevo
-                    this.Close(); // Cierra el formulario actual
-
-                    FormFacturacion nuevaFacturacion = new FormFacturacion();
-
-                    // Mostrar el nuevo formulario
-                    nuevaFacturacion.Show();
                 }
                 else
                 {
@@ -503,6 +496,71 @@ namespace Eterea_Parfums_Desktop
                 MessageBox.Show("Error al crear la factura: " + ex.Message);
             }
         }
+
+        private void CrearDetalleFactura()
+        {
+            try
+            {
+                // Verificar si numFactura es un número entero válido
+                int numFactura = 0;
+                if (!int.TryParse(txt_numero_factura.Text, out numFactura))
+                {
+                    MessageBox.Show("El número de factura no es válido.");
+                    return;
+                }
+
+                // Recorrer las filas del DataGridView
+                foreach (DataGridViewRow row in Factura.Rows)
+                {
+                    if (!row.IsNewRow)
+                    {
+                        // Verificar si perfume_id es un número entero válido
+                        int perfume_id = 0;
+                        if (!int.TryParse(row.Cells["Id_Perfume"].Value.ToString(), out perfume_id))
+                        {
+                            MessageBox.Show($"El ID del perfume en la fila no es válido.");
+                            return;
+                        }
+
+                        // Verificar si cantidad es un número entero válido
+                        int cantidad = 0;
+                        if (!int.TryParse(row.Cells["cantidad"].Value.ToString(), out cantidad) || cantidad <= 0)
+                        {
+                            MessageBox.Show($"La cantidad en la fila del perfume ID {perfume_id} no es un número válido o es menor o igual a cero.");
+                            return;
+                        }
+
+                        // Verificar si el precio_unitario es un valor float válido
+                        float precio_unitario = 0f;
+                        if (!float.TryParse(row.Cells["precio_unitario"].Value.ToString(), out precio_unitario) || precio_unitario <= 0)
+                        {
+                            MessageBox.Show($"El precio unitario en la fila del perfume ID {perfume_id} no es un número válido o es menor o igual a cero.");
+                            return;
+                        }
+
+                        int promocion_id = 1; // Suponiendo que este valor es constante
+                        MessageBox.Show($"Enviando datos: NumFactura: {numFactura}, PerfumeID: {perfume_id}, Cantidad: {cantidad}, PrecioUnitario: {precio_unitario}, PromocionID: {promocion_id}");
+
+                        bool exito = DetalleFacturaControlador.crearDetalleFactura(numFactura, perfume_id, cantidad, precio_unitario, promocion_id);
+
+                        if (!exito)
+                        {
+                            MessageBox.Show($"Error al agregar el perfume ID {perfume_id} al detalle de la factura.");
+                            return;
+                        }
+                    }
+                }
+
+                MessageBox.Show("Detalle de factura creado exitosamente.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al crear el detalle de la factura: " + ex.Message);
+            }
+        }
+
+
+
 
         private void btn_imprimir_Click(object sender, EventArgs e)
         {
@@ -530,8 +588,17 @@ namespace Eterea_Parfums_Desktop
                 filas += "</tr>";
                 total += decimal.Parse(row.Cells["Tot"].Value.ToString());
             }
+
+            double precioTotal = double.Parse(txt_total.Text);
+            double precioSubtotal = double.Parse(txt_subtotal.Text);
+            double recargoTarjeta = double.Parse(txt_monto_recargo.Text);
+            double descuento = double.Parse(txt_monto_descuento.Text);
+
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FILAS", filas);
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TOTAL", total.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL", precioSubtotal.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@RECARGO", recargoTarjeta.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DESCUENTO", descuento.ToString());
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TOTAL", precioTotal.ToString());
 
 
 
@@ -563,7 +630,9 @@ namespace Eterea_Parfums_Desktop
                     stream.Close();
                 }
             }
-           // CrearFactura();
+            CrearFactura();
+            CrearDetalleFactura();
+            
         }
     }
 }

@@ -41,7 +41,8 @@ namespace Eterea_Parfums_Desktop.Controladores
 
                 while (r.Read())
                 {
-                       
+                    Trace.WriteLine("Vendedor encontrado, nombre: " + r.GetString(1));
+
                     Pais pais = PaisControlador.getById(r.GetInt32(9));
                     Provincia provincia = ProvinciaControlador.getById(r.GetInt32(10));
                     Localidad localidad = LocalidadControlador.getById(r.GetInt32(11));
@@ -56,7 +57,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                        sucursal, r.GetDateTime(19), r.GetInt32(20), r.GetInt32(21), r.GetString(22));
                     
 
-                    Console.WriteLine($"id: {r.GetInt32(0)}, " +
+                 /*   Console.WriteLine($"id: {r.GetInt32(0)}, " +
                   $"usuario: {r.GetString(1)}, " +
                   $"clave: {r.GetString(2)}, " +
                   $"nombre: {r.GetString(3)}, " +
@@ -92,7 +93,7 @@ namespace Eterea_Parfums_Desktop.Controladores
     $"Comentarios Domicilio: {empleado.comentarios_domicilio}, " +
     $"Sucursal: {empleado.sucursal_id.id}, " +
     $"Fecha Ingreso: {empleado.fecha_ingreso}, Sueldo: {empleado.sueldo}, Activo: {empleado.activo}, Rol: {empleado.rol}");
-
+                 */
                 }
                 r.Close();
                 DB_Controller.connection.Close();
