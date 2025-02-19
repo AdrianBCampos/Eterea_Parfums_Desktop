@@ -361,7 +361,6 @@
             this.btn_exportar_pdf.TabIndex = 122;
             this.btn_exportar_pdf.Text = "Exportar PDF";
             this.btn_exportar_pdf.UseVisualStyleBackColor = false;
-            this.btn_exportar_pdf.Click += new System.EventHandler(this.btn_exportar_pdf_Click);
             // 
             // FormInformesDeVentas2
             // 

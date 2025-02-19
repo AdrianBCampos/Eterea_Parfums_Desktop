@@ -523,7 +523,6 @@
             this.pictureBox5.Size = new System.Drawing.Size(881, 53);
             this.pictureBox5.TabIndex = 348;
             this.pictureBox5.TabStop = false;
-            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // lbl_crear_empleado
             // 
@@ -537,7 +536,6 @@
             this.lbl_crear_empleado.Size = new System.Drawing.Size(234, 32);
             this.lbl_crear_empleado.TabIndex = 349;
             this.lbl_crear_empleado.Text = "Crear Empleado";
-            this.lbl_crear_empleado.Click += new System.EventHandler(this.lbl_crear_empleado_Click);
             // 
             // button1
             // 

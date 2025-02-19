@@ -88,10 +88,41 @@ namespace Eterea_Parfums_Desktop.Properties {
         ///    &lt;style&gt;
         ///        body {
         ///            font-family: Arial, sans-serif;
+        ///            margin: 0;
+        ///            padding: 0;
+        ///            height: 100%;
+        ///            display: flex;
+        ///            flex-direction: column;
         ///        }
         ///
-        ///        .factura {
+        ///        table.border {
+        ///            border-collapse: collapse;
+        ///            width: 100%;
+        ///        }
+        ///
+        ///            table.border th, table.border td {
+        ///                padding: 5px;
+        ///                 [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string PlantillaFactura {
+            get {
+                return ResourceManager.GetString("PlantillaFactura", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html lang=&quot;es&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;title&gt;Factura Eterea Parfums&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        body {
+        ///            font-family: Arial, sans-serif;
+        ///        }
+        ///
+        ///        .informe {
         ///            width: 80%;
+        ///            margin: auto;
         ///            margin: auto;
         ///            border: 1px solid #000;
         ///            padding: 20px;
@@ -103,13 +134,11 @@ namespace Eterea_Parfums_Desktop.Properties {
         ///
         ///            .encabezado h1 {
         ///                text-align: center;
-        ///            }
-        ///
-        ///        table {        /// [resto de la cadena truncado]&quot;;.
+        ///       [resto de la cadena truncado]&quot;;.
         /// </summary>
-        internal static string PlantillaFactura {
+        internal static string PlantillaInformeVentas {
             get {
-                return ResourceManager.GetString("PlantillaFactura", resourceCulture);
+                return ResourceManager.GetString("PlantillaInformeVentas", resourceCulture);
             }
         }
     }
