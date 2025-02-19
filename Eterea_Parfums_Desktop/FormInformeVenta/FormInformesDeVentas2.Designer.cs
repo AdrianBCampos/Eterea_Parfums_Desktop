@@ -361,8 +361,9 @@
             this.btn_exportar_pdf.TabIndex = 122;
             this.btn_exportar_pdf.Text = "Exportar PDF";
             this.btn_exportar_pdf.UseVisualStyleBackColor = false;
+            this.btn_exportar_pdf.Click += new System.EventHandler(this.btn_exportar_pdf_Click);
             // 
-            // InformesDeVentas3
+            // FormInformesDeVentas2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -394,7 +395,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lbl_informe_general);
             this.Controls.Add(this.btn_exportar_pdf);
-            this.Name = "InformesDeVentas3";
+            this.Name = "FormInformesDeVentas2";
             this.Text = "InformesDeVentas3";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();

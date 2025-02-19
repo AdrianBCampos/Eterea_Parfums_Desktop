@@ -124,8 +124,10 @@
   <data name="PlantillaFactura" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PlantillaFactura.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="imagen_por_defecto" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagen_por_defecto.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PlantillaInformeVentas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PlantillaInformeVentas.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>
