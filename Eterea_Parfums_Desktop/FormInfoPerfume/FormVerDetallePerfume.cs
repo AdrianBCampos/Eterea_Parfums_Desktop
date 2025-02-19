@@ -17,7 +17,7 @@ namespace Eterea_Parfums_Desktop
         private static string recargoNueveCuotas = "28";
         private static string recargoDoceCuotas = "40";
 
-        
+
         private Perfume perfume;
 
         public FormVerDetallePerfume(Perfume perfumeSeleccionado)
@@ -57,8 +57,8 @@ namespace Eterea_Parfums_Desktop
 
             string nombreImagen = perfumeSeleccionado.imagen1.ToString();
             string rutaCompletaImagen = Program.Ruta_Base + nombreImagen + ".jpg";
-            img_perfume.Image = Image.FromFile(rutaCompletaImagen);             
-           
+            img_perfume.Image = Image.FromFile(rutaCompletaImagen);
+
             this.perfume = perfumeSeleccionado;
 
             //Diseño del combo box
@@ -72,7 +72,7 @@ namespace Eterea_Parfums_Desktop
 
             combo_descuento.DrawMode = DrawMode.OwnerDrawFixed;
             combo_descuento.DrawItem += comboBoxdiseño_DrawItem;
-            combo_descuento.DropDownStyle = ComboBoxStyle.DropDownList;     
+            combo_descuento.DropDownStyle = ComboBoxStyle.DropDownList;
 
             ConfigurarDescuentos();
             cargarDataGridViewNotasDePerfume();
@@ -82,7 +82,7 @@ namespace Eterea_Parfums_Desktop
         public FormVerDetallePerfume()
         {
         }
-        
+
         private void cargarDataGridViewNotasDePerfume()
         {
             //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
@@ -115,7 +115,7 @@ namespace Eterea_Parfums_Desktop
                     int rowIndex = dataGridViewTipoNota.Rows.Add();
                     dataGridViewTipoNota.Rows[rowIndex].Cells[0].Value = nota_con_tipo_de_nota_.id;
                     dataGridViewTipoNota.Rows[rowIndex].Cells[1].Value = tipo_de_nota.nombre_tipo_de_nota;
-                    dataGridViewTipoNota.Rows[rowIndex].Cells[2].Value = nota.nombre;                                     
+                    dataGridViewTipoNota.Rows[rowIndex].Cells[2].Value = nota.nombre;
                 }
             }
         }
@@ -171,20 +171,20 @@ namespace Eterea_Parfums_Desktop
         }
 
         private void combo_medios_pago_SelectedIndexChanged(object sender, EventArgs e)
-        {               
+        {
             combo_cuotas.Items.Clear();
             combo_descuento.Items.Clear();
-            
+
             string formaPago = combo_medios_pago.SelectedItem.ToString();
 
             if (formaPago == "Efectivo")
             {
                 combo_cuotas.Items.Add("1");
 
-                combo_descuento.Items.Add("0");                
+                combo_descuento.Items.Add("0");
                 combo_descuento.Items.Add("10");
                 combo_descuento.Items.Add("15");
-                
+
             }
             else if (formaPago == "Visa Débito")
             {
@@ -201,7 +201,7 @@ namespace Eterea_Parfums_Desktop
                 combo_cuotas.Items.Add("12");
 
                 combo_descuento.Items.Add("0");
-                                
+
             }
             else if (formaPago == "Mastercard")
             {
@@ -212,7 +212,7 @@ namespace Eterea_Parfums_Desktop
                 combo_cuotas.Items.Add("12");
 
                 combo_descuento.Items.Add("0");
-                
+
             }
             else if (formaPago == "Amex")
             {
@@ -221,7 +221,7 @@ namespace Eterea_Parfums_Desktop
                 combo_cuotas.Items.Add("12");
 
                 combo_descuento.Items.Add("0");
-                
+
             }
             else if (formaPago == "Mercado Pago")
             {
@@ -230,17 +230,17 @@ namespace Eterea_Parfums_Desktop
                 combo_descuento.Items.Add("0");
                 combo_descuento.Items.Add("10");
             }
-           
+
             combo_cuotas.SelectedIndex = 0;
             combo_descuento.SelectedIndex = 0;
 
             CalcularRecargo(formaPago);
-            
+
         }
 
         private void CalcularRecargo(string formaPago)
         {
-            int cantidadCuotas = Convert.ToInt32(combo_cuotas.SelectedItem.ToString());          
+            int cantidadCuotas = Convert.ToInt32(combo_cuotas.SelectedItem.ToString());
 
             if (formaPago == "Visa Crédito" || formaPago == "Mastercard" || formaPago == "Amex")
             {
@@ -271,7 +271,7 @@ namespace Eterea_Parfums_Desktop
             }
             else
             {
-                txt_recargo.Text = "0,00";              
+                txt_recargo.Text = "0,00";
             }
         }
 
@@ -286,7 +286,7 @@ namespace Eterea_Parfums_Desktop
                 txt_valor_descuento.Text = "0,00";
             }
         }
-    
+
         private void combo_descuento_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (combo_descuento.SelectedItem != null)
@@ -314,7 +314,7 @@ namespace Eterea_Parfums_Desktop
             string descuentoStr = combo_descuento.SelectedItem.ToString();
 
             if (int.TryParse(descuentoStr, out int descuento))
-            {               
+            {
                 if (float.TryParse(txt_precio_lista.Text, out float preciolista))
                 {
                     CalcularDescuento(descuento, preciolista);
@@ -327,7 +327,7 @@ namespace Eterea_Parfums_Desktop
             }
             else
             {
-                MessageBox.Show("El valor de descuento no es válido.");               
+                MessageBox.Show("El valor de descuento no es válido.");
             }
         }
 
@@ -347,10 +347,10 @@ namespace Eterea_Parfums_Desktop
             CalcularRecargo(formaPago);
             CalcularValorCuota(float.Parse(txt_recargo.Text), float.Parse(txt_precio_lista.Text));
             CalcularImporteRecargo(float.Parse(txt_precio_lista.Text), float.Parse(txt_recargo.Text));
-            
+
         }
 
-       private void CalcularValorCuota(float recargo, float precio)
+        private void CalcularValorCuota(float recargo, float precio)
         {
             // Calcular el precio final con el recargo
             float precioFinal = precio + (precio * recargo / 100);

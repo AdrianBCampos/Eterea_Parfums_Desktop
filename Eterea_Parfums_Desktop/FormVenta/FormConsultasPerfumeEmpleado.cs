@@ -2,13 +2,10 @@
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -210,7 +207,7 @@ namespace Eterea_Parfums_Desktop
                 filtro.genero = null;
                 filtrar();
             }
-        }      
+        }
 
         private void filtrar()
         {
@@ -293,11 +290,11 @@ namespace Eterea_Parfums_Desktop
 
                 // Recalcular el total y otros valores necesarios
 
-             /*   totalFactura();
-                CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_recargo.Text));
-                desc();
-                sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
-                */
+                /*   totalFactura();
+                   CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_recargo.Text));
+                   desc();
+                   sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
+                   */
             }
             else
             {
@@ -312,13 +309,13 @@ namespace Eterea_Parfums_Desktop
                 facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Tot"].Value = perfumeSeleccionado.precio_en_pesos.ToString();
                 facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Eliminar"].Value = "Eliminar";
 
-             /*   // Recalcular el total y otros valores necesarios
-                totalFactura();
-                CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_recargo.Text));
-                desc();
-                sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
-           */
-                }
+                /*   // Recalcular el total y otros valores necesarios
+                   totalFactura();
+                   CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_recargo.Text));
+                   desc();
+                   sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
+              */
+            }
         }
 
         private void btn_facturacion_Click(object sender, EventArgs e)
@@ -335,6 +332,6 @@ namespace Eterea_Parfums_Desktop
             this.Close();
         }
 
-        
+
     }
 }

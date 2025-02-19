@@ -2,12 +2,8 @@
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -36,7 +32,7 @@ namespace Eterea_Parfums_Desktop
             //perfume = perfumeSeleccionado;
             CargarDataGridViewPromociones();
         }
-     
+
         private void btn_ver_detalles_Click(object sender, EventArgs e)
         {
             FormVerDetallePerfume verDetallePerfume = new FormVerDetallePerfume(perfume);
@@ -70,7 +66,7 @@ namespace Eterea_Parfums_Desktop
                     dataGridViewpromociones.Rows[rowIndex].Cells[2].Value = "Ver";
                 }
                 dataGridViewpromociones.CellPainting += dataGridViewpromociones_CellPainting;
-            }           
+            }
             else
             {
                 MessageBox.Show("Este perfume no tiene promociones disponibles.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -111,12 +107,12 @@ namespace Eterea_Parfums_Desktop
                     txt_nombre.Text = promocionSeleccionada.nombre;
                     txt_fecha_inicio.Text = promocionSeleccionada.fecha_inicio.ToShortDateString();
                     txt_fecha_fin.Text = promocionSeleccionada.fecha_fin.ToShortDateString();
-                    richTextBox_descripcion.Text = promocionSeleccionada.descripcion;                              
-               
+                    richTextBox_descripcion.Text = promocionSeleccionada.descripcion;
+
                     pictureBox9.Visible = false;
                 }
             }
-        }    
+        }
 
         private void dataGridViewpromociones_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
@@ -145,6 +141,6 @@ namespace Eterea_Parfums_Desktop
 
         }
 
-        
+
     }
 }

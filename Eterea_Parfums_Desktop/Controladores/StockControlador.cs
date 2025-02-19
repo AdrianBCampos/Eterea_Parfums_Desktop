@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Eterea_Parfums_Desktop.Modelos;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
@@ -14,7 +9,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static int getStock(int perfume_id, int sucursal_id)
         {
             int cantidad = -1;
-            string query = "SELECT cantidad FROM dbo.stock WHERE perfume_id = " + 
+            string query = "SELECT cantidad FROM dbo.stock WHERE perfume_id = " +
                 "@perfume_id AND sucursal_id = @sucursal_id";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);

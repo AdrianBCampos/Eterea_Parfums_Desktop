@@ -3,9 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
@@ -388,7 +385,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         public static bool editarCliente(Cliente cliente)
         {
-            
+
 
             string query = "update dbo.cliente set usuario = @usuario, " +
                 "nombre = @nombre, " +

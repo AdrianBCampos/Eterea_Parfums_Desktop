@@ -1,11 +1,6 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
-using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -60,34 +55,34 @@ namespace Eterea_Parfums_Desktop
 
         // Método para configurar rutas según el usuario
         private static void ConfigurarRutas(string usuario)
+        {
+            switch (usuario.ToLower())
             {
-                switch (usuario.ToLower())
-                {
-                    case "escuela":
-                        Ruta_Base = @"C:\Users\Alumno\Desktop\Eterea_Parfums\Eterea_Parfums\Resources\";
-                        Ruta_Web = @"C:\Users\Alumno\Desktop\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
-                        break;
-                    case "dami":
-                        Ruta_Base = @"C:\Users\damim\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
-                        Ruta_Web = @"C:\Users\damim\Source\Repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
-                        break;
-                    case "adri":
-                        Ruta_Base = @"C:\Users\intersan\Desktop\TESIS\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
-                        Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
-                        break;
-                    case "luis":
-                        Ruta_Base = @"C:\Users\josel\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
-                        Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
-                        break;
+                case "escuela":
+                    Ruta_Base = @"C:\Users\Alumno\Desktop\Eterea_Parfums\Eterea_Parfums\Resources\";
+                    Ruta_Web = @"C:\Users\Alumno\Desktop\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
+                    break;
+                case "dami":
+                    Ruta_Base = @"C:\Users\damim\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                    Ruta_Web = @"C:\Users\damim\Source\Repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                    break;
+                case "adri":
+                    Ruta_Base = @"C:\Users\intersan\Desktop\TESIS\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                    Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
+                    break;
+                case "luis":
+                    Ruta_Base = @"C:\Users\josel\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                    Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
+                    break;
                 case "maxi":
-                        Ruta_Base = @"C:\Users\usuario\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
-                        Ruta_Web = @"C:\Users\usuario\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
-                        break;
-                    default:
-                        MessageBox.Show("Usuario no válido, no se configuraron rutas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        break;
-                }
+                    Ruta_Base = @"C:\Users\usuario\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                    Ruta_Web = @"C:\Users\usuario\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                    break;
+                default:
+                    MessageBox.Show("Usuario no válido, no se configuraron rutas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
             }
+        }
 
     }
 }

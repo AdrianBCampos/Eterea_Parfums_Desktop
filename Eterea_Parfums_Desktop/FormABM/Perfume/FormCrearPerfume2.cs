@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Eterea_Parfums_Desktop.Controladores;
+﻿using Eterea_Parfums_Desktop.Controladores;
 using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.Modelos;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
 {
@@ -116,7 +111,7 @@ namespace Eterea_Parfums_Desktop
         }
 
         private void cargarDataGridViewNotasDePerfume()
-        {        
+        {
             Nota nota = null;
             TipoDeNota tipo_de_nota = null;
 
@@ -139,8 +134,8 @@ namespace Eterea_Parfums_Desktop
         }
         private void btn_agregar_Click(object sender, EventArgs e)
         {
-             string nombre_tipoDeNota_marcado = null;
-             string nombre_nota = null;
+            string nombre_tipoDeNota_marcado = null;
+            string nombre_nota = null;
 
 
             if (checkedListBoxNota.CheckedItems.Count == 0)
@@ -166,7 +161,7 @@ namespace Eterea_Parfums_Desktop
                 {
                     notas_con_tipo_de_nota = new List<NotaConTipoDeNota>();
                 }
-                 
+
                 if (notas_del_perfume == null)
                 {
                     notas_del_perfume = new List<NotasDelPerfume>();
@@ -196,7 +191,7 @@ namespace Eterea_Parfums_Desktop
                 return;
             }
 
-         }
+        }
 
         private void dataGridViewNotasDelPerfume_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -230,7 +225,7 @@ namespace Eterea_Parfums_Desktop
             PerfumeControlador.create(perfume);
 
             var listaDeAromasMarcados = checkedListBoxAroma.CheckedItems;
-   
+
             foreach (var item in listaDeAromasMarcados)
             {
                 var tipoDeAromaMarcado = item.ToString();

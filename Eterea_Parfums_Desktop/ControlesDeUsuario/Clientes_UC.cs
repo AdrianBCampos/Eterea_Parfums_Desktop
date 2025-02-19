@@ -2,13 +2,8 @@
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop.ControlesDeUsuario
@@ -69,7 +64,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void btn_crear_cliente_Click(object sender, EventArgs e)
         {
-            FormCrearCliente formCrearClienteABM = new FormCrearCliente();       
+            FormCrearCliente formCrearClienteABM = new FormCrearCliente();
             DialogResult dr = formCrearClienteABM.ShowDialog();
 
             if (dr == DialogResult.OK)
@@ -174,6 +169,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 e.Handled = true; // Ignorar entrada no válida
             }
         }
-        
+
     }
 }

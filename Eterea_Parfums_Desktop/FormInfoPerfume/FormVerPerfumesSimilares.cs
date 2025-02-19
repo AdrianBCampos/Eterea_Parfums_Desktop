@@ -2,13 +2,10 @@
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -133,7 +130,7 @@ namespace Eterea_Parfums_Desktop
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {            
+        {
             this.Close();
         }
 
@@ -141,7 +138,7 @@ namespace Eterea_Parfums_Desktop
         {
             FormVerDetallePerfume verDetallePerfume = new FormVerDetallePerfume(perfume);
             verDetallePerfume.Show();
-            this.Close();     
+            this.Close();
         }
 
         private void VisualizarPerfumes(List<Perfume> perfumeMostrar)
@@ -180,7 +177,7 @@ namespace Eterea_Parfums_Desktop
             dataGridViewConsultas.CellPainting += dataGridView1_CellPainting;
         }
 
-       
+
 
         private void btn_anterior_Click_1(object sender, EventArgs e)
         {
@@ -240,7 +237,7 @@ namespace Eterea_Parfums_Desktop
                 filtro.genero = null;
                 filtrar();
             }
-        }     
+        }
 
         private void filtrar()
         {
@@ -254,7 +251,7 @@ namespace Eterea_Parfums_Desktop
             if (filtro.genero != null)
             {
                 Perfumes_Filtrado = Perfumes_Filtrado.Where(x => x.genero.id == filtro.genero.id).ToList();
-            }          
+            }
 
             total = Perfumes_Filtrado.Count;
             last_pag = (int)Math.Ceiling((double)total / paginador);

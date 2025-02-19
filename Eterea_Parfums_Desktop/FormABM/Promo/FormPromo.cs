@@ -1,20 +1,14 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
-using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.DTOs;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
 using System.Drawing.Imaging;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 
 
@@ -95,7 +89,7 @@ namespace Eterea_Parfums_Desktop
 
 
 
-       
+
 
 
 
@@ -347,7 +341,7 @@ namespace Eterea_Parfums_Desktop
 
 
 
-        
+
 
 
 
@@ -600,7 +594,7 @@ namespace Eterea_Parfums_Desktop
 
 
 
-   
+
 
         //Método para cargar los datos en el dataGridView de los perfumes agregados a la promo
 
@@ -854,7 +848,7 @@ namespace Eterea_Parfums_Desktop
 
         //Acción del botón para volver atras si se eliminaron todos los perfumes de la promo por error
 
- 
+
         private void btrn_deshacer_eliminacion_Click(object sender, EventArgs e)
         {
             if (!HayDatosParaRestaurar()) return;
@@ -1406,7 +1400,7 @@ namespace Eterea_Parfums_Desktop
 
 
 
-       
+
 
         // Método principal para asignar perfumes a la promoción
         private void asignarPerfumesAPromo(int idPromo)

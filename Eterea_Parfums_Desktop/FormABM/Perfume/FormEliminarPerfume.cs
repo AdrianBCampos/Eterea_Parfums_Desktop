@@ -1,14 +1,6 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -25,14 +17,14 @@ namespace Eterea_Parfums_Desktop
 
         //SOBRECARGAR EL CONSTRUCTOR PARA INICIAR EL FORM CON LA INFO PARA ELIMINAR
         public FormEliminarPerfume(Perfume eliminado)
-            
+
         {
             InitializeComponent();
 
             id_eliminar = eliminado.id;
             txt_codigo_perfume.Text = eliminado.codigo;
             txt_nombre_perfume.Text = eliminado.nombre;
-            
+
         }
 
         private void button1_Click(object sender, EventArgs e)

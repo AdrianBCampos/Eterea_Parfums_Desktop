@@ -2,12 +2,7 @@
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -42,7 +37,7 @@ namespace Eterea_Parfums_Desktop
             lbl_localidadE.Hide();
             lbl_calleE.Hide();
             lbl_activoE.Hide();
-            
+
 
             paises = PaisControlador.getAll();
             combo_pais.Items.Clear();
@@ -118,7 +113,7 @@ namespace Eterea_Parfums_Desktop
             }
             else
             {
-                
+
             }
 
         }
@@ -279,7 +274,7 @@ namespace Eterea_Parfums_Desktop
                 lbl_cpE.Text = "Debe ingresar un código postal válido.";
                 lbl_cpE.Show();
                 errorMsg += lbl_cpE.Text + Environment.NewLine;
-            }         
+            }
 
             //Pais
             if (combo_pais.SelectedItem == null)

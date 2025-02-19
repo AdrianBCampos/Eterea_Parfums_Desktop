@@ -1,15 +1,10 @@
-﻿using System;
+﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.Modelos;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Eterea_Parfums_Desktop.Controladores;
-using Eterea_Parfums_Desktop.Modelos;
 
 namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 {
@@ -25,7 +20,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             txt_buscar_codigo.TextChanged += txt_buscar_codigo_TextChanged;
             cargarPerfumes();
         }
-     
+
         private void btn_crear_perfume_Click_1(object sender, EventArgs e)
         {
             FormCrearPerfume1 productos = new FormCrearPerfume1(this);
@@ -179,6 +174,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             }
         }
 
-        
+
     }
 }

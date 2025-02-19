@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Eterea_Parfums_Desktop.DTOs
+﻿namespace Eterea_Parfums_Desktop.DTOs
 {
     public class PerfumeDTO
     {

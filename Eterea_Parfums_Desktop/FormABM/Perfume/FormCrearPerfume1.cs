@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Eterea_Parfums_Desktop.Controladores;
+﻿using Eterea_Parfums_Desktop.Controladores;
 using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.Modelos;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
 {
@@ -136,7 +131,7 @@ namespace Eterea_Parfums_Desktop
                 FormCrearPerfume2 aromaNota = new FormCrearPerfume2(perfume, this, perfumesUC);
                 aromaNota.Show();
             }
-           
+
         }
 
         private void saveImagenResources(out string nombreFoto, Image imagen)
@@ -158,7 +153,7 @@ namespace Eterea_Parfums_Desktop
 
         private int numeroAleatorio()
         {
-            return  rnd.Next(1000, 9999);
+            return rnd.Next(1000, 9999);
         }
 
 
@@ -224,7 +219,7 @@ namespace Eterea_Parfums_Desktop
 
         private bool ValidarPerfume()
         {
-      
+
             string errorMsg = "";
             if (!EsCodigoBarraPerfumeValido(txt_codigo.Text))
             {
@@ -425,9 +420,9 @@ namespace Eterea_Parfums_Desktop
             }
             else
             {
-                
+
                 lbl_error_img1.Visible = false;
-               
+
             }
 
             if (pictureBoxProducto2.Image == null)
@@ -439,7 +434,7 @@ namespace Eterea_Parfums_Desktop
             }
             else
             {
-               lbl_error_img2.Visible = false;
+                lbl_error_img2.Visible = false;
             }
 
 

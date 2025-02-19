@@ -1,10 +1,6 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 namespace Eterea_Parfums_Desktop
 {
     internal class PromocionService

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Eterea_Parfums_Desktop.Modelos
+﻿namespace Eterea_Parfums_Desktop.Modelos
 {
     public class Sucursal
     {
@@ -19,7 +13,7 @@ namespace Eterea_Parfums_Desktop.Modelos
         public int activo { get; set; }
 
 
-        public Sucursal(int id, string nombre, Pais pais_id, Provincia provincia_id, Localidad localidad_id, 
+        public Sucursal(int id, string nombre, Pais pais_id, Provincia provincia_id, Localidad localidad_id,
             int codigo_postal, Calle calle_id, int numeracion_calle, int activo)
         {
             this.id = id;

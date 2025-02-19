@@ -1,13 +1,9 @@
-﻿using Eterea_Parfums_Desktop.DTOs;
-using Eterea_Parfums_Desktop.Modelos;
+﻿using Eterea_Parfums_Desktop.Modelos;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop.Controladores
@@ -250,13 +246,13 @@ namespace Eterea_Parfums_Desktop.Controladores
                  WHERE id = @id_editar"
             ;
 
-             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-             cmd.Parameters.AddWithValue("@id_editar", promo.id);
-             cmd.Parameters.AddWithValue("@nombre", promo.nombre);
-             cmd.Parameters.AddWithValue("@fechaInicio", promo.fecha_inicio);
-             cmd.Parameters.AddWithValue("@fechaFin", promo.fecha_fin);
-             cmd.Parameters.AddWithValue("@descuento", promo.descuento);
-             cmd.Parameters.AddWithValue("@activo", promo.activo);
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+            cmd.Parameters.AddWithValue("@id_editar", promo.id);
+            cmd.Parameters.AddWithValue("@nombre", promo.nombre);
+            cmd.Parameters.AddWithValue("@fechaInicio", promo.fecha_inicio);
+            cmd.Parameters.AddWithValue("@fechaFin", promo.fecha_fin);
+            cmd.Parameters.AddWithValue("@descuento", promo.descuento);
+            cmd.Parameters.AddWithValue("@activo", promo.activo);
             cmd.Parameters.AddWithValue("@descripcion", promo.descripcion);
             cmd.Parameters.AddWithValue("@banner", promo.banner);
 
@@ -278,7 +274,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
                 // Llamar a eliminar registros, pasándole la transacción
                 PerfumeEnPromoControlador.eliminarRegistrosPromoPerfumes(promo.id, transaction);
-                
+
 
                 // Confirmar la transacción si todo fue bien
                 transaction.Commit();
@@ -352,8 +348,8 @@ namespace Eterea_Parfums_Desktop.Controladores
 
                             // **Ahora se elimina el archivo**
                             File.Delete(rutaImagen);
-                        Console.WriteLine($"Imagen eliminada: {rutaImagen}");
-                    }
+                            Console.WriteLine($"Imagen eliminada: {rutaImagen}");
+                        }
                         catch (Exception ex)
                         {
                             Console.WriteLine($"No se pudo eliminar la imagen: {ex.Message}");

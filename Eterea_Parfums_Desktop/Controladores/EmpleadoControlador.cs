@@ -3,9 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
@@ -22,7 +19,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@user", usr);
             cmd.Parameters.AddWithValue("@pass", pass);
-            
+
             //if (hasheado)
             //{
             //cmd.Parameters.AddWithValue("@pass", pass);
@@ -41,20 +38,20 @@ namespace Eterea_Parfums_Desktop.Controladores
 
                 while (r.Read())
                 {
-                       
+
                     Pais pais = PaisControlador.getById(r.GetInt32(9));
                     Provincia provincia = ProvinciaControlador.getById(r.GetInt32(10));
                     Localidad localidad = LocalidadControlador.getById(r.GetInt32(11));
                     Calle calle = CalleControlador.getById(r.GetInt32(13));
                     Sucursal sucursal = SucursalControlador.getById(r.GetInt32(18));
-                    
+
 
                     empleado = new Empleado(r.GetInt32(0), r.GetString(1), r.GetString(2), r.GetString(3), r.GetString(4),
                        r.GetInt32(5), r.GetDateTime(6), r.GetString(7), r.GetString(8), pais,
                        provincia, localidad, r.GetInt32(12), calle, r.GetInt32(14),
                        r.GetString(15), r.GetString(16), r.GetString(17),
                        sucursal, r.GetDateTime(19), r.GetInt32(20), r.GetInt32(21), r.GetString(22));
-                    
+
 
                     Console.WriteLine($"id: {r.GetInt32(0)}, " +
                   $"usuario: {r.GetString(1)}, " +
@@ -101,7 +98,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                 {
 
                     Program.logueado = empleado;
-                   
+
                     return true;
                 }
                 else

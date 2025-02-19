@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -60,17 +54,17 @@ namespace Eterea_Parfums_Desktop
 
                 // Invocar el evento ConfirmarNumeroCaja con el número de caja confirmado
                 ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
-                FormFacturacion facturacion = new FormFacturacion();      
-                facturacion.NumeroCaja = numCaja; 
+                FormFacturacion facturacion = new FormFacturacion();
+                facturacion.NumeroCaja = numCaja;
                 facturacion.Show();
 
                 // Cierro este formulario
-                this.Close();                          
+                this.Close();
             }
             else
             {
                 // Muestra un mensaje de error si el valor ingresado no es un número válido
-                
+
                 lbl_error_caja.Text = "Por favor, ingresa un número de caja válido.";
                 lbl_error_caja.Visible = true;
 
@@ -82,6 +76,6 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
-      
+
     }
 }

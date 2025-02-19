@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Eterea_Parfums_Desktop.Modelos;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Windows.Forms;
-using Eterea_Parfums_Desktop.Modelos;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
@@ -432,26 +430,26 @@ namespace Eterea_Parfums_Desktop.Controladores
                     Genero genero = new Genero(r.GetInt32(5), null);
                     Pais pais = new Pais(r.GetInt32(7), null);
 
-                    
-                        perfumesSimilares.Add(new Perfume(
-                            r.GetInt32(0),
-                            r.GetString(1),
-                            marca,
-                            r.GetString(3),
-                            tipoDePerfume,
-                            genero,
-                            r.GetInt32(6),
-                            pais,
-                            r.GetInt32(8),
-                            r.GetInt32(9),
-                            r.GetString(10),
-                            r.GetInt32(11),
-                            r.GetDouble(12),
-                            r.GetInt32(13),
-                            r.GetString(14),
-                            r.GetString(15)
-                        ));
-                    
+
+                    perfumesSimilares.Add(new Perfume(
+                        r.GetInt32(0),
+                        r.GetString(1),
+                        marca,
+                        r.GetString(3),
+                        tipoDePerfume,
+                        genero,
+                        r.GetInt32(6),
+                        pais,
+                        r.GetInt32(8),
+                        r.GetInt32(9),
+                        r.GetString(10),
+                        r.GetInt32(11),
+                        r.GetDouble(12),
+                        r.GetInt32(13),
+                        r.GetString(14),
+                        r.GetString(15)
+                    ));
+
                 }
 
                 r.Close();
