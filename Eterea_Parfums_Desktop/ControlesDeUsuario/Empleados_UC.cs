@@ -45,27 +45,28 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     dataGridView1.Rows[rowIndex].Cells[1].Value = empleado.usuario.ToString();
                     dataGridView1.Rows[rowIndex].Cells[2].Value = empleado.nombre.ToString();
                     dataGridView1.Rows[rowIndex].Cells[3].Value = empleado.apellido.ToString();
+                    dataGridView1.Rows[rowIndex].Cells[4].Value = empleado.dni.ToString();
 
 
-                    dataGridView1.Rows[rowIndex].Cells[4].Value = empleado.celular.ToString();
-                    dataGridView1.Rows[rowIndex].Cells[5].Value = empleado.e_mail.ToString();
+                    dataGridView1.Rows[rowIndex].Cells[5].Value = empleado.celular.ToString();
+                    dataGridView1.Rows[rowIndex].Cells[6].Value = empleado.e_mail.ToString();
 
 
-                    dataGridView1.Rows[rowIndex].Cells[6].Value = (SucursalControlador.getById(empleado.sucursal_id.id)).nombre;
+                    dataGridView1.Rows[rowIndex].Cells[7].Value = (SucursalControlador.getById(empleado.sucursal_id.id)).nombre;
 
 
                     if (empleado.rol.ToString() == "1")
                     {
-                        dataGridView1.Rows[rowIndex].Cells[7].Value = "admin";
+                        dataGridView1.Rows[rowIndex].Cells[8].Value = "admin";
                     }
                     else
                     {
-                        dataGridView1.Rows[rowIndex].Cells[7].Value = "vendedor";
+                        dataGridView1.Rows[rowIndex].Cells[8].Value = "vendedor";
                     }
 
 
-                    dataGridView1.Rows[rowIndex].Cells[8].Value = "Editar";
-                    dataGridView1.Rows[rowIndex].Cells[9].Value = "Eliminar";
+                    dataGridView1.Rows[rowIndex].Cells[9].Value = "Editar";
+                    dataGridView1.Rows[rowIndex].Cells[10].Value = "Eliminar";
                 }
                 dataGridView1.CellPainting += dataGridView1_CellPainting;
             }

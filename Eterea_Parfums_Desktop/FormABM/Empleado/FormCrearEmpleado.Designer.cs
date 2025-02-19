@@ -266,7 +266,7 @@
             this.lbl_usuarioE.AutoSize = true;
             this.lbl_usuarioE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_usuarioE.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_usuarioE.Location = new System.Drawing.Point(185, 117);
+            this.lbl_usuarioE.Location = new System.Drawing.Point(185, 115);
             this.lbl_usuarioE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_usuarioE.Name = "lbl_usuarioE";
             this.lbl_usuarioE.Size = new System.Drawing.Size(36, 16);
@@ -443,7 +443,7 @@
             this.lbl_usuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_usuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_usuario.Location = new System.Drawing.Point(24, 94);
+            this.lbl_usuario.Location = new System.Drawing.Point(24, 92);
             this.lbl_usuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_usuario.Name = "lbl_usuario";
             this.lbl_usuario.Size = new System.Drawing.Size(74, 20);
@@ -456,7 +456,7 @@
             this.txt_usuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_usuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_usuario.Location = new System.Drawing.Point(188, 87);
+            this.txt_usuario.Location = new System.Drawing.Point(188, 85);
             this.txt_usuario.Margin = new System.Windows.Forms.Padding(4);
             this.txt_usuario.Name = "txt_usuario";
             this.txt_usuario.Size = new System.Drawing.Size(262, 27);
@@ -523,6 +523,7 @@
             this.pictureBox5.Size = new System.Drawing.Size(881, 53);
             this.pictureBox5.TabIndex = 348;
             this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
             // lbl_crear_empleado
             // 
@@ -536,6 +537,7 @@
             this.lbl_crear_empleado.Size = new System.Drawing.Size(234, 32);
             this.lbl_crear_empleado.TabIndex = 349;
             this.lbl_crear_empleado.Text = "Crear Empleado";
+            this.lbl_crear_empleado.Click += new System.EventHandler(this.lbl_crear_empleado_Click);
             // 
             // button1
             // 
@@ -993,7 +995,7 @@
             this.lbl_activoE.AutoSize = true;
             this.lbl_activoE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_activoE.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_activoE.Location = new System.Drawing.Point(459, 873);
+            this.lbl_activoE.Location = new System.Drawing.Point(392, 873);
             this.lbl_activoE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_activoE.Name = "lbl_activoE";
             this.lbl_activoE.Size = new System.Drawing.Size(36, 16);
@@ -1140,12 +1142,13 @@
             this.txt_sueldo.Size = new System.Drawing.Size(262, 27);
             this.txt_sueldo.TabIndex = 419;
             // 
-            // FormEmpleado
+            // FormCrearEmpleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(967, 913);
+            this.ClientSize = new System.Drawing.Size(967, 910);
             this.Controls.Add(this.txt_sueldo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.combo_sucursal);
@@ -1231,7 +1234,7 @@
             this.Controls.Add(this.pictureBox15);
             this.Controls.Add(this.pictureBox16);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "FormEmpleado";
+            this.Name = "FormCrearEmpleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEmpleado";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

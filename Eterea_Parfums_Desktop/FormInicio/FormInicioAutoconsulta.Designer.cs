@@ -28,13 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btn_iniciar_sesion = new System.Windows.Forms.Button();
-            this.btn_cerrar_programa = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
             this.img_logo = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lbl_filtro_genero = new System.Windows.Forms.Label();
@@ -58,7 +56,6 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.lbl_codigoBarras = new System.Windows.Forms.Label();
             this.txt_scan = new System.Windows.Forms.TextBox();
@@ -68,45 +65,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsultas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btn_iniciar_sesion
-            // 
-            this.btn_iniciar_sesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.btn_iniciar_sesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_iniciar_sesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_iniciar_sesion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_iniciar_sesion.Location = new System.Drawing.Point(1065, 6);
-            this.btn_iniciar_sesion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btn_iniciar_sesion.Name = "btn_iniciar_sesion";
-            this.btn_iniciar_sesion.Size = new System.Drawing.Size(183, 46);
-            this.btn_iniciar_sesion.TabIndex = 79;
-            this.btn_iniciar_sesion.Text = "Iniciar Sesión";
-            this.btn_iniciar_sesion.UseVisualStyleBackColor = false;
-            this.btn_iniciar_sesion.Click += new System.EventHandler(this.btn_iniciar_sesion_Click);
-            // 
-            // btn_cerrar_programa
-            // 
-            this.btn_cerrar_programa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.btn_cerrar_programa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cerrar_programa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cerrar_programa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_cerrar_programa.Location = new System.Drawing.Point(1036, 581);
-            this.btn_cerrar_programa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btn_cerrar_programa.Name = "btn_cerrar_programa";
-            this.btn_cerrar_programa.Size = new System.Drawing.Size(183, 46);
-            this.btn_cerrar_programa.TabIndex = 80;
-            this.btn_cerrar_programa.Text = "Cerrar Programa";
-            this.btn_cerrar_programa.UseVisualStyleBackColor = false;
-            this.btn_cerrar_programa.Click += new System.EventHandler(this.button1_Click);
             // 
             // img_logo
             // 
             this.img_logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.img_logo.Location = new System.Drawing.Point(7, 6);
-            this.img_logo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.img_logo.Margin = new System.Windows.Forms.Padding(4);
             this.img_logo.Name = "img_logo";
             this.img_logo.Size = new System.Drawing.Size(143, 134);
             this.img_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -145,7 +111,7 @@
             this.combo_filtro_genero.ForeColor = System.Drawing.SystemColors.Window;
             this.combo_filtro_genero.FormattingEnabled = true;
             this.combo_filtro_genero.Location = new System.Drawing.Point(1003, 98);
-            this.combo_filtro_genero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.combo_filtro_genero.Margin = new System.Windows.Forms.Padding(4);
             this.combo_filtro_genero.Name = "combo_filtro_genero";
             this.combo_filtro_genero.Size = new System.Drawing.Size(199, 28);
             this.combo_filtro_genero.TabIndex = 285;
@@ -173,7 +139,7 @@
             this.combo_filtro_marca.ForeColor = System.Drawing.SystemColors.Window;
             this.combo_filtro_marca.FormattingEnabled = true;
             this.combo_filtro_marca.Location = new System.Drawing.Point(717, 98);
-            this.combo_filtro_marca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.combo_filtro_marca.Margin = new System.Windows.Forms.Padding(4);
             this.combo_filtro_marca.Name = "combo_filtro_marca";
             this.combo_filtro_marca.Size = new System.Drawing.Size(199, 28);
             this.combo_filtro_marca.TabIndex = 283;
@@ -199,7 +165,7 @@
             this.txt_filtro_nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_filtro_nombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.txt_filtro_nombre.Location = new System.Drawing.Point(189, 98);
-            this.txt_filtro_nombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_filtro_nombre.Margin = new System.Windows.Forms.Padding(4);
             this.txt_filtro_nombre.Name = "txt_filtro_nombre";
             this.txt_filtro_nombre.Size = new System.Drawing.Size(278, 27);
             this.txt_filtro_nombre.TabIndex = 281;
@@ -222,7 +188,7 @@
             this.lbl_paginacion_Info.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_paginacion_Info.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_paginacion_Info.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_paginacion_Info.Location = new System.Drawing.Point(445, 596);
+            this.lbl_paginacion_Info.Location = new System.Drawing.Point(774, 593);
             this.lbl_paginacion_Info.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_paginacion_Info.Name = "lbl_paginacion_Info";
             this.lbl_paginacion_Info.Size = new System.Drawing.Size(123, 20);
@@ -235,7 +201,7 @@
             this.lbl_numero_pagina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_numero_pagina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_numero_pagina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_numero_pagina.Location = new System.Drawing.Point(725, 590);
+            this.lbl_numero_pagina.Location = new System.Drawing.Point(1089, 588);
             this.lbl_numero_pagina.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_numero_pagina.Name = "lbl_numero_pagina";
             this.lbl_numero_pagina.Size = new System.Drawing.Size(27, 29);
@@ -246,25 +212,25 @@
             // 
             this.dataGridViewConsultas.AllowUserToAddRows = false;
             this.dataGridViewConsultas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridViewConsultas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridViewConsultas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle31;
             this.dataGridViewConsultas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewConsultas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.dataGridViewConsultas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewConsultas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewConsultas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewConsultas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewConsultas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
             this.dataGridViewConsultas.ColumnHeadersHeight = 24;
             this.dataGridViewConsultas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nombre,
@@ -272,33 +238,33 @@
             this.Genero,
             this.precio,
             this.agregar});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewConsultas.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle33.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewConsultas.DefaultCellStyle = dataGridViewCellStyle33;
             this.dataGridViewConsultas.EnableHeadersVisualStyles = false;
             this.dataGridViewConsultas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.dataGridViewConsultas.Location = new System.Drawing.Point(26, 159);
-            this.dataGridViewConsultas.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dataGridViewConsultas.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridViewConsultas.Name = "dataGridViewConsultas";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewConsultas.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle34.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewConsultas.RowHeadersDefaultCellStyle = dataGridViewCellStyle34;
             this.dataGridViewConsultas.RowHeadersWidth = 51;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridViewConsultas.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
+            dataGridViewCellStyle35.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridViewConsultas.RowsDefaultCellStyle = dataGridViewCellStyle35;
             this.dataGridViewConsultas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewConsultas.Size = new System.Drawing.Size(1205, 386);
             this.dataGridViewConsultas.TabIndex = 288;
@@ -345,8 +311,8 @@
             this.btn_anterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_anterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_anterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_anterior.Location = new System.Drawing.Point(667, 583);
-            this.btn_anterior.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_anterior.Location = new System.Drawing.Point(1031, 581);
+            this.btn_anterior.Margin = new System.Windows.Forms.Padding(4);
             this.btn_anterior.Name = "btn_anterior";
             this.btn_anterior.Size = new System.Drawing.Size(43, 39);
             this.btn_anterior.TabIndex = 293;
@@ -360,8 +326,8 @@
             this.btn_posterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_posterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_posterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_posterior.Location = new System.Drawing.Point(769, 583);
-            this.btn_posterior.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_posterior.Location = new System.Drawing.Point(1133, 581);
+            this.btn_posterior.Margin = new System.Windows.Forms.Padding(4);
             this.btn_posterior.Name = "btn_posterior";
             this.btn_posterior.Size = new System.Drawing.Size(43, 39);
             this.btn_posterior.TabIndex = 294;
@@ -375,10 +341,10 @@
             this.btn_escanear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_escanear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_escanear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_escanear.Location = new System.Drawing.Point(37, 581);
-            this.btn_escanear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_escanear.Location = new System.Drawing.Point(130, 581);
+            this.btn_escanear.Margin = new System.Windows.Forms.Padding(4);
             this.btn_escanear.Name = "btn_escanear";
-            this.btn_escanear.Size = new System.Drawing.Size(183, 46);
+            this.btn_escanear.Size = new System.Drawing.Size(373, 46);
             this.btn_escanear.TabIndex = 295;
             this.btn_escanear.Text = "Escanear";
             this.btn_escanear.UseVisualStyleBackColor = false;
@@ -401,7 +367,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label1.Location = new System.Drawing.Point(463, 14);
+            this.label1.Location = new System.Drawing.Point(536, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(316, 32);
@@ -415,29 +381,18 @@
             this.pictureBox5.Location = new System.Drawing.Point(8, 567);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(244, 71);
+            this.pictureBox5.Size = new System.Drawing.Size(616, 71);
             this.pictureBox5.TabIndex = 299;
             this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox6.Location = new System.Drawing.Point(1005, 567);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(244, 71);
-            this.pictureBox6.TabIndex = 300;
-            this.pictureBox6.TabStop = false;
             // 
             // pictureBox7
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox7.Location = new System.Drawing.Point(259, 567);
+            this.pictureBox7.Location = new System.Drawing.Point(630, 567);
             this.pictureBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(741, 71);
+            this.pictureBox7.Size = new System.Drawing.Size(619, 71);
             this.pictureBox7.TabIndex = 301;
             this.pictureBox7.TabStop = false;
             // 
@@ -448,7 +403,7 @@
             this.lbl_codigoBarras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_codigoBarras.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_codigoBarras.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lbl_codigoBarras.Location = new System.Drawing.Point(24, 571);
+            this.lbl_codigoBarras.Location = new System.Drawing.Point(38, 592);
             this.lbl_codigoBarras.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_codigoBarras.Name = "lbl_codigoBarras";
             this.lbl_codigoBarras.Size = new System.Drawing.Size(201, 24);
@@ -461,10 +416,10 @@
             this.txt_scan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_scan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_scan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_scan.Location = new System.Drawing.Point(39, 596);
-            this.txt_scan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_scan.Location = new System.Drawing.Point(280, 589);
+            this.txt_scan.Margin = new System.Windows.Forms.Padding(4);
             this.txt_scan.Name = "txt_scan";
-            this.txt_scan.Size = new System.Drawing.Size(181, 30);
+            this.txt_scan.Size = new System.Drawing.Size(317, 30);
             this.txt_scan.TabIndex = 304;
             this.txt_scan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_scan_KeyPress);
             // 
@@ -476,7 +431,6 @@
             this.ClientSize = new System.Drawing.Size(1257, 647);
             this.Controls.Add(this.txt_scan);
             this.Controls.Add(this.lbl_codigoBarras);
-            this.Controls.Add(this.btn_iniciar_sesion);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.btn_escanear);
@@ -494,9 +448,7 @@
             this.Controls.Add(this.txt_filtro_nombre);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.img_logo);
-            this.Controls.Add(this.btn_cerrar_programa);
             this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox7);
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -510,7 +462,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsultas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -518,9 +469,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btn_iniciar_sesion;
-        private System.Windows.Forms.Button btn_cerrar_programa;
         private System.Windows.Forms.PictureBox img_logo;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lbl_filtro_genero;
@@ -544,7 +492,6 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox7;
         public System.Windows.Forms.Label lbl_codigoBarras;
         public System.Windows.Forms.TextBox txt_scan;
