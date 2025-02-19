@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Eterea_Parfums_Desktop.Modelos;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Windows.Forms;
-using Eterea_Parfums_Desktop.Modelos;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
@@ -375,6 +373,102 @@ namespace Eterea_Parfums_Desktop.Controladores
             return perfume;
         }
 
-       
+
+        public static List<Perfume> getPerfumesSimilares(Perfume perfume)
+        {
+            List<Perfume> perfumesSimilares = new List<Perfume>();
+
+            string query = @"
+                            DECLARE @PerfumeID INT = @idPerfume;
+                            SELECT 
+                                p.id, 
+                                p.codigo,
+                                p.marca_id, 
+                                p.nombre,  
+                                p.tipo_de_perfume_id, 
+                                p.genero_id, 
+                                p.presentacion_ml, 
+                                p.pais_id, 
+                                p.spray, 
+                                p.recargable, 
+                                p.descripcion,
+                                p.anio_de_lanzamiento, 
+                                p.precio_en_pesos, 
+                                p.activo, 
+                                p.imagen1, 
+                                p.imagen2,
+                                COUNT(DISTINCT np.nota_con_tipo_de_nota_id) AS notas_comunes,
+                                COUNT(DISTINCT pta.tipo_de_aroma_id) AS aromas_comunes
+                            FROM dbo.perfume p
+                            JOIN dbo.notas_del_perfume np ON p.id = np.perfume_id
+                            JOIN dbo.nota_con_tipo_de_nota ntn ON np.nota_con_tipo_de_nota_id = ntn.id
+                            LEFT JOIN dbo.aroma_del_perfume pta ON p.id = pta.perfume_id
+                            WHERE np.nota_con_tipo_de_nota_id IN (
+                                SELECT nota_con_tipo_de_nota_id FROM dbo.notas_del_perfume WHERE perfume_id = @PerfumeID
+                            )
+                            AND p.id <> @PerfumeID
+                            AND pta.tipo_de_aroma_id IN (
+                                SELECT tipo_de_aroma_id FROM dbo.aroma_del_perfume WHERE perfume_id = @PerfumeID
+                            )
+                            GROUP BY p.id, p.codigo, p.marca_id, p.nombre, p.tipo_de_perfume_id, p.genero_id, 
+                                p.presentacion_ml, p.pais_id, p.spray, p.recargable, p.descripcion, p.anio_de_lanzamiento, 
+                                p.precio_en_pesos, p.activo, p.imagen1, p.imagen2
+                            ORDER BY notas_comunes DESC, aromas_comunes DESC;";
+
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+            cmd.Parameters.AddWithValue("@idPerfume", perfume.id);
+
+            try
+            {
+                DB_Controller.connection.Open();
+                SqlDataReader r = cmd.ExecuteReader();
+
+                while (r.Read())
+                {
+                    Marca marca = new Marca(r.GetInt32(2), null);
+                    TipoDePerfume tipoDePerfume = new TipoDePerfume(r.GetInt32(4), null);
+                    Genero genero = new Genero(r.GetInt32(5), null);
+                    Pais pais = new Pais(r.GetInt32(7), null);
+
+
+                    perfumesSimilares.Add(new Perfume(
+                        r.GetInt32(0),
+                        r.GetString(1),
+                        marca,
+                        r.GetString(3),
+                        tipoDePerfume,
+                        genero,
+                        r.GetInt32(6),
+                        pais,
+                        r.GetInt32(8),
+                        r.GetInt32(9),
+                        r.GetString(10),
+                        r.GetInt32(11),
+                        r.GetDouble(12),
+                        r.GetInt32(13),
+                        r.GetString(14),
+                        r.GetString(15)
+                    ));
+
+                }
+
+                r.Close();
+                DB_Controller.connection.Close();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error en la consulta de perfumes similares: " + e.Message);
+            }
+
+            return perfumesSimilares;
+        }
+
+
+
+
+
+
+
+
     }
 }

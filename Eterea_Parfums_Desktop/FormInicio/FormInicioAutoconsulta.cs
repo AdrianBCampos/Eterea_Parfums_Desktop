@@ -2,14 +2,11 @@
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -38,7 +35,7 @@ namespace Eterea_Parfums_Desktop
 
         //private BarcodeScannerWatcher watcher;
 
-     
+
 
 
         public FormInicioAutoconsulta()
@@ -83,7 +80,7 @@ namespace Eterea_Parfums_Desktop
 
             combo_filtro_marca.DrawMode = DrawMode.OwnerDrawFixed;
             combo_filtro_marca.DrawItem += comboBoxdiseño_DrawItem;
-            combo_filtro_marca.DropDownStyle = ComboBoxStyle.DropDownList;          
+            combo_filtro_marca.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void txt_scan_TextChanged(object sender, EventArgs e)
@@ -178,7 +175,7 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
-      
+
 
         private void VisualizarPerfumes(List<Perfume> perfumeMostrar)
         {
@@ -319,7 +316,7 @@ namespace Eterea_Parfums_Desktop
 
                 FormVerDetallePerfume detallesForm = new FormVerDetallePerfume(perfumeSeleccionado);
                 detallesForm.Show();
-            }            
+            }
         }
 
 
@@ -393,13 +390,13 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_iniciar_sesion_Click(object sender, EventArgs e)
         {
-            FormLogin login = new FormLogin();  
+            FormLogin login = new FormLogin();
             login.Show();
             this.Hide();
         }
 
-       
-    
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {

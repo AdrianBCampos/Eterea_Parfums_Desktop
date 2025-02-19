@@ -1,13 +1,9 @@
-﻿using System;
+﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.Modelos;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Drawing.Printing;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using Eterea_Parfums_Desktop.Controladores;
@@ -288,10 +284,10 @@ namespace Eterea_Parfums_Desktop
                         MessageBox.Show("Error al cargar la imagen: " + ex.Message, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
 
-                    using (StringReader sr = new StringReader(PaginaHTML_Texto))
-                    {
-                        XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
-                    }
+                     using (StringReader sr = new StringReader(PaginaHTML_Texto))
+                     {
+                         XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                     }
 
                     pdfDoc.Close();
                     stream.Close();

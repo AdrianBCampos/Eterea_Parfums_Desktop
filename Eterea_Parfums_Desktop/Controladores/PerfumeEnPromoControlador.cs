@@ -1,13 +1,8 @@
-﻿using Eterea_Parfums_Desktop.Modelos;
+﻿using Eterea_Parfums_Desktop.DTOs;
+using Eterea_Parfums_Desktop.Modelos;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using Eterea_Parfums_Desktop.DTOs;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
@@ -185,46 +180,46 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         //ELIMINAR TODOS LOS REGISTROS DE LA RELACION DE LA PROMOCION CON LOS PERFUMES QUE INCLUYE
 
-          public static void eliminarRegistrosPromoPerfumes(int id_promo, SqlTransaction transaction)
-          {
-              string query = "DELETE FROM dbo.perfumes_en_promo WHERE promocion_id = @id_editar";
-
-
-              SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-              cmd.Parameters.AddWithValue("@id_editar", id_promo);
-
-              cmd.Transaction = transaction;
-
-              cmd.ExecuteNonQuery();
-
-          }
-
-/*
-        public static bool EliminarRegistrosPromoPerfumes(int id_promo)
+        public static void eliminarRegistrosPromoPerfumes(int id_promo, SqlTransaction transaction)
         {
             string query = "DELETE FROM dbo.perfumes_en_promo WHERE promocion_id = @id_editar";
 
+
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+            cmd.Parameters.AddWithValue("@id_editar", id_promo);
 
-            try
-            {
-                DB_Controller.connection.Open();
-                cmd.Parameters.AddWithValue("@id_editar", id_promo);
-                cmd.ExecuteNonQuery();
+            cmd.Transaction = transaction;
 
-                DB_Controller.connection.Close();
-                return true;
-            }
-            catch (Exception e)
-            {
-                if (DB_Controller.connection.State == System.Data.ConnectionState.Open)
-                {
-                    DB_Controller.connection.Close();
-                }
-                throw new Exception("Error al eliminar registros de perfumes de la promoción: " + e.Message);
-            }
+            cmd.ExecuteNonQuery();
+
         }
-        */
+
+        /*
+                public static bool EliminarRegistrosPromoPerfumes(int id_promo)
+                {
+                    string query = "DELETE FROM dbo.perfumes_en_promo WHERE promocion_id = @id_editar";
+
+                    SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+
+                    try
+                    {
+                        DB_Controller.connection.Open();
+                        cmd.Parameters.AddWithValue("@id_editar", id_promo);
+                        cmd.ExecuteNonQuery();
+
+                        DB_Controller.connection.Close();
+                        return true;
+                    }
+                    catch (Exception e)
+                    {
+                        if (DB_Controller.connection.State == System.Data.ConnectionState.Open)
+                        {
+                            DB_Controller.connection.Close();
+                        }
+                        throw new Exception("Error al eliminar registros de perfumes de la promoción: " + e.Message);
+                    }
+                }
+                */
 
 
 

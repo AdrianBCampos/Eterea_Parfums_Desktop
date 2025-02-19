@@ -1,26 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Eterea_Parfums_Desktop.Controladores;
 using Eterea_Parfums_Desktop.Modelos;
-using Eterea_Parfums_Desktop.Controladores;
-using System.Diagnostics;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
 {
     public partial class FormCrearEmpleado : Form
     {
 
-      //  string situacion;
+        //  string situacion;
 
-     //   int id_editar;
+        //   int id_editar;
 
-     //   int id_eliminar;
+        //   int id_eliminar;
 
         public List<Pais> paises;
         public List<Provincia> provincias;
@@ -146,7 +140,7 @@ namespace Eterea_Parfums_Desktop
             {
 
             }
-        }      
+        }
 
         private void crear()
         {
@@ -170,7 +164,7 @@ namespace Eterea_Parfums_Desktop
             Localidad localidad = LocalidadControlador.getByName(combo_localidad.SelectedItem.ToString());
             Calle calle = CalleControlador.getByName(combo_calle.SelectedItem.ToString());
             Sucursal sucursal = SucursalControlador.getByName(combo_sucursal.SelectedItem.ToString());
-           
+
 
             Empleado empleado = new Empleado(0, txt_usuario.Text, txt_contraseña.Text, txt_nombre.Text, txt_apellido.Text,
                 int.Parse(txt_dni.Text), DateTime.Parse(dateTime_nac.Text), txt_celular.Text, txt_e_mail.Text,
@@ -413,14 +407,6 @@ namespace Eterea_Parfums_Desktop
             this.Close();
         }
 
-        private void lbl_crear_empleado_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

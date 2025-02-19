@@ -1,13 +1,6 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -16,13 +9,13 @@ namespace Eterea_Parfums_Desktop
     {
 
         private FormInicioAutoconsulta _inicioAutoConsultas; // Referencia a InicioAutoConsulta
-       
-        
+
+
         public FormEscanear(FormInicioAutoconsulta inicioAutoConsultas)
         {
             InitializeComponent();
 
-           
+
             _inicioAutoConsultas = inicioAutoConsultas; // Guardar la referencia
             //this.Load += (s, e) => txt_codigo_barras.Focus(); // Poner el cursor en el TextBox al abrir el form
 
@@ -31,7 +24,7 @@ namespace Eterea_Parfums_Desktop
         private void button2_Click(object sender, EventArgs e)
         {
             FormInicioAutoconsulta inicioAutoConsultas = new FormInicioAutoconsulta();
-         
+
             this.Close();
             _inicioAutoConsultas?.RestaurarUI();  // Llamar al método de restauración de UI
         }

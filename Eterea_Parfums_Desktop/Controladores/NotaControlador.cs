@@ -1,10 +1,7 @@
-﻿using System;
+﻿using Eterea_Parfums_Desktop.Modelos;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
-using Eterea_Parfums_Desktop.Modelos;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
@@ -16,7 +13,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             string query = "SELECT * FROM dbo.nota";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             try
-            {        
+            {
                 DB_Controller.connection.Open();
                 SqlDataReader r = cmd.ExecuteReader();
                 while (r.Read())
@@ -39,7 +36,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             string query = "SELECT * FROM dbo.nota WHERE id = @id";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             try
-            {             
+            {
                 cmd.Parameters.AddWithValue("@id", id);
                 DB_Controller.connection.Open();
                 SqlDataReader r = cmd.ExecuteReader();

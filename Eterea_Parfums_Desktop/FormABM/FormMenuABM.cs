@@ -1,12 +1,5 @@
 ﻿using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -37,8 +30,8 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_empleados_Click(object sender, EventArgs e)
         {
-           // FormEditarEmpleado formEmpleado = new FormEditarEmpleado();
-           // formEmpleado.Show();
+            // FormEditarEmpleado formEmpleado = new FormEditarEmpleado();
+            // formEmpleado.Show();
             Empleados_UC empleados_UC = new Empleados_UC();
             addUserControl(empleados_UC);
         }

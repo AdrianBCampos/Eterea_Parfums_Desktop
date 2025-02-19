@@ -1,12 +1,6 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -40,7 +34,7 @@ namespace Eterea_Parfums_Desktop
             {
                 if (EmpleadoControlador.auth(txt_usuario.Text, txt_contraseña.Text))//, true))
                 {
-                  
+
                     if (Program.logueado.rol == "admin")
                     {
                         FormInicioAdministrador InicioAdministrador = new FormInicioAdministrador();
@@ -72,7 +66,7 @@ namespace Eterea_Parfums_Desktop
                 this.Hide();
             }
             */
-                
+
         }
 
         private bool validarCampos()

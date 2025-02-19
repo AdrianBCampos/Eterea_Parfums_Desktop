@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Eterea_Parfums_Desktop.Controladores;
+﻿using Eterea_Parfums_Desktop.Controladores;
 using Eterea_Parfums_Desktop.Modelos;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
+using System;
 using System.IO;
-using static System.Net.WebRequestMethods;
+using System.Linq;
+using System.Windows.Forms;
 
 
 namespace Eterea_Parfums_Desktop
@@ -44,7 +37,7 @@ namespace Eterea_Parfums_Desktop
 
 
             combo_descuento.Items.Clear();
-            combo_descuento.Items.AddRange(new object[] { 0 ,10, 20, 30 });
+            combo_descuento.Items.AddRange(new object[] { 0, 10, 20, 30 });
             combo_descuento.SelectedIndex = 1;
 
             combo_cuotas.Items.Clear();
@@ -81,18 +74,18 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_buscar_Click(object sender, EventArgs e)
         {
- 
+
             if (string.IsNullOrWhiteSpace(txt_dni.Text))
-             {
-                 MessageBox.Show("Ingrese un número de DNI antes de buscar un cliente.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                 return;
-             }
-             // Validar la longitud del DNI
-             if (txt_dni.Text.Length != 8)
-             {
-                 MessageBox.Show("El número ingresado debe ser de 8 o 11 dígitos.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                 return;
-             }
+            {
+                MessageBox.Show("Ingrese un número de DNI antes de buscar un cliente.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            // Validar la longitud del DNI
+            if (txt_dni.Text.Length != 8)
+            {
+                MessageBox.Show("El número ingresado debe ser de 8 o 11 dígitos.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (!txt_dni.Text.All(char.IsDigit))
             {
                 MessageBox.Show("El DNI solo puede contener números.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -102,15 +95,16 @@ namespace Eterea_Parfums_Desktop
 
             int dni = int.Parse(txt_dni.Text);
             Cliente cliente = ClienteControlador.obtenerPorDni(dni);
-            if (cliente != null) {
-            clientefactura = cliente;
+            if (cliente != null)
+            {
+                clientefactura = cliente;
             }
             if (cliente != null)
             {
                 // Si se encuentra el cliente, llenar los campos en el formulario actual
                 txt_nombre_cliente.Text = cliente.nombre + " " + cliente.apellido;
                 txt_condicion_iva.Text = cliente.condicion_frente_al_iva;
-                
+
             }
             else
             {
@@ -233,7 +227,7 @@ namespace Eterea_Parfums_Desktop
                 }
             }
             // Mostrar la suma en un TextBox
-                txt_subtotal.Text = sumaPrecios.ToString("N2");
+            txt_subtotal.Text = sumaPrecios.ToString("N2");
         }
 
         private void CalcularImporteRecargo(float recargo, float subtotal)
@@ -299,8 +293,10 @@ namespace Eterea_Parfums_Desktop
             // Verificar si el cliente es Responsable Monotributo
             if (condicionCliente.Contains("Responsable Monotributo"))
             {
-                txt_total.Text = (subtotal + recargo - descuento - CalcularIVA(subtotal,recargo,descuento)).ToString("N2");
-            } else { 
+                txt_total.Text = (subtotal + recargo - descuento - CalcularIVA(subtotal, recargo, descuento)).ToString("N2");
+            }
+            else
+            {
                 txt_total.Text = (subtotal + recargo - descuento).ToString("N2");
             }
         }
@@ -333,7 +329,7 @@ namespace Eterea_Parfums_Desktop
             }
 
             //CalcularImporteRecargo(subtotal, recargo);
-            
+
             //CalcularIVA(subtotal, recargo, descuento);
             //if (!float.TryParse(txt_iva.Text, out iva)) iva = 0;
             sumaFinal(subtotal, recargo, descuento);
@@ -451,8 +447,8 @@ namespace Eterea_Parfums_Desktop
                 DateTime fecha = DateTime.Now;
                 int sucursalId = (EmpleadoControlador.obtenerPorId(Program.logueado.id)).sucursal_id.id;
                 //int sucursalId = Program.logueado.sucursal_id.id; 
-                int vendedorId = Program.logueado.id; 
-                int clienteId = clientefactura.id; 
+                int vendedorId = Program.logueado.id;
+                int clienteId = clientefactura.id;
                 string formaDePago = combo_forma_pago.SelectedItem.ToString();
                 double precioTotal = double.Parse(txt_total.Text);
                 double recargoTarjeta = double.Parse(txt_monto_recargo.Text);
@@ -569,7 +565,7 @@ namespace Eterea_Parfums_Desktop
             guardarFactura.Filter = "Archivos PDF (*.pdf)|*.pdf"; // Filtro para archivos PDF
             guardarFactura.DefaultExt = "pdf"; // Extensión por defecto
             guardarFactura.AddExtension = true; // Agrega la extensión si el usuario no la pone
-            
+
 
             string PaginaHTML_Texto = Properties.Resources.PlantillaFactura.ToString();
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CLIENTE", txt_nombre_cliente.Text);

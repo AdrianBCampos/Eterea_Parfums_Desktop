@@ -112,36 +112,5 @@ namespace Eterea_Parfums_Desktop.Properties {
                 return ResourceManager.GetString("PlantillaFactura", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
-        ///&lt;html lang=&quot;es&quot;&gt;
-        ///&lt;head&gt;
-        ///    &lt;title&gt;Factura Eterea Parfums&lt;/title&gt;
-        ///    &lt;style&gt;
-        ///        body {
-        ///            font-family: Arial, sans-serif;
-        ///        }
-        ///
-        ///        .informe {
-        ///            width: 793,70078740157px;
-        ///            height:  1122,519685039 4px;
-        ///            margin: auto;
-        ///            border: 1px solid #000;
-        ///            padding: 20px;
-        ///        }
-        ///
-        ///        .encabezado, .detalle, .footer {
-        ///            margin-bottom: 20px;
-        ///        }
-        ///
-        ///            .encabezado h1 {
-        ///               [resto de la cadena truncado]&quot;;.
-        /// </summary>
-        internal static string PlantillaInformeVentas {
-            get {
-                return ResourceManager.GetString("PlantillaInformeVentas", resourceCulture);
-            }
-        }
     }
 }

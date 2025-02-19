@@ -2,13 +2,7 @@
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -23,12 +17,12 @@ namespace Eterea_Parfums_Desktop
         public FormCrearClienteFactura()
         {
             InitializeComponent();
-       
+
             lbl_nombreE.Hide();
             lbl_apellidoE.Hide();
             lbl_dniE.Hide();
-            lbl_cond_ivaE.Hide();            
-            lbl_emailE.Hide();                  
+            lbl_cond_ivaE.Hide();
+            lbl_emailE.Hide();
 
             combo_con_iva.Items.Clear();
             combo_con_iva.Items.Add("Consumidor Final");

@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Eterea_Parfums_Desktop.Controladores;
+﻿using Eterea_Parfums_Desktop.Controladores;
 using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.Modelos;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
 {
@@ -526,11 +520,11 @@ namespace Eterea_Parfums_Desktop
             //Validar datos del perfume
             bool validacionDatosPerfume = ValidarPerfume();
             if (validacionDatosPerfume)
-            {      
+            {
                 Perfume perfume = editar();
                 this.Hide();
                 FormEditarPerfume2 editarAromaNota = new FormEditarPerfume2(perfume, this, perfumesUC);
-                editarAromaNota.Show();                
+                editarAromaNota.Show();
 
             }
         }
@@ -542,7 +536,7 @@ namespace Eterea_Parfums_Desktop
                 Console.WriteLine(numero_aleatorio);
                 nombreFoto = txt_nombre.Text + numero_aleatorio + "-envase.jpg";
                 imagen.Save(Program.Ruta_Base + nombreFoto, System.Drawing.Imaging.ImageFormat.Jpeg);
-                
+
             }
             catch (Exception ex)
             {
@@ -593,5 +587,5 @@ namespace Eterea_Parfums_Desktop
         }
 
     }
-    
+
 }

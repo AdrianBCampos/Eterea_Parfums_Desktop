@@ -1,15 +1,6 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
-using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -59,7 +50,7 @@ namespace Eterea_Parfums_Desktop
                         if (!string.IsNullOrEmpty(nombreArchivoImagen))
                         {
                             string rutaImagen = Path.Combine(Program.Ruta_Base, nombreArchivoImagen + ".jpg");
-                            
+
 
                             if (File.Exists(rutaImagen))
                             {
@@ -98,5 +89,5 @@ namespace Eterea_Parfums_Desktop
     }
 
 
-    
+
 }

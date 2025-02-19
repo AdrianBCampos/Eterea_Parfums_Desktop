@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Eterea_Parfums_Desktop.Controladores;
+﻿using Eterea_Parfums_Desktop.Controladores;
 using Eterea_Parfums_Desktop.Modelos;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
 {
@@ -99,11 +94,11 @@ namespace Eterea_Parfums_Desktop
             combo_rol.Items.Add("admin");
             combo_rol.Items.Add("vendedor");
 
-        //    situacion = "Edicion";
+            //    situacion = "Edicion";
 
-    }
+        }
 
-// ------------------------------------------------------------------------------------------------------------------------
+        // ------------------------------------------------------------------------------------------------------------------------
         //SOBRECARGAR EL CONSTRUCTOR PARA INICIAR EL FORM CON LA INFO CARGADA, PARA EDITAR
         public FormEditarEmpleado(Empleado empleado)
         {
@@ -175,7 +170,7 @@ namespace Eterea_Parfums_Desktop
             id_editar = empleado.id;
 
             txt_usuario.Text = empleado.usuario.ToString();
-           //txt_contraseña.Hide();
+            //txt_contraseña.Hide();
             txt_nombre.Text = empleado.nombre.ToString();
             txt_apellido.Text = empleado.apellido.ToString();
             txt_dni.Text = empleado.dni.ToString();
@@ -227,7 +222,7 @@ namespace Eterea_Parfums_Desktop
             }
 
 
-        //   situacion = "Edicion";
+            //   situacion = "Edicion";
 
             label1.Text = "Editar Vendedor";
             btn_crear.Text = "Editar";
@@ -478,13 +473,13 @@ namespace Eterea_Parfums_Desktop
             }
 
             return string.IsNullOrEmpty(errorMsg);
-        }       
-       
+        }
+
         private void FormEditarEmpleado_Load(object sender, EventArgs e)
         {
 
         }
-      
+
         private void btn_crear_Click(object sender, EventArgs e)
         {
             string errorMsg;
