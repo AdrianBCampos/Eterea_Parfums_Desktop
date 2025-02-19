@@ -413,6 +413,14 @@ namespace Eterea_Parfums_Desktop
             this.Close();
         }
 
-       
+        private void lbl_crear_empleado_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

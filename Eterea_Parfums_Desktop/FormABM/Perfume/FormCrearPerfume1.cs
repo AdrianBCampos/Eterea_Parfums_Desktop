@@ -39,6 +39,35 @@ namespace Eterea_Parfums_Desktop
             CargarOpciones(combo_spray);
             CargarOpciones(combo_recargable);
             CargarOpciones(combo_activo);
+
+            //Diseño del combo box
+            combo_activo.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_activo.DrawItem += comboBoxdiseño_DrawItem;
+            combo_activo.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_marca.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_marca.DrawItem += comboBoxdiseño_DrawItem;
+            combo_marca.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_genero.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_genero.DrawItem += comboBoxdiseño_DrawItem;
+            combo_genero.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_tipo_de_perfume.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_tipo_de_perfume.DrawItem += comboBoxdiseño_DrawItem;
+            combo_tipo_de_perfume.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_spray.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_spray.DrawItem += comboBoxdiseño_DrawItem;
+            combo_spray.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_recargable.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_recargable.DrawItem += comboBoxdiseño_DrawItem;
+            combo_recargable.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_pais.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_pais.DrawItem += comboBoxdiseño_DrawItem;
+            combo_pais.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void LblErrorSetVisibleFalse()
@@ -64,10 +93,10 @@ namespace Eterea_Parfums_Desktop
         private void CargarMarcas()
         {
             var marcas = MarcaControlador.getAll();
-            combo_marca.Items.Clear();
+            combo_genero.Items.Clear();
             foreach (Marca marca in marcas)
             {
-                combo_marca.Items.Add(marca.nombre.ToString());
+                combo_genero.Items.Add(marca.nombre.ToString());
             }
         }
 
@@ -183,7 +212,7 @@ namespace Eterea_Parfums_Desktop
             }
 
 
-            Marca marca = MarcaControlador.getByName(combo_marca.SelectedItem.ToString());
+            Marca marca = MarcaControlador.getByName(combo_genero.SelectedItem.ToString());
             TipoDePerfume tipo_de_perfume = TipoDePerfumeControlador.getByName(combo_tipo_de_perfume.SelectedItem.ToString());
             Genero genero = GeneroControlador.getByName(combo_genero.SelectedItem.ToString());
             Console.WriteLine("Genero: " + genero.id);
@@ -192,7 +221,7 @@ namespace Eterea_Parfums_Desktop
             int id_Perfume = PerfumeControlador.GetByMaxId();
             Console.WriteLine("ID: " + id_Perfume);
             Perfume perfume = new Perfume(id_Perfume + 1, txt_codigo.Text, marca, txt_nombre.Text, tipo_de_perfume,
-                genero, int.Parse(txt_presentacion.Text), pais, spray, recargable, txt_descripcion.Text,
+                genero, int.Parse(txt_presentacion.Text), pais, spray, recargable, richTextBox_descripcion.Text,
                 int.Parse(txt_anio_de_lanzamiento.Text), Double.Parse(txt_precio.Text), activo, nombre_foto_uno, nombre_foto_dos);
 
             return perfume;
@@ -235,7 +264,7 @@ namespace Eterea_Parfums_Desktop
             else lbl_error_codigo.Visible = false;
 
 
-            if (combo_marca.SelectedItem == null || string.IsNullOrEmpty(combo_marca.Text))
+            if (combo_genero.SelectedItem == null || string.IsNullOrEmpty(combo_genero.Text))
             {
                 errorMsg += "Debes seleccionar la marca del perfume" + Environment.NewLine;
                 lbl_error_marca.Text = "Debes seleccionar la marca del perfume";
@@ -344,14 +373,14 @@ namespace Eterea_Parfums_Desktop
                 lbl_error_recargable.Visible = false;
             }
 
-            if (string.IsNullOrEmpty(txt_descripcion.Text))
+            if (string.IsNullOrEmpty(richTextBox_descripcion.Text))
             {
                 errorMsg += "Debes ingresar la descripción del perfume" + Environment.NewLine;
                 lbl_error_descripcion.Text = "Debes ingresar la descripción del perfume";
                 lbl_error_descripcion.Show();
 
             }
-            else if (txt_descripcion.Text.Length > 1100)
+            else if (richTextBox_descripcion.Text.Length > 1100)
             {
                 errorMsg += "La descripción del perfume no puede exceder los 1100 caracteres" + Environment.NewLine;
                 lbl_error_descripcion.Text = "La descripción del perfume no puede exceder los 1100 caracteres";
@@ -475,6 +504,51 @@ namespace Eterea_Parfums_Desktop
                 pictureBoxProducto2.Image = imagen2;
 
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        //Diseño del combo box
+        private void comboBoxdiseño_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0)
+                return;
+
+            // Obtener el ComboBox y el texto del ítem actual
+            ComboBox combo = sender as ComboBox;
+            string text = combo.Items[e.Index].ToString();
+
+            // Definir colores personalizados
+            Color backgroundColor;
+            Color textColor;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                // Color cuando el ítem está seleccionado
+                backgroundColor = Color.FromArgb(195, 156, 164);
+                textColor = Color.White;
+            }
+            else
+            {
+                // Color cuando el ítem NO está seleccionado
+                backgroundColor = Color.FromArgb(250, 236, 239); // Color personalizado
+                textColor = Color.FromArgb(195, 156, 164);
+            }
+
+            // Pintar el fondo del ítem
+            using (SolidBrush brush = new SolidBrush(backgroundColor))
+            {
+                e.Graphics.FillRectangle(brush, e.Bounds);
+            }
+
+            // Dibujar el texto
+            TextRenderer.DrawText(e.Graphics, text, e.Font, e.Bounds, textColor, TextFormatFlags.Left);
+
+            // Evitar problemas visuales
+            e.DrawFocusRectangle();
         }
     }
 }

@@ -691,7 +691,7 @@
             this.lbl_crear_empleado.Location = new System.Drawing.Point(363, 15);
             this.lbl_crear_empleado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_crear_empleado.Name = "lbl_crear_empleado";
-            this.lbl_crear_empleado.Size = new System.Drawing.Size(300, 40);
+            this.lbl_crear_empleado.Size = new System.Drawing.Size(240, 32);
             this.lbl_crear_empleado.TabIndex = 453;
             this.lbl_crear_empleado.Text = "Editar Empleado";
             // 
@@ -1144,6 +1144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(967, 907);
             this.Controls.Add(this.txt_sueldo);
@@ -1230,7 +1231,7 @@
             this.Controls.Add(this.pictureBox14);
             this.Controls.Add(this.pictureBox15);
             this.Controls.Add(this.pictureBox16);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormEditarEmpleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEditarEmpleado";

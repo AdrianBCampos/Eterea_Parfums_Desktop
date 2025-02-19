@@ -73,8 +73,7 @@ namespace Eterea_Parfums_Desktop
             CargarGeneros();
 
             this.KeyPreview = true;
-            btn_iniciar_sesion.Visible = false;
-            btn_cerrar_programa.Visible = false;
+          
 
 
             //Diseño del combo box
@@ -487,7 +486,6 @@ namespace Eterea_Parfums_Desktop
             lbl_codigoBarras.Visible = false;  // Ocultar lbl_codigoBarras
         }
 
-
-
+        
     }
 }

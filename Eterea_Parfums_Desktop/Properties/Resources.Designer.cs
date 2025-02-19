@@ -95,7 +95,8 @@ namespace Eterea_Parfums_Desktop.Properties {
         ///                text-align: center;
         ///            }
         ///
-        ///        table {        /// [resto de la cadena truncado]&quot;;.
+        ///        table {
+        /// [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string PlantillaFactura {
             get {
