@@ -306,6 +306,7 @@ namespace Eterea_Parfums_Desktop
                 facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells[2].Value = "+";
                 facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells[3].Value = "-";
                 facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Precio_Unitario"].Value = perfumeSeleccionado.precio_en_pesos.ToString();
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Descuento"].Value = 0;
                 facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Tot"].Value = perfumeSeleccionado.precio_en_pesos.ToString();
                 facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Eliminar"].Value = "Eliminar";
 
