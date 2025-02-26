@@ -309,7 +309,7 @@ namespace Eterea_Parfums_Desktop
         {
             totalFactura();
 
-            float subtotal, recargo, descuento, iva;
+            float subtotal, recargo, descuento;
 
             desc();
             CalcularMontoRecargo();
