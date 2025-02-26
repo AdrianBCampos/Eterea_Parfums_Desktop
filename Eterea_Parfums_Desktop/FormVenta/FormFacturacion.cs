@@ -157,7 +157,7 @@ namespace Eterea_Parfums_Desktop
                 double precio = Convert.ToDouble(Factura.Rows[rowIndex].Cells[5].Value);
 
 
-                Factura.Rows[e.RowIndex].Cells[6].Value = (precio * valorMultiplicador).ToString();
+                Factura.Rows[e.RowIndex].Cells[7].Value = (precio * valorMultiplicador).ToString();
 
                 ActualizarTotales();
 
@@ -181,7 +181,7 @@ namespace Eterea_Parfums_Desktop
                     int valorMultiplicador = Convert.ToInt32(Factura.Rows[rowIndex].Cells[1].Value);
                     double precio = Convert.ToDouble(Factura.Rows[rowIndex].Cells[5].Value);
 
-                    Factura.Rows[e.RowIndex].Cells[6].Value = (precio * valorMultiplicador).ToString();
+                    Factura.Rows[e.RowIndex].Cells[7].Value = (precio * valorMultiplicador).ToString();
 
                     ActualizarTotales();
                     //Meti este codigo dentro del metodo ActualizarTotales para no repetir codigo
@@ -220,7 +220,7 @@ namespace Eterea_Parfums_Desktop
                 {
                     double precioFila = 0;
                     // Comprobar si el valor se puede convertir a decimal
-                    if (double.TryParse(fila.Cells[6].Value.ToString(), out precioFila))
+                    if (double.TryParse(fila.Cells[7].Value.ToString(), out precioFila))
                     {
                         sumaPrecios += precioFila; // Sumar el valor al total
                     }
