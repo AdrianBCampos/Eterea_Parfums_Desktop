@@ -259,7 +259,45 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
         }
 
+        public int ObtenerMayorDescuentoPorPerfume(int perfumeId)
+        {
+            string query = @"
+                SELECT TOP 1 p.descuento
+                FROM dbo.perfumes_en_promo pep
+                JOIN dbo.promocion p ON pep.promocion_id = p.id
+                WHERE pep.perfume_id = @perfumeId AND p.activo = 1
+                ORDER BY p.descuento DESC;";
 
+            int descuento = 0;
+
+            using (SqlConnection connection = new SqlConnection(DB_Controller.connection.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@perfumeId", perfumeId);
+
+                    try
+                    {
+                        connection.Open();
+                        object result = cmd.ExecuteScalar(); // Obtener un único valor
+
+                        if (result != null && result != DBNull.Value)
+                        {
+                            descuento = Convert.ToInt32(result); // Ahora lo convertimos a int
+                        }
+
+                        Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Aplicado: {descuento}%");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error al obtener descuento para perfume ID {perfumeId}: {ex.Message}");
+                        throw new Exception("Error al obtener descuento del perfume.", ex);
+                    }
+                }
+            }
+
+            return descuento;
+        }
 
 
     }

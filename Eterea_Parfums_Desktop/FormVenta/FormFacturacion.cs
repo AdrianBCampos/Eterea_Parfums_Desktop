@@ -158,7 +158,7 @@ namespace Eterea_Parfums_Desktop
 
 
                 Factura.Rows[e.RowIndex].Cells[7].Value = (precio * valorMultiplicador).ToString();
-
+                descuentoUnitario();
                 ActualizarTotales();
 
                 //Meti este codigo dentro del metodo ActualizarTotales para no repetir codigo
@@ -182,33 +182,61 @@ namespace Eterea_Parfums_Desktop
                     double precio = Convert.ToDouble(Factura.Rows[rowIndex].Cells[5].Value);
 
                     Factura.Rows[e.RowIndex].Cells[7].Value = (precio * valorMultiplicador).ToString();
-
+                    descuentoUnitario();
                     ActualizarTotales();
-                    //Meti este codigo dentro del metodo ActualizarTotales para no repetir codigo
-                    /*
-                    totalFactura();
-                    CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text));
 
-                    desc();
-                    sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
-                    */
                 }
                 else
                 {
                     Factura.Rows.RemoveAt(e.RowIndex);
+                    descuentoUnitario();
                     ActualizarTotales();
-                    /*
-                    totalFactura();
-                    CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text));
-
-                    desc();
-                    sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
-                    */
-
+     
                 }
 
             }
         }
+        private void descuentoUnitario()
+        {
+            DataGridView dgv = this.GetFacturaDataGrid();
+            PerfumeEnPromoControlador promoController = new PerfumeEnPromoControlador();
+
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                if (row.Cells["Nombre_Perfume"].Value != null) // Verifica que la fila no esté vacía
+                {
+                    int perfumeId = Convert.ToInt32(row.Cells[0].Value); // ID del perfume
+
+                    // Obtener el descuento del perfume (en porcentaje)
+                    int descuentoPorcentaje = promoController.ObtenerMayorDescuentoPorPerfume(perfumeId);
+
+                    
+                    Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
+
+                    // Obtener precio unitario
+                    decimal precioUnitario = Convert.ToDecimal(row.Cells["Precio_Unitario"].Value);
+
+                    // Obtener cantidad
+                    int cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+
+                    // Calcular el monto de descuento
+                    decimal descuentoMonto = ((precioUnitario * descuentoPorcentaje) / 100) * cantidad;
+
+                    // Mostrar el monto de descuento en la celda "Descuento" (valor nominal)
+                    row.Cells["Descuento"].Value = descuentoMonto;
+
+                    // Calcular el total con descuento
+                    decimal totalConDescuento = ((precioUnitario * cantidad) - descuentoMonto);
+
+                    // Actualizar el total en el DataGridView
+                    row.Cells["Tot"].Value = totalConDescuento;
+
+                    // Mostrar en consola para depuración
+                    Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Aplicado: {descuentoMonto} (Monto), Total con Descuento: {totalConDescuento}");
+                }
+            }
+        }
+
         private void totalFactura()
         {
             double sumaPrecios = 0; // Usar decimal para los precios
