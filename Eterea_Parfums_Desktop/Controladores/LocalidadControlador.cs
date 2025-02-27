@@ -73,33 +73,27 @@ namespace Eterea_Parfums_Desktop.Controladores
         //GET ONE ById
         public static Localidad getById(int id)
         {
-            Localidad localidad = new Localidad();
-            string query = "select * from dbo.localidad where " +
-                "id = @id;";
+            Localidad localidad = null;
+            string query = "SELECT * FROM dbo.localidad WHERE id = @id;";
 
-            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-            cmd.Parameters.AddWithValue("@id", id);
-
-            try
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
             {
-                DB_Controller.connection.Open();
-                SqlDataReader r = cmd.ExecuteReader();
-
-                while (r.Read())
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    localidad = new Localidad(r.GetInt32(0), r.GetString(1));
+                    cmd.Parameters.AddWithValue("@id", id);
+                    using (SqlDataReader r = cmd.ExecuteReader())
+                    {
+                        if (r.Read())
+                        {
+                            localidad = new Localidad(r.GetInt32(0), r.GetString(1));
+                        }
+                    }
                 }
-                r.Close();
-                DB_Controller.connection.Close();
-
-            }
-            catch (Exception e)
-            {
-                Trace.Write("Error al consultar la DB: " + e.Message);
-
             }
             return localidad;
         }
+
 
 
     }

@@ -72,32 +72,26 @@ namespace Eterea_Parfums_Desktop.Controladores
         //GET ONE ById
         public static Calle getById(int id)
         {
-            Calle calle = new Calle();
-            string query = "select * from dbo.calle where " +
-                "id = @id;";
+            Calle calle = null;
+            string query = "SELECT * FROM dbo.calle WHERE id = @id;";
 
-            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-            cmd.Parameters.AddWithValue("@id", id);
-
-            try
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
             {
-                DB_Controller.connection.Open();
-                SqlDataReader r = cmd.ExecuteReader();
-
-                while (r.Read())
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    calle = new Calle(r.GetInt32(0), r.GetString(1));
+                    cmd.Parameters.AddWithValue("@id", id);
+                    using (SqlDataReader r = cmd.ExecuteReader())
+                    {
+                        if (r.Read())
+                        {
+                            calle = new Calle(r.GetInt32(0), r.GetString(1));
+                        }
+                    }
                 }
-                r.Close();
-                DB_Controller.connection.Close();
-
-            }
-            catch (Exception e)
-            {
-                Trace.Write("Error al consultar la DB: " + e.Message);
-
             }
             return calle;
         }
+
     }
 }

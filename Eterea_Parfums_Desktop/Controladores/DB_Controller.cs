@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
-
+using System.Diagnostics;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
@@ -9,25 +9,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         //public static string connectionString = "";
         public static SqlConnection connection;
 
-        /*public static void initialize()
-        {
-            // Lista de posibles nombres de servidores
-            List<string> serverNames = new List<string>
-            {
-                @"(localdb)\Local",
-                @"LocalHost",
-                @"DESKTOP-N6TI9JV\MSSQLSERVER02"
-            };
-
-            builder.DataSource = @"(localdb)\Local";  //NOMBRE DEL SERVIDOR
-            builder.InitialCatalog = "eterea";  //NOMBRE DE LA BASE DE DATOS
-            builder.IntegratedSecurity = true;  //TIENE O NO SEGURIDAD INTEGRADA CON WINDOWS
-
-                    connectionString = builder.ToString();
-                    connection = new SqlConnection(connectionString);
-
-            Trace.WriteLine("Conexion a la BD: " + connection);
-        }*/
+        
 
         // Método para configurar la conexión basada en el usuario
         public static void ConfigurarConexion(string usuario)
@@ -59,11 +41,20 @@ namespace Eterea_Parfums_Desktop.Controladores
             connection = new SqlConnection(connectionString);
 
             // Mostrar los datos de conexión en la consola
-            Console.WriteLine("=================================");
-            Console.WriteLine($"Usuario seleccionado: {usuario}");
-            Console.WriteLine($"Cadena de conexión: {connectionString}");
-            Console.WriteLine("=================================");
+            Trace.WriteLine("=================================");
+            Trace.WriteLine($"Usuario seleccionado: {usuario}");
+            Trace.WriteLine($"Cadena de conexión: {connectionString}");
+            Trace.WriteLine("=================================");
 
         }
+
+
+        public static string GetConnectionString()
+        {
+            return connection.ConnectionString; // Devolver la cadena de conexión actual
+        }
+
+
+
     }
 }

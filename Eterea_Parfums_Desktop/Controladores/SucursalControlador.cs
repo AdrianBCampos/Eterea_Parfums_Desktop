@@ -87,40 +87,33 @@ namespace Eterea_Parfums_Desktop.Controladores
         //GET ONE ById
         public static Sucursal getById(int id)
         {
-            Sucursal sucursal = new Sucursal();
-            string query = "select * from dbo.sucursal where " +
-                "id = @id;";
+            Sucursal sucursal = null;
+            string query = "SELECT * FROM dbo.sucursal WHERE id = @id;";
 
-            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-            cmd.Parameters.AddWithValue("@id", id);
-
-            try
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
             {
-                DB_Controller.connection.Open();
-                SqlDataReader r = cmd.ExecuteReader();
-
-                while (r.Read())
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    Pais pais = PaisControlador.getById(r.GetInt32(2));
-                    Provincia provincia = ProvinciaControlador.getById(r.GetInt32(3));
-                    Localidad localidad = LocalidadControlador.getById(r.GetInt32(4));
-                    Calle calle = CalleControlador.getById(r.GetInt32(6));
+                    cmd.Parameters.AddWithValue("@id", id);
+                    using (SqlDataReader r = cmd.ExecuteReader())
+                    {
+                        if (r.Read())
+                        {
+                            Pais pais = PaisControlador.getById(r.GetInt32(2));
+                            Provincia provincia = ProvinciaControlador.getById(r.GetInt32(3));
+                            Localidad localidad = LocalidadControlador.getById(r.GetInt32(4));
+                            Calle calle = CalleControlador.getById(r.GetInt32(6));
 
-
-                    sucursal = new Sucursal(r.GetInt32(0), r.GetString(1), pais, provincia,
-                       localidad, r.GetInt32(5), calle, r.GetInt32(7), r.GetInt32(8));
+                            sucursal = new Sucursal(r.GetInt32(0), r.GetString(1), pais, provincia,
+                                localidad, r.GetInt32(5), calle, r.GetInt32(7), r.GetInt32(8));
+                        }
+                    }
                 }
-                r.Close();
-                DB_Controller.connection.Close();
-
-            }
-            catch (Exception e)
-            {
-                Trace.Write("Error al consultar la DB: " + e.Message);
-
             }
             return sucursal;
         }
+
 
 
     }
