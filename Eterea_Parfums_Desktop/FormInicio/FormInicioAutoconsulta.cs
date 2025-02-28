@@ -483,6 +483,9 @@ namespace Eterea_Parfums_Desktop
             lbl_codigoBarras.Visible = false;  // Ocultar lbl_codigoBarras
         }
 
-        
+        private void FormInicioAutoconsulta_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
