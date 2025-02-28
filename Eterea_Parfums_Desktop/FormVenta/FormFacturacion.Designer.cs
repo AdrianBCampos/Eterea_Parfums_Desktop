@@ -48,6 +48,14 @@
             this.btn_consultas = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Factura = new System.Windows.Forms.DataGridView();
+            this.Id_Perfume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sumar1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.restar1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Nombre_Perfume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio_Unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -87,14 +95,7 @@
             this.txt_nombre_cliente = new System.Windows.Forms.Label();
             this.txt_condicion_iva = new System.Windows.Forms.Label();
             this.txt_numero_factura = new System.Windows.Forms.Label();
-            this.Id_Perfume = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sumar1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.restar1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Nombre_Perfume = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio_Unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tot = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.txt_scan_factura = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -194,7 +195,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Location = new System.Drawing.Point(9, 102);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(377, 55);
             this.pictureBox1.TabIndex = 279;
@@ -259,7 +260,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox2.Location = new System.Drawing.Point(9, 171);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(728, 302);
             this.pictureBox2.TabIndex = 295;
@@ -327,12 +328,85 @@
             this.Factura.TabIndex = 296;
             this.Factura.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewFactura_CellContentClick);
             // 
+            // Id_Perfume
+            // 
+            this.Id_Perfume.HeaderText = "ID";
+            this.Id_Perfume.MinimumWidth = 6;
+            this.Id_Perfume.Name = "Id_Perfume";
+            this.Id_Perfume.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Cantidad.FillWeight = 57.51565F;
+            this.Cantidad.HeaderText = "CANTIDAD";
+            this.Cantidad.MinimumWidth = 6;
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            this.Cantidad.Width = 85;
+            // 
+            // sumar1
+            // 
+            this.sumar1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.sumar1.FillWeight = 43.19315F;
+            this.sumar1.HeaderText = "+";
+            this.sumar1.MinimumWidth = 6;
+            this.sumar1.Name = "sumar1";
+            this.sumar1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.sumar1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.sumar1.Width = 36;
+            // 
+            // restar1
+            // 
+            this.restar1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.restar1.FillWeight = 40.60915F;
+            this.restar1.HeaderText = "-";
+            this.restar1.MinimumWidth = 6;
+            this.restar1.Name = "restar1";
+            this.restar1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.restar1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.restar1.Width = 33;
+            // 
+            // Nombre_Perfume
+            // 
+            this.Nombre_Perfume.FillWeight = 402.6662F;
+            this.Nombre_Perfume.HeaderText = "NOMBRE";
+            this.Nombre_Perfume.MinimumWidth = 6;
+            this.Nombre_Perfume.Name = "Nombre_Perfume";
+            // 
+            // Precio_Unitario
+            // 
+            this.Precio_Unitario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Precio_Unitario.FillWeight = 57.51565F;
+            this.Precio_Unitario.HeaderText = "PRECIO UNITARIO ($)";
+            this.Precio_Unitario.MinimumWidth = 6;
+            this.Precio_Unitario.Name = "Precio_Unitario";
+            this.Precio_Unitario.Width = 140;
+            // 
+            // Tot
+            // 
+            this.Tot.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Tot.FillWeight = 57.51565F;
+            this.Tot.HeaderText = "TOTAL ($)";
+            this.Tot.MinimumWidth = 6;
+            this.Tot.Name = "Tot";
+            this.Tot.Width = 80;
+            // 
+            // eliminar
+            // 
+            this.eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.eliminar.FillWeight = 57.51565F;
+            this.eliminar.HeaderText = "ELIMINAR";
+            this.eliminar.MinimumWidth = 6;
+            this.eliminar.Name = "eliminar";
+            this.eliminar.Width = 62;
+            // 
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox3.Location = new System.Drawing.Point(10, 479);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(382, 50);
             this.pictureBox3.TabIndex = 297;
@@ -343,7 +417,7 @@
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox4.Location = new System.Drawing.Point(396, 479);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(341, 205);
             this.pictureBox4.TabIndex = 298;
@@ -354,7 +428,7 @@
             this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox6.Location = new System.Drawing.Point(9, 589);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(382, 94);
             this.pictureBox6.TabIndex = 300;
@@ -642,7 +716,7 @@
             this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox5.Location = new System.Drawing.Point(10, 534);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(382, 50);
             this.pictureBox5.TabIndex = 333;
@@ -745,78 +819,12 @@
             this.txt_numero_factura.TabIndex = 341;
             this.txt_numero_factura.Text = "N°";
             // 
-            // Id_Perfume
+            // txt_scan_factura
             // 
-            this.Id_Perfume.HeaderText = "ID";
-            this.Id_Perfume.MinimumWidth = 6;
-            this.Id_Perfume.Name = "Id_Perfume";
-            this.Id_Perfume.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Cantidad.FillWeight = 57.51565F;
-            this.Cantidad.HeaderText = "CANTIDAD";
-            this.Cantidad.MinimumWidth = 6;
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            this.Cantidad.Width = 85;
-            // 
-            // sumar1
-            // 
-            this.sumar1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.sumar1.FillWeight = 43.19315F;
-            this.sumar1.HeaderText = "+";
-            this.sumar1.MinimumWidth = 6;
-            this.sumar1.Name = "sumar1";
-            this.sumar1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.sumar1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.sumar1.Width = 36;
-            // 
-            // restar1
-            // 
-            this.restar1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.restar1.FillWeight = 40.60915F;
-            this.restar1.HeaderText = "-";
-            this.restar1.MinimumWidth = 6;
-            this.restar1.Name = "restar1";
-            this.restar1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.restar1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.restar1.Width = 33;
-            // 
-            // Nombre_Perfume
-            // 
-            this.Nombre_Perfume.FillWeight = 402.6662F;
-            this.Nombre_Perfume.HeaderText = "NOMBRE";
-            this.Nombre_Perfume.MinimumWidth = 6;
-            this.Nombre_Perfume.Name = "Nombre_Perfume";
-            // 
-            // Precio_Unitario
-            // 
-            this.Precio_Unitario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Precio_Unitario.FillWeight = 57.51565F;
-            this.Precio_Unitario.HeaderText = "PRECIO UNITARIO ($)";
-            this.Precio_Unitario.MinimumWidth = 6;
-            this.Precio_Unitario.Name = "Precio_Unitario";
-            this.Precio_Unitario.Width = 140;
-            // 
-            // Tot
-            // 
-            this.Tot.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Tot.FillWeight = 57.51565F;
-            this.Tot.HeaderText = "TOTAL ($)";
-            this.Tot.MinimumWidth = 6;
-            this.Tot.Name = "Tot";
-            this.Tot.Width = 80;
-            // 
-            // eliminar
-            // 
-            this.eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.eliminar.FillWeight = 57.51565F;
-            this.eliminar.HeaderText = "ELIMINAR";
-            this.eliminar.MinimumWidth = 6;
-            this.eliminar.Name = "eliminar";
-            this.eliminar.Width = 62;
+            this.txt_scan_factura.Location = new System.Drawing.Point(504, 148);
+            this.txt_scan_factura.Name = "txt_scan_factura";
+            this.txt_scan_factura.Size = new System.Drawing.Size(149, 20);
+            this.txt_scan_factura.TabIndex = 342;
             // 
             // FormFacturacion
             // 
@@ -824,6 +832,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(754, 688);
+            this.Controls.Add(this.txt_scan_factura);
             this.Controls.Add(this.combo_forma_pago);
             this.Controls.Add(this.txt_numero_factura);
             this.Controls.Add(this.txt_condicion_iva);
@@ -878,7 +887,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.img_logo);
             this.Controls.Add(this.pictureBox5);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormFacturacion";
             this.Text = "Facturacion";
             this.Load += new System.EventHandler(this.Facturacion_Load);
@@ -959,5 +968,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio_Unitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tot;
         private System.Windows.Forms.DataGridViewButtonColumn eliminar;
+        private System.Windows.Forms.TextBox txt_scan_factura;
     }
 }

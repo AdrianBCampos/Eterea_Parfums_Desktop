@@ -71,10 +71,9 @@
             // img_logo
             // 
             this.img_logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.img_logo.Location = new System.Drawing.Point(7, 6);
-            this.img_logo.Margin = new System.Windows.Forms.Padding(4);
+            this.img_logo.Location = new System.Drawing.Point(5, 5);
             this.img_logo.Name = "img_logo";
-            this.img_logo.Size = new System.Drawing.Size(143, 134);
+            this.img_logo.Size = new System.Drawing.Size(107, 109);
             this.img_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.img_logo.TabIndex = 98;
             this.img_logo.TabStop = false;
@@ -83,10 +82,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(157, 60);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(118, 49);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1092, 80);
+            this.pictureBox1.Size = new System.Drawing.Size(819, 65);
             this.pictureBox1.TabIndex = 280;
             this.pictureBox1.TabStop = false;
             // 
@@ -96,10 +95,9 @@
             this.lbl_filtro_genero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_filtro_genero.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_filtro_genero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_filtro_genero.Location = new System.Drawing.Point(999, 73);
-            this.lbl_filtro_genero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_filtro_genero.Location = new System.Drawing.Point(749, 59);
             this.lbl_filtro_genero.Name = "lbl_filtro_genero";
-            this.lbl_filtro_genero.Size = new System.Drawing.Size(143, 20);
+            this.lbl_filtro_genero.Size = new System.Drawing.Size(122, 17);
             this.lbl_filtro_genero.TabIndex = 286;
             this.lbl_filtro_genero.Text = "Filtrar por genero:";
             // 
@@ -110,10 +108,9 @@
             this.combo_filtro_genero.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_filtro_genero.ForeColor = System.Drawing.SystemColors.Window;
             this.combo_filtro_genero.FormattingEnabled = true;
-            this.combo_filtro_genero.Location = new System.Drawing.Point(1003, 98);
-            this.combo_filtro_genero.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_filtro_genero.Location = new System.Drawing.Point(752, 80);
             this.combo_filtro_genero.Name = "combo_filtro_genero";
-            this.combo_filtro_genero.Size = new System.Drawing.Size(199, 28);
+            this.combo_filtro_genero.Size = new System.Drawing.Size(150, 25);
             this.combo_filtro_genero.TabIndex = 285;
             this.combo_filtro_genero.SelectedIndexChanged += new System.EventHandler(this.combo_filtro_genero_SelectedIndexChanged);
             // 
@@ -123,10 +120,9 @@
             this.lbl_filtro_marca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_filtro_marca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_filtro_marca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_filtro_marca.Location = new System.Drawing.Point(715, 73);
-            this.lbl_filtro_marca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_filtro_marca.Location = new System.Drawing.Point(536, 59);
             this.lbl_filtro_marca.Name = "lbl_filtro_marca";
-            this.lbl_filtro_marca.Size = new System.Drawing.Size(139, 20);
+            this.lbl_filtro_marca.Size = new System.Drawing.Size(116, 17);
             this.lbl_filtro_marca.TabIndex = 284;
             this.lbl_filtro_marca.Text = "Filtrar por marca:";
             // 
@@ -138,10 +134,9 @@
             this.combo_filtro_marca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_filtro_marca.ForeColor = System.Drawing.SystemColors.Window;
             this.combo_filtro_marca.FormattingEnabled = true;
-            this.combo_filtro_marca.Location = new System.Drawing.Point(717, 98);
-            this.combo_filtro_marca.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_filtro_marca.Location = new System.Drawing.Point(538, 80);
             this.combo_filtro_marca.Name = "combo_filtro_marca";
-            this.combo_filtro_marca.Size = new System.Drawing.Size(199, 28);
+            this.combo_filtro_marca.Size = new System.Drawing.Size(150, 24);
             this.combo_filtro_marca.TabIndex = 283;
             this.combo_filtro_marca.SelectedIndexChanged += new System.EventHandler(this.combo_filtro_marca_SelectedIndexChanged);
             // 
@@ -151,10 +146,9 @@
             this.lbl_filtro_nombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_filtro_nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_filtro_nombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_filtro_nombre.Location = new System.Drawing.Point(187, 74);
-            this.lbl_filtro_nombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_filtro_nombre.Location = new System.Drawing.Point(140, 60);
             this.lbl_filtro_nombre.Name = "lbl_filtro_nombre";
-            this.lbl_filtro_nombre.Size = new System.Drawing.Size(158, 20);
+            this.lbl_filtro_nombre.Size = new System.Drawing.Size(133, 17);
             this.lbl_filtro_nombre.TabIndex = 282;
             this.lbl_filtro_nombre.Text = "Buscar por nombre:";
             // 
@@ -164,10 +158,9 @@
             this.txt_filtro_nombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_filtro_nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_filtro_nombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_filtro_nombre.Location = new System.Drawing.Point(189, 98);
-            this.txt_filtro_nombre.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_filtro_nombre.Location = new System.Drawing.Point(142, 80);
             this.txt_filtro_nombre.Name = "txt_filtro_nombre";
-            this.txt_filtro_nombre.Size = new System.Drawing.Size(278, 27);
+            this.txt_filtro_nombre.Size = new System.Drawing.Size(209, 23);
             this.txt_filtro_nombre.TabIndex = 281;
             this.txt_filtro_nombre.TextChanged += new System.EventHandler(this.txt_filtro_nombre_TextChanged);
             // 
@@ -175,10 +168,10 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(8, 145);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(6, 118);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1241, 417);
+            this.pictureBox2.Size = new System.Drawing.Size(931, 339);
             this.pictureBox2.TabIndex = 287;
             this.pictureBox2.TabStop = false;
             // 
@@ -188,10 +181,9 @@
             this.lbl_paginacion_Info.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_paginacion_Info.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_paginacion_Info.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_paginacion_Info.Location = new System.Drawing.Point(774, 593);
-            this.lbl_paginacion_Info.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_paginacion_Info.Location = new System.Drawing.Point(580, 482);
             this.lbl_paginacion_Info.Name = "lbl_paginacion_Info";
-            this.lbl_paginacion_Info.Size = new System.Drawing.Size(123, 20);
+            this.lbl_paginacion_Info.Size = new System.Drawing.Size(99, 16);
             this.lbl_paginacion_Info.TabIndex = 292;
             this.lbl_paginacion_Info.Text = "Paginacion Info";
             // 
@@ -201,10 +193,9 @@
             this.lbl_numero_pagina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_numero_pagina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_numero_pagina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_numero_pagina.Location = new System.Drawing.Point(1089, 588);
-            this.lbl_numero_pagina.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_numero_pagina.Location = new System.Drawing.Point(817, 478);
             this.lbl_numero_pagina.Name = "lbl_numero_pagina";
-            this.lbl_numero_pagina.Size = new System.Drawing.Size(27, 29);
+            this.lbl_numero_pagina.Size = new System.Drawing.Size(21, 24);
             this.lbl_numero_pagina.TabIndex = 291;
             this.lbl_numero_pagina.Text = "1";
             // 
@@ -248,8 +239,8 @@
             this.dataGridViewConsultas.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewConsultas.EnableHeadersVisualStyles = false;
             this.dataGridViewConsultas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.dataGridViewConsultas.Location = new System.Drawing.Point(26, 159);
-            this.dataGridViewConsultas.Margin = new System.Windows.Forms.Padding(5);
+            this.dataGridViewConsultas.Location = new System.Drawing.Point(20, 129);
+            this.dataGridViewConsultas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridViewConsultas.Name = "dataGridViewConsultas";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
@@ -266,7 +257,7 @@
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridViewConsultas.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewConsultas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewConsultas.Size = new System.Drawing.Size(1205, 386);
+            this.dataGridViewConsultas.Size = new System.Drawing.Size(904, 314);
             this.dataGridViewConsultas.TabIndex = 288;
             this.dataGridViewConsultas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewConsultas_CellContentClick);
             // 
@@ -296,7 +287,7 @@
             this.precio.HeaderText = "Precio ($)";
             this.precio.MinimumWidth = 6;
             this.precio.Name = "precio";
-            this.precio.Width = 101;
+            this.precio.Width = 85;
             // 
             // agregar
             // 
@@ -311,10 +302,9 @@
             this.btn_anterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_anterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_anterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_anterior.Location = new System.Drawing.Point(1031, 581);
-            this.btn_anterior.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_anterior.Location = new System.Drawing.Point(773, 472);
             this.btn_anterior.Name = "btn_anterior";
-            this.btn_anterior.Size = new System.Drawing.Size(43, 39);
+            this.btn_anterior.Size = new System.Drawing.Size(32, 32);
             this.btn_anterior.TabIndex = 293;
             this.btn_anterior.Text = "<<";
             this.btn_anterior.UseVisualStyleBackColor = false;
@@ -326,10 +316,9 @@
             this.btn_posterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_posterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_posterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_posterior.Location = new System.Drawing.Point(1133, 581);
-            this.btn_posterior.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_posterior.Location = new System.Drawing.Point(850, 472);
             this.btn_posterior.Name = "btn_posterior";
-            this.btn_posterior.Size = new System.Drawing.Size(43, 39);
+            this.btn_posterior.Size = new System.Drawing.Size(32, 32);
             this.btn_posterior.TabIndex = 294;
             this.btn_posterior.Text = ">>";
             this.btn_posterior.UseVisualStyleBackColor = false;
@@ -341,10 +330,9 @@
             this.btn_escanear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_escanear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_escanear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_escanear.Location = new System.Drawing.Point(130, 581);
-            this.btn_escanear.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_escanear.Location = new System.Drawing.Point(98, 472);
             this.btn_escanear.Name = "btn_escanear";
-            this.btn_escanear.Size = new System.Drawing.Size(373, 46);
+            this.btn_escanear.Size = new System.Drawing.Size(280, 37);
             this.btn_escanear.TabIndex = 295;
             this.btn_escanear.Text = "Escanear";
             this.btn_escanear.UseVisualStyleBackColor = false;
@@ -354,10 +342,10 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox4.Location = new System.Drawing.Point(157, 5);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox4.Location = new System.Drawing.Point(118, 4);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(1092, 49);
+            this.pictureBox4.Size = new System.Drawing.Size(819, 40);
             this.pictureBox4.TabIndex = 297;
             this.pictureBox4.TabStop = false;
             // 
@@ -367,10 +355,9 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label1.Location = new System.Drawing.Point(536, 14);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(402, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(316, 32);
+            this.label1.Size = new System.Drawing.Size(249, 26);
             this.label1.TabIndex = 298;
             this.label1.Text = "Catálogo de Perfumes";
             // 
@@ -378,10 +365,10 @@
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox5.Location = new System.Drawing.Point(8, 567);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox5.Location = new System.Drawing.Point(6, 461);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(616, 71);
+            this.pictureBox5.Size = new System.Drawing.Size(462, 58);
             this.pictureBox5.TabIndex = 299;
             this.pictureBox5.TabStop = false;
             // 
@@ -389,10 +376,10 @@
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox7.Location = new System.Drawing.Point(630, 567);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox7.Location = new System.Drawing.Point(472, 461);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(619, 71);
+            this.pictureBox7.Size = new System.Drawing.Size(464, 58);
             this.pictureBox7.TabIndex = 301;
             this.pictureBox7.TabStop = false;
             // 
@@ -403,10 +390,9 @@
             this.lbl_codigoBarras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_codigoBarras.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_codigoBarras.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_codigoBarras.Location = new System.Drawing.Point(38, 592);
-            this.lbl_codigoBarras.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_codigoBarras.Location = new System.Drawing.Point(28, 481);
             this.lbl_codigoBarras.Name = "lbl_codigoBarras";
-            this.lbl_codigoBarras.Size = new System.Drawing.Size(201, 24);
+            this.lbl_codigoBarras.Size = new System.Drawing.Size(159, 18);
             this.lbl_codigoBarras.TabIndex = 303;
             this.lbl_codigoBarras.Text = "ESCANEAR AHORA";
             // 
@@ -416,19 +402,18 @@
             this.txt_scan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_scan.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_scan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_scan.Location = new System.Drawing.Point(280, 589);
-            this.txt_scan.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_scan.Location = new System.Drawing.Point(210, 479);
             this.txt_scan.Name = "txt_scan";
-            this.txt_scan.Size = new System.Drawing.Size(317, 30);
+            this.txt_scan.Size = new System.Drawing.Size(238, 26);
             this.txt_scan.TabIndex = 304;
             this.txt_scan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_scan_KeyPress);
             // 
             // FormInicioAutoconsulta
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(1257, 647);
+            this.ClientSize = new System.Drawing.Size(943, 526);
             this.Controls.Add(this.txt_scan);
             this.Controls.Add(this.lbl_codigoBarras);
             this.Controls.Add(this.label1);
@@ -451,7 +436,7 @@
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox7);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormInicioAutoconsulta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";

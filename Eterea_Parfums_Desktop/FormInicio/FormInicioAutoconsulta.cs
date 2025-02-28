@@ -483,6 +483,6 @@ namespace Eterea_Parfums_Desktop
             lbl_codigoBarras.Visible = false;  // Ocultar lbl_codigoBarras
         }
 
-        
+
     }
 }

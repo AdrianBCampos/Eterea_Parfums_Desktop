@@ -6,6 +6,7 @@ using iTextSharp.tool.xml;
 using System;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 
@@ -16,6 +17,12 @@ namespace Eterea_Parfums_Desktop
         public string NumeroCaja { get; set; }
         Cliente clientefactura = new Cliente();
 
+        /*
+        private StringBuilder codigoBarrasBuffer = new StringBuilder();
+        private DateTime ultimaLectura = DateTime.Now;
+        private const int TIEMPO_ENTRE_LECTURAS_MS = 100; // Tiempo máximo entre caracteres para considerarlo un escaneo
+        */
+
         public FormFacturacion()
         {
             InitializeComponent();
@@ -23,6 +30,9 @@ namespace Eterea_Parfums_Desktop
             img_logo.Image = System.Drawing.Image.FromFile(rutaCompletaImagen);
 
             txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
+
+            //Agregado para escanear sin importar donde esté posicionado el cursor
+            //this.KeyPreview = true; // Permite capturar las teclas antes de que lleguen a otros controles
 
             combo_forma_pago.SelectedIndexChanged -= combo_forma_pago_SelectedIndexChanged;
 
@@ -56,6 +66,26 @@ namespace Eterea_Parfums_Desktop
             ActualizarDescuentosYCuotas();
 
             lbl_dniE.Hide();
+            txt_scan_factura.Hide(); //textbox oculto para recibir los codigos de barra escaneados
+
+
+            this.Controls.Add(txt_scan_factura);
+
+            // Suscribirse al evento global para recibir códigos de barras
+            BarcodeManager.BarcodeReceived += SetBarcodeText;
+
+        }
+
+        private void SetBarcodeText(string barcode)
+        {
+            if (InvokeRequired)
+            {
+                Invoke((MethodInvoker)(() => txt_scan_factura.Text = barcode));
+            }
+            else
+            {
+                txt_scan_factura.Text = barcode;
+            }
         }
 
         private void Facturacion_Load(object sender, EventArgs e)
@@ -630,5 +660,66 @@ namespace Eterea_Parfums_Desktop
             CrearDetalleFactura();
             
         }
+
+        /*
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // Verifica si la entrada proviene del escáner (normalmente se envía como una serie rápida de teclas)
+            if (EsEntradaDeScanner(keyData))
+            {
+                // Redirige el texto capturado al txt_scan
+                txt_scan_factura.Focus();
+                txt_scan_factura.Text = codigoBarrasBuffer.ToString();
+                ProcesarCodigoBarras(txt_scan_factura.Text);
+                codigoBarrasBuffer.Clear();
+                return true; // Indica que hemos manejado la entrada y no debe procesarse en otro lado
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private bool EsEntradaDeScanner(Keys keyData)
+        {
+            // Si el tiempo entre teclas es muy corto, asumimos que provienen del escáner
+            if ((DateTime.Now - ultimaLectura).TotalMilliseconds > TIEMPO_ENTRE_LECTURAS_MS)
+            {
+                codigoBarrasBuffer.Clear(); // Reinicia el buffer si ha pasado demasiado tiempo
+            }
+
+            ultimaLectura = DateTime.Now;
+
+            // Evita capturar teclas de función o combinaciones especiales
+            if (keyData == Keys.Enter)
+            {
+                return true;
+            }
+
+            // Captura caracteres y los almacena en el buffer
+            char caracter = (char)keyData;
+            if (char.IsLetterOrDigit(caracter) || char.IsPunctuation(caracter))
+            {
+                codigoBarrasBuffer.Append(caracter);
+                return false; // No ha terminado el escaneo
+            }
+
+            return false;
+        }
+
+        private void ProcesarCodigoBarras(string codigo)
+        {
+            if (!string.IsNullOrEmpty(codigo))
+            {
+                // Aquí puedes manejar el código de barras escaneado
+                MessageBox.Show($"Código escaneado: {codigo}");
+            }
+        }
     }
+
+        */
+
+
+
+
+
+}
 }
