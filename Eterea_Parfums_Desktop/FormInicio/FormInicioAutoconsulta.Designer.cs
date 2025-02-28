@@ -45,6 +45,11 @@
             this.lbl_paginacion_Info = new System.Windows.Forms.Label();
             this.lbl_numero_pagina = new System.Windows.Forms.Label();
             this.dataGridViewConsultas = new System.Windows.Forms.DataGridView();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.agregar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btn_anterior = new System.Windows.Forms.Button();
             this.btn_posterior = new System.Windows.Forms.Button();
             this.btn_escanear = new System.Windows.Forms.Button();
@@ -61,11 +66,6 @@
             this.combo_filtro_articulos = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.combo_filtro_stock = new System.Windows.Forms.ComboBox();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.agregar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -279,6 +279,43 @@
             this.dataGridViewConsultas.TabIndex = 288;
             this.dataGridViewConsultas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewConsultas_CellContentClick);
             // 
+            // nombre
+            // 
+            this.nombre.FillWeight = 125F;
+            this.nombre.HeaderText = "Nombre del perfume";
+            this.nombre.MinimumWidth = 6;
+            this.nombre.Name = "nombre";
+            // 
+            // marca
+            // 
+            this.marca.FillWeight = 125F;
+            this.marca.HeaderText = "Marca";
+            this.marca.MinimumWidth = 6;
+            this.marca.Name = "marca";
+            // 
+            // Genero
+            // 
+            this.Genero.FillWeight = 50F;
+            this.Genero.HeaderText = "Genero";
+            this.Genero.MinimumWidth = 6;
+            this.Genero.Name = "Genero";
+            // 
+            // precio
+            // 
+            this.precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.precio.FillWeight = 50F;
+            this.precio.HeaderText = "Precio ($)";
+            this.precio.MinimumWidth = 6;
+            this.precio.Name = "precio";
+            this.precio.Width = 134;
+            // 
+            // agregar
+            // 
+            this.agregar.FillWeight = 50F;
+            this.agregar.HeaderText = "";
+            this.agregar.MinimumWidth = 6;
+            this.agregar.Name = "agregar";
+            // 
             // btn_anterior
             // 
             this.btn_anterior.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
@@ -313,12 +350,12 @@
             // 
             this.btn_escanear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_escanear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_escanear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_escanear.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_escanear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_escanear.Location = new System.Drawing.Point(283, 914);
+            this.btn_escanear.Location = new System.Drawing.Point(279, 909);
             this.btn_escanear.Margin = new System.Windows.Forms.Padding(4);
             this.btn_escanear.Name = "btn_escanear";
-            this.btn_escanear.Size = new System.Drawing.Size(373, 46);
+            this.btn_escanear.Size = new System.Drawing.Size(439, 51);
             this.btn_escanear.TabIndex = 295;
             this.btn_escanear.Text = "Escanear";
             this.btn_escanear.UseVisualStyleBackColor = false;
@@ -460,6 +497,7 @@
             this.combo_filtro_articulos.Name = "combo_filtro_articulos";
             this.combo_filtro_articulos.Size = new System.Drawing.Size(340, 33);
             this.combo_filtro_articulos.TabIndex = 308;
+            this.combo_filtro_articulos.SelectedIndexChanged += new System.EventHandler(this.combo_filtro_articulos_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -470,7 +508,7 @@
             this.label4.Location = new System.Drawing.Point(1626, 93);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(229, 31);
+            this.label4.Size = new System.Drawing.Size(183, 25);
             this.label4.TabIndex = 311;
             this.label4.Text = "Perfumes en Stock:";
             // 
@@ -487,50 +525,13 @@
             this.combo_filtro_stock.Size = new System.Drawing.Size(322, 33);
             this.combo_filtro_stock.TabIndex = 310;
             // 
-            // nombre
-            // 
-            this.nombre.FillWeight = 125F;
-            this.nombre.HeaderText = "Nombre del perfume";
-            this.nombre.MinimumWidth = 6;
-            this.nombre.Name = "nombre";
-            // 
-            // marca
-            // 
-            this.marca.FillWeight = 125F;
-            this.marca.HeaderText = "Marca";
-            this.marca.MinimumWidth = 6;
-            this.marca.Name = "marca";
-            // 
-            // Genero
-            // 
-            this.Genero.FillWeight = 50F;
-            this.Genero.HeaderText = "Genero";
-            this.Genero.MinimumWidth = 6;
-            this.Genero.Name = "Genero";
-            // 
-            // precio
-            // 
-            this.precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.precio.FillWeight = 50F;
-            this.precio.HeaderText = "Precio ($)";
-            this.precio.MinimumWidth = 6;
-            this.precio.Name = "precio";
-            this.precio.Width = 134;
-            // 
-            // agregar
-            // 
-            this.agregar.FillWeight = 50F;
-            this.agregar.HeaderText = "";
-            this.agregar.MinimumWidth = 6;
-            this.agregar.Name = "agregar";
-            // 
             // FormInicioAutoconsulta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(1636, 786);
+            this.ClientSize = new System.Drawing.Size(2045, 978);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.combo_filtro_stock);
             this.Controls.Add(this.label3);
