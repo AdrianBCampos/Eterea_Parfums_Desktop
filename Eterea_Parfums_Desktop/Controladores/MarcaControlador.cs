@@ -41,7 +41,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         //GET ONE ByName
         public static Marca getByName(string nombre)
         {
-            Marca pais = new Marca();
+            Marca marca = new Marca();
             string query = "select * from dbo.marca where " +
                 "nombre = @nombre;";
 
@@ -55,7 +55,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
                 while (r.Read())
                 {
-                    pais = new Marca(r.GetInt32(0), r.GetString(1));
+                    marca = new Marca(r.GetInt32(0), r.GetString(1));
                 }
                 r.Close();
                 DB_Controller.connection.Close();
@@ -66,7 +66,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                 Trace.Write("Error al consultar la DB: " + e.Message);
 
             }
-            return pais;
+            return marca;
         }
 
         //GET ONE ById

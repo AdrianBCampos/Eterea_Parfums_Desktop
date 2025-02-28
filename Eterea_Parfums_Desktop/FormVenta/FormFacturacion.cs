@@ -72,10 +72,28 @@ namespace Eterea_Parfums_Desktop
             this.Controls.Add(txt_scan_factura);
 
             // Suscribirse al evento global para recibir códigos de barras
-            BarcodeManager.BarcodeReceived += SetBarcodeText;
+            //BarcodeManager.BarcodeReceived += SetBarcodeText;
 
         }
 
+
+
+        //Metodo para ingresar el codigo de barras escaneado directamente en txt_scan_factura
+
+        public void ForzarIngresoEnScanFactura(string barcode)
+        {
+            if (InvokeRequired)
+            {
+                Invoke((MethodInvoker)(() => txt_scan_factura.Text = barcode));
+            }
+            else
+            {
+                txt_scan_factura.Text = barcode;
+            }
+        }
+
+
+        /*
         private void SetBarcodeText(string barcode)
         {
             if (InvokeRequired)
@@ -87,6 +105,8 @@ namespace Eterea_Parfums_Desktop
                 txt_scan_factura.Text = barcode;
             }
         }
+        */
+
 
         private void Facturacion_Load(object sender, EventArgs e)
         {

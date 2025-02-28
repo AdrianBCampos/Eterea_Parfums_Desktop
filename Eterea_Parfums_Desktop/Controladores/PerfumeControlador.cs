@@ -10,6 +10,12 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Perfume> getAll()
         {
             List<Perfume> lista_perfumes = new List<Perfume>();
+
+            Marca marca = new Marca();
+            TipoDePerfume tipo_de_perfume = new TipoDePerfume();
+            Genero genero = new Genero();
+            Pais pais = new Pais();
+
             string query = "select * from dbo.perfume;";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             try
@@ -20,16 +26,26 @@ namespace Eterea_Parfums_Desktop.Controladores
                 while (r.Read())
                 {
 
-                    Marca marca = new Marca(r.GetInt32(2), null);
-                    TipoDePerfume tipo_de_perfume = new TipoDePerfume(r.GetInt32(4), null);
-                    Genero genero = new Genero(r.GetInt32(5), null);
-                    Pais pais = new Pais(r.GetInt32(7), null);
+                    /* 
+                     Marca marca = new Marca(r.GetInt32(2), null);
+                     TipoDePerfume tipo_de_perfume = new TipoDePerfume(r.GetInt32(4), null);
+                     Genero genero = new Genero(r.GetInt32(5), null);
+                     Pais pais = new Pais(r.GetInt32(7), null);
+                    */
+                    marca.id = r.GetInt32(2);
+                    tipo_de_perfume.id = r.GetInt32(4);
+                    genero.id = r.GetInt32(5);
+                    pais.id = r.GetInt32(7);
 
+                    Marca marcaOb = new Marca(marca.id, "");
+                    TipoDePerfume tipo_de_perfumeOb = new TipoDePerfume(tipo_de_perfume.id, "");
+                    Genero generoOb = new Genero(genero.id, "");
+                    Pais paisOb = new Pais(pais.id, "");
 
                     if (r.GetInt32(13) == 1)
                     {
-                        lista_perfumes.Add(new Perfume(r.GetInt32(0), r.GetString(1), marca, r.GetString(3),
-                        tipo_de_perfume, genero, r.GetInt32(6), pais,
+                        lista_perfumes.Add(new Perfume(r.GetInt32(0), r.GetString(1), marcaOb, r.GetString(3),
+                        tipo_de_perfumeOb, generoOb, r.GetInt32(6), paisOb,
                         r.GetInt32(8), r.GetInt32(9), r.GetString(10), r.GetInt32(11), r.GetDouble(12),
                         r.GetInt32(13), r.GetString(14), r.GetString(15)));
                     }

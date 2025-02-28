@@ -86,6 +86,7 @@
             this.txt_codigo_barras.Name = "txt_codigo_barras";
             this.txt_codigo_barras.Size = new System.Drawing.Size(232, 26);
             this.txt_codigo_barras.TabIndex = 302;
+            this.txt_codigo_barras.TextChanged += new System.EventHandler(this.txt_codigo_barras_TextChanged);
             this.txt_codigo_barras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_codigo_barras_KeyPress);
             // 
             // pictureBox2
@@ -123,7 +124,7 @@
             this.label1.TabIndex = 305;
             this.label1.Text = "(si lo ingresa manualmente, presione \"Enter\" al finalizar)";
             // 
-            // Escanear
+            // FormEscanear
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -137,9 +138,8 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pictureBox1);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "Escanear";
+            this.Name = "FormEscanear";
             this.Text = "Escanear";
-            this.Load += new System.EventHandler(this.Escanear_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);

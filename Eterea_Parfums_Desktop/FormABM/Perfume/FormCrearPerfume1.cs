@@ -88,10 +88,10 @@ namespace Eterea_Parfums_Desktop
         private void CargarMarcas()
         {
             var marcas = MarcaControlador.getAll();
-            combo_genero.Items.Clear();
+            combo_marca.Items.Clear();
             foreach (Marca marca in marcas)
             {
-                combo_genero.Items.Add(marca.nombre.ToString());
+                combo_marca.Items.Add(marca.nombre.ToString());
             }
         }
 
