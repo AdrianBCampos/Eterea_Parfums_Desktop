@@ -81,6 +81,18 @@ namespace Eterea_Parfums_Desktop
             combo_filtro_marca.DrawMode = DrawMode.OwnerDrawFixed;
             combo_filtro_marca.DrawItem += comboBoxdiseño_DrawItem;
             combo_filtro_marca.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_filtro_articulos.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_filtro_articulos.DrawItem += comboBoxdiseño_DrawItem;
+            combo_filtro_articulos.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_filtro_stock.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_filtro_stock.DrawItem += comboBoxdiseño_DrawItem;
+            combo_filtro_stock.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_filtro_aroma.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_filtro_aroma.DrawItem += comboBoxdiseño_DrawItem;
+            combo_filtro_aroma.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void txt_scan_TextChanged(object sender, EventArgs e)
@@ -121,9 +133,6 @@ namespace Eterea_Parfums_Desktop
                 }
             }
         }
-
-
-
 
 
         private void CargarMarcas()
@@ -388,21 +397,6 @@ namespace Eterea_Parfums_Desktop
             e.DrawFocusRectangle();
         }
 
-        private void btn_iniciar_sesion_Click(object sender, EventArgs e)
-        {
-            FormLogin login = new FormLogin();
-            login.Show();
-            this.Hide();
-        }
-
-
-
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void btn_escanear_Click(object sender, EventArgs e)
         {
             /* Escanear escanear = new Escanear();
@@ -415,6 +409,7 @@ namespace Eterea_Parfums_Desktop
             txt_scan.Focus(); // Poner el cursor en el TextBox
             lbl_codigoBarras.Visible = true;
         }
+
 
         // Evento para capturar el código escaneado
         private void txt_scan_KeyPress(object sender, KeyPressEventArgs e)

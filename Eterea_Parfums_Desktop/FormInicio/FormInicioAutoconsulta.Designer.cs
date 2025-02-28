@@ -56,11 +56,11 @@
             this.txt_scan = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.combo_filtro_aroma = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.combo_filtro_articulos = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.combo_filtro_stock = new System.Windows.Forms.ComboBox();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -421,19 +421,19 @@
             this.label2.TabIndex = 307;
             this.label2.Text = "Filtrar por Aroma:";
             // 
-            // comboBox1
+            // combo_filtro_aroma
             // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            this.comboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.ForeColor = System.Drawing.SystemColors.Window;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(1575, 215);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(403, 31);
-            this.comboBox1.TabIndex = 306;
+            this.combo_filtro_aroma.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            this.combo_filtro_aroma.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.combo_filtro_aroma.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.combo_filtro_aroma.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_filtro_aroma.ForeColor = System.Drawing.SystemColors.Window;
+            this.combo_filtro_aroma.FormattingEnabled = true;
+            this.combo_filtro_aroma.Location = new System.Drawing.Point(1575, 215);
+            this.combo_filtro_aroma.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_filtro_aroma.Name = "combo_filtro_aroma";
+            this.combo_filtro_aroma.Size = new System.Drawing.Size(403, 31);
+            this.combo_filtro_aroma.TabIndex = 306;
             // 
             // label3
             // 
@@ -448,18 +448,18 @@
             this.label3.TabIndex = 309;
             this.label3.Text = "Mostrar todos los Articulos:";
             // 
-            // comboBox2
+            // combo_filtro_articulos
             // 
-            this.comboBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.ForeColor = System.Drawing.SystemColors.Window;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(1099, 122);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(340, 33);
-            this.comboBox2.TabIndex = 308;
+            this.combo_filtro_articulos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            this.combo_filtro_articulos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.combo_filtro_articulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_filtro_articulos.ForeColor = System.Drawing.SystemColors.Window;
+            this.combo_filtro_articulos.FormattingEnabled = true;
+            this.combo_filtro_articulos.Location = new System.Drawing.Point(1099, 122);
+            this.combo_filtro_articulos.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_filtro_articulos.Name = "combo_filtro_articulos";
+            this.combo_filtro_articulos.Size = new System.Drawing.Size(340, 33);
+            this.combo_filtro_articulos.TabIndex = 308;
             // 
             // label4
             // 
@@ -474,18 +474,18 @@
             this.label4.TabIndex = 311;
             this.label4.Text = "Perfumes en Stock:";
             // 
-            // comboBox3
+            // combo_filtro_stock
             // 
-            this.comboBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            this.comboBox3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.ForeColor = System.Drawing.SystemColors.Window;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(1631, 122);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(322, 33);
-            this.comboBox3.TabIndex = 310;
+            this.combo_filtro_stock.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            this.combo_filtro_stock.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.combo_filtro_stock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_filtro_stock.ForeColor = System.Drawing.SystemColors.Window;
+            this.combo_filtro_stock.FormattingEnabled = true;
+            this.combo_filtro_stock.Location = new System.Drawing.Point(1631, 122);
+            this.combo_filtro_stock.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_filtro_stock.Name = "combo_filtro_stock";
+            this.combo_filtro_stock.Size = new System.Drawing.Size(322, 33);
+            this.combo_filtro_stock.TabIndex = 310;
             // 
             // nombre
             // 
@@ -532,11 +532,11 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(1636, 786);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.combo_filtro_stock);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.combo_filtro_articulos);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.combo_filtro_aroma);
             this.Controls.Add(this.txt_scan);
             this.Controls.Add(this.lbl_codigoBarras);
             this.Controls.Add(this.label1);
@@ -603,11 +603,11 @@
         public System.Windows.Forms.TextBox txt_scan;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox combo_filtro_aroma;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox combo_filtro_articulos;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox combo_filtro_stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn marca;
         private System.Windows.Forms.DataGridViewTextBoxColumn Genero;
