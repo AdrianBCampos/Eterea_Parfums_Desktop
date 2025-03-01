@@ -207,7 +207,7 @@ namespace Eterea_Parfums_Desktop
             }
 
 
-            Marca marca = MarcaControlador.getByName(combo_genero.SelectedItem.ToString());
+            Marca marca = MarcaControlador.getByName(combo_marca.SelectedItem.ToString());
             TipoDePerfume tipo_de_perfume = TipoDePerfumeControlador.getByName(combo_tipo_de_perfume.SelectedItem.ToString());
             Genero genero = GeneroControlador.getByName(combo_genero.SelectedItem.ToString());
             Console.WriteLine("Genero: " + genero.id);

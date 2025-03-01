@@ -72,6 +72,7 @@ namespace Eterea_Parfums_Desktop
             ActualizarDescuentosYCuotas();
 
             lbl_dniE.Hide();
+            txt_scan_factura.Hide();
             
             
 
@@ -138,42 +139,13 @@ namespace Eterea_Parfums_Desktop
             // Asignar botones a las celdas de la nueva fila
             Factura.Rows[rowIndex].Cells[2] = new DataGridViewButtonCell() { Value = "➕" };
             Factura.Rows[rowIndex].Cells[3] = new DataGridViewButtonCell() { Value = "➖" };
-            Factura.Rows[rowIndex].Cells[7] = new DataGridViewButtonCell() { Value = "🗑" };
+            Factura.Rows[rowIndex].Cells[7] = new DataGridViewButtonCell() { Value = "Eliminar" };// "🗑" 
 
             ActualizarTotales();
         }
 
 
-        /*
-
-        //Metodo para ingresar el codigo de barras escaneado directamente en txt_scan_factura
-
-        public void ForzarIngresoEnScanFactura(string barcode)
-        {
-            if (InvokeRequired)
-            {
-                Invoke((MethodInvoker)(() => txt_scan_factura.Text = barcode));
-            }
-            else
-            {
-                txt_scan_factura.Text = barcode;
-            }
-        }
-        */
-
-        /*
-        private void SetBarcodeText(string barcode)
-        {
-            if (InvokeRequired)
-            {
-                Invoke((MethodInvoker)(() => txt_scan_factura.Text = barcode));
-            }
-            else
-            {
-                txt_scan_factura.Text = barcode;
-            }
-        }
-        */
+     
         private void FormFacturacion_Load(object sender, EventArgs e)
         {
             txt_numero_caja.Text = NumeroCaja;
@@ -202,14 +174,7 @@ namespace Eterea_Parfums_Desktop
 
 
 
-        /*
-        private void Facturacion_Load(object sender, EventArgs e)
-        {
-            txt_numero_caja.Text = NumeroCaja;
-            txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
-
-        }
-        */
+      
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -327,85 +292,7 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
-        /*
-        private void dataGridViewFactura_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex == 7)
-            {
-                Factura.Rows.RemoveAt(e.RowIndex);
-                ActualizarTotales();
-                
-                totalFactura();
-                CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text));
-
-                desc();
-                sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
-                
-    }
-            else if (e.RowIndex >= 0 && e.ColumnIndex == 2)
-            {
-                int cant = int.Parse(Factura.Rows[e.RowIndex].Cells[1].Value.ToString());
-                Factura.Rows[e.RowIndex].Cells[1].Value = cant + 1;
-
-                int rowIndex = e.RowIndex;
-
-                int valorMultiplicador = Convert.ToInt32(Factura.Rows[rowIndex].Cells[1].Value);
-                double precio = Convert.ToDouble(Factura.Rows[rowIndex].Cells[5].Value);
-
-
-                Factura.Rows[e.RowIndex].Cells[6].Value = (precio * valorMultiplicador).ToString();
-
-                ActualizarTotales();
-
-                //Meti este codigo dentro del metodo ActualizarTotales para no repetir codigo
-                /*totalFactura();
-                CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text));
-
-                desc();
-                sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
-                
-            }
-            else if (e.RowIndex >= 0 && e.ColumnIndex == 3)
-            {
-                int cant = int.Parse(Factura.Rows[e.RowIndex].Cells[1].Value.ToString());
-                if (int.Parse(Factura.Rows[e.RowIndex].Cells[1].Value.ToString()) > 1)
-                {
-                    Factura.Rows[e.RowIndex].Cells[1].Value = cant - 1;
-
-                    int rowIndex = e.RowIndex;
-
-                    int valorMultiplicador = Convert.ToInt32(Factura.Rows[rowIndex].Cells[1].Value);
-                    double precio = Convert.ToDouble(Factura.Rows[rowIndex].Cells[5].Value);
-
-                    Factura.Rows[e.RowIndex].Cells[6].Value = (precio * valorMultiplicador).ToString();
-
-                    ActualizarTotales();
-                    //Meti este codigo dentro del metodo ActualizarTotales para no repetir codigo
-                    /*
-                    totalFactura();
-                    CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text));
-
-                    desc();
-                    sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
-                    
-                }
-                else
-                {
-                    Factura.Rows.RemoveAt(e.RowIndex);
-                    ActualizarTotales();
-                    /*
-                    totalFactura();
-                    CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text));
-
-                    desc();
-                    sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
-                    
-
-                }
-
-            }
-        }
-        */
+        
         private void totalFactura()
         {
             double sumaPrecios = 0; // Usar decimal para los precios
@@ -530,39 +417,7 @@ namespace Eterea_Parfums_Desktop
 
 
 
-/*
-public void ActualizarTotales()
-{
-    totalFactura();
 
-    float subtotal, recargo, descuento, iva;
-
-    desc();
-    CalcularMontoRecargo();
-    // Verificamos que los valores sean válidos para evitar errores de conversión
-    if (!float.TryParse(txt_subtotal.Text, out subtotal)) subtotal = 0;
-    if (!float.TryParse(txt_monto_recargo.Text, out recargo)) recargo = 0;
-    if (!float.TryParse(txt_monto_descuento.Text, out descuento)) descuento = 0;
-
-    if (!float.TryParse(txt_subtotal.Text, out subtotal) || subtotal == 0)
-    {
-        // Si el subtotal es 0, poner todos los montos a 0
-        txt_monto_recargo.Text = "0,00";
-        txt_monto_descuento.Text = "0,00";
-        txt_iva.Text = "0,00";
-        txt_total.Text = "0,00";
-        return; // Salir del método sin hacer más cálculos
-    }
-
-
-//CalcularImporteRecargo(subtotal, recargo);
-
-//CalcularIVA(subtotal, recargo, descuento);
-//if (!float.TryParse(txt_iva.Text, out iva)) iva = 0;
-sumaFinal(subtotal, recargo, descuento);
-            VerificarCondicionIVA(subtotal, recargo, descuento);
-        }
-        */
 
         private float CalcularIVA(float subtotal, float recargo, float descuento)
         {
@@ -859,61 +714,7 @@ sumaFinal(subtotal, recargo, descuento);
             
         }
 
-        /*
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            // Verifica si la entrada proviene del escáner (normalmente se envía como una serie rápida de teclas)
-            if (EsEntradaDeScanner(keyData))
-            {
-                // Redirige el texto capturado al txt_scan
-                txt_scan_factura.Focus();
-                txt_scan_factura.Text = codigoBarrasBuffer.ToString();
-                ProcesarCodigoBarras(txt_scan_factura.Text);
-                codigoBarrasBuffer.Clear();
-                return true; // Indica que hemos manejado la entrada y no debe procesarse en otro lado
-            }
-
-            return base.ProcessCmdKey(ref msg, keyData);
-        }
-
-        private bool EsEntradaDeScanner(Keys keyData)
-        {
-            // Si el tiempo entre teclas es muy corto, asumimos que provienen del escáner
-            if ((DateTime.Now - ultimaLectura).TotalMilliseconds > TIEMPO_ENTRE_LECTURAS_MS)
-            {
-                codigoBarrasBuffer.Clear(); // Reinicia el buffer si ha pasado demasiado tiempo
-            }
-
-            ultimaLectura = DateTime.Now;
-
-            // Evita capturar teclas de función o combinaciones especiales
-            if (keyData == Keys.Enter)
-            {
-                return true;
-            }
-
-            // Captura caracteres y los almacena en el buffer
-            char caracter = (char)keyData;
-            if (char.IsLetterOrDigit(caracter) || char.IsPunctuation(caracter))
-            {
-                codigoBarrasBuffer.Append(caracter);
-                return false; // No ha terminado el escaneo
-            }
-
-            return false;
-        }
-
-        private void ProcesarCodigoBarras(string codigo)
-        {
-            if (!string.IsNullOrEmpty(codigo))
-            {
-                // Aquí puedes manejar el código de barras escaneado
-                MessageBox.Show($"Código escaneado: {codigo}");
-            }
-        }
-    }
-
-        */
+        
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Enter)

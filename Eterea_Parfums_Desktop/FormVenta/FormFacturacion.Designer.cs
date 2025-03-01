@@ -324,6 +324,7 @@
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.Factura.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.Factura.RowTemplate.Height = 30;
             this.Factura.Size = new System.Drawing.Size(712, 251);
             this.Factura.TabIndex = 296;
             // 

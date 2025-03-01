@@ -303,12 +303,11 @@ namespace Eterea_Parfums_Desktop
                 facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells[0].Value = perfumeSeleccionado.id.ToString();
                 facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Nombre_Perfume"].Value = perfumeSeleccionado.nombre.ToString();
                 facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Cantidad"].Value = 1;
-                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells[2].Value = "+";
-                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells[3].Value = "-";
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells[2].Value = "➕";
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells[3].Value = "➖";
                 facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Precio_Unitario"].Value = perfumeSeleccionado.precio_en_pesos.ToString();
                 facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Tot"].Value = perfumeSeleccionado.precio_en_pesos.ToString();
-                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Eliminar"].Value = "Eliminar";
-
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Eliminar"].Value = "Eliminar"; // "🗑" 
                 /*   // Recalcular el total y otros valores necesarios
                    totalFactura();
                    CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_recargo.Text));
