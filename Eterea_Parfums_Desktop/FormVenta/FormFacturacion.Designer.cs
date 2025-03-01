@@ -326,7 +326,6 @@
             this.Factura.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.Factura.Size = new System.Drawing.Size(712, 251);
             this.Factura.TabIndex = 296;
-            this.Factura.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewFactura_CellContentClick);
             // 
             // Id_Perfume
             // 

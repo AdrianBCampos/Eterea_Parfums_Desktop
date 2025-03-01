@@ -21,11 +21,14 @@ namespace Eterea_Parfums_Desktop
         private DateTime ultimaLectura = DateTime.Now;
         private const int TIEMPO_ENTRE_LECTURAS_MS = 100;
 
+        
+
         public FormFacturacion()
         {
             InitializeComponent();
 
            
+
             string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";
             img_logo.Image = System.Drawing.Image.FromFile(rutaCompletaImagen);
 
@@ -290,11 +293,14 @@ namespace Eterea_Parfums_Desktop
             }
             else if (e.ColumnIndex == 2) // Aumentar cantidad
             {
-                if (int.TryParse(Factura.Rows[e.RowIndex].Cells[1].Value?.ToString(), out int cantidad))
+                if (Factura.Rows[e.RowIndex].Cells[1].Value != null &&
+                    int.TryParse(Factura.Rows[e.RowIndex].Cells[1].Value.ToString(), out int cantidad))
                 {
-                    cantidad++;
+                    cantidad = cantidad + 1;
                     Factura.Rows[e.RowIndex].Cells[1].Value = cantidad;
-                    if (double.TryParse(Factura.Rows[e.RowIndex].Cells[5].Value?.ToString(), out double precio))
+
+                    if (Factura.Rows[e.RowIndex].Cells[5].Value != null &&
+                        double.TryParse(Factura.Rows[e.RowIndex].Cells[5].Value.ToString(), out double precio))
                     {
                         Factura.Rows[e.RowIndex].Cells[6].Value = cantidad * precio;
                         ActualizarTotales();
@@ -305,7 +311,7 @@ namespace Eterea_Parfums_Desktop
             {
                 if (int.TryParse(Factura.Rows[e.RowIndex].Cells[1].Value?.ToString(), out int cantidad) && cantidad > 1)
                 {
-                    cantidad--;
+                    cantidad = cantidad -1;
                     Factura.Rows[e.RowIndex].Cells[1].Value = cantidad;
                     if (double.TryParse(Factura.Rows[e.RowIndex].Cells[5].Value?.ToString(), out double precio))
                     {
