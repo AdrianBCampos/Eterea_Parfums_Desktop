@@ -395,8 +395,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             List<Perfume> perfumesSimilares = new List<Perfume>();
 
             string query = @"
-                            DECLARE @PerfumeID INT = @idPerfume;
-                            SELECT 
+                            SELECT TOP 10
                                 p.id, 
                                 p.codigo,
                                 p.marca_id, 
@@ -413,23 +412,38 @@ namespace Eterea_Parfums_Desktop.Controladores
                                 p.activo, 
                                 p.imagen1, 
                                 p.imagen2,
-                                COUNT(DISTINCT np.nota_con_tipo_de_nota_id) AS notas_comunes,
-                                COUNT(DISTINCT pta.tipo_de_aroma_id) AS aromas_comunes
+
+                                COUNT(DISTINCT CASE 
+                                    WHEN ntn.tipo_de_nota_id IN (2, 3) THEN np.nota_con_tipo_de_nota_id 
+                                    ELSE NULL 
+                                END) AS notas_comunes, -- Solo cuenta notas de corazón (id = 2) y fondo (id = 3)
+        
+                                COUNT(DISTINCT pta.tipo_de_aroma_id) AS aromas_comunes,
+                                SUM(s.cantidad) AS total_stock -- Suma la cantidad total en stock
                             FROM dbo.perfume p
                             JOIN dbo.notas_del_perfume np ON p.id = np.perfume_id
                             JOIN dbo.nota_con_tipo_de_nota ntn ON np.nota_con_tipo_de_nota_id = ntn.id
                             LEFT JOIN dbo.aroma_del_perfume pta ON p.id = pta.perfume_id
+                            JOIN dbo.Stock s ON p.id = s.perfume_id
                             WHERE np.nota_con_tipo_de_nota_id IN (
-                                SELECT nota_con_tipo_de_nota_id FROM dbo.notas_del_perfume WHERE perfume_id = @PerfumeID
+                                SELECT nota_con_tipo_de_nota_id
+                                FROM dbo.notas_del_perfume
+                                WHERE perfume_id = @idPerfume
                             )
-                            AND p.id <> @PerfumeID
+                            AND p.id <> @idPerfume
                             AND pta.tipo_de_aroma_id IN (
-                                SELECT tipo_de_aroma_id FROM dbo.aroma_del_perfume WHERE perfume_id = @PerfumeID
+                                SELECT tipo_de_aroma_id
+                                FROM dbo.aroma_del_perfume
+                                WHERE perfume_id = @idPerfume
                             )
-                            GROUP BY p.id, p.codigo, p.marca_id, p.nombre, p.tipo_de_perfume_id, p.genero_id, 
-                                p.presentacion_ml, p.pais_id, p.spray, p.recargable, p.descripcion, p.anio_de_lanzamiento, 
-                                p.precio_en_pesos, p.activo, p.imagen1, p.imagen2
+                            AND p.activo = 1  -- Solo perfumes activos
+                            AND s.cantidad > 0  -- Solo perfumes con stock disponible
+                            GROUP BY p.id, p.codigo, p.marca_id, p.nombre, p.tipo_de_perfume_id, 
+                                     p.genero_id, p.presentacion_ml, p.pais_id, p.spray, p.recargable, 
+                                     p.descripcion, p.anio_de_lanzamiento, p.precio_en_pesos, p.activo, 
+                                     p.imagen1, p.imagen2
                             ORDER BY notas_comunes DESC, aromas_comunes DESC;";
+
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@idPerfume", perfume.id);
