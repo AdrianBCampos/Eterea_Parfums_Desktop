@@ -17,6 +17,10 @@ namespace Eterea_Parfums_Desktop
         public string NumeroCaja { get; set; }
         Cliente clientefactura = new Cliente();
 
+        private StringBuilder codigoBarrasBuffer = new StringBuilder();
+        private DateTime ultimaLectura = DateTime.Now;
+        private const int TIEMPO_ENTRE_LECTURAS_MS = 100;
+
         public FormFacturacion()
         {
             InitializeComponent();
@@ -29,9 +33,11 @@ namespace Eterea_Parfums_Desktop
 
             this.Load += FormFacturacion_Load;
             txt_scan_factura.Leave += Txt_scan_factura_Leave;
-            txt_scan_factura.KeyDown += Txt_scan_factura_KeyDown;
+            txt_scan_factura.TextChanged += Txt_scan_factura_TextChanged;
+            Factura.CellContentClick += DataGridViewFactura_CellContentClick;
+        
 
-            combo_forma_pago.SelectedIndexChanged -= combo_forma_pago_SelectedIndexChanged;
+        combo_forma_pago.SelectedIndexChanged -= combo_forma_pago_SelectedIndexChanged;
 
             combo_forma_pago.Items.Clear();
             combo_forma_pago.Items.Add("Efectivo");
@@ -72,17 +78,29 @@ namespace Eterea_Parfums_Desktop
 
         }
 
-        private void Txt_scan_factura_KeyDown(object sender, KeyEventArgs e)
+        private void Txt_scan_factura_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if ((DateTime.Now - ultimaLectura).TotalMilliseconds > TIEMPO_ENTRE_LECTURAS_MS)
             {
-                string codigo = txt_scan_factura.Text.Trim();
+                codigoBarrasBuffer.Clear();
+            }
+
+            ultimaLectura = DateTime.Now;
+
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                string codigo = codigoBarrasBuffer.ToString().Trim();
                 if (!string.IsNullOrEmpty(codigo))
                 {
                     ProcesarCodigoBarras(codigo);
                     txt_scan_factura.Clear();
+                    codigoBarrasBuffer.Clear();
                 }
-                e.Handled = true;
+            }
+            else
+            {
+                codigoBarrasBuffer.Append(e.KeyChar);
             }
         }
 
@@ -120,13 +138,6 @@ namespace Eterea_Parfums_Desktop
             Factura.Rows[rowIndex].Cells[7] = new DataGridViewButtonCell() { Value = "🗑" };
 
             ActualizarTotales();
-        }
-
-
-
-        private void txt_scan_factura_Leave(object sender, EventArgs e)
-        {
-            txt_scan_factura.Focus();
         }
 
 
@@ -172,7 +183,21 @@ namespace Eterea_Parfums_Desktop
             txt_scan_factura.Focus(); // Si pierde el foco, volver a asignárselo automáticamente
         }
 
-      
+        private void Txt_scan_factura_TextChanged(object sender, EventArgs e)
+        {
+            if ((DateTime.Now - ultimaLectura).TotalMilliseconds > TIEMPO_ENTRE_LECTURAS_MS)
+            {
+                string codigo = txt_scan_factura.Text.Trim();
+                if (!string.IsNullOrEmpty(codigo))
+                {
+                    ProcesarCodigoBarras(codigo);
+                    txt_scan_factura.Clear();
+                }
+            }
+            ultimaLectura = DateTime.Now;
+        }
+
+
 
         /*
         private void Facturacion_Load(object sender, EventArgs e)
@@ -253,47 +278,48 @@ namespace Eterea_Parfums_Desktop
 
         private void DataGridViewFactura_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
+            if (e.RowIndex < 0 || e.RowIndex >= Factura.Rows.Count) return; // Evita el error de índice fuera de rango
 
-            if (Factura.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            if (e.ColumnIndex == 7) // Eliminar fila
             {
-                if (e.ColumnIndex == 7) // Botón "🗑" (Eliminar fila)
+                if (Factura.Rows.Count > 0 && e.RowIndex < Factura.Rows.Count)
                 {
                     Factura.Rows.RemoveAt(e.RowIndex);
                     ActualizarTotales();
                 }
-                else if (e.ColumnIndex == 2) // Botón "➕" (Aumentar cantidad)
+            }
+            else if (e.ColumnIndex == 2) // Aumentar cantidad
+            {
+                if (int.TryParse(Factura.Rows[e.RowIndex].Cells[1].Value?.ToString(), out int cantidad))
                 {
-                    if (int.TryParse(Factura.Rows[e.RowIndex].Cells[1].Value?.ToString(), out int cantidad))
+                    cantidad++;
+                    Factura.Rows[e.RowIndex].Cells[1].Value = cantidad;
+                    if (double.TryParse(Factura.Rows[e.RowIndex].Cells[5].Value?.ToString(), out double precio))
                     {
-                        Factura.Rows[e.RowIndex].Cells[1].Value = cantidad + 1;
-                        if (double.TryParse(Factura.Rows[e.RowIndex].Cells[5].Value?.ToString(), out double precio))
-                        {
-                            Factura.Rows[e.RowIndex].Cells[6].Value = (cantidad + 1) * precio;
-                            ActualizarTotales();
-                        }
-                    }
-                }
-                else if (e.ColumnIndex == 3) // Botón "➖" (Disminuir cantidad o eliminar fila)
-                {
-                    if (int.TryParse(Factura.Rows[e.RowIndex].Cells[1].Value?.ToString(), out int cantidad) && cantidad > 1)
-                    {
-                        Factura.Rows[e.RowIndex].Cells[1].Value = cantidad - 1;
-                        if (double.TryParse(Factura.Rows[e.RowIndex].Cells[5].Value?.ToString(), out double precio))
-                        {
-                            Factura.Rows[e.RowIndex].Cells[6].Value = (cantidad - 1) * precio;
-                            ActualizarTotales();
-                        }
-                    }
-                    else
-                    {
-                        Factura.Rows.RemoveAt(e.RowIndex);
+                        Factura.Rows[e.RowIndex].Cells[6].Value = cantidad * precio;
                         ActualizarTotales();
                     }
                 }
             }
+            else if (e.ColumnIndex == 3) // Disminuir cantidad o eliminar fila
+            {
+                if (int.TryParse(Factura.Rows[e.RowIndex].Cells[1].Value?.ToString(), out int cantidad) && cantidad > 1)
+                {
+                    cantidad--;
+                    Factura.Rows[e.RowIndex].Cells[1].Value = cantidad;
+                    if (double.TryParse(Factura.Rows[e.RowIndex].Cells[5].Value?.ToString(), out double precio))
+                    {
+                        Factura.Rows[e.RowIndex].Cells[6].Value = cantidad * precio;
+                        ActualizarTotales();
+                    }
+                }
+                else if (Factura.Rows.Count > 0 && e.RowIndex < Factura.Rows.Count)
+                {
+                    Factura.Rows.RemoveAt(e.RowIndex);
+                    ActualizarTotales();
+                }
+            }
         }
-
 
         /*
         private void dataGridViewFactura_CellContentClick(object sender, DataGridViewCellEventArgs e)

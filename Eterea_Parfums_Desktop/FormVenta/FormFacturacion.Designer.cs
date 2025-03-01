@@ -825,7 +825,6 @@
             this.txt_scan_factura.Name = "txt_scan_factura";
             this.txt_scan_factura.Size = new System.Drawing.Size(149, 20);
             this.txt_scan_factura.TabIndex = 342;
-            this.txt_scan_factura.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_scan_factura_KeyDown);
             this.txt_scan_factura.Leave += new System.EventHandler(this.Txt_scan_factura_Leave);
             // 
             // FormFacturacion
