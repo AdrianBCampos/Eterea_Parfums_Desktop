@@ -42,11 +42,6 @@
             this.lbl_paginacion_Info = new System.Windows.Forms.Label();
             this.lbl_numero_pagina = new System.Windows.Forms.Label();
             this.dataGridViewConsultas = new System.Windows.Forms.DataGridView();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.agregar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.txt_nombre_perfume = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.img_perfume = new System.Windows.Forms.PictureBox();
@@ -59,6 +54,12 @@
             this.lbl_filtro_marca = new System.Windows.Forms.Label();
             this.combo_filtro_marca = new System.Windows.Forms.ComboBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.Imagen = new System.Windows.Forms.DataGridViewImageColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.agregar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsultas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -73,10 +74,9 @@
             // 
             this.richTextBox_promo1.BackColor = System.Drawing.Color.White;
             this.richTextBox_promo1.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.richTextBox_promo1.Location = new System.Drawing.Point(402, 97);
-            this.richTextBox_promo1.Margin = new System.Windows.Forms.Padding(4);
+            this.richTextBox_promo1.Location = new System.Drawing.Point(302, 79);
             this.richTextBox_promo1.Name = "richTextBox_promo1";
-            this.richTextBox_promo1.Size = new System.Drawing.Size(0, 0);
+            this.richTextBox_promo1.Size = new System.Drawing.Size(1, 1);
             this.richTextBox_promo1.TabIndex = 332;
             this.richTextBox_promo1.Text = "";
             // 
@@ -84,9 +84,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(296, 131);
+            this.pictureBox1.Location = new System.Drawing.Point(222, 106);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(876, 359);
+            this.pictureBox1.Size = new System.Drawing.Size(657, 292);
             this.pictureBox1.TabIndex = 322;
             this.pictureBox1.TabStop = false;
             // 
@@ -96,10 +97,9 @@
             this.btn_ver_detalles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ver_detalles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ver_detalles.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_ver_detalles.Location = new System.Drawing.Point(55, 444);
-            this.btn_ver_detalles.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_ver_detalles.Location = new System.Drawing.Point(41, 361);
             this.btn_ver_detalles.Name = "btn_ver_detalles";
-            this.btn_ver_detalles.Size = new System.Drawing.Size(197, 93);
+            this.btn_ver_detalles.Size = new System.Drawing.Size(148, 76);
             this.btn_ver_detalles.TabIndex = 321;
             this.btn_ver_detalles.Text = "Volver a Detalles del Perfume";
             this.btn_ver_detalles.UseVisualStyleBackColor = false;
@@ -111,11 +111,10 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(1115, 5);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Location = new System.Drawing.Point(836, 4);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(57, 53);
+            this.button2.Size = new System.Drawing.Size(43, 43);
             this.button2.TabIndex = 317;
             this.button2.Text = "X";
             this.button2.UseVisualStyleBackColor = false;
@@ -127,10 +126,9 @@
             this.btn_posterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_posterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_posterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_posterior.Location = new System.Drawing.Point(899, 502);
-            this.btn_posterior.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_posterior.Location = new System.Drawing.Point(674, 408);
             this.btn_posterior.Name = "btn_posterior";
-            this.btn_posterior.Size = new System.Drawing.Size(42, 39);
+            this.btn_posterior.Size = new System.Drawing.Size(32, 32);
             this.btn_posterior.TabIndex = 337;
             this.btn_posterior.Text = ">>";
             this.btn_posterior.UseVisualStyleBackColor = false;
@@ -142,10 +140,9 @@
             this.btn_anterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_anterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_anterior.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_anterior.Location = new System.Drawing.Point(782, 502);
-            this.btn_anterior.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_anterior.Location = new System.Drawing.Point(586, 408);
             this.btn_anterior.Name = "btn_anterior";
-            this.btn_anterior.Size = new System.Drawing.Size(42, 39);
+            this.btn_anterior.Size = new System.Drawing.Size(32, 32);
             this.btn_anterior.TabIndex = 336;
             this.btn_anterior.Text = "<<";
             this.btn_anterior.UseVisualStyleBackColor = false;
@@ -157,10 +154,9 @@
             this.lbl_paginacion_Info.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_paginacion_Info.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_paginacion_Info.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_paginacion_Info.Location = new System.Drawing.Point(491, 514);
-            this.lbl_paginacion_Info.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_paginacion_Info.Location = new System.Drawing.Point(368, 418);
             this.lbl_paginacion_Info.Name = "lbl_paginacion_Info";
-            this.lbl_paginacion_Info.Size = new System.Drawing.Size(123, 20);
+            this.lbl_paginacion_Info.Size = new System.Drawing.Size(99, 16);
             this.lbl_paginacion_Info.TabIndex = 335;
             this.lbl_paginacion_Info.Text = "Paginacion Info";
             // 
@@ -170,10 +166,9 @@
             this.lbl_numero_pagina.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_numero_pagina.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_numero_pagina.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_numero_pagina.Location = new System.Drawing.Point(847, 508);
-            this.lbl_numero_pagina.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_numero_pagina.Location = new System.Drawing.Point(635, 413);
             this.lbl_numero_pagina.Name = "lbl_numero_pagina";
-            this.lbl_numero_pagina.Size = new System.Drawing.Size(27, 29);
+            this.lbl_numero_pagina.Size = new System.Drawing.Size(21, 24);
             this.lbl_numero_pagina.TabIndex = 334;
             this.lbl_numero_pagina.Text = "1";
             // 
@@ -202,6 +197,7 @@
             this.dataGridViewConsultas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewConsultas.ColumnHeadersHeight = 24;
             this.dataGridViewConsultas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Imagen,
             this.nombre,
             this.marca,
             this.genero,
@@ -217,8 +213,7 @@
             this.dataGridViewConsultas.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewConsultas.EnableHeadersVisualStyles = false;
             this.dataGridViewConsultas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.dataGridViewConsultas.Location = new System.Drawing.Point(312, 149);
-            this.dataGridViewConsultas.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridViewConsultas.Location = new System.Drawing.Point(234, 121);
             this.dataGridViewConsultas.Name = "dataGridViewConsultas";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
@@ -234,10 +229,155 @@
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridViewConsultas.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewConsultas.RowTemplate.Height = 65;
             this.dataGridViewConsultas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewConsultas.Size = new System.Drawing.Size(843, 322);
+            this.dataGridViewConsultas.Size = new System.Drawing.Size(632, 262);
             this.dataGridViewConsultas.TabIndex = 333;
             this.dataGridViewConsultas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewConsultas_CellContentClick_1);
+            // 
+            // txt_nombre_perfume
+            // 
+            this.txt_nombre_perfume.AutoSize = true;
+            this.txt_nombre_perfume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.txt_nombre_perfume.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_nombre_perfume.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_nombre_perfume.Location = new System.Drawing.Point(367, 11);
+            this.txt_nombre_perfume.Name = "txt_nombre_perfume";
+            this.txt_nombre_perfume.Size = new System.Drawing.Size(214, 26);
+            this.txt_nombre_perfume.TabIndex = 343;
+            this.txt_nombre_perfume.Text = "Nombre del Perfume";
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox4.Location = new System.Drawing.Point(10, 4);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(823, 43);
+            this.pictureBox4.TabIndex = 344;
+            this.pictureBox4.TabStop = false;
+            // 
+            // img_perfume
+            // 
+            this.img_perfume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.img_perfume.Location = new System.Drawing.Point(23, 67);
+            this.img_perfume.Name = "img_perfume";
+            this.img_perfume.Size = new System.Drawing.Size(181, 262);
+            this.img_perfume.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.img_perfume.TabIndex = 360;
+            this.img_perfume.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox3.Location = new System.Drawing.Point(10, 52);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(208, 291);
+            this.pictureBox3.TabIndex = 359;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox10.Location = new System.Drawing.Point(10, 348);
+            this.pictureBox10.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(208, 99);
+            this.pictureBox10.TabIndex = 361;
+            this.pictureBox10.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox7.Location = new System.Drawing.Point(222, 401);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(657, 46);
+            this.pictureBox7.TabIndex = 362;
+            this.pictureBox7.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label1.Location = new System.Drawing.Point(20, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(351, 26);
+            this.label1.TabIndex = 364;
+            this.label1.Text = "Perfumes Similares al Perfume:\r\n";
+            // 
+            // lbl_filtro_genero
+            // 
+            this.lbl_filtro_genero.AutoSize = true;
+            this.lbl_filtro_genero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_filtro_genero.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_filtro_genero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_filtro_genero.Location = new System.Drawing.Point(564, 71);
+            this.lbl_filtro_genero.Name = "lbl_filtro_genero";
+            this.lbl_filtro_genero.Size = new System.Drawing.Size(122, 17);
+            this.lbl_filtro_genero.TabIndex = 369;
+            this.lbl_filtro_genero.Text = "Filtrar por genero:";
+            // 
+            // combo_filtro_genero
+            // 
+            this.combo_filtro_genero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            this.combo_filtro_genero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_filtro_genero.ForeColor = System.Drawing.SystemColors.Window;
+            this.combo_filtro_genero.FormattingEnabled = true;
+            this.combo_filtro_genero.Location = new System.Drawing.Point(693, 67);
+            this.combo_filtro_genero.Name = "combo_filtro_genero";
+            this.combo_filtro_genero.Size = new System.Drawing.Size(150, 21);
+            this.combo_filtro_genero.TabIndex = 368;
+            this.combo_filtro_genero.SelectedIndexChanged += new System.EventHandler(this.combo_filtro_genero_SelectedIndexChanged);
+            // 
+            // lbl_filtro_marca
+            // 
+            this.lbl_filtro_marca.AutoSize = true;
+            this.lbl_filtro_marca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_filtro_marca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_filtro_marca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_filtro_marca.Location = new System.Drawing.Point(255, 71);
+            this.lbl_filtro_marca.Name = "lbl_filtro_marca";
+            this.lbl_filtro_marca.Size = new System.Drawing.Size(116, 17);
+            this.lbl_filtro_marca.TabIndex = 367;
+            this.lbl_filtro_marca.Text = "Filtrar por marca:";
+            // 
+            // combo_filtro_marca
+            // 
+            this.combo_filtro_marca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            this.combo_filtro_marca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_filtro_marca.ForeColor = System.Drawing.SystemColors.Window;
+            this.combo_filtro_marca.FormattingEnabled = true;
+            this.combo_filtro_marca.Location = new System.Drawing.Point(380, 67);
+            this.combo_filtro_marca.Name = "combo_filtro_marca";
+            this.combo_filtro_marca.Size = new System.Drawing.Size(150, 21);
+            this.combo_filtro_marca.TabIndex = 366;
+            this.combo_filtro_marca.SelectedIndexChanged += new System.EventHandler(this.combo_filtro_marca_SelectedIndexChanged);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox2.Location = new System.Drawing.Point(222, 52);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(657, 50);
+            this.pictureBox2.TabIndex = 365;
+            this.pictureBox2.TabStop = false;
+            // 
+            // Imagen
+            // 
+            this.Imagen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Imagen.HeaderText = "Imagen";
+            this.Imagen.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Imagen.Name = "Imagen";
             // 
             // nombre
             // 
@@ -265,7 +405,7 @@
             this.precio.HeaderText = "Precio ($)";
             this.precio.MinimumWidth = 6;
             this.precio.Name = "precio";
-            this.precio.Width = 101;
+            this.precio.Width = 85;
             // 
             // agregar
             // 
@@ -274,151 +414,12 @@
             this.agregar.MinimumWidth = 6;
             this.agregar.Name = "agregar";
             // 
-            // txt_nombre_perfume
+            // FormVerPerfumesSimilares
             // 
-            this.txt_nombre_perfume.AutoSize = true;
-            this.txt_nombre_perfume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.txt_nombre_perfume.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_nombre_perfume.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_nombre_perfume.Location = new System.Drawing.Point(489, 13);
-            this.txt_nombre_perfume.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.txt_nombre_perfume.Name = "txt_nombre_perfume";
-            this.txt_nombre_perfume.Size = new System.Drawing.Size(274, 32);
-            this.txt_nombre_perfume.TabIndex = 343;
-            this.txt_nombre_perfume.Text = "Nombre del Perfume";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox4.Location = new System.Drawing.Point(13, 5);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(1097, 53);
-            this.pictureBox4.TabIndex = 344;
-            this.pictureBox4.TabStop = false;
-            // 
-            // img_perfume
-            // 
-            this.img_perfume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.img_perfume.Location = new System.Drawing.Point(31, 83);
-            this.img_perfume.Margin = new System.Windows.Forms.Padding(4);
-            this.img_perfume.Name = "img_perfume";
-            this.img_perfume.Size = new System.Drawing.Size(241, 322);
-            this.img_perfume.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.img_perfume.TabIndex = 360;
-            this.img_perfume.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox3.Location = new System.Drawing.Point(13, 64);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(277, 358);
-            this.pictureBox3.TabIndex = 359;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox10.Location = new System.Drawing.Point(13, 428);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(277, 122);
-            this.pictureBox10.TabIndex = 361;
-            this.pictureBox10.TabStop = false;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox7.Location = new System.Drawing.Point(296, 493);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(876, 57);
-            this.pictureBox7.TabIndex = 362;
-            this.pictureBox7.TabStop = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label1.Location = new System.Drawing.Point(26, 14);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(442, 32);
-            this.label1.TabIndex = 364;
-            this.label1.Text = "Perfumes Similares al Perfume:\r\n";
-            // 
-            // lbl_filtro_genero
-            // 
-            this.lbl_filtro_genero.AutoSize = true;
-            this.lbl_filtro_genero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_filtro_genero.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_filtro_genero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_filtro_genero.Location = new System.Drawing.Point(752, 87);
-            this.lbl_filtro_genero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_filtro_genero.Name = "lbl_filtro_genero";
-            this.lbl_filtro_genero.Size = new System.Drawing.Size(143, 20);
-            this.lbl_filtro_genero.TabIndex = 369;
-            this.lbl_filtro_genero.Text = "Filtrar por genero:";
-            // 
-            // combo_filtro_genero
-            // 
-            this.combo_filtro_genero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            this.combo_filtro_genero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.combo_filtro_genero.ForeColor = System.Drawing.SystemColors.Window;
-            this.combo_filtro_genero.FormattingEnabled = true;
-            this.combo_filtro_genero.Location = new System.Drawing.Point(924, 83);
-            this.combo_filtro_genero.Margin = new System.Windows.Forms.Padding(4);
-            this.combo_filtro_genero.Name = "combo_filtro_genero";
-            this.combo_filtro_genero.Size = new System.Drawing.Size(198, 24);
-            this.combo_filtro_genero.TabIndex = 368;
-            this.combo_filtro_genero.SelectedIndexChanged += new System.EventHandler(this.combo_filtro_genero_SelectedIndexChanged);
-            // 
-            // lbl_filtro_marca
-            // 
-            this.lbl_filtro_marca.AutoSize = true;
-            this.lbl_filtro_marca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_filtro_marca.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_filtro_marca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_filtro_marca.Location = new System.Drawing.Point(340, 87);
-            this.lbl_filtro_marca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_filtro_marca.Name = "lbl_filtro_marca";
-            this.lbl_filtro_marca.Size = new System.Drawing.Size(139, 20);
-            this.lbl_filtro_marca.TabIndex = 367;
-            this.lbl_filtro_marca.Text = "Filtrar por marca:";
-            // 
-            // combo_filtro_marca
-            // 
-            this.combo_filtro_marca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            this.combo_filtro_marca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.combo_filtro_marca.ForeColor = System.Drawing.SystemColors.Window;
-            this.combo_filtro_marca.FormattingEnabled = true;
-            this.combo_filtro_marca.Location = new System.Drawing.Point(507, 83);
-            this.combo_filtro_marca.Margin = new System.Windows.Forms.Padding(4);
-            this.combo_filtro_marca.Name = "combo_filtro_marca";
-            this.combo_filtro_marca.Size = new System.Drawing.Size(198, 24);
-            this.combo_filtro_marca.TabIndex = 366;
-            this.combo_filtro_marca.SelectedIndexChanged += new System.EventHandler(this.combo_filtro_marca_SelectedIndexChanged);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(296, 64);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(876, 61);
-            this.pictureBox2.TabIndex = 365;
-            this.pictureBox2.TabStop = false;
-            // 
-            // VerPerfumesSimilares
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(1187, 562);
+            this.ClientSize = new System.Drawing.Size(890, 457);
             this.Controls.Add(this.lbl_filtro_genero);
             this.Controls.Add(this.combo_filtro_genero);
             this.Controls.Add(this.lbl_filtro_marca);
@@ -440,7 +441,8 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.pictureBox7);
-            this.Name = "VerPerfumesSimilares";
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "FormVerPerfumesSimilares";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VerPerfumesSimilares";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -474,15 +476,16 @@
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn marca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn genero;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precio;
-        private System.Windows.Forms.DataGridViewButtonColumn agregar;
         private System.Windows.Forms.Label lbl_filtro_genero;
         private System.Windows.Forms.ComboBox combo_filtro_genero;
         private System.Windows.Forms.Label lbl_filtro_marca;
         private System.Windows.Forms.ComboBox combo_filtro_marca;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.DataGridViewImageColumn Imagen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn marca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn genero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precio;
+        private System.Windows.Forms.DataGridViewButtonColumn agregar;
     }
 }

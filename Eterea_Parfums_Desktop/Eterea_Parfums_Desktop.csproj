@@ -499,6 +499,7 @@
     <Content Include="Resources\CerrarSesion.png" />
     <Content Include="Resources\imagen_por_defecto.jpg" />
     <Content Include="Resources\LogoEterea.png" />
+    <None Include="Resources\sinImagen.jpg" />
     <None Include="Resources\PlantillaInformeVentas.html" />
     <None Include="Resources\LogoEtereaFactura.png" />
     <None Include="Resources\PlantillaFactura.html" />
