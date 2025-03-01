@@ -17,22 +17,19 @@ namespace Eterea_Parfums_Desktop
         public string NumeroCaja { get; set; }
         Cliente clientefactura = new Cliente();
 
-        /*
-        private StringBuilder codigoBarrasBuffer = new StringBuilder();
-        private DateTime ultimaLectura = DateTime.Now;
-        private const int TIEMPO_ENTRE_LECTURAS_MS = 100; // Tiempo máximo entre caracteres para considerarlo un escaneo
-        */
-
         public FormFacturacion()
         {
             InitializeComponent();
+
+           
             string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";
             img_logo.Image = System.Drawing.Image.FromFile(rutaCompletaImagen);
 
             txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
 
-            //Agregado para escanear sin importar donde esté posicionado el cursor
-            //this.KeyPreview = true; // Permite capturar las teclas antes de que lleguen a otros controles
+            this.Load += FormFacturacion_Load;
+            txt_scan_factura.Leave += Txt_scan_factura_Leave;
+            txt_scan_factura.KeyDown += Txt_scan_factura_KeyDown;
 
             combo_forma_pago.SelectedIndexChanged -= combo_forma_pago_SelectedIndexChanged;
 
@@ -66,17 +63,74 @@ namespace Eterea_Parfums_Desktop
             ActualizarDescuentosYCuotas();
 
             lbl_dniE.Hide();
-            txt_scan_factura.Hide(); //textbox oculto para recibir los codigos de barra escaneados
+            
+            
 
+           
 
-            this.Controls.Add(txt_scan_factura);
-
-            // Suscribirse al evento global para recibir códigos de barras
-            //BarcodeManager.BarcodeReceived += SetBarcodeText;
+            
 
         }
 
+        private void Txt_scan_factura_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string codigo = txt_scan_factura.Text.Trim();
+                if (!string.IsNullOrEmpty(codigo))
+                {
+                    ProcesarCodigoBarras(codigo);
+                    txt_scan_factura.Clear();
+                }
+                e.Handled = true;
+            }
+        }
 
+
+        private void ProcesarCodigoBarras(string codigo)
+        {
+            if (string.IsNullOrEmpty(codigo)) return;
+
+            Perfume perfume = PerfumeControlador.getByCodigo(codigo);
+            if (perfume == null)
+            {
+                MessageBox.Show("Producto no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            foreach (DataGridViewRow fila in Factura.Rows)
+            {
+                if (fila.Cells[0].Value.ToString() == perfume.id.ToString()) // Columna ID
+                {
+                    if (int.TryParse(fila.Cells[1].Value.ToString(), out int cantidadActual))
+                    {
+                        fila.Cells[1].Value = cantidadActual + 1;
+                        fila.Cells[6].Value = (cantidadActual + 1) * perfume.precio_en_pesos;
+                        ActualizarTotales();
+                    }
+                    return;
+                }
+            }
+
+            int rowIndex = Factura.Rows.Add(perfume.id, 1, "", "", perfume.nombre, perfume.precio_en_pesos, perfume.precio_en_pesos, "");
+
+            // Asignar botones a las celdas de la nueva fila
+            Factura.Rows[rowIndex].Cells[2] = new DataGridViewButtonCell() { Value = "➕" };
+            Factura.Rows[rowIndex].Cells[3] = new DataGridViewButtonCell() { Value = "➖" };
+            Factura.Rows[rowIndex].Cells[7] = new DataGridViewButtonCell() { Value = "🗑" };
+
+            ActualizarTotales();
+        }
+
+
+
+        private void txt_scan_factura_Leave(object sender, EventArgs e)
+        {
+            txt_scan_factura.Focus();
+        }
+
+
+        /*
 
         //Metodo para ingresar el codigo de barras escaneado directamente en txt_scan_factura
 
@@ -91,7 +145,7 @@ namespace Eterea_Parfums_Desktop
                 txt_scan_factura.Text = barcode;
             }
         }
-
+        */
 
         /*
         private void SetBarcodeText(string barcode)
@@ -106,14 +160,28 @@ namespace Eterea_Parfums_Desktop
             }
         }
         */
+        private void FormFacturacion_Load(object sender, EventArgs e)
+        {
+            txt_numero_caja.Text = NumeroCaja;
+            txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
+            txt_scan_factura.Focus(); // Forzar el foco en txt_scan_factura al cargar el formulario
+        }
 
+        private void Txt_scan_factura_Leave(object sender, EventArgs e)
+        {
+            txt_scan_factura.Focus(); // Si pierde el foco, volver a asignárselo automáticamente
+        }
 
+      
+
+        /*
         private void Facturacion_Load(object sender, EventArgs e)
         {
             txt_numero_caja.Text = NumeroCaja;
             txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
 
         }
+        */
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -182,20 +250,66 @@ namespace Eterea_Parfums_Desktop
             //this.Hide();
         }
 
+
+        private void DataGridViewFactura_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            if (Factura.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                if (e.ColumnIndex == 7) // Botón "🗑" (Eliminar fila)
+                {
+                    Factura.Rows.RemoveAt(e.RowIndex);
+                    ActualizarTotales();
+                }
+                else if (e.ColumnIndex == 2) // Botón "➕" (Aumentar cantidad)
+                {
+                    if (int.TryParse(Factura.Rows[e.RowIndex].Cells[1].Value?.ToString(), out int cantidad))
+                    {
+                        Factura.Rows[e.RowIndex].Cells[1].Value = cantidad + 1;
+                        if (double.TryParse(Factura.Rows[e.RowIndex].Cells[5].Value?.ToString(), out double precio))
+                        {
+                            Factura.Rows[e.RowIndex].Cells[6].Value = (cantidad + 1) * precio;
+                            ActualizarTotales();
+                        }
+                    }
+                }
+                else if (e.ColumnIndex == 3) // Botón "➖" (Disminuir cantidad o eliminar fila)
+                {
+                    if (int.TryParse(Factura.Rows[e.RowIndex].Cells[1].Value?.ToString(), out int cantidad) && cantidad > 1)
+                    {
+                        Factura.Rows[e.RowIndex].Cells[1].Value = cantidad - 1;
+                        if (double.TryParse(Factura.Rows[e.RowIndex].Cells[5].Value?.ToString(), out double precio))
+                        {
+                            Factura.Rows[e.RowIndex].Cells[6].Value = (cantidad - 1) * precio;
+                            ActualizarTotales();
+                        }
+                    }
+                    else
+                    {
+                        Factura.Rows.RemoveAt(e.RowIndex);
+                        ActualizarTotales();
+                    }
+                }
+            }
+        }
+
+
+        /*
         private void dataGridViewFactura_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == 7)
             {
                 Factura.Rows.RemoveAt(e.RowIndex);
                 ActualizarTotales();
-                /*
+                
                 totalFactura();
                 CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text));
 
                 desc();
                 sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
-                */
-            }
+                
+    }
             else if (e.RowIndex >= 0 && e.ColumnIndex == 2)
             {
                 int cant = int.Parse(Factura.Rows[e.RowIndex].Cells[1].Value.ToString());
@@ -217,7 +331,7 @@ namespace Eterea_Parfums_Desktop
 
                 desc();
                 sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
-                */
+                
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == 3)
             {
@@ -241,7 +355,7 @@ namespace Eterea_Parfums_Desktop
 
                     desc();
                     sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
-                    */
+                    
                 }
                 else
                 {
@@ -253,12 +367,13 @@ namespace Eterea_Parfums_Desktop
 
                     desc();
                     sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
-                    */
+                    
 
                 }
 
             }
         }
+        */
         private void totalFactura()
         {
             double sumaPrecios = 0; // Usar decimal para los precios
@@ -355,36 +470,67 @@ namespace Eterea_Parfums_Desktop
             return Factura;
         }
 
+
         public void ActualizarTotales()
         {
-            totalFactura();
-
-            float subtotal, recargo, descuento, iva;
-
-            desc();
+            double sumaPrecios = 0;
+            foreach (DataGridViewRow fila in Factura.Rows)
+            {
+                if (fila.Cells["Tot"].Value != null)
+                {
+                    double precioFila;
+                    if (double.TryParse(fila.Cells["Tot"].Value.ToString(), out precioFila))
+                    {
+                        sumaPrecios += precioFila;
+                    }
+                }
+            }
+            txt_subtotal.Text = sumaPrecios.ToString("N2");
             CalcularMontoRecargo();
-            // Verificamos que los valores sean válidos para evitar errores de conversión
+            desc();
+            float subtotal, recargo, descuento;
             if (!float.TryParse(txt_subtotal.Text, out subtotal)) subtotal = 0;
             if (!float.TryParse(txt_monto_recargo.Text, out recargo)) recargo = 0;
             if (!float.TryParse(txt_monto_descuento.Text, out descuento)) descuento = 0;
-
-            if (!float.TryParse(txt_subtotal.Text, out subtotal) || subtotal == 0)
-            {
-                // Si el subtotal es 0, poner todos los montos a 0
-                txt_monto_recargo.Text = "0,00";
-                txt_monto_descuento.Text = "0,00";
-                txt_iva.Text = "0,00";
-                txt_total.Text = "0,00";
-                return; // Salir del método sin hacer más cálculos
-            }
-
-            //CalcularImporteRecargo(subtotal, recargo);
-
-            //CalcularIVA(subtotal, recargo, descuento);
-            //if (!float.TryParse(txt_iva.Text, out iva)) iva = 0;
             sumaFinal(subtotal, recargo, descuento);
+        }
+    
+
+
+
+/*
+public void ActualizarTotales()
+{
+    totalFactura();
+
+    float subtotal, recargo, descuento, iva;
+
+    desc();
+    CalcularMontoRecargo();
+    // Verificamos que los valores sean válidos para evitar errores de conversión
+    if (!float.TryParse(txt_subtotal.Text, out subtotal)) subtotal = 0;
+    if (!float.TryParse(txt_monto_recargo.Text, out recargo)) recargo = 0;
+    if (!float.TryParse(txt_monto_descuento.Text, out descuento)) descuento = 0;
+
+    if (!float.TryParse(txt_subtotal.Text, out subtotal) || subtotal == 0)
+    {
+        // Si el subtotal es 0, poner todos los montos a 0
+        txt_monto_recargo.Text = "0,00";
+        txt_monto_descuento.Text = "0,00";
+        txt_iva.Text = "0,00";
+        txt_total.Text = "0,00";
+        return; // Salir del método sin hacer más cálculos
+    }
+
+
+//CalcularImporteRecargo(subtotal, recargo);
+
+//CalcularIVA(subtotal, recargo, descuento);
+//if (!float.TryParse(txt_iva.Text, out iva)) iva = 0;
+sumaFinal(subtotal, recargo, descuento);
             VerificarCondicionIVA(subtotal, recargo, descuento);
         }
+        */
 
         private float CalcularIVA(float subtotal, float recargo, float descuento)
         {
@@ -736,10 +882,20 @@ namespace Eterea_Parfums_Desktop
     }
 
         */
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Enter)
+            {
+                if (!string.IsNullOrEmpty(txt_scan_factura.Text))
+                {
+                    ProcesarCodigoBarras(txt_scan_factura.Text.Trim());
+                    txt_scan_factura.Clear();
+                    return true; // Consumimos la tecla Enter
+                }
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
 
-
-
-
-
-}
+     
+    }
 }

@@ -326,7 +326,7 @@
             this.Factura.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.Factura.Size = new System.Drawing.Size(712, 251);
             this.Factura.TabIndex = 296;
-            this.Factura.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewFactura_CellContentClick);
+            this.Factura.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewFactura_CellContentClick);
             // 
             // Id_Perfume
             // 
@@ -825,6 +825,8 @@
             this.txt_scan_factura.Name = "txt_scan_factura";
             this.txt_scan_factura.Size = new System.Drawing.Size(149, 20);
             this.txt_scan_factura.TabIndex = 342;
+            this.txt_scan_factura.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txt_scan_factura_KeyDown);
+            this.txt_scan_factura.Leave += new System.EventHandler(this.Txt_scan_factura_Leave);
             // 
             // FormFacturacion
             // 
@@ -890,7 +892,6 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormFacturacion";
             this.Text = "Facturacion";
-            this.Load += new System.EventHandler(this.Facturacion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
