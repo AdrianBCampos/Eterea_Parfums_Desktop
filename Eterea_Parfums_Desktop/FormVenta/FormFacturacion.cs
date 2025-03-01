@@ -215,6 +215,7 @@ namespace Eterea_Parfums_Desktop
                 // Si se encuentra el cliente, llenar los campos en el formulario actual
                 txt_nombre_cliente.Text = cliente.nombre + " " + cliente.apellido;
                 txt_condicion_iva.Text = cliente.condicion_frente_al_iva;
+                txt_email.Text = cliente.e_mail;
 
             }
             else
@@ -225,12 +226,13 @@ namespace Eterea_Parfums_Desktop
                 formCrearClienteFactura.ShowDialog(); // Cambiado a ShowDialog para esperar que el formulario se cierre
 
                 // Luego de cerrar el formulario de clientes, verifica si se creó un nuevo cliente
-                Cliente nuevoCliente = ClienteControlador.obtenerPorDni(int.Parse(txt_dni.Text));
+                Cliente nuevoCliente = ClienteControlador.obtenerPorDni(dniIngresado);
                 if (nuevoCliente != null)
                 {
                     // Asigna los datos del nuevo cliente al formulario actual
                     txt_nombre_cliente.Text = nuevoCliente.nombre + " " + nuevoCliente.apellido;
                     txt_condicion_iva.Text = nuevoCliente.condicion_frente_al_iva;
+                    txt_email.Text = nuevoCliente.e_mail;
                 }
             }
             ActualizarTotales();
