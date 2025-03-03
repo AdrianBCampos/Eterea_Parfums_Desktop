@@ -19,9 +19,18 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_continuar_Click(object sender, EventArgs e)
         {
-            FormInformesDeVentas1 InformesDeVentas2 = new FormInformesDeVentas1();
-            InformesDeVentas2.Show();
-            this.Hide();
+            if (txt_tipo_informe.SelectedIndex == 0)
+            {
+                FormInformesDeVentas1 InformesDeVentas1 = new FormInformesDeVentas1();
+                InformesDeVentas1.Show();
+                this.Hide();
+            }
+            else if (txt_tipo_informe.SelectedIndex == 1)
+            {
+                FormInformesDeVentas2 InformesDeVentas2 = new FormInformesDeVentas2();
+                InformesDeVentas2.Show();
+                this.Hide();
+            }
         }
     }
 }

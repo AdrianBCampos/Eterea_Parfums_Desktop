@@ -41,7 +41,8 @@
             // 
             this.txt_tipo_informe.FormattingEnabled = true;
             this.txt_tipo_informe.Items.AddRange(new object[] {
-            "Ventas en un período"});
+            "Ventas en un período",
+            "Inventario"});
             this.txt_tipo_informe.Location = new System.Drawing.Point(299, 157);
             this.txt_tipo_informe.Name = "txt_tipo_informe";
             this.txt_tipo_informe.Size = new System.Drawing.Size(227, 21);
@@ -91,7 +92,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Location = new System.Drawing.Point(60, 98);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(485, 137);
             this.pictureBox1.TabIndex = 91;
@@ -110,7 +111,7 @@
             this.btn_continuar.UseVisualStyleBackColor = false;
             this.btn_continuar.Click += new System.EventHandler(this.btn_continuar_Click);
             // 
-            // InformesDeVentas
+            // FormSeleccionarInformeVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -122,8 +123,8 @@
             this.Controls.Add(this.lbl_informe_ventas);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btn_continuar);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "InformesDeVentas";
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "FormSeleccionarInformeVenta";
             this.Text = "InformesDeVentas";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
