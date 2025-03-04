@@ -137,7 +137,7 @@ namespace Eterea_Parfums_Desktop
         private void btn_ver_detalles_Click(object sender, EventArgs e)
         {
             FormVerDetallePerfume verDetallePerfume = new FormVerDetallePerfume(perfume);
-            verDetallePerfume.Show();
+            verDetallePerfume.ShowDialog();
             this.Close();
         }
 
@@ -172,7 +172,9 @@ namespace Eterea_Parfums_Desktop
                 Perfume perfumeSeleccionado = Perfumes_Paginados[rowIndex];
 
                 FormVerDetallePerfume detallesForm = new FormVerDetallePerfume(perfumeSeleccionado);
-                detallesForm.Show();
+                detallesForm.ShowDialog();
+
+                this.Close();
             }
             dataGridViewConsultas.CellPainting += dataGridView1_CellPainting;
         }

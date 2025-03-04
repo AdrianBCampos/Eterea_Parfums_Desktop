@@ -42,8 +42,6 @@ namespace Eterea_Parfums_Desktop
         //private BarcodeScannerWatcher watcher;
 
 
-
-
         public FormInicioAutoconsulta()
         {
             InitializeComponent();
@@ -147,7 +145,7 @@ namespace Eterea_Parfums_Desktop
         {
             marcas = MarcaControlador.getAll();
             combo_filtro_marca.Items.Clear();
-            combo_filtro_marca.Items.Add("Todas las marcas");
+            combo_filtro_marca.Items.Add("Todas las Marcas");
             foreach (Marca marca in marcas)
             {
                 combo_filtro_marca.Items.Add(marca.nombre);
@@ -159,7 +157,7 @@ namespace Eterea_Parfums_Desktop
         {
             generos = GeneroControlador.getAll();
             combo_filtro_genero.Items.Clear();
-            combo_filtro_genero.Items.Add("Todos los generos");
+            combo_filtro_genero.Items.Add("Todos los Géneros");
             foreach (Genero genero in generos)
             {
                 combo_filtro_genero.Items.Add(genero.genero);
@@ -171,7 +169,7 @@ namespace Eterea_Parfums_Desktop
         {
             aromas = TipoDeAromaControlador.getAll();
             combo_filtro_aroma.Items.Clear();
-            combo_filtro_aroma.Items.Add("Todos los aromas");
+            combo_filtro_aroma.Items.Add("Todos los Aromas");
             foreach (TipoDeAroma aroma in aromas)
             {
                 combo_filtro_aroma.Items.Add(aroma.nombre);
@@ -439,8 +437,14 @@ namespace Eterea_Parfums_Desktop
                 int rowIndex = e.RowIndex;
                 Perfume perfumeSeleccionado = Perfumes_Paginados[rowIndex];
 
+                // Deshabilitar Form1 mientras Form2 está abierto
+                this.Enabled = false;
+
                 FormVerDetallePerfume detallesForm = new FormVerDetallePerfume(perfumeSeleccionado);
-                detallesForm.Show();
+                detallesForm.ShowDialog();
+
+                // Después de que Form2 se cierra, habilitar Form1 de nuevo
+                this.Enabled = true;
             }
         }
 

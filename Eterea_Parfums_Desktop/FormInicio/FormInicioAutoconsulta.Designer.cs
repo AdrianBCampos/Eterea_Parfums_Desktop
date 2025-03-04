@@ -162,9 +162,9 @@
             this.lbl_filtro_nombre.Location = new System.Drawing.Point(315, 89);
             this.lbl_filtro_nombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_filtro_nombre.Name = "lbl_filtro_nombre";
-            this.lbl_filtro_nombre.Size = new System.Drawing.Size(183, 25);
+            this.lbl_filtro_nombre.Size = new System.Drawing.Size(186, 25);
             this.lbl_filtro_nombre.TabIndex = 282;
-            this.lbl_filtro_nombre.Text = "Buscar por nombre:";
+            this.lbl_filtro_nombre.Text = "Buscar por Nombre:";
             // 
             // txt_filtro_nombre
             // 
@@ -378,7 +378,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label1.Location = new System.Drawing.Point(995, 21);
+            this.label1.Location = new System.Drawing.Point(959, 21);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(409, 42);
@@ -531,7 +531,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(2045, 978);
+            this.ClientSize = new System.Drawing.Size(1924, 978);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.combo_filtro_stock);
             this.Controls.Add(this.label3);
