@@ -483,7 +483,7 @@ namespace Eterea_Parfums_Desktop
                 double descuento = double.Parse(txt_monto_descuento.Text);
                 int numeroDeCaja = int.Parse(txt_numero_caja.Text);
                 string tipoConsumidor = clientefactura.condicion_frente_al_iva;
-                string origen = "V";
+                string origen = "Local";
                 string facturaPdf = "";
 
                 MessageBox.Show($"numFactura: {numFactura}\n" +
