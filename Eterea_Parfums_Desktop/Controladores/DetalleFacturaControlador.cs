@@ -43,7 +43,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         }
 
-        public static bool crearDetalleFactura(int num_factura, int perfume_id, int cantidad, float precio_unitario, int promocion_id)
+        public static bool crearDetalleFactura(int num_factura, int perfume_id, int cantidad, float precio_unitario, int? promocion_id)
         {
             string query = "INSERT INTO dbo.detalle_factura (num_factura, perfume_id, cantidad, precio_unitario, promocion_id) " +
                            "VALUES (@num_factura, @perfume_id, @cantidad, @precio_unitario, @promocion_id);";

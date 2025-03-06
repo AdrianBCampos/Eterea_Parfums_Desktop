@@ -310,12 +310,13 @@ namespace Eterea_Parfums_Desktop
                 facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells[3].Value = "-";
                 facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Precio_Unitario"].Value = perfumeSeleccionado.precio_en_pesos.ToString();
                 PerfumeEnPromoControlador promoController = new PerfumeEnPromoControlador();
-                int descuentoPorcentaje = promoController.ObtenerMayorDescuentoPorPerfume(perfumeSeleccionado.id);
+                int descuentoPorcentaje = promoController.obtenerMayorDescuentoPorPerfume(perfumeSeleccionado.id);
                 decimal precioUnitario = Convert.ToDecimal(perfumeSeleccionado.precio_en_pesos);
                 decimal descuentoMonto = ((precioUnitario * descuentoPorcentaje) / 100);
                 facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Descuento"].Value = descuentoMonto;
                 facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Tot"].Value = perfumeSeleccionado.precio_en_pesos.ToString();
                 facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Eliminar"].Value = "Eliminar";
+                facturacionForm.descuentoUnitario();
 
                 /*   // Recalcular el total y otros valores necesarios
                    totalFactura();

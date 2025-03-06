@@ -26,6 +26,9 @@ namespace Eterea_Parfums_Desktop
 
             combo_forma_pago.SelectedIndexChanged -= combo_forma_pago_SelectedIndexChanged;
 
+            txt_nombre_cliente.Text = "Consumidor Final";
+            txt_condicion_iva.Text = "Consumidor final";
+
             combo_forma_pago.Items.Clear();
             combo_forma_pago.Items.Add("Efectivo");
             combo_forma_pago.Items.Add("Visa Débito");
@@ -134,7 +137,7 @@ namespace Eterea_Parfums_Desktop
 
         private void dataGridViewFactura_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex == 7)
+            if (e.RowIndex >= 0 && e.ColumnIndex == 8)
             {
                 Factura.Rows.RemoveAt(e.RowIndex);
                 ActualizarTotales();
@@ -196,7 +199,7 @@ namespace Eterea_Parfums_Desktop
 
             }
         }
-        private void descuentoUnitario()
+        public void descuentoUnitario()
         {
             DataGridView dgv = this.GetFacturaDataGrid();
             PerfumeEnPromoControlador promoController = new PerfumeEnPromoControlador();
@@ -208,7 +211,7 @@ namespace Eterea_Parfums_Desktop
                     int perfumeId = Convert.ToInt32(row.Cells[0].Value); // ID del perfume
 
                     // Obtener el descuento del perfume (en porcentaje)
-                    int descuentoPorcentaje = promoController.ObtenerMayorDescuentoPorPerfume(perfumeId);
+                    int descuentoPorcentaje = promoController.obtenerMayorDescuentoPorPerfume(perfumeId);
 
                     
                     Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
@@ -532,7 +535,7 @@ namespace Eterea_Parfums_Desktop
                     MessageBox.Show("El número de factura no es válido.");
                     return;
                 }
-
+                PerfumeEnPromoControlador promoController = new PerfumeEnPromoControlador();
                 // Recorrer las filas del DataGridView
                 foreach (DataGridViewRow row in Factura.Rows)
                 {
@@ -561,8 +564,23 @@ namespace Eterea_Parfums_Desktop
                             MessageBox.Show($"El precio unitario en la fila del perfume ID {perfume_id} no es un número válido o es menor o igual a cero.");
                             return;
                         }
+                        int? promocion_id = promoController.obtenerPromocionIdPorPerfume(perfume_id);
+                       /* int promocion_id;
+                        
+                        if (promo_id == null || promo_id <= 1)
+                        {
+                            promocion_id = ;
+                        }
+                        else
+                        {
+                            promocion_id = promo_id.Value; 
+                        }
+                       */
+                        
 
-                        int promocion_id = 1; // Suponiendo que este valor es constante
+
+
+
                         MessageBox.Show($"Enviando datos: NumFactura: {numFactura}, PerfumeID: {perfume_id}, Cantidad: {cantidad}, PrecioUnitario: {precio_unitario}, PromocionID: {promocion_id}");
 
                         bool exito = DetalleFacturaControlador.crearDetalleFactura(numFactura, perfume_id, cantidad, precio_unitario, promocion_id);
@@ -588,15 +606,26 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_imprimir_Click(object sender, EventArgs e)
         {
+            
+
             SaveFileDialog guardarFactura = new SaveFileDialog();
             guardarFactura.FileName = DateTime.Now.ToString("ddMMyyyyHHss") + ".pdf";
             guardarFactura.Filter = "Archivos PDF (*.pdf)|*.pdf"; // Filtro para archivos PDF
             guardarFactura.DefaultExt = "pdf"; // Extensión por defecto
             guardarFactura.AddExtension = true; // Agrega la extensión si el usuario no la pone
 
+            string condicionCliente = txt_condicion_iva.Text.Trim();
+            string PaginaHTML_Texto = "";
 
-            string PaginaHTML_Texto = Properties.Resources.PlantillaFactura.ToString();
+            // Verificar si el cliente es Responsable Monotributo
+            if (condicionCliente.Contains("Responsable Inscripto"))
+            {
+                PaginaHTML_Texto = Properties.Resources.PlantillaFactura.ToString();
+            
+
+            
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CLIENTE", txt_nombre_cliente.Text);
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DOCUMENTO", txt_dni.Text);
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NUMEROFACTURA", txt_numero_factura.Text);
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
 
@@ -605,9 +634,10 @@ namespace Eterea_Parfums_Desktop
             foreach (DataGridViewRow row in Factura.Rows)
             {
                 filas += "<tr>";
-                filas += "<td>" + row.Cells["Cantidad"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Nombre_Perfume"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Precio_Unitario"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Cantidad"].Value.ToString() + "</td>";
+                filas += "<td>" + row.Cells["Descuento"].Value.ToString() + "</td>";
                 filas += "<td>" + row.Cells["Tot"].Value.ToString() + "</td>";
                 filas += "</tr>";
                 total += decimal.Parse(row.Cells["Tot"].Value.ToString());
@@ -624,7 +654,43 @@ namespace Eterea_Parfums_Desktop
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DESCUENTO", descuento.ToString());
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TOTAL", precioTotal.ToString());
 
+            } else {
+                PaginaHTML_Texto = Properties.Resources.FacturaA.ToString();
 
+
+
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CLIENTE", txt_nombre_cliente.Text);
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DOCUMENTO", txt_dni.Text);
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NUMEROFACTURA", txt_numero_factura.Text);
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
+
+                string filas = string.Empty;
+                decimal total = 0;
+                foreach (DataGridViewRow row in Factura.Rows)
+                {
+                    filas += "<tr>";
+                    filas += "<td>" + row.Cells["Nombre_Perfume"].Value.ToString() + "</td>";
+                    filas += "<td>" + row.Cells["Precio_Unitario"].Value.ToString() + "</td>";
+                    filas += "<td>" + row.Cells["Cantidad"].Value.ToString() + "</td>";
+                    filas += "<td>" + row.Cells["Descuento"].Value.ToString() + "</td>";
+                    filas += "<td>" + row.Cells["Tot"].Value.ToString() + "</td>";
+                    filas += "</tr>";
+                    total += decimal.Parse(row.Cells["Tot"].Value.ToString());
+                }
+
+                double precioTotal = double.Parse(txt_total.Text);
+                double precioSubtotal = double.Parse(txt_subtotal.Text);
+                double recargoTarjeta = double.Parse(txt_monto_recargo.Text);
+                double iva = double.Parse(txt_iva.Text);
+                double descuento = double.Parse(txt_monto_descuento.Text);
+
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FILAS", filas);
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL", precioSubtotal.ToString());
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@RECARGO", recargoTarjeta.ToString());
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DESCUENTO", descuento.ToString());
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@IVA", iva.ToString());
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TOTAL", precioTotal.ToString());
+            }
 
             if (guardarFactura.ShowDialog() == DialogResult.OK)
             {
@@ -656,7 +722,6 @@ namespace Eterea_Parfums_Desktop
             }
             CrearFactura();
             CrearDetalleFactura();
-            
         }
     }
 }

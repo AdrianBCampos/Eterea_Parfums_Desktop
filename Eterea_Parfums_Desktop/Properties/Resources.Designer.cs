@@ -61,6 +61,36 @@ namespace Eterea_Parfums_Desktop.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a &lt;!DOCTYPE html&gt;
+        ///&lt;html lang=&quot;es&quot;&gt;
+        ///&lt;head&gt;
+        ///    &lt;title&gt;Factura Eterea Parfums&lt;/title&gt;
+        ///    &lt;style&gt;
+        ///        body {
+        ///            font-family: Arial, sans-serif;
+        ///            margin: 0;
+        ///            padding: 0;
+        ///            height: 100%;
+        ///            display: flex;
+        ///            flex-direction: column;
+        ///        }
+        ///
+        ///        table.border {
+        ///            border-collapse: collapse;
+        ///            width: 100%;
+        ///        }
+        ///
+        ///            table.border th, table.border td {
+        ///                padding: 5px;
+        ///                 [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string FacturaA {
+            get {
+                return ResourceManager.GetString("FacturaA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap imagen_por_defecto {
