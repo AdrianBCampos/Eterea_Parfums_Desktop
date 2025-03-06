@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Eterea_Parfums_Desktop.Modelos
+﻿namespace Eterea_Parfums_Desktop.Modelos
 {
-    internal class Marca
+    public class Marca
     {
         public int id { get; set; }
         public string nombre { get; set; }
@@ -15,12 +9,10 @@ namespace Eterea_Parfums_Desktop.Modelos
         {
             this.id = id;
             this.nombre = nombre;
-
         }
 
         public Marca()
         {
-
         }
     }
 }

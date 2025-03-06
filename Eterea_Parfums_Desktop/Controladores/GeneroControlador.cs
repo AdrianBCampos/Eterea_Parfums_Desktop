@@ -3,9 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
@@ -16,7 +13,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Genero> getAll()
         {
             List<Genero> list = new List<Genero>();
-            string query = "select * from dbo.Genero;";
+            string query = "select * from dbo.genero;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
@@ -42,11 +39,11 @@ namespace Eterea_Parfums_Desktop.Controladores
         }
 
 
-        //GET ONE ByName
-        public static Genero getByGenero(string gen)
+
+        public static Genero getByName(string gen)
         {
             Genero genero = new Genero();
-            string query = "select * from dbo.Genero where " +
+            string query = "select * from dbo.genero where " +
                 "genero = @genero;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
@@ -62,6 +59,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                     genero = new Genero(r.GetInt32(0), r.GetString(1));
                 }
                 r.Close();
+                //cmd.Parameters.Clear();
                 DB_Controller.connection.Close();
 
             }
@@ -77,7 +75,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static Genero getById(int id)
         {
             Genero genero = new Genero();
-            string query = "select * from dbo.Genero where " +
+            string query = "select * from dbo.genero where " +
                 "id = @id;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);

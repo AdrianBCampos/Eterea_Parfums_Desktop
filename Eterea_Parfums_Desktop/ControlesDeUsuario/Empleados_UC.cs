@@ -1,15 +1,10 @@
-﻿using System;
+﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.Modelos;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Eterea_Parfums_Desktop.Controladores;
-using Eterea_Parfums_Desktop.Modelos;
 
 namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 {
@@ -20,20 +15,24 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         {
             InitializeComponent();
 
+            // Asocia el evento KeyPress para aceptar solo números
+            txt_buscar_dni.KeyPress += txt_buscar_dni_KeyPress;
+            txt_buscar_dni.TextChanged += txt_buscar_dni_TextChanged;
+
             cargarEmpleados();
         }
 
-        private void cargarEmpleados()
+        private void cargarEmpleados(string filtroDni = "")
         {
+            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
+            dataGridView1.RowHeadersVisible = false;
+
             empleados = EmpleadoControlador.obtenerTodos();
-
-
-
 
             dataGridView1.Rows.Clear();
             foreach (Empleado empleado in empleados)
             {
-                if (empleado.activo == 1)
+                if (empleado.activo == 1 && (string.IsNullOrEmpty(filtroDni) || empleado.dni.ToString().Contains(filtroDni)))
                 {
                     int rowIndex = dataGridView1.Rows.Add();
 
@@ -41,47 +40,35 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     dataGridView1.Rows[rowIndex].Cells[1].Value = empleado.usuario.ToString();
                     dataGridView1.Rows[rowIndex].Cells[2].Value = empleado.nombre.ToString();
                     dataGridView1.Rows[rowIndex].Cells[3].Value = empleado.apellido.ToString();
+                    dataGridView1.Rows[rowIndex].Cells[4].Value = empleado.dni.ToString();
 
 
-                    dataGridView1.Rows[rowIndex].Cells[4].Value = empleado.celular.ToString();
-                    dataGridView1.Rows[rowIndex].Cells[5].Value = empleado.e_mail.ToString();
+                    dataGridView1.Rows[rowIndex].Cells[5].Value = empleado.celular.ToString();
+                    dataGridView1.Rows[rowIndex].Cells[6].Value = empleado.e_mail.ToString();
 
 
-                    dataGridView1.Rows[rowIndex].Cells[6].Value = (SucursalControlador.getById(empleado.sucursal_id.id)).nombre;
-
-
-
-
-                    /*if (vendedor.activo.ToString() == "1")
-                    {
-                        dataGridView1.Rows[rowIndex].Cells[7].Value = "Activo";
-                    }
-                    else
-                    {
-                        dataGridView1.Rows[rowIndex].Cells[7].Value = "Inactivo";
-                    }*/
+                    dataGridView1.Rows[rowIndex].Cells[7].Value = (SucursalControlador.getById(empleado.sucursal_id.id)).nombre;
 
 
                     if (empleado.rol.ToString() == "1")
                     {
-                        dataGridView1.Rows[rowIndex].Cells[7].Value = "admin";
+                        dataGridView1.Rows[rowIndex].Cells[8].Value = "admin";
                     }
                     else
                     {
-                        dataGridView1.Rows[rowIndex].Cells[7].Value = "vendedor";
+                        dataGridView1.Rows[rowIndex].Cells[8].Value = "vendedor";
                     }
 
 
-                    dataGridView1.Rows[rowIndex].Cells[8].Value = "Editar";
-                    dataGridView1.Rows[rowIndex].Cells[9].Value = "Eliminar";
+                    dataGridView1.Rows[rowIndex].Cells[9].Value = "Editar";
+                    dataGridView1.Rows[rowIndex].Cells[10].Value = "Eliminar";
                 }
+                dataGridView1.CellPainting += dataGridView1_CellPainting;
             }
         }
-
-
-        private void btn_new_Click_1(object sender, EventArgs e)
+        private void btn_crear_empleado_Click(object sender, EventArgs e)
         {
-            FormEmpleado frmVend = new FormEmpleado();
+            FormCrearEmpleado frmVend = new FormCrearEmpleado();
             DialogResult dr = frmVend.ShowDialog();
 
             if (dr == DialogResult.OK)
@@ -145,6 +132,32 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         }
 
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0 && dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                e.Handled = true;
+                e.PaintBackground(e.CellBounds, true);
+
+                // Crear un rectángulo para el botón
+                Rectangle buttonRect = e.CellBounds;
+                buttonRect.Inflate(-2, -2); // Reducir tamaño para dar efecto de borde
+
+                // Definir colores personalizados
+                Color buttonColor = Color.FromArgb(228, 137, 164); // Color de fondo del botón
+                Color textColor = Color.FromArgb(250, 236, 239); // Color del texto
+
+                using (SolidBrush brush = new SolidBrush(buttonColor))
+                {
+                    e.Graphics.FillRectangle(brush, buttonRect);
+                }
+
+                // Dibujar el texto del botón
+                TextRenderer.DrawText(e.Graphics, (string)e.Value, e.CellStyle.Font, buttonRect, textColor,
+                                      TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+            }
+        }
+
         /*       private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
                {
                    var senderGrid = (DataGridView)sender;
@@ -198,5 +211,23 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                           }
                }
         */
+
+        private void txt_buscar_dni_TextChanged(object sender, EventArgs e)
+        {
+            string filtroDni = txt_buscar_dni.Text.Trim();
+
+            // Actualiza el DataGridView con el filtro
+            cargarEmpleados(filtroDni);
+        }
+
+        private void txt_buscar_dni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permitir solo dígitos, retroceso y control (como copiar/pegar)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignorar entrada no válida
+            }
+        }
+
     }
 }

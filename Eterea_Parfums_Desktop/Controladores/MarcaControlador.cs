@@ -3,9 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
@@ -15,7 +12,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Marca> getAll()
         {
             List<Marca> list = new List<Marca>();
-            string query = "select * from dbo.Marca;";
+            string query = "select * from dbo.marca;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
@@ -45,7 +42,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static Marca getByName(string nombre)
         {
             Marca pais = new Marca();
-            string query = "select * from dbo.Marca where " +
+            string query = "select * from dbo.marca where " +
                 "nombre = @nombre;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);

@@ -1,10 +1,6 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -14,17 +10,13 @@ namespace Eterea_Parfums_Desktop
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
-        public static int debug_mode = 1;
-
-      
+        //public static int debug_mode = 1;
 
         public static Empleado logueado;
-        
-       
 
         public static String Ruta_Base;
         public static String Ruta_Web;
-        public static String entorno = "maxi";
+        public static String entorno = "jose";
 
         [STAThread]
         static void Main()
@@ -32,72 +24,65 @@ namespace Eterea_Parfums_Desktop
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if (entorno == "escuela")
+            // Mostrar el formulario de selección de usuario
+            FormSeleccionarUsuario formSeleccionarUsuario = new FormSeleccionarUsuario();
+            if (formSeleccionarUsuario.ShowDialog() == DialogResult.OK)
             {
-                Ruta_Base = @"C:\Users\Alumno\Desktop\Eterea_Parfums\Eterea_Parfums\Resources\";
-                Ruta_Base = @"C:\Users\Alumno\Desktop\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
-            }
-            
-            else if (entorno == "dami")
-            {
-                Ruta_Base = @"C:\Users\damim\source\repos"; 
-                Ruta_Base = @"C:\Users\damim\Source\Repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
-            }
-            else if (entorno == "adri")
-            {
-                Ruta_Base = @"C:\Users\PC\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
-                Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
-            }
-            else if (entorno == "maxi")
-            {
-                Ruta_Base = @"C:\Users\Maxi\source\repos";
-                Ruta_Base = @"C:\Users\Maxi\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
-            }
-            else if (entorno == "jose")
-            {
-                Ruta_Base = @"C:\Users\josel\source\repos";
-                Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
-            }
-            else if (entorno == "marino")
-            {
-                Ruta_Base = @"C:\Users\intersan\Desktop\Avanzando TP Plataformas\Eterea_Parfums\Eterea_Parfums\Resources\";
-                Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
+                string usuarioSeleccionado = formSeleccionarUsuario.UsuarioSeleccionado;
 
+                // Configurar la conexión a la base de datos con el usuario seleccionado
+                DB_Controller.ConfigurarConexion(usuarioSeleccionado);
+
+                // Configurar rutas según el usuario
+                ConfigurarRutas(usuarioSeleccionado);
+
+                // Llamamos a ActualizarEstadoPromociones al inicio del programa
+                PromocionService.ActualizarEstadoPromociones();
+
+                // Iniciar la aplicación principal
+
+                //Application.Run(new MenuABM());
+                Application.Run(new FormInicioAutoconsulta());
             }
-
-
-            DB_Controller.initialize();
-
-            if (connectionIsValid())
+            else
             {
-                if (debug_mode == 1)
-                {
-                    Trace.WriteLine("Conexion a la DB creada con exito.");
-                }
-
+                // Si el usuario no selecciona nada y cierra el formulario, salir de la aplicación
+                MessageBox.Show("Debe seleccionar un usuario para continuar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-
-          Application.Run(new InicioAutoConsultas());
         }
 
-        public static bool connectionIsValid()
+
+        // Método para configurar rutas según el usuario
+        private static void ConfigurarRutas(string usuario)
         {
-            try
+            switch (usuario.ToLower())
             {
-                DB_Controller.connection.Open();
-                DB_Controller.connection.Close();
-                return true;
-            }
-            catch (Exception e)
-            {
-                if (debug_mode == 1)
-                {
-                    Trace.WriteLine("Conexion a la DB con error." + e.Message);
-
+                case "escuela":
+                    Ruta_Base = @"C:\Users\Alumno\Desktop\Eterea_Parfums\Eterea_Parfums\Resources\";
+                    Ruta_Web = @"C:\Users\Alumno\Desktop\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
+                    break;
+                case "dami":
+                    Ruta_Base = @"C:\Users\damim\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                    Ruta_Web = @"C:\Users\damim\Source\Repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                    break;
+                case "adri":
+                    Ruta_Base = @"C:\Users\intersan\Desktop\TESIS\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                    Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
+                    break;
+                case "luis":
+                    Ruta_Base = @"C:\Users\josel\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                    Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
+                    break;
+                case "maxi":
+                        Ruta_Base = @"C:\Users\Maxi\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                        Ruta_Web = @"C:\Users\usuario\source\repos\EEterea_Web\Eterea_Web\Content\ImgPerfumes\";
+                        break;
+                    default:
+                        MessageBox.Show("Usuario no válido, no se configuraron rutas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
                 }
-                return false;
             }
 
-        }
     }
 }

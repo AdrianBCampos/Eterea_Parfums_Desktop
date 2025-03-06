@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,8 +48,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.13\lib\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,13 +68,63 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormPedido\FormBuscarPedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPedido\FormBuscarPedidos.Designer.cs">
+      <DependentUpon>FormBuscarPedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVenta\FormConsultasPerfumeEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVenta\FormConsultasPerfumeEmpleado.Designer.cs">
+      <DependentUpon>FormConsultasPerfumeEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormABM\Perfume\FormCrearPerfume2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormABM\Perfume\FormCrearPerfume2.Designer.cs">
+      <DependentUpon>FormCrearPerfume2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controladores\AromaDelPerfumeControlador.cs" />
     <Compile Include="Controladores\CalleControlador.cs" />
     <Compile Include="Controladores\ClienteControlador.cs" />
+    <Compile Include="Controladores\DetalleFacturaControlador.cs" />
+    <Compile Include="Controladores\FacturaControlador.cs" />
     <Compile Include="Controladores\GeneroControlador.cs" />
     <Compile Include="Controladores\LocalidadControlador.cs" />
     <Compile Include="Controladores\MarcaControlador.cs" />
+    <Compile Include="Controladores\NotaConTipoDeNotaControlador.cs" />
+    <Compile Include="Controladores\NotaControlador.cs" />
+    <Compile Include="Controladores\NotasDelPerfumeControlador.cs" />
     <Compile Include="Controladores\PaisControlador.cs" />
+    <Compile Include="Controladores\PerfumeControlador.cs" />
+    <Compile Include="Controladores\PerfumeEnPromoControlador.cs" />
+    <Compile Include="Controladores\PromoControlador.cs" />
     <Compile Include="Controladores\ProvinciaControlador.cs" />
+    <Compile Include="Controladores\StockControlador.cs" />
+    <Compile Include="Controladores\TipoDeAromaControlador.cs" />
+    <Compile Include="Controladores\TipoDeNotaControlador.cs" />
+    <Compile Include="Controladores\TipoDePerfumeControlador.cs" />
+    <Compile Include="ControlesDeUsuario\PerfumesUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\PerfumesUC.Designer.cs">
+      <DependentUpon>PerfumesUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DTOs\PerfumeDTO.cs" />
+    <Compile Include="FormABM\Perfume\FormEditarPerfume2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormABM\Perfume\FormEditarPerfume2.Designer.cs">
+      <DependentUpon>FormEditarPerfume2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormABM\Perfume\FormEditarPerfume1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormABM\Perfume\FormEditarPerfume1.Designer.cs">
+      <DependentUpon>FormEditarPerfume1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controladores\SucursalControlador.cs" />
     <Compile Include="ControlesDeUsuario\Clientes_UC.cs">
       <SubType>UserControl</SubType>
@@ -66,209 +138,340 @@
     <Compile Include="ControlesDeUsuario\Empleados_UC.Designer.cs">
       <DependentUpon>Empleados_UC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Facturacion.cs">
+    <Compile Include="ControlesDeUsuario\Promos_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\Promos_UC.Designer.cs">
+      <DependentUpon>Promos_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInicio\FormEscanear.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Facturacion.Designer.cs">
-      <DependentUpon>Facturacion.cs</DependentUpon>
+    <Compile Include="FormInicio\FormEscanear.Designer.cs">
+      <DependentUpon>FormEscanear.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCrearClienteABM.cs">
+    <Compile Include="FormVenta\FormFacturacion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCrearClienteABM.Designer.cs">
-      <DependentUpon>FormCrearClienteABM.cs</DependentUpon>
+    <Compile Include="FormVenta\FormFacturacion.Designer.cs">
+      <DependentUpon>FormFacturacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCrearClienteFactura.cs">
+    <Compile Include="FormInicio\FormSeleccionarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCrearClienteFactura.Designer.cs">
+    <Compile Include="FormInicio\FormSeleccionarUsuario.Designer.cs">
+      <DependentUpon>FormSeleccionarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormABM\Promo\FormEliminarPromo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormABM\Promo\FormEliminarPromo.Designer.cs">
+      <DependentUpon>FormEliminarPromo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormABM\Cliente\FormCrearCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormABM\Cliente\FormCrearCliente.Designer.cs">
+      <DependentUpon>FormCrearCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormABM\Cliente\FormCrearClienteFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormABM\Cliente\FormCrearClienteFactura.Designer.cs">
       <DependentUpon>FormCrearClienteFactura.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormEditarClienteABM.cs">
+    <Compile Include="FormABM\Promo\FormPromo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormEditarClienteABM.Designer.cs">
-      <DependentUpon>FormEditarClienteABM.cs</DependentUpon>
+    <Compile Include="FormABM\Promo\FormPromo.Designer.cs">
+      <DependentUpon>FormPromo.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormEditarEmpleado.cs">
+    <Compile Include="FormABM\Cliente\FormEditarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormEditarEmpleado.Designer.cs">
+    <Compile Include="FormABM\Cliente\FormEditarCliente.Designer.cs">
+      <DependentUpon>FormEditarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormABM\Empleado\FormEditarEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormABM\Empleado\FormEditarEmpleado.Designer.cs">
       <DependentUpon>FormEditarEmpleado.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormEliminarClienteABM.cs">
+    <Compile Include="FormABM\Cliente\FormEliminarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormEliminarClienteABM.Designer.cs">
-      <DependentUpon>FormEliminarClienteABM.cs</DependentUpon>
+    <Compile Include="FormABM\Cliente\FormEliminarCliente.Designer.cs">
+      <DependentUpon>FormEliminarCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormEliminarEmpleado.cs">
+    <Compile Include="FormABM\Empleado\FormEliminarEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormEliminarEmpleado.Designer.cs">
+    <Compile Include="FormABM\Empleado\FormEliminarEmpleado.Designer.cs">
       <DependentUpon>FormEliminarEmpleado.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormEmpleado.cs">
+    <Compile Include="FormABM\Perfume\FormEliminarPerfume.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormEmpleado.Designer.cs">
-      <DependentUpon>FormEmpleado.cs</DependentUpon>
+    <Compile Include="FormABM\Perfume\FormEliminarPerfume.Designer.cs">
+      <DependentUpon>FormEliminarPerfume.cs</DependentUpon>
     </Compile>
-    <Compile Include="InformesDeVentas2.cs">
+    <Compile Include="FormABM\Empleado\FormCrearEmpleado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InformesDeVentas2.Designer.cs">
-      <DependentUpon>InformesDeVentas2.cs</DependentUpon>
+    <Compile Include="FormABM\Empleado\FormCrearEmpleado.Designer.cs">
+      <DependentUpon>FormCrearEmpleado.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuABM.cs">
+    <Compile Include="FormInformeVenta\FormInformesDeVentas1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MenuABM.Designer.cs">
-      <DependentUpon>MenuABM.cs</DependentUpon>
+    <Compile Include="FormInformeVenta\FormInformesDeVentas1.Designer.cs">
+      <DependentUpon>FormInformesDeVentas1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormInformeVenta\FormInformesDeVentas2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInformeVenta\FormInformesDeVentas2.Designer.cs">
+      <DependentUpon>FormInformesDeVentas2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormABM\FormMenuABM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormABM\FormMenuABM.Designer.cs">
+      <DependentUpon>FormMenuABM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modelos\AromaDelPerfume.cs" />
     <Compile Include="Modelos\Calle.cs" />
     <Compile Include="Modelos\Cliente.cs" />
+    <Compile Include="Modelos\DetalleFactura.cs" />
+    <Compile Include="Modelos\Factura.cs" />
     <Compile Include="Modelos\Genero.cs" />
     <Compile Include="Modelos\Localidad.cs" />
     <Compile Include="Modelos\Marca.cs" />
+    <Compile Include="Modelos\Nota.cs" />
+    <Compile Include="Modelos\NotaConTipoDeNota.cs" />
+    <Compile Include="Modelos\NotasDelPerfume.cs" />
     <Compile Include="Modelos\Pais.cs" />
+    <Compile Include="Modelos\Perfume.cs" />
+    <Compile Include="Modelos\Promocion.cs" />
     <Compile Include="Modelos\Provincia.cs" />
+    <Compile Include="Modelos\TipoDeAroma.cs" />
+    <Compile Include="Modelos\TipoDeNota.cs" />
+    <Compile Include="Modelos\TipoDePerfume.cs" />
     <Compile Include="Modelos\Sucursal.cs" />
-    <Compile Include="Stock.cs">
+    <Compile Include="FormABM\Perfume\FormCrearPerfume1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Stock.Designer.cs">
-      <DependentUpon>Stock.cs</DependentUpon>
+    <Compile Include="FormABM\Perfume\FormCrearPerfume1.Designer.cs">
+      <DependentUpon>FormCrearPerfume1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PromocionService.cs" />
+    <Compile Include="FormStock\FormStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStock\FormStock.Designer.cs">
+      <DependentUpon>FormStock.cs</DependentUpon>
     </Compile>
     <Compile Include="Controladores\DB_Controller.cs" />
     <Compile Include="Controladores\EmpleadoControlador.cs" />
-    <Compile Include="InformesDeVentas.cs">
+    <Compile Include="FormInformeVenta\FormSeleccionarInformeVenta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InformesDeVentas.Designer.cs">
-      <DependentUpon>InformesDeVentas.cs</DependentUpon>
+    <Compile Include="FormInformeVenta\FormSeleccionarInformeVenta.Designer.cs">
+      <DependentUpon>FormSeleccionarInformeVenta.cs</DependentUpon>
     </Compile>
-    <Compile Include="InicioAdministrador.cs">
+    <Compile Include="FormLogin\FormInicioAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InicioAdministrador.Designer.cs">
-      <DependentUpon>InicioAdministrador.cs</DependentUpon>
+    <Compile Include="FormLogin\FormInicioAdministrador.Designer.cs">
+      <DependentUpon>FormInicioAdministrador.cs</DependentUpon>
     </Compile>
-    <Compile Include="InicioAutoConsultas.cs">
+    <Compile Include="FormInicio\FormInicioAutoconsulta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InicioAutoConsultas.Designer.cs">
-      <DependentUpon>InicioAutoConsultas.cs</DependentUpon>
+    <Compile Include="FormInicio\FormInicioAutoconsulta.Designer.cs">
+      <DependentUpon>FormInicioAutoconsulta.cs</DependentUpon>
     </Compile>
-    <Compile Include="InicioVendedor.cs">
+    <Compile Include="FormLogin\FormInicioVendedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InicioVendedor.Designer.cs">
-      <DependentUpon>InicioVendedor.cs</DependentUpon>
+    <Compile Include="FormLogin\FormInicioVendedor.Designer.cs">
+      <DependentUpon>FormInicioVendedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListaDeEnvios.cs">
+    <Compile Include="FormPedido\FormListaDeEnvios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListaDeEnvios.Designer.cs">
-      <DependentUpon>ListaDeEnvios.cs</DependentUpon>
+    <Compile Include="FormPedido\FormListaDeEnvios.Designer.cs">
+      <DependentUpon>FormListaDeEnvios.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="FormLogin\FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="FormLogin\FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Empleado.cs" />
-    <Compile Include="NumeroDeCaja.cs">
+    <Compile Include="FormVenta\FormNumeroDeCaja.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NumeroDeCaja.Designer.cs">
-      <DependentUpon>NumeroDeCaja.cs</DependentUpon>
+    <Compile Include="FormVenta\FormNumeroDeCaja.Designer.cs">
+      <DependentUpon>FormNumeroDeCaja.cs</DependentUpon>
     </Compile>
-    <Compile Include="NumeroDeSucursal.cs">
+    <Compile Include="FormStock\FormNumeroDeSucursal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NumeroDeSucursal.Designer.cs">
-      <DependentUpon>NumeroDeSucursal.cs</DependentUpon>
+    <Compile Include="FormStock\FormNumeroDeSucursal.Designer.cs">
+      <DependentUpon>FormNumeroDeSucursal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FormInfoPerfume\FormVerDetallePerfume.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInfoPerfume\FormVerDetallePerfume.Designer.cs">
+      <DependentUpon>FormVerDetallePerfume.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInfoPerfume\FormVerPerfumesSimilares.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInfoPerfume\FormVerPerfumesSimilares.Designer.cs">
+      <DependentUpon>FormVerPerfumesSimilares.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInfoPerfume\FormVerPromociones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInfoPerfume\FormVerPromociones.Designer.cs">
+      <DependentUpon>FormVerPromociones.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormPedido\FormBuscarPedidos.resx">
+      <DependentUpon>FormBuscarPedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVenta\FormConsultasPerfumeEmpleado.resx">
+      <DependentUpon>FormConsultasPerfumeEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormABM\Perfume\FormCrearPerfume2.resx">
+      <DependentUpon>FormCrearPerfume2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesDeUsuario\PerfumesUC.resx">
+      <DependentUpon>PerfumesUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormABM\Perfume\FormEditarPerfume2.resx">
+      <DependentUpon>FormEditarPerfume2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormABM\Perfume\FormEditarPerfume1.resx">
+      <DependentUpon>FormEditarPerfume1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlesDeUsuario\Clientes_UC.resx">
       <DependentUpon>Clientes_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesDeUsuario\Promos_UC.resx">
+      <DependentUpon>Promos_UC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlesDeUsuario\Empleados_UC.resx">
       <DependentUpon>Empleados_UC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Facturacion.resx">
-      <DependentUpon>Facturacion.cs</DependentUpon>
+    <EmbeddedResource Include="FormInicio\FormEscanear.resx">
+      <DependentUpon>FormEscanear.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCrearClienteABM.resx">
-      <DependentUpon>FormCrearClienteABM.cs</DependentUpon>
+    <EmbeddedResource Include="FormVenta\FormFacturacion.resx">
+      <DependentUpon>FormFacturacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCrearClienteFactura.resx">
+    <EmbeddedResource Include="FormABM\Promo\FormEliminarPromo.resx">
+      <DependentUpon>FormEliminarPromo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormABM\Cliente\FormCrearCliente.resx">
+      <DependentUpon>FormCrearCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormABM\Promo\FormPromo.resx">
+      <DependentUpon>FormPromo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormABM\Cliente\FormCrearClienteFactura.resx">
       <DependentUpon>FormCrearClienteFactura.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormEditarClienteABM.resx">
-      <DependentUpon>FormEditarClienteABM.cs</DependentUpon>
+    <EmbeddedResource Include="FormABM\Cliente\FormEditarCliente.resx">
+      <DependentUpon>FormEditarCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormEditarEmpleado.resx">
+    <EmbeddedResource Include="FormABM\Empleado\FormEditarEmpleado.resx">
       <DependentUpon>FormEditarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormEliminarClienteABM.resx">
-      <DependentUpon>FormEliminarClienteABM.cs</DependentUpon>
+    <EmbeddedResource Include="FormABM\Cliente\FormEliminarCliente.resx">
+      <DependentUpon>FormEliminarCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormEliminarEmpleado.resx">
+    <EmbeddedResource Include="FormABM\Empleado\FormEliminarEmpleado.resx">
       <DependentUpon>FormEliminarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormEmpleado.resx">
-      <DependentUpon>FormEmpleado.cs</DependentUpon>
+    <EmbeddedResource Include="FormABM\Perfume\FormEliminarPerfume.resx">
+      <DependentUpon>FormEliminarPerfume.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InformesDeVentas2.resx">
-      <DependentUpon>InformesDeVentas2.cs</DependentUpon>
+    <EmbeddedResource Include="FormABM\Empleado\FormCrearEmpleado.resx">
+      <DependentUpon>FormCrearEmpleado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuABM.resx">
-      <DependentUpon>MenuABM.cs</DependentUpon>
+    <EmbeddedResource Include="FormInicio\FormSeleccionarUsuario.resx">
+      <DependentUpon>FormSeleccionarUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Stock.resx">
-      <DependentUpon>Stock.cs</DependentUpon>
+    <EmbeddedResource Include="FormInformeVenta\FormInformesDeVentas1.resx">
+      <DependentUpon>FormInformesDeVentas1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InformesDeVentas.resx">
-      <DependentUpon>InformesDeVentas.cs</DependentUpon>
+    <EmbeddedResource Include="FormInformeVenta\FormInformesDeVentas2.resx">
+      <DependentUpon>FormInformesDeVentas2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InicioAdministrador.resx">
-      <DependentUpon>InicioAdministrador.cs</DependentUpon>
+    <EmbeddedResource Include="FormABM\FormMenuABM.resx">
+      <DependentUpon>FormMenuABM.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InicioAutoConsultas.resx">
-      <DependentUpon>InicioAutoConsultas.cs</DependentUpon>
+    <EmbeddedResource Include="FormABM\Perfume\FormCrearPerfume1.resx">
+      <DependentUpon>FormCrearPerfume1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InicioVendedor.resx">
-      <DependentUpon>InicioVendedor.cs</DependentUpon>
+    <EmbeddedResource Include="FormStock\FormStock.resx">
+      <DependentUpon>FormStock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListaDeEnvios.resx">
-      <DependentUpon>ListaDeEnvios.cs</DependentUpon>
+    <EmbeddedResource Include="FormInformeVenta\FormSeleccionarInformeVenta.resx">
+      <DependentUpon>FormSeleccionarInformeVenta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
+    <EmbeddedResource Include="FormLogin\FormInicioAdministrador.resx">
+      <DependentUpon>FormInicioAdministrador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NumeroDeCaja.resx">
-      <DependentUpon>NumeroDeCaja.cs</DependentUpon>
+    <EmbeddedResource Include="FormInicio\FormInicioAutoconsulta.resx">
+      <DependentUpon>FormInicioAutoconsulta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NumeroDeSucursal.resx">
-      <DependentUpon>NumeroDeSucursal.cs</DependentUpon>
+    <EmbeddedResource Include="FormLogin\FormInicioVendedor.resx">
+      <DependentUpon>FormInicioVendedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPedido\FormListaDeEnvios.resx">
+      <DependentUpon>FormListaDeEnvios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin\FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVenta\FormNumeroDeCaja.resx">
+      <DependentUpon>FormNumeroDeCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStock\FormNumeroDeSucursal.resx">
+      <DependentUpon>FormNumeroDeSucursal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
+    <EmbeddedResource Include="FormInfoPerfume\FormVerDetallePerfume.resx">
+      <DependentUpon>FormVerDetallePerfume.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInfoPerfume\FormVerPerfumesSimilares.resx">
+      <DependentUpon>FormVerPerfumesSimilares.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormInfoPerfume\FormVerPromociones.resx">
+      <DependentUpon>FormVerPromociones.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -278,10 +481,26 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\CerrarSesion.png" />
+    <None Include="Resources\FacturaA.html" />
+    <Content Include="Resources\imagen_por_defecto.jpg" />
     <Content Include="Resources\LogoEterea.png" />
+    <None Include="Resources\PlantillaInformeVentas.html" />
+    <None Include="Resources\LogoEtereaFactura.png" />
+    <None Include="Resources\PlantillaFactura.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

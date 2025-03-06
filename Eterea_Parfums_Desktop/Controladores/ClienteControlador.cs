@@ -3,9 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
@@ -32,7 +29,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                 "@fecha_nacimiento, " +
                 "@celular, " +
                 "@e_mail, " +
-                "@pais, " +
+                "@pais_id, " +
                 "@provincia_id, " +
                 "@localidad_id, " +
                 "@codigo_postal, " +
@@ -57,7 +54,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             //cmd.Parameters.AddWithValue("@fecha_nacimiento", cliente.fecha_nacimiento);
             cmd.Parameters.AddWithValue("@celular", cliente.celular);
             cmd.Parameters.AddWithValue("@e_mail", cliente.e_mail);
-            cmd.Parameters.AddWithValue("@pais", cliente.pais_id.id);
+            cmd.Parameters.AddWithValue("@pais_id", cliente.pais_id.id);
             cmd.Parameters.AddWithValue("@provincia_id", cliente.provincia_id.id);
             cmd.Parameters.AddWithValue("@localidad_id", cliente.localidad_id.id);
             cmd.Parameters.Add("@codigo_postal", System.Data.SqlDbType.Int).Value = cliente.codigo_postal ?? (object)DBNull.Value;
@@ -121,6 +118,65 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Cliente> obtenerTodos()
         {
             List<Cliente> list = new List<Cliente>();
+            string query = "SELECT * FROM dbo.cliente;";
+
+            // 🔹 Usamos "using" para que la conexión se cierre automáticamente
+            using (SqlConnection conexion = new SqlConnection(DB_Controller.connection.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conexion))
+                {
+                    try
+                    {
+                        conexion.Open();
+                        using (SqlDataReader r = cmd.ExecuteReader())
+                        {
+                            while (r.Read())
+                            {
+                                Pais pais = PaisControlador.getById(r.IsDBNull(10) ? 0 : r.GetInt32(10));
+                                Provincia provincia = ProvinciaControlador.getById(r.IsDBNull(11) ? 0 : r.GetInt32(11));
+                                Localidad localidad = LocalidadControlador.getById(r.IsDBNull(12) ? 0 : r.GetInt32(12));
+                                Calle calle = CalleControlador.getById(r.IsDBNull(14) ? 0 : r.GetInt32(14));
+
+                                list.Add(new Cliente(
+                                    r.GetInt32(0),
+                                    r.GetString(1),
+                                    "",
+                                    r.GetString(3),
+                                    r.GetString(4),
+                                    r.GetInt32(5),
+                                    r.GetString(6),
+                                    r.IsDBNull(7) ? default(DateTime) : r.GetDateTime(7),
+                                    r.GetString(8),
+                                    r.GetString(9),
+                                    pais,
+                                    provincia,
+                                    localidad,
+                                    r.IsDBNull(13) ? 0 : r.GetInt32(13),
+                                    calle,
+                                    r.IsDBNull(15) ? 0 : r.GetInt32(15),
+                                    r.IsDBNull(16) ? "" : r.GetString(16),
+                                    r.IsDBNull(17) ? "" : r.GetString(17),
+                                    r.IsDBNull(18) ? "" : r.GetString(18),
+                                    r.GetInt32(19),
+                                    r.GetString(20)
+                                ));
+
+                                Trace.WriteLine("Cliente encontrado, nombre: " + r.GetString(1));
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        throw new Exception("Hay un error en la query: " + e.Message);
+                    }
+                }
+            }
+
+            return list;
+        }
+        /*public static List<Cliente> obtenerTodos()
+        {
+            List<Cliente> list = new List<Cliente>();
             string query = "select * from dbo.cliente;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
@@ -173,7 +229,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
 
             return list;
-        }
+        }*/
 
         // GET ONE BY ID
         public static Cliente obtenerPorId(int id)
@@ -274,11 +330,35 @@ namespace Eterea_Parfums_Desktop.Controladores
                     localidad.id = r.GetInt32(12);
                     calle.id = r.GetInt32(14);
 
-                    cliente = new Cliente(r.GetInt32(0), r.GetString(1), "", r.GetString(3), r.GetString(4),
-                        r.GetInt32(5), r.GetString(6), r.GetDateTime(7), r.GetString(8), r.GetString(9), pais,
-                        provincia, localidad, r.GetInt32(13), calle, r.GetInt32(15),
-                        r.GetString(16), r.GetString(17), r.GetString(18),
-                         r.GetInt32(19), r.GetString(20));
+                    cliente = new Cliente(
+                        r.GetInt32(0),                                  // ID
+                        r.GetString(1),                                 // Usuario
+                        r.GetString(2),                                 // Clave
+                        r.GetString(3),                                 // Nombre
+                        r.GetString(4),                                 // Apellido
+                        r.GetInt32(5),                                  // DNI
+                        r.GetString(6),                                 // Condición frente al IVA
+                        r.GetDateTime(7),                               // Fecha de nacimiento
+                        r.GetString(8),                                 // Celular
+                        r.GetString(9),                                 // E-mail
+                        pais,                                           // País
+                        provincia,                                      // Provincia
+                        localidad,                                      // Localidad
+                        r.IsDBNull(13) ? 0 : r.GetInt32(13),            // Código postal
+                        calle,                                          // Calle
+                        r.IsDBNull(15) ? 0 : r.GetInt32(15),            // Numeración de calle
+                        r.IsDBNull(16) ? "" : r.GetString(16),          // Piso
+                        r.IsDBNull(17) ? "" : r.GetString(17),          // Departamento
+                        r.IsDBNull(18) ? "" : r.GetString(18),          // Comentarios domicilio
+                        r.GetInt32(19),                                 // Activo (corregido)
+                        r.GetString(20)                                 // Rol
+                    );
+
+                    /* cliente = new Cliente(r.GetInt32(0), r.GetString(1), "", r.GetString(3), r.GetString(4),
+                         r.GetInt32(5), r.GetString(6), r.GetDateTime(7), r.GetString(8), r.GetString(9), pais,
+                         provincia, localidad, r.GetInt32(13), calle, r.GetInt32(15),
+                         r.GetString(16), r.GetString(17), r.GetString(18),
+                          r.GetInt32(19), r.GetString(20)); */
                 }
                 r.Close();
                 DB_Controller.connection.Close();
@@ -305,7 +385,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         public static bool editarCliente(Cliente cliente)
         {
-            
+
 
             string query = "update dbo.cliente set usuario = @usuario, " +
                 "nombre = @nombre, " +

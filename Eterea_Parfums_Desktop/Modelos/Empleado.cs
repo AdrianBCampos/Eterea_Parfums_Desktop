@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Eterea_Parfums_Desktop.Modelos
 {
@@ -33,7 +29,7 @@ namespace Eterea_Parfums_Desktop.Modelos
         public String rol { get; set; }
 
 
-        public Empleado(int id, string usuario, string clave, string nombre, string apellido, int dni, DateTime fecha_nacimiento, string celular, string e_mail, 
+        public Empleado(int id, string usuario, string clave, string nombre, string apellido, int dni, DateTime fecha_nacimiento, string celular, string e_mail,
             Pais pais_id, Provincia provincia_id, Localidad localidad_id, int codigo_postal, Calle calle_id, int numeracion_calle, string piso, string departamento,
             string comentarios_domicilio, Sucursal sucursal_id, DateTime fecha_ingreso, int sueldo, int activo, string rol)
         {

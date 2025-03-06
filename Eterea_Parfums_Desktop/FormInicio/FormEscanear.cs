@@ -1,0 +1,82 @@
+﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.Modelos;
+using System;
+using System.Windows.Forms;
+
+namespace Eterea_Parfums_Desktop
+{
+    public partial class FormEscanear : Form
+    {
+
+        private FormInicioAutoconsulta _inicioAutoConsultas; // Referencia a InicioAutoConsulta
+
+
+        public FormEscanear(FormInicioAutoconsulta inicioAutoConsultas)
+        {
+            InitializeComponent();
+
+
+            _inicioAutoConsultas = inicioAutoConsultas; // Guardar la referencia
+            //this.Load += (s, e) => txt_codigo_barras.Focus(); // Poner el cursor en el TextBox al abrir el form
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FormInicioAutoconsulta inicioAutoConsultas = new FormInicioAutoconsulta();
+
+            this.Close();
+            _inicioAutoConsultas?.RestaurarUI();  // Llamar al método de restauración de UI
+        }
+
+
+
+        private void Escanear_Load(object sender, EventArgs e)
+        {
+            this.BeginInvoke(new Action(() =>
+            {
+                txt_codigo_barras.Focus(); // ✅ Posiciona el cursor en el TextBox
+            }));
+        }
+
+
+
+
+        private void txt_codigo_barras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                string codigoBarras = txt_codigo_barras.Text.Trim();
+
+                if (!string.IsNullOrEmpty(codigoBarras))
+                {
+                    Perfume perfumeEncontrado = PerfumeControlador.getByCodigo(codigoBarras);
+
+                    if (perfumeEncontrado != null)
+                    {
+                        FormVerDetallePerfume formDetalle = new FormVerDetallePerfume(perfumeEncontrado);
+
+                        // ✅ Manejar evento FormClosed para restaurar UI en InicioAutoConsulta
+                        formDetalle.FormClosed += (s, args) =>
+                        {
+                            _inicioAutoConsultas?.RestaurarUI(); // Llamar al método de InicioAutoConsultas
+                        };
+
+                        formDetalle.ShowDialog();
+                        this.Close(); // Cierra el form Escanear
+                    }
+                    else
+                    {
+                        this.Close();
+                        _inicioAutoConsultas?.MostrarErrorCodigo();
+                        this.Close();
+                        _inicioAutoConsultas?.RestaurarUI();  // Llamar al método de restauración de UI
+                    }
+                }
+            }
+        }
+
+
+    }
+}

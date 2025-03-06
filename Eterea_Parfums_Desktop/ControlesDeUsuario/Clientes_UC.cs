@@ -2,13 +2,8 @@
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop.ControlesDeUsuario
@@ -30,6 +25,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void cargarClientes(string filtroDni = "")
         {
+            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
+            dataGridView1.RowHeadersVisible = false;
+
             clientes = ClienteControlador.obtenerTodos();
 
             dataGridView1.Rows.Clear();
@@ -60,12 +58,13 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     dataGridView1.Rows[rowIndex].Cells[8].Value = "Editar";
                     dataGridView1.Rows[rowIndex].Cells[9].Value = "Eliminar";
                 }
+                dataGridView1.CellPainting += dataGridView1_CellPainting;
             }
         }
 
         private void btn_crear_cliente_Click(object sender, EventArgs e)
         {
-            FormCrearClienteABM formCrearClienteABM = new FormCrearClienteABM();       
+            FormCrearCliente formCrearClienteABM = new FormCrearCliente();
             DialogResult dr = formCrearClienteABM.ShowDialog();
 
             if (dr == DialogResult.OK)
@@ -91,7 +90,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                 Cliente cliente_editar = ClienteControlador.obtenerPorId(id);
 
-                FormEditarClienteABM formEditarClienteABM = new FormEditarClienteABM(cliente_editar);
+                FormEditarCliente formEditarClienteABM = new FormEditarCliente(cliente_editar);
 
                 DialogResult dr = formEditarClienteABM.ShowDialog();
 
@@ -113,7 +112,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                 Cliente cliente_eliminar = ClienteControlador.obtenerPorId(id);
 
-                FormEliminarClienteABM formEliminarClienteABM = new FormEliminarClienteABM(cliente_eliminar, id);
+                FormEliminarCliente formEliminarClienteABM = new FormEliminarCliente(cliente_eliminar, id);
 
                 DialogResult dr = formEliminarClienteABM.ShowDialog();
 
@@ -125,6 +124,32 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     cargarClientes();
 
                 }
+            }
+        }
+
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0 && dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                e.Handled = true;
+                e.PaintBackground(e.CellBounds, true);
+
+                // Crear un rectángulo para el botón
+                Rectangle buttonRect = e.CellBounds;
+                buttonRect.Inflate(-2, -2); // Reducir tamaño para dar efecto de borde
+
+                // Definir colores personalizados
+                Color buttonColor = Color.FromArgb(228, 137, 164); // Color de fondo del botón
+                Color textColor = Color.FromArgb(250, 236, 239); // Color del texto
+
+                using (SolidBrush brush = new SolidBrush(buttonColor))
+                {
+                    e.Graphics.FillRectangle(brush, buttonRect);
+                }
+
+                // Dibujar el texto del botón
+                TextRenderer.DrawText(e.Graphics, (string)e.Value, e.CellStyle.Font, buttonRect, textColor,
+                                      TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
             }
         }
 
@@ -145,6 +170,5 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             }
         }
 
-       
     }
 }
