@@ -213,11 +213,11 @@
             this.lbl_informe_general.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_informe_general.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_informe_general.ForeColor = System.Drawing.Color.Black;
-            this.lbl_informe_general.Location = new System.Drawing.Point(226, 38);
+            this.lbl_informe_general.Location = new System.Drawing.Point(325, 35);
             this.lbl_informe_general.Name = "lbl_informe_general";
-            this.lbl_informe_general.Size = new System.Drawing.Size(208, 18);
+            this.lbl_informe_general.Size = new System.Drawing.Size(143, 18);
             this.lbl_informe_general.TabIndex = 121;
-            this.lbl_informe_general.Text = "Informe General de Ventas";
+            this.lbl_informe_general.Text = "Informe Inventario";
             // 
             // btn_exportar_pdf
             // 
@@ -231,6 +231,7 @@
             this.btn_exportar_pdf.TabIndex = 122;
             this.btn_exportar_pdf.Text = "Exportar PDF";
             this.btn_exportar_pdf.UseVisualStyleBackColor = false;
+            this.btn_exportar_pdf.Click += new System.EventHandler(this.btn_exportar_pdf_Click);
             // 
             // dateTimeFechaInicio
             // 
