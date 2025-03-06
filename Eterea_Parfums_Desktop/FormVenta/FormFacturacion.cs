@@ -130,7 +130,7 @@ namespace Eterea_Parfums_Desktop
                     if (int.TryParse(fila.Cells[1].Value.ToString(), out int cantidadActual))
                     {
                         fila.Cells[1].Value = cantidadActual + 1;
-                        fila.Cells[6].Value = (cantidadActual + 1) * perfume.precio_en_pesos;
+                        fila.Cells[7].Value = (cantidadActual + 1) * perfume.precio_en_pesos;
                         ActualizarTotales();
                     }
                     return;
@@ -142,7 +142,7 @@ namespace Eterea_Parfums_Desktop
             // Asignar botones a las celdas de la nueva fila
             Factura.Rows[rowIndex].Cells[2] = new DataGridViewButtonCell() { Value = "➕" };
             Factura.Rows[rowIndex].Cells[3] = new DataGridViewButtonCell() { Value = "➖" };
-            Factura.Rows[rowIndex].Cells[7] = new DataGridViewButtonCell() { Value = "Eliminar" };// "🗑" 
+            Factura.Rows[rowIndex].Cells[8] = new DataGridViewButtonCell() { Value = "Eliminar" };// "🗑" 
 
             ActualizarTotales();
         }
@@ -451,7 +451,7 @@ namespace Eterea_Parfums_Desktop
         {
             totalFactura();
 
-            float subtotal, recargo, descuento;
+           
 
             desc();
             float subtotal, recargo, descuento;
