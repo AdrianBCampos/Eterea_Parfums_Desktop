@@ -88,10 +88,10 @@ namespace Eterea_Parfums_Desktop
         private void CargarMarcas()
         {
             var marcas = MarcaControlador.getAll();
-            combo_genero.Items.Clear();
+            combo_marca.Items.Clear();
             foreach (Marca marca in marcas)
             {
-                combo_genero.Items.Add(marca.nombre.ToString());
+                combo_marca.Items.Add(marca.nombre.ToString());
             }
         }
 
@@ -207,7 +207,7 @@ namespace Eterea_Parfums_Desktop
             }
 
 
-            Marca marca = MarcaControlador.getByName(combo_genero.SelectedItem.ToString());
+            Marca marca = MarcaControlador.getByName(combo_marca.SelectedItem.ToString());
             TipoDePerfume tipo_de_perfume = TipoDePerfumeControlador.getByName(combo_tipo_de_perfume.SelectedItem.ToString());
             Genero genero = GeneroControlador.getByName(combo_genero.SelectedItem.ToString());
             Console.WriteLine("Genero: " + genero.id);

@@ -255,6 +255,7 @@
     <Compile Include="Modelos\Perfume.cs" />
     <Compile Include="Modelos\Promocion.cs" />
     <Compile Include="Modelos\Provincia.cs" />
+    <Compile Include="Modelos\Stock.cs" />
     <Compile Include="Modelos\TipoDeAroma.cs" />
     <Compile Include="Modelos\TipoDeNota.cs" />
     <Compile Include="Modelos\TipoDePerfume.cs" />
