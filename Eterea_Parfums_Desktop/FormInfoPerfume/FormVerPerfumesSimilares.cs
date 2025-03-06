@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -153,11 +154,47 @@ namespace Eterea_Parfums_Desktop
                 {
                     int rowIndex = dataGridViewConsultas.Rows.Add();
 
-                    dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = perfume.nombre.ToString();
-                    dataGridViewConsultas.Rows[rowIndex].Cells[1].Value = (MarcaControlador.getById(perfume.marca.id)).nombre;
-                    dataGridViewConsultas.Rows[rowIndex].Cells[2].Value = (GeneroControlador.getById(perfume.genero.id)).genero;
-                    dataGridViewConsultas.Rows[rowIndex].Cells[3].Value = perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
-                    dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = "Ver";
+                    // Verificar si la imagen existe antes de asignarla
+                    string rutaBase = Program.Ruta_Base.TrimEnd('\\', '/'); // Asegura formato correcto
+                    string nombreArchivo = perfume.imagen1;
+
+                    // Si el nombre del archivo no tiene extensión, agrégala
+                    if (!Path.HasExtension(nombreArchivo))
+                    {
+                        nombreArchivo += ".jpg";
+                    }
+
+                    // Construir la ruta completa
+                    string imagePath = Path.Combine(rutaBase, nombreArchivo);
+
+                    Console.WriteLine("Ruta generada: " + imagePath);
+
+                    if (File.Exists(imagePath))
+                    {
+                        Console.WriteLine("Imagen encontrada: " + imagePath);
+                        dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = Image.FromFile(imagePath);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Imagen NO encontrada. Usando imagen por defecto.");
+                        dataGridViewConsultas.Rows[rowIndex].Cells["columnaImagen"].Value = Properties.Resources.sinImagen;
+                    }
+
+                    Console.WriteLine("Ruta generada: " + imagePath);
+                    if (File.Exists(imagePath))
+                    {
+                        dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = Image.FromFile(imagePath);
+                    }
+                    else
+                    {
+                        dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = Properties.Resources.sinImagen; // Imagen por defecto
+                    }
+
+                    dataGridViewConsultas.Rows[rowIndex].Cells[1].Value = perfume.nombre.ToString();
+                    dataGridViewConsultas.Rows[rowIndex].Cells[2].Value = (MarcaControlador.getById(perfume.marca.id)).nombre;
+                    dataGridViewConsultas.Rows[rowIndex].Cells[3].Value = (GeneroControlador.getById(perfume.genero.id)).genero;
+                    dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
+                    dataGridViewConsultas.Rows[rowIndex].Cells[5].Value = "Ver";
                 }
             }
         }
@@ -166,7 +203,7 @@ namespace Eterea_Parfums_Desktop
         {
             var senderGrid = (DataGridView)sender;
 
-            if (e.RowIndex >= 0 && e.ColumnIndex == 4)
+            if (e.RowIndex >= 0 && e.ColumnIndex == 5)
             {
                 int rowIndex = e.RowIndex;
                 Perfume perfumeSeleccionado = Perfumes_Paginados[rowIndex];

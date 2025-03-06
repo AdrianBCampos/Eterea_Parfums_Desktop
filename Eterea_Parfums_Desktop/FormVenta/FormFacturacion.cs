@@ -6,6 +6,7 @@ using iTextSharp.tool.xml;
 using System;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 
@@ -16,15 +17,30 @@ namespace Eterea_Parfums_Desktop
         public string NumeroCaja { get; set; }
         Cliente clientefactura = new Cliente();
 
+        private StringBuilder codigoBarrasBuffer = new StringBuilder();
+        private DateTime ultimaLectura = DateTime.Now;
+        private const int TIEMPO_ENTRE_LECTURAS_MS = 100;
+
+        
+
         public FormFacturacion()
         {
             InitializeComponent();
+
+           
+
             string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";
             img_logo.Image = System.Drawing.Image.FromFile(rutaCompletaImagen);
 
             txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
 
-            combo_forma_pago.SelectedIndexChanged -= combo_forma_pago_SelectedIndexChanged;
+            this.Load += FormFacturacion_Load;
+            txt_scan_factura.Leave += Txt_scan_factura_Leave;
+            txt_scan_factura.TextChanged += Txt_scan_factura_TextChanged;
+            Factura.CellContentClick += DataGridViewFactura_CellContentClick;
+        
+
+        combo_forma_pago.SelectedIndexChanged -= combo_forma_pago_SelectedIndexChanged;
 
             txt_nombre_cliente.Text = "Consumidor Final";
             txt_condicion_iva.Text = "Consumidor final";
@@ -59,14 +75,109 @@ namespace Eterea_Parfums_Desktop
             ActualizarDescuentosYCuotas();
 
             lbl_dniE.Hide();
+            txt_scan_factura.Hide();
+            
+            
+
+           
+
+            
+
         }
 
-        private void Facturacion_Load(object sender, EventArgs e)
+        private void Txt_scan_factura_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((DateTime.Now - ultimaLectura).TotalMilliseconds > TIEMPO_ENTRE_LECTURAS_MS)
+            {
+                codigoBarrasBuffer.Clear();
+            }
+
+            ultimaLectura = DateTime.Now;
+
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                string codigo = codigoBarrasBuffer.ToString().Trim();
+                if (!string.IsNullOrEmpty(codigo))
+                {
+                    ProcesarCodigoBarras(codigo);
+                    txt_scan_factura.Clear();
+                    codigoBarrasBuffer.Clear();
+                }
+            }
+            else
+            {
+                codigoBarrasBuffer.Append(e.KeyChar);
+            }
+        }
+
+
+        private void ProcesarCodigoBarras(string codigo)
+        {
+            if (string.IsNullOrEmpty(codigo)) return;
+
+            Perfume perfume = PerfumeControlador.getByCodigo(codigo);
+            if (perfume == null)
+            {
+                MessageBox.Show("Producto no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            foreach (DataGridViewRow fila in Factura.Rows)
+            {
+                if (fila.Cells[0].Value.ToString() == perfume.id.ToString()) // Columna ID
+                {
+                    if (int.TryParse(fila.Cells[1].Value.ToString(), out int cantidadActual))
+                    {
+                        fila.Cells[1].Value = cantidadActual + 1;
+                        fila.Cells[6].Value = (cantidadActual + 1) * perfume.precio_en_pesos;
+                        ActualizarTotales();
+                    }
+                    return;
+                }
+            }
+
+            int rowIndex = Factura.Rows.Add(perfume.id, 1, "", "", perfume.nombre, perfume.precio_en_pesos, perfume.precio_en_pesos, "");
+
+            // Asignar botones a las celdas de la nueva fila
+            Factura.Rows[rowIndex].Cells[2] = new DataGridViewButtonCell() { Value = "➕" };
+            Factura.Rows[rowIndex].Cells[3] = new DataGridViewButtonCell() { Value = "➖" };
+            Factura.Rows[rowIndex].Cells[7] = new DataGridViewButtonCell() { Value = "Eliminar" };// "🗑" 
+
+            ActualizarTotales();
+        }
+
+
+     
+        private void FormFacturacion_Load(object sender, EventArgs e)
         {
             txt_numero_caja.Text = NumeroCaja;
             txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
-
+            txt_scan_factura.Focus(); // Forzar el foco en txt_scan_factura al cargar el formulario
         }
+
+        private void Txt_scan_factura_Leave(object sender, EventArgs e)
+        {
+            txt_scan_factura.Focus(); // Si pierde el foco, volver a asignárselo automáticamente
+        }
+
+        private void Txt_scan_factura_TextChanged(object sender, EventArgs e)
+        {
+            if ((DateTime.Now - ultimaLectura).TotalMilliseconds > TIEMPO_ENTRE_LECTURAS_MS)
+            {
+                string codigo = txt_scan_factura.Text.Trim();
+                if (!string.IsNullOrEmpty(codigo))
+                {
+                    ProcesarCodigoBarras(codigo);
+                    txt_scan_factura.Clear();
+                }
+            }
+            ultimaLectura = DateTime.Now;
+        }
+
+
+
+      
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -107,6 +218,7 @@ namespace Eterea_Parfums_Desktop
                 // Si se encuentra el cliente, llenar los campos en el formulario actual
                 txt_nombre_cliente.Text = cliente.nombre + " " + cliente.apellido;
                 txt_condicion_iva.Text = cliente.condicion_frente_al_iva;
+                txt_email.Text = cliente.e_mail;
 
             }
             else
@@ -117,12 +229,13 @@ namespace Eterea_Parfums_Desktop
                 formCrearClienteFactura.ShowDialog(); // Cambiado a ShowDialog para esperar que el formulario se cierre
 
                 // Luego de cerrar el formulario de clientes, verifica si se creó un nuevo cliente
-                Cliente nuevoCliente = ClienteControlador.obtenerPorDni(int.Parse(txt_dni.Text));
+                Cliente nuevoCliente = ClienteControlador.obtenerPorDni(dniIngresado);
                 if (nuevoCliente != null)
                 {
                     // Asigna los datos del nuevo cliente al formulario actual
                     txt_nombre_cliente.Text = nuevoCliente.nombre + " " + nuevoCliente.apellido;
                     txt_condicion_iva.Text = nuevoCliente.condicion_frente_al_iva;
+                    txt_email.Text = nuevoCliente.e_mail;
                 }
             }
             ActualizarTotales();
@@ -135,19 +248,16 @@ namespace Eterea_Parfums_Desktop
             //this.Hide();
         }
 
-        private void dataGridViewFactura_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void DataGridViewFactura_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == 8)
             {
-                Factura.Rows.RemoveAt(e.RowIndex);
-                ActualizarTotales();
-                /*
-                totalFactura();
-                CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text));
-
-                desc();
-                sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
-                */
+                if (Factura.Rows.Count > 0 && e.RowIndex < Factura.Rows.Count)
+                {
+                    Factura.Rows.RemoveAt(e.RowIndex);
+                    ActualizarTotales();
+                }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == 2)
             {
@@ -189,7 +299,7 @@ namespace Eterea_Parfums_Desktop
                     ActualizarTotales();
 
                 }
-                else
+                else if (Factura.Rows.Count > 0 && e.RowIndex < Factura.Rows.Count)
                 {
                     Factura.Rows.RemoveAt(e.RowIndex);
                     descuentoUnitario();
@@ -336,6 +446,7 @@ namespace Eterea_Parfums_Desktop
             return Factura;
         }
 
+
         public void ActualizarTotales()
         {
             totalFactura();
@@ -343,29 +454,17 @@ namespace Eterea_Parfums_Desktop
             float subtotal, recargo, descuento;
 
             desc();
-            CalcularMontoRecargo();
-            // Verificamos que los valores sean válidos para evitar errores de conversión
+            float subtotal, recargo, descuento;
             if (!float.TryParse(txt_subtotal.Text, out subtotal)) subtotal = 0;
             if (!float.TryParse(txt_monto_recargo.Text, out recargo)) recargo = 0;
             if (!float.TryParse(txt_monto_descuento.Text, out descuento)) descuento = 0;
-
-            if (!float.TryParse(txt_subtotal.Text, out subtotal) || subtotal == 0)
-            {
-                // Si el subtotal es 0, poner todos los montos a 0
-                txt_monto_recargo.Text = "0,00";
-                txt_monto_descuento.Text = "0,00";
-                txt_iva.Text = "0,00";
-                txt_total.Text = "0,00";
-                return; // Salir del método sin hacer más cálculos
-            }
-
-            //CalcularImporteRecargo(subtotal, recargo);
-
-            //CalcularIVA(subtotal, recargo, descuento);
-            //if (!float.TryParse(txt_iva.Text, out iva)) iva = 0;
             sumaFinal(subtotal, recargo, descuento);
-            VerificarCondicionIVA(subtotal, recargo, descuento);
         }
+    
+
+
+
+
 
         private float CalcularIVA(float subtotal, float recargo, float descuento)
         {
@@ -722,6 +821,24 @@ namespace Eterea_Parfums_Desktop
             }
             CrearFactura();
             CrearDetalleFactura();
+            
         }
+
+        
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Enter)
+            {
+                if (!string.IsNullOrEmpty(txt_scan_factura.Text))
+                {
+                    ProcesarCodigoBarras(txt_scan_factura.Text.Trim());
+                    txt_scan_factura.Clear();
+                    return true; // Consumimos la tecla Enter
+                }
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+     
     }
 }

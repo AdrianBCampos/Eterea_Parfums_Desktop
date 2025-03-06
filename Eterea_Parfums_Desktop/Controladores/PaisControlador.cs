@@ -72,33 +72,26 @@ namespace Eterea_Parfums_Desktop.Controladores
         //GET ONE ById
         public static Pais getById(int id)
         {
-            Pais pais = new Pais();
-            string query = "select * from dbo.pais where " +
-                "id = @id;";
+            Pais pais = null;
+            string query = "SELECT * FROM dbo.pais WHERE id = @id;";
 
-            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-            cmd.Parameters.AddWithValue("@id", id);
-
-            try
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
             {
-                DB_Controller.connection.Open();
-                SqlDataReader r = cmd.ExecuteReader();
-
-                while (r.Read())
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    pais = new Pais(r.GetInt32(0), r.GetString(1));
-
-                }
-                r.Close();
-                DB_Controller.connection.Close();
-
-            }
-            catch (Exception e)
-            {
-                Trace.Write("Error al consultar la DB: " + e.Message);
-
-            }
+                    cmd.Parameters.AddWithValue("@id", id);
+                    using (SqlDataReader r = cmd.ExecuteReader())
+                    {
+                        if (r.Read())
+                        {
+                            pais = new Pais(r.GetInt32(0), r.GetString(1));
+                        }
+                    }  // 🔹 Aca se cierra automáticamente `SqlDataReader`
+                }  // 🔹 Aca se cierra automáticamente `SqlCommand`
+            }  // 🔹 Aca se cierra automáticamente `SqlConnection`
             return pais;
         }
+
     }
 }

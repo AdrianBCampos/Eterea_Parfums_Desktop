@@ -171,5 +171,15 @@ namespace Eterea_Parfums_Desktop.Properties {
                 return ResourceManager.GetString("PlantillaInformeVentas", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sinImagen {
+            get {
+                object obj = ResourceManager.GetObject("sinImagen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

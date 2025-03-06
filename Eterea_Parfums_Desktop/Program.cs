@@ -2,11 +2,19 @@
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Windows.Forms;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System.Threading;
+
 
 namespace Eterea_Parfums_Desktop
 {
     static class Program
     {
+     
+
+
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
@@ -16,11 +24,13 @@ namespace Eterea_Parfums_Desktop
 
         public static String Ruta_Base;
         public static String Ruta_Web;
-        public static String entorno = "jose";
+        public static String entorno = "adri";
 
         [STAThread]
         static void Main()
         {
+
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
@@ -50,8 +60,9 @@ namespace Eterea_Parfums_Desktop
                 MessageBox.Show("Debe seleccionar un usuario para continuar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-        }
 
+        }
+           
 
         // Método para configurar rutas según el usuario
         private static void ConfigurarRutas(string usuario)
@@ -83,6 +94,14 @@ namespace Eterea_Parfums_Desktop
                         break;
                 }
             }
+    
 
-    }
+
+
+   
+}
+
+
+
+
 }

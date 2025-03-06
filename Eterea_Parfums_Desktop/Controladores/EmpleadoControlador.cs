@@ -3,118 +3,113 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
     internal class EmpleadoControlador
     {
-        public static bool auth(string usr, string pass)//, bool hasheado)
+        public static bool auth(string usr, string pass)
         {
+            Empleado empleadoLogueado = new Empleado();
 
+            Pais pais = new Pais();
+            Provincia provincia = new Provincia();
+            Localidad localidad = new Localidad();
+            Calle calle = new Calle();
+            Sucursal sucursal = new Sucursal();
 
-            Empleado empleado = new Empleado();
-            string query = "select * from dbo.empleado where " +
-                "usuario = @user and clave = @pass;";
-
-            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-            cmd.Parameters.AddWithValue("@user", usr);
-            cmd.Parameters.AddWithValue("@pass", pass);
-
-            //if (hasheado)
-            //{
-            //cmd.Parameters.AddWithValue("@pass", pass);
-            //}
-            //else
-            //{
-            //cmd.Parameters.AddWithValue("@pass", HashSet.PassHash(pass));
-            //}
+            string query = "SELECT * FROM dbo.empleado WHERE usuario = @user AND clave = @pass;";
 
             try
             {
-                DB_Controller.connection.Open();
-                SqlDataReader r = cmd.ExecuteReader();
-
-
-
-                while (r.Read())
+                using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString())) // ✅ Nueva conexión
                 {
-                    Trace.WriteLine("Vendedor encontrado, nombre: " + r.GetString(1));
+                    connection.Open();
 
-                    Pais pais = PaisControlador.getById(r.GetInt32(9));
-                    Provincia provincia = ProvinciaControlador.getById(r.GetInt32(10));
-                    Localidad localidad = LocalidadControlador.getById(r.GetInt32(11));
-                    Calle calle = CalleControlador.getById(r.GetInt32(13));
-                    Sucursal sucursal = SucursalControlador.getById(r.GetInt32(18));
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@user", usr);
+                        cmd.Parameters.AddWithValue("@pass", pass);
 
+                        using (SqlDataReader r = cmd.ExecuteReader())
+                        {
+                            if (!r.HasRows) // ✅ Si no hay registros, devolvemos false directamente
+                            {
+                                return false;
+                            }
 
-                    empleado = new Empleado(r.GetInt32(0), r.GetString(1), r.GetString(2), r.GetString(3), r.GetString(4),
-                       r.GetInt32(5), r.GetDateTime(6), r.GetString(7), r.GetString(8), pais,
-                       provincia, localidad, r.GetInt32(12), calle, r.GetInt32(14),
-                       r.GetString(15), r.GetString(16), r.GetString(17),
-                       sucursal, r.GetDateTime(19), r.GetInt32(20), r.GetInt32(21), r.GetString(22));
+                            while (r.Read())
+                            {
+                                Trace.WriteLine("=================================");
+                                Trace.WriteLine("Empleado encontrado, nombre: " + r.GetString(3)+ " " + r.GetString(4));
+                                Trace.WriteLine("=================================");
 
+                                //Obtener id de los datos de las claves foraneas de empleado
 
-                 /*   Console.WriteLine($"id: {r.GetInt32(0)}, " +
-                  $"usuario: {r.GetString(1)}, " +
-                  $"clave: {r.GetString(2)}, " +
-                  $"nombre: {r.GetString(3)}, " +
-                  $"apellido: {r.GetString(4)}, " +
-                  $"dni: {r.GetInt32(5)}, " +
-                  $"fecha_nacimiento: {r.GetDateTime(6)}, " +
-                  $"celular: {r.GetString(7)}, " +
-                  $"e_mail: {r.GetString(8)}, " +
-                  $"pais_id: {r.GetInt32(9)}, " +
-                  $"provincia_id: {r.GetInt32(10)}, " +
-                  $"localidad_id: {r.GetInt32(11)}, " +
-                  $"codigo_postal: {r.GetInt32(12)}, " +
-                  $"calle_id: {r.GetInt32(13)}, " +
-                  $"numeracion_calle: {r.GetInt32(14)}, " +
-                  $"piso: {(r.IsDBNull(15) ? "null" : r.GetString(15))}, " +
-                  $"departamento: {(r.IsDBNull(16) ? "null" : r.GetString(16))}, " +
-                  $"comentarios_domicilio: {(r.IsDBNull(17) ? "null" : r.GetString(17))}, " +
-                  $"sucursal_id: {r.GetInt32(18)}, " +
-                  $"fecha_ingreso: {r.GetDateTime(19)}, " +
-                  $"sueldo: {r.GetInt32(20)}, " +
-                  $"activo: {r.GetInt32(21)}, " +
-                  $"rol: {r.GetString(22)}");
+                                int paisId = r.GetInt32(9);
+                                int provinciaId = r.GetInt32(10);
+                                int localidadId = r.GetInt32(11);
+                                int calleId = r.GetInt32(13);
+                                int sucursalId = r.GetInt32(18);
+                               
 
 
-                    Console.WriteLine($" Empleadoooooooooooo ID: {empleado.id}, Usuario: {empleado.usuario}, Clave: {empleado.clave}, " +
-    $"Nombre: {empleado.nombre}, Apellido: {empleado.apellido}, DNI: {empleado.dni}, " +
-    $"Fecha Nacimiento: {empleado.fecha_nacimiento}, Celular: {empleado.celular}, Email: {empleado.e_mail}, " +
-    $"País: {empleado.pais_id.id}, " +
-    $"Provincia: {(empleado.provincia_id.id)}, " +
-    $"Localidad: {(empleado.localidad_id.id)}, " +
-    $"Código Postal: {empleado.codigo_postal}, Calle: {(empleado.calle_id != null ? empleado.calle_id.nombre : "null")}, " +
-    $"Numeración Calle: {empleado.numeracion_calle}, Piso: {empleado.piso}, Departamento: {empleado.departamento}, " +
-    $"Comentarios Domicilio: {empleado.comentarios_domicilio}, " +
-    $"Sucursal: {empleado.sucursal_id.id}, " +
-    $"Fecha Ingreso: {empleado.fecha_ingreso}, Sueldo: {empleado.sueldo}, Activo: {empleado.activo}, Rol: {empleado.rol}");
-                 */
+
+                                // ✅ Obtenemos los objetos completos
+                                pais = PaisControlador.getById(paisId);
+                                provincia = ProvinciaControlador.getById(provinciaId);
+                                localidad = LocalidadControlador.getById(localidadId);
+                                calle = CalleControlador.getById(calleId);
+                                sucursal = SucursalControlador.getById(sucursalId);
+
+                                // ✅ Creamos el objeto empleado
+                                empleadoLogueado = new Empleado(
+                                    r.GetInt32(0), r.GetString(1), r.GetString(2), r.GetString(3), r.GetString(4),
+                                    r.GetInt32(5), r.GetDateTime(6), r.GetString(7), r.GetString(8), pais,
+                                    provincia, localidad, r.GetInt32(12), calle, r.GetInt32(14),
+                                    r.GetString(15), r.GetString(16), r.GetString(17),
+                                    sucursal, r.GetDateTime(19), r.GetInt32(20), r.GetInt32(21), r.GetString(22)
+                                );
+                            }
+                          
+                        }
+                    }
                 }
-                r.Close();
-                DB_Controller.connection.Close();
 
-                if (empleado.usuario == usr && empleado.clave == pass)
+                // ✅ Si no se encontró un empleado, retornamos false
+                if (empleadoLogueado == null)
                 {
-
-                    Program.logueado = empleado;
-
-                    return true;
-                }
-                else
-                {
-
                     return false;
                 }
 
+                // ✅ Comprobación de usuario y clave
+                if (empleadoLogueado.usuario == usr && empleadoLogueado.clave == pass)
+                {
+                    Program.logueado = empleadoLogueado;
+                    Trace.WriteLine("=================================");
+                    Trace.WriteLine($"Empleado logueado: ID={empleadoLogueado.id}, Usuario={empleadoLogueado.usuario}, " +
+                     $"Nombre={empleadoLogueado.nombre} {empleadoLogueado.apellido}, " +
+                     $"País ID={empleadoLogueado.pais_id.id}, País Nombre={empleadoLogueado.pais_id.nombre}, " +
+                     $"Provincia ID={empleadoLogueado.provincia_id.id}, Provincia Nombre={empleadoLogueado.provincia_id.nombre}, " +
+                     $"Localidad ID={empleadoLogueado.localidad_id.id}, Localidad Nombre={empleadoLogueado.localidad_id.nombre}, " +
+                     $"Calle ID={empleadoLogueado.calle_id.id}, Calle Nombre={empleadoLogueado.calle_id.nombre}, " +
+                     $"Sucursal ID={empleadoLogueado.sucursal_id.id}, Sucursal Nombre={empleadoLogueado.sucursal_id.nombre}");
+                    Trace.WriteLine("=================================");
+
+                    return true;
+
+                }
+
+                return false;
             }
             catch (Exception e)
             {
-                throw new Exception("Hay un error en la query: " + e.Message);
-
+                MessageBox.Show("Error en la autenticación: " + e.Message);
+                return false;
             }
         }
+
 
         public static bool crearEmpleado(Empleado empleado)
         {
