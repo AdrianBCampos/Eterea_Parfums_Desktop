@@ -118,8 +118,8 @@ namespace Eterea_Parfums_Desktop
             if (e.Control && e.KeyCode == Keys.L)
             {
                 FormLogin login = new FormLogin();
-                login.Show();
-                this.Hide();
+                login.ShowDialog();
+                //this.Hide();
                 return; // Importante: evitar que siga evaluando otras teclas después de ocultar el formulario
             }
 
@@ -411,7 +411,10 @@ namespace Eterea_Parfums_Desktop
 
             /*if (filtro.aroma != null)
             {
-                Perfumes_Filtrado = Perfumes_Filtrado.Where(x => x.aroma.id == filtro.aroma.id).ToList();
+                Perfumes_Filtrado = Perfumes_Filtrado
+                    .Where(x => x.AromasDelPerfume
+                        .Any(a => a.tipoDeAroma.id == filtro.aroma.id))
+                    .ToList();
             }*/
 
             if (filtro.nombre != null)

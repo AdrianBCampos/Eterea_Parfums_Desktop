@@ -32,6 +32,18 @@ namespace Eterea_Parfums_Desktop
         {
             //InicioAdministrador InicioAdministrador = new InicioAdministrador();
             //InicioAdministrador.Show();
+
+            
+
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.Name == "FormInicioAutoconsulta") // Asegúrate de que el nombre sea correcto
+                {
+                    form.Show();
+                    break;
+                }
+            }
+
             this.Close();
         }
 
@@ -39,6 +51,8 @@ namespace Eterea_Parfums_Desktop
         {
 
             int idSucursal = int.Parse(combo_sucursales.SelectedItem.ToString());
+
+            
 
             FormStock stock = new FormStock(idSucursal);
             stock.Show();

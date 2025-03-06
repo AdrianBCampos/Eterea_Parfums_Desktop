@@ -38,13 +38,13 @@ namespace Eterea_Parfums_Desktop
                     if (Program.logueado.rol == "admin")
                     {
                         FormInicioAdministrador InicioAdministrador = new FormInicioAdministrador();
-                        InicioAdministrador.Show();
+                        InicioAdministrador.ShowDialog();
                         this.Hide();
                     }
                     else
                     {
                         FormInicioVendedor InicioVendedor = new FormInicioVendedor();
-                        InicioVendedor.Show();
+                        InicioVendedor.ShowDialog();
                         this.Hide();
                     }
 
@@ -104,9 +104,7 @@ namespace Eterea_Parfums_Desktop
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
-            FormInicioAutoconsulta inicio = new FormInicioAutoconsulta();
-            inicio.Show();
+        {        
             this.Close();
         }
     }
