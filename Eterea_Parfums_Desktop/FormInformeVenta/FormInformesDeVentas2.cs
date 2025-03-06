@@ -10,6 +10,7 @@ using iTextSharp.text.pdf;
 using iTextSharp.text;
 using iTextSharp.tool.xml;
 
+
 namespace Eterea_Parfums_Desktop
 {
     public partial class FormInformesDeVentas2 : Form
@@ -48,7 +49,7 @@ namespace Eterea_Parfums_Desktop
         }
 
 
-        private Image redimensionarImagen(Image img, int cellWidth, int cellHeight)
+        private System.Drawing.Image redimensionarImagen(Image img, int cellWidth, int cellHeight)
         {
             Bitmap resizedImage = new Bitmap(cellWidth, cellHeight);
             using (Graphics graphics = Graphics.FromImage(resizedImage))
@@ -155,7 +156,7 @@ namespace Eterea_Parfums_Desktop
             guardarFactura.Filter = "Archivos PDF (*.pdf)|*.pdf"; // Filtro para archivos PDF
             guardarFactura.DefaultExt = "pdf"; // Extensión por defecto
             guardarFactura.AddExtension = true;
-            string PaginaHTML_Texto = Properties.Resources.PlantillaFactura.ToString();
+            string PaginaHTML_Texto = Properties.Resources.Plantilla_Inventario.ToString();
             
             string filas = string.Empty;
             decimal total = 0;
@@ -216,4 +217,4 @@ namespace Eterea_Parfums_Desktop
 
         }
     }
-}
+
