@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.img_logo = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.lbl_facturacion = new System.Windows.Forms.Label();
@@ -48,14 +48,15 @@
             this.btn_consultas = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Factura = new System.Windows.Forms.DataGridView();
-            //this.Id_Perfume = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            //this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            //this.sumar1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            //this.restar1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            //this.Nombre_Perfume = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            //this.Precio_Unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            //this.Tot = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            //this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Id_Perfume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sumar1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.restar1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Nombre_Perfume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio_Unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -95,15 +96,6 @@
             this.txt_nombre_cliente = new System.Windows.Forms.Label();
             this.txt_condicion_iva = new System.Windows.Forms.Label();
             this.txt_numero_factura = new System.Windows.Forms.Label();
-            this.Id_Perfume = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sumar1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.restar1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Nombre_Perfume = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio_Unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tot = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.txt_scan_factura = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -278,24 +270,24 @@
             // Factura
             // 
             this.Factura.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.Factura.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.Factura.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.Factura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Factura.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.Factura.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Factura.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.Factura.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Factura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Factura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.Factura.ColumnHeadersHeight = 24;
             this.Factura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id_Perfume,
@@ -307,33 +299,33 @@
             this.Descuento,
             this.Tot,
             this.eliminar});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Factura.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Factura.DefaultCellStyle = dataGridViewCellStyle8;
             this.Factura.EnableHeadersVisualStyles = false;
             this.Factura.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.Factura.Location = new System.Drawing.Point(17, 212);
             this.Factura.Name = "Factura";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Factura.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Factura.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.Factura.RowHeadersVisible = false;
             this.Factura.RowHeadersWidth = 51;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            this.Factura.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
+            this.Factura.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.Factura.RowTemplate.Height = 30;
             this.Factura.Size = new System.Drawing.Size(712, 251);
             this.Factura.TabIndex = 296;
@@ -392,6 +384,11 @@
             this.Precio_Unitario.MinimumWidth = 6;
             this.Precio_Unitario.Name = "Precio_Unitario";
             this.Precio_Unitario.Width = 140;
+            // 
+            // Descuento
+            // 
+            this.Descuento.HeaderText = "DESCUENTO";
+            this.Descuento.Name = "Descuento";
             // 
             // Tot
             // 
@@ -829,76 +826,7 @@
             this.txt_numero_factura.TabIndex = 341;
             this.txt_numero_factura.Text = "N°";
             // 
-            // Id_Perfume
-            // 
-            this.Id_Perfume.HeaderText = "ID";
-            this.Id_Perfume.MinimumWidth = 6;
-            this.Id_Perfume.Name = "Id_Perfume";
-            this.Id_Perfume.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Cantidad.FillWeight = 57.51565F;
-            this.Cantidad.HeaderText = "CANTIDAD";
-            this.Cantidad.MinimumWidth = 6;
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            this.Cantidad.Width = 85;
-            // 
-            // sumar1
-            // 
-            this.sumar1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.sumar1.FillWeight = 43.19315F;
-            this.sumar1.HeaderText = "+";
-            this.sumar1.MinimumWidth = 6;
-            this.sumar1.Name = "sumar1";
-            this.sumar1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.sumar1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.sumar1.Width = 36;
-            // 
-            // restar1
-            // 
-            this.restar1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.restar1.FillWeight = 40.60915F;
-            this.restar1.HeaderText = "-";
-            this.restar1.MinimumWidth = 6;
-            this.restar1.Name = "restar1";
-            this.restar1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.restar1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.restar1.Width = 33;
-            // 
-            // Nombre_Perfume
-            // 
-            this.Nombre_Perfume.FillWeight = 402.6662F;
-            this.Nombre_Perfume.HeaderText = "NOMBRE";
-            this.Nombre_Perfume.MinimumWidth = 6;
-            this.Nombre_Perfume.Name = "Nombre_Perfume";
-            // 
-            // Precio_Unitario
-            // 
-            this.Precio_Unitario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Precio_Unitario.FillWeight = 57.51565F;
-            this.Precio_Unitario.HeaderText = "PRECIO UNITARIO ($)";
-            this.Precio_Unitario.MinimumWidth = 6;
-            this.Precio_Unitario.Name = "Precio_Unitario";
-            this.Precio_Unitario.Width = 140;
-            // 
-            // Descuento
-            // 
-            this.Descuento.HeaderText = "DESCUENTO";
-            this.Descuento.Name = "Descuento";
-            // 
-            // Tot
-            // 
-            this.Tot.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Tot.FillWeight = 57.51565F;
-            this.Tot.HeaderText = "TOTAL ($)";
-            this.Tot.MinimumWidth = 6;
-            this.Tot.Name = "Tot";
-            this.Tot.Width = 80;
-            // 
-            // eliminar
+            // txt_scan_factura
             // 
             this.txt_scan_factura.Location = new System.Drawing.Point(504, 148);
             this.txt_scan_factura.Name = "txt_scan_factura";
@@ -967,9 +895,12 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.img_logo);
             this.Controls.Add(this.pictureBox5);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormFacturacion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facturacion";
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

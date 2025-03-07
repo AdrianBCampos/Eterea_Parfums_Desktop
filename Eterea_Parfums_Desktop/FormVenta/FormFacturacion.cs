@@ -117,6 +117,7 @@ namespace Eterea_Parfums_Desktop
             if (string.IsNullOrEmpty(codigo)) return;
 
             Perfume perfume = PerfumeControlador.getByCodigo(codigo);
+
             if (perfume == null)
             {
                 MessageBox.Show("Producto no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -130,6 +131,12 @@ namespace Eterea_Parfums_Desktop
                     if (int.TryParse(fila.Cells[1].Value.ToString(), out int cantidadActual))
                     {
                         fila.Cells[1].Value = cantidadActual + 1;
+                        PerfumeEnPromoControlador promoController = new PerfumeEnPromoControlador();
+                        int descuentoPorcentaje = promoController.obtenerMayorDescuentoPorPerfume(perfume.id);
+                        decimal precioUnitario = Convert.ToDecimal(perfume.precio_en_pesos);
+                        decimal descuentoMonto = ((precioUnitario * descuentoPorcentaje) / 100);
+                        fila.Cells[6].Value = descuentoMonto;
+                        //facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Tot"].Value = perfume.precio_en_pesos.ToString();
                         fila.Cells[7].Value = (cantidadActual + 1) * perfume.precio_en_pesos;
                         ActualizarTotales();
                     }

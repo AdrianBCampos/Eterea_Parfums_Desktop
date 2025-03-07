@@ -394,8 +394,11 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lbl_informe_general);
             this.Controls.Add(this.btn_exportar_pdf);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormInformesDeVentas2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InformesDeVentas3";
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
