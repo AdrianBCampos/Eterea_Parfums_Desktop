@@ -68,7 +68,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BarcodeManager.cs" />
     <Compile Include="BarcodeReceiver.cs" />
     <Compile Include="FormPedido\FormBuscarPedidos.cs">
       <SubType>Form</SubType>

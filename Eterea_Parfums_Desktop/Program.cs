@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 
 
+
 namespace Eterea_Parfums_Desktop
 {
     static class Program
@@ -25,6 +26,8 @@ namespace Eterea_Parfums_Desktop
         public static String Ruta_Base;
         public static String Ruta_Web;
         public static String entorno = "adri";
+
+
 
         [STAThread]
         static void Main()
@@ -49,7 +52,11 @@ namespace Eterea_Parfums_Desktop
                 // Llamamos a ActualizarEstadoPromociones al inicio del programa
                 PromocionService.ActualizarEstadoPromociones();
 
+
+
+
                 // Iniciar la aplicación principal
+
 
                 //Application.Run(new MenuABM());
                 Application.Run(new FormInicioAutoconsulta());
