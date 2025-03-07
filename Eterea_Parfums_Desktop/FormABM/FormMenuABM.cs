@@ -13,6 +13,8 @@ namespace Eterea_Parfums_Desktop
             PerfumesUC perfumesUC = new PerfumesUC();
             addUserControl(perfumesUC);
 
+
+           
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -54,6 +56,8 @@ namespace Eterea_Parfums_Desktop
         {
             Promos_UC promos_UC = new Promos_UC();
             addUserControl(promos_UC);
+
+           
         }
 
         private void button2_Click_1(object sender, EventArgs e)

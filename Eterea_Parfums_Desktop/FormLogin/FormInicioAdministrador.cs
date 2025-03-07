@@ -26,11 +26,14 @@ namespace Eterea_Parfums_Desktop
 
             // Configurar el ToolTip para el botón de cerrar sesión
             toolTip.SetToolTip(btn_cerrar_sesion, "Cerrar sesión");
+
+            
         }
 
         private void btn_cerrar_sesion_Click(object sender, EventArgs e)
         {
             Program.logueado = new Empleado();
+
             FormLogin login = new FormLogin();
             login.Show();
             this.Close();
@@ -41,6 +44,15 @@ namespace Eterea_Parfums_Desktop
             FormNumeroDeSucursal numeroDeSucursal = new FormNumeroDeSucursal();
             numeroDeSucursal.Show();
             this.Hide();
+
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.Name == "FormInicioAutoconsulta") // Asegúrate de que el nombre sea correcto
+                {
+                    form.Hide();
+                    break;
+                }
+            }
         }
 
         private void btn_facturar_Click(object sender, EventArgs e)
@@ -48,6 +60,15 @@ namespace Eterea_Parfums_Desktop
             FormNumeroDeCaja numeroDeCaja = new FormNumeroDeCaja();
             numeroDeCaja.Show();
             this.Hide();
+
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.Name == "FormInicioAutoconsulta") // Asegúrate de que el nombre sea correcto
+                {
+                    form.Hide();
+                    break;
+                }
+            }
         }
 
         private void btn_gestionar_Click(object sender, EventArgs e)
@@ -55,6 +76,15 @@ namespace Eterea_Parfums_Desktop
             FormMenuABM menuABM = new FormMenuABM();
             menuABM.Show();
             this.Hide();
+
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.Name == "FormInicioAutoconsulta") // Asegúrate de que el nombre sea correcto
+                {
+                    form.Hide();
+                    break;
+                }
+            }
         }
 
         private void btn_generar_informes_Click(object sender, EventArgs e)
@@ -62,6 +92,15 @@ namespace Eterea_Parfums_Desktop
             FormSeleccionarInformeVenta informesDeVentas = new FormSeleccionarInformeVenta();
             informesDeVentas.Show();
             this.Hide();
+
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.Name == "FormInicioAutoconsulta") // Asegúrate de que el nombre sea correcto
+                {
+                    form.Hide();
+                    break;
+                }
+            }
         }
     }
 }

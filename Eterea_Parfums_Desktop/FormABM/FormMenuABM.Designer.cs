@@ -124,10 +124,10 @@
             // 
             this.panel_abm.AutoSize = true;
             this.panel_abm.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.panel_abm.Location = new System.Drawing.Point(8, 77);
+            this.panel_abm.Location = new System.Drawing.Point(8, 87);
             this.panel_abm.Margin = new System.Windows.Forms.Padding(4);
             this.panel_abm.Name = "panel_abm";
-            this.panel_abm.Size = new System.Drawing.Size(1316, 507);
+            this.panel_abm.Size = new System.Drawing.Size(1316, 497);
             this.panel_abm.TabIndex = 97;
             this.panel_abm.UseWaitCursor = true;
             // 
@@ -171,7 +171,7 @@
             this.pictureBox4.TabIndex = 107;
             this.pictureBox4.TabStop = false;
             // 
-            // MenuABM
+            // FormMenuABM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -187,7 +187,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox4);
-            this.Name = "MenuABM";
+            this.Name = "FormMenuABM";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MenuABM";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

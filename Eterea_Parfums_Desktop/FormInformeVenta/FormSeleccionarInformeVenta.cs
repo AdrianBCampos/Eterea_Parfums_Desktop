@@ -12,6 +12,15 @@ namespace Eterea_Parfums_Desktop
 
         private void button2_Click(object sender, EventArgs e)
         {
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.Name == "FormInicioAutoconsulta") // Asegúrate de que el nombre sea correcto
+                {
+                    form.Show();
+                    break;
+                }
+            }
+
             FormInicioAdministrador InicioAdministrador = new FormInicioAdministrador();
             InicioAdministrador.Show();
             this.Close();
