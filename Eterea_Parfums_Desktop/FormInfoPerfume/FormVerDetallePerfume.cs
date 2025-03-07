@@ -414,7 +414,7 @@ namespace Eterea_Parfums_Desktop
             // Si el formulario no se cerró por falta de datos, mostrarlo
             if (!verPerfumesSimilares.IsDisposed)
             {
-                verPerfumesSimilares.Show();
+                verPerfumesSimilares.ShowDialog();
                 this.Close(); // Cerrar el formulario actual solo si el otro se abrió con éxito
             }
         }
@@ -423,7 +423,7 @@ namespace Eterea_Parfums_Desktop
         private void btn_ver_promociones_Click(object sender, EventArgs e)
         {
             FormVerPromociones verPromociones = new FormVerPromociones(perfume);
-            verPromociones.Show();
+            verPromociones.ShowDialog();
             this.Close();
         }
 

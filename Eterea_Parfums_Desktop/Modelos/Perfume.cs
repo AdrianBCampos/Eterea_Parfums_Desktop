@@ -1,10 +1,11 @@
-﻿namespace Eterea_Parfums_Desktop.Modelos
+﻿using System.Collections.Generic;
+
+namespace Eterea_Parfums_Desktop.Modelos
 {
     public class Perfume
     {
         public int id { get; set; }
         public string codigo { get; set; }
-
         public Marca marca { get; set; }
         public string nombre { get; set; }
         public TipoDePerfume tipo_de_perfume { get; set; }

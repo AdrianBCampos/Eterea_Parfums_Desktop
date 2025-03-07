@@ -29,6 +29,12 @@ namespace Eterea_Parfums_Desktop
         public List<Marca> marcas;
         public List<Genero> generos;
 
+        private List<TipoDeAroma> aromas;
+
+        //public List<Stock> stock;
+        //public List<Articulos> articulos;
+       
+
         //LA PAGINA ACTUAL
         private static int current = 0;
         private static int paginador = 10;
@@ -39,8 +45,6 @@ namespace Eterea_Parfums_Desktop
         private static int current_pag = 1;
 
         //private BarcodeScannerWatcher watcher;
-
-
 
 
         public FormInicioAutoconsulta()
@@ -74,13 +78,15 @@ namespace Eterea_Parfums_Desktop
             last_pag = (int)Math.Ceiling((double)total / paginador);
             lbl_numero_pagina.Text = current_pag.ToString();
             paginar(Perfumes_Completo);
+
             CargarMarcas();
             CargarGeneros();
+            CargarAromas();
+            CargarStock();
+            CargarArticulos();
 
             this.KeyPreview = true;
           
-
-
             //Diseño del combo box
             combo_filtro_genero.DrawMode = DrawMode.OwnerDrawFixed;
             combo_filtro_genero.DrawItem += comboBoxdiseño_DrawItem;
@@ -89,6 +95,18 @@ namespace Eterea_Parfums_Desktop
             combo_filtro_marca.DrawMode = DrawMode.OwnerDrawFixed;
             combo_filtro_marca.DrawItem += comboBoxdiseño_DrawItem;
             combo_filtro_marca.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_filtro_articulos.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_filtro_articulos.DrawItem += comboBoxdiseño_DrawItem;
+            combo_filtro_articulos.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_filtro_stock.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_filtro_stock.DrawItem += comboBoxdiseño_DrawItem;
+            combo_filtro_stock.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_filtro_aroma.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_filtro_aroma.DrawItem += comboBoxdiseño_DrawItem;
+            combo_filtro_aroma.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void txt_scan_TextChanged(object sender, EventArgs e)
@@ -125,8 +143,8 @@ namespace Eterea_Parfums_Desktop
             if (e.Control && e.KeyCode == Keys.L)
             {
                 FormLogin login = new FormLogin();
-                login.Show();
-                this.Hide();
+                login.ShowDialog();
+                //this.Hide();
                 return; // Importante: evitar que siga evaluando otras teclas después de ocultar el formulario
             }
 
@@ -148,14 +166,11 @@ namespace Eterea_Parfums_Desktop
         }
 
 
-
-
-
         private void CargarMarcas()
         {
             marcas = MarcaControlador.getAll();
             combo_filtro_marca.Items.Clear();
-            combo_filtro_marca.Items.Add("Todas las marcas");
+            combo_filtro_marca.Items.Add("Todas las Marcas");
             foreach (Marca marca in marcas)
             {
                 combo_filtro_marca.Items.Add(marca.nombre);
@@ -167,12 +182,42 @@ namespace Eterea_Parfums_Desktop
         {
             generos = GeneroControlador.getAll();
             combo_filtro_genero.Items.Clear();
-            combo_filtro_genero.Items.Add("Todos los generos");
+            combo_filtro_genero.Items.Add("Todos los Géneros");
             foreach (Genero genero in generos)
             {
                 combo_filtro_genero.Items.Add(genero.genero);
             }
             combo_filtro_genero.SelectedIndex = 0;
+        }
+
+        private void CargarAromas()
+        {
+            aromas = TipoDeAromaControlador.getAll();
+            combo_filtro_aroma.Items.Clear();
+            combo_filtro_aroma.Items.Add("Todos los Aromas");
+            foreach (TipoDeAroma aroma in aromas)
+            {
+                combo_filtro_aroma.Items.Add(aroma.nombre);
+            }
+            combo_filtro_aroma.SelectedIndex = 0;
+        }
+
+        private void CargarStock()
+        {
+            combo_filtro_stock.Items.Clear();
+            combo_filtro_stock.Items.Add("Todos los Perfumes");
+            combo_filtro_stock.Items.Add("Disponible");
+            combo_filtro_stock.Items.Add("Sin stock");
+            combo_filtro_stock.SelectedIndex = 0;  // Establece la opción por defecto
+        }
+
+        private void CargarArticulos()
+        {
+            combo_filtro_articulos.Items.Clear();
+            combo_filtro_articulos.Items.Add("Todos los Perfumes");
+            combo_filtro_articulos.Items.Add("Activos");
+            combo_filtro_articulos.Items.Add("No Activos");
+            combo_filtro_articulos.SelectedIndex = 0;  // Establece la opción por defecto
         }
 
         private void paginar(List<Perfume> perfumeMostrar)
@@ -210,18 +255,23 @@ namespace Eterea_Parfums_Desktop
             dataGridViewConsultas.Rows.Clear();
             foreach (Perfume perfume in perfumeMostrar)
             {
-                if (perfume.activo == 1)
+                // Verifica si se deben mostrar los activos, los no activos o todos los perfumes
+                if ((combo_filtro_articulos.SelectedIndex == 0) || // Todos los perfumes
+                    (combo_filtro_articulos.SelectedIndex == 1 && perfume.activo == 1) || // Solo los activos
+                    (combo_filtro_articulos.SelectedIndex == 2 && perfume.activo == 0)) // Solo los no activos
                 {
                     int rowIndex = dataGridViewConsultas.Rows.Add();
 
+                    // Agregar valores a la fila de la tabla
                     dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = perfume.nombre.ToString();
                     dataGridViewConsultas.Rows[rowIndex].Cells[1].Value = (MarcaControlador.getById(perfume.marca.id)).nombre;
                     dataGridViewConsultas.Rows[rowIndex].Cells[2].Value = (GeneroControlador.getById(perfume.genero.id)).genero;
                     dataGridViewConsultas.Rows[rowIndex].Cells[3].Value = perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
                     dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = "Ver";
                 }
-                dataGridViewConsultas.CellPainting += dataGridViewConsultas_CellPainting;
             }
+            dataGridViewConsultas.CellPainting += dataGridViewConsultas_CellPainting;
+            
         }
 
         private void btn_anterior_Click(object sender, EventArgs e)
@@ -301,6 +351,62 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
+        private void combo_filtro_articulos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (combo_filtro_articulos.SelectedIndex == 1) // Activos
+            {
+                filtro.activo = 1; // Filtra los perfumes activos (activo = 1)
+            }
+            else if (combo_filtro_articulos.SelectedIndex == 2) // No activos
+            {
+                filtro.activo = 0; // Filtra los perfumes no activos (activo = 0)
+            }
+            else
+            {
+                filtro.activo = -1; // Indica que no se debe filtrar por el estado (todos los perfumes)
+            }
+            filtrar(); // Llamar a la función de filtrado
+        }
+
+
+        /*private void combo_filtro_stock_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (combo_filtro_stock.SelectedIndex == 1) // Disponible
+            {
+                filtro.stock = 1; // Filtra los perfumes con stock disponible
+            }
+            else if (combo_filtro_stock.SelectedIndex == 2) // Sin stock
+            {
+                filtro.stock = 0; // Filtra los perfumes sin stock
+            }
+            else
+            {
+                filtro.stock = -1; // No filtra el stock (todas las opciones)
+            }
+            filtrar(); // Llamar a la función de filtrado
+        }*/
+
+
+        /*private void combo_filtro_aroma_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            if (combo_filtro_aroma.SelectedIndex > 0)
+            {
+                string aromaSeleccionado = combo_filtro_aroma.SelectedItem.ToString();
+                TipoDeAroma aroma = TipoDeAromaControlador.getByNombre(aromaSeleccionado);
+                if (aroma != null)
+                {
+                    filtro.aroma = aroma;
+                    filtrar();
+                }
+            }
+            else
+            {
+                filtro.aroma = null;
+                filtrar();
+            }
+        }*/
+
+
         private void filtrar()
         {
             Perfumes_Filtrado = Perfumes_Completo;
@@ -315,6 +421,26 @@ namespace Eterea_Parfums_Desktop
                 Perfumes_Filtrado = Perfumes_Filtrado.Where(x => x.genero.id == filtro.genero.id).ToList();
             }
 
+            // Filtrado por estado activo (ahora es un int)
+            if (filtro.activo != -1) // Si el filtro no es "todos los perfumes"
+            {
+                Perfumes_Filtrado = Perfumes_Filtrado.Where(x => x.activo == filtro.activo).ToList();
+            }
+
+            /* // Filtrado por stock
+             if (filtro.stock != -1)
+             {
+                 Perfumes_Filtrado = Perfumes_Filtrado.Where(x => x.stock == filtro.stock).ToList();
+             }
+            */
+
+            /*if (filtro.aroma != null)
+            {
+                Perfumes_Filtrado = Perfumes_Filtrado
+                    .Where(x => x.AromasDelPerfume
+                        .Any(a => a.tipoDeAroma.id == filtro.aroma.id))
+                    .ToList();
+            }*/
 
             if (filtro.nombre != null)
             {
@@ -339,8 +465,14 @@ namespace Eterea_Parfums_Desktop
                 int rowIndex = e.RowIndex;
                 Perfume perfumeSeleccionado = Perfumes_Paginados[rowIndex];
 
+                // Deshabilitar Form1 mientras Form2 está abierto
+                this.Enabled = false;
+
                 FormVerDetallePerfume detallesForm = new FormVerDetallePerfume(perfumeSeleccionado);
-                detallesForm.Show();
+                detallesForm.ShowDialog();
+
+                // Después de que Form2 se cierra, habilitar Form1 de nuevo
+                this.Enabled = true;
             }
         }
 
@@ -413,21 +545,6 @@ namespace Eterea_Parfums_Desktop
             e.DrawFocusRectangle();
         }
 
-        private void btn_iniciar_sesion_Click(object sender, EventArgs e)
-        {
-            FormLogin login = new FormLogin();
-            login.Show();
-            this.Hide();
-        }
-
-
-
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void btn_escanear_Click(object sender, EventArgs e)
         {
             /* Escanear escanear = new Escanear();
@@ -441,6 +558,7 @@ namespace Eterea_Parfums_Desktop
             txt_scan.Focus(); // Poner el cursor en el TextBox
             lbl_codigoBarras.Visible = true;
         }
+
 
         // Evento para capturar el código escaneado
         private void txt_scan_KeyPress(object sender, KeyPressEventArgs e)
@@ -538,6 +656,6 @@ namespace Eterea_Parfums_Desktop
             lbl_codigoBarras.Visible = false;  // Ocultar lbl_codigoBarras
         }
 
-
+       
     }
 }
