@@ -57,7 +57,7 @@ namespace Eterea_Parfums_Desktop
 
                 // Iniciar la aplicación principal
 
-                Application.Run(new START());
+                Application.Run(new FormStart());
                 //Application.Run(new MenuABM());
                 //Application.Run(new FormInicioAutoconsulta());
             }

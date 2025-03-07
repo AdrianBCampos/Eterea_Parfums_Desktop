@@ -76,22 +76,13 @@ namespace Eterea_Parfums_Desktop
             string rutaCompletaImagen = Program.Ruta_Base + @"Diseño Logo2.png";
             img_logo.Image = Image.FromFile(rutaCompletaImagen);
 
-            Perfumes_Completo = PerfumeControlador.getAll();
-            Perfumes_Filtrado = PerfumeControlador.filtrarPorNombre(filtro.nombre);
-
-            total = Perfumes_Completo.Count;
-            last_pag = (int)Math.Ceiling((double)total / paginador);
-            lbl_numero_pagina.Text = current_pag.ToString();
-            paginar(Perfumes_Completo);
 
             CargarMarcas();
             CargarGeneros();
             CargarAromas();
-            CargarStock();
+            //CargarStock();
             CargarArticulos();
 
-            this.KeyPreview = true;
-          
             //Diseño del combo box
             combo_filtro_genero.DrawMode = DrawMode.OwnerDrawFixed;
             combo_filtro_genero.DrawItem += comboBoxdiseño_DrawItem;
@@ -105,13 +96,27 @@ namespace Eterea_Parfums_Desktop
             combo_filtro_articulos.DrawItem += comboBoxdiseño_DrawItem;
             combo_filtro_articulos.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            combo_filtro_stock.DrawMode = DrawMode.OwnerDrawFixed;
-            combo_filtro_stock.DrawItem += comboBoxdiseño_DrawItem;
-            combo_filtro_stock.DropDownStyle = ComboBoxStyle.DropDownList;
+            //combo_filtro_stock.DrawMode = DrawMode.OwnerDrawFixed;
+            //combo_filtro_stock.DrawItem += comboBoxdiseño_DrawItem;
+            //combo_filtro_stock.DropDownStyle = ComboBoxStyle.DropDownList;
 
             combo_filtro_aroma.DrawMode = DrawMode.OwnerDrawFixed;
             combo_filtro_aroma.DrawItem += comboBoxdiseño_DrawItem;
             combo_filtro_aroma.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            this.KeyPreview = true;
+
+            Perfumes_Completo = PerfumeControlador.getAll();
+            Perfumes_Filtrado = PerfumeControlador.filtrarPorNombre(filtro.nombre);
+
+            total = Perfumes_Completo.Count;
+            last_pag = (int)Math.Ceiling((double)total / paginador);
+            lbl_numero_pagina.Text = current_pag.ToString();
+            paginar(Perfumes_Completo);
+
+            
+          
+           
         }
 
         private void txt_scan_TextChanged(object sender, EventArgs e)
@@ -207,14 +212,14 @@ namespace Eterea_Parfums_Desktop
             combo_filtro_aroma.SelectedIndex = 0;
         }
 
-        private void CargarStock()
+        /*private void CargarStock()
         {
             combo_filtro_stock.Items.Clear();
             combo_filtro_stock.Items.Add("Todos los Perfumes");
             combo_filtro_stock.Items.Add("Disponible");
             combo_filtro_stock.Items.Add("Sin stock");
             combo_filtro_stock.SelectedIndex = 0;  // Establece la opción por defecto
-        }
+        }*/
 
         private void CargarArticulos()
         {
@@ -661,9 +666,6 @@ namespace Eterea_Parfums_Desktop
             lbl_codigoBarras.Visible = false;  // Ocultar lbl_codigoBarras
         }
 
-        private void FormInicioAutoconsulta_Load(object sender, EventArgs e)
-        {
 
-        }
     }
 }
