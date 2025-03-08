@@ -152,11 +152,35 @@ namespace Eterea_Parfums_Desktop
             // Detectar si se presionan las teclas Ctrl + L
             if (e.Control && e.KeyCode == Keys.L)
             {
-                FormLogin login = new FormLogin();
-                login.ShowDialog();
-                //this.Hide();
-                return; // Importante: evitar que siga evaluando otras teclas después de ocultar el formulario
+                // Obtener la referencia de FormStart (debe estar siempre abierto)
+                FormStart formStart = Application.OpenForms.OfType<FormStart>().FirstOrDefault();
+
+                if (formStart != null)
+                {
+                    // Ocultar FormInicioAutoconsulta antes de abrir FormLogin
+                    this.Hide();
+
+                    // Traer FormStart al fondo pero asegurando que esté visible
+                    formStart.Show();
+                    formStart.BringToFront();
+                    formStart.SendToBack(); // Se asegura de que no esté minimizado ni cubierto
+
+                    // Crear y mostrar FormLogin asegurando que FormStart siga visible en el fondo
+                    FormLogin login = new FormLogin();
+                    login.Owner = formStart; // Asigna FormStart como dueño de FormLogin
+                    login.ShowDialog(); // Mostrar de forma modal
+
+                    // Restaurar FormInicioAutoconsulta si es necesario al cerrar el login
+                    this.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Error: No se encontró FormStart en ejecución.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                return; // Evitar que se sigan evaluando otras teclas
             }
+
 
             // Detectar si se presionan las teclas Ctrl + X
             if (e.Control && e.KeyCode == Keys.X)
@@ -470,19 +494,26 @@ namespace Eterea_Parfums_Desktop
         {
             var senderGrid = (DataGridView)sender;
 
-            if (e.RowIndex >= 0 && e.ColumnIndex == 4)
+            if (e.RowIndex >= 0 && e.ColumnIndex == 4) // Verifica que se haga clic en la columna correcta
             {
                 int rowIndex = e.RowIndex;
                 Perfume perfumeSeleccionado = Perfumes_Paginados[rowIndex];
 
-                // Deshabilitar Form1 mientras Form2 está abierto
+                // Crear la ventana de detalles
+                FormVerDetallePerfume detallesForm = new FormVerDetallePerfume(perfumeSeleccionado);
+                detallesForm.Owner = this; // Hace que se muestre sobre FormInicioAutoconsulta
+
+                // Deshabilitar FormInicioAutoconsulta para evitar interacciones
                 this.Enabled = false;
 
-                FormVerDetallePerfume detallesForm = new FormVerDetallePerfume(perfumeSeleccionado);
-                detallesForm.ShowDialog();
+                // Asegurar que FormDetallePerfume siempre quede por delante
+                detallesForm.TopMost = true; // Lo pone en la parte superior
+                detallesForm.Show();
+                detallesForm.TopMost = false; // Restablece su estado para evitar bloqueos
+                detallesForm.BringToFront(); // Lo trae al frente
 
-                // Después de que Form2 se cierra, habilitar Form1 de nuevo
-                this.Enabled = true;
+                // Restaurar FormInicioAutoconsulta al cerrar FormDetallePerfume
+                detallesForm.FormClosing += (s, args) => this.Enabled = true;
             }
         }
 

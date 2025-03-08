@@ -2,6 +2,7 @@
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -30,21 +31,10 @@ namespace Eterea_Parfums_Desktop
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //InicioAdministrador InicioAdministrador = new InicioAdministrador();
-            //InicioAdministrador.Show();
-
-            
-
-            foreach (Form form in Application.OpenForms)
-            {
-                if (form.Name == "FormInicioAutoconsulta") // Asegúrate de que el nombre sea correcto
-                {
-                    form.Show();
-                    break;
-                }
-            }
-
+            FormInicioAdministrador InicioAdministrador = new FormInicioAdministrador();
+            InicioAdministrador.Show();
             this.Close();
+        
         }
 
         private void btn_continuar_Click(object sender, EventArgs e)
@@ -59,10 +49,6 @@ namespace Eterea_Parfums_Desktop
             this.Hide();
         }
 
-        private void NumeroDeSucursal_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            FormInicioAdministrador inicioAdministrador = new FormInicioAdministrador();
-            inicioAdministrador.Show();
-        }
+        
     }
 }

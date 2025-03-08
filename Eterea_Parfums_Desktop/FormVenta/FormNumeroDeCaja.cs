@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -27,15 +28,39 @@ namespace Eterea_Parfums_Desktop
 
             if (Program.logueado.rol == "admin")
             {
-                FormInicioAdministrador InicioAdministrador = new FormInicioAdministrador();
-                InicioAdministrador.Show();
-                this.Close();
+                // Buscar si ya existe una instancia de FormInicioAdministrador
+                FormInicioAdministrador inicioAdmin = Application.OpenForms.OfType<FormInicioAdministrador>().FirstOrDefault();
+
+                if (inicioAdmin != null)
+                {
+                    inicioAdmin.Show();
+                    inicioAdmin.BringToFront();
+                }
+                else
+                {
+                    inicioAdmin = new FormInicioAdministrador();
+                    inicioAdmin.Show();
+                }
+
+                this.Close(); // Cierra el formulario actual (login)
             }
             else
             {
-                FormInicioVendedor InicioVendedor = new FormInicioVendedor();
-                InicioVendedor.Show();
-                this.Close();
+                // Buscar si ya existe una instancia de FormInicioVendedor
+                FormInicioVendedor inicioVendedor = Application.OpenForms.OfType<FormInicioVendedor>().FirstOrDefault();
+
+                if (inicioVendedor != null)
+                {
+                    inicioVendedor.Show();
+                    inicioVendedor.BringToFront();
+                }
+                else
+                {
+                    inicioVendedor = new FormInicioVendedor();
+                    inicioVendedor.Show();
+                }
+
+                this.Close(); // Cierra el formulario actual (login)
             }
         }
 

@@ -34,8 +34,29 @@ namespace Eterea_Parfums_Desktop
         {
             Program.logueado = new Empleado();
 
+            // Buscar si FormStart ya está abierto
+            FormStart formStart = null;
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is FormStart)
+                {
+                    formStart = (FormStart)form;
+                    break;
+                }
+            }
+
+            // Asegurar que FormStart siga visible y en el fondo
+            if (formStart != null)
+            {
+                formStart.Show();
+                formStart.SendToBack(); // Lo envía al fondo
+            }
+
+            // Mostrar el login sobre FormStart
             FormLogin login = new FormLogin();
             login.Show();
+
+            // Cerrar este formulario (FormInicioAdministrador)
             this.Close();
         }
 
