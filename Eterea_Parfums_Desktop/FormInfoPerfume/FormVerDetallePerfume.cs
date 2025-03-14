@@ -3,6 +3,7 @@ using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 namespace Eterea_Parfums_Desktop
 {
@@ -430,6 +431,13 @@ namespace Eterea_Parfums_Desktop
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+
+            // Si FormInicioAutoconsulta está abierto, deshabilita el escaneo
+            FormInicioAutoconsulta formInicio = Application.OpenForms.OfType<FormInicioAutoconsulta>().FirstOrDefault();
+            if (formInicio != null)
+            {
+                formInicio.ResetAutoConsulta(); // Deshabilita txt_scan
+            }
         }
     }
 }
