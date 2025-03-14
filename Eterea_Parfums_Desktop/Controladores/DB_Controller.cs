@@ -34,6 +34,9 @@ namespace Eterea_Parfums_Desktop.Controladores
                 case "Marino":
                     connectionString = "Data Source=(localdb)\\Local;Initial Catalog=eterea;Integrated Security=True;";
                     break;
+                case "Notebook Adri":
+                    connectionString = "Data Source=DESKTOP-U4RUEJ1\\SQLEXPRESS;Initial Catalog=eterea;Integrated Security=True;";
+                    break;
                 default:
                     throw new Exception("Usuario no válido.");
             }
