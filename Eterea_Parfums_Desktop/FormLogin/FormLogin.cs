@@ -39,16 +39,16 @@ namespace Eterea_Parfums_Desktop
                 if (EmpleadoControlador.auth(txt_usuario.Text, txt_contraseña.Text))
                 {
                     // Obtener la referencia de FormStart y FormInicioAutoconsulta
-                    FormStart formStart = Application.OpenForms.OfType<FormStart>().FirstOrDefault();
+                    //FormStart formStart = Application.OpenForms.OfType<FormStart>().FirstOrDefault();
                     FormInicioAutoconsulta formAutoconsulta = Application.OpenForms.OfType<FormInicioAutoconsulta>().FirstOrDefault();
 
                     // Ocultar FormInicioAutoconsulta correctamente
                     if (formAutoconsulta != null)
                     {
-                        formAutoconsulta.Hide();
-                        formAutoconsulta.SendToBack(); // Asegura que no reaparezca en primer plano
+                        formAutoconsulta.Close();
+                        //formAutoconsulta.SendToBack(); // Asegura que no reaparezca en primer plano
                     }
-
+                    
                     // Determinar el formulario a abrir según el rol del usuario
                     Form nuevoFormulario = null;
                     if (Program.logueado.rol == "admin")
@@ -60,17 +60,17 @@ namespace Eterea_Parfums_Desktop
                         nuevoFormulario = new FormInicioVendedor();
                     }
 
-                    if (nuevoFormulario != null && formStart != null)
+                    if (nuevoFormulario != null) //&& formStart != null)
                     {
                         // Asegurar que FormStart sea el dueño del nuevo formulario
-                        nuevoFormulario.Owner = formStart;
+                        //nuevoFormulario.Owner = formStart;
                         nuevoFormulario.Show(); // Mostrar sin bloquear
 
                         // Forzar que el nuevo formulario esté al frente
                         nuevoFormulario.BringToFront();
                         nuevoFormulario.Activate(); // Asegura que reciba el foco
                         nuevoFormulario.TopMost = true;
-                        nuevoFormulario.TopMost = false; // Restaurar estado normal después
+                        //nuevoFormulario.TopMost = false; // Restaurar estado normal después
 
                         // Cerrar el formulario actual (login)
                         this.Close();
@@ -121,11 +121,17 @@ namespace Eterea_Parfums_Desktop
 
         private void close_Click(object sender, EventArgs e)
         {
-            FormInicioAutoconsulta inicioAutoconsulta = null;
-            FormStart formStart = null;
+            // Ocultar primero FormLogin antes de cerrarlo
+            this.Hide();
+
+            // Cerrar el FormLogin con un pequeño retraso para asegurar que el otro formulario se muestra bien
+            Task.Delay(100).ContinueWith(_ => this.Close(), TaskScheduler.FromCurrentSynchronizationContext());
+            
+            //FormInicioAutoconsulta inicioAutoconsulta = null;
+            //FormStart formStart = null;
 
             // Buscar FormInicioAutoconsulta y FormStart en Application.OpenForms
-            foreach (Form form in Application.OpenForms)
+            /*foreach (Form form in Application.OpenForms)
             {
                 if (form is FormInicioAutoconsulta)
                 {
@@ -135,47 +141,45 @@ namespace Eterea_Parfums_Desktop
                 {
                     formStart = (FormStart)form;
                 }
-            }
+            }*/
 
             // Si FormInicioAutoconsulta ya está abierto, asegurarse de que esté visible y en primer plano
-            if (inicioAutoconsulta != null)
-            {
-                if (!inicioAutoconsulta.IsHandleCreated)
-                {
-                    inicioAutoconsulta.CreateControl(); // Asegurar que el identificador de ventana está creado
-                }
+            /* if (inicioAutoconsulta != null)
+             {
+                 if (!inicioAutoconsulta.IsHandleCreated)
+                 {
+                     inicioAutoconsulta.CreateControl(); // Asegurar que el identificador de ventana está creado
+                 }*/
 
-                inicioAutoconsulta.Show();
-                inicioAutoconsulta.WindowState = FormWindowState.Normal; // Restaurar si estaba minimizado
-                inicioAutoconsulta.TopMost = true;  // Forzar que quede sobre FormStart
-                inicioAutoconsulta.BringToFront();   // Asegurar que quede sobre FormStart
-                inicioAutoconsulta.Activate();       // Darle foco
-                inicioAutoconsulta.TopMost = false;  // Restaurar el estado normal de TopMost
+            FormInicioAutoconsulta formInicioAutoconsulta = new FormInicioAutoconsulta();
+
+            formInicioAutoconsulta.Show();
+            formInicioAutoconsulta.WindowState = FormWindowState.Normal; // Restaurar si estaba minimizado
+            formInicioAutoconsulta.TopMost = true;  // Forzar que quede sobre FormStart
+            formInicioAutoconsulta.BringToFront();   // Asegurar que quede sobre FormStart
+            formInicioAutoconsulta.Activate();       // Darle foco
+            //formInicioAutoconsulta.TopMost = false;  // Restaurar el estado normal de TopMost
             }
-            else
+            /*else
             {
-                // Si FormInicioAutoconsulta no está en la lista, crear una nueva instancia
+                Si FormInicioAutoconsulta no está en la lista, crear una nueva instancia
                 inicioAutoconsulta = new FormInicioAutoconsulta();
                 inicioAutoconsulta.Show();
                 inicioAutoconsulta.TopMost = true;  // Forzar que quede sobre FormStart
                 inicioAutoconsulta.BringToFront();
                 inicioAutoconsulta.Activate();
                 inicioAutoconsulta.TopMost = false; // Restaurar el estado normal de TopMost
-            }
+            }*/
 
             // Asegurar que FormStart sigue abierto pero en el fondo
-            if (formStart != null)
+           /* if (formStart != null)
             {
                 formStart.Show();
                 formStart.SendToBack(); // Mantener FormStart en el fondo
             }
 
-            // Ocultar primero FormLogin antes de cerrarlo
-            this.Hide();
-
-            // Cerrar el FormLogin con un pequeño retraso para asegurar que el otro formulario se muestra bien
-            Task.Delay(100).ContinueWith(_ => this.Close(), TaskScheduler.FromCurrentSynchronizationContext());
-        }
+           
+        }*/
 
 
     }

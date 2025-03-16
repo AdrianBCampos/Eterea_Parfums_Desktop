@@ -170,13 +170,16 @@ namespace Eterea_Parfums_Desktop
             }
             else
             {
+                MessageBox.Show("Código no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 // Si no existe, abrir el formulario de reintento
-                FormEscanear escanearForm = new FormEscanear(this);
+                //FormEscanear escanearForm = new FormEscanear(this);
 
                 // Evento para resetear la UI al cerrar el formulario
-                escanearForm.FormClosed += (s, args) => ResetAutoConsulta();
+                //escanearForm.FormClosed += (s, args) => ResetAutoConsulta();
 
-                escanearForm.ShowDialog();
+                //escanearForm.ShowDialog();
+
+                ResetAutoConsulta();
             }
         }
 
@@ -242,7 +245,7 @@ namespace Eterea_Parfums_Desktop
                     login.ShowDialog(); // Mostrar de forma modal
 
                     // Restaurar FormInicioAutoconsulta si es necesario al cerrar el login
-                    this.Show();
+                    //this.Show();
                 }
                 else
                 {
@@ -670,11 +673,12 @@ namespace Eterea_Parfums_Desktop
             txt_scan.Enabled = true;
             txt_scan.Focus(); // Poner el cursor en el TextBox
             lbl_codigoBarras.Visible = true;
+            this.TopMost = false;  // Restaurar el estado normal de TopMost
         }
 
 
         // Evento para capturar el código escaneado
-        private void txt_scan_KeyPress(object sender, KeyPressEventArgs e)
+        /*private void txt_scan_KeyPress(object sender, KeyPressEventArgs e)
         {
 
             if (e.KeyChar == (char)Keys.Enter)
@@ -716,7 +720,7 @@ namespace Eterea_Parfums_Desktop
                 txt_scan.Focus();
                 escaneoHabilitado = false;
             }
-        }
+        }*/
 
 
         /*public void SimularIngresoTeclado(string barcode)

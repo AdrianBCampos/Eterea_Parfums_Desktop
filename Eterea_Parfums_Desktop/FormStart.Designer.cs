@@ -28,7 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btn_start = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // btn_start
+            // 
+            this.btn_start.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
+            this.btn_start.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_start.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_start.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.btn_start.Location = new System.Drawing.Point(575, 419);
+            this.btn_start.Name = "btn_start";
+            this.btn_start.Size = new System.Drawing.Size(241, 37);
+            this.btn_start.TabIndex = 296;
+            this.btn_start.Text = "Start";
+            this.btn_start.UseVisualStyleBackColor = false;
+            this.btn_start.Click += new System.EventHandler(this.btn_start_Click);
             // 
             // FormStart
             // 
@@ -36,15 +51,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleVioletRed;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_start);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormStart";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FormStart_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        public System.Windows.Forms.Button btn_start;
     }
 }
