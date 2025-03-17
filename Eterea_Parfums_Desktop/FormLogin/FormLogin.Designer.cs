@@ -153,7 +153,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Location = new System.Drawing.Point(308, 70);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(441, 164);
             this.pictureBox1.TabIndex = 79;
@@ -189,7 +189,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox2.Location = new System.Drawing.Point(308, 7);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(380, 58);
             this.pictureBox2.TabIndex = 83;
@@ -212,7 +212,7 @@
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox3.Location = new System.Drawing.Point(308, 239);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(441, 63);
             this.pictureBox3.TabIndex = 344;
@@ -224,7 +224,7 @@
             this.pictureBox17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox17.Location = new System.Drawing.Point(4, 3);
-            this.pictureBox17.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox17.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(750, 303);
             this.pictureBox17.TabIndex = 372;
@@ -252,7 +252,8 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.img_logo);
             this.Controls.Add(this.pictureBox17);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";

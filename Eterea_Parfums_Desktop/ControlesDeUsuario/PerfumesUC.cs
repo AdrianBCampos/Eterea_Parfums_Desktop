@@ -109,10 +109,16 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 Genero genero = GeneroControlador.getById(perfume_editar.genero.id);
                 Pais pais = PaisControlador.getById(perfume_editar.pais.id);
                 perfume_editar = new Perfume(perfume_editar.id, perfume_editar.codigo, marca, perfume_editar.nombre, tipo_de_perfume, genero, perfume_editar.presentacion_ml, pais, perfume_editar.spray, perfume_editar.recargable, perfume_editar.descripcion, perfume_editar.anio_de_lanzamiento, perfume_editar.precio_en_pesos, perfume_editar.activo, perfume_editar.imagen1, perfume_editar.imagen2);
+                Form abmForm = Application.OpenForms["formMenuABM"];
+                abmForm.Hide();
+                Form mainForm = Application.OpenForms["formStart"];
                 FormEditarPerfume1 formEditarProductoABM = new FormEditarPerfume1(perfume_editar, this);
                 //ACTUALIZAR LA LISTA
                 cargarPerfumes();
-                formEditarProductoABM.ShowDialog(this);
+
+                formEditarProductoABM.ShowDialog(mainForm);
+
+                abmForm.Show();
             }
 
 

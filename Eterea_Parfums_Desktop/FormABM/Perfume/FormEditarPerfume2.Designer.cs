@@ -366,16 +366,16 @@
             this.btn_x_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_x_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_x_cerrar.ForeColor = System.Drawing.Color.White;
-            this.btn_x_cerrar.Location = new System.Drawing.Point(775, 13);
+            this.btn_x_cerrar.Location = new System.Drawing.Point(709, 13);
             this.btn_x_cerrar.Name = "btn_x_cerrar";
             this.btn_x_cerrar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_x_cerrar.Size = new System.Drawing.Size(34, 32);
+            this.btn_x_cerrar.Size = new System.Drawing.Size(100, 32);
             this.btn_x_cerrar.TabIndex = 301;
-            this.btn_x_cerrar.Text = "X";
+            this.btn_x_cerrar.Text = "< Anterior";
             this.btn_x_cerrar.UseVisualStyleBackColor = false;
             this.btn_x_cerrar.Click += new System.EventHandler(this.btn_x_cerrar_Click);
             // 
-            // EditarAromaNota
+            // FormEditarPerfume2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -403,7 +403,7 @@
             this.Controls.Add(this.lbl_nombre_perfume);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lbl_editar_tipo_aroma_nota);
-            this.Name = "EditarAromaNota";
+            this.Name = "FormEditarPerfume2";
             this.Text = "EditarAromaNota";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewNotasDelPerfume)).EndInit();
