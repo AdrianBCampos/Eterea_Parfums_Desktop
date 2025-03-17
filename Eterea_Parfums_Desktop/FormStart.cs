@@ -55,7 +55,7 @@ namespace Eterea_Parfums_Desktop
           
                 btn_start.Hide();
                 FormInicioAutoconsulta formInicioAutoconsulta = new FormInicioAutoconsulta();
-                formInicioAutoconsulta.Show();
+                formInicioAutoconsulta.ShowDialog();
                 btn_start.Visible = false;
 
         }
