@@ -20,35 +20,11 @@ namespace Eterea_Parfums_Desktop
         public FormInformesDeVentas2()
         {
             InitializeComponent();
-        }
-
-        private Boolean validarFecha()
-        { 
-            string mensaje = "";
-
-            if (string.IsNullOrEmpty(dateTimeFechaInicio.Value.ToString("yyyy-MM-dd")))
-            {
-                mensaje = "Debe seleccionar una fecha de inicio";
-            }
-            if (string.IsNullOrEmpty(dateTimeFechaFin.Value.ToString("yyyy-MM-dd")))
-            {
-                mensaje = "Debe seleccionar una fecha de fin";
-            }
-            if (dateTimeFechaInicio.Value > dateTimeFechaFin.Value)
-            {
-                mensaje = "La fecha de inicio no puede ser mayor a la fecha de fin";
-            }
-
-            if (mensaje != "")
-            {
-                MessageBox.Show(mensaje, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            return true;
+            cargarDatos();
         }
 
 
-        private Image redimensionarImagen(Image img, int cellWidth, int cellHeight)
+        private System.Drawing.Image redimensionarImagen(System.Drawing.Image img, int cellWidth, int cellHeight)
         {
             Bitmap resizedImage = new Bitmap(cellWidth, cellHeight);
             using (Graphics graphics = Graphics.FromImage(resizedImage))
@@ -65,17 +41,17 @@ namespace Eterea_Parfums_Desktop
             //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
             dataGridViewPerfumes.RowHeadersVisible = false;
             perfumes = PerfumeControlador.getAll()
-            .Where(p => p.activo == 1 && p.anio_de_lanzamiento == 2011)
+            .Where(p => p.activo == 1)
             .ToList();
 
             stocks = StockControlador.getAll();
-             
+
 
             dataGridViewPerfumes.Rows.Clear();
             foreach (Stock stock in stocks)
             {
                 Perfume perfume = perfumes.Find(p => p.id == stock.perfume.id);
-                if(perfume != null)
+                if (perfume != null)
                 {
                     int rowIndex = dataGridViewPerfumes.Rows.Add();
                     string rutaCompletaImagen = Program.Ruta_Base + perfume.imagen1;
@@ -86,7 +62,7 @@ namespace Eterea_Parfums_Desktop
 
                     if (File.Exists(rutaCompletaImagen))
                     {
-                        using (Image originalImage = Image.FromFile(rutaCompletaImagen))
+                        using (System.Drawing.Image originalImage = System.Drawing.Image.FromFile(rutaCompletaImagen))
                         {
                             dataGridViewPerfumes.Rows[rowIndex].Cells[0].Value = redimensionarImagen(originalImage, cellWidth, cellHeight);
                         }
@@ -96,48 +72,31 @@ namespace Eterea_Parfums_Desktop
                         dataGridViewPerfumes.Rows[rowIndex].Cells[0].Value = null; // O una imagen por defecto
                     }
                     ((DataGridViewImageCell)dataGridViewPerfumes.Rows[rowIndex].Cells[0]).ImageLayout = DataGridViewImageCellLayout.Zoom;
-                    dataGridViewPerfumes.Rows[rowIndex].Cells[0].Value = Image.FromFile(rutaCompletaImagen);
+                    dataGridViewPerfumes.Rows[rowIndex].Cells[0].Value = System.Drawing.Image.FromFile(rutaCompletaImagen);
                     dataGridViewPerfumes.Rows[rowIndex].Cells[1].Value = perfume.codigo;
                     dataGridViewPerfumes.Rows[rowIndex].Cells[2].Value = (MarcaControlador.getById(perfume.marca.id)).nombre;
                     dataGridViewPerfumes.Rows[rowIndex].Cells[3].Value = perfume.nombre.ToString();
                     dataGridViewPerfumes.Rows[rowIndex].Cells[4].Value = (TipoDePerfumeControlador.getById(perfume.tipo_de_perfume.id)).tipo_de_perfume;
                     dataGridViewPerfumes.Rows[rowIndex].Cells[5].Value = (GeneroControlador.getById(perfume.genero.id)).genero;
                     dataGridViewPerfumes.Rows[rowIndex].Cells[6].Value = perfume.presentacion_ml.ToString();
-                    dataGridViewPerfumes.Rows[rowIndex].Cells[7].Value = (PaisControlador.getById(perfume.pais.id)).nombre;
+              
 
                     if (perfume.spray.ToString() == "1")
                     {
-                        dataGridViewPerfumes.Rows[rowIndex].Cells[8].Value = "Si";
-                    } 
-                    else
-                    {
-                        dataGridViewPerfumes.Rows[rowIndex].Cells[8].Value = "No";
-                    }
-
-                    if (perfume.recargable.ToString() == "1")
-                    {
-                        dataGridViewPerfumes.Rows[rowIndex].Cells[9].Value = "Si";
+                        dataGridViewPerfumes.Rows[rowIndex].Cells[7].Value = "Si";
                     }
                     else
                     {
-                        dataGridViewPerfumes.Rows[rowIndex].Cells[9].Value = "No";
+                        dataGridViewPerfumes.Rows[rowIndex].Cells[7].Value = "No";
                     }
 
-                    dataGridViewPerfumes.Rows[rowIndex].Cells[10].Value = perfume.precio_en_pesos.ToString();
-                    dataGridViewPerfumes.Rows[rowIndex].Cells[11].Value = SucursalControlador.getById(stock.sucursal.id).nombre;
-                    dataGridViewPerfumes.Rows[rowIndex].Cells[12].Value = stock.cantidad;
+                    dataGridViewPerfumes.Rows[rowIndex].Cells[8].Value = perfume.precio_en_pesos.ToString();
+                    dataGridViewPerfumes.Rows[rowIndex].Cells[9].Value = SucursalControlador.getById(stock.sucursal.id).nombre;
+                    dataGridViewPerfumes.Rows[rowIndex].Cells[10].Value = stock.cantidad;
                 }
 
                 //dataGridViewPerfumes.CellPainting += dataGridView1_CellPainting;
 
-            }
-        }
-
-        private void dateTimeFechaFin_ValueChanged(object sender, EventArgs e)
-        {
-            if (validarFecha())
-            {
-               cargarDatos();
             }
         }
 
@@ -150,70 +109,143 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_exportar_pdf_Click(object sender, EventArgs e)
         {
-            SaveFileDialog guardarFactura = new SaveFileDialog();
-            guardarFactura.FileName = DateTime.Now.ToString("ddMMyyyyHHss") + ".pdf";
-            guardarFactura.Filter = "Archivos PDF (*.pdf)|*.pdf"; // Filtro para archivos PDF
-            guardarFactura.DefaultExt = "pdf"; // Extensión por defecto
-            guardarFactura.AddExtension = true;
-            string PaginaHTML_Texto = Properties.Resources.PlantillaFactura.ToString();
-            
-            string filas = string.Empty;
-            decimal total = 0;
-            foreach (DataGridViewRow row in dataGridViewPerfumes.Rows)
+            SaveFileDialog guardarInventario = new SaveFileDialog();
+            guardarInventario.FileName = DateTime.Now.ToString("ddMMyyyyHHss") + ".pdf";
+            guardarInventario.Filter = "Archivos PDF (*.pdf)|*.pdf";
+            guardarInventario.DefaultExt = "pdf";
+            guardarInventario.AddExtension = true;
+
+            if (guardarInventario.ShowDialog() == DialogResult.OK)
             {
-                filas += "<tr>";
-                filas += "<td>" + row.Cells[0].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells[1].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells[2].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells[3].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells[4].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells[5].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells[6].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells[7].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells[8].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells[9].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells[10].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells[11].Value.ToString() + "</td>";
-                filas += "<td>" + row.Cells[12].Value.ToString() + "</td>";
-                filas += "</tr>";
-                total += Convert.ToDecimal(row.Cells[10].Value.ToString());
-            }
-
-            
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FILAS", filas);
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TOTAL", total.ToString());
-            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
-
-            if (guardarFactura.ShowDialog() == DialogResult.OK)
+                using (FileStream stream = new FileStream(guardarInventario.FileName, FileMode.Create))
                 {
-                    using (FileStream stream = new FileStream(guardarFactura.FileName, FileMode.Create))
+                    Document pdfDoc = new Document(PageSize.A4.Rotate(), 25, 25, 25, 25);
+                    PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+                    pdfDoc.Open();
+
+                    try
                     {
-                        //Creamos un nuevo documento y lo definimos como PDF
-                        Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
+                        iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(Properties.Resources.LogoEtereaFactura, System.Drawing.Imaging.ImageFormat.Png);
 
-                        PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
-                        pdfDoc.Open();
+                        //Ajustar tamaño del logo
+                        logo.ScaleToFit(60, 60);
+                        logo.Alignment = iTextSharp.text.Image.UNDERLYING; // Logo en el fondo
 
-                        //Agregamos la imagen del banner al documento
-                        iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.LogoEtereaFactura, System.Drawing.Imaging.ImageFormat.Png);
-                        img.ScaleToFit(60, 60);
-                        img.Alignment = iTextSharp.text.Image.UNDERLYING;
 
-                        //img.SetAbsolutePosition(10,100);
-                        img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
-                        pdfDoc.Add(img);
+                        //Agregar el logo al documento
+                        pdfDoc.Add(logo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al cargar el logo: " + ex.Message);
+                    }
 
-                        using (StringReader sr = new StringReader(PaginaHTML_Texto))
+                    Paragraph headerParagraph = new Paragraph();
+                    headerParagraph.Add(Chunk.NEWLINE);  //Salto de línea
+                    headerParagraph.Add(new Chunk("INVENTARIO", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 21)));
+                    headerParagraph.Add(Chunk.NEWLINE);  //Salto de línea
+                    headerParagraph.Add(new Chunk("Direccion: Av. Corrientes 1234, Buenos Aires, Argentina",FontFactory.GetFont(FontFactory.HELVETICA, 14)));
+                    headerParagraph.Add(Chunk.NEWLINE);  //Salto de línea
+                    headerParagraph.Add(new Chunk("Telefono: 1234-5678", FontFactory.GetFont(FontFactory.HELVETICA, 14)));
+                    headerParagraph.Add(Chunk.NEWLINE);
+                    headerParagraph.Add(Chunk.NEWLINE);  //Salto de línea
+                    headerParagraph.Add(Chunk.NEWLINE);//Salto de línea
+                    headerParagraph.Alignment = Element.ALIGN_CENTER;
+                    pdfDoc.Add(headerParagraph);
+
+        
+                    //Crear tabla con 11 columnas
+                    PdfPTable table = new PdfPTable(11) { WidthPercentage = 100 };
+                    table.SetWidths(new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f });
+
+                    //Agregar encabezados
+                    string[] headers = { "Imagen", "Código", "Marca", "Nombre", "Tipo", "Género", "Presentación (ml)", "Recargable", "Precio ($)", "Sucursal", "Stock" };
+                    foreach (string header in headers)
+                    {
+                        PdfPCell cell = new PdfPCell(new Phrase(header, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 10)))
                         {
-                            XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                            BackgroundColor = new BaseColor(200, 200, 200),
+                            HorizontalAlignment = Element.ALIGN_CENTER
+                        };
+                        table.AddCell(cell);
+                    }
+
+                    decimal total = 0;
+                    foreach (DataGridViewRow row in dataGridViewPerfumes.Rows)
+                    {
+                        // Insertar imagen en la celda
+                        if (row.Cells[0].Value != null && row.Cells[0].Value is System.Drawing.Image)
+                        {
+                            System.Drawing.Image img = (System.Drawing.Image)row.Cells[0].Value;
+                            using (MemoryStream ms = new MemoryStream())
+                            {
+                                img.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                                iTextSharp.text.Image imgPdf = iTextSharp.text.Image.GetInstance(ms.ToArray());
+                                imgPdf.ScaleAbsolute(40f, 40f);
+                                PdfPCell imgCell = new PdfPCell(imgPdf, true)
+                                {
+                                    HorizontalAlignment = Element.ALIGN_CENTER,
+                                    VerticalAlignment = Element.ALIGN_MIDDLE,
+                                    Padding = 5
+                                };
+                                table.AddCell(imgCell);
+                            }
+                        }
+                        else
+                        {
+                            PdfPCell emptyCell = new PdfPCell(new Phrase("Sin imagen"))
+                            {
+                                HorizontalAlignment = Element.ALIGN_CENTER,
+                                VerticalAlignment = Element.ALIGN_MIDDLE
+                            };
+                            table.AddCell(emptyCell);
                         }
 
-                        pdfDoc.Close();
-                        stream.Close();
-                    }
-                }
-            }
+                        //Insertar valores en la tabla
+                        for (int i = 1; i <= 10; i++)
+                        {
+                            string valorCelda = row.Cells[i].Value?.ToString() ?? "N/A";
+                            PdfPCell dataCell = new PdfPCell(new Phrase(valorCelda))
+                            {
+                                HorizontalAlignment = Element.ALIGN_CENTER,
+                                VerticalAlignment = Element.ALIGN_MIDDLE
+                            };
+                            table.AddCell(dataCell);
+                        }
 
+                        //Sumar total
+                        if (decimal.TryParse(row.Cells[8].Value?.ToString(), out decimal precio))
+                        {
+                            total += precio*decimal.Parse(row.Cells[10].Value.ToString());
+                        }
+                    }
+
+                    //Agregar tabla de productos
+                    pdfDoc.Add(table);
+
+                    //Agregar total
+                    Paragraph totalParagraph = new Paragraph($"Total: {total.ToString("N2")}$", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12))
+                    {
+                        Alignment = Element.ALIGN_RIGHT
+                    };
+                    pdfDoc.Add(totalParagraph);
+                    Paragraph footerParagraph = new Paragraph();
+                    footerParagraph.Add(Chunk.NEWLINE);
+                    footerParagraph.Add(new Chunk("Reporte de stock - Fecha: " + DateTime.Now.ToString("dd/MM/yyyy"),
+                    FontFactory.GetFont(FontFactory.HELVETICA, 8)));
+                    footerParagraph.Alignment = Element.ALIGN_CENTER;
+                    footerParagraph.Add(Chunk.NEWLINE);
+                    pdfDoc.Add(footerParagraph);
+
+                    pdfDoc.Close();
+                    stream.Close();
+                }
+
+                MessageBox.Show("PDF generado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+
+
     }
 }
+
