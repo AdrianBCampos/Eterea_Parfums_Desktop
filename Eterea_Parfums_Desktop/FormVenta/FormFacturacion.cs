@@ -137,20 +137,27 @@ namespace Eterea_Parfums_Desktop
                         decimal descuentoMonto = ((precioUnitario * descuentoPorcentaje) / 100);
                         fila.Cells[6].Value = descuentoMonto;
                         //facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Tot"].Value = perfume.precio_en_pesos.ToString();
-                        fila.Cells[7].Value = (cantidadActual + 1) * perfume.precio_en_pesos;
+                        fila.Cells[7].Value = (cantidadActual+1) * perfume.precio_en_pesos;
+                        descuentoUnitario();
                         ActualizarTotales();
                     }
                     return;
                 }
             }
 
-            int rowIndex = Factura.Rows.Add(perfume.id, 1, "", "", perfume.nombre, perfume.precio_en_pesos, perfume.precio_en_pesos, "");
+            int rowIndex = Factura.Rows.Add(perfume.id, 1, "", "", perfume.nombre, perfume.precio_en_pesos,"", "", ""); ;
 
+         
+           
             // Asignar botones a las celdas de la nueva fila
             Factura.Rows[rowIndex].Cells[2] = new DataGridViewButtonCell() { Value = "➕" };
             Factura.Rows[rowIndex].Cells[3] = new DataGridViewButtonCell() { Value = "➖" };
             Factura.Rows[rowIndex].Cells[8] = new DataGridViewButtonCell() { Value = "Eliminar" };// "🗑" 
 
+
+
+           
+            descuentoUnitario();
             ActualizarTotales();
         }
 
