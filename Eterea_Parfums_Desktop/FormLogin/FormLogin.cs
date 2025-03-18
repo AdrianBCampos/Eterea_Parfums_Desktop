@@ -19,6 +19,15 @@ namespace Eterea_Parfums_Desktop
             lbl_error_user.Visible = false;
             lbl_error_pass.Visible = false;
             lbl_error_auth.Visible = false;
+
+            // Suscribirse al evento Load (si no se ha hecho desde el diseñador)
+            this.Load += FormLogin_Load;
+
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+            txt_usuario.Focus(); // Asigna el foco a txt_usuario al cargar el formulario
         }
 
         private void btn_login_Click(object sender, EventArgs e)
@@ -119,67 +128,26 @@ namespace Eterea_Parfums_Desktop
 
         }
 
-        private void close_Click(object sender, EventArgs e)
+        private async void close_Click(object sender, EventArgs e)
         {
-            // Ocultar primero FormLogin antes de cerrarlo
+            // Ocultar el formulario de login
             this.Hide();
 
-            // Cerrar el FormLogin con un pequeño retraso para asegurar que el otro formulario se muestra bien
-            Task.Delay(100).ContinueWith(_ => this.Close(), TaskScheduler.FromCurrentSynchronizationContext());
-            
-            //FormInicioAutoconsulta inicioAutoconsulta = null;
-            //FormStart formStart = null;
+            // Esperar un poco para que se procese el cambio de formulario
+            await Task.Delay(100);
 
-            // Buscar FormInicioAutoconsulta y FormStart en Application.OpenForms
-            /*foreach (Form form in Application.OpenForms)
-            {
-                if (form is FormInicioAutoconsulta)
-                {
-                    inicioAutoconsulta = (FormInicioAutoconsulta)form;
-                }
-                if (form is FormStart)
-                {
-                    formStart = (FormStart)form;
-                }
-            }*/
-
-            // Si FormInicioAutoconsulta ya está abierto, asegurarse de que esté visible y en primer plano
-            /* if (inicioAutoconsulta != null)
-             {
-                 if (!inicioAutoconsulta.IsHandleCreated)
-                 {
-                     inicioAutoconsulta.CreateControl(); // Asegurar que el identificador de ventana está creado
-                 }*/
-
+            // Crear y mostrar el formulario de inicio de autoconsulta
             FormInicioAutoconsulta formInicioAutoconsulta = new FormInicioAutoconsulta();
-
             formInicioAutoconsulta.Show();
-            formInicioAutoconsulta.WindowState = FormWindowState.Normal; // Restaurar si estaba minimizado
-            formInicioAutoconsulta.TopMost = true;  // Forzar que quede sobre FormStart
-            formInicioAutoconsulta.BringToFront();   // Asegurar que quede sobre FormStart
-            formInicioAutoconsulta.Activate();       // Darle foco
-            //formInicioAutoconsulta.TopMost = false;  // Restaurar el estado normal de TopMost
-            }
-            /*else
-            {
-                Si FormInicioAutoconsulta no está en la lista, crear una nueva instancia
-                inicioAutoconsulta = new FormInicioAutoconsulta();
-                inicioAutoconsulta.Show();
-                inicioAutoconsulta.TopMost = true;  // Forzar que quede sobre FormStart
-                inicioAutoconsulta.BringToFront();
-                inicioAutoconsulta.Activate();
-                inicioAutoconsulta.TopMost = false; // Restaurar el estado normal de TopMost
-            }*/
+            formInicioAutoconsulta.WindowState = FormWindowState.Normal;
+            formInicioAutoconsulta.TopMost = true;
+            formInicioAutoconsulta.BringToFront();
+            formInicioAutoconsulta.Activate();
 
-            // Asegurar que FormStart sigue abierto pero en el fondo
-           /* if (formStart != null)
-            {
-                formStart.Show();
-                formStart.SendToBack(); // Mantener FormStart en el fondo
-            }
-
-           
-        }*/
+            // Si FormLogin es solo una pantalla de inicio de sesión, podrías cerrar el formulario
+            // Solo haz esto si estás seguro de que no afectará al hilo principal de la aplicación.
+            this.Close();
+        }
 
 
     }
