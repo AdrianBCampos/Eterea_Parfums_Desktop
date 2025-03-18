@@ -144,8 +144,7 @@ namespace Eterea_Parfums_Desktop
             formInicioAutoconsulta.BringToFront();
             formInicioAutoconsulta.Activate();
 
-            // Si FormLogin es solo una pantalla de inicio de sesión, podrías cerrar el formulario
-            // Solo haz esto si estás seguro de que no afectará al hilo principal de la aplicación.
+            //Cerrar el formLogin
             this.Close();
         }
 
