@@ -20,14 +20,10 @@ namespace Eterea_Parfums_Desktop
 {
     public partial class FormInformesDeVentas1 : Form
     {
-        private DateTime fechaInicio;
-        private DateTime fechaFinal;
 
         public FormInformesDeVentas1()
         {
             InitializeComponent();
-            lbl_error_fecha_inicio.Visible = false;
-            lbl_error_fecha_final.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -37,27 +33,36 @@ namespace Eterea_Parfums_Desktop
             this.Close();
         }
 
+        private bool validarFecha()
+        {
+            if(dateTimeInicio.Value >= dateTimeFinal.Value)
+            {
+                MessageBox.Show("La fecha de inicio no puede ser mayor o igual a la fecha final.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }   
+            return true;
+        }
+
+        private void resetearDatos()
+        {
+            txt_cantidad_ventas.Text = "0";
+            txt_monto_total.Text = "$0";
+            txt_mas_vendido.Text = "No hay registros";
+            txt_menos_vendido.Text = "No hay registros";
+        }
         private void cargarDatos()
         {
             // Validación de las fechas
-            if (string.IsNullOrEmpty(fechaInicio.ToString("yyyy-MM-dd")))
+            if(validarFecha() == false)
             {
-                lbl_error_fecha_inicio.Text = "Por favor, ingrese una fecha de inicio.";
-                lbl_error_fecha_inicio.Visible = true;
-                return;
-            }
-            if (string.IsNullOrEmpty(fechaFinal.ToString("yyyy-MM-dd")))
-            {
-                lbl_error_fecha_final.Text = "Por favor, ingrese una fecha de fin.";
-                lbl_error_fecha_final.Visible = true;
                 return;
             }
 
-            List<Factura> facturas = FacturaControlador.getAllIntervaloFechas(fechaInicio, fechaFinal);
+            List<Factura> facturas = FacturaControlador.getAllIntervaloFechas(dateTimeInicio.Value, dateTimeFinal.Value);
 
             if (facturas.Count == 0)
             {
-                MessageBox.Show("No se encontraron facturas en el rango de fechas especificado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                resetearDatos();
                 return;
             }
 
@@ -94,150 +99,14 @@ namespace Eterea_Parfums_Desktop
 
         }
 
-
-        private void txt_fecha_inicial_TextChanged(object sender, EventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-            if (textBox != null)
-            {
-
-                if (textBox.Text.Length == 10) // Verificamos si tiene el formato esperado (YYYY-MM-DD)
-                {
-                    if (DateTime.TryParse(textBox.Text, out fechaInicio))
-                    {
-                        //fecha_inicio = fechaInicio.ToString("yyyy-MM-dd");
-                        lbl_error_fecha_inicio.Visible = false; // Ocultamos el mensaje de error si es válido
-                        //Console.WriteLine(fecha_inicio);
-                    }
-                    else
-                    {
-                        textBox.Text = string.Empty;
-                        lbl_error_fecha_inicio.Text = "Formato de fecha inválido. Use YYYY-MM-DD.";
-                        lbl_error_fecha_inicio.Visible = true;
-                    }
-                }
-                else if (textBox.Text.Length > 10)
-                {
-                    textBox.Text = string.Empty;
-                    lbl_error_fecha_inicio.Text = "Formato de fecha inválido. Use YYYY-MM-DD.";
-                    lbl_error_fecha_inicio.Visible = true;
-                }
-            }
-        }
-
-        private void txt_fecha_final_TextChanged(object sender, EventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-            if (textBox != null)
-            {
-
-                if (textBox.Text.Length == 10) // Verificamos si tiene el formato esperado (YYYY-MM-DD)
-                {
-                    if (DateTime.TryParse(textBox.Text, out fechaFinal))
-                    {
-                        //fecha_fin = fechaFinal.ToString("yyyy-MM-dd");
-                        lbl_error_fecha_final.Visible = false; // Ocultamos el mensaje de error si es válido
-                        //Console.WriteLine(fecha_inicio);
-                    }
-                    else
-                    {
-                        textBox.Text = string.Empty;
-                        lbl_error_fecha_final.Text = "Formato de fecha inválido. Use YYYY-MM-DD.";
-                        lbl_error_fecha_final.Visible = true;
-                    }
-                }
-                else if (textBox.Text.Length > 10)
-                {
-                    textBox.Text = string.Empty;
-                    lbl_error_fecha_final.Text = "Formato de fecha inválido. Use YYYY-MM-DD.";
-                    lbl_error_fecha_final.Visible = true;
-                }
-            }
-        }
-
-        private void txt_fecha_inicial_KeyDown(object sender, KeyEventArgs e)
-
-        {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
-            {
-                // Validación para la fecha inicial
-                if (string.IsNullOrEmpty(fechaFinal.ToString("yyyy-MM-dd")))
-                {
-                    lbl_error_fecha_inicio.Text = "Formato de fecha inválido. Use YYYY-MM-DD.";
-                    lbl_error_fecha_inicio.Visible = true;
-                    e.SuppressKeyPress = true; // Evita el cambio de foco si la fecha no es válida
-                    return;
-                }
-
-                // Si la fecha es válida, mover el foco a txt_fecha_final
-                txt_fecha_final.Focus();
-            }
-        }
-
-        private void txt_fecha_final_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
-            {
-                // Validación para la fecha inicial
-                if (string.IsNullOrEmpty(fechaFinal.ToString("yyyy-MM-dd")))
-                {
-                    lbl_error_fecha_final.Text = "Formato de fecha inválido. Use YYYY-MM-DD.";
-                    lbl_error_fecha_final.Visible = true;
-                    e.SuppressKeyPress = true; // Evita el cambio de foco si la fecha no es válida
-                    return;
-                }
-
-                // Si la fecha es válida, mover el foco a txt_fecha_final
-                txt_fecha_final.Focus();
-                cargarDatos();
-            }
-        }
-
-
         private void btn_exportar_pdf_Click(object sender, EventArgs e)
         {
-            string mensaje = "";
-            bool error = false;
-
-            if (string.IsNullOrEmpty(txt_fecha_inicial.Text))
+            // Validación de las fechas
+            if (validarFecha() == false)
             {
-                mensaje += "Debe ingresar una fecha inicial.\n";
-                lbl_error_fecha_inicio.Text = "Debe ingresar una fecha inicial.";
-                lbl_error_fecha_inicio.Show();
-                error = true;
-            }
-            else
-            {
-                lbl_error_fecha_inicio.Visible = false;
-            }
-
-            if (string.IsNullOrEmpty(txt_fecha_final.Text))
-            {
-                mensaje += "Debe ingresar una fecha final.\n";
-                lbl_error_fecha_final.Text = "Debe ingresar una fecha final.";
-                lbl_error_fecha_final.Show();
-                error = true;
-            }
-            else
-            {
-                lbl_error_fecha_final.Visible = false;
-            }
-
-            if (error) return;
-
-            DateTime fechaInicio, fechaFinal;
-            if (!DateTime.TryParse(txt_fecha_inicial.Text, out fechaInicio) ||
-                !DateTime.TryParse(txt_fecha_final.Text, out fechaFinal))
-            {
-                MessageBox.Show("Formato de fecha incorrecto.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (fechaInicio > fechaFinal)
-            {
-                MessageBox.Show("La fecha inicial no puede ser mayor que la fecha final.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
 
             SaveFileDialog guardarFactura = new SaveFileDialog
             {
@@ -257,8 +126,8 @@ namespace Eterea_Parfums_Desktop
                                                .Replace("@PROVINCIA", sucursal.provincia_id.nombre)
                                                .Replace("@PAIS", sucursal.pais_id.nombre)
                                                .Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"))
-                                               .Replace("@INICIO", txt_fecha_inicial.Text)
-                                               .Replace("@FINAL", txt_fecha_final.Text)
+                                               .Replace("@INICIO", dateTimeInicio.Value.ToString("dd/MM/yyyy"))
+                                               .Replace("@FINAL", dateTimeFinal.Value.ToString("dd/MM/yyyy"))
                                                .Replace("@CANTIDAD", txt_cantidad_ventas.Text)
                                                .Replace("@MONTO_TOTAL_VENTAS", txt_monto_total.Text)
                                                .Replace("@PERFUME_MAS_VENDIDO", txt_mas_vendido.Text)
@@ -299,6 +168,16 @@ namespace Eterea_Parfums_Desktop
 
                 MessageBox.Show("PDF generado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void dateTimeInicio_ValueChanged(object sender, EventArgs e)
+        {
+            cargarDatos();
+        }
+
+        private void dateTimeFinal_ValueChanged(object sender, EventArgs e)
+        {
+            cargarDatos();
         }
     }
 }

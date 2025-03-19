@@ -52,10 +52,8 @@
             this.txt_monto_total = new System.Windows.Forms.Label();
             this.txt_mas_vendido = new System.Windows.Forms.Label();
             this.txt_menos_vendido = new System.Windows.Forms.Label();
-            this.txt_fecha_inicial = new System.Windows.Forms.TextBox();
-            this.txt_fecha_final = new System.Windows.Forms.TextBox();
-            this.lbl_error_fecha_inicio = new System.Windows.Forms.Label();
-            this.lbl_error_fecha_final = new System.Windows.Forms.Label();
+            this.dateTimeInicio = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeFinal = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -350,54 +348,30 @@
             this.txt_menos_vendido.TabIndex = 120;
             this.txt_menos_vendido.Text = "Menos Vendido";
             // 
-            // txt_fecha_inicial
+            // dateTimeInicio
             // 
-            this.txt_fecha_inicial.Location = new System.Drawing.Point(201, 119);
-            this.txt_fecha_inicial.Name = "txt_fecha_inicial";
-            this.txt_fecha_inicial.Size = new System.Drawing.Size(121, 20);
-            this.txt_fecha_inicial.TabIndex = 129;
-            this.txt_fecha_inicial.TextChanged += new System.EventHandler(this.txt_fecha_inicial_TextChanged);
-            this.txt_fecha_inicial.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_fecha_inicial_KeyDown);
+            this.dateTimeInicio.Location = new System.Drawing.Point(203, 120);
+            this.dateTimeInicio.Name = "dateTimeInicio";
+            this.dateTimeInicio.Size = new System.Drawing.Size(119, 20);
+            this.dateTimeInicio.TabIndex = 163;
+            this.dateTimeInicio.ValueChanged += new System.EventHandler(this.dateTimeInicio_ValueChanged);
             // 
-            // txt_fecha_final
+            // dateTimeFinal
             // 
-            this.txt_fecha_final.Location = new System.Drawing.Point(424, 119);
-            this.txt_fecha_final.Name = "txt_fecha_final";
-            this.txt_fecha_final.Size = new System.Drawing.Size(121, 20);
-            this.txt_fecha_final.TabIndex = 130;
-            this.txt_fecha_final.TextChanged += new System.EventHandler(this.txt_fecha_final_TextChanged);
-            this.txt_fecha_final.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_fecha_final_KeyDown);
+            this.dateTimeFinal.Location = new System.Drawing.Point(425, 119);
+            this.dateTimeFinal.Name = "dateTimeFinal";
+            this.dateTimeFinal.Size = new System.Drawing.Size(119, 20);
+            this.dateTimeFinal.TabIndex = 164;
+            this.dateTimeFinal.ValueChanged += new System.EventHandler(this.dateTimeFinal_ValueChanged);
             // 
-            // lbl_error_fecha_inicio
-            // 
-            this.lbl_error_fecha_inicio.AutoSize = true;
-            this.lbl_error_fecha_inicio.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_fecha_inicio.Location = new System.Drawing.Point(101, 143);
-            this.lbl_error_fecha_inicio.Name = "lbl_error_fecha_inicio";
-            this.lbl_error_fecha_inicio.Size = new System.Drawing.Size(29, 13);
-            this.lbl_error_fecha_inicio.TabIndex = 161;
-            this.lbl_error_fecha_inicio.Text = "Error";
-            // 
-            // lbl_error_fecha_final
-            // 
-            this.lbl_error_fecha_final.AutoSize = true;
-            this.lbl_error_fecha_final.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_fecha_final.Location = new System.Drawing.Point(332, 143);
-            this.lbl_error_fecha_final.Name = "lbl_error_fecha_final";
-            this.lbl_error_fecha_final.Size = new System.Drawing.Size(29, 13);
-            this.lbl_error_fecha_final.TabIndex = 162;
-            this.lbl_error_fecha_final.Text = "Error";
-            // 
-            // InformesDeVentas2
+            // FormInformesDeVentas1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(653, 511);
-            this.Controls.Add(this.lbl_error_fecha_final);
-            this.Controls.Add(this.lbl_error_fecha_inicio);
-            this.Controls.Add(this.txt_fecha_final);
-            this.Controls.Add(this.txt_fecha_inicial);
+            this.Controls.Add(this.dateTimeFinal);
+            this.Controls.Add(this.dateTimeInicio);
             this.Controls.Add(this.txt_menos_vendido);
             this.Controls.Add(this.txt_mas_vendido);
             this.Controls.Add(this.txt_monto_total);
@@ -423,7 +397,7 @@
             this.Controls.Add(this.lbl_informe_general);
             this.Controls.Add(this.btn_exportar_pdf);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "InformesDeVentas2";
+            this.Name = "FormInformesDeVentas1";
             this.Text = "InformesDeVentas2";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -461,9 +435,7 @@
         private System.Windows.Forms.Label txt_monto_total;
         private System.Windows.Forms.Label txt_mas_vendido;
         private System.Windows.Forms.Label txt_menos_vendido;
-        private System.Windows.Forms.TextBox txt_fecha_inicial;
-        private System.Windows.Forms.TextBox txt_fecha_final;
-        private System.Windows.Forms.Label lbl_error_fecha_inicio;
-        private System.Windows.Forms.Label lbl_error_fecha_final;
+        private System.Windows.Forms.DateTimePicker dateTimeInicio;
+        private System.Windows.Forms.DateTimePicker dateTimeFinal;
     }
 }

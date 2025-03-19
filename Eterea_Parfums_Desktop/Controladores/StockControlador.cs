@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using Eterea_Parfums_Desktop.Modelos;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
@@ -75,6 +77,39 @@ namespace Eterea_Parfums_Desktop.Controladores
             {
                 Trace.Write("Error al insertar en la DB: " + e.Message);
             }
+        }
+
+        public static List<Stock> getAll()
+        {
+            List<Stock> stocks = new List<Stock>();
+            string query = "SELECT * FROM dbo.stock";
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+            try
+            {
+                DB_Controller.connection.Open();
+                SqlDataReader r = cmd.ExecuteReader();
+                while (r.Read())
+                {
+                    Perfume perfume = new Perfume();
+                    Sucursal sucursal = new Sucursal();
+
+                    perfume.id = r.GetInt32(0);
+                    sucursal.id = r.GetInt32(1);
+
+                    Stock stock = new Stock();
+                    stock.perfume = perfume;
+                    stock.sucursal = sucursal;
+                    stock.cantidad = r.GetInt32(2);
+                    stocks.Add(stock);
+                }
+                r.Close();
+                DB_Controller.connection.Close();
+            }
+            catch (Exception e)
+            {
+                Trace.Write("Error al consultar la DB: " + e.Message);
+            }
+            return stocks;
         }
     }
 }
