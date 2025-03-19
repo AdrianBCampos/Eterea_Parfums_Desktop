@@ -35,7 +35,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lbl_informe_general = new System.Windows.Forms.Label();
@@ -52,7 +51,6 @@
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPerfumes)).BeginInit();
             this.SuspendLayout();
@@ -68,19 +66,6 @@
             this.label1.Size = new System.Drawing.Size(13, 18);
             this.label1.TabIndex = 142;
             this.label1.Text = ":";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox3.BackColor = System.Drawing.Color.White;
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox3.Location = new System.Drawing.Point(46, 84);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(692, 335);
-            this.pictureBox3.TabIndex = 134;
-            this.pictureBox3.TabStop = false;
             // 
             // button2
             // 
@@ -105,7 +90,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(31, 73);
+            this.pictureBox2.Location = new System.Drawing.Point(40, 61);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(722, 362);
@@ -185,7 +170,7 @@
             this.dataGridViewPerfumes.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewPerfumes.EnableHeadersVisualStyles = false;
             this.dataGridViewPerfumes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.dataGridViewPerfumes.Location = new System.Drawing.Point(51, 93);
+            this.dataGridViewPerfumes.Location = new System.Drawing.Point(42, 64);
             this.dataGridViewPerfumes.Name = "dataGridViewPerfumes";
             this.dataGridViewPerfumes.ReadOnly = true;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -205,7 +190,7 @@
             this.dataGridViewPerfumes.RowTemplate.Height = 40;
             this.dataGridViewPerfumes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewPerfumes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPerfumes.Size = new System.Drawing.Size(680, 315);
+            this.dataGridViewPerfumes.Size = new System.Drawing.Size(718, 358);
             this.dataGridViewPerfumes.TabIndex = 292;
             // 
             // Imagen
@@ -298,14 +283,12 @@
             this.ClientSize = new System.Drawing.Size(778, 506);
             this.Controls.Add(this.dataGridViewPerfumes);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lbl_informe_general);
             this.Controls.Add(this.btn_exportar_pdf);
             this.Name = "FormInformesDeVentas2";
             this.Text = "InformesDeVentas3";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPerfumes)).EndInit();
             this.ResumeLayout(false);
@@ -315,7 +298,6 @@
 
         #endregion
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lbl_informe_general;
