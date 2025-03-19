@@ -37,7 +37,7 @@ namespace Eterea_Parfums_Desktop
 
         //LA PAGINA ACTUAL
         private static int current = 0;
-        private static int paginador = 10;
+        private static int paginador = 3;
 
         //TOTAL DE PRODUCTOS
         private static int total = 0;
@@ -395,10 +395,10 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_posterior_Click(object sender, EventArgs e)
         {
-            if (current >= paginador)
+            if (current + paginador < total)
             {
-                current = current + paginador;
-                current_pag = current_pag + 1;
+                current += paginador;
+                current_pag++;
                 lbl_numero_pagina.Text = current_pag.ToString();
                 paginar(Perfumes_Filtrado);
             }
