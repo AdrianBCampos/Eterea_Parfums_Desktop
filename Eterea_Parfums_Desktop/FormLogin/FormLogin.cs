@@ -74,6 +74,8 @@ namespace Eterea_Parfums_Desktop
 
                         // Cerrar el formulario actual (login)
                         this.Close();
+
+
                     }
                 }
                 else

@@ -908,6 +908,7 @@
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.pictureBox9);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormCrearPerfume1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

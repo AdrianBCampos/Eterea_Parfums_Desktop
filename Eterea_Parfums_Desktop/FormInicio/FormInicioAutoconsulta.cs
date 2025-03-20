@@ -158,7 +158,7 @@ namespace Eterea_Parfums_Desktop
                 if (formStart != null)
                 {
                     // Ocultar FormInicioAutoconsulta antes de abrir FormLogin
-                    this.Hide();
+                    this.Hide();                 
 
                     // Traer FormStart al fondo pero asegurando que esté visible
                     formStart.Show();
@@ -172,6 +172,8 @@ namespace Eterea_Parfums_Desktop
 
                     // Restaurar FormInicioAutoconsulta si es necesario al cerrar el login
                     this.Show();
+
+
                 }
                 else
                 {

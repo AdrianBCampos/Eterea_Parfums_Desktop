@@ -586,6 +586,11 @@ namespace Eterea_Parfums_Desktop
 
         }
 
+        private void btn_x_cerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            
+        }
     }
 
 }
