@@ -104,7 +104,7 @@ namespace Eterea_Parfums_Desktop
 
         private bool Eliminar_Imagen_Existente(string nombreImg)
         {
-            String rutaImagen = Program.Ruta_Base + nombreImg;
+            String rutaImagen = Program.Ruta_Base + nombreImg + ".jpg";
             try
             {
                 if (System.IO.File.Exists(rutaImagen) && nombreImg != "imagen1.jpg" && nombreImg != "imagen2.jpg")

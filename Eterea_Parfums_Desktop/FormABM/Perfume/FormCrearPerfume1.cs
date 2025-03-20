@@ -170,7 +170,7 @@ namespace Eterea_Parfums_Desktop
 
                 int numero_aleatorio = numeroAleatorio();
                 Console.WriteLine(numero_aleatorio);
-                nombreFoto = txt_nombre.Text + numero_aleatorio + "-envase.jpg";
+                nombreFoto = txt_nombre.Text + numero_aleatorio + "-envase";
                 imagen.Save(Program.Ruta_Base + nombreFoto, System.Drawing.Imaging.ImageFormat.Jpeg);
             }
             catch (Exception ex)
