@@ -18,6 +18,7 @@ namespace Eterea_Parfums_Desktop
             comboBoxUsuarios.Items.Add("Luis");
             comboBoxUsuarios.Items.Add("Maxi");
             comboBoxUsuarios.Items.Add("Marino");
+            comboBoxUsuarios.Items.Add("Notebook Adri");
 
             comboBoxUsuarios.SelectedIndex = 0; // Seleccionar el primer usuario por defecto
 

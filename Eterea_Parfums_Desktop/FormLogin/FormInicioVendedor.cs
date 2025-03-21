@@ -41,6 +41,15 @@ namespace Eterea_Parfums_Desktop
             FormNumeroDeCaja numeroDeCaja = new FormNumeroDeCaja();
             numeroDeCaja.Show();
             this.Hide();
+
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.Name == "FormInicioAutoconsulta") // Asegúrate de que el nombre sea correcto
+                {
+                    form.Hide();
+                    break;
+                }
+            }
         }
 
         private void btn_gestionar_Click(object sender, EventArgs e)
@@ -48,6 +57,15 @@ namespace Eterea_Parfums_Desktop
             FormListaDeEnvios listaDeEnvios = new FormListaDeEnvios();
             listaDeEnvios.Show();
             this.Hide();
+
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form.Name == "FormInicioAutoconsulta") // Asegúrate de que el nombre sea correcto
+                {
+                    form.Hide();
+                    break;
+                }
+            }
         }
     }
 }

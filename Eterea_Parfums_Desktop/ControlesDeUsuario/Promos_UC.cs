@@ -98,7 +98,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         {
             FormPromo crearPromo = new FormPromo();
 
-            DialogResult dr = crearPromo.ShowDialog();
+            DialogResult dr = crearPromo.ShowDialog(this);
 
             if (dr == DialogResult.OK)
             {
@@ -126,7 +126,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     // Crear una nueva instancia del formulario de edición
                     Promocion promocion_editar = PromoControlador.obtenerPorId(idPromo);
                     FormPromo formEditarPromo = new FormPromo(promocion_editar);
-                    DialogResult dr = formEditarPromo.ShowDialog();
+                    DialogResult dr = formEditarPromo.ShowDialog(this);
 
                     if (dr == DialogResult.OK)
                     {
@@ -155,7 +155,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     FormEliminarPromo formEliminarPromo = new FormEliminarPromo(idPromoEliminar, nombrePromoEliminar);
 
                     // Mostrar el formulario
-                    formEliminarPromo.ShowDialog();
+                    formEliminarPromo.ShowDialog(this);
                     cargarPromociones();
                 }
                 else

@@ -21,17 +21,21 @@ namespace Eterea_Parfums_Desktop
 
             // Configurar el Timer
             timerEscaneo = new Timer();
-            timerEscaneo.Interval = 300; // Ajusta según el lector
+            timerEscaneo.Interval = 1000; // Ajusta según el lector
             timerEscaneo.Tick += TimerEscaneo_Tick;
         }
 
         private void FormEscanear_Load(object sender, EventArgs e)
         {
-            this.BeginInvoke(new Action(() =>
-            {
-                txt_codigo_barras.Focus(); // ✅ Asegura que el TextBox tenga el foco
-            }));
+            // Activa el formulario y asigna el foco al TextBox
+            this.Activate();
+            txt_codigo_barras.Focus();
+            
         }
+
+       
+
+
 
         private void txt_codigo_barras_TextChanged(object sender, EventArgs e)
         {
@@ -48,7 +52,7 @@ namespace Eterea_Parfums_Desktop
             timerEscaneo.Stop();
 
             // Si han pasado al menos 300 ms desde la última escritura, se considera que el código está completo
-            if ((DateTime.Now - ultimaEscritura).TotalMilliseconds >= 300)
+            if ((DateTime.Now - ultimaEscritura).TotalMilliseconds >= 1000)
             {
                 escaneoAutomatico = true;
                 // Prueba enviar "Enter" y si no funciona, llama directamente a KeyPress

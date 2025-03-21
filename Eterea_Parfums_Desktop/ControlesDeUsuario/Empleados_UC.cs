@@ -69,7 +69,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         private void btn_crear_empleado_Click(object sender, EventArgs e)
         {
             FormCrearEmpleado frmVend = new FormCrearEmpleado();
-            DialogResult dr = frmVend.ShowDialog();
+            DialogResult dr = frmVend.ShowDialog(this);
 
             if (dr == DialogResult.OK)
             {
@@ -96,7 +96,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                 FormEditarEmpleado frmVend = new FormEditarEmpleado(empleado_editar);
 
-                DialogResult dr = frmVend.ShowDialog();
+                DialogResult dr = frmVend.ShowDialog(this);
 
                 if (dr == DialogResult.OK)
                 {
@@ -118,7 +118,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                 FormEliminarEmpleado frmVend = new FormEliminarEmpleado(empleado_eliminar, id);
 
-                DialogResult dr = frmVend.ShowDialog();
+                DialogResult dr = frmVend.ShowDialog(this);
 
                 if (dr == DialogResult.OK)
                 {

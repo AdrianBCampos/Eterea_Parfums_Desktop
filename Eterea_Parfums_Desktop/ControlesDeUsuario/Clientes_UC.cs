@@ -65,7 +65,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         private void btn_crear_cliente_Click(object sender, EventArgs e)
         {
             FormCrearCliente formCrearClienteABM = new FormCrearCliente();
-            DialogResult dr = formCrearClienteABM.ShowDialog();
+            DialogResult dr = formCrearClienteABM.ShowDialog(this);
 
             if (dr == DialogResult.OK)
             {
@@ -92,7 +92,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                 FormEditarCliente formEditarClienteABM = new FormEditarCliente(cliente_editar);
 
-                DialogResult dr = formEditarClienteABM.ShowDialog();
+                DialogResult dr = formEditarClienteABM.ShowDialog(this);
 
                 if (dr == DialogResult.OK)
                 {
@@ -114,7 +114,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                 FormEliminarCliente formEliminarClienteABM = new FormEliminarCliente(cliente_eliminar, id);
 
-                DialogResult dr = formEliminarClienteABM.ShowDialog();
+                DialogResult dr = formEliminarClienteABM.ShowDialog(this);
 
                 if (dr == DialogResult.OK)
                 {

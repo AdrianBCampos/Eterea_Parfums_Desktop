@@ -1,6 +1,8 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
 using System;
 using System.Drawing;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -17,6 +19,15 @@ namespace Eterea_Parfums_Desktop
             lbl_error_user.Visible = false;
             lbl_error_pass.Visible = false;
             lbl_error_auth.Visible = false;
+
+            // Suscribirse al evento Load (si no se ha hecho desde el diseñador)
+            this.Load += FormLogin_Load;
+
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+            txt_usuario.Focus(); // Asigna el foco a txt_usuario al cargar el formulario
         }
 
         private void btn_login_Click(object sender, EventArgs e)
@@ -30,25 +41,49 @@ namespace Eterea_Parfums_Desktop
             string clave = txt_contraseña.Text;
 
 
+
+
             if (!validarCampos())
             {
-                if (EmpleadoControlador.auth(txt_usuario.Text, txt_contraseña.Text))//, true))
+                if (EmpleadoControlador.auth(txt_usuario.Text, txt_contraseña.Text))
                 {
+                    // Obtener la referencia de FormStart y FormInicioAutoconsulta
+                    //FormStart formStart = Application.OpenForms.OfType<FormStart>().FirstOrDefault();
+                    FormInicioAutoconsulta formAutoconsulta = Application.OpenForms.OfType<FormInicioAutoconsulta>().FirstOrDefault();
 
+                    // Ocultar FormInicioAutoconsulta correctamente
+                    if (formAutoconsulta != null)
+                    {
+                        formAutoconsulta.Close();
+                        //formAutoconsulta.SendToBack(); // Asegura que no reaparezca en primer plano
+                    }
+                    
+                    // Determinar el formulario a abrir según el rol del usuario
+                    Form nuevoFormulario = null;
                     if (Program.logueado.rol == "admin")
                     {
-                        FormInicioAdministrador InicioAdministrador = new FormInicioAdministrador();
-                        InicioAdministrador.ShowDialog();
-                        this.Hide();
+                        nuevoFormulario = new FormInicioAdministrador();
                     }
-                    else
+                    else if (Program.logueado.rol == "vendedor")
                     {
-                        FormInicioVendedor InicioVendedor = new FormInicioVendedor();
-                        InicioVendedor.ShowDialog();
-                        this.Hide();
+                        nuevoFormulario = new FormInicioVendedor();
                     }
 
+                    if (nuevoFormulario != null) //&& formStart != null)
+                    {
+                        // Asegurar que FormStart sea el dueño del nuevo formulario
+                        //nuevoFormulario.Owner = formStart;
+                        nuevoFormulario.Show(); // Mostrar sin bloquear
 
+                        // Forzar que el nuevo formulario esté al frente
+                        nuevoFormulario.BringToFront();
+                        nuevoFormulario.Activate(); // Asegura que reciba el foco
+                        nuevoFormulario.TopMost = true;
+                        //nuevoFormulario.TopMost = false; // Restaurar estado normal después
+
+                        // Cerrar el formulario actual (login)
+                        this.Close();
+                    }
                 }
                 else
                 {
@@ -56,16 +91,6 @@ namespace Eterea_Parfums_Desktop
                     lbl_error_auth.Visible = true;
                 }
             }
-
-
-            /*
-            if (EmpleadoControlador.auth(usuraio, clave))
-            {
-                InicioAdministrador InicioAdministrador = new InicioAdministrador();
-                InicioAdministrador.Show();
-                this.Hide();
-            }
-            */
 
         }
 
@@ -103,9 +128,26 @@ namespace Eterea_Parfums_Desktop
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {        
+        private async void close_Click(object sender, EventArgs e)
+        {
+            // Ocultar el formulario de login
+            this.Hide();
+
+            // Esperar un poco para que se procese el cambio de formulario
+            await Task.Delay(100);
+
+            // Crear y mostrar el formulario de inicio de autoconsulta
+            FormInicioAutoconsulta formInicioAutoconsulta = new FormInicioAutoconsulta();
+            formInicioAutoconsulta.Show();
+            formInicioAutoconsulta.WindowState = FormWindowState.Normal;
+            formInicioAutoconsulta.TopMost = true;
+            formInicioAutoconsulta.BringToFront();
+            formInicioAutoconsulta.Activate();
+
+            //Cerrar el formLogin
             this.Close();
         }
+
+
     }
 }

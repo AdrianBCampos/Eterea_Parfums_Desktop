@@ -50,10 +50,9 @@
             // btn_cerrar_sesion
             // 
             this.btn_cerrar_sesion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_cerrar_sesion.Location = new System.Drawing.Point(881, 2);
-            this.btn_cerrar_sesion.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_cerrar_sesion.Location = new System.Drawing.Point(661, 2);
             this.btn_cerrar_sesion.Name = "btn_cerrar_sesion";
-            this.btn_cerrar_sesion.Size = new System.Drawing.Size(59, 54);
+            this.btn_cerrar_sesion.Size = new System.Drawing.Size(44, 44);
             this.btn_cerrar_sesion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_cerrar_sesion.TabIndex = 102;
             this.btn_cerrar_sesion.TabStop = false;
@@ -65,10 +64,9 @@
             this.txt_saludo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.txt_saludo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_saludo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_saludo.Location = new System.Drawing.Point(578, 75);
-            this.txt_saludo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.txt_saludo.Location = new System.Drawing.Point(434, 61);
             this.txt_saludo.Name = "txt_saludo";
-            this.txt_saludo.Size = new System.Drawing.Size(187, 25);
+            this.txt_saludo.Size = new System.Drawing.Size(154, 20);
             this.txt_saludo.TabIndex = 101;
             this.txt_saludo.Text = "Nombre Vendedor";
             // 
@@ -78,10 +76,9 @@
             this.txt_bienvenido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.txt_bienvenido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_bienvenido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_bienvenido.Location = new System.Drawing.Point(455, 75);
-            this.txt_bienvenido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.txt_bienvenido.Location = new System.Drawing.Point(341, 61);
             this.txt_bienvenido.Name = "txt_bienvenido";
-            this.txt_bienvenido.Size = new System.Drawing.Size(115, 25);
+            this.txt_bienvenido.Size = new System.Drawing.Size(91, 20);
             this.txt_bienvenido.TabIndex = 100;
             this.txt_bienvenido.Text = "Bienvenido:";
             // 
@@ -91,10 +88,9 @@
             this.btn_gestionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_gestionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_gestionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_gestionar.Location = new System.Drawing.Point(653, 184);
-            this.btn_gestionar.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_gestionar.Location = new System.Drawing.Point(490, 150);
             this.btn_gestionar.Name = "btn_gestionar";
-            this.btn_gestionar.Size = new System.Drawing.Size(269, 46);
+            this.btn_gestionar.Size = new System.Drawing.Size(202, 37);
             this.btn_gestionar.TabIndex = 99;
             this.btn_gestionar.Text = "PREPARAR ENVIOS";
             this.btn_gestionar.UseVisualStyleBackColor = false;
@@ -106,10 +102,9 @@
             this.btn_facturar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_facturar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_facturar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_facturar.Location = new System.Drawing.Point(339, 184);
-            this.btn_facturar.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_facturar.Location = new System.Drawing.Point(254, 150);
             this.btn_facturar.Name = "btn_facturar";
-            this.btn_facturar.Size = new System.Drawing.Size(269, 46);
+            this.btn_facturar.Size = new System.Drawing.Size(202, 37);
             this.btn_facturar.TabIndex = 98;
             this.btn_facturar.Text = "FACTURAR";
             this.btn_facturar.UseVisualStyleBackColor = false;
@@ -119,9 +114,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(323, 119);
+            this.pictureBox1.Location = new System.Drawing.Point(242, 97);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(308, 173);
+            this.pictureBox1.Size = new System.Drawing.Size(231, 141);
             this.pictureBox1.TabIndex = 94;
             this.pictureBox1.TabStop = false;
             // 
@@ -129,9 +125,10 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox4.Location = new System.Drawing.Point(635, 119);
+            this.pictureBox4.Location = new System.Drawing.Point(476, 97);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(305, 173);
+            this.pictureBox4.Size = new System.Drawing.Size(229, 141);
             this.pictureBox4.TabIndex = 105;
             this.pictureBox4.TabStop = false;
             // 
@@ -141,10 +138,9 @@
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label9.Location = new System.Drawing.Point(519, 16);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(389, 13);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(200, 29);
+            this.label9.Size = new System.Drawing.Size(162, 24);
             this.label9.TabIndex = 346;
             this.label9.Text = "Modo Vendedor";
             // 
@@ -152,19 +148,19 @@
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox6.Location = new System.Drawing.Point(323, 4);
+            this.pictureBox6.Location = new System.Drawing.Point(242, 3);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(554, 52);
+            this.pictureBox6.Size = new System.Drawing.Size(416, 42);
             this.pictureBox6.TabIndex = 345;
             this.pictureBox6.TabStop = false;
             // 
             // img_logo
             // 
             this.img_logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.img_logo.Location = new System.Drawing.Point(4, 5);
-            this.img_logo.Margin = new System.Windows.Forms.Padding(4);
+            this.img_logo.Location = new System.Drawing.Point(3, 4);
             this.img_logo.Name = "img_logo";
-            this.img_logo.Size = new System.Drawing.Size(316, 287);
+            this.img_logo.Size = new System.Drawing.Size(237, 233);
             this.img_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.img_logo.TabIndex = 347;
             this.img_logo.TabStop = false;
@@ -173,18 +169,19 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(323, 61);
+            this.pictureBox2.Location = new System.Drawing.Point(242, 50);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(617, 53);
+            this.pictureBox2.Size = new System.Drawing.Size(463, 43);
             this.pictureBox2.TabIndex = 348;
             this.pictureBox2.TabStop = false;
             // 
-            // InicioVendedor
+            // FormInicioVendedor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(944, 295);
+            this.ClientSize = new System.Drawing.Size(708, 240);
             this.Controls.Add(this.img_logo);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.pictureBox6);
@@ -196,7 +193,9 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox2);
-            this.Name = "InicioVendedor";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "FormInicioVendedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InicioVendedor";
             ((System.ComponentModel.ISupportInitialize)(this.btn_cerrar_sesion)).EndInit();

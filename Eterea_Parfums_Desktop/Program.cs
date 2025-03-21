@@ -57,9 +57,9 @@ namespace Eterea_Parfums_Desktop
 
                 // Iniciar la aplicación principal
 
-
+                Application.Run(new FormStart());
                 //Application.Run(new MenuABM());
-                Application.Run(new FormInicioAutoconsulta());
+                //Application.Run(new FormInicioAutoconsulta());
             }
             else
             {
@@ -96,7 +96,11 @@ namespace Eterea_Parfums_Desktop
                         Ruta_Base = @"C:\Users\Maxi\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
                         Ruta_Web = @"C:\Users\usuario\source\repos\EEterea_Web\Eterea_Web\Content\ImgPerfumes\";
                         break;
-                    default:
+                case "notebook adri":
+                    Ruta_Base = @"C:\Users\PC\source\repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                    Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
+                    break;
+                default:
                         MessageBox.Show("Usuario no válido, no se configuraron rutas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
                 }

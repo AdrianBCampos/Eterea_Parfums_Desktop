@@ -522,10 +522,18 @@ namespace Eterea_Parfums_Desktop
             if (validacionDatosPerfume)
             {
                 Perfume perfume = editar();
-                this.Hide();
-                FormEditarPerfume2 editarAromaNota = new FormEditarPerfume2(perfume, this, perfumesUC);
-                editarAromaNota.Show();
 
+                // Obtener la instancia del FormStart..
+                Form formStart = Application.OpenForms["FormStart"];
+                FormEditarPerfume2 editarAromaNota = new FormEditarPerfume2(perfume, this, perfumesUC);
+
+                // Retrasamos la llamada a Hide() para evitar el salto
+                this.BeginInvoke(new Action(() => this.Hide()));
+
+                // Crear el formulario a mostrar y pasarle, como owner, el formStart
+
+                editarAromaNota.ShowDialog(formStart);
+               
             }
         }
         private void saveImagenResources(out string nombreFoto, Image imagen)
@@ -586,6 +594,11 @@ namespace Eterea_Parfums_Desktop
 
         }
 
+        private void btn_x_cerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+           
+        }
     }
 
 }
