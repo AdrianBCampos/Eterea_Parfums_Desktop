@@ -132,7 +132,7 @@ namespace Eterea_Parfums_Desktop
                     {
                         fila.Cells[1].Value = cantidadActual + 1;
                         PerfumeEnPromoControlador promoController = new PerfumeEnPromoControlador();
-                        int descuentoPorcentaje = promoController.obtenerMayorDescuentoPorPerfume(perfume.id);
+                        int descuentoPorcentaje = promoController.obtenerMayorDescuentoPorPerfume(perfume.id) ?? 0; //CAMBIE ALGO ACAAAAAA MAXI
                         decimal precioUnitario = Convert.ToDecimal(perfume.precio_en_pesos);
                         decimal descuentoMonto = ((precioUnitario * descuentoPorcentaje) / 100);
                         fila.Cells[6].Value = descuentoMonto;
@@ -327,43 +327,159 @@ namespace Eterea_Parfums_Desktop
         {
             DataGridView dgv = this.GetFacturaDataGrid();
             PerfumeEnPromoControlador promoController = new PerfumeEnPromoControlador();
+            int descuentoPorcentaje = 0;
 
             foreach (DataGridViewRow row in dgv.Rows)
             {
                 if (row.Cells["Nombre_Perfume"].Value != null) // Verifica que la fila no esté vacía
                 {
                     int perfumeId = Convert.ToInt32(row.Cells[0].Value); // ID del perfume
-
-                    // Obtener el descuento del perfume (en porcentaje)
-                    int descuentoPorcentaje = promoController.obtenerMayorDescuentoPorPerfume(perfumeId);
-
-                    
-                    Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
-
+                    int descuentoUnitario = 2;
+                    decimal descuentoMonto = 0;
+                    decimal totalConDescuento = 0;
                     // Obtener precio unitario
                     decimal precioUnitario = Convert.ToDecimal(row.Cells["Precio_Unitario"].Value);
 
-                    // Obtener cantidad
-                    int cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+                    if (row.Cells["Cantidad"].Value != null && int.TryParse(row.Cells["Cantidad"].Value.ToString(), out int cantidad))
+                    {
+                       if (cantidad % 2 == 0)
+                        {
+                            descuentoUnitario = 0; //Cambiamos el valor para que no se aplique el descuento unitario porque la cantidad es par
 
-                    // Calcular el monto de descuento
-                    decimal descuentoMonto = ((precioUnitario * descuentoPorcentaje) / 100) * cantidad;
+                            // Obtener el descuento del perfume (en porcentaje)
+                            descuentoPorcentaje = promoController.obtenerMayorDescuentoPorPerfume(perfumeId) ?? 0; // CAMBIAR METODO TIENE QUE SER MAYOR A 20%
 
-                    // Mostrar el monto de descuento en la celda "Descuento" (valor nominal)
-                    row.Cells["Descuento"].Value = descuentoMonto;
+                            if (descuentoPorcentaje > 20)
+                            {
+                                Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
 
-                    // Calcular el total con descuento
-                    decimal totalConDescuento = ((precioUnitario * cantidad) - descuentoMonto);
 
-                    // Actualizar el total en el DataGridView
-                    row.Cells["Tot"].Value = totalConDescuento;
+                            // Obtener cantidad
+                            cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
 
-                    // Mostrar en consola para depuración
-                    Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Aplicado: {descuentoMonto} (Monto), Total con Descuento: {totalConDescuento}");
+                            // Calcular el monto de descuento
+                            descuentoMonto = ((precioUnitario * descuentoPorcentaje) / 100) * cantidad;
+
+                            // Mostrar el monto de descuento en la celda "Descuento" (valor nominal)
+                            row.Cells["Descuento"].Value = descuentoMonto;
+
+                            // Calcular el total con descuento
+                            totalConDescuento = ((precioUnitario * cantidad) - descuentoMonto);
+
+                            // Actualizar el total en el DataGridView
+                            row.Cells["Tot"].Value = totalConDescuento;
+
+                            // Mostrar en consola para depuración
+                            Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Aplicado: {descuentoMonto} (Monto), Total con Descuento: {totalConDescuento}");
+                            }
+                            else
+                            {
+                                descuentoUnitario = 2;
+                            }
+                        }
+                       else {
+                            // Obtener el descuento del perfume (en porcentaje) solo si es mayor a 20%
+                            descuentoPorcentaje = promoController.obtenerMayorDescuentoPorPerfume(perfumeId) ?? 0;
+
+                            // Solo aplicar el descuento si es mayor a 20%
+                            if (descuentoPorcentaje > 20)
+                            {
+                                Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
+
+                                // Obtener cantidad
+                                cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+
+                                // Verificar si la cantidad es mayor que 1 antes de aplicar descuento
+                                if (cantidad > 1)
+                                {
+                                    // Calcular cuántas veces se aplicará el descuento (por cada par de unidades)
+                                    int cantidadDescuentos = cantidad / 2;  // Dividir entre 2 para saber cuántos pares de unidades hay
+
+                                    cantidadDescuentos = cantidadDescuentos * 2;  // multiplicar por 2 para saber cuantos descuentos aplicar
+
+                                    // Calcular el monto de descuento por cada par de unidades
+                                    decimal descuentoMontoPorPar = (precioUnitario * descuentoPorcentaje) / 100;
+
+                                    // Calcular el descuento total
+                                    descuentoMonto = descuentoMontoPorPar * cantidadDescuentos;
+                                    Console.WriteLine($"descuentoMonto : {descuentoMonto}, cantidadDescuentos: {cantidadDescuentos} , descuentoMontoPorPar: {descuentoMontoPorPar}");
+
+                                    // Mostrar el monto de descuento en la celda "Descuento" (valor nominal)
+                                    row.Cells["Descuento"].Value = descuentoMonto;
+
+                                    // Calcular el total con descuento
+                                    totalConDescuento = ((precioUnitario * cantidad) - descuentoMonto);
+
+                                    // Actualizar el total en el DataGridView
+                                    row.Cells["Tot"].Value = totalConDescuento;
+
+                                    descuentoUnitario = 1; //Se utiliza para verificar si se debe aplicar algun descuento unitario ya que la cantidad es impar y mayor a 3
+
+                                    // Mostrar en consola para depuración
+                                    Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Aplicado: {descuentoMonto} (Monto), Total con Descuento: {totalConDescuento}");
+                                }
+
+                            }
+                        if (descuentoUnitario == 1) //Descuento del 10% cuando es impar mayor a 1
+                        {
+                            // Obtener el descuento del perfume (en porcentaje)
+                            descuentoPorcentaje = promoController.obtenerPromocionIdPorPerfumeConDescuento10(perfumeId) ?? 0;
+
+
+                            Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
+
+
+                            // Obtener cantidad
+                            cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+
+                            // Calcular el monto de descuento
+                            descuentoMonto += (((precioUnitario * descuentoPorcentaje) / 100));
+
+                            // Mostrar el monto de descuento en la celda "Descuento" (valor nominal)
+                            row.Cells["Descuento"].Value = descuentoMonto;
+
+                            // Calcular el total con descuento
+                            totalConDescuento = ((precioUnitario * cantidad) - descuentoMonto);
+
+                            // Actualizar el total en el DataGridView
+                            row.Cells["Tot"].Value = totalConDescuento;
+
+                            // Mostrar en consola para depuración
+                            Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Aplicado: {descuentoMonto} (Monto), Total con Descuento: {totalConDescuento}");
+                        }
+                            if (descuentoUnitario == 2) //Descuento cuando no tiene descuento mayor a 20%
+                            {
+                                // Obtener el descuento del perfume (en porcentaje)
+                                descuentoPorcentaje = promoController.obtenerPromocionIdPorPerfumeConDescuento10(perfumeId) ?? 0;
+
+
+                                Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
+
+                                // Obtener cantidad
+                                cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+
+                                // Calcular el monto de descuento
+                                descuentoMonto = (((precioUnitario * descuentoPorcentaje) / 100) * cantidad);
+
+                                // Mostrar el monto de descuento en la celda "Descuento" (valor nominal)
+                                row.Cells["Descuento"].Value = descuentoMonto;
+
+                                // Calcular el total con descuento
+                                totalConDescuento = ((precioUnitario * cantidad) - descuentoMonto);
+
+                                // Actualizar el total en el DataGridView
+                                row.Cells["Tot"].Value = totalConDescuento;
+
+                                // Mostrar en consola para depuración
+                                Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Aplicado: {descuentoMonto} (Monto), Total con Descuento: {totalConDescuento}");
+                            }
+                        }
+
                 }
             }
         }
-
+        }
+ 
         private void totalFactura()
         {
             double sumaPrecios = 0; // Usar decimal para los precios
