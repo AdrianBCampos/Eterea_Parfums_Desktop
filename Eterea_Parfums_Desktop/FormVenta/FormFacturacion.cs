@@ -6,6 +6,8 @@ using iTextSharp.tool.xml;
 using System;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 
@@ -132,7 +134,7 @@ namespace Eterea_Parfums_Desktop
                     {
                         fila.Cells[1].Value = cantidadActual + 1;
                         PerfumeEnPromoControlador promoController = new PerfumeEnPromoControlador();
-                        int descuentoPorcentaje = promoController.obtenerMayorDescuentoPorPerfume(perfume.id);
+                        int descuentoPorcentaje = promoController.obtenerMayorDescuentoPorPerfume(perfume.id) ?? 0; //CAMBIE ALGO ACAAAAAA MAXI
                         decimal precioUnitario = Convert.ToDecimal(perfume.precio_en_pesos);
                         decimal descuentoMonto = ((precioUnitario * descuentoPorcentaje) / 100);
                         fila.Cells[6].Value = descuentoMonto;
@@ -327,43 +329,159 @@ namespace Eterea_Parfums_Desktop
         {
             DataGridView dgv = this.GetFacturaDataGrid();
             PerfumeEnPromoControlador promoController = new PerfumeEnPromoControlador();
+            int descuentoPorcentaje = 0;
 
             foreach (DataGridViewRow row in dgv.Rows)
             {
                 if (row.Cells["Nombre_Perfume"].Value != null) // Verifica que la fila no esté vacía
                 {
                     int perfumeId = Convert.ToInt32(row.Cells[0].Value); // ID del perfume
-
-                    // Obtener el descuento del perfume (en porcentaje)
-                    int descuentoPorcentaje = promoController.obtenerMayorDescuentoPorPerfume(perfumeId);
-
-                    
-                    Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
-
+                    int descuentoUnitario = 2;
+                    decimal descuentoMonto = 0;
+                    decimal totalConDescuento = 0;
                     // Obtener precio unitario
                     decimal precioUnitario = Convert.ToDecimal(row.Cells["Precio_Unitario"].Value);
 
-                    // Obtener cantidad
-                    int cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+                    if (row.Cells["Cantidad"].Value != null && int.TryParse(row.Cells["Cantidad"].Value.ToString(), out int cantidad))
+                    {
+                       if (cantidad % 2 == 0)
+                        {
+                            descuentoUnitario = 0; //Cambiamos el valor para que no se aplique el descuento unitario porque la cantidad es par
 
-                    // Calcular el monto de descuento
-                    decimal descuentoMonto = ((precioUnitario * descuentoPorcentaje) / 100) * cantidad;
+                            // Obtener el descuento del perfume (en porcentaje)
+                            descuentoPorcentaje = promoController.obtenerMayorDescuentoPorPerfume(perfumeId) ?? 0; // CAMBIAR METODO TIENE QUE SER MAYOR A 20%
 
-                    // Mostrar el monto de descuento en la celda "Descuento" (valor nominal)
-                    row.Cells["Descuento"].Value = descuentoMonto;
+                            if (descuentoPorcentaje > 20)
+                            {
+                                Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
 
-                    // Calcular el total con descuento
-                    decimal totalConDescuento = ((precioUnitario * cantidad) - descuentoMonto);
 
-                    // Actualizar el total en el DataGridView
-                    row.Cells["Tot"].Value = totalConDescuento;
+                            // Obtener cantidad
+                            cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
 
-                    // Mostrar en consola para depuración
-                    Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Aplicado: {descuentoMonto} (Monto), Total con Descuento: {totalConDescuento}");
+                            // Calcular el monto de descuento
+                            descuentoMonto = ((precioUnitario * descuentoPorcentaje) / 100) * cantidad;
+
+                            // Mostrar el monto de descuento en la celda "Descuento" (valor nominal)
+                            row.Cells["Descuento"].Value = descuentoMonto;
+
+                            // Calcular el total con descuento
+                            totalConDescuento = ((precioUnitario * cantidad) - descuentoMonto);
+
+                            // Actualizar el total en el DataGridView
+                            row.Cells["Tot"].Value = totalConDescuento;
+
+                            // Mostrar en consola para depuración
+                            Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Aplicado: {descuentoMonto} (Monto), Total con Descuento: {totalConDescuento}");
+                            }
+                            else
+                            {
+                                descuentoUnitario = 2;
+                            }
+                        }
+                       else {
+                            // Obtener el descuento del perfume (en porcentaje) solo si es mayor a 20%
+                            descuentoPorcentaje = promoController.obtenerMayorDescuentoPorPerfume(perfumeId) ?? 0;
+
+                            // Solo aplicar el descuento si es mayor a 20%
+                            if (descuentoPorcentaje > 20)
+                            {
+                                Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
+
+                                // Obtener cantidad
+                                cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+
+                                // Verificar si la cantidad es mayor que 1 antes de aplicar descuento
+                                if (cantidad > 1)
+                                {
+                                    // Calcular cuántas veces se aplicará el descuento (por cada par de unidades)
+                                    int cantidadDescuentos = cantidad / 2;  // Dividir entre 2 para saber cuántos pares de unidades hay
+
+                                    cantidadDescuentos = cantidadDescuentos * 2;  // multiplicar por 2 para saber cuantos descuentos aplicar
+
+                                    // Calcular el monto de descuento por cada par de unidades
+                                    decimal descuentoMontoPorPar = (precioUnitario * descuentoPorcentaje) / 100;
+
+                                    // Calcular el descuento total
+                                    descuentoMonto = descuentoMontoPorPar * cantidadDescuentos;
+                                    Console.WriteLine($"descuentoMonto : {descuentoMonto}, cantidadDescuentos: {cantidadDescuentos} , descuentoMontoPorPar: {descuentoMontoPorPar}");
+
+                                    // Mostrar el monto de descuento en la celda "Descuento" (valor nominal)
+                                    row.Cells["Descuento"].Value = descuentoMonto;
+
+                                    // Calcular el total con descuento
+                                    totalConDescuento = ((precioUnitario * cantidad) - descuentoMonto);
+
+                                    // Actualizar el total en el DataGridView
+                                    row.Cells["Tot"].Value = totalConDescuento;
+
+                                    descuentoUnitario = 1; //Se utiliza para verificar si se debe aplicar algun descuento unitario ya que la cantidad es impar y mayor a 3
+
+                                    // Mostrar en consola para depuración
+                                    Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Aplicado: {descuentoMonto} (Monto), Total con Descuento: {totalConDescuento}");
+                                }
+
+                            }
+                        if (descuentoUnitario == 1) //Descuento del 10% cuando es impar mayor a 1
+                        {
+                            // Obtener el descuento del perfume (en porcentaje)
+                            descuentoPorcentaje = promoController.obtenerPromocionIdPorPerfumeConDescuento10(perfumeId) ?? 0;
+
+
+                            Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
+
+
+                            // Obtener cantidad
+                            cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+
+                            // Calcular el monto de descuento
+                            descuentoMonto += (((precioUnitario * descuentoPorcentaje) / 100));
+
+                            // Mostrar el monto de descuento en la celda "Descuento" (valor nominal)
+                            row.Cells["Descuento"].Value = descuentoMonto;
+
+                            // Calcular el total con descuento
+                            totalConDescuento = ((precioUnitario * cantidad) - descuentoMonto);
+
+                            // Actualizar el total en el DataGridView
+                            row.Cells["Tot"].Value = totalConDescuento;
+
+                            // Mostrar en consola para depuración
+                            Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Aplicado: {descuentoMonto} (Monto), Total con Descuento: {totalConDescuento}");
+                        }
+                            if (descuentoUnitario == 2) //Descuento cuando no tiene descuento mayor a 20%
+                            {
+                                // Obtener el descuento del perfume (en porcentaje)
+                                descuentoPorcentaje = promoController.obtenerPromocionIdPorPerfumeConDescuento10(perfumeId) ?? 0;
+
+
+                                Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
+
+                                // Obtener cantidad
+                                cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+
+                                // Calcular el monto de descuento
+                                descuentoMonto = (((precioUnitario * descuentoPorcentaje) / 100) * cantidad);
+
+                                // Mostrar el monto de descuento en la celda "Descuento" (valor nominal)
+                                row.Cells["Descuento"].Value = descuentoMonto;
+
+                                // Calcular el total con descuento
+                                totalConDescuento = ((precioUnitario * cantidad) - descuentoMonto);
+
+                                // Actualizar el total en el DataGridView
+                                row.Cells["Tot"].Value = totalConDescuento;
+
+                                // Mostrar en consola para depuración
+                                Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Aplicado: {descuentoMonto} (Monto), Total con Descuento: {totalConDescuento}");
+                            }
+                        }
+
                 }
             }
         }
-
+        }
+ 
         private void totalFactura()
         {
             double sumaPrecios = 0; // Usar decimal para los precios
@@ -414,7 +532,7 @@ namespace Eterea_Parfums_Desktop
                 // Puedes manejar este caso de acuerdo a tus necesidades
             }
         }
-
+        /*
         private void CalcularMontoRecargo()
         {
             if (float.TryParse(txt_rec.Text, out float porcentajeRecargo) && float.TryParse(txt_subtotal.Text, out float subtotal))
@@ -426,7 +544,7 @@ namespace Eterea_Parfums_Desktop
             {
                 txt_monto_recargo.Text = "0.00"; // Si hay un error en la conversión, dejarlo en cero
             }
-        }
+        }*/
 
 
         private void CalcularDescuento(int desc, float subtotal)
@@ -556,6 +674,7 @@ namespace Eterea_Parfums_Desktop
             }
             ActualizarTotales();
         }
+        /*
         private void VerificarCondicionIVA(float subtotal, float recargo, float descuento)
         {
             string condicionCliente = txt_condicion_iva.Text.Trim();
@@ -578,7 +697,7 @@ namespace Eterea_Parfums_Desktop
                 txt_iva.Enabled = true;
                 txt_iva.Text = CalcularIVA(subtotal, recargo, descuento).ToString("0.00");
             }
-        }
+        }*/
 
         private void CrearFactura()
         {
@@ -593,12 +712,20 @@ namespace Eterea_Parfums_Desktop
                 //int sucursalId = Program.logueado.sucursal_id.id; 
                 int vendedorId = Program.logueado.id;
                 int clienteId = clientefactura.id;
+                if (clienteId == 0) 
+                {
+                    clienteId = 1;
+                }
                 string formaDePago = combo_forma_pago.SelectedItem.ToString();
                 double precioTotal = double.Parse(txt_total.Text);
                 double recargoTarjeta = double.Parse(txt_monto_recargo.Text);
                 double descuento = double.Parse(txt_monto_descuento.Text);
                 int numeroDeCaja = int.Parse(txt_numero_caja.Text);
                 string tipoConsumidor = clientefactura.condicion_frente_al_iva;
+                if (string.IsNullOrEmpty(tipoConsumidor))
+                {
+                    tipoConsumidor = "Consumidor Final";
+                }
                 string origen = "Local";
                 string facturaPdf = "";
 
@@ -678,20 +805,17 @@ namespace Eterea_Parfums_Desktop
                             return;
                         }
                         int? promocion_id = promoController.obtenerPromocionIdPorPerfume(perfume_id);
-                       /* int promocion_id;
-                        
-                        if (promo_id == null || promo_id <= 1)
+
+                        if (promocion_id == null)
                         {
-                            promocion_id = ;
+                            // Maneja el caso donde no se encontró la promoción
+                            Console.WriteLine("No se encontró promoción para este perfume.");
                         }
                         else
                         {
-                            promocion_id = promo_id.Value; 
+                            // Usar el valor de promocion_id (sabemos que no es null)
+                            Console.WriteLine("Promoción encontrada: " + promocion_id.Value);
                         }
-                       */
-                        
-
-
 
 
                         MessageBox.Show($"Enviando datos: NumFactura: {numFactura}, PerfumeID: {perfume_id}, Cantidad: {cantidad}, PrecioUnitario: {precio_unitario}, PromocionID: {promocion_id}");
@@ -726,6 +850,7 @@ namespace Eterea_Parfums_Desktop
             guardarFactura.Filter = "Archivos PDF (*.pdf)|*.pdf"; // Filtro para archivos PDF
             guardarFactura.DefaultExt = "pdf"; // Extensión por defecto
             guardarFactura.AddExtension = true; // Agrega la extensión si el usuario no la pone
+            string filePath = guardarFactura.FileName;
 
             string condicionCliente = txt_condicion_iva.Text.Trim();
             string PaginaHTML_Texto = "";
@@ -807,6 +932,7 @@ namespace Eterea_Parfums_Desktop
 
             if (guardarFactura.ShowDialog() == DialogResult.OK)
             {
+
                 using (FileStream stream = new FileStream(guardarFactura.FileName, FileMode.Create))
                 {
                     //Creamos un nuevo documento y lo definimos como PDF
@@ -835,10 +961,51 @@ namespace Eterea_Parfums_Desktop
             }
             CrearFactura();
             CrearDetalleFactura();
-            
+
+            if (!string.IsNullOrWhiteSpace(txt_email.Text))
+            {
+                EnviarCorreo(filePath, txt_email.Text.Trim());
+            }
         }
 
-        
+        private void EnviarCorreo(string rutaArchivo, string correoDestino)
+        {
+            try
+            {
+                // Correo del emisor y contraseña de aplicación
+                string correoEmisor = "maximiliano.kitagawa@davinci.edu.ar"; // Cambia esto por tu correo
+                string claveEmisor = "oeyh khop xsff gyyf"; // Usa una contraseña de aplicación generada en tu cuenta de Gmail
+
+                // Creación del mensaje
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress(correoEmisor);
+                mail.To.Add(correoDestino); // Dirección de correo del destinatario
+                mail.Subject = "Factura de tu compra"; // Asunto del correo
+                mail.Body = "Adjunto encontrarás tu factura en PDF. ¡Gracias por tu compra!"; // Cuerpo del correo
+
+                // Adjuntar la factura (archivo PDF)
+                mail.Attachments.Add(new Attachment(rutaArchivo));
+
+                // Configuración del cliente SMTP (para Gmail)
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                smtp.Credentials = new NetworkCredential(correoEmisor, claveEmisor); // Credenciales del emisor
+                smtp.EnableSsl = true; // Habilitar SSL para una conexión segura
+
+                // Enviar el correo
+                smtp.Send(mail);
+
+                // Mostrar mensaje de éxito
+                MessageBox.Show("Factura enviada con éxito a " + correoDestino, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                // Si ocurre un error, mostrar el mensaje de error
+                MessageBox.Show("Error al enviar la factura: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Enter)
