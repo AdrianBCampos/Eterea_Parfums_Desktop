@@ -302,11 +302,11 @@ namespace Eterea_Parfums_Desktop.Controladores
         public int? obtenerPromocionIdPorPerfume(int perfumeId)
         {
             string query = @"
-SELECT TOP 1 p.descuento
+SELECT TOP 1 p.id
                 FROM dbo.perfumes_en_promo pep
                 JOIN dbo.promocion p ON pep.promocion_id = p.id
                 WHERE pep.perfume_id = @perfumeId AND p.activo = 1 AND p.descuento >= 20
-                ORDER BY p.descuento DESC;
+                ORDER BY p.id DESC;
                 ";
 
             int? promocionId = null;  // Usamos int? para permitir valores nulos

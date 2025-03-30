@@ -532,7 +532,7 @@ namespace Eterea_Parfums_Desktop
                 // Puedes manejar este caso de acuerdo a tus necesidades
             }
         }
-
+        /*
         private void CalcularMontoRecargo()
         {
             if (float.TryParse(txt_rec.Text, out float porcentajeRecargo) && float.TryParse(txt_subtotal.Text, out float subtotal))
@@ -544,7 +544,7 @@ namespace Eterea_Parfums_Desktop
             {
                 txt_monto_recargo.Text = "0.00"; // Si hay un error en la conversión, dejarlo en cero
             }
-        }
+        }*/
 
 
         private void CalcularDescuento(int desc, float subtotal)
@@ -674,6 +674,7 @@ namespace Eterea_Parfums_Desktop
             }
             ActualizarTotales();
         }
+        /*
         private void VerificarCondicionIVA(float subtotal, float recargo, float descuento)
         {
             string condicionCliente = txt_condicion_iva.Text.Trim();
@@ -696,7 +697,7 @@ namespace Eterea_Parfums_Desktop
                 txt_iva.Enabled = true;
                 txt_iva.Text = CalcularIVA(subtotal, recargo, descuento).ToString("0.00");
             }
-        }
+        }*/
 
         private void CrearFactura()
         {
@@ -711,12 +712,20 @@ namespace Eterea_Parfums_Desktop
                 //int sucursalId = Program.logueado.sucursal_id.id; 
                 int vendedorId = Program.logueado.id;
                 int clienteId = clientefactura.id;
+                if (clienteId == 0) 
+                {
+                    clienteId = 1;
+                }
                 string formaDePago = combo_forma_pago.SelectedItem.ToString();
                 double precioTotal = double.Parse(txt_total.Text);
                 double recargoTarjeta = double.Parse(txt_monto_recargo.Text);
                 double descuento = double.Parse(txt_monto_descuento.Text);
                 int numeroDeCaja = int.Parse(txt_numero_caja.Text);
                 string tipoConsumidor = clientefactura.condicion_frente_al_iva;
+                if (string.IsNullOrEmpty(tipoConsumidor))
+                {
+                    tipoConsumidor = "Consumidor Final";
+                }
                 string origen = "Local";
                 string facturaPdf = "";
 
@@ -796,20 +805,17 @@ namespace Eterea_Parfums_Desktop
                             return;
                         }
                         int? promocion_id = promoController.obtenerPromocionIdPorPerfume(perfume_id);
-                       /* int promocion_id;
-                        
-                        if (promo_id == null || promo_id <= 1)
+
+                        if (promocion_id == null)
                         {
-                            promocion_id = ;
+                            // Maneja el caso donde no se encontró la promoción
+                            Console.WriteLine("No se encontró promoción para este perfume.");
                         }
                         else
                         {
-                            promocion_id = promo_id.Value; 
+                            // Usar el valor de promocion_id (sabemos que no es null)
+                            Console.WriteLine("Promoción encontrada: " + promocion_id.Value);
                         }
-                       */
-                        
-
-
 
 
                         MessageBox.Show($"Enviando datos: NumFactura: {numFactura}, PerfumeID: {perfume_id}, Cantidad: {cantidad}, PrecioUnitario: {precio_unitario}, PromocionID: {promocion_id}");
