@@ -100,14 +100,14 @@ namespace Eterea_Parfums_Desktop
                     default:
                         MessageBox.Show("Usuario no válido, no se configuraron rutas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
-                }
             }
+        }
     
 
 
 
    
-}
+    }
 
 
 
