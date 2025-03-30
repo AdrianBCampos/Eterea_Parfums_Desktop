@@ -12,14 +12,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         public static bool auth(string usuario, string password)
         {
-            /* Empleado empleadoLogueado = new Empleado();
-
-             Pais pais = new Pais();
-             Provincia provincia = new Provincia();
-             Localidad localidad = new Localidad();
-             Calle calle = new Calle();
-             Sucursal sucursal = new Sucursal();*/
-
+            
             // Recupera el empleado de la base de datos (debes implementar este método)
             Empleado empleado = obtenerEmpleadoPorUsuario(usuario);
             if (empleado == null)
@@ -30,48 +23,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         }
 
-           /* string query = "SELECT * FROM dbo.empleado WHERE usuario = @user AND clave = @pass;";
-
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString())) // ✅ Nueva conexión
-                {
-                    connection.Open();
-
-                    using (SqlDataReader r = cmd.ExecuteReader())
-                while (r.Read())
-            {
-                Trace.WriteLine("=================================");
-                Trace.WriteLine("Empleado encontrado, nombre: " + r.GetString(3) + " " + r.GetString(4));
-                Trace.WriteLine("=================================");
-
-                //Obtener id de los datos de las claves foraneas de empleado
-
-                int paisId = r.GetInt32(9);
-                int provinciaId = r.GetInt32(10);
-                int localidadId = r.GetInt32(11);
-                int calleId = r.GetInt32(13);
-                int sucursalId = r.GetInt32(18);
-
-
-
-
-                // ✅ Obtenemos los objetos completos
-                pais = PaisControlador.getById(paisId);
-                provincia = ProvinciaControlador.getById(provinciaId);
-                localidad = LocalidadControlador.getById(localidadId);
-                calle = CalleControlador.getById(calleId);
-                sucursal = SucursalControlador.getById(sucursalId);
-
-                // ✅ Creamos el objeto empleado
-                empleadoLogueado = new Empleado(
-                    r.GetInt32(0), r.GetString(1), r.GetString(2), r.GetString(3), r.GetString(4),
-                    r.GetInt32(5), r.GetDateTime(6), r.GetString(7), r.GetString(8), pais,
-                    provincia, localidad, r.GetInt32(12), calle, r.GetInt32(14),
-                    r.GetString(15), r.GetString(16), r.GetString(17),
-                    sucursal, r.GetDateTime(19), r.GetInt32(20), r.GetInt32(21), r.GetString(22)
-           }*/
-
+          
 
         /* public static bool auth(string usr, string pass)
          {
