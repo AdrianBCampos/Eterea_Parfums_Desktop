@@ -6,6 +6,8 @@ using iTextSharp.tool.xml;
 using System;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 
@@ -842,6 +844,7 @@ namespace Eterea_Parfums_Desktop
             guardarFactura.Filter = "Archivos PDF (*.pdf)|*.pdf"; // Filtro para archivos PDF
             guardarFactura.DefaultExt = "pdf"; // Extensión por defecto
             guardarFactura.AddExtension = true; // Agrega la extensión si el usuario no la pone
+            string filePath = guardarFactura.FileName;
 
             string condicionCliente = txt_condicion_iva.Text.Trim();
             string PaginaHTML_Texto = "";
@@ -923,6 +926,7 @@ namespace Eterea_Parfums_Desktop
 
             if (guardarFactura.ShowDialog() == DialogResult.OK)
             {
+
                 using (FileStream stream = new FileStream(guardarFactura.FileName, FileMode.Create))
                 {
                     //Creamos un nuevo documento y lo definimos como PDF
@@ -951,10 +955,51 @@ namespace Eterea_Parfums_Desktop
             }
             CrearFactura();
             CrearDetalleFactura();
-            
+
+            if (!string.IsNullOrWhiteSpace(txt_email.Text))
+            {
+                EnviarCorreo(filePath, txt_email.Text.Trim());
+            }
         }
 
-        
+        private void EnviarCorreo(string rutaArchivo, string correoDestino)
+        {
+            try
+            {
+                // Correo del emisor y contraseña de aplicación
+                string correoEmisor = "maximiliano.kitagawa@davinci.edu.ar"; // Cambia esto por tu correo
+                string claveEmisor = "oeyh khop xsff gyyf"; // Usa una contraseña de aplicación generada en tu cuenta de Gmail
+
+                // Creación del mensaje
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress(correoEmisor);
+                mail.To.Add(correoDestino); // Dirección de correo del destinatario
+                mail.Subject = "Factura de tu compra"; // Asunto del correo
+                mail.Body = "Adjunto encontrarás tu factura en PDF. ¡Gracias por tu compra!"; // Cuerpo del correo
+
+                // Adjuntar la factura (archivo PDF)
+                mail.Attachments.Add(new Attachment(rutaArchivo));
+
+                // Configuración del cliente SMTP (para Gmail)
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                smtp.Credentials = new NetworkCredential(correoEmisor, claveEmisor); // Credenciales del emisor
+                smtp.EnableSsl = true; // Habilitar SSL para una conexión segura
+
+                // Enviar el correo
+                smtp.Send(mail);
+
+                // Mostrar mensaje de éxito
+                MessageBox.Show("Factura enviada con éxito a " + correoDestino, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                // Si ocurre un error, mostrar el mensaje de error
+                MessageBox.Show("Error al enviar la factura: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Enter)
