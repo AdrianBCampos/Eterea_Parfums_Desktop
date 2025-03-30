@@ -91,7 +91,7 @@ namespace Eterea_Parfums_Desktop
 
         private void cargarImagen(string nombreImg, PictureBox pictureBox)
         {
-            string rutaCompletaImagen = Program.Ruta_Base + nombreImg;
+            string rutaCompletaImagen = Program.Ruta_Base + nombreImg + ".jpg";
             if (System.IO.File.Exists(rutaCompletaImagen))
             {
                 pictureBox.Image = Image.FromFile(rutaCompletaImagen);
@@ -534,8 +534,8 @@ namespace Eterea_Parfums_Desktop
             {
                 int numero_aleatorio = numeroAleatorio();
                 Console.WriteLine(numero_aleatorio);
-                nombreFoto = txt_nombre.Text + numero_aleatorio + "-envase.jpg";
-                imagen.Save(Program.Ruta_Base + nombreFoto, System.Drawing.Imaging.ImageFormat.Jpeg);
+                nombreFoto = txt_nombre.Text + numero_aleatorio + "-envase";
+                imagen.Save(Program.Ruta_Base + nombreFoto + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
 
             }
             catch (Exception ex)
