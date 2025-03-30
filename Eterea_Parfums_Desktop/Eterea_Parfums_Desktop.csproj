@@ -69,6 +69,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BarcodeReceiver.cs" />
+    <Compile Include="FormInformeVenta\FormInformesDeVentas2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormInformeVenta\FormInformesDeVentas2.Designer.cs">
+      <DependentUpon>FormInformesDeVentas2.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPedido\FormBuscarPedidos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,12 +241,6 @@
     <Compile Include="FormInformeVenta\FormInformesDeVentas1.Designer.cs">
       <DependentUpon>FormInformesDeVentas1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormInformeVenta\FormInformesDeVentas2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormInformeVenta\FormInformesDeVentas2.Designer.cs">
-      <DependentUpon>FormInformesDeVentas2.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormABM\FormMenuABM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,6 +262,7 @@
     <Compile Include="Modelos\Perfume.cs" />
     <Compile Include="Modelos\Promocion.cs" />
     <Compile Include="Modelos\Provincia.cs" />
+    <Compile Include="Modelos\Stock.cs" />
     <Compile Include="Modelos\TipoDeAroma.cs" />
     <Compile Include="Modelos\TipoDeNota.cs" />
     <Compile Include="Modelos\TipoDePerfume.cs" />
@@ -350,6 +351,9 @@
     <Compile Include="FormInfoPerfume\FormVerPromociones.Designer.cs">
       <DependentUpon>FormVerPromociones.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FormInformeVenta\FormInformesDeVentas2.resx">
+      <DependentUpon>FormInformesDeVentas2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPedido\FormBuscarPedidos.resx">
       <DependentUpon>FormBuscarPedidos.cs</DependentUpon>
     </EmbeddedResource>
@@ -421,9 +425,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormInformeVenta\FormInformesDeVentas1.resx">
       <DependentUpon>FormInformesDeVentas1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormInformeVenta\FormInformesDeVentas2.resx">
-      <DependentUpon>FormInformesDeVentas2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormABM\FormMenuABM.resx">
       <DependentUpon>FormMenuABM.cs</DependentUpon>

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txt_tipo_informe = new System.Windows.Forms.ComboBox();
+            this.combobox_informe = new System.Windows.Forms.ComboBox();
             this.lbl_tipo_informe = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.lbl_informe_ventas = new System.Windows.Forms.Label();
@@ -37,15 +37,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // txt_tipo_informe
+            // combobox_informe
             // 
-            this.txt_tipo_informe.FormattingEnabled = true;
-            this.txt_tipo_informe.Items.AddRange(new object[] {
-            "Ventas en un período"});
-            this.txt_tipo_informe.Location = new System.Drawing.Point(299, 157);
-            this.txt_tipo_informe.Name = "txt_tipo_informe";
-            this.txt_tipo_informe.Size = new System.Drawing.Size(227, 21);
-            this.txt_tipo_informe.TabIndex = 94;
+            this.combobox_informe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            this.combobox_informe.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.combobox_informe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combobox_informe.ForeColor = System.Drawing.SystemColors.Menu;
+            this.combobox_informe.FormattingEnabled = true;
+            this.combobox_informe.Items.AddRange(new object[] {
+            "Ventas en un período",
+            "Inventario"});
+            this.combobox_informe.Location = new System.Drawing.Point(304, 157);
+            this.combobox_informe.Name = "combobox_informe";
+            this.combobox_informe.Size = new System.Drawing.Size(227, 21);
+            this.combobox_informe.TabIndex = 94;
+            this.combobox_informe.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxDiseño_DrawItem);
             // 
             // lbl_tipo_informe
             // 
@@ -91,7 +97,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Location = new System.Drawing.Point(60, 98);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(485, 137);
             this.pictureBox1.TabIndex = 91;
@@ -116,14 +122,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(600, 364);
-            this.Controls.Add(this.txt_tipo_informe);
+            this.Controls.Add(this.combobox_informe);
             this.Controls.Add(this.lbl_tipo_informe);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.lbl_informe_ventas);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btn_continuar);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormSeleccionarInformeVenta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InformesDeVentas";
@@ -136,7 +141,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox txt_tipo_informe;
+        private System.Windows.Forms.ComboBox combobox_informe;
         private System.Windows.Forms.Label lbl_tipo_informe;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label lbl_informe_ventas;

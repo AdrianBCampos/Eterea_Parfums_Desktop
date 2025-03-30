@@ -52,10 +52,8 @@
             this.txt_monto_total = new System.Windows.Forms.Label();
             this.txt_mas_vendido = new System.Windows.Forms.Label();
             this.txt_menos_vendido = new System.Windows.Forms.Label();
-            this.txt_fecha_inicial = new System.Windows.Forms.TextBox();
-            this.txt_fecha_final = new System.Windows.Forms.TextBox();
-            this.lbl_error_fecha_inicio = new System.Windows.Forms.Label();
-            this.lbl_error_fecha_final = new System.Windows.Forms.Label();
+            this.dateTimeInicio = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeFinal = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -91,7 +89,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox2.Location = new System.Drawing.Point(35, 183);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
@@ -153,7 +151,7 @@
             // lbl_inicio
             // 
             this.lbl_inicio.AutoSize = true;
-            this.lbl_inicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_inicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.lbl_inicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_inicio.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lbl_inicio.Location = new System.Drawing.Point(230, 191);
@@ -165,7 +163,7 @@
             // lbl_desde
             // 
             this.lbl_desde.AutoSize = true;
-            this.lbl_desde.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_desde.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.lbl_desde.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_desde.ForeColor = System.Drawing.Color.Black;
             this.lbl_desde.Location = new System.Drawing.Point(44, 197);
@@ -177,7 +175,7 @@
             // lbl_hasta
             // 
             this.lbl_hasta.AutoSize = true;
-            this.lbl_hasta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_hasta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.lbl_hasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_hasta.ForeColor = System.Drawing.Color.Black;
             this.lbl_hasta.Location = new System.Drawing.Point(309, 197);
@@ -189,7 +187,7 @@
             // lbl_fin
             // 
             this.lbl_fin.AutoSize = true;
-            this.lbl_fin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_fin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.lbl_fin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_fin.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lbl_fin.Location = new System.Drawing.Point(355, 192);
@@ -200,7 +198,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.White;
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox3.Location = new System.Drawing.Point(50, 227);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
@@ -212,7 +210,7 @@
             // lbl_cantidad_ventas
             // 
             this.lbl_cantidad_ventas.AutoSize = true;
-            this.lbl_cantidad_ventas.BackColor = System.Drawing.Color.White;
+            this.lbl_cantidad_ventas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.lbl_cantidad_ventas.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_cantidad_ventas.ForeColor = System.Drawing.Color.Black;
             this.lbl_cantidad_ventas.Location = new System.Drawing.Point(56, 240);
@@ -224,7 +222,7 @@
             // lbl_monto_total_ventas
             // 
             this.lbl_monto_total_ventas.AutoSize = true;
-            this.lbl_monto_total_ventas.BackColor = System.Drawing.Color.White;
+            this.lbl_monto_total_ventas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.lbl_monto_total_ventas.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_monto_total_ventas.ForeColor = System.Drawing.Color.Black;
             this.lbl_monto_total_ventas.Location = new System.Drawing.Point(56, 293);
@@ -235,7 +233,7 @@
             // 
             // pictureBox4
             // 
-            this.pictureBox4.BackColor = System.Drawing.Color.White;
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox4.Location = new System.Drawing.Point(50, 280);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
@@ -247,7 +245,7 @@
             // lbl_producto_mas_vendido
             // 
             this.lbl_producto_mas_vendido.AutoSize = true;
-            this.lbl_producto_mas_vendido.BackColor = System.Drawing.Color.White;
+            this.lbl_producto_mas_vendido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.lbl_producto_mas_vendido.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_producto_mas_vendido.ForeColor = System.Drawing.Color.Black;
             this.lbl_producto_mas_vendido.Location = new System.Drawing.Point(56, 347);
@@ -258,7 +256,7 @@
             // 
             // pictureBox5
             // 
-            this.pictureBox5.BackColor = System.Drawing.Color.White;
+            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox5.Location = new System.Drawing.Point(50, 334);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
@@ -270,7 +268,7 @@
             // lbl_producto_menos_vendido
             // 
             this.lbl_producto_menos_vendido.AutoSize = true;
-            this.lbl_producto_menos_vendido.BackColor = System.Drawing.Color.White;
+            this.lbl_producto_menos_vendido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.lbl_producto_menos_vendido.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_producto_menos_vendido.ForeColor = System.Drawing.Color.Black;
             this.lbl_producto_menos_vendido.Location = new System.Drawing.Point(56, 401);
@@ -281,7 +279,7 @@
             // 
             // pictureBox6
             // 
-            this.pictureBox6.BackColor = System.Drawing.Color.White;
+            this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox6.Location = new System.Drawing.Point(50, 388);
             this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
@@ -293,7 +291,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(434, 197);
@@ -305,7 +303,7 @@
             // txt_cantidad_ventas
             // 
             this.txt_cantidad_ventas.AutoSize = true;
-            this.txt_cantidad_ventas.BackColor = System.Drawing.Color.White;
+            this.txt_cantidad_ventas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.txt_cantidad_ventas.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_cantidad_ventas.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txt_cantidad_ventas.Location = new System.Drawing.Point(324, 240);
@@ -317,7 +315,7 @@
             // txt_monto_total
             // 
             this.txt_monto_total.AutoSize = true;
-            this.txt_monto_total.BackColor = System.Drawing.Color.White;
+            this.txt_monto_total.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.txt_monto_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_monto_total.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txt_monto_total.Location = new System.Drawing.Point(324, 292);
@@ -329,7 +327,7 @@
             // txt_mas_vendido
             // 
             this.txt_mas_vendido.AutoSize = true;
-            this.txt_mas_vendido.BackColor = System.Drawing.Color.White;
+            this.txt_mas_vendido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.txt_mas_vendido.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_mas_vendido.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txt_mas_vendido.Location = new System.Drawing.Point(324, 347);
@@ -341,7 +339,7 @@
             // txt_menos_vendido
             // 
             this.txt_menos_vendido.AutoSize = true;
-            this.txt_menos_vendido.BackColor = System.Drawing.Color.White;
+            this.txt_menos_vendido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.txt_menos_vendido.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_menos_vendido.ForeColor = System.Drawing.SystemColors.ControlText;
             this.txt_menos_vendido.Location = new System.Drawing.Point(324, 401);
@@ -350,54 +348,32 @@
             this.txt_menos_vendido.TabIndex = 120;
             this.txt_menos_vendido.Text = "Menos Vendido";
             // 
-            // txt_fecha_inicial
+            // dateTimeInicio
             // 
-            this.txt_fecha_inicial.Location = new System.Drawing.Point(201, 119);
-            this.txt_fecha_inicial.Name = "txt_fecha_inicial";
-            this.txt_fecha_inicial.Size = new System.Drawing.Size(121, 20);
-            this.txt_fecha_inicial.TabIndex = 129;
-            this.txt_fecha_inicial.TextChanged += new System.EventHandler(this.txt_fecha_inicial_TextChanged);
-            this.txt_fecha_inicial.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_fecha_inicial_KeyDown);
+            this.dateTimeInicio.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dateTimeInicio.Location = new System.Drawing.Point(203, 120);
+            this.dateTimeInicio.Name = "dateTimeInicio";
+            this.dateTimeInicio.Size = new System.Drawing.Size(119, 20);
+            this.dateTimeInicio.TabIndex = 163;
+            this.dateTimeInicio.Value = new System.DateTime(2025, 3, 18, 0, 0, 0, 0);
+            this.dateTimeInicio.ValueChanged += new System.EventHandler(this.dateTimeInicio_ValueChanged);
             // 
-            // txt_fecha_final
+            // dateTimeFinal
             // 
-            this.txt_fecha_final.Location = new System.Drawing.Point(424, 119);
-            this.txt_fecha_final.Name = "txt_fecha_final";
-            this.txt_fecha_final.Size = new System.Drawing.Size(121, 20);
-            this.txt_fecha_final.TabIndex = 130;
-            this.txt_fecha_final.TextChanged += new System.EventHandler(this.txt_fecha_final_TextChanged);
-            this.txt_fecha_final.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_fecha_final_KeyDown);
+            this.dateTimeFinal.Location = new System.Drawing.Point(425, 119);
+            this.dateTimeFinal.Name = "dateTimeFinal";
+            this.dateTimeFinal.Size = new System.Drawing.Size(119, 20);
+            this.dateTimeFinal.TabIndex = 164;
+            this.dateTimeFinal.ValueChanged += new System.EventHandler(this.dateTimeFinal_ValueChanged);
             // 
-            // lbl_error_fecha_inicio
-            // 
-            this.lbl_error_fecha_inicio.AutoSize = true;
-            this.lbl_error_fecha_inicio.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_fecha_inicio.Location = new System.Drawing.Point(101, 143);
-            this.lbl_error_fecha_inicio.Name = "lbl_error_fecha_inicio";
-            this.lbl_error_fecha_inicio.Size = new System.Drawing.Size(29, 13);
-            this.lbl_error_fecha_inicio.TabIndex = 161;
-            this.lbl_error_fecha_inicio.Text = "Error";
-            // 
-            // lbl_error_fecha_final
-            // 
-            this.lbl_error_fecha_final.AutoSize = true;
-            this.lbl_error_fecha_final.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_fecha_final.Location = new System.Drawing.Point(332, 143);
-            this.lbl_error_fecha_final.Name = "lbl_error_fecha_final";
-            this.lbl_error_fecha_final.Size = new System.Drawing.Size(29, 13);
-            this.lbl_error_fecha_final.TabIndex = 162;
-            this.lbl_error_fecha_final.Text = "Error";
-            // 
-            // InformesDeVentas2
+            // FormInformesDeVentas1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(653, 511);
-            this.Controls.Add(this.lbl_error_fecha_final);
-            this.Controls.Add(this.lbl_error_fecha_inicio);
-            this.Controls.Add(this.txt_fecha_final);
-            this.Controls.Add(this.txt_fecha_inicial);
+            this.Controls.Add(this.dateTimeFinal);
+            this.Controls.Add(this.dateTimeInicio);
             this.Controls.Add(this.txt_menos_vendido);
             this.Controls.Add(this.txt_mas_vendido);
             this.Controls.Add(this.txt_monto_total);
@@ -423,7 +399,7 @@
             this.Controls.Add(this.lbl_informe_general);
             this.Controls.Add(this.btn_exportar_pdf);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "InformesDeVentas2";
+            this.Name = "FormInformesDeVentas1";
             this.Text = "InformesDeVentas2";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -461,9 +437,7 @@
         private System.Windows.Forms.Label txt_monto_total;
         private System.Windows.Forms.Label txt_mas_vendido;
         private System.Windows.Forms.Label txt_menos_vendido;
-        private System.Windows.Forms.TextBox txt_fecha_inicial;
-        private System.Windows.Forms.TextBox txt_fecha_final;
-        private System.Windows.Forms.Label lbl_error_fecha_inicio;
-        private System.Windows.Forms.Label lbl_error_fecha_final;
+        private System.Windows.Forms.DateTimePicker dateTimeInicio;
+        private System.Windows.Forms.DateTimePicker dateTimeFinal;
     }
 }

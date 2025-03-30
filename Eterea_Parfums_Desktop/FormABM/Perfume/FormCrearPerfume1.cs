@@ -170,8 +170,8 @@ namespace Eterea_Parfums_Desktop
 
                 int numero_aleatorio = numeroAleatorio();
                 Console.WriteLine(numero_aleatorio);
-                nombreFoto = txt_nombre.Text + numero_aleatorio + "-envase.jpg";
-                imagen.Save(Program.Ruta_Base + nombreFoto, System.Drawing.Imaging.ImageFormat.Jpeg);
+                nombreFoto = txt_nombre.Text + numero_aleatorio + "-envase";
+                imagen.Save(Program.Ruta_Base + nombreFoto + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
             }
             catch (Exception ex)
             {
@@ -222,20 +222,20 @@ namespace Eterea_Parfums_Desktop
             return perfume;
 
         }
+        
         private bool EsCodigoBarraPerfumeValido(string codigo)
         {
-            if (string.IsNullOrEmpty(codigo) || codigo.Length != 12 || !codigo.All(char.IsDigit))
+            if (string.IsNullOrEmpty(codigo) || codigo.Length != 13 || !codigo.All(char.IsDigit))
             {
                 return false;
             }
-            //return ValidarEAN13(codigo);
-            return true;
+            return ValidarEAN13(codigo);
         }
 
         private bool ValidarEAN13(string codigo)
         {
             int suma = 0;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < 12; i++)
             {
                 int digito = codigo[i] - '0';
                 suma += (i % 2 == 0) ? digito : digito * 3;
