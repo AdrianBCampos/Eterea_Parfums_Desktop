@@ -273,6 +273,7 @@
     <Compile Include="FormABM\Perfume\FormCrearPerfume1.Designer.cs">
       <DependentUpon>FormCrearPerfume1.cs</DependentUpon>
     </Compile>
+    <Compile Include="PasswordHelper.cs" />
     <Compile Include="PromocionService.cs" />
     <Compile Include="FormStock\FormStock.cs">
       <SubType>Form</SubType>

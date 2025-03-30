@@ -37,7 +37,7 @@ namespace Eterea_Parfums_Desktop
             lbl_error_pass.Visible = false;
             lbl_error_auth.Visible = false;
 
-            string usuraio = txt_usuario.Text;
+            string usuario = txt_usuario.Text;
             string clave = txt_contraseña.Text;
 
 
@@ -45,8 +45,11 @@ namespace Eterea_Parfums_Desktop
 
             if (!validarCampos())
             {
-                if (EmpleadoControlador.auth(txt_usuario.Text, txt_contraseña.Text))
+                if (EmpleadoControlador.auth(usuario, clave))
                 {
+                    // Asignar el usuario logueado a la variable global
+                    Program.logueado = EmpleadoControlador.obtenerEmpleadoPorUsuario(usuario);
+
                     // Obtener la referencia de FormStart y FormInicioAutoconsulta
                     //FormStart formStart = Application.OpenForms.OfType<FormStart>().FirstOrDefault();
                     FormInicioAutoconsulta formAutoconsulta = Application.OpenForms.OfType<FormInicioAutoconsulta>().FirstOrDefault();
