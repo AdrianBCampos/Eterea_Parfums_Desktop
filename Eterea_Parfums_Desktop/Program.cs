@@ -32,7 +32,15 @@ namespace Eterea_Parfums_Desktop
         [STAThread]
         static void Main()
         {
+            // Define la contraseña original (por ejemplo, "123456")
+            string claveOriginal = "maxi";
 
+            // Genera el hash utilizando PasswordHelper
+            string claveHasheada = PasswordHelper.CrearHash(claveOriginal);
+
+            // Muestra el hash generado en la consola
+            Console.WriteLine("Clave original: " + claveOriginal);
+            Console.WriteLine("Clave hasheada: " + claveHasheada);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

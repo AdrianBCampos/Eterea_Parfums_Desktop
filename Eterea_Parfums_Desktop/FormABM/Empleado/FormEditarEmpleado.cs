@@ -9,6 +9,7 @@ namespace Eterea_Parfums_Desktop
 {
     public partial class FormEditarEmpleado : Form
     {
+        private string originalHashedPassword;
 
         /*  string situacion;
 
@@ -170,14 +171,21 @@ namespace Eterea_Parfums_Desktop
             id_editar = empleado.id;
 
             txt_usuario.Text = empleado.usuario.ToString();
-            txt_contraseña.Text = empleado.clave.ToString();
+            /*txt_contraseña.Text = empleado.clave.ToString();*/
             //txt_contraseña.Hide();
+            // Guardamos el hash actual para usarlo si el usuario no cambia la contraseña
+            originalHashedPassword = empleado.clave;
+
+            // No se muestra la contraseña actual en el campo
+            txt_contraseña.Text = "";
+            
+            // Mostrar el hash por consola
+            Console.WriteLine("Hash actual: " + empleado.clave);
+
             txt_nombre.Text = empleado.nombre.ToString();
             txt_apellido.Text = empleado.apellido.ToString();
             txt_dni.Text = empleado.dni.ToString();
             dateTime_nac.Text = empleado.fecha_nacimiento.ToString();
-
-
             txt_celular.Text = empleado.celular.ToString();
             txt_e_mail.Text = empleado.e_mail.ToString();
             combo_pais.SelectedItem = empleado.pais_id.nombre.ToString();
@@ -268,7 +276,7 @@ namespace Eterea_Parfums_Desktop
             }
 
             String rol = "vendedor";
-            if (combo_rol.SelectedItem.ToString() == "Admin")
+            if (combo_rol.SelectedItem.ToString() == "admin")
             {
                 rol = "admin";
             }
@@ -279,11 +287,43 @@ namespace Eterea_Parfums_Desktop
             Calle calle = CalleControlador.getByName(combo_calle.SelectedItem.ToString());
             Sucursal sucursal = SucursalControlador.getByName(combo_sucursal.SelectedItem.ToString());
 
-            Empleado empleado = new Empleado(id_editar, txt_usuario.Text, txt_contraseña.Text, txt_nombre.Text, txt_apellido.Text,
-                int.Parse(txt_dni.Text), DateTime.Parse(dateTime_nac.Text), txt_celular.Text, txt_e_mail.Text,
-                pais, provincia, localidad, int.Parse(txt_cp.Text), calle, int.Parse(txt_num_calle.Text),
-                txt_piso.Text, txt_departamento.Text, richTextBox_comentario.Text,
-                 sucursal, DateTime.Parse(dateTime_ing.Text), int.Parse(txt_sueldo.Text), activo, rol);
+            // Si el usuario ingresó una nueva contraseña, la hasheamos. Si no, usamos la existente.
+            string nuevaClave;
+            if (!string.IsNullOrEmpty(txt_contraseña.Text))
+            {
+                // Se ingresa la contraseña en texto plano y se genera su hash
+                nuevaClave = PasswordHelper.CrearHash(txt_contraseña.Text);
+            }
+            else
+            {
+                // No se modificó la contraseña, se mantiene la original
+                nuevaClave = originalHashedPassword;
+            }
+
+            Empleado empleado = new Empleado(
+                id_editar,
+                txt_usuario.Text,
+                nuevaClave,
+                txt_nombre.Text,
+                txt_apellido.Text,
+                int.Parse(txt_dni.Text),
+                DateTime.Parse(dateTime_nac.Text),
+                txt_celular.Text,
+                txt_e_mail.Text,
+                pais,
+                provincia,
+                localidad,
+                int.Parse(txt_cp.Text),
+                calle,
+                int.Parse(txt_num_calle.Text),
+                txt_piso.Text,
+                txt_departamento.Text,
+                richTextBox_comentario.Text,
+                 sucursal,
+                 DateTime.Parse(dateTime_ing.Text),
+                 int.Parse(txt_sueldo.Text),
+                 activo,
+                 rol);
 
             if (EmpleadoControlador.editarEmpleado(empleado))
             {
@@ -327,12 +367,12 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_usuarioE.Text + Environment.NewLine;
             }
 
-            if (string.IsNullOrEmpty(txt_contraseña.Text))
+            /*if (string.IsNullOrEmpty(txt_contraseña.Text))
             {
                 lbl_claveE.Text = "Debe generar una contraseña.";
                 lbl_claveE.Show();
                 errorMsg += lbl_claveE.Text + Environment.NewLine;
-            }
+            }*/
 
             if (string.IsNullOrEmpty(txt_nombre.Text))
             {
