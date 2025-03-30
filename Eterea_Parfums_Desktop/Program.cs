@@ -32,8 +32,11 @@ namespace Eterea_Parfums_Desktop
         [STAThread]
         static void Main()
         {
+            /* Codigo usado una vez para generar el password
+             del primer usuario administrador
+
             // Define la contraseña original (por ejemplo, "123456")
-            string claveOriginal = "maxi";
+            string claveOriginal = "admin";
 
             // Genera el hash utilizando PasswordHelper
             string claveHasheada = PasswordHelper.CrearHash(claveOriginal);
@@ -41,6 +44,7 @@ namespace Eterea_Parfums_Desktop
             // Muestra el hash generado en la consola
             Console.WriteLine("Clave original: " + claveOriginal);
             Console.WriteLine("Clave hasheada: " + claveHasheada);
+            */
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
