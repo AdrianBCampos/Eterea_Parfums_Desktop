@@ -50,8 +50,9 @@ namespace Eterea_Parfums_Desktop
         public FormInicioAutoconsulta()
         {
             InitializeComponent();
-            
-            
+
+
+            this.TopMost = false;
             //ESCALAR TAMAÑO DEL FORM
             //float scaleFactor = 0.8f; // 80% del tamaño original
             //this.Scale(new SizeF(scaleFactor, scaleFactor));
@@ -62,6 +63,7 @@ namespace Eterea_Parfums_Desktop
             //Ocultar campos de escaneo 
             lbl_codigoBarras.Visible = false;
             txt_scan.Visible = false;
+            txt_scan.Enabled = false;
 
             // Configurar evento Click en todos los controles del formulario excepto en txt_scan y lbl_codigoBarras
             foreach (Control ctrl in this.Controls)
@@ -119,7 +121,67 @@ namespace Eterea_Parfums_Desktop
            
         }
 
+        /* private void txt_scan_TextChanged(object sender, EventArgs e)
+         {
+             if (!escaneoHabilitado) 
+             {
+                 // ✅ Si el escaneo no está habilitado, limpiamos el TextBox y salimos del método
+                 txt_scan.Clear();
+                 return;
+             }
+             if (!string.IsNullOrEmpty(txt_scan.Text))
+             { 
+                 GuardarTextoEnArchivo(txt_scan.Text);
+
+                 // Usar BeginInvoke para ejecutar el evento KeyPress en el hilo principal
+                 this.BeginInvoke(new Action(() =>
+                 {
+                     txt_scan_KeyPress(txt_scan, new KeyPressEventArgs((char)Keys.Enter));
+                 }));
+             }
+         }*/
+
+        private void DetalleForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            ResetAutoConsulta();
+        }
         private void txt_scan_TextChanged(object sender, EventArgs e)
+        {
+            if (!escaneoHabilitado || !txt_scan.Visible || !txt_scan.Enabled)
+            {
+                txt_scan.Text = ""; // Limpia si el campo no debería recibir datos
+                return;
+            }
+
+            string codigo = txt_scan.Text.Trim();
+            if (string.IsNullOrEmpty(codigo)) return;
+
+            if (PerfumeControlador.getByCodigo(codigo) != null)
+            {
+                // Si el perfume existe, abrir el formulario de detalles
+                FormVerDetallePerfume detalleForm = new FormVerDetallePerfume(PerfumeControlador.getByCodigo(codigo));
+
+                // Evento para resetear la UI al cerrar el formulario
+                detalleForm.FormClosed += (s, args) => ResetAutoConsulta();
+
+                detalleForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Código no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // Si no existe, abrir el formulario de reintento
+                //FormEscanear escanearForm = new FormEscanear(this);
+
+                // Evento para resetear la UI al cerrar el formulario
+                //escanearForm.FormClosed += (s, args) => ResetAutoConsulta();
+
+                //escanearForm.ShowDialog();
+
+                ResetAutoConsulta();
+            }
+        }
+
+        /*private void txt_scan_TextChanged(object sender, EventArgs e)
         {
             if (!escaneoHabilitado) 
             {
@@ -137,9 +199,16 @@ namespace Eterea_Parfums_Desktop
                     txt_scan_KeyPress(txt_scan, new KeyPressEventArgs((char)Keys.Enter));
                 }));
             }
+        }*/
+
+        public void ResetAutoConsulta()
+        {
+            txt_scan.Text = "";
+            txt_scan.Visible = false;
+            txt_scan.Enabled = false;
+            lbl_codigoBarras.Visible = false;
+            btn_escanear.Visible = true;
         }
-
-
 
         private void GuardarTextoEnArchivo(string texto)
         {
@@ -323,10 +392,10 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_posterior_Click(object sender, EventArgs e)
         {
-            if (current >= paginador)
+            if (current + paginador < total)
             {
-                current = current + paginador;
-                current_pag = current_pag + 1;
+                current += paginador;
+                current_pag++;
                 lbl_numero_pagina.Text = current_pag.ToString();
                 paginar(Perfumes_Filtrado);
             }
@@ -598,13 +667,15 @@ namespace Eterea_Parfums_Desktop
             // Ocultar el botón y mostrar el TextBox
             btn_escanear.Visible = false;
             txt_scan.Visible = true;
+            txt_scan.Enabled = true;
             txt_scan.Focus(); // Poner el cursor en el TextBox
             lbl_codigoBarras.Visible = true;
+            this.TopMost = false;  // Restaurar el estado normal de TopMost
         }
 
 
         // Evento para capturar el código escaneado
-        private void txt_scan_KeyPress(object sender, KeyPressEventArgs e)
+        /*private void txt_scan_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
@@ -645,10 +716,10 @@ namespace Eterea_Parfums_Desktop
                 txt_scan.Focus();
                 escaneoHabilitado = false;
             }
-        }
+        }*/
 
 
-        public void SimularIngresoTeclado(string barcode)
+        /*public void SimularIngresoTeclado(string barcode)
         {
             if (InvokeRequired)
             {
@@ -663,13 +734,12 @@ namespace Eterea_Parfums_Desktop
                 txt_scan.Text = barcode;
                 SendKeys.SendWait("{ENTER}");
             }
-        }
+        }*/
 
-
-        public bool IsFocused()
+        /*public bool IsFocused()
         {
             return txt_scan.Focused;
-        }
+        }*/
 
 
 
