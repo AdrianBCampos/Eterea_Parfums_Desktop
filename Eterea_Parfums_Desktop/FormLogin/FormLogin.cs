@@ -19,6 +19,17 @@ namespace Eterea_Parfums_Desktop
             lbl_error_user.Visible = false;
             lbl_error_pass.Visible = false;
             lbl_error_auth.Visible = false;
+
+            
+           
+            // Suscribirse al evento Load (si no se ha hecho desde el diseñador)
+            this.Load += FormLogin_Load;
+
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+            txt_usuario.Focus(); // Asigna el foco a txt_usuario al cargar el formulario
         }
 
         private void btn_login_Click(object sender, EventArgs e)
@@ -123,6 +134,27 @@ namespace Eterea_Parfums_Desktop
 
         private void close_Click(object sender, EventArgs e)
         {
+            // Ocultar el formulario de login
+            this.Hide();
+
+            // Esperar un poco para que se procese el cambio de formulario
+            //await Task.Delay(100);
+
+            // Crear y mostrar el formulario de inicio de autoconsulta
+            FormInicioAutoconsulta formInicioAutoconsulta = new FormInicioAutoconsulta();
+            formInicioAutoconsulta.Show();
+            formInicioAutoconsulta.WindowState = FormWindowState.Normal;
+            formInicioAutoconsulta.TopMost = true;
+            formInicioAutoconsulta.BringToFront();
+            formInicioAutoconsulta.Activate();
+
+            //Cerrar el formLogin
+            this.Close();
+        }
+
+
+        /*private async void close_Click1(object sender, EventArgs e)
+        {
             FormInicioAutoconsulta inicioAutoconsulta = null;
             FormStart formStart = null;
 
@@ -177,7 +209,7 @@ namespace Eterea_Parfums_Desktop
 
             // Cerrar el FormLogin con un pequeño retraso para asegurar que el otro formulario se muestra bien
             Task.Delay(100).ContinueWith(_ => this.Close(), TaskScheduler.FromCurrentSynchronizationContext());
-        }
+        }*/
 
 
     }
