@@ -427,7 +427,7 @@
             this.txt_scan.Size = new System.Drawing.Size(479, 38);
             this.txt_scan.TabIndex = 304;
             this.txt_scan.TextChanged += new System.EventHandler(this.txt_scan_TextChanged);
-            this.txt_scan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_scan_KeyPress);
+            //this.txt_scan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_scan_KeyPress);
             // 
             // pictureBox3
             // 
