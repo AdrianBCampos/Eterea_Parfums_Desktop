@@ -28,7 +28,7 @@ namespace Eterea_Parfums_Desktop
             btn_cerrar_sesion.Image = Image.FromFile(rutaCerrarSesion);
 
             // Configurar el saludo
-            //txt_saludo.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
+            txt_saludo.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
 
             // Configurar el ToolTip para el botón de cerrar sesión
             toolTip.SetToolTip(btn_cerrar_sesion, "Cerrar sesión");

@@ -23,8 +23,17 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void btn_crear_perfume_Click_1(object sender, EventArgs e)
         {
-            FormCrearPerfume1 productos = new FormCrearPerfume1(this);
-            productos.ShowDialog();
+            FormCrearPerfume1 productos = new FormCrearPerfume1(this);          
+
+            DialogResult dr = productos.ShowDialog(this);
+
+            if (dr == DialogResult.OK)
+            {
+                Trace.WriteLine("OK");
+
+                //ACTUALIZAR LA LISTA
+                cargarPerfumes();
+            }
         }
 
         internal void cargarPerfumes(string filtroPerfume = "")

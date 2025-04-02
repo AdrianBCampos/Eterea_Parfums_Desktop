@@ -22,6 +22,8 @@ namespace Eterea_Parfums_Desktop
         private PerfumesUC perfumesUC;
         private NotasDelPerfume notasDelPerfume;
 
+        
+
         public FormCrearPerfume2()
         {
             InitializeComponent();
@@ -239,7 +241,7 @@ namespace Eterea_Parfums_Desktop
 
 
             MessageBox.Show("Se registro perfume con aromas y notas del perfume correctamente");
-            this.Close();
+            this.Close();          
             perfumesUC.cargarPerfumes();
 
         }
