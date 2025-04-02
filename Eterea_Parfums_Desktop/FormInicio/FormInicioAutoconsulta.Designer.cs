@@ -493,7 +493,7 @@
             this.btn_escanear.TabIndex = 311;
             this.btn_escanear.Text = "Escanear";
             this.btn_escanear.UseVisualStyleBackColor = false;
-            this.btn_escanear.Click += new System.EventHandler(this.btn_escanear_Click_1);
+            this.btn_escanear.Click += new System.EventHandler(this.btn_escanear_Click);
             // 
             // FormInicioAutoconsulta
             // 
