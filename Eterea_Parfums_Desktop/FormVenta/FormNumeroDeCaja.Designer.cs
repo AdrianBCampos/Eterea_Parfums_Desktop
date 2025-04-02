@@ -35,6 +35,7 @@
             this.btn_continuar = new System.Windows.Forms.Button();
             this.txt_ing_numero_caja = new System.Windows.Forms.TextBox();
             this.lbl_error_caja = new System.Windows.Forms.Label();
+            this.txt_nombre_suc = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -54,7 +55,7 @@
             this.lbl_numero_caja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_numero_caja.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_numero_caja.ForeColor = System.Drawing.Color.Black;
-            this.lbl_numero_caja.Location = new System.Drawing.Point(176, 212);
+            this.lbl_numero_caja.Location = new System.Drawing.Point(176, 230);
             this.lbl_numero_caja.Name = "lbl_numero_caja";
             this.lbl_numero_caja.Size = new System.Drawing.Size(135, 18);
             this.lbl_numero_caja.TabIndex = 93;
@@ -79,10 +80,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(62, 188);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(72, 207);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(485, 73);
+            this.pictureBox1.Size = new System.Drawing.Size(485, 66);
             this.pictureBox1.TabIndex = 91;
             this.pictureBox1.TabStop = false;
             // 
@@ -91,7 +92,7 @@
             this.btn_continuar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_continuar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_continuar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_continuar.Location = new System.Drawing.Point(235, 280);
+            this.btn_continuar.Location = new System.Drawing.Point(235, 302);
             this.btn_continuar.Name = "btn_continuar";
             this.btn_continuar.Size = new System.Drawing.Size(137, 37);
             this.btn_continuar.TabIndex = 90;
@@ -101,7 +102,7 @@
             // 
             // txt_ing_numero_caja
             // 
-            this.txt_ing_numero_caja.Location = new System.Drawing.Point(321, 214);
+            this.txt_ing_numero_caja.Location = new System.Drawing.Point(321, 232);
             this.txt_ing_numero_caja.Name = "txt_ing_numero_caja";
             this.txt_ing_numero_caja.Size = new System.Drawing.Size(116, 20);
             this.txt_ing_numero_caja.TabIndex = 96;
@@ -112,11 +113,21 @@
             this.lbl_error_caja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_caja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_error_caja.ForeColor = System.Drawing.Color.Red;
-            this.lbl_error_caja.Location = new System.Drawing.Point(152, 235);
+            this.lbl_error_caja.Location = new System.Drawing.Point(152, 253);
             this.lbl_error_caja.Name = "lbl_error_caja";
             this.lbl_error_caja.Size = new System.Drawing.Size(44, 20);
             this.lbl_error_caja.TabIndex = 97;
             this.lbl_error_caja.Text = "Error";
+            // 
+            // txt_nombre_suc
+            // 
+            this.txt_nombre_suc.AutoSize = true;
+            this.txt_nombre_suc.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_nombre_suc.Location = new System.Drawing.Point(76, 181);
+            this.txt_nombre_suc.Name = "txt_nombre_suc";
+            this.txt_nombre_suc.Size = new System.Drawing.Size(60, 24);
+            this.txt_nombre_suc.TabIndex = 98;
+            this.txt_nombre_suc.Text = "label1";
             // 
             // FormNumeroDeCaja
             // 
@@ -125,6 +136,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(600, 363);
+            this.Controls.Add(this.txt_nombre_suc);
             this.Controls.Add(this.lbl_error_caja);
             this.Controls.Add(this.txt_ing_numero_caja);
             this.Controls.Add(this.img_logo);
@@ -133,11 +145,12 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btn_continuar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormNumeroDeCaja";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NumeroDeCaja";
             this.TopMost = true;
+            this.Load += new System.EventHandler(this.FormNumeroDeCaja_Load);
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -154,5 +167,6 @@
         private System.Windows.Forms.Button btn_continuar;
         private System.Windows.Forms.TextBox txt_ing_numero_caja;
         private System.Windows.Forms.Label lbl_error_caja;
+        private System.Windows.Forms.Label txt_nombre_suc;
     }
 }

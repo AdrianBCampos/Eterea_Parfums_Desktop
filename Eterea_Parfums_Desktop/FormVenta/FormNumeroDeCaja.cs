@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Eterea_Parfums_Desktop.Controladores;
+using System;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -21,7 +23,52 @@ namespace Eterea_Parfums_Desktop
 
             lbl_error_caja.Visible = false;
 
+            // Obtener y mostrar el nombre de la sucursal en el label
+            txt_nombre_suc.Text = SucursalControlador.ObtenerNombreSucursalPorId(Program.sucursal);
+
         }
+
+
+
+
+        private void FormNumeroDeCaja_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                int? cajaDisponible = CajaControlador.ObtenerUnicaCajaDisponibleEnSucursal(Program.sucursal);
+
+                if (cajaDisponible.HasValue)
+                {
+                    NumeroCaja = cajaDisponible.Value.ToString();
+                    ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
+
+                    FormFacturacion facturacion = new FormFacturacion();
+                    facturacion.NumeroCaja = NumeroCaja;
+                    facturacion.Show();
+
+                    // Cerramos el formulario después de que termine de cargarse completamente
+                    this.BeginInvoke(new Action(() => this.Close()));
+                }
+                else
+                {
+                    txt_ing_numero_caja.Visible = true;
+                    lbl_error_caja.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en Load: " + ex.Message);
+            }
+        }
+
+
+
+
+
+
+
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -72,34 +119,41 @@ namespace Eterea_Parfums_Desktop
             string numCaja = txt_ing_numero_caja.Text;
 
             // Verifico si el valor ingresado es un número válido
-            if (!string.IsNullOrWhiteSpace(numCaja) && int.TryParse(numCaja, out int numeroValido))
+            if (!string.IsNullOrWhiteSpace(numCaja) && int.TryParse(numCaja, out int numeroCaja))
             {
-                // Asigno el valor del número de caja a la propiedad NumeroCaja
-                NumeroCaja = numCaja;
+                // Validar existencia y disponibilidad de la caja
+                if (CajaControlador.CajaDisponibleEnSucursal(numeroCaja, Program.sucursal))
+                {
+                    NumeroCaja = numCaja;
 
-                // Invocar el evento ConfirmarNumeroCaja con el número de caja confirmado
-                ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
-                FormFacturacion facturacion = new FormFacturacion();
-                facturacion.NumeroCaja = numCaja;
-                facturacion.Show();
+                    ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
 
-                // Cierro este formulario
-                this.Close();
+                    FormFacturacion facturacion = new FormFacturacion();
+                    facturacion.NumeroCaja = numCaja;
+                    facturacion.Show();
+                    this.Close();
+                }
+                else
+                {
+                    lbl_error_caja.Text = "La caja no existe en esta sucursal o no está disponible.";
+                    lbl_error_caja.Visible = true;
+                    txt_ing_numero_caja.Clear();
+                    txt_ing_numero_caja.Focus();
+                }
             }
             else
             {
-                // Muestra un mensaje de error si el valor ingresado no es un número válido
-
                 lbl_error_caja.Text = "Por favor, ingresa un número de caja válido.";
                 lbl_error_caja.Visible = true;
-
-                // Limpia el contenido del TextBox
-                txt_ing_numero_caja.Text = string.Empty;
-
-                // (Opcional) Coloca el foco de vuelta en el TextBox
+                txt_ing_numero_caja.Clear();
                 txt_ing_numero_caja.Focus();
             }
         }
+
+
+       
+
+
 
 
     }
