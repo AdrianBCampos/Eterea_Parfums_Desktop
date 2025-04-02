@@ -19,6 +19,8 @@ namespace Eterea_Parfums_Desktop
         public string NumeroCaja { get; set; }
         Cliente clientefactura = new Cliente();
 
+        public int IdHistorialCaja { get; set; }
+
         private StringBuilder codigoBarrasBuffer = new StringBuilder();
         private DateTime ultimaLectura = DateTime.Now;
         private const int TIEMPO_ENTRE_LECTURAS_MS = 100;
@@ -202,6 +204,12 @@ namespace Eterea_Parfums_Desktop
             {
                 CajaControlador.MarcarCajaComoDisponible(numCaja, Program.sucursal);
             }
+
+            if (IdHistorialCaja > 0)
+            {
+                CajaControlador.RegistrarCierreDeCaja(IdHistorialCaja);
+            }
+
 
             FormNumeroDeCaja numeroDeCaja = new FormNumeroDeCaja();
             numeroDeCaja.Show();

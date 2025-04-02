@@ -121,6 +121,53 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
 
+        public static int RegistrarAperturaDeCaja(int numeroCaja, int sucursalId, string usuario)
+        {
+            using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
+            {
+                conn.Open();
+
+                string query = @"INSERT INTO dbo.historialCaja (numCaja, sucursal_id, usuario, fecha_apertura)
+                         VALUES (@numCaja, @sucursalId, @usuario, GETDATE());
+                         SELECT SCOPE_IDENTITY();";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@numCaja", numeroCaja);
+                    cmd.Parameters.AddWithValue("@sucursalId", sucursalId);
+                    cmd.Parameters.AddWithValue("@usuario", usuario);
+
+                    // Devolvemos el ID del registro insertado
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+        }
+
+
+
+
+        public static void RegistrarCierreDeCaja(int idHistorial)
+        {
+            using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
+            {
+                conn.Open();
+
+                string query = @"UPDATE dbo.historialCaja
+                         SET fecha_cierre = GETDATE()
+                         WHERE id = @id";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", idHistorial);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+
+
+
 
 
 

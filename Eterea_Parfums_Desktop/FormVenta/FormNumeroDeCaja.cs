@@ -47,6 +47,7 @@ namespace Eterea_Parfums_Desktop
 
                         FormFacturacion facturacion = new FormFacturacion();
                         facturacion.NumeroCaja = NumeroCaja;
+                        facturacion.IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(Convert.ToInt32(NumeroCaja), Program.sucursal, Program.logueado.usuario);
                         facturacion.Show();
 
                         this.BeginInvoke(new Action(() => this.Close()));
@@ -132,6 +133,7 @@ namespace Eterea_Parfums_Desktop
 
                     FormFacturacion facturacion = new FormFacturacion();
                     facturacion.NumeroCaja = numCaja;
+                    facturacion.IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(Convert.ToInt32(numCaja), Program.sucursal, Program.logueado.usuario);
                     facturacion.Show();
                     this.Close();
                 }
