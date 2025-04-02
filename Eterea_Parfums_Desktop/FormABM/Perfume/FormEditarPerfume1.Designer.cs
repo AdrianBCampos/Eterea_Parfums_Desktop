@@ -28,26 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.combo_activo = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.pictureBoxProducto2 = new System.Windows.Forms.PictureBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.pictureBoxProducto1 = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.richTextBox_descripcion = new System.Windows.Forms.RichTextBox();
+            this.lbl_comentarios = new System.Windows.Forms.Label();
+            this.combo_recargable = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.combo_spray = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txt_anio_de_lanzamiento = new System.Windows.Forms.TextBox();
+            this.combo_pais = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txt_presentacion = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txt_precio = new System.Windows.Forms.TextBox();
+            this.combo_tipo_de_perfume = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.combo_genero = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txt_nombre = new System.Windows.Forms.TextBox();
+            this.combo_marca = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_usuario = new System.Windows.Forms.Label();
+            this.txt_codigo = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lbl_crear_empleado = new System.Windows.Forms.Label();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.lbl_error_descripcion = new System.Windows.Forms.Label();
             this.btn_siguiente = new System.Windows.Forms.Button();
-            this.lbl_editar_producto = new System.Windows.Forms.Label();
             this.lbl_error_img2 = new System.Windows.Forms.Label();
             this.btn_cargar_img2 = new System.Windows.Forms.Button();
-            this.pictureBoxProducto2 = new System.Windows.Forms.PictureBox();
-            this.lbl_img2 = new System.Windows.Forms.Label();
             this.lbl_error_img1 = new System.Windows.Forms.Label();
             this.btn_cargar_img1 = new System.Windows.Forms.Button();
-            this.pictureBoxProducto1 = new System.Windows.Forms.PictureBox();
-            this.lbl_img1 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lbl_error_activo = new System.Windows.Forms.Label();
             this.lbl_error_precio = new System.Windows.Forms.Label();
             this.lbl_error_anio = new System.Windows.Forms.Label();
-            this.combo_activo = new System.Windows.Forms.ComboBox();
-            this.lbl_activo = new System.Windows.Forms.Label();
-            this.lbl_precio = new System.Windows.Forms.Label();
-            this.lbl_anio_de_lanzamiento = new System.Windows.Forms.Label();
-            this.txt_precio = new System.Windows.Forms.TextBox();
-            this.txt_anio_de_lanzamiento = new System.Windows.Forms.TextBox();
             this.lbl_error_recargable = new System.Windows.Forms.Label();
             this.lbl_error_spray = new System.Windows.Forms.Label();
             this.lbl_error_pais = new System.Windows.Forms.Label();
@@ -57,602 +79,840 @@
             this.lbl_error_nombre = new System.Windows.Forms.Label();
             this.lbl_error_marca = new System.Windows.Forms.Label();
             this.lbl_error_codigo = new System.Windows.Forms.Label();
-            this.combo_recargable = new System.Windows.Forms.ComboBox();
-            this.combo_spray = new System.Windows.Forms.ComboBox();
-            this.combo_pais = new System.Windows.Forms.ComboBox();
-            this.combo_genero = new System.Windows.Forms.ComboBox();
-            this.combo_tipo_de_perfume = new System.Windows.Forms.ComboBox();
-            this.combo_marca = new System.Windows.Forms.ComboBox();
-            this.lbl_descripcion = new System.Windows.Forms.Label();
-            this.lbl_recargable = new System.Windows.Forms.Label();
-            this.lbl_spray = new System.Windows.Forms.Label();
-            this.lbl_pais = new System.Windows.Forms.Label();
-            this.lbl_presentacion = new System.Windows.Forms.Label();
-            this.lbl_genero = new System.Windows.Forms.Label();
-            this.lbl_tipo_de_perfume = new System.Windows.Forms.Label();
-            this.lbl_nombre = new System.Windows.Forms.Label();
-            this.lbl_marca = new System.Windows.Forms.Label();
-            this.lbl_codigo = new System.Windows.Forms.Label();
-            this.txt_descripcion = new System.Windows.Forms.TextBox();
-            this.txt_presentacion = new System.Windows.Forms.TextBox();
-            this.txt_nombre = new System.Windows.Forms.TextBox();
-            this.txt_codigo = new System.Windows.Forms.TextBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lbl_error_descripcion = new System.Windows.Forms.Label();
-            this.btn_x_cerrar = new System.Windows.Forms.Button();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.pictureBox17 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProducto2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProducto1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             this.SuspendLayout();
+            // 
+            // combo_activo
+            // 
+            this.combo_activo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.combo_activo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_activo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_activo.FormattingEnabled = true;
+            this.combo_activo.Location = new System.Drawing.Point(485, 780);
+            this.combo_activo.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_activo.Name = "combo_activo";
+            this.combo_activo.Size = new System.Drawing.Size(385, 44);
+            this.combo_activo.TabIndex = 476;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label13.Location = new System.Drawing.Point(273, 786);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(104, 36);
+            this.label13.TabIndex = 475;
+            this.label13.Text = "Activo";
+            // 
+            // pictureBoxProducto2
+            // 
+            this.pictureBoxProducto2.Location = new System.Drawing.Point(1226, 477);
+            this.pictureBoxProducto2.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxProducto2.Name = "pictureBoxProducto2";
+            this.pictureBoxProducto2.Size = new System.Drawing.Size(377, 176);
+            this.pictureBoxProducto2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxProducto2.TabIndex = 433;
+            this.pictureBoxProducto2.TabStop = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label12.Location = new System.Drawing.Point(1175, 438);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(173, 25);
+            this.label12.TabIndex = 474;
+            this.label12.Text = "Cargar Imagen 2";
+            // 
+            // pictureBoxProducto1
+            // 
+            this.pictureBoxProducto1.Location = new System.Drawing.Point(1226, 152);
+            this.pictureBoxProducto1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxProducto1.Name = "pictureBoxProducto1";
+            this.pictureBoxProducto1.Size = new System.Drawing.Size(377, 176);
+            this.pictureBoxProducto1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxProducto1.TabIndex = 430;
+            this.pictureBoxProducto1.TabStop = false;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label11.Location = new System.Drawing.Point(1175, 117);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(173, 25);
+            this.label11.TabIndex = 472;
+            this.label11.Text = "Cargar Imagen 1";
+            // 
+            // richTextBox_descripcion
+            // 
+            this.richTextBox_descripcion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.richTextBox_descripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.richTextBox_descripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox_descripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.richTextBox_descripcion.Location = new System.Drawing.Point(610, 154);
+            this.richTextBox_descripcion.Margin = new System.Windows.Forms.Padding(4);
+            this.richTextBox_descripcion.Name = "richTextBox_descripcion";
+            this.richTextBox_descripcion.Size = new System.Drawing.Size(516, 196);
+            this.richTextBox_descripcion.TabIndex = 469;
+            this.richTextBox_descripcion.Text = "";
+            // 
+            // lbl_comentarios
+            // 
+            this.lbl_comentarios.AutoSize = true;
+            this.lbl_comentarios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_comentarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_comentarios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_comentarios.Location = new System.Drawing.Point(605, 123);
+            this.lbl_comentarios.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_comentarios.Name = "lbl_comentarios";
+            this.lbl_comentarios.Size = new System.Drawing.Size(125, 25);
+            this.lbl_comentarios.TabIndex = 468;
+            this.lbl_comentarios.Text = "Descripción";
+            // 
+            // combo_recargable
+            // 
+            this.combo_recargable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.combo_recargable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_recargable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_recargable.FormattingEnabled = true;
+            this.combo_recargable.Location = new System.Drawing.Point(215, 665);
+            this.combo_recargable.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_recargable.Name = "combo_recargable";
+            this.combo_recargable.Size = new System.Drawing.Size(328, 33);
+            this.combo_recargable.TabIndex = 467;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label10.Location = new System.Drawing.Point(38, 671);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(121, 25);
+            this.label10.TabIndex = 466;
+            this.label10.Text = "Recargable";
+            // 
+            // combo_spray
+            // 
+            this.combo_spray.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.combo_spray.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_spray.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_spray.FormattingEnabled = true;
+            this.combo_spray.Location = new System.Drawing.Point(215, 585);
+            this.combo_spray.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_spray.Name = "combo_spray";
+            this.combo_spray.Size = new System.Drawing.Size(328, 33);
+            this.combo_spray.TabIndex = 465;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label9.Location = new System.Drawing.Point(38, 588);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(69, 25);
+            this.label9.TabIndex = 464;
+            this.label9.Text = "Spray";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label8.Location = new System.Drawing.Point(617, 603);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(210, 25);
+            this.label8.TabIndex = 462;
+            this.label8.Text = "Año de Lanzamiento";
+            // 
+            // txt_anio_de_lanzamiento
+            // 
+            this.txt_anio_de_lanzamiento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_anio_de_lanzamiento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_anio_de_lanzamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_anio_de_lanzamiento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_anio_de_lanzamiento.Location = new System.Drawing.Point(876, 595);
+            this.txt_anio_de_lanzamiento.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_anio_de_lanzamiento.Name = "txt_anio_de_lanzamiento";
+            this.txt_anio_de_lanzamiento.Size = new System.Drawing.Size(236, 30);
+            this.txt_anio_de_lanzamiento.TabIndex = 461;
+            // 
+            // combo_pais
+            // 
+            this.combo_pais.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.combo_pais.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_pais.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_pais.FormattingEnabled = true;
+            this.combo_pais.Location = new System.Drawing.Point(830, 517);
+            this.combo_pais.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_pais.Name = "combo_pais";
+            this.combo_pais.Size = new System.Drawing.Size(282, 33);
+            this.combo_pais.TabIndex = 460;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label7.Location = new System.Drawing.Point(618, 525);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(155, 25);
+            this.label7.TabIndex = 459;
+            this.label7.Text = "Pais de Origen";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label6.Location = new System.Drawing.Point(617, 675);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(204, 25);
+            this.label6.TabIndex = 458;
+            this.label6.Text = "Presentación en ML";
+            // 
+            // txt_presentacion
+            // 
+            this.txt_presentacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_presentacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_presentacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_presentacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_presentacion.Location = new System.Drawing.Point(876, 670);
+            this.txt_presentacion.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_presentacion.Name = "txt_presentacion";
+            this.txt_presentacion.Size = new System.Drawing.Size(236, 30);
+            this.txt_presentacion.TabIndex = 457;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label5.Location = new System.Drawing.Point(622, 426);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(73, 25);
+            this.label5.TabIndex = 455;
+            this.label5.Text = "Precio";
+            // 
+            // txt_precio
+            // 
+            this.txt_precio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_precio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_precio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_precio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_precio.Location = new System.Drawing.Point(784, 420);
+            this.txt_precio.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_precio.Name = "txt_precio";
+            this.txt_precio.Size = new System.Drawing.Size(328, 30);
+            this.txt_precio.TabIndex = 454;
+            // 
+            // combo_tipo_de_perfume
+            // 
+            this.combo_tipo_de_perfume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.combo_tipo_de_perfume.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_tipo_de_perfume.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_tipo_de_perfume.FormattingEnabled = true;
+            this.combo_tipo_de_perfume.Location = new System.Drawing.Point(245, 469);
+            this.combo_tipo_de_perfume.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_tipo_de_perfume.Name = "combo_tipo_de_perfume";
+            this.combo_tipo_de_perfume.Size = new System.Drawing.Size(298, 33);
+            this.combo_tipo_de_perfume.TabIndex = 451;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label4.Location = new System.Drawing.Point(38, 477);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(171, 25);
+            this.label4.TabIndex = 450;
+            this.label4.Text = "Tipo de Perfume";
+            // 
+            // combo_genero
+            // 
+            this.combo_genero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.combo_genero.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_genero.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_genero.FormattingEnabled = true;
+            this.combo_genero.Location = new System.Drawing.Point(215, 388);
+            this.combo_genero.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_genero.Name = "combo_genero";
+            this.combo_genero.Size = new System.Drawing.Size(328, 33);
+            this.combo_genero.TabIndex = 449;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label3.Location = new System.Drawing.Point(38, 397);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 25);
+            this.label3.TabIndex = 448;
+            this.label3.Text = "Género";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label2.Location = new System.Drawing.Point(47, 215);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 25);
+            this.label2.TabIndex = 446;
+            this.label2.Text = "Nombre";
+            // 
+            // txt_nombre
+            // 
+            this.txt_nombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_nombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_nombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_nombre.Location = new System.Drawing.Point(215, 205);
+            this.txt_nombre.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_nombre.Name = "txt_nombre";
+            this.txt_nombre.Size = new System.Drawing.Size(328, 30);
+            this.txt_nombre.TabIndex = 445;
+            // 
+            // combo_marca
+            // 
+            this.combo_marca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.combo_marca.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_marca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_marca.FormattingEnabled = true;
+            this.combo_marca.Location = new System.Drawing.Point(215, 309);
+            this.combo_marca.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_marca.Name = "combo_marca";
+            this.combo_marca.Size = new System.Drawing.Size(328, 33);
+            this.combo_marca.TabIndex = 444;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label1.Location = new System.Drawing.Point(38, 319);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 25);
+            this.label1.TabIndex = 443;
+            this.label1.Text = "Marca";
+            // 
+            // lbl_usuario
+            // 
+            this.lbl_usuario.AutoSize = true;
+            this.lbl_usuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_usuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_usuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_usuario.Location = new System.Drawing.Point(47, 144);
+            this.lbl_usuario.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_usuario.Name = "lbl_usuario";
+            this.lbl_usuario.Size = new System.Drawing.Size(81, 25);
+            this.lbl_usuario.TabIndex = 442;
+            this.lbl_usuario.Text = "Código";
+            // 
+            // txt_codigo
+            // 
+            this.txt_codigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_codigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_codigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_codigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_codigo.Location = new System.Drawing.Point(215, 135);
+            this.txt_codigo.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_codigo.Name = "txt_codigo";
+            this.txt_codigo.Size = new System.Drawing.Size(328, 30);
+            this.txt_codigo.TabIndex = 441;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(1602, 17);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button1.Size = new System.Drawing.Size(81, 71);
+            this.button1.TabIndex = 440;
+            this.button1.Text = "X";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.btn_x_cerrar_Click);
+            // 
+            // lbl_crear_empleado
+            // 
+            this.lbl_crear_empleado.AutoSize = true;
+            this.lbl_crear_empleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_crear_empleado.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_crear_empleado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_crear_empleado.Location = new System.Drawing.Point(738, 32);
+            this.lbl_crear_empleado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_crear_empleado.Name = "lbl_crear_empleado";
+            this.lbl_crear_empleado.Size = new System.Drawing.Size(248, 38);
+            this.lbl_crear_empleado.TabIndex = 439;
+            this.lbl_crear_empleado.Text = "Editar Perfume";
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox5.Location = new System.Drawing.Point(15, 17);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(1580, 71);
+            this.pictureBox5.TabIndex = 438;
+            this.pictureBox5.TabStop = false;
+            // 
+            // lbl_error_descripcion
+            // 
+            this.lbl_error_descripcion.AutoSize = true;
+            this.lbl_error_descripcion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_error_descripcion.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_error_descripcion.Location = new System.Drawing.Point(622, 356);
+            this.lbl_error_descripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_error_descripcion.Name = "lbl_error_descripcion";
+            this.lbl_error_descripcion.Size = new System.Drawing.Size(36, 16);
+            this.lbl_error_descripcion.TabIndex = 437;
+            this.lbl_error_descripcion.Text = "Error";
             // 
             // btn_siguiente
             // 
             this.btn_siguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_siguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_siguiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_siguiente.Location = new System.Drawing.Point(721, 790);
+            this.btn_siguiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_siguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.btn_siguiente.Location = new System.Drawing.Point(1320, 772);
             this.btn_siguiente.Margin = new System.Windows.Forms.Padding(4);
             this.btn_siguiente.Name = "btn_siguiente";
-            this.btn_siguiente.Size = new System.Drawing.Size(183, 46);
-            this.btn_siguiente.TabIndex = 192;
+            this.btn_siguiente.Size = new System.Drawing.Size(226, 68);
+            this.btn_siguiente.TabIndex = 436;
             this.btn_siguiente.Text = "Siguiente";
             this.btn_siguiente.UseVisualStyleBackColor = false;
             this.btn_siguiente.Click += new System.EventHandler(this.btn_siguiente_Click);
             // 
-            // lbl_editar_producto
-            // 
-            this.lbl_editar_producto.AutoSize = true;
-            this.lbl_editar_producto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.lbl_editar_producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_editar_producto.ForeColor = System.Drawing.Color.Black;
-            this.lbl_editar_producto.Location = new System.Drawing.Point(481, 11);
-            this.lbl_editar_producto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_editar_producto.Name = "lbl_editar_producto";
-            this.lbl_editar_producto.Size = new System.Drawing.Size(154, 24);
-            this.lbl_editar_producto.TabIndex = 191;
-            this.lbl_editar_producto.Text = "Editar Producto";
-            // 
             // lbl_error_img2
             // 
             this.lbl_error_img2.AutoSize = true;
+            this.lbl_error_img2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_img2.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_img2.Location = new System.Drawing.Point(740, 689);
+            this.lbl_error_img2.Location = new System.Drawing.Point(1327, 657);
             this.lbl_error_img2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_img2.Name = "lbl_error_img2";
             this.lbl_error_img2.Size = new System.Drawing.Size(36, 16);
-            this.lbl_error_img2.TabIndex = 190;
+            this.lbl_error_img2.TabIndex = 435;
             this.lbl_error_img2.Text = "Error";
             // 
             // btn_cargar_img2
             // 
             this.btn_cargar_img2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_cargar_img2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cargar_img2.Location = new System.Drawing.Point(759, 634);
+            this.btn_cargar_img2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cargar_img2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.btn_cargar_img2.Location = new System.Drawing.Point(1331, 679);
             this.btn_cargar_img2.Margin = new System.Windows.Forms.Padding(4);
             this.btn_cargar_img2.Name = "btn_cargar_img2";
-            this.btn_cargar_img2.Size = new System.Drawing.Size(119, 37);
-            this.btn_cargar_img2.TabIndex = 189;
+            this.btn_cargar_img2.Size = new System.Drawing.Size(183, 46);
+            this.btn_cargar_img2.TabIndex = 434;
             this.btn_cargar_img2.Text = "Cargar";
             this.btn_cargar_img2.UseVisualStyleBackColor = false;
             this.btn_cargar_img2.Click += new System.EventHandler(this.btn_cargar_img2_Click);
             // 
-            // pictureBoxProducto2
-            // 
-            this.pictureBoxProducto2.Location = new System.Drawing.Point(703, 453);
-            this.pictureBoxProducto2.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBoxProducto2.Name = "pictureBoxProducto2";
-            this.pictureBoxProducto2.Size = new System.Drawing.Size(223, 166);
-            this.pictureBoxProducto2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxProducto2.TabIndex = 188;
-            this.pictureBoxProducto2.TabStop = false;
-            // 
-            // lbl_img2
-            // 
-            this.lbl_img2.AutoSize = true;
-            this.lbl_img2.Location = new System.Drawing.Point(755, 423);
-            this.lbl_img2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_img2.Name = "lbl_img2";
-            this.lbl_img2.Size = new System.Drawing.Size(109, 16);
-            this.lbl_img2.TabIndex = 187;
-            this.lbl_img2.Text = "Cargar Imagen 2:";
-            // 
             // lbl_error_img1
             // 
             this.lbl_error_img1.AutoSize = true;
+            this.lbl_error_img1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_img1.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_img1.Location = new System.Drawing.Point(740, 350);
+            this.lbl_error_img1.Location = new System.Drawing.Point(1328, 333);
             this.lbl_error_img1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_img1.Name = "lbl_error_img1";
             this.lbl_error_img1.Size = new System.Drawing.Size(36, 16);
-            this.lbl_error_img1.TabIndex = 186;
+            this.lbl_error_img1.TabIndex = 432;
             this.lbl_error_img1.Text = "Error";
             // 
             // btn_cargar_img1
             // 
             this.btn_cargar_img1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_cargar_img1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cargar_img1.Location = new System.Drawing.Point(759, 294);
+            this.btn_cargar_img1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cargar_img1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.btn_cargar_img1.Location = new System.Drawing.Point(1331, 356);
             this.btn_cargar_img1.Margin = new System.Windows.Forms.Padding(4);
             this.btn_cargar_img1.Name = "btn_cargar_img1";
-            this.btn_cargar_img1.Size = new System.Drawing.Size(119, 37);
-            this.btn_cargar_img1.TabIndex = 185;
+            this.btn_cargar_img1.Size = new System.Drawing.Size(183, 46);
+            this.btn_cargar_img1.TabIndex = 431;
             this.btn_cargar_img1.Text = "Cargar";
             this.btn_cargar_img1.UseVisualStyleBackColor = false;
             this.btn_cargar_img1.Click += new System.EventHandler(this.btn_cargar_img1_Click);
             // 
-            // pictureBoxProducto1
-            // 
-            this.pictureBoxProducto1.Location = new System.Drawing.Point(703, 113);
-            this.pictureBoxProducto1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBoxProducto1.Name = "pictureBoxProducto1";
-            this.pictureBoxProducto1.Size = new System.Drawing.Size(223, 166);
-            this.pictureBoxProducto1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxProducto1.TabIndex = 184;
-            this.pictureBoxProducto1.TabStop = false;
-            // 
-            // lbl_img1
-            // 
-            this.lbl_img1.AutoSize = true;
-            this.lbl_img1.Location = new System.Drawing.Point(755, 84);
-            this.lbl_img1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_img1.Name = "lbl_img1";
-            this.lbl_img1.Size = new System.Drawing.Size(109, 16);
-            this.lbl_img1.TabIndex = 183;
-            this.lbl_img1.Text = "Cargar Imagen 1:";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(617, 54);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(380, 689);
-            this.pictureBox2.TabIndex = 182;
-            this.pictureBox2.TabStop = false;
-            // 
             // lbl_error_activo
             // 
             this.lbl_error_activo.AutoSize = true;
+            this.lbl_error_activo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_activo.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_activo.Location = new System.Drawing.Point(241, 839);
+            this.lbl_error_activo.Location = new System.Drawing.Point(482, 828);
             this.lbl_error_activo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_activo.Name = "lbl_error_activo";
             this.lbl_error_activo.Size = new System.Drawing.Size(36, 16);
-            this.lbl_error_activo.TabIndex = 181;
+            this.lbl_error_activo.TabIndex = 429;
             this.lbl_error_activo.Text = "Error";
             // 
             // lbl_error_precio
             // 
             this.lbl_error_precio.AutoSize = true;
+            this.lbl_error_precio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_precio.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_precio.Location = new System.Drawing.Point(241, 775);
+            this.lbl_error_precio.Location = new System.Drawing.Point(789, 455);
             this.lbl_error_precio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_precio.Name = "lbl_error_precio";
             this.lbl_error_precio.Size = new System.Drawing.Size(36, 16);
-            this.lbl_error_precio.TabIndex = 180;
+            this.lbl_error_precio.TabIndex = 428;
             this.lbl_error_precio.Text = "Error";
             // 
             // lbl_error_anio
             // 
             this.lbl_error_anio.AutoSize = true;
+            this.lbl_error_anio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_anio.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_anio.Location = new System.Drawing.Point(241, 710);
+            this.lbl_error_anio.Location = new System.Drawing.Point(818, 630);
             this.lbl_error_anio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_anio.Name = "lbl_error_anio";
             this.lbl_error_anio.Size = new System.Drawing.Size(36, 16);
-            this.lbl_error_anio.TabIndex = 179;
+            this.lbl_error_anio.TabIndex = 427;
             this.lbl_error_anio.Text = "Error";
-            // 
-            // combo_activo
-            // 
-            this.combo_activo.FormattingEnabled = true;
-            this.combo_activo.Location = new System.Drawing.Point(245, 810);
-            this.combo_activo.Margin = new System.Windows.Forms.Padding(4);
-            this.combo_activo.Name = "combo_activo";
-            this.combo_activo.Size = new System.Drawing.Size(237, 24);
-            this.combo_activo.TabIndex = 178;
-            // 
-            // lbl_activo
-            // 
-            this.lbl_activo.AutoSize = true;
-            this.lbl_activo.Location = new System.Drawing.Point(85, 820);
-            this.lbl_activo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_activo.Name = "lbl_activo";
-            this.lbl_activo.Size = new System.Drawing.Size(44, 16);
-            this.lbl_activo.TabIndex = 177;
-            this.lbl_activo.Text = "Activo";
-            // 
-            // lbl_precio
-            // 
-            this.lbl_precio.AutoSize = true;
-            this.lbl_precio.Location = new System.Drawing.Point(85, 751);
-            this.lbl_precio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_precio.Name = "lbl_precio";
-            this.lbl_precio.Size = new System.Drawing.Size(74, 16);
-            this.lbl_precio.TabIndex = 176;
-            this.lbl_precio.Text = "Precio en $";
-            // 
-            // lbl_anio_de_lanzamiento
-            // 
-            this.lbl_anio_de_lanzamiento.AutoSize = true;
-            this.lbl_anio_de_lanzamiento.Location = new System.Drawing.Point(84, 690);
-            this.lbl_anio_de_lanzamiento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_anio_de_lanzamiento.Name = "lbl_anio_de_lanzamiento";
-            this.lbl_anio_de_lanzamiento.Size = new System.Drawing.Size(125, 16);
-            this.lbl_anio_de_lanzamiento.TabIndex = 175;
-            this.lbl_anio_de_lanzamiento.Text = "Año de lanzamiento";
-            // 
-            // txt_precio
-            // 
-            this.txt_precio.Location = new System.Drawing.Point(245, 747);
-            this.txt_precio.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_precio.Name = "txt_precio";
-            this.txt_precio.Size = new System.Drawing.Size(237, 22);
-            this.txt_precio.TabIndex = 174;
-            // 
-            // txt_anio_de_lanzamiento
-            // 
-            this.txt_anio_de_lanzamiento.Location = new System.Drawing.Point(245, 682);
-            this.txt_anio_de_lanzamiento.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_anio_de_lanzamiento.Name = "txt_anio_de_lanzamiento";
-            this.txt_anio_de_lanzamiento.Size = new System.Drawing.Size(237, 22);
-            this.txt_anio_de_lanzamiento.TabIndex = 173;
             // 
             // lbl_error_recargable
             // 
             this.lbl_error_recargable.AutoSize = true;
+            this.lbl_error_recargable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_recargable.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_recargable.Location = new System.Drawing.Point(241, 593);
+            this.lbl_error_recargable.Location = new System.Drawing.Point(221, 702);
             this.lbl_error_recargable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_recargable.Name = "lbl_error_recargable";
             this.lbl_error_recargable.Size = new System.Drawing.Size(36, 16);
-            this.lbl_error_recargable.TabIndex = 172;
+            this.lbl_error_recargable.TabIndex = 426;
             this.lbl_error_recargable.Text = "Error";
             // 
             // lbl_error_spray
             // 
             this.lbl_error_spray.AutoSize = true;
+            this.lbl_error_spray.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_spray.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_spray.Location = new System.Drawing.Point(241, 537);
+            this.lbl_error_spray.Location = new System.Drawing.Point(221, 622);
             this.lbl_error_spray.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_spray.Name = "lbl_error_spray";
             this.lbl_error_spray.Size = new System.Drawing.Size(36, 16);
-            this.lbl_error_spray.TabIndex = 171;
+            this.lbl_error_spray.TabIndex = 425;
             this.lbl_error_spray.Text = "Error";
             // 
             // lbl_error_pais
             // 
             this.lbl_error_pais.AutoSize = true;
+            this.lbl_error_pais.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_pais.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_pais.Location = new System.Drawing.Point(241, 479);
+            this.lbl_error_pais.Location = new System.Drawing.Point(827, 554);
             this.lbl_error_pais.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_pais.Name = "lbl_error_pais";
             this.lbl_error_pais.Size = new System.Drawing.Size(36, 16);
-            this.lbl_error_pais.TabIndex = 170;
+            this.lbl_error_pais.TabIndex = 424;
             this.lbl_error_pais.Text = "Error";
             // 
             // lbl_error_presentacion
             // 
             this.lbl_error_presentacion.AutoSize = true;
+            this.lbl_error_presentacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_presentacion.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_presentacion.Location = new System.Drawing.Point(241, 407);
+            this.lbl_error_presentacion.Location = new System.Drawing.Point(878, 705);
             this.lbl_error_presentacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_presentacion.Name = "lbl_error_presentacion";
             this.lbl_error_presentacion.Size = new System.Drawing.Size(36, 16);
-            this.lbl_error_presentacion.TabIndex = 169;
+            this.lbl_error_presentacion.TabIndex = 423;
             this.lbl_error_presentacion.Text = "Error";
             // 
             // lbl_error_genero
             // 
             this.lbl_error_genero.AutoSize = true;
+            this.lbl_error_genero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_genero.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_genero.Location = new System.Drawing.Point(241, 348);
+            this.lbl_error_genero.Location = new System.Drawing.Point(222, 424);
             this.lbl_error_genero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_genero.Name = "lbl_error_genero";
             this.lbl_error_genero.Size = new System.Drawing.Size(36, 16);
-            this.lbl_error_genero.TabIndex = 168;
+            this.lbl_error_genero.TabIndex = 422;
             this.lbl_error_genero.Text = "Error";
             // 
             // lbl_error_tipo
             // 
             this.lbl_error_tipo.AutoSize = true;
+            this.lbl_error_tipo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_tipo.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_tipo.Location = new System.Drawing.Point(241, 283);
+            this.lbl_error_tipo.Location = new System.Drawing.Point(250, 506);
             this.lbl_error_tipo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_tipo.Name = "lbl_error_tipo";
             this.lbl_error_tipo.Size = new System.Drawing.Size(36, 16);
-            this.lbl_error_tipo.TabIndex = 167;
+            this.lbl_error_tipo.TabIndex = 421;
             this.lbl_error_tipo.Text = "Error";
             // 
             // lbl_error_nombre
             // 
             this.lbl_error_nombre.AutoSize = true;
+            this.lbl_error_nombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_nombre.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_nombre.Location = new System.Drawing.Point(241, 218);
+            this.lbl_error_nombre.Location = new System.Drawing.Point(218, 239);
             this.lbl_error_nombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_nombre.Name = "lbl_error_nombre";
             this.lbl_error_nombre.Size = new System.Drawing.Size(36, 16);
-            this.lbl_error_nombre.TabIndex = 166;
+            this.lbl_error_nombre.TabIndex = 420;
             this.lbl_error_nombre.Text = "Error";
             // 
             // lbl_error_marca
             // 
             this.lbl_error_marca.AutoSize = true;
+            this.lbl_error_marca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_marca.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_marca.Location = new System.Drawing.Point(241, 158);
+            this.lbl_error_marca.Location = new System.Drawing.Point(222, 346);
             this.lbl_error_marca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_marca.Name = "lbl_error_marca";
             this.lbl_error_marca.Size = new System.Drawing.Size(36, 16);
-            this.lbl_error_marca.TabIndex = 165;
+            this.lbl_error_marca.TabIndex = 419;
             this.lbl_error_marca.Text = "Error";
             // 
             // lbl_error_codigo
             // 
             this.lbl_error_codigo.AutoSize = true;
+            this.lbl_error_codigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_codigo.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_codigo.Location = new System.Drawing.Point(241, 98);
+            this.lbl_error_codigo.Location = new System.Drawing.Point(218, 169);
             this.lbl_error_codigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_codigo.Name = "lbl_error_codigo";
             this.lbl_error_codigo.Size = new System.Drawing.Size(36, 16);
-            this.lbl_error_codigo.TabIndex = 164;
+            this.lbl_error_codigo.TabIndex = 418;
             this.lbl_error_codigo.Text = "Error";
             // 
-            // combo_recargable
+            // pictureBox4
             // 
-            this.combo_recargable.FormattingEnabled = true;
-            this.combo_recargable.Location = new System.Drawing.Point(245, 564);
-            this.combo_recargable.Margin = new System.Windows.Forms.Padding(4);
-            this.combo_recargable.Name = "combo_recargable";
-            this.combo_recargable.Size = new System.Drawing.Size(237, 24);
-            this.combo_recargable.TabIndex = 163;
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox4.Location = new System.Drawing.Point(23, 104);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(559, 168);
+            this.pictureBox4.TabIndex = 447;
+            this.pictureBox4.TabStop = false;
             // 
-            // combo_spray
+            // pictureBox3
             // 
-            this.combo_spray.FormattingEnabled = true;
-            this.combo_spray.Location = new System.Drawing.Point(245, 507);
-            this.combo_spray.Margin = new System.Windows.Forms.Padding(4);
-            this.combo_spray.Name = "combo_spray";
-            this.combo_spray.Size = new System.Drawing.Size(237, 24);
-            this.combo_spray.TabIndex = 162;
-            // 
-            // combo_pais
-            // 
-            this.combo_pais.FormattingEnabled = true;
-            this.combo_pais.Location = new System.Drawing.Point(245, 449);
-            this.combo_pais.Margin = new System.Windows.Forms.Padding(4);
-            this.combo_pais.Name = "combo_pais";
-            this.combo_pais.Size = new System.Drawing.Size(237, 24);
-            this.combo_pais.TabIndex = 161;
-            // 
-            // combo_genero
-            // 
-            this.combo_genero.FormattingEnabled = true;
-            this.combo_genero.Location = new System.Drawing.Point(245, 319);
-            this.combo_genero.Margin = new System.Windows.Forms.Padding(4);
-            this.combo_genero.Name = "combo_genero";
-            this.combo_genero.Size = new System.Drawing.Size(237, 24);
-            this.combo_genero.TabIndex = 160;
-            // 
-            // combo_tipo_de_perfume
-            // 
-            this.combo_tipo_de_perfume.FormattingEnabled = true;
-            this.combo_tipo_de_perfume.Location = new System.Drawing.Point(245, 254);
-            this.combo_tipo_de_perfume.Margin = new System.Windows.Forms.Padding(4);
-            this.combo_tipo_de_perfume.Name = "combo_tipo_de_perfume";
-            this.combo_tipo_de_perfume.Size = new System.Drawing.Size(237, 24);
-            this.combo_tipo_de_perfume.TabIndex = 159;
-            // 
-            // combo_marca
-            // 
-            this.combo_marca.FormattingEnabled = true;
-            this.combo_marca.Location = new System.Drawing.Point(245, 128);
-            this.combo_marca.Margin = new System.Windows.Forms.Padding(4);
-            this.combo_marca.Name = "combo_marca";
-            this.combo_marca.Size = new System.Drawing.Size(237, 24);
-            this.combo_marca.TabIndex = 158;
-            // 
-            // lbl_descripcion
-            // 
-            this.lbl_descripcion.AutoSize = true;
-            this.lbl_descripcion.Location = new System.Drawing.Point(83, 635);
-            this.lbl_descripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_descripcion.Name = "lbl_descripcion";
-            this.lbl_descripcion.Size = new System.Drawing.Size(79, 16);
-            this.lbl_descripcion.TabIndex = 157;
-            this.lbl_descripcion.Text = "Descripción";
-            // 
-            // lbl_recargable
-            // 
-            this.lbl_recargable.AutoSize = true;
-            this.lbl_recargable.Location = new System.Drawing.Point(84, 574);
-            this.lbl_recargable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_recargable.Name = "lbl_recargable";
-            this.lbl_recargable.Size = new System.Drawing.Size(79, 16);
-            this.lbl_recargable.TabIndex = 156;
-            this.lbl_recargable.Text = "Recargable";
-            // 
-            // lbl_spray
-            // 
-            this.lbl_spray.AutoSize = true;
-            this.lbl_spray.Location = new System.Drawing.Point(84, 517);
-            this.lbl_spray.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_spray.Name = "lbl_spray";
-            this.lbl_spray.Size = new System.Drawing.Size(43, 16);
-            this.lbl_spray.TabIndex = 155;
-            this.lbl_spray.Text = "Spray";
-            // 
-            // lbl_pais
-            // 
-            this.lbl_pais.AutoSize = true;
-            this.lbl_pais.Location = new System.Drawing.Point(84, 453);
-            this.lbl_pais.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_pais.Name = "lbl_pais";
-            this.lbl_pais.Size = new System.Drawing.Size(94, 16);
-            this.lbl_pais.TabIndex = 154;
-            this.lbl_pais.Text = "Pais de origen";
-            // 
-            // lbl_presentacion
-            // 
-            this.lbl_presentacion.AutoSize = true;
-            this.lbl_presentacion.Location = new System.Drawing.Point(84, 388);
-            this.lbl_presentacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_presentacion.Name = "lbl_presentacion";
-            this.lbl_presentacion.Size = new System.Drawing.Size(121, 16);
-            this.lbl_presentacion.TabIndex = 153;
-            this.lbl_presentacion.Text = "Presentación en ml";
-            // 
-            // lbl_genero
-            // 
-            this.lbl_genero.AutoSize = true;
-            this.lbl_genero.Location = new System.Drawing.Point(84, 327);
-            this.lbl_genero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_genero.Name = "lbl_genero";
-            this.lbl_genero.Size = new System.Drawing.Size(52, 16);
-            this.lbl_genero.TabIndex = 152;
-            this.lbl_genero.Text = "Género";
-            // 
-            // lbl_tipo_de_perfume
-            // 
-            this.lbl_tipo_de_perfume.AutoSize = true;
-            this.lbl_tipo_de_perfume.Location = new System.Drawing.Point(84, 258);
-            this.lbl_tipo_de_perfume.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_tipo_de_perfume.Name = "lbl_tipo_de_perfume";
-            this.lbl_tipo_de_perfume.Size = new System.Drawing.Size(106, 16);
-            this.lbl_tipo_de_perfume.TabIndex = 151;
-            this.lbl_tipo_de_perfume.Text = "Tipo de perfume";
-            // 
-            // lbl_nombre
-            // 
-            this.lbl_nombre.AutoSize = true;
-            this.lbl_nombre.Location = new System.Drawing.Point(84, 198);
-            this.lbl_nombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_nombre.Name = "lbl_nombre";
-            this.lbl_nombre.Size = new System.Drawing.Size(56, 16);
-            this.lbl_nombre.TabIndex = 150;
-            this.lbl_nombre.Text = "Nombre";
-            // 
-            // lbl_marca
-            // 
-            this.lbl_marca.AutoSize = true;
-            this.lbl_marca.Location = new System.Drawing.Point(84, 138);
-            this.lbl_marca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_marca.Name = "lbl_marca";
-            this.lbl_marca.Size = new System.Drawing.Size(45, 16);
-            this.lbl_marca.TabIndex = 149;
-            this.lbl_marca.Text = "Marca";
-            // 
-            // lbl_codigo
-            // 
-            this.lbl_codigo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_codigo.AutoSize = true;
-            this.lbl_codigo.Location = new System.Drawing.Point(83, 78);
-            this.lbl_codigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_codigo.Name = "lbl_codigo";
-            this.lbl_codigo.Size = new System.Drawing.Size(51, 16);
-            this.lbl_codigo.TabIndex = 148;
-            this.lbl_codigo.Text = "Código";
-            // 
-            // txt_descripcion
-            // 
-            this.txt_descripcion.Location = new System.Drawing.Point(245, 626);
-            this.txt_descripcion.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_descripcion.Name = "txt_descripcion";
-            this.txt_descripcion.Size = new System.Drawing.Size(237, 22);
-            this.txt_descripcion.TabIndex = 147;
-            // 
-            // txt_presentacion
-            // 
-            this.txt_presentacion.Location = new System.Drawing.Point(245, 379);
-            this.txt_presentacion.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_presentacion.Name = "txt_presentacion";
-            this.txt_presentacion.Size = new System.Drawing.Size(237, 22);
-            this.txt_presentacion.TabIndex = 146;
-            // 
-            // txt_nombre
-            // 
-            this.txt_nombre.Location = new System.Drawing.Point(245, 190);
-            this.txt_nombre.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_nombre.Name = "txt_nombre";
-            this.txt_nombre.Size = new System.Drawing.Size(237, 22);
-            this.txt_nombre.TabIndex = 145;
-            // 
-            // txt_codigo
-            // 
-            this.txt_codigo.Location = new System.Drawing.Point(245, 70);
-            this.txt_codigo.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_codigo.Name = "txt_codigo";
-            this.txt_codigo.Size = new System.Drawing.Size(237, 22);
-            this.txt_codigo.TabIndex = 144;
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox3.Location = new System.Drawing.Point(23, 278);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(559, 269);
+            this.pictureBox3.TabIndex = 452;
+            this.pictureBox3.TabStop = false;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(71, 54);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(588, 393);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(456, 827);
-            this.pictureBox1.TabIndex = 143;
+            this.pictureBox1.Size = new System.Drawing.Size(559, 90);
+            this.pictureBox1.TabIndex = 453;
             this.pictureBox1.TabStop = false;
             // 
-            // lbl_error_descripcion
+            // pictureBox6
             // 
-            this.lbl_error_descripcion.AutoSize = true;
-            this.lbl_error_descripcion.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_descripcion.Location = new System.Drawing.Point(245, 656);
-            this.lbl_error_descripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_error_descripcion.Name = "lbl_error_descripcion";
-            this.lbl_error_descripcion.Size = new System.Drawing.Size(36, 16);
-            this.lbl_error_descripcion.TabIndex = 193;
-            this.lbl_error_descripcion.Text = "Error";
+            this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox6.Location = new System.Drawing.Point(588, 489);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(559, 252);
+            this.pictureBox6.TabIndex = 456;
+            this.pictureBox6.TabStop = false;
             // 
-            // btn_x_cerrar
+            // pictureBox7
             // 
-            this.btn_x_cerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.btn_x_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_x_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_x_cerrar.ForeColor = System.Drawing.Color.White;
-            this.btn_x_cerrar.Location = new System.Drawing.Point(952, 11);
-            this.btn_x_cerrar.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_x_cerrar.Name = "btn_x_cerrar";
-            this.btn_x_cerrar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_x_cerrar.Size = new System.Drawing.Size(45, 39);
-            this.btn_x_cerrar.TabIndex = 302;
-            this.btn_x_cerrar.Text = "X";
-            this.btn_x_cerrar.UseVisualStyleBackColor = false;
-            this.btn_x_cerrar.Click += new System.EventHandler(this.btn_x_cerrar_Click);
+            this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox7.Location = new System.Drawing.Point(23, 553);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(559, 188);
+            this.pictureBox7.TabIndex = 463;
+            this.pictureBox7.TabStop = false;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox11.Location = new System.Drawing.Point(588, 104);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(559, 283);
+            this.pictureBox11.TabIndex = 470;
+            this.pictureBox11.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox2.Location = new System.Drawing.Point(1153, 104);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(521, 314);
+            this.pictureBox2.TabIndex = 471;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox8.Location = new System.Drawing.Point(1153, 424);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(521, 317);
+            this.pictureBox8.TabIndex = 473;
+            this.pictureBox8.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox10.Location = new System.Drawing.Point(1153, 747);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(521, 118);
+            this.pictureBox10.TabIndex = 478;
+            this.pictureBox10.TabStop = false;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox9.Location = new System.Drawing.Point(23, 747);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(1124, 118);
+            this.pictureBox9.TabIndex = 477;
+            this.pictureBox9.TabStop = false;
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.pictureBox12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox12.Location = new System.Drawing.Point(15, 94);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(1668, 782);
+            this.pictureBox12.TabIndex = 480;
+            this.pictureBox12.TabStop = false;
+            // 
+            // pictureBox17
+            // 
+            this.pictureBox17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(196)))), ((int)(((byte)(206)))));
+            this.pictureBox17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox17.Location = new System.Drawing.Point(8, 9);
+            this.pictureBox17.Name = "pictureBox17";
+            this.pictureBox17.Size = new System.Drawing.Size(1684, 875);
+            this.pictureBox17.TabIndex = 479;
+            this.pictureBox17.TabStop = false;
             // 
             // FormEditarPerfume1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(1061, 913);
-            this.Controls.Add(this.btn_x_cerrar);
+            this.ClientSize = new System.Drawing.Size(1700, 892);
+            this.Controls.Add(this.combo_activo);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.pictureBoxProducto2);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.pictureBoxProducto1);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.richTextBox_descripcion);
+            this.Controls.Add(this.lbl_comentarios);
+            this.Controls.Add(this.combo_recargable);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.combo_spray);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txt_anio_de_lanzamiento);
+            this.Controls.Add(this.combo_pais);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txt_presentacion);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txt_precio);
+            this.Controls.Add(this.combo_tipo_de_perfume);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.combo_genero);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txt_nombre);
+            this.Controls.Add(this.combo_marca);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_usuario);
+            this.Controls.Add(this.txt_codigo);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lbl_crear_empleado);
+            this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.lbl_error_descripcion);
             this.Controls.Add(this.btn_siguiente);
-            this.Controls.Add(this.lbl_editar_producto);
             this.Controls.Add(this.lbl_error_img2);
             this.Controls.Add(this.btn_cargar_img2);
-            this.Controls.Add(this.pictureBoxProducto2);
-            this.Controls.Add(this.lbl_img2);
             this.Controls.Add(this.lbl_error_img1);
             this.Controls.Add(this.btn_cargar_img1);
-            this.Controls.Add(this.pictureBoxProducto1);
-            this.Controls.Add(this.lbl_img1);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lbl_error_activo);
             this.Controls.Add(this.lbl_error_precio);
             this.Controls.Add(this.lbl_error_anio);
-            this.Controls.Add(this.combo_activo);
-            this.Controls.Add(this.lbl_activo);
-            this.Controls.Add(this.lbl_precio);
-            this.Controls.Add(this.lbl_anio_de_lanzamiento);
-            this.Controls.Add(this.txt_precio);
-            this.Controls.Add(this.txt_anio_de_lanzamiento);
             this.Controls.Add(this.lbl_error_recargable);
             this.Controls.Add(this.lbl_error_spray);
             this.Controls.Add(this.lbl_error_pais);
@@ -662,27 +922,18 @@
             this.Controls.Add(this.lbl_error_nombre);
             this.Controls.Add(this.lbl_error_marca);
             this.Controls.Add(this.lbl_error_codigo);
-            this.Controls.Add(this.combo_recargable);
-            this.Controls.Add(this.combo_spray);
-            this.Controls.Add(this.combo_pais);
-            this.Controls.Add(this.combo_genero);
-            this.Controls.Add(this.combo_tipo_de_perfume);
-            this.Controls.Add(this.combo_marca);
-            this.Controls.Add(this.lbl_descripcion);
-            this.Controls.Add(this.lbl_recargable);
-            this.Controls.Add(this.lbl_spray);
-            this.Controls.Add(this.lbl_pais);
-            this.Controls.Add(this.lbl_presentacion);
-            this.Controls.Add(this.lbl_genero);
-            this.Controls.Add(this.lbl_tipo_de_perfume);
-            this.Controls.Add(this.lbl_nombre);
-            this.Controls.Add(this.lbl_marca);
-            this.Controls.Add(this.lbl_codigo);
-            this.Controls.Add(this.txt_descripcion);
-            this.Controls.Add(this.txt_presentacion);
-            this.Controls.Add(this.txt_nombre);
-            this.Controls.Add(this.txt_codigo);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBox6);
+            this.Controls.Add(this.pictureBox7);
+            this.Controls.Add(this.pictureBox11);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox8);
+            this.Controls.Add(this.pictureBox10);
+            this.Controls.Add(this.pictureBox9);
+            this.Controls.Add(this.pictureBox12);
+            this.Controls.Add(this.pictureBox17);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormEditarPerfume1";
@@ -690,8 +941,19 @@
             this.Text = "EditarProducto";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProducto2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProducto1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -699,26 +961,48 @@
 
         #endregion
 
+        private System.Windows.Forms.ComboBox combo_activo;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.PictureBox pictureBoxProducto2;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.PictureBox pictureBoxProducto1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.RichTextBox richTextBox_descripcion;
+        private System.Windows.Forms.Label lbl_comentarios;
+        private System.Windows.Forms.ComboBox combo_recargable;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox combo_spray;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txt_anio_de_lanzamiento;
+        private System.Windows.Forms.ComboBox combo_pais;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txt_presentacion;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txt_precio;
+        private System.Windows.Forms.ComboBox combo_tipo_de_perfume;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox combo_genero;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txt_nombre;
+        private System.Windows.Forms.ComboBox combo_marca;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_usuario;
+        private System.Windows.Forms.TextBox txt_codigo;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lbl_crear_empleado;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Label lbl_error_descripcion;
         private System.Windows.Forms.Button btn_siguiente;
-        private System.Windows.Forms.Label lbl_editar_producto;
         private System.Windows.Forms.Label lbl_error_img2;
         private System.Windows.Forms.Button btn_cargar_img2;
-        private System.Windows.Forms.PictureBox pictureBoxProducto2;
-        private System.Windows.Forms.Label lbl_img2;
         private System.Windows.Forms.Label lbl_error_img1;
         private System.Windows.Forms.Button btn_cargar_img1;
-        private System.Windows.Forms.PictureBox pictureBoxProducto1;
-        private System.Windows.Forms.Label lbl_img1;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lbl_error_activo;
         private System.Windows.Forms.Label lbl_error_precio;
         private System.Windows.Forms.Label lbl_error_anio;
-        private System.Windows.Forms.ComboBox combo_activo;
-        private System.Windows.Forms.Label lbl_activo;
-        private System.Windows.Forms.Label lbl_precio;
-        private System.Windows.Forms.Label lbl_anio_de_lanzamiento;
-        private System.Windows.Forms.TextBox txt_precio;
-        private System.Windows.Forms.TextBox txt_anio_de_lanzamiento;
         private System.Windows.Forms.Label lbl_error_recargable;
         private System.Windows.Forms.Label lbl_error_spray;
         private System.Windows.Forms.Label lbl_error_pais;
@@ -728,28 +1012,17 @@
         private System.Windows.Forms.Label lbl_error_nombre;
         private System.Windows.Forms.Label lbl_error_marca;
         private System.Windows.Forms.Label lbl_error_codigo;
-        private System.Windows.Forms.ComboBox combo_recargable;
-        private System.Windows.Forms.ComboBox combo_spray;
-        private System.Windows.Forms.ComboBox combo_pais;
-        private System.Windows.Forms.ComboBox combo_genero;
-        private System.Windows.Forms.ComboBox combo_tipo_de_perfume;
-        private System.Windows.Forms.ComboBox combo_marca;
-        private System.Windows.Forms.Label lbl_descripcion;
-        private System.Windows.Forms.Label lbl_recargable;
-        private System.Windows.Forms.Label lbl_spray;
-        private System.Windows.Forms.Label lbl_pais;
-        private System.Windows.Forms.Label lbl_presentacion;
-        private System.Windows.Forms.Label lbl_genero;
-        private System.Windows.Forms.Label lbl_tipo_de_perfume;
-        private System.Windows.Forms.Label lbl_nombre;
-        private System.Windows.Forms.Label lbl_marca;
-        private System.Windows.Forms.Label lbl_codigo;
-        private System.Windows.Forms.TextBox txt_descripcion;
-        private System.Windows.Forms.TextBox txt_presentacion;
-        private System.Windows.Forms.TextBox txt_nombre;
-        private System.Windows.Forms.TextBox txt_codigo;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lbl_error_descripcion;
-        private System.Windows.Forms.Button btn_x_cerrar;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.PictureBox pictureBox12;
+        private System.Windows.Forms.PictureBox pictureBox17;
     }
 }

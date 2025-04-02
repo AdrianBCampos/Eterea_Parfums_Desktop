@@ -2,6 +2,7 @@
 using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -68,7 +69,7 @@ namespace Eterea_Parfums_Desktop
             {
                 combo_recargable.SelectedItem = "No";
             }
-            txt_descripcion.Text = perfume.descripcion;
+            richTextBox_descripcion.Text = perfume.descripcion;
             txt_anio_de_lanzamiento.Text = perfume.anio_de_lanzamiento.ToString();
             txt_precio.Text = perfume.precio_en_pesos.ToString();
             if (perfume.activo.ToString() == "1")
@@ -365,14 +366,14 @@ namespace Eterea_Parfums_Desktop
                 lbl_error_recargable.Visible = false;
             }
 
-            if (string.IsNullOrEmpty(txt_descripcion.Text))
+            if (string.IsNullOrEmpty(richTextBox_descripcion.Text))
             {
                 errorMsg += "Debes ingresar la descripción del perfume" + Environment.NewLine;
                 lbl_error_descripcion.Text = "Debes ingresar la descripción del perfume";
                 lbl_error_descripcion.Show();
 
             }
-            else if (txt_descripcion.Text.Length > 1100)
+            else if (richTextBox_descripcion.Text.Length > 1100)
             {
                 errorMsg += "La descripción del perfume no puede exceder los 1100 caracteres" + Environment.NewLine;
                 lbl_error_descripcion.Text = "La descripción del perfume no puede exceder los 1100 caracteres";
@@ -524,16 +525,22 @@ namespace Eterea_Parfums_Desktop
                 Perfume perfume = editar();
 
                 // Obtener la instancia del FormStart..
-                Form formStart = Application.OpenForms["FormStart"];
+                //Form formStart = Application.OpenForms["FormStart"];
                 FormEditarPerfume2 editarAromaNota = new FormEditarPerfume2(perfume, this, perfumesUC);
 
+                DialogResult dr = editarAromaNota.ShowDialog(this);
+
+                if (dr == DialogResult.OK)
+                {
+                    Trace.WriteLine("OK");
+
+                }
                 // Retrasamos la llamada a Hide() para evitar el salto
-                this.BeginInvoke(new Action(() => this.Hide()));
+                //this.BeginInvoke(new Action(() => this.Hide()));
 
                 // Crear el formulario a mostrar y pasarle, como owner, el formStart
+                //editarAromaNota.ShowDialog(formStart);
 
-                editarAromaNota.ShowDialog(formStart);
-               
             }
         }
         private void saveImagenResources(out string nombreFoto, Image imagen)
@@ -587,7 +594,7 @@ namespace Eterea_Parfums_Desktop
             Pais pais = PaisControlador.getByName(combo_pais.SelectedItem.ToString());
             Console.WriteLine("Marca: " + marca.nombre);
             Perfume perfume1 = new Perfume(perfume.id, txt_codigo.Text, marca, txt_nombre.Text, tipo_de_perfume,
-                genero, int.Parse(txt_presentacion.Text), pais, spray, recargable, txt_descripcion.Text,
+                genero, int.Parse(txt_presentacion.Text), pais, spray, recargable, richTextBox_descripcion.Text,
                 int.Parse(txt_anio_de_lanzamiento.Text), Double.Parse(txt_precio.Text), activo, nombre_foto_uno, nombre_foto_dos);
 
             return perfume1;
@@ -599,6 +606,8 @@ namespace Eterea_Parfums_Desktop
             this.Close();
            
         }
+
+       
     }
 
 }
