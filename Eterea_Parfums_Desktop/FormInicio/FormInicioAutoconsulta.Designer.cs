@@ -258,14 +258,7 @@
             this.dataGridViewConsultas.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridViewConsultas.Name = "dataGridViewConsultas";
             this.dataGridViewConsultas.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewConsultas.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+           
             this.dataGridViewConsultas.RowHeadersWidth = 51;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
             dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
@@ -349,21 +342,7 @@
             this.btn_posterior.Text = ">>";
             this.btn_posterior.UseVisualStyleBackColor = false;
             this.btn_posterior.Click += new System.EventHandler(this.btn_posterior_Click);
-            // 
-            // btn_escanear
-            // 
-            this.btn_escanear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.btn_escanear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_escanear.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_escanear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_escanear.Location = new System.Drawing.Point(272, 966);
-            this.btn_escanear.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_escanear.Name = "btn_escanear";
-            this.btn_escanear.Size = new System.Drawing.Size(509, 55);
-            this.btn_escanear.TabIndex = 295;
-            this.btn_escanear.Text = "Escanear";
-            this.btn_escanear.UseVisualStyleBackColor = false;
-            this.btn_escanear.Click += new System.EventHandler(this.btn_escanear_Click);
+            
             // 
             // pictureBox4
             // 
@@ -518,7 +497,7 @@
             this.Controls.Add(this.txt_scan);
             this.Controls.Add(this.lbl_codigoBarras);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btn_escanear);
+            
             this.Controls.Add(this.btn_posterior);
             this.Controls.Add(this.btn_anterior);
             this.Controls.Add(this.lbl_paginacion_Info);
