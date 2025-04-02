@@ -140,13 +140,12 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             else if (senderGrid.Columns[e.ColumnIndex].Name == "Eliminar")
             {
                 //ELIMINAMOS
-
-
                 int id = int.Parse(dataGridViewPerfumes.Rows[e.RowIndex].Cells[0].Value.ToString());
                 Perfume perfume = PerfumeControlador.getByID(id);
                 FormEliminarPerfume formEliminarProductoABM = new FormEliminarPerfume(perfume);
 
                 DialogResult dr = formEliminarProductoABM.ShowDialog();
+
                 if (dr == DialogResult.OK)
                 {
                     Trace.WriteLine("OK");
