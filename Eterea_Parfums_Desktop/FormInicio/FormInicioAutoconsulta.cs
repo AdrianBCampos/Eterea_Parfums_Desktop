@@ -51,6 +51,7 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
+
             this.TopMost = false;
             //ESCALAR TAMAÑO DEL FORM
             //float scaleFactor = 0.8f; // 80% del tamaño original
@@ -120,9 +121,6 @@ namespace Eterea_Parfums_Desktop
            
         }
 
-
-
-
         /* private void txt_scan_TextChanged(object sender, EventArgs e)
          {
              if (!escaneoHabilitado) 
@@ -147,6 +145,7 @@ namespace Eterea_Parfums_Desktop
         {
             ResetAutoConsulta();
         }
+
         private void txt_scan_TextChanged(object sender, EventArgs e)
         {
             if (!escaneoHabilitado || !txt_scan.Visible || !txt_scan.Enabled)
@@ -183,26 +182,24 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
-     /*   private void txt_scan_TextChanged(object sender, EventArgs e)
+        /*private void txt_scan_TextChanged(object sender, EventArgs e)
         {
-            string codigo = txt_scan.Text.Trim();
-            if (string.IsNullOrEmpty(codigo)) return;
-
-            if (PerfumeControlador.getByCodigo(codigo)!=null)
+            if (!escaneoHabilitado) 
             {
-                // Si existe, abrir el formulario de detalles
-                FormVerDetallePerfume detalleForm = new FormVerDetallePerfume(PerfumeControlador.getByCodigo(codigo));
-                detalleForm.ShowDialog();
+                // ✅ Si el escaneo no está habilitado, limpiamos el TextBox y salimos del método
+                txt_scan.Clear();
+                return;
             }
-            else
-            {
-                // Si no existe, abrir el formulario de reintento
-                FormEscanear escanearForm = new FormEscanear(this);
-                escanearForm.ShowDialog();
-            }
+            if (!string.IsNullOrEmpty(txt_scan.Text))
+            { 
+                GuardarTextoEnArchivo(txt_scan.Text);
 
-            // Reiniciar la UI al volver a formAutoConsulta
-            ResetAutoConsulta();
+                // Usar BeginInvoke para ejecutar el evento KeyPress en el hilo principal
+                this.BeginInvoke(new Action(() =>
+                {
+                    txt_scan_KeyPress(txt_scan, new KeyPressEventArgs((char)Keys.Enter));
+                }));
+            }
         }*/
 
         public void ResetAutoConsulta()
@@ -213,7 +210,6 @@ namespace Eterea_Parfums_Desktop
             lbl_codigoBarras.Visible = false;
             btn_escanear.Visible = true;
         }
-
 
         private void GuardarTextoEnArchivo(string texto)
         {
@@ -232,7 +228,7 @@ namespace Eterea_Parfums_Desktop
                 if (formStart != null)
                 {
                     // Ocultar FormInicioAutoconsulta antes de abrir FormLogin
-                    this.Hide();
+                    this.Hide();                 
 
                     // Traer FormStart al fondo pero asegurando que esté visible
                     formStart.Show();
@@ -245,7 +241,9 @@ namespace Eterea_Parfums_Desktop
                     login.ShowDialog(); // Mostrar de forma modal
 
                     // Restaurar FormInicioAutoconsulta si es necesario al cerrar el login
-                    //this.Show();
+                    this.Show();
+
+
                 }
                 else
                 {
@@ -741,8 +739,6 @@ namespace Eterea_Parfums_Desktop
                 SendKeys.SendWait("{ENTER}");
             }
         }*/
-
-
 
         /*public bool IsFocused()
         {

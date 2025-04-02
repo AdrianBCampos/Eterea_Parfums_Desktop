@@ -91,9 +91,10 @@
             this.btn_siguiente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_siguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_siguiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_siguiente.Location = new System.Drawing.Point(541, 642);
+            this.btn_siguiente.Location = new System.Drawing.Point(721, 790);
+            this.btn_siguiente.Margin = new System.Windows.Forms.Padding(4);
             this.btn_siguiente.Name = "btn_siguiente";
-            this.btn_siguiente.Size = new System.Drawing.Size(137, 37);
+            this.btn_siguiente.Size = new System.Drawing.Size(183, 46);
             this.btn_siguiente.TabIndex = 192;
             this.btn_siguiente.Text = "Siguiente";
             this.btn_siguiente.UseVisualStyleBackColor = false;
@@ -105,9 +106,10 @@
             this.lbl_editar_producto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_editar_producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_editar_producto.ForeColor = System.Drawing.Color.Black;
-            this.lbl_editar_producto.Location = new System.Drawing.Point(361, 9);
+            this.lbl_editar_producto.Location = new System.Drawing.Point(481, 11);
+            this.lbl_editar_producto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_editar_producto.Name = "lbl_editar_producto";
-            this.lbl_editar_producto.Size = new System.Drawing.Size(126, 18);
+            this.lbl_editar_producto.Size = new System.Drawing.Size(154, 24);
             this.lbl_editar_producto.TabIndex = 191;
             this.lbl_editar_producto.Text = "Editar Producto";
             // 
@@ -115,9 +117,10 @@
             // 
             this.lbl_error_img2.AutoSize = true;
             this.lbl_error_img2.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_img2.Location = new System.Drawing.Point(555, 560);
+            this.lbl_error_img2.Location = new System.Drawing.Point(740, 689);
+            this.lbl_error_img2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_img2.Name = "lbl_error_img2";
-            this.lbl_error_img2.Size = new System.Drawing.Size(29, 13);
+            this.lbl_error_img2.Size = new System.Drawing.Size(36, 16);
             this.lbl_error_img2.TabIndex = 190;
             this.lbl_error_img2.Text = "Error";
             // 
@@ -125,9 +128,10 @@
             // 
             this.btn_cargar_img2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_cargar_img2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cargar_img2.Location = new System.Drawing.Point(569, 515);
+            this.btn_cargar_img2.Location = new System.Drawing.Point(759, 634);
+            this.btn_cargar_img2.Margin = new System.Windows.Forms.Padding(4);
             this.btn_cargar_img2.Name = "btn_cargar_img2";
-            this.btn_cargar_img2.Size = new System.Drawing.Size(89, 30);
+            this.btn_cargar_img2.Size = new System.Drawing.Size(119, 37);
             this.btn_cargar_img2.TabIndex = 189;
             this.btn_cargar_img2.Text = "Cargar";
             this.btn_cargar_img2.UseVisualStyleBackColor = false;
@@ -135,9 +139,10 @@
             // 
             // pictureBoxProducto2
             // 
-            this.pictureBoxProducto2.Location = new System.Drawing.Point(527, 368);
+            this.pictureBoxProducto2.Location = new System.Drawing.Point(703, 453);
+            this.pictureBoxProducto2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxProducto2.Name = "pictureBoxProducto2";
-            this.pictureBoxProducto2.Size = new System.Drawing.Size(167, 135);
+            this.pictureBoxProducto2.Size = new System.Drawing.Size(223, 166);
             this.pictureBoxProducto2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxProducto2.TabIndex = 188;
             this.pictureBoxProducto2.TabStop = false;
@@ -145,9 +150,10 @@
             // lbl_img2
             // 
             this.lbl_img2.AutoSize = true;
-            this.lbl_img2.Location = new System.Drawing.Point(566, 344);
+            this.lbl_img2.Location = new System.Drawing.Point(755, 423);
+            this.lbl_img2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_img2.Name = "lbl_img2";
-            this.lbl_img2.Size = new System.Drawing.Size(88, 13);
+            this.lbl_img2.Size = new System.Drawing.Size(109, 16);
             this.lbl_img2.TabIndex = 187;
             this.lbl_img2.Text = "Cargar Imagen 2:";
             // 
@@ -155,9 +161,10 @@
             // 
             this.lbl_error_img1.AutoSize = true;
             this.lbl_error_img1.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_img1.Location = new System.Drawing.Point(555, 284);
+            this.lbl_error_img1.Location = new System.Drawing.Point(740, 350);
+            this.lbl_error_img1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_img1.Name = "lbl_error_img1";
-            this.lbl_error_img1.Size = new System.Drawing.Size(29, 13);
+            this.lbl_error_img1.Size = new System.Drawing.Size(36, 16);
             this.lbl_error_img1.TabIndex = 186;
             this.lbl_error_img1.Text = "Error";
             // 
@@ -165,9 +172,10 @@
             // 
             this.btn_cargar_img1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_cargar_img1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_cargar_img1.Location = new System.Drawing.Point(569, 239);
+            this.btn_cargar_img1.Location = new System.Drawing.Point(759, 294);
+            this.btn_cargar_img1.Margin = new System.Windows.Forms.Padding(4);
             this.btn_cargar_img1.Name = "btn_cargar_img1";
-            this.btn_cargar_img1.Size = new System.Drawing.Size(89, 30);
+            this.btn_cargar_img1.Size = new System.Drawing.Size(119, 37);
             this.btn_cargar_img1.TabIndex = 185;
             this.btn_cargar_img1.Text = "Cargar";
             this.btn_cargar_img1.UseVisualStyleBackColor = false;
@@ -175,9 +183,10 @@
             // 
             // pictureBoxProducto1
             // 
-            this.pictureBoxProducto1.Location = new System.Drawing.Point(527, 92);
+            this.pictureBoxProducto1.Location = new System.Drawing.Point(703, 113);
+            this.pictureBoxProducto1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxProducto1.Name = "pictureBoxProducto1";
-            this.pictureBoxProducto1.Size = new System.Drawing.Size(167, 135);
+            this.pictureBoxProducto1.Size = new System.Drawing.Size(223, 166);
             this.pictureBoxProducto1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxProducto1.TabIndex = 184;
             this.pictureBoxProducto1.TabStop = false;
@@ -185,9 +194,10 @@
             // lbl_img1
             // 
             this.lbl_img1.AutoSize = true;
-            this.lbl_img1.Location = new System.Drawing.Point(566, 68);
+            this.lbl_img1.Location = new System.Drawing.Point(755, 84);
+            this.lbl_img1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_img1.Name = "lbl_img1";
-            this.lbl_img1.Size = new System.Drawing.Size(88, 13);
+            this.lbl_img1.Size = new System.Drawing.Size(109, 16);
             this.lbl_img1.TabIndex = 183;
             this.lbl_img1.Text = "Cargar Imagen 1:";
             // 
@@ -195,10 +205,10 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(463, 44);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Location = new System.Drawing.Point(617, 54);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(285, 560);
+            this.pictureBox2.Size = new System.Drawing.Size(380, 689);
             this.pictureBox2.TabIndex = 182;
             this.pictureBox2.TabStop = false;
             // 
@@ -206,9 +216,10 @@
             // 
             this.lbl_error_activo.AutoSize = true;
             this.lbl_error_activo.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_activo.Location = new System.Drawing.Point(181, 682);
+            this.lbl_error_activo.Location = new System.Drawing.Point(241, 839);
+            this.lbl_error_activo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_activo.Name = "lbl_error_activo";
-            this.lbl_error_activo.Size = new System.Drawing.Size(29, 13);
+            this.lbl_error_activo.Size = new System.Drawing.Size(36, 16);
             this.lbl_error_activo.TabIndex = 181;
             this.lbl_error_activo.Text = "Error";
             // 
@@ -216,9 +227,10 @@
             // 
             this.lbl_error_precio.AutoSize = true;
             this.lbl_error_precio.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_precio.Location = new System.Drawing.Point(181, 630);
+            this.lbl_error_precio.Location = new System.Drawing.Point(241, 775);
+            this.lbl_error_precio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_precio.Name = "lbl_error_precio";
-            this.lbl_error_precio.Size = new System.Drawing.Size(29, 13);
+            this.lbl_error_precio.Size = new System.Drawing.Size(36, 16);
             this.lbl_error_precio.TabIndex = 180;
             this.lbl_error_precio.Text = "Error";
             // 
@@ -226,68 +238,76 @@
             // 
             this.lbl_error_anio.AutoSize = true;
             this.lbl_error_anio.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_anio.Location = new System.Drawing.Point(181, 577);
+            this.lbl_error_anio.Location = new System.Drawing.Point(241, 710);
+            this.lbl_error_anio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_anio.Name = "lbl_error_anio";
-            this.lbl_error_anio.Size = new System.Drawing.Size(29, 13);
+            this.lbl_error_anio.Size = new System.Drawing.Size(36, 16);
             this.lbl_error_anio.TabIndex = 179;
             this.lbl_error_anio.Text = "Error";
             // 
             // combo_activo
             // 
             this.combo_activo.FormattingEnabled = true;
-            this.combo_activo.Location = new System.Drawing.Point(184, 658);
+            this.combo_activo.Location = new System.Drawing.Point(245, 810);
+            this.combo_activo.Margin = new System.Windows.Forms.Padding(4);
             this.combo_activo.Name = "combo_activo";
-            this.combo_activo.Size = new System.Drawing.Size(179, 21);
+            this.combo_activo.Size = new System.Drawing.Size(237, 24);
             this.combo_activo.TabIndex = 178;
             // 
             // lbl_activo
             // 
             this.lbl_activo.AutoSize = true;
-            this.lbl_activo.Location = new System.Drawing.Point(64, 666);
+            this.lbl_activo.Location = new System.Drawing.Point(85, 820);
+            this.lbl_activo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_activo.Name = "lbl_activo";
-            this.lbl_activo.Size = new System.Drawing.Size(37, 13);
+            this.lbl_activo.Size = new System.Drawing.Size(44, 16);
             this.lbl_activo.TabIndex = 177;
             this.lbl_activo.Text = "Activo";
             // 
             // lbl_precio
             // 
             this.lbl_precio.AutoSize = true;
-            this.lbl_precio.Location = new System.Drawing.Point(64, 610);
+            this.lbl_precio.Location = new System.Drawing.Point(85, 751);
+            this.lbl_precio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_precio.Name = "lbl_precio";
-            this.lbl_precio.Size = new System.Drawing.Size(61, 13);
+            this.lbl_precio.Size = new System.Drawing.Size(74, 16);
             this.lbl_precio.TabIndex = 176;
             this.lbl_precio.Text = "Precio en $";
             // 
             // lbl_anio_de_lanzamiento
             // 
             this.lbl_anio_de_lanzamiento.AutoSize = true;
-            this.lbl_anio_de_lanzamiento.Location = new System.Drawing.Point(63, 561);
+            this.lbl_anio_de_lanzamiento.Location = new System.Drawing.Point(84, 690);
+            this.lbl_anio_de_lanzamiento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_anio_de_lanzamiento.Name = "lbl_anio_de_lanzamiento";
-            this.lbl_anio_de_lanzamiento.Size = new System.Drawing.Size(100, 13);
+            this.lbl_anio_de_lanzamiento.Size = new System.Drawing.Size(125, 16);
             this.lbl_anio_de_lanzamiento.TabIndex = 175;
             this.lbl_anio_de_lanzamiento.Text = "Año de lanzamiento";
             // 
             // txt_precio
             // 
-            this.txt_precio.Location = new System.Drawing.Point(184, 607);
+            this.txt_precio.Location = new System.Drawing.Point(245, 747);
+            this.txt_precio.Margin = new System.Windows.Forms.Padding(4);
             this.txt_precio.Name = "txt_precio";
-            this.txt_precio.Size = new System.Drawing.Size(179, 20);
+            this.txt_precio.Size = new System.Drawing.Size(237, 22);
             this.txt_precio.TabIndex = 174;
             // 
             // txt_anio_de_lanzamiento
             // 
-            this.txt_anio_de_lanzamiento.Location = new System.Drawing.Point(184, 554);
+            this.txt_anio_de_lanzamiento.Location = new System.Drawing.Point(245, 682);
+            this.txt_anio_de_lanzamiento.Margin = new System.Windows.Forms.Padding(4);
             this.txt_anio_de_lanzamiento.Name = "txt_anio_de_lanzamiento";
-            this.txt_anio_de_lanzamiento.Size = new System.Drawing.Size(179, 20);
+            this.txt_anio_de_lanzamiento.Size = new System.Drawing.Size(237, 22);
             this.txt_anio_de_lanzamiento.TabIndex = 173;
             // 
             // lbl_error_recargable
             // 
             this.lbl_error_recargable.AutoSize = true;
             this.lbl_error_recargable.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_recargable.Location = new System.Drawing.Point(181, 482);
+            this.lbl_error_recargable.Location = new System.Drawing.Point(241, 593);
+            this.lbl_error_recargable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_recargable.Name = "lbl_error_recargable";
-            this.lbl_error_recargable.Size = new System.Drawing.Size(29, 13);
+            this.lbl_error_recargable.Size = new System.Drawing.Size(36, 16);
             this.lbl_error_recargable.TabIndex = 172;
             this.lbl_error_recargable.Text = "Error";
             // 
@@ -295,9 +315,10 @@
             // 
             this.lbl_error_spray.AutoSize = true;
             this.lbl_error_spray.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_spray.Location = new System.Drawing.Point(181, 436);
+            this.lbl_error_spray.Location = new System.Drawing.Point(241, 537);
+            this.lbl_error_spray.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_spray.Name = "lbl_error_spray";
-            this.lbl_error_spray.Size = new System.Drawing.Size(29, 13);
+            this.lbl_error_spray.Size = new System.Drawing.Size(36, 16);
             this.lbl_error_spray.TabIndex = 171;
             this.lbl_error_spray.Text = "Error";
             // 
@@ -305,9 +326,10 @@
             // 
             this.lbl_error_pais.AutoSize = true;
             this.lbl_error_pais.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_pais.Location = new System.Drawing.Point(181, 389);
+            this.lbl_error_pais.Location = new System.Drawing.Point(241, 479);
+            this.lbl_error_pais.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_pais.Name = "lbl_error_pais";
-            this.lbl_error_pais.Size = new System.Drawing.Size(29, 13);
+            this.lbl_error_pais.Size = new System.Drawing.Size(36, 16);
             this.lbl_error_pais.TabIndex = 170;
             this.lbl_error_pais.Text = "Error";
             // 
@@ -315,9 +337,10 @@
             // 
             this.lbl_error_presentacion.AutoSize = true;
             this.lbl_error_presentacion.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_presentacion.Location = new System.Drawing.Point(181, 331);
+            this.lbl_error_presentacion.Location = new System.Drawing.Point(241, 407);
+            this.lbl_error_presentacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_presentacion.Name = "lbl_error_presentacion";
-            this.lbl_error_presentacion.Size = new System.Drawing.Size(29, 13);
+            this.lbl_error_presentacion.Size = new System.Drawing.Size(36, 16);
             this.lbl_error_presentacion.TabIndex = 169;
             this.lbl_error_presentacion.Text = "Error";
             // 
@@ -325,9 +348,10 @@
             // 
             this.lbl_error_genero.AutoSize = true;
             this.lbl_error_genero.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_genero.Location = new System.Drawing.Point(181, 283);
+            this.lbl_error_genero.Location = new System.Drawing.Point(241, 348);
+            this.lbl_error_genero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_genero.Name = "lbl_error_genero";
-            this.lbl_error_genero.Size = new System.Drawing.Size(29, 13);
+            this.lbl_error_genero.Size = new System.Drawing.Size(36, 16);
             this.lbl_error_genero.TabIndex = 168;
             this.lbl_error_genero.Text = "Error";
             // 
@@ -335,9 +359,10 @@
             // 
             this.lbl_error_tipo.AutoSize = true;
             this.lbl_error_tipo.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_tipo.Location = new System.Drawing.Point(181, 230);
+            this.lbl_error_tipo.Location = new System.Drawing.Point(241, 283);
+            this.lbl_error_tipo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_tipo.Name = "lbl_error_tipo";
-            this.lbl_error_tipo.Size = new System.Drawing.Size(29, 13);
+            this.lbl_error_tipo.Size = new System.Drawing.Size(36, 16);
             this.lbl_error_tipo.TabIndex = 167;
             this.lbl_error_tipo.Text = "Error";
             // 
@@ -345,9 +370,10 @@
             // 
             this.lbl_error_nombre.AutoSize = true;
             this.lbl_error_nombre.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_nombre.Location = new System.Drawing.Point(181, 177);
+            this.lbl_error_nombre.Location = new System.Drawing.Point(241, 218);
+            this.lbl_error_nombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_nombre.Name = "lbl_error_nombre";
-            this.lbl_error_nombre.Size = new System.Drawing.Size(29, 13);
+            this.lbl_error_nombre.Size = new System.Drawing.Size(36, 16);
             this.lbl_error_nombre.TabIndex = 166;
             this.lbl_error_nombre.Text = "Error";
             // 
@@ -355,9 +381,10 @@
             // 
             this.lbl_error_marca.AutoSize = true;
             this.lbl_error_marca.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_marca.Location = new System.Drawing.Point(181, 128);
+            this.lbl_error_marca.Location = new System.Drawing.Point(241, 158);
+            this.lbl_error_marca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_marca.Name = "lbl_error_marca";
-            this.lbl_error_marca.Size = new System.Drawing.Size(29, 13);
+            this.lbl_error_marca.Size = new System.Drawing.Size(36, 16);
             this.lbl_error_marca.TabIndex = 165;
             this.lbl_error_marca.Text = "Error";
             // 
@@ -365,138 +392,154 @@
             // 
             this.lbl_error_codigo.AutoSize = true;
             this.lbl_error_codigo.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_codigo.Location = new System.Drawing.Point(181, 80);
+            this.lbl_error_codigo.Location = new System.Drawing.Point(241, 98);
+            this.lbl_error_codigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_codigo.Name = "lbl_error_codigo";
-            this.lbl_error_codigo.Size = new System.Drawing.Size(29, 13);
+            this.lbl_error_codigo.Size = new System.Drawing.Size(36, 16);
             this.lbl_error_codigo.TabIndex = 164;
             this.lbl_error_codigo.Text = "Error";
             // 
             // combo_recargable
             // 
             this.combo_recargable.FormattingEnabled = true;
-            this.combo_recargable.Location = new System.Drawing.Point(184, 458);
+            this.combo_recargable.Location = new System.Drawing.Point(245, 564);
+            this.combo_recargable.Margin = new System.Windows.Forms.Padding(4);
             this.combo_recargable.Name = "combo_recargable";
-            this.combo_recargable.Size = new System.Drawing.Size(179, 21);
+            this.combo_recargable.Size = new System.Drawing.Size(237, 24);
             this.combo_recargable.TabIndex = 163;
             // 
             // combo_spray
             // 
             this.combo_spray.FormattingEnabled = true;
-            this.combo_spray.Location = new System.Drawing.Point(184, 412);
+            this.combo_spray.Location = new System.Drawing.Point(245, 507);
+            this.combo_spray.Margin = new System.Windows.Forms.Padding(4);
             this.combo_spray.Name = "combo_spray";
-            this.combo_spray.Size = new System.Drawing.Size(179, 21);
+            this.combo_spray.Size = new System.Drawing.Size(237, 24);
             this.combo_spray.TabIndex = 162;
             // 
             // combo_pais
             // 
             this.combo_pais.FormattingEnabled = true;
-            this.combo_pais.Location = new System.Drawing.Point(184, 365);
+            this.combo_pais.Location = new System.Drawing.Point(245, 449);
+            this.combo_pais.Margin = new System.Windows.Forms.Padding(4);
             this.combo_pais.Name = "combo_pais";
-            this.combo_pais.Size = new System.Drawing.Size(179, 21);
+            this.combo_pais.Size = new System.Drawing.Size(237, 24);
             this.combo_pais.TabIndex = 161;
             // 
             // combo_genero
             // 
             this.combo_genero.FormattingEnabled = true;
-            this.combo_genero.Location = new System.Drawing.Point(184, 259);
+            this.combo_genero.Location = new System.Drawing.Point(245, 319);
+            this.combo_genero.Margin = new System.Windows.Forms.Padding(4);
             this.combo_genero.Name = "combo_genero";
-            this.combo_genero.Size = new System.Drawing.Size(179, 21);
+            this.combo_genero.Size = new System.Drawing.Size(237, 24);
             this.combo_genero.TabIndex = 160;
             // 
             // combo_tipo_de_perfume
             // 
             this.combo_tipo_de_perfume.FormattingEnabled = true;
-            this.combo_tipo_de_perfume.Location = new System.Drawing.Point(184, 206);
+            this.combo_tipo_de_perfume.Location = new System.Drawing.Point(245, 254);
+            this.combo_tipo_de_perfume.Margin = new System.Windows.Forms.Padding(4);
             this.combo_tipo_de_perfume.Name = "combo_tipo_de_perfume";
-            this.combo_tipo_de_perfume.Size = new System.Drawing.Size(179, 21);
+            this.combo_tipo_de_perfume.Size = new System.Drawing.Size(237, 24);
             this.combo_tipo_de_perfume.TabIndex = 159;
             // 
             // combo_marca
             // 
             this.combo_marca.FormattingEnabled = true;
-            this.combo_marca.Location = new System.Drawing.Point(184, 104);
+            this.combo_marca.Location = new System.Drawing.Point(245, 128);
+            this.combo_marca.Margin = new System.Windows.Forms.Padding(4);
             this.combo_marca.Name = "combo_marca";
-            this.combo_marca.Size = new System.Drawing.Size(179, 21);
+            this.combo_marca.Size = new System.Drawing.Size(237, 24);
             this.combo_marca.TabIndex = 158;
             // 
             // lbl_descripcion
             // 
             this.lbl_descripcion.AutoSize = true;
-            this.lbl_descripcion.Location = new System.Drawing.Point(62, 516);
+            this.lbl_descripcion.Location = new System.Drawing.Point(83, 635);
+            this.lbl_descripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_descripcion.Name = "lbl_descripcion";
-            this.lbl_descripcion.Size = new System.Drawing.Size(63, 13);
+            this.lbl_descripcion.Size = new System.Drawing.Size(79, 16);
             this.lbl_descripcion.TabIndex = 157;
             this.lbl_descripcion.Text = "Descripción";
             // 
             // lbl_recargable
             // 
             this.lbl_recargable.AutoSize = true;
-            this.lbl_recargable.Location = new System.Drawing.Point(63, 466);
+            this.lbl_recargable.Location = new System.Drawing.Point(84, 574);
+            this.lbl_recargable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_recargable.Name = "lbl_recargable";
-            this.lbl_recargable.Size = new System.Drawing.Size(62, 13);
+            this.lbl_recargable.Size = new System.Drawing.Size(79, 16);
             this.lbl_recargable.TabIndex = 156;
             this.lbl_recargable.Text = "Recargable";
             // 
             // lbl_spray
             // 
             this.lbl_spray.AutoSize = true;
-            this.lbl_spray.Location = new System.Drawing.Point(63, 420);
+            this.lbl_spray.Location = new System.Drawing.Point(84, 517);
+            this.lbl_spray.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_spray.Name = "lbl_spray";
-            this.lbl_spray.Size = new System.Drawing.Size(34, 13);
+            this.lbl_spray.Size = new System.Drawing.Size(43, 16);
             this.lbl_spray.TabIndex = 155;
             this.lbl_spray.Text = "Spray";
             // 
             // lbl_pais
             // 
             this.lbl_pais.AutoSize = true;
-            this.lbl_pais.Location = new System.Drawing.Point(63, 368);
+            this.lbl_pais.Location = new System.Drawing.Point(84, 453);
+            this.lbl_pais.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_pais.Name = "lbl_pais";
-            this.lbl_pais.Size = new System.Drawing.Size(74, 13);
+            this.lbl_pais.Size = new System.Drawing.Size(94, 16);
             this.lbl_pais.TabIndex = 154;
             this.lbl_pais.Text = "Pais de origen";
             // 
             // lbl_presentacion
             // 
             this.lbl_presentacion.AutoSize = true;
-            this.lbl_presentacion.Location = new System.Drawing.Point(63, 315);
+            this.lbl_presentacion.Location = new System.Drawing.Point(84, 388);
+            this.lbl_presentacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_presentacion.Name = "lbl_presentacion";
-            this.lbl_presentacion.Size = new System.Drawing.Size(97, 13);
+            this.lbl_presentacion.Size = new System.Drawing.Size(121, 16);
             this.lbl_presentacion.TabIndex = 153;
             this.lbl_presentacion.Text = "Presentación en ml";
             // 
             // lbl_genero
             // 
             this.lbl_genero.AutoSize = true;
-            this.lbl_genero.Location = new System.Drawing.Point(63, 266);
+            this.lbl_genero.Location = new System.Drawing.Point(84, 327);
+            this.lbl_genero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_genero.Name = "lbl_genero";
-            this.lbl_genero.Size = new System.Drawing.Size(42, 13);
+            this.lbl_genero.Size = new System.Drawing.Size(52, 16);
             this.lbl_genero.TabIndex = 152;
             this.lbl_genero.Text = "Género";
             // 
             // lbl_tipo_de_perfume
             // 
             this.lbl_tipo_de_perfume.AutoSize = true;
-            this.lbl_tipo_de_perfume.Location = new System.Drawing.Point(63, 210);
+            this.lbl_tipo_de_perfume.Location = new System.Drawing.Point(84, 258);
+            this.lbl_tipo_de_perfume.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_tipo_de_perfume.Name = "lbl_tipo_de_perfume";
-            this.lbl_tipo_de_perfume.Size = new System.Drawing.Size(84, 13);
+            this.lbl_tipo_de_perfume.Size = new System.Drawing.Size(106, 16);
             this.lbl_tipo_de_perfume.TabIndex = 151;
             this.lbl_tipo_de_perfume.Text = "Tipo de perfume";
             // 
             // lbl_nombre
             // 
             this.lbl_nombre.AutoSize = true;
-            this.lbl_nombre.Location = new System.Drawing.Point(63, 161);
+            this.lbl_nombre.Location = new System.Drawing.Point(84, 198);
+            this.lbl_nombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_nombre.Name = "lbl_nombre";
-            this.lbl_nombre.Size = new System.Drawing.Size(44, 13);
+            this.lbl_nombre.Size = new System.Drawing.Size(56, 16);
             this.lbl_nombre.TabIndex = 150;
             this.lbl_nombre.Text = "Nombre";
             // 
             // lbl_marca
             // 
             this.lbl_marca.AutoSize = true;
-            this.lbl_marca.Location = new System.Drawing.Point(63, 112);
+            this.lbl_marca.Location = new System.Drawing.Point(84, 138);
+            this.lbl_marca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_marca.Name = "lbl_marca";
-            this.lbl_marca.Size = new System.Drawing.Size(37, 13);
+            this.lbl_marca.Size = new System.Drawing.Size(45, 16);
             this.lbl_marca.TabIndex = 149;
             this.lbl_marca.Text = "Marca";
             // 
@@ -505,48 +548,53 @@
             this.lbl_codigo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lbl_codigo.AutoSize = true;
-            this.lbl_codigo.Location = new System.Drawing.Point(62, 63);
+            this.lbl_codigo.Location = new System.Drawing.Point(83, 78);
+            this.lbl_codigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_codigo.Name = "lbl_codigo";
-            this.lbl_codigo.Size = new System.Drawing.Size(40, 13);
+            this.lbl_codigo.Size = new System.Drawing.Size(51, 16);
             this.lbl_codigo.TabIndex = 148;
             this.lbl_codigo.Text = "Código";
             // 
             // txt_descripcion
             // 
-            this.txt_descripcion.Location = new System.Drawing.Point(184, 509);
+            this.txt_descripcion.Location = new System.Drawing.Point(245, 626);
+            this.txt_descripcion.Margin = new System.Windows.Forms.Padding(4);
             this.txt_descripcion.Name = "txt_descripcion";
-            this.txt_descripcion.Size = new System.Drawing.Size(179, 20);
+            this.txt_descripcion.Size = new System.Drawing.Size(237, 22);
             this.txt_descripcion.TabIndex = 147;
             // 
             // txt_presentacion
             // 
-            this.txt_presentacion.Location = new System.Drawing.Point(184, 308);
+            this.txt_presentacion.Location = new System.Drawing.Point(245, 379);
+            this.txt_presentacion.Margin = new System.Windows.Forms.Padding(4);
             this.txt_presentacion.Name = "txt_presentacion";
-            this.txt_presentacion.Size = new System.Drawing.Size(179, 20);
+            this.txt_presentacion.Size = new System.Drawing.Size(237, 22);
             this.txt_presentacion.TabIndex = 146;
             // 
             // txt_nombre
             // 
-            this.txt_nombre.Location = new System.Drawing.Point(184, 154);
+            this.txt_nombre.Location = new System.Drawing.Point(245, 190);
+            this.txt_nombre.Margin = new System.Windows.Forms.Padding(4);
             this.txt_nombre.Name = "txt_nombre";
-            this.txt_nombre.Size = new System.Drawing.Size(179, 20);
+            this.txt_nombre.Size = new System.Drawing.Size(237, 22);
             this.txt_nombre.TabIndex = 145;
             // 
             // txt_codigo
             // 
-            this.txt_codigo.Location = new System.Drawing.Point(184, 57);
+            this.txt_codigo.Location = new System.Drawing.Point(245, 70);
+            this.txt_codigo.Margin = new System.Windows.Forms.Padding(4);
             this.txt_codigo.Name = "txt_codigo";
-            this.txt_codigo.Size = new System.Drawing.Size(179, 20);
+            this.txt_codigo.Size = new System.Drawing.Size(237, 22);
             this.txt_codigo.TabIndex = 144;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(53, 44);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Location = new System.Drawing.Point(71, 54);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(342, 672);
+            this.pictureBox1.Size = new System.Drawing.Size(456, 827);
             this.pictureBox1.TabIndex = 143;
             this.pictureBox1.TabStop = false;
             // 
@@ -554,34 +602,35 @@
             // 
             this.lbl_error_descripcion.AutoSize = true;
             this.lbl_error_descripcion.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_descripcion.Location = new System.Drawing.Point(184, 533);
+            this.lbl_error_descripcion.Location = new System.Drawing.Point(245, 656);
+            this.lbl_error_descripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_descripcion.Name = "lbl_error_descripcion";
-            this.lbl_error_descripcion.Size = new System.Drawing.Size(29, 13);
+            this.lbl_error_descripcion.Size = new System.Drawing.Size(36, 16);
             this.lbl_error_descripcion.TabIndex = 193;
             this.lbl_error_descripcion.Text = "Error";
             // 
             // btn_x_cerrar
             // 
-            this.btn_x_cerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_x_cerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
             this.btn_x_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_x_cerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_x_cerrar.ForeColor = System.Drawing.Color.White;
-            this.btn_x_cerrar.Location = new System.Drawing.Point(646, 5);
+            this.btn_x_cerrar.Location = new System.Drawing.Point(952, 11);
+            this.btn_x_cerrar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_x_cerrar.Name = "btn_x_cerrar";
             this.btn_x_cerrar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_x_cerrar.Size = new System.Drawing.Size(146, 32);
+            this.btn_x_cerrar.Size = new System.Drawing.Size(45, 39);
             this.btn_x_cerrar.TabIndex = 302;
-            this.btn_x_cerrar.Text = "Cerrar \"Editar\"";
+            this.btn_x_cerrar.Text = "X";
             this.btn_x_cerrar.UseVisualStyleBackColor = false;
             this.btn_x_cerrar.Click += new System.EventHandler(this.btn_x_cerrar_Click);
             // 
             // FormEditarPerfume1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(800, 742);
+            this.ClientSize = new System.Drawing.Size(1061, 913);
             this.Controls.Add(this.btn_x_cerrar);
             this.Controls.Add(this.lbl_error_descripcion);
             this.Controls.Add(this.btn_siguiente);
@@ -634,7 +683,10 @@
             this.Controls.Add(this.txt_nombre);
             this.Controls.Add(this.txt_codigo);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormEditarPerfume1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditarProducto";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProducto2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProducto1)).EndInit();

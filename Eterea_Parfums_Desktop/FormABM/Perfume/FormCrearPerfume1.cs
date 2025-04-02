@@ -156,9 +156,8 @@ namespace Eterea_Parfums_Desktop
             {
                 Perfume perfume = crear();
                 Console.WriteLine(perfume.id);
-                this.Hide();
                 FormCrearPerfume2 aromaNota = new FormCrearPerfume2(perfume, this, perfumesUC);
-                aromaNota.Show();
+                aromaNota.ShowDialog();
             }
 
         }
@@ -545,5 +544,7 @@ namespace Eterea_Parfums_Desktop
             // Evitar problemas visuales
             e.DrawFocusRectangle();
         }
+
+        
     }
 }

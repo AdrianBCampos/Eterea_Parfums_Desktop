@@ -12,8 +12,6 @@ namespace Eterea_Parfums_Desktop
 
             PerfumesUC perfumesUC = new PerfumesUC();
             addUserControl(perfumesUC);
-
-
            
         }
 

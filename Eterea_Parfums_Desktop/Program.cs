@@ -70,6 +70,7 @@ namespace Eterea_Parfums_Desktop
                 // Iniciar la aplicación principal
 
                 Application.Run(new FormStart());
+                //Application.Run(new FormInicioAdministrador());
                 //Application.Run(new MenuABM());
                 //Application.Run(new FormInicioAutoconsulta());
             }
@@ -115,14 +116,14 @@ namespace Eterea_Parfums_Desktop
                 default:
                         MessageBox.Show("Usuario no válido, no se configuraron rutas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         break;
-                }
             }
+        }
     
 
 
 
    
-}
+    }
 
 
 
