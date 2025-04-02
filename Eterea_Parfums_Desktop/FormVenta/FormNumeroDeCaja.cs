@@ -39,15 +39,23 @@ namespace Eterea_Parfums_Desktop
 
                 if (cajaDisponible.HasValue)
                 {
-                    NumeroCaja = cajaDisponible.Value.ToString();
-                    ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
+                    // Intentamos marcar la caja como no disponible en la BD (transacción atómica)
+                    if (CajaControlador.MarcarCajaComoNoDisponible(cajaDisponible.Value, Program.sucursal))
+                    {
+                        NumeroCaja = cajaDisponible.Value.ToString();
+                        ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
 
-                    FormFacturacion facturacion = new FormFacturacion();
-                    facturacion.NumeroCaja = NumeroCaja;
-                    facturacion.Show();
+                        FormFacturacion facturacion = new FormFacturacion();
+                        facturacion.NumeroCaja = NumeroCaja;
+                        facturacion.Show();
 
-                    // Cerramos el formulario después de que termine de cargarse completamente
-                    this.BeginInvoke(new Action(() => this.Close()));
+                        this.BeginInvoke(new Action(() => this.Close()));
+                    }
+                    else
+                    {
+                        lbl_error_caja.Text = "La caja ya fue tomada por otro usuario. Intente con otra.";
+                        lbl_error_caja.Visible = true;
+                    }
                 }
                 else
                 {
@@ -60,9 +68,6 @@ namespace Eterea_Parfums_Desktop
                 MessageBox.Show("Error en Load: " + ex.Message);
             }
         }
-
-
-
 
 
 
@@ -115,17 +120,14 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_continuar_Click(object sender, EventArgs e)
         {
-            // Obtengo el valor ingresado en el txt_ing_numero_caja
             string numCaja = txt_ing_numero_caja.Text;
 
-            // Verifico si el valor ingresado es un número válido
             if (!string.IsNullOrWhiteSpace(numCaja) && int.TryParse(numCaja, out int numeroCaja))
             {
-                // Validar existencia y disponibilidad de la caja
-                if (CajaControlador.CajaDisponibleEnSucursal(numeroCaja, Program.sucursal))
+                // Intentamos marcar la caja como no disponible atómicamente
+                if (CajaControlador.MarcarCajaComoNoDisponible(numeroCaja, Program.sucursal))
                 {
                     NumeroCaja = numCaja;
-
                     ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
 
                     FormFacturacion facturacion = new FormFacturacion();
@@ -135,7 +137,7 @@ namespace Eterea_Parfums_Desktop
                 }
                 else
                 {
-                    lbl_error_caja.Text = "La caja no existe en esta sucursal o no está disponible.";
+                    lbl_error_caja.Text = "La caja ya fue tomada por otro usuario o no está disponible.";
                     lbl_error_caja.Visible = true;
                     txt_ing_numero_caja.Clear();
                     txt_ing_numero_caja.Focus();
@@ -151,7 +153,7 @@ namespace Eterea_Parfums_Desktop
         }
 
 
-       
+
 
 
 

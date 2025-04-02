@@ -75,6 +75,49 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
 
+        public static bool MarcarCajaComoNoDisponible(int numeroCaja, int sucursalId)
+        {
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            {
+                connection.Open();
+
+                string query = @"UPDATE dbo.caja
+                         SET disponible = 0
+                         WHERE numCaja = @NumeroCaja AND sucursal_id = @SucursalId AND disponible = 1";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@NumeroCaja", numeroCaja);
+                    cmd.Parameters.AddWithValue("@SucursalId", sucursalId);
+
+                    int filasAfectadas = cmd.ExecuteNonQuery();
+                    return filasAfectadas > 0; // Devuelve true si se marcó correctamente
+                }
+            }
+        }
+
+
+
+
+        public static void MarcarCajaComoDisponible(int numeroCaja, int sucursalId)
+        {
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            {
+                connection.Open();
+
+                string query = @"UPDATE dbo.caja
+                         SET disponible = 1
+                         WHERE numCaja = @NumeroCaja AND sucursal_id = @SucursalId";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@NumeroCaja", numeroCaja);
+                    cmd.Parameters.AddWithValue("@SucursalId", sucursalId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
 
 
 

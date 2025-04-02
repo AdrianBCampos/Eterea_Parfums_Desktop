@@ -197,10 +197,24 @@ namespace Eterea_Parfums_Desktop
 
         private void button2_Click(object sender, EventArgs e)
         {
+            // Convertimos el número de caja de string a int
+            if (int.TryParse(NumeroCaja, out int numCaja))
+            {
+                CajaControlador.MarcarCajaComoDisponible(numCaja, Program.sucursal);
+            }
+
             FormNumeroDeCaja numeroDeCaja = new FormNumeroDeCaja();
             numeroDeCaja.Show();
             this.Close();
         }
+
+
+       
+
+
+
+
+
 
         private void btn_buscar_Click(object sender, EventArgs e)
         {
