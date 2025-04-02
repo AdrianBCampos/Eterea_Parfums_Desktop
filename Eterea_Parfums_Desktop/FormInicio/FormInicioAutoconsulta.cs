@@ -660,18 +660,7 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_escanear_Click(object sender, EventArgs e)
         {
-            /* Escanear escanear = new Escanear();
-             escanear.Show();
-             this.Hide();*/
-            escaneoHabilitado = true;
 
-            // Ocultar el botón y mostrar el TextBox
-            btn_escanear.Visible = false;
-            txt_scan.Visible = true;
-            txt_scan.Enabled = true;
-            txt_scan.Focus(); // Poner el cursor en el TextBox
-            lbl_codigoBarras.Visible = true;
-            this.TopMost = false;  // Restaurar el estado normal de TopMost
         }
 
 
@@ -773,6 +762,9 @@ namespace Eterea_Parfums_Desktop
             lbl_codigoBarras.Visible = false;  // Ocultar lbl_codigoBarras
         }
 
+        private void btn_escanear_Click_1(object sender, EventArgs e)
+        {
 
+        }
     }
 }

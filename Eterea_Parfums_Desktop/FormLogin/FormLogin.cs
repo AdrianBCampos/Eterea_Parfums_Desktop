@@ -23,7 +23,7 @@ namespace Eterea_Parfums_Desktop
             
            
             // Suscribirse al evento Load (si no se ha hecho desde el diseñador)
-            this.Load += FormLogin_Load;
+            //this.Load += FormLogin_Load;
 
         }
 
@@ -32,10 +32,10 @@ namespace Eterea_Parfums_Desktop
             txt_usuario.Focus(); // Asigna el foco a txt_usuario al cargar el formulario
         }
 
-        private void FormLogin_Load(object sender, EventArgs e)
+        /*private void FormLogin_Load(object sender, EventArgs e)
         {
             txt_usuario.Focus(); // Asigna el foco a txt_usuario al cargar el formulario
-        }
+        }*/
 
         private void btn_login_Click(object sender, EventArgs e)
         {
