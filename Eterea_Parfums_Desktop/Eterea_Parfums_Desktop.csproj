@@ -99,6 +99,12 @@
     <Compile Include="FormInformeVenta\FormInformesDeVentas2.Designer.cs">
       <DependentUpon>FormInformesDeVentas2.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLogin\FormInicioAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin\FormInicioAdministrador.Designer.cs">
+      <DependentUpon>FormInicioAdministrador.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPedido\FormBuscarPedidos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -313,12 +319,6 @@
     <Compile Include="FormInformeVenta\FormSeleccionarInformeVenta.Designer.cs">
       <DependentUpon>FormSeleccionarInformeVenta.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLogin\FormInicioAdministrador.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormLogin\FormInicioAdministrador.Designer.cs">
-      <DependentUpon>FormInicioAdministrador.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormInicio\FormInicioAutoconsulta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -390,6 +390,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormInformeVenta\FormInformesDeVentas2.resx">
       <DependentUpon>FormInformesDeVentas2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin\FormInicioAdministrador.resx">
+      <DependentUpon>FormInicioAdministrador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPedido\FormBuscarPedidos.resx">
       <DependentUpon>FormBuscarPedidos.cs</DependentUpon>
@@ -474,9 +477,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormInformeVenta\FormSeleccionarInformeVenta.resx">
       <DependentUpon>FormSeleccionarInformeVenta.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormLogin\FormInicioAdministrador.resx">
-      <DependentUpon>FormInicioAdministrador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormInicio\FormInicioAutoconsulta.resx">
       <DependentUpon>FormInicioAutoconsulta.cs</DependentUpon>
