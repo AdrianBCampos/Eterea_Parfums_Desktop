@@ -15,6 +15,8 @@ namespace Eterea_Parfums_Desktop
         // Declaro una propiedad para almacenar el valor del número de caja
         public string NumeroCaja { get; private set; }
 
+        public bool AutoTomarCaja { get; set; } = true;
+
         public FormNumeroDeCaja()
         {
             InitializeComponent();
@@ -35,11 +37,18 @@ namespace Eterea_Parfums_Desktop
         {
             try
             {
+                if (!AutoTomarCaja)
+                {
+                    // No hacer nada, solo mostrar pantalla con input de número de caja o botón
+                    txt_ing_numero_caja.Visible = true;
+                    lbl_error_caja.Visible = false;
+                    return;
+                }
+
                 int? cajaDisponible = CajaControlador.ObtenerUnicaCajaDisponibleEnSucursal(Program.sucursal);
 
                 if (cajaDisponible.HasValue)
                 {
-                    // Intentamos marcar la caja como no disponible en la BD (transacción atómica)
                     if (CajaControlador.MarcarCajaComoNoDisponible(cajaDisponible.Value, Program.sucursal))
                     {
                         NumeroCaja = cajaDisponible.Value.ToString();
@@ -69,6 +78,7 @@ namespace Eterea_Parfums_Desktop
                 MessageBox.Show("Error en Load: " + ex.Message);
             }
         }
+
 
 
 

@@ -212,6 +212,7 @@ namespace Eterea_Parfums_Desktop
 
 
             FormNumeroDeCaja numeroDeCaja = new FormNumeroDeCaja();
+            numeroDeCaja.AutoTomarCaja = false; // No volver a tomar la única caja automáticamente
             numeroDeCaja.Show();
             this.Close();
         }
