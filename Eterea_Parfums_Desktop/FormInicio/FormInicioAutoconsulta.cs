@@ -241,7 +241,7 @@ namespace Eterea_Parfums_Desktop
                     login.ShowDialog(); // Mostrar de forma modal
 
                     // Restaurar FormInicioAutoconsulta si es necesario al cerrar el login
-                    this.Show(this);
+                    //this.Show(this);
 
 
                 }

@@ -30,7 +30,13 @@
         {
             this.btn_start = new System.Windows.Forms.Button();
             this.SuspendLayout();
-           
+            // 
+            // btn_start
+            // 
+            this.btn_start.Location = new System.Drawing.Point(0, 0);
+            this.btn_start.Name = "btn_start";
+            this.btn_start.Size = new System.Drawing.Size(75, 23);
+            this.btn_start.TabIndex = 0;
             // 
             // FormStart
             // 
@@ -39,11 +45,11 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
             this.ClientSize = new System.Drawing.Size(1067, 554);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormStart";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            
             this.ResumeLayout(false);
 
         }

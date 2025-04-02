@@ -77,12 +77,12 @@ namespace Eterea_Parfums_Desktop
             this.Close();
         }
 
-        private void btn_administrar_stock_Click(object sender, EventArgs e)
+        private void btn_gestionar_Click(object sender, EventArgs e)
         {
-            AdministrarStock_UC administrarStockUC = new AdministrarStock_UC();
-            addUserControl(administrarStockUC);
+            Gestionar_UC adminUC = new Gestionar_UC();
+            addUserControl(adminUC);
 
-            CambiarColorBoton3((Button)sender);
+            CambiarColorBoton1((Button)sender);
         }
 
         private void btn_facturar_Click(object sender, EventArgs e)
@@ -93,13 +93,13 @@ namespace Eterea_Parfums_Desktop
             CambiarColorBoton2((Button)sender);
         }
 
-        private void btn_gestionar_Click(object sender, EventArgs e)
+        private void btn_administrar_stock_Click(object sender, EventArgs e)
         {
-            Gestionar_UC adminUC = new Gestionar_UC();
-            addUserControl(adminUC);
+            AdministrarStock_UC administrarStockUC = new AdministrarStock_UC();
+            addUserControl(administrarStockUC);
 
-            CambiarColorBoton1((Button)sender);
-        }
+            CambiarColorBoton3((Button)sender);
+        }    
 
         private void btn_generar_informes_Click(object sender, EventArgs e)
         {
