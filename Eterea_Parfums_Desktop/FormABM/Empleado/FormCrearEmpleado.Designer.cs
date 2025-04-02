@@ -1146,7 +1146,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(967, 910);
+            this.ClientSize = new System.Drawing.Size(967, 909);
             this.Controls.Add(this.txt_sueldo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.combo_sucursal);
@@ -1231,6 +1231,7 @@
             this.Controls.Add(this.pictureBox14);
             this.Controls.Add(this.pictureBox15);
             this.Controls.Add(this.pictureBox16);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormCrearEmpleado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
