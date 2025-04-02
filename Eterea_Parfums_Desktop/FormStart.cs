@@ -24,12 +24,12 @@ namespace Eterea_Parfums_Desktop
 
             this.KeyPreview = true;
 
-            //this.Load += FormStart_Load; // Suscribir el evento Load al método FormStart_Load
+            this.Load += FormStart_Load; // Suscribir el evento Load al método FormStart_Load
 
         }
 
 
-         private void InicioAutoConsultas_KeyDown_1(object sender, KeyEventArgs e)
+         /*private void InicioAutoConsultas_KeyDown_1(object sender, KeyEventArgs e)
          {
 
 
@@ -49,11 +49,11 @@ namespace Eterea_Parfums_Desktop
                  }
              }
          }
+         */
 
+        
 
-
-
-        /* private void FormStart_Load(object sender, EventArgs e)
+         private void FormStart_Load(object sender, EventArgs e)
           {
               // Llamar al método para abrir FormInicioAutoconsulta automáticamente
               AbrirFormInicioAutoconsulta();
@@ -80,7 +80,7 @@ namespace Eterea_Parfums_Desktop
 
               // **Deshabilitar FormStart para que no reciba clics ni interacciones**
               this.Enabled = false;
-          }*/
+          }
 
 
 
