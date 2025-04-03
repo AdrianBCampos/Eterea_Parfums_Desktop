@@ -23,8 +23,17 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void btn_crear_perfume_Click_1(object sender, EventArgs e)
         {
-            FormCrearPerfume1 productos = new FormCrearPerfume1(this);
-            productos.ShowDialog(this);
+            FormCrearPerfume1 productos = new FormCrearPerfume1(this);          
+
+            DialogResult dr = productos.ShowDialog(this);
+
+            if (dr == DialogResult.OK)
+            {
+                Trace.WriteLine("OK");
+
+                //ACTUALIZAR LA LISTA
+                cargarPerfumes();
+            }
         }
 
         internal void cargarPerfumes(string filtroPerfume = "")
@@ -109,28 +118,34 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 Genero genero = GeneroControlador.getById(perfume_editar.genero.id);
                 Pais pais = PaisControlador.getById(perfume_editar.pais.id);
                 perfume_editar = new Perfume(perfume_editar.id, perfume_editar.codigo, marca, perfume_editar.nombre, tipo_de_perfume, genero, perfume_editar.presentacion_ml, pais, perfume_editar.spray, perfume_editar.recargable, perfume_editar.descripcion, perfume_editar.anio_de_lanzamiento, perfume_editar.precio_en_pesos, perfume_editar.activo, perfume_editar.imagen1, perfume_editar.imagen2);
-                Form abmForm = Application.OpenForms["formMenuABM"];
-                abmForm.Hide();
-                Form mainForm = Application.OpenForms["formStart"];
                 FormEditarPerfume1 formEditarProductoABM = new FormEditarPerfume1(perfume_editar, this);
+
+
                 //ACTUALIZAR LA LISTA
-                cargarPerfumes();
+                //cargarPerfumes();
+                //formEditarProductoABM.ShowDialog();
 
-                formEditarProductoABM.ShowDialog(mainForm);
+                DialogResult dr = formEditarProductoABM.ShowDialog(this);
 
-                abmForm.Show();
+                if (dr == DialogResult.OK)
+                {
+                    Trace.WriteLine("OK");
+
+                    //ACTUALIZAR LA LISTA
+                    cargarPerfumes();
+                }
             }
 
 
             else if (senderGrid.Columns[e.ColumnIndex].Name == "Eliminar")
             {
                 //ELIMINAMOS
-
-
                 int id = int.Parse(dataGridViewPerfumes.Rows[e.RowIndex].Cells[0].Value.ToString());
                 Perfume perfume = PerfumeControlador.getByID(id);
-                FormEliminarPerfume formEliminarProductoABM = new FormEliminarPerfume(perfume);
+                FormEliminarPerfume formEliminarProductoABM = new FormEliminarPerfume(perfume, this);
+
                 DialogResult dr = formEliminarProductoABM.ShowDialog(this);
+
                 if (dr == DialogResult.OK)
                 {
                     Trace.WriteLine("OK");

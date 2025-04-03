@@ -4,6 +4,7 @@ using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -20,11 +21,15 @@ namespace Eterea_Parfums_Desktop
         private FormCrearPerfume1 formProducto;
         private PerfumesUC perfumesUC;
         private NotasDelPerfume notasDelPerfume;
+
+        
+
         public FormCrearPerfume2()
         {
             InitializeComponent();
             cargarTipoDeAromas();
             cargarTipoDeNotas();
+            
         }
 
         public FormCrearPerfume2(Perfume perfume, FormCrearPerfume1 formProducto, PerfumesUC perfumesUC)
@@ -40,6 +45,9 @@ namespace Eterea_Parfums_Desktop
             lbl_error_seleccion_aroma.Visible = false;
             lbl_error_seleccion_nota.Visible = false;
             this.formProducto = formProducto;
+
+            this.Load += new System.EventHandler(this.FormCrearPerfume2_Load);
+            checkedListBoxAroma.ItemCheck += checkedListBoxAroma_ItemCheck;
         }
 
         private void cargarTipoDeAromas()
@@ -99,7 +107,7 @@ namespace Eterea_Parfums_Desktop
                 else
                 {
                     MessageBox.Show("No se encontró ninguna nota con ese nombre");
-                    lbl_buscar_nota.Text = "";
+                    //lbl_buscar_nota.Text = "";
                     txt_nota.Text = "";
                 }
             }
@@ -114,6 +122,9 @@ namespace Eterea_Parfums_Desktop
         {
             Nota nota = null;
             TipoDeNota tipo_de_nota = null;
+
+            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
+            dataGridViewNotasDelPerfume.RowHeadersVisible = false;
 
             if (notas_con_tipo_de_nota != null)
             {
@@ -130,6 +141,8 @@ namespace Eterea_Parfums_Desktop
                     dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[3].Value = "Eliminar";
 
                 }
+
+                dataGridViewNotasDelPerfume.CellPainting += dataGridViewNotasDelPerfume_CellPainting;
             }
         }
         private void btn_agregar_Click(object sender, EventArgs e)
@@ -193,21 +206,6 @@ namespace Eterea_Parfums_Desktop
 
         }
 
-        private void dataGridViewNotasDelPerfume_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var senderGrid = (DataGridView)sender;
-            int id = int.Parse(dataGridViewNotasDelPerfume.Rows[e.RowIndex].Cells[0].Value.ToString());
-
-            if (senderGrid.Columns[e.ColumnIndex].Name == "Eliminar")
-            {
-                //ELIMINAMOS
-                notas_con_tipo_de_nota = notas_con_tipo_de_nota.Where(x => x.id != id).ToList();
-                notas_del_perfume = notas_del_perfume.Where(x => x.notaConTipoDeNota.id != id).ToList();
-                cargarDataGridViewNotasDePerfume();
-                MessageBox.Show("Se ha eliminado la nota con el tipo de nota del perfume correctamente");
-            }
-        }
-
 
         private void btn_finalizar_Click(object sender, EventArgs e)
         {
@@ -242,18 +240,15 @@ namespace Eterea_Parfums_Desktop
                 }
             }
 
+           
 
             MessageBox.Show("Se registro perfume con aromas y notas del perfume correctamente");
             this.Close();
+            formProducto.Close();
             perfumesUC.cargarPerfumes();
 
         }
-        private void btn_x_cerrar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            formProducto.Show();
-        }
-
+        
         private void checkedListBoxNota_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             this.BeginInvoke(new Action(() =>
@@ -279,5 +274,121 @@ namespace Eterea_Parfums_Desktop
                 }
             }));
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            formProducto.Show();
+        }
+
+        private void dataGridViewNotasDelPerfume_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+            int id = int.Parse(dataGridViewNotasDelPerfume.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+            if (senderGrid.Columns[e.ColumnIndex].Name == "Eliminar")
+            {
+                //ELIMINAMOS
+                notas_con_tipo_de_nota = notas_con_tipo_de_nota.Where(x => x.id != id).ToList();
+                notas_del_perfume = notas_del_perfume.Where(x => x.notaConTipoDeNota.id != id).ToList();
+                cargarDataGridViewNotasDePerfume();
+                MessageBox.Show("Se ha eliminado la nota con el tipo de nota del perfume correctamente");
+            }
+        }
+
+        //Diseño del boton del datagridview
+        private void dataGridViewNotasDelPerfume_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0 && dataGridViewNotasDelPerfume.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                e.Handled = true;
+                e.PaintBackground(e.CellBounds, true);
+
+                // Crear un rectángulo para el botón
+                Rectangle buttonRect = e.CellBounds;
+                buttonRect.Inflate(-2, -2); // Reducir tamaño para dar efecto de borde
+
+                // Definir colores personalizados
+                Color buttonColor = Color.FromArgb(228, 137, 164); // Color de fondo del botón
+                Color textColor = Color.FromArgb(250, 236, 239); // Color del texto
+
+                using (SolidBrush brush = new SolidBrush(buttonColor))
+                {
+                    e.Graphics.FillRectangle(brush, buttonRect);
+                }
+
+                // Dibujar el texto del botón
+                TextRenderer.DrawText(e.Graphics, (string)e.Value, e.CellStyle.Font, buttonRect, textColor,
+                                      TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+            }
+        }
+
+
+
+
+        private void checkedListBoxAroma_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            // Espera hasta que se complete el evento para actualizar el control
+            this.BeginInvoke((MethodInvoker)delegate
+            {
+                for (int i = 0; i < checkedListBoxAroma.Items.Count; i++)
+                {
+                    if (checkedListBoxAroma.GetItemChecked(i))
+                    {
+                        // Cambia el color del elemento marcado
+                        checkedListBoxAroma.BackColor = Color.LightGreen;
+                    }
+                    else
+                    {
+                        // Color por defecto
+                        checkedListBoxAroma.BackColor = Color.White;
+                    }
+                }
+            });
+        }
+
+
+        private void checkedListBoxAroma_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            // Evita el fondo por defecto
+            e.DrawBackground();
+
+            // Ítem actual
+            string itemText = checkedListBoxAroma.Items[e.Index].ToString();
+
+            // Determina si el ítem está seleccionado o chequeado
+            bool isChecked = checkedListBoxAroma.GetItemChecked(e.Index);
+
+            // Configuración de colores
+            Color textColor = Color.Black;
+            Color backgroundColor = Color.White;
+
+            // Si está seleccionado o chequeado, cambia colores
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected || isChecked)
+            {
+                backgroundColor = Color.FromArgb(232, 186, 197); // Color personalizado
+                textColor = Color.White;
+            }
+
+            // Pintar fondo y texto
+            using (SolidBrush backgroundBrush = new SolidBrush(backgroundColor))
+            using (SolidBrush textBrush = new SolidBrush(textColor))
+            {
+                e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
+                e.Graphics.DrawString(itemText, e.Font, textBrush, e.Bounds);
+            }
+
+            e.DrawFocusRectangle();
+        }
+
+        // Configuración del CheckedListBox
+        private void FormCrearPerfume2_Load(object sender, EventArgs e)
+        {
+            checkedListBoxAroma.DrawMode = DrawMode.OwnerDrawFixed;
+            checkedListBoxAroma.DrawItem += checkedListBoxAroma_DrawItem;
+        }
+
+
     }
+
 }

@@ -69,12 +69,42 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BarcodeReceiver.cs" />
+    <Compile Include="ControlesDeUsuario\AdministrarStock\AdministrarStock_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\AdministrarStock\AdministrarStock_UC.Designer.cs">
+      <DependentUpon>AdministrarStock_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\Facturar\Facturar_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\Facturar\Facturar_UC.Designer.cs">
+      <DependentUpon>Facturar_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\GenerarInformes\InformesDeVentas1_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\GenerarInformes\InformesDeVentas1_UC.Designer.cs">
+      <DependentUpon>InformesDeVentas1_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\Gestionar\Gestionar_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\Gestionar\Gestionar_UC.Designer.cs">
+      <DependentUpon>Gestionar_UC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controladores\CajaControlador.cs" />
     <Compile Include="FormInformeVenta\FormInformesDeVentas2.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormInformeVenta\FormInformesDeVentas2.Designer.cs">
       <DependentUpon>FormInformesDeVentas2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogin\FormInicioAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin\FormInicioAdministrador.Designer.cs">
+      <DependentUpon>FormInicioAdministrador.cs</DependentUpon>
     </Compile>
     <Compile Include="FormPedido\FormBuscarPedidos.cs">
       <SubType>Form</SubType>
@@ -120,10 +150,10 @@
     <Compile Include="Controladores\TipoDeAromaControlador.cs" />
     <Compile Include="Controladores\TipoDeNotaControlador.cs" />
     <Compile Include="Controladores\TipoDePerfumeControlador.cs" />
-    <Compile Include="ControlesDeUsuario\PerfumesUC.cs">
+    <Compile Include="ControlesDeUsuario\Gestionar\PerfumesUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ControlesDeUsuario\PerfumesUC.Designer.cs">
+    <Compile Include="ControlesDeUsuario\Gestionar\PerfumesUC.Designer.cs">
       <DependentUpon>PerfumesUC.cs</DependentUpon>
     </Compile>
     <Compile Include="DTOs\PerfumeDTO.cs" />
@@ -140,22 +170,22 @@
       <DependentUpon>FormEditarPerfume1.cs</DependentUpon>
     </Compile>
     <Compile Include="Controladores\SucursalControlador.cs" />
-    <Compile Include="ControlesDeUsuario\Clientes_UC.cs">
+    <Compile Include="ControlesDeUsuario\Gestionar\Clientes_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ControlesDeUsuario\Clientes_UC.Designer.cs">
+    <Compile Include="ControlesDeUsuario\Gestionar\Clientes_UC.Designer.cs">
       <DependentUpon>Clientes_UC.cs</DependentUpon>
     </Compile>
-    <Compile Include="ControlesDeUsuario\Empleados_UC.cs">
+    <Compile Include="ControlesDeUsuario\Gestionar\Empleados_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ControlesDeUsuario\Empleados_UC.Designer.cs">
+    <Compile Include="ControlesDeUsuario\Gestionar\Empleados_UC.Designer.cs">
       <DependentUpon>Empleados_UC.cs</DependentUpon>
     </Compile>
-    <Compile Include="ControlesDeUsuario\Promos_UC.cs">
+    <Compile Include="ControlesDeUsuario\Gestionar\Promos_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ControlesDeUsuario\Promos_UC.Designer.cs">
+    <Compile Include="ControlesDeUsuario\Gestionar\Promos_UC.Designer.cs">
       <DependentUpon>Promos_UC.cs</DependentUpon>
     </Compile>
     <Compile Include="FormInicio\FormEscanear.cs">
@@ -290,12 +320,6 @@
     <Compile Include="FormInformeVenta\FormSeleccionarInformeVenta.Designer.cs">
       <DependentUpon>FormSeleccionarInformeVenta.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLogin\FormInicioAdministrador.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormLogin\FormInicioAdministrador.Designer.cs">
-      <DependentUpon>FormInicioAdministrador.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormInicio\FormInicioAutoconsulta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,8 +377,23 @@
     <Compile Include="FormInfoPerfume\FormVerPromociones.Designer.cs">
       <DependentUpon>FormVerPromociones.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ControlesDeUsuario\AdministrarStock\AdministrarStock_UC.resx">
+      <DependentUpon>AdministrarStock_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesDeUsuario\Facturar\Facturar_UC.resx">
+      <DependentUpon>Facturar_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesDeUsuario\GenerarInformes\InformesDeVentas1_UC.resx">
+      <DependentUpon>InformesDeVentas1_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesDeUsuario\Gestionar\Gestionar_UC.resx">
+      <DependentUpon>Gestionar_UC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormInformeVenta\FormInformesDeVentas2.resx">
       <DependentUpon>FormInformesDeVentas2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin\FormInicioAdministrador.resx">
+      <DependentUpon>FormInicioAdministrador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPedido\FormBuscarPedidos.resx">
       <DependentUpon>FormBuscarPedidos.cs</DependentUpon>
@@ -368,7 +407,7 @@
     <EmbeddedResource Include="FormABM\Perfume\FormCrearPerfume2.resx">
       <DependentUpon>FormCrearPerfume2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlesDeUsuario\PerfumesUC.resx">
+    <EmbeddedResource Include="ControlesDeUsuario\Gestionar\PerfumesUC.resx">
       <DependentUpon>PerfumesUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormABM\Perfume\FormEditarPerfume2.resx">
@@ -377,13 +416,13 @@
     <EmbeddedResource Include="FormABM\Perfume\FormEditarPerfume1.resx">
       <DependentUpon>FormEditarPerfume1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlesDeUsuario\Clientes_UC.resx">
+    <EmbeddedResource Include="ControlesDeUsuario\Gestionar\Clientes_UC.resx">
       <DependentUpon>Clientes_UC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlesDeUsuario\Promos_UC.resx">
+    <EmbeddedResource Include="ControlesDeUsuario\Gestionar\Promos_UC.resx">
       <DependentUpon>Promos_UC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlesDeUsuario\Empleados_UC.resx">
+    <EmbeddedResource Include="ControlesDeUsuario\Gestionar\Empleados_UC.resx">
       <DependentUpon>Empleados_UC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormInicio\FormEscanear.resx">
@@ -439,9 +478,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormInformeVenta\FormSeleccionarInformeVenta.resx">
       <DependentUpon>FormSeleccionarInformeVenta.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormLogin\FormInicioAdministrador.resx">
-      <DependentUpon>FormInicioAdministrador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormInicio\FormInicioAutoconsulta.resx">
       <DependentUpon>FormInicioAutoconsulta.cs</DependentUpon>

@@ -4,8 +4,10 @@ using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Eterea_Parfums_Desktop
 {
@@ -40,6 +42,7 @@ namespace Eterea_Parfums_Desktop
             cargarDataGridViewNotasDePerfume();
             lbl_error_seleccion_aroma.Visible = false;
             lbl_error_seleccion_nota.Visible = false;
+        
         }
 
         private void CargarDatosCheckBoxListAromas()
@@ -137,6 +140,9 @@ namespace Eterea_Parfums_Desktop
             Nota nota = null;
             TipoDeNota tipo_de_nota = null;
 
+            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
+            dataGridViewNotasDelPerfume.RowHeadersVisible = false;
+
             if (notas_del_perfume != null)
             {
                 //dataGridViewNotasDelPerfume.DataSource = notas;
@@ -162,6 +168,7 @@ namespace Eterea_Parfums_Desktop
                     dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[3].Value = "Eliminar";
 
                 }
+                dataGridViewNotasDelPerfume.CellPainting += dataGridViewNotasDelPerfume_CellPainting;
             }
         }
 
@@ -185,6 +192,8 @@ namespace Eterea_Parfums_Desktop
                     dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[3].Value = "Eliminar";
 
                 }
+
+               
             }
         }
         private void btn_agregar_Click(object sender, EventArgs e)
@@ -257,6 +266,7 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
+      
         private void btn_finalizar_Click(object sender, EventArgs e)
         {
             if (checkedListBoxAroma.CheckedItems.Count == 0)
@@ -323,16 +333,18 @@ namespace Eterea_Parfums_Desktop
 
             MessageBox.Show("Se han guardado los cambios del perfume correctamente.");
             this.Close();
+            formEditarProducto.Close();
             //Actualizar la lista de perfumes en el perfumesUC
             perfumesUC.cargarPerfumes();
         }
+
         private void btn_x_cerrar_Click(object sender, EventArgs e)
         {
             this.Close();
             formEditarProducto.Show();
         }
 
-        private void checkedListBoxNota_ItemCheck(object sender, ItemCheckEventArgs e)
+       /* private void checkedListBoxNota_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             this.BeginInvoke(new Action(() =>
             {
@@ -356,6 +368,39 @@ namespace Eterea_Parfums_Desktop
                     lbl_tipo_de_nota.Text = ultimoMarcado;
                 }
             }));
+        }*/
+
+
+         
+        //Diseño del boton del datagridview
+        private void dataGridViewNotasDelPerfume_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0 && dataGridViewNotasDelPerfume.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                e.Handled = true;
+                e.PaintBackground(e.CellBounds, true);
+
+                // Crear un rectángulo para el botón
+                Rectangle buttonRect = e.CellBounds;
+                buttonRect.Inflate(-2, -2); // Reducir tamaño para dar efecto de borde
+
+                // Definir colores personalizados
+                Color buttonColor = Color.FromArgb(228, 137, 164); // Color de fondo del botón
+                Color textColor = Color.FromArgb(250, 236, 239); // Color del texto
+
+                using (SolidBrush brush = new SolidBrush(buttonColor))
+                {
+                    e.Graphics.FillRectangle(brush, buttonRect);
+                }
+
+                // Dibujar el texto del botón
+                TextRenderer.DrawText(e.Graphics, (string)e.Value, e.CellStyle.Font, buttonRect, textColor,
+                                      TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+            }
         }
+
+
+
+
     }
 }

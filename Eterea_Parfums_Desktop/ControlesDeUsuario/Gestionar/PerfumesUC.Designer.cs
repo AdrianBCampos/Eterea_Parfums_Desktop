@@ -68,15 +68,12 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(150)))), ((int)(((byte)(170)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 81);
+            this.pictureBox2.Location = new System.Drawing.Point(12, 17);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1314, 411);
+            this.pictureBox2.Size = new System.Drawing.Size(1685, 692);
             this.pictureBox2.TabIndex = 228;
             this.pictureBox2.TabStop = false;
             // 
@@ -84,39 +81,39 @@
             // 
             this.txt_buscar_codigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.txt_buscar_codigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_buscar_codigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_buscar_codigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_buscar_codigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_buscar_codigo.Location = new System.Drawing.Point(674, 27);
+            this.txt_buscar_codigo.Location = new System.Drawing.Point(634, 115);
             this.txt_buscar_codigo.Margin = new System.Windows.Forms.Padding(4);
             this.txt_buscar_codigo.Name = "txt_buscar_codigo";
-            this.txt_buscar_codigo.Size = new System.Drawing.Size(264, 27);
+            this.txt_buscar_codigo.Size = new System.Drawing.Size(543, 34);
             this.txt_buscar_codigo.TabIndex = 290;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label2.Location = new System.Drawing.Point(365, 30);
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(150)))), ((int)(((byte)(170)))));
+            this.label2.Location = new System.Drawing.Point(257, 118);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(273, 24);
+            this.label2.Size = new System.Drawing.Size(345, 29);
             this.label2.TabIndex = 289;
             this.label2.Text = "Filtrar Perfumes por Código:";
             // 
             // lbl_empleados
             // 
             this.lbl_empleados.AutoSize = true;
-            this.lbl_empleados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_empleados.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_empleados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_empleados.Location = new System.Drawing.Point(87, 25);
+            this.lbl_empleados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
+            this.lbl_empleados.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_empleados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(150)))), ((int)(((byte)(170)))));
+            this.lbl_empleados.Location = new System.Drawing.Point(704, 43);
             this.lbl_empleados.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_empleados.Name = "lbl_empleados";
-            this.lbl_empleados.Size = new System.Drawing.Size(143, 32);
+            this.lbl_empleados.Size = new System.Drawing.Size(297, 38);
             this.lbl_empleados.TabIndex = 288;
-            this.lbl_empleados.Text = "Perfumes";
+            this.lbl_empleados.Text = "Lista de Perfumes";
             // 
             // btn_crear_perfume
             // 
@@ -124,7 +121,7 @@
             this.btn_crear_perfume.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_crear_perfume.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_crear_perfume.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_crear_perfume.Location = new System.Drawing.Point(1065, 18);
+            this.btn_crear_perfume.Location = new System.Drawing.Point(1427, 110);
             this.btn_crear_perfume.Margin = new System.Windows.Forms.Padding(4);
             this.btn_crear_perfume.Name = "btn_crear_perfume";
             this.btn_crear_perfume.Size = new System.Drawing.Size(183, 46);
@@ -135,40 +132,41 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox3.Location = new System.Drawing.Point(-3, 6);
+            this.pictureBox3.Location = new System.Drawing.Point(27, 27);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(327, 71);
+            this.pictureBox3.Size = new System.Drawing.Size(1658, 71);
             this.pictureBox3.TabIndex = 284;
             this.pictureBox3.TabStop = false;
             // 
             // pictureBox4
             // 
-            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox4.Location = new System.Drawing.Point(330, 6);
+            this.pictureBox4.Location = new System.Drawing.Point(27, 102);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(651, 71);
+            this.pictureBox4.Size = new System.Drawing.Size(1303, 62);
             this.pictureBox4.TabIndex = 285;
             this.pictureBox4.TabStop = false;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(987, 6);
+            this.pictureBox1.Location = new System.Drawing.Point(1336, 102);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(327, 71);
+            this.pictureBox1.Size = new System.Drawing.Size(349, 62);
             this.pictureBox1.TabIndex = 286;
             this.pictureBox1.TabStop = false;
             // 
             // dataGridViewPerfumes
             // 
             this.dataGridViewPerfumes.AllowUserToAddRows = false;
+            this.dataGridViewPerfumes.AllowUserToDeleteRows = false;
             this.dataGridViewPerfumes.AllowUserToResizeRows = false;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
@@ -182,13 +180,13 @@
             this.dataGridViewPerfumes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewPerfumes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.dataGridViewPerfumes.ColumnHeadersHeight = 24;
+            this.dataGridViewPerfumes.ColumnHeadersHeight = 45;
             this.dataGridViewPerfumes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Codigo,
@@ -214,7 +212,7 @@
             this.dataGridViewPerfumes.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewPerfumes.EnableHeadersVisualStyles = false;
             this.dataGridViewPerfumes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.dataGridViewPerfumes.Location = new System.Drawing.Point(8, 89);
+            this.dataGridViewPerfumes.Location = new System.Drawing.Point(27, 173);
             this.dataGridViewPerfumes.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewPerfumes.Name = "dataGridViewPerfumes";
             this.dataGridViewPerfumes.ReadOnly = true;
@@ -234,12 +232,13 @@
             this.dataGridViewPerfumes.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewPerfumes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewPerfumes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPerfumes.Size = new System.Drawing.Size(1297, 393);
+            this.dataGridViewPerfumes.Size = new System.Drawing.Size(1658, 521);
             this.dataGridViewPerfumes.TabIndex = 291;
             this.dataGridViewPerfumes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPerfumes_CellContentClick_1);
             // 
             // Id
             // 
+            this.Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
@@ -249,6 +248,7 @@
             this.Id.MinimumWidth = 6;
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
+            this.Id.Width = 40;
             // 
             // Codigo
             // 
@@ -285,17 +285,21 @@
             // 
             // Genero
             // 
+            this.Genero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Genero.HeaderText = "Género";
             this.Genero.MinimumWidth = 6;
             this.Genero.Name = "Genero";
             this.Genero.ReadOnly = true;
+            this.Genero.Width = 80;
             // 
             // Presentacion_en_mi
             // 
+            this.Presentacion_en_mi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Presentacion_en_mi.HeaderText = "Presentación en ml";
             this.Presentacion_en_mi.MinimumWidth = 6;
             this.Presentacion_en_mi.Name = "Presentacion_en_mi";
             this.Presentacion_en_mi.ReadOnly = true;
+            this.Presentacion_en_mi.Width = 110;
             // 
             // Pais_de_origen
             // 
@@ -306,17 +310,21 @@
             // 
             // En_spray
             // 
+            this.En_spray.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.En_spray.HeaderText = "Spray";
             this.En_spray.MinimumWidth = 6;
             this.En_spray.Name = "En_spray";
             this.En_spray.ReadOnly = true;
+            this.En_spray.Width = 60;
             // 
             // Es_recargable
             // 
+            this.Es_recargable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Es_recargable.HeaderText = "Recargable";
             this.Es_recargable.MinimumWidth = 6;
             this.Es_recargable.Name = "Es_recargable";
             this.Es_recargable.ReadOnly = true;
+            this.Es_recargable.Width = 125;
             // 
             // Precio
             // 
@@ -327,10 +335,12 @@
             // 
             // Stock
             // 
+            this.Stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Stock.HeaderText = "Stock";
             this.Stock.MinimumWidth = 6;
             this.Stock.Name = "Stock";
             this.Stock.ReadOnly = true;
+            this.Stock.Width = 60;
             // 
             // Editar
             // 
@@ -358,7 +368,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
             this.Controls.Add(this.dataGridViewPerfumes);
             this.Controls.Add(this.txt_buscar_codigo);
             this.Controls.Add(this.label2);
@@ -370,7 +380,7 @@
             this.Controls.Add(this.pictureBox2);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PerfumesUC";
-            this.Size = new System.Drawing.Size(1312, 505);
+            this.Size = new System.Drawing.Size(1708, 720);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();

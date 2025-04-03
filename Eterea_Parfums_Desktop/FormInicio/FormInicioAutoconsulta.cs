@@ -51,6 +51,7 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
+
             this.TopMost = false;
             //ESCALAR TAMAÑO DEL FORM
             //float scaleFactor = 0.8f; // 80% del tamaño original
@@ -119,9 +120,6 @@ namespace Eterea_Parfums_Desktop
           
            
         }
-
-
-
 
         /* private void txt_scan_TextChanged(object sender, EventArgs e)
          {
@@ -249,7 +247,6 @@ namespace Eterea_Parfums_Desktop
             btn_escanear.Visible = true;
         }
 
-
         private void GuardarTextoEnArchivo(string texto)
         {
             string rutaArchivo = @"C:\Users\intersan\Desktop\TESIS\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\txt_scan.txt";
@@ -267,7 +264,7 @@ namespace Eterea_Parfums_Desktop
                 if (formStart != null)
                 {
                     // Ocultar FormInicioAutoconsulta antes de abrir FormLogin
-                    this.Hide();
+                    this.Hide();                 
 
                     // Traer FormStart al fondo pero asegurando que esté visible
                     formStart.Show();
@@ -280,7 +277,9 @@ namespace Eterea_Parfums_Desktop
                     login.ShowDialog(); // Mostrar de forma modal
 
                     // Restaurar FormInicioAutoconsulta si es necesario al cerrar el login
-                    //this.Show();
+                    //this.Show(this);
+
+
                 }
                 else
                 {
@@ -777,8 +776,6 @@ namespace Eterea_Parfums_Desktop
             }
         }*/
 
-
-
         /*public bool IsFocused()
         {
             return txt_scan.Focused;
@@ -811,7 +808,5 @@ namespace Eterea_Parfums_Desktop
             txt_scan.Visible = false;     // Ocultar txt_scan
             lbl_codigoBarras.Visible = false;  // Ocultar lbl_codigoBarras
         }
-
-
     }
 }

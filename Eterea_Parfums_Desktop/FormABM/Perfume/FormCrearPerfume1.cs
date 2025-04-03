@@ -3,6 +3,7 @@ using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -156,9 +157,18 @@ namespace Eterea_Parfums_Desktop
             {
                 Perfume perfume = crear();
                 Console.WriteLine(perfume.id);
-                this.Hide();
                 FormCrearPerfume2 aromaNota = new FormCrearPerfume2(perfume, this, perfumesUC);
-                aromaNota.Show();
+                //aromaNota.ShowDialog();
+
+                DialogResult dr = aromaNota.ShowDialog(this);
+
+                if (dr == DialogResult.OK)
+                {
+                    Trace.WriteLine("OK");
+                 
+                }
+
+               
             }
 
         }
@@ -545,5 +555,7 @@ namespace Eterea_Parfums_Desktop
             // Evitar problemas visuales
             e.DrawFocusRectangle();
         }
+
+        
     }
 }
