@@ -70,10 +70,10 @@
             this.btn_administrar_stock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_administrar_stock.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_administrar_stock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_administrar_stock.Location = new System.Drawing.Point(1018, 219);
+            this.btn_administrar_stock.Location = new System.Drawing.Point(754, 197);
             this.btn_administrar_stock.Margin = new System.Windows.Forms.Padding(4);
             this.btn_administrar_stock.Name = "btn_administrar_stock";
-            this.btn_administrar_stock.Size = new System.Drawing.Size(492, 57);
+            this.btn_administrar_stock.Size = new System.Drawing.Size(362, 57);
             this.btn_administrar_stock.TabIndex = 85;
             this.btn_administrar_stock.Text = "ADMINISTRAR STOCK";
             this.btn_administrar_stock.UseVisualStyleBackColor = false;
@@ -85,10 +85,10 @@
             this.btn_generar_informes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_generar_informes.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_generar_informes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_generar_informes.Location = new System.Drawing.Point(1542, 218);
+            this.btn_generar_informes.Location = new System.Drawing.Point(1166, 196);
             this.btn_generar_informes.Margin = new System.Windows.Forms.Padding(4);
             this.btn_generar_informes.Name = "btn_generar_informes";
-            this.btn_generar_informes.Size = new System.Drawing.Size(483, 57);
+            this.btn_generar_informes.Size = new System.Drawing.Size(346, 57);
             this.btn_generar_informes.TabIndex = 86;
             this.btn_generar_informes.Text = "GENERAR INFORMES";
             this.btn_generar_informes.UseVisualStyleBackColor = false;
@@ -100,10 +100,10 @@
             this.btn_facturar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_facturar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_facturar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_facturar.Location = new System.Drawing.Point(522, 220);
+            this.btn_facturar.Location = new System.Drawing.Point(390, 198);
             this.btn_facturar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_facturar.Name = "btn_facturar";
-            this.btn_facturar.Size = new System.Drawing.Size(462, 57);
+            this.btn_facturar.Size = new System.Drawing.Size(312, 57);
             this.btn_facturar.TabIndex = 87;
             this.btn_facturar.Text = "FACTURAR";
             this.btn_facturar.UseVisualStyleBackColor = false;
@@ -115,10 +115,10 @@
             this.btn_gestionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_gestionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_gestionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_gestionar.Location = new System.Drawing.Point(27, 218);
+            this.btn_gestionar.Location = new System.Drawing.Point(27, 196);
             this.btn_gestionar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_gestionar.Name = "btn_gestionar";
-            this.btn_gestionar.Size = new System.Drawing.Size(463, 57);
+            this.btn_gestionar.Size = new System.Drawing.Size(313, 57);
             this.btn_gestionar.TabIndex = 88;
             this.btn_gestionar.Text = "GESTIONAR";
             this.btn_gestionar.UseVisualStyleBackColor = false;
@@ -130,12 +130,13 @@
             this.txt_bienvenido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.txt_bienvenido.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_bienvenido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_bienvenido.Location = new System.Drawing.Point(546, 132);
+            this.txt_bienvenido.Location = new System.Drawing.Point(355, 116);
             this.txt_bienvenido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_bienvenido.Name = "txt_bienvenido";
             this.txt_bienvenido.Size = new System.Drawing.Size(249, 51);
             this.txt_bienvenido.TabIndex = 90;
             this.txt_bienvenido.Text = "Bienvenido:";
+            this.txt_bienvenido.Click += new System.EventHandler(this.txt_bienvenido_Click);
             // 
             // txt_saludo
             // 
@@ -143,20 +144,21 @@
             this.txt_saludo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.txt_saludo.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_saludo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_saludo.Location = new System.Drawing.Point(933, 132);
+            this.txt_saludo.Location = new System.Drawing.Point(666, 121);
             this.txt_saludo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_saludo.Name = "txt_saludo";
             this.txt_saludo.Size = new System.Drawing.Size(439, 46);
             this.txt_saludo.TabIndex = 91;
             this.txt_saludo.Text = "Nombre Administrador";
+            this.txt_saludo.Click += new System.EventHandler(this.txt_saludo_Click);
             // 
             // btn_cerrar_sesion
             // 
             this.btn_cerrar_sesion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_cerrar_sesion.Location = new System.Drawing.Point(1947, 13);
+            this.btn_cerrar_sesion.Location = new System.Drawing.Point(1431, 13);
             this.btn_cerrar_sesion.Margin = new System.Windows.Forms.Padding(4);
             this.btn_cerrar_sesion.Name = "btn_cerrar_sesion";
-            this.btn_cerrar_sesion.Size = new System.Drawing.Size(88, 90);
+            this.btn_cerrar_sesion.Size = new System.Drawing.Size(91, 83);
             this.btn_cerrar_sesion.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btn_cerrar_sesion.TabIndex = 93;
             this.btn_cerrar_sesion.TabStop = false;
@@ -166,9 +168,9 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(196)))), ((int)(((byte)(206)))));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox4.Location = new System.Drawing.Point(12, 207);
+            this.pictureBox4.Location = new System.Drawing.Point(12, 185);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(490, 81);
+            this.pictureBox4.Size = new System.Drawing.Size(340, 81);
             this.pictureBox4.TabIndex = 96;
             this.pictureBox4.TabStop = false;
             // 
@@ -176,9 +178,9 @@
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox6.Location = new System.Drawing.Point(225, 13);
+            this.pictureBox6.Location = new System.Drawing.Point(187, 13);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(1715, 90);
+            this.pictureBox6.Size = new System.Drawing.Size(1237, 83);
             this.pictureBox6.TabIndex = 98;
             this.pictureBox6.TabStop = false;
             // 
@@ -188,7 +190,7 @@
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label9.Location = new System.Drawing.Point(880, 32);
+            this.label9.Location = new System.Drawing.Point(619, 32);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(426, 51);
@@ -197,11 +199,11 @@
             // 
             // img_logo
             // 
-            this.img_logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.img_logo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.img_logo.Location = new System.Drawing.Point(12, 13);
             this.img_logo.Margin = new System.Windows.Forms.Padding(4);
             this.img_logo.Name = "img_logo";
-            this.img_logo.Size = new System.Drawing.Size(208, 187);
+            this.img_logo.Size = new System.Drawing.Size(168, 165);
             this.img_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.img_logo.TabIndex = 345;
             this.img_logo.TabStop = false;
@@ -213,7 +215,7 @@
             this.pictureBox17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox17.Location = new System.Drawing.Point(5, 6);
             this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(2037, 1050);
+            this.pictureBox17.Size = new System.Drawing.Size(1523, 850);
             this.pictureBox17.TabIndex = 373;
             this.pictureBox17.TabStop = false;
             // 
@@ -221,19 +223,20 @@
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox7.Location = new System.Drawing.Point(225, 110);
+            this.pictureBox7.Location = new System.Drawing.Point(187, 102);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(1810, 90);
+            this.pictureBox7.Size = new System.Drawing.Size(1335, 76);
             this.pictureBox7.TabIndex = 374;
             this.pictureBox7.TabStop = false;
+            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
             // 
             // pictureBox8
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(196)))), ((int)(((byte)(206)))));
             this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox8.Location = new System.Drawing.Point(1004, 207);
+            this.pictureBox8.Location = new System.Drawing.Point(740, 185);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(519, 81);
+            this.pictureBox8.Size = new System.Drawing.Size(389, 81);
             this.pictureBox8.TabIndex = 376;
             this.pictureBox8.TabStop = false;
             // 
@@ -241,9 +244,9 @@
             // 
             this.pictureBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(196)))), ((int)(((byte)(206)))));
             this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox9.Location = new System.Drawing.Point(1529, 207);
+            this.pictureBox9.Location = new System.Drawing.Point(1153, 185);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(506, 81);
+            this.pictureBox9.Size = new System.Drawing.Size(369, 81);
             this.pictureBox9.TabIndex = 377;
             this.pictureBox9.TabStop = false;
             // 
@@ -252,10 +255,10 @@
             this.panel_admin.AutoSize = true;
             this.panel_admin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
             this.panel_admin.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.panel_admin.Location = new System.Drawing.Point(12, 305);
+            this.panel_admin.Location = new System.Drawing.Point(12, 283);
             this.panel_admin.Margin = new System.Windows.Forms.Padding(4);
             this.panel_admin.Name = "panel_admin";
-            this.panel_admin.Size = new System.Drawing.Size(2023, 745);
+            this.panel_admin.Size = new System.Drawing.Size(1510, 567);
             this.panel_admin.TabIndex = 378;
             this.panel_admin.UseWaitCursor = true;
             // 
@@ -263,9 +266,9 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 258);
+            this.pictureBox2.Location = new System.Drawing.Point(12, 236);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(490, 81);
+            this.pictureBox2.Size = new System.Drawing.Size(340, 81);
             this.pictureBox2.TabIndex = 379;
             this.pictureBox2.TabStop = false;
             // 
@@ -273,9 +276,9 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(196)))), ((int)(((byte)(206)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(508, 207);
+            this.pictureBox1.Location = new System.Drawing.Point(376, 185);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(490, 81);
+            this.pictureBox1.Size = new System.Drawing.Size(340, 81);
             this.pictureBox1.TabIndex = 380;
             this.pictureBox1.TabStop = false;
             // 
@@ -283,9 +286,9 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox3.Location = new System.Drawing.Point(508, 258);
+            this.pictureBox3.Location = new System.Drawing.Point(376, 236);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(490, 81);
+            this.pictureBox3.Size = new System.Drawing.Size(340, 81);
             this.pictureBox3.TabIndex = 381;
             this.pictureBox3.TabStop = false;
             // 
@@ -293,9 +296,9 @@
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox5.Location = new System.Drawing.Point(1004, 258);
+            this.pictureBox5.Location = new System.Drawing.Point(740, 236);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(519, 81);
+            this.pictureBox5.Size = new System.Drawing.Size(389, 81);
             this.pictureBox5.TabIndex = 382;
             this.pictureBox5.TabStop = false;
             // 
@@ -303,17 +306,17 @@
             // 
             this.pictureBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
             this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox10.Location = new System.Drawing.Point(1529, 258);
+            this.pictureBox10.Location = new System.Drawing.Point(1153, 236);
             this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(506, 81);
+            this.pictureBox10.Size = new System.Drawing.Size(369, 81);
             this.pictureBox10.TabIndex = 383;
             this.pictureBox10.TabStop = false;
             // 
             // FormInicioAdministrador
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(1942, 1063);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
+            this.ClientSize = new System.Drawing.Size(1535, 863);
             this.Controls.Add(this.panel_admin);
             this.Controls.Add(this.btn_generar_informes);
             this.Controls.Add(this.pictureBox9);

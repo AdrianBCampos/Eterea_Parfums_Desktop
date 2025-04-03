@@ -237,5 +237,19 @@ namespace Eterea_Parfums_Desktop
             botonAnterior = botonSeleccionado;
         }
 
+        private void txt_bienvenido_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_saludo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
