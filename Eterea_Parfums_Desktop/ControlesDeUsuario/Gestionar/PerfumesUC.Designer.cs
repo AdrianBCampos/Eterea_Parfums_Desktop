@@ -111,7 +111,7 @@
             this.lbl_empleados.Location = new System.Drawing.Point(704, 43);
             this.lbl_empleados.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_empleados.Name = "lbl_empleados";
-            this.lbl_empleados.Size = new System.Drawing.Size(307, 39);
+            this.lbl_empleados.Size = new System.Drawing.Size(297, 38);
             this.lbl_empleados.TabIndex = 288;
             this.lbl_empleados.Text = "Lista de Perfumes";
             // 
@@ -245,6 +245,7 @@
             dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
             this.Id.DefaultCellStyle = dataGridViewCellStyle11;
             this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
             this.Id.Name = "Id";
             this.Id.ReadOnly = true;
             this.Id.Width = 40;
