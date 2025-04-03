@@ -404,7 +404,7 @@
             this.checkedListBoxNota.Name = "checkedListBoxNota";
             this.checkedListBoxNota.Size = new System.Drawing.Size(409, 120);
             this.checkedListBoxNota.TabIndex = 443;
-            this.checkedListBoxNota.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxNota_ItemCheck);
+            
             // 
             // checkedListBoxAroma
             // 

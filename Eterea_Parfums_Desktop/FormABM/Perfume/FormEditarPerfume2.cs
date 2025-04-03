@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace Eterea_Parfums_Desktop
 {
@@ -41,8 +42,7 @@ namespace Eterea_Parfums_Desktop
             cargarDataGridViewNotasDePerfume();
             lbl_error_seleccion_aroma.Visible = false;
             lbl_error_seleccion_nota.Visible = false;
-
-            this.Load += new System.EventHandler(this.FormEditarPerfume2_Load);
+        
         }
 
         private void CargarDatosCheckBoxListAromas()
@@ -344,7 +344,7 @@ namespace Eterea_Parfums_Desktop
             formEditarProducto.Show();
         }
 
-        private void checkedListBoxNota_ItemCheck(object sender, ItemCheckEventArgs e)
+       /* private void checkedListBoxNota_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             this.BeginInvoke(new Action(() =>
             {
@@ -368,55 +368,10 @@ namespace Eterea_Parfums_Desktop
                     lbl_tipo_de_nota.Text = ultimoMarcado;
                 }
             }));
-        }
+        }*/
 
 
-
-
-
-
-        private void checkedListBoxAroma_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            // Evita el fondo por defecto
-            e.DrawBackground();
-
-            // Ítem actual
-            string itemText = checkedListBoxAroma.Items[e.Index].ToString();
-
-            // Determina si el ítem está seleccionado o chequeado
-            bool isChecked = checkedListBoxAroma.GetItemChecked(e.Index);
-
-            // Configuración de colores
-            Color textColor = Color.Black;
-            Color backgroundColor = Color.White;
-
-            // Si está seleccionado o chequeado, cambia colores
-            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected || isChecked)
-            {
-                backgroundColor = Color.FromArgb(232, 186, 197); // Color personalizado
-                textColor = Color.White;
-            }
-
-            // Pintar fondo y texto
-            using (SolidBrush backgroundBrush = new SolidBrush(backgroundColor))
-            using (SolidBrush textBrush = new SolidBrush(textColor))
-            {
-                e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
-                e.Graphics.DrawString(itemText, e.Font, textBrush, e.Bounds);
-            }
-
-            e.DrawFocusRectangle();
-        }
-
-        // Configuración del CheckedListBox
-        private void FormEditarPerfume2_Load(object sender, EventArgs e)
-        {
-            checkedListBoxAroma.DrawMode = DrawMode.OwnerDrawFixed;
-            checkedListBoxAroma.DrawItem += checkedListBoxAroma_DrawItem;
-        }
-
-       
-
+         
         //Diseño del boton del datagridview
         private void dataGridViewNotasDelPerfume_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
@@ -443,5 +398,9 @@ namespace Eterea_Parfums_Desktop
                                       TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
             }
         }
+
+
+
+
     }
 }
