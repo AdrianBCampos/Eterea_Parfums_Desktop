@@ -29,6 +29,8 @@ namespace Eterea_Parfums_Desktop
         public static String Ruta_Web;
         public static String entorno = "adri";
 
+        public static float ScaleFactor = 1.0f; // Valor por defecto
+
 
 
         [STAThread]
