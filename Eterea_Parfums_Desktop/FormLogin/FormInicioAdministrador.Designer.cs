@@ -136,7 +136,7 @@
             this.txt_bienvenido.Size = new System.Drawing.Size(249, 51);
             this.txt_bienvenido.TabIndex = 90;
             this.txt_bienvenido.Text = "Bienvenido:";
-            this.txt_bienvenido.Click += new System.EventHandler(this.txt_bienvenido_Click);
+            
             // 
             // txt_saludo
             // 
@@ -150,7 +150,7 @@
             this.txt_saludo.Size = new System.Drawing.Size(439, 46);
             this.txt_saludo.TabIndex = 91;
             this.txt_saludo.Text = "Nombre Administrador";
-            this.txt_saludo.Click += new System.EventHandler(this.txt_saludo_Click);
+           
             // 
             // btn_cerrar_sesion
             // 
@@ -228,7 +228,7 @@
             this.pictureBox7.Size = new System.Drawing.Size(1335, 76);
             this.pictureBox7.TabIndex = 374;
             this.pictureBox7.TabStop = false;
-            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
+            
             // 
             // pictureBox8
             // 

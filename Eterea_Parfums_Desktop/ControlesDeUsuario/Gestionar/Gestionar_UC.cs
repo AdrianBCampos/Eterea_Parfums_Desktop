@@ -187,5 +187,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             // Guardar el botón actual como el anterior
             botonAnterior = botonSeleccionado;
         }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

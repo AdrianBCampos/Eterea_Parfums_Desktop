@@ -57,10 +57,10 @@
             this.btn_clientes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_clientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_clientes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_clientes.Location = new System.Drawing.Point(26, 393);
+            this.btn_clientes.Location = new System.Drawing.Point(26, 377);
             this.btn_clientes.Margin = new System.Windows.Forms.Padding(4);
             this.btn_clientes.Name = "btn_clientes";
-            this.btn_clientes.Size = new System.Drawing.Size(243, 139);
+            this.btn_clientes.Size = new System.Drawing.Size(243, 121);
             this.btn_clientes.TabIndex = 110;
             this.btn_clientes.Text = "Clientes";
             this.btn_clientes.UseVisualStyleBackColor = false;
@@ -71,10 +71,10 @@
             this.panel_abm.AutoSize = true;
             this.panel_abm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
             this.panel_abm.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.panel_abm.Location = new System.Drawing.Point(303, 11);
+            this.panel_abm.Location = new System.Drawing.Point(300, 11);
             this.panel_abm.Margin = new System.Windows.Forms.Padding(4);
             this.panel_abm.Name = "panel_abm";
-            this.panel_abm.Size = new System.Drawing.Size(1708, 720);
+            this.panel_abm.Size = new System.Drawing.Size(1701, 676);
             this.panel_abm.TabIndex = 112;
             this.panel_abm.UseWaitCursor = true;
             // 
@@ -84,10 +84,10 @@
             this.btn_promociones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_promociones.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_promociones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_promociones.Location = new System.Drawing.Point(26, 581);
+            this.btn_promociones.Location = new System.Drawing.Point(26, 554);
             this.btn_promociones.Margin = new System.Windows.Forms.Padding(4);
             this.btn_promociones.Name = "btn_promociones";
-            this.btn_promociones.Size = new System.Drawing.Size(243, 139);
+            this.btn_promociones.Size = new System.Drawing.Size(243, 121);
             this.btn_promociones.TabIndex = 111;
             this.btn_promociones.Text = "Promociones";
             this.btn_promociones.UseVisualStyleBackColor = false;
@@ -99,10 +99,10 @@
             this.btn_empleados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_empleados.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_empleados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_empleados.Location = new System.Drawing.Point(26, 209);
+            this.btn_empleados.Location = new System.Drawing.Point(26, 201);
             this.btn_empleados.Margin = new System.Windows.Forms.Padding(4);
             this.btn_empleados.Name = "btn_empleados";
-            this.btn_empleados.Size = new System.Drawing.Size(243, 139);
+            this.btn_empleados.Size = new System.Drawing.Size(243, 121);
             this.btn_empleados.TabIndex = 109;
             this.btn_empleados.Text = "Empleados";
             this.btn_empleados.UseVisualStyleBackColor = false;
@@ -117,7 +117,7 @@
             this.btn_perfumes.Location = new System.Drawing.Point(26, 23);
             this.btn_perfumes.Margin = new System.Windows.Forms.Padding(4);
             this.btn_perfumes.Name = "btn_perfumes";
-            this.btn_perfumes.Size = new System.Drawing.Size(243, 139);
+            this.btn_perfumes.Size = new System.Drawing.Size(243, 121);
             this.btn_perfumes.TabIndex = 108;
             this.btn_perfumes.Text = "Perfumes";
             this.btn_perfumes.UseVisualStyleBackColor = false;
@@ -130,7 +130,7 @@
             this.pictureBox3.Location = new System.Drawing.Point(13, 11);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(269, 163);
+            this.pictureBox3.Size = new System.Drawing.Size(269, 145);
             this.pictureBox3.TabIndex = 114;
             this.pictureBox3.TabStop = false;
             // 
@@ -138,10 +138,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(182)))), ((int)(((byte)(194)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 197);
+            this.pictureBox1.Location = new System.Drawing.Point(13, 189);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(269, 163);
+            this.pictureBox1.Size = new System.Drawing.Size(269, 145);
             this.pictureBox1.TabIndex = 115;
             this.pictureBox1.TabStop = false;
             // 
@@ -149,10 +149,10 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(182)))), ((int)(((byte)(194)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(13, 381);
+            this.pictureBox2.Location = new System.Drawing.Point(13, 365);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(269, 163);
+            this.pictureBox2.Size = new System.Drawing.Size(269, 145);
             this.pictureBox2.TabIndex = 116;
             this.pictureBox2.TabStop = false;
             // 
@@ -160,12 +160,13 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(182)))), ((int)(((byte)(194)))));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox4.Location = new System.Drawing.Point(13, 568);
+            this.pictureBox4.Location = new System.Drawing.Point(13, 542);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(269, 163);
+            this.pictureBox4.Size = new System.Drawing.Size(269, 145);
             this.pictureBox4.TabIndex = 117;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // pictureBox5
             // 
@@ -174,7 +175,7 @@
             this.pictureBox5.Location = new System.Drawing.Point(67, 11);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(311, 163);
+            this.pictureBox5.Size = new System.Drawing.Size(311, 145);
             this.pictureBox5.TabIndex = 118;
             this.pictureBox5.TabStop = false;
             // 
@@ -182,10 +183,10 @@
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox6.Location = new System.Drawing.Point(65, 197);
+            this.pictureBox6.Location = new System.Drawing.Point(65, 189);
             this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(311, 163);
+            this.pictureBox6.Size = new System.Drawing.Size(311, 145);
             this.pictureBox6.TabIndex = 119;
             this.pictureBox6.TabStop = false;
             // 
@@ -193,10 +194,10 @@
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
             this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox7.Location = new System.Drawing.Point(65, 381);
+            this.pictureBox7.Location = new System.Drawing.Point(65, 365);
             this.pictureBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(311, 163);
+            this.pictureBox7.Size = new System.Drawing.Size(311, 145);
             this.pictureBox7.TabIndex = 120;
             this.pictureBox7.TabStop = false;
             // 
@@ -204,16 +205,17 @@
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
             this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox8.Location = new System.Drawing.Point(67, 568);
+            this.pictureBox8.Location = new System.Drawing.Point(67, 542);
             this.pictureBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(311, 163);
+            this.pictureBox8.Size = new System.Drawing.Size(311, 145);
             this.pictureBox8.TabIndex = 121;
             this.pictureBox8.TabStop = false;
             // 
             // Gestionar_UC
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
             this.Controls.Add(this.btn_promociones);
             this.Controls.Add(this.btn_clientes);
@@ -229,7 +231,7 @@
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.pictureBox8);
             this.Name = "Gestionar_UC";
-            this.Size = new System.Drawing.Size(2023, 745);
+            this.Size = new System.Drawing.Size(2015, 699);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
