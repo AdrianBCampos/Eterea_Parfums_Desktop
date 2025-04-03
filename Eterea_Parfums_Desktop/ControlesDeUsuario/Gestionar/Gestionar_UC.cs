@@ -22,6 +22,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             PerfumesUC perfumesUC = new PerfumesUC();
             addUserControl(perfumesUC);
 
+          
+
             pictureBox6.Visible = false;
             pictureBox7.Visible = false;
             pictureBox8.Visible = false;

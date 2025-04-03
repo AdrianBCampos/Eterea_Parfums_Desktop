@@ -20,6 +20,10 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
+            //ESCALAR TAMAÑO DEL FORM
+            float scaleFactor = 0.8f; // 80% del tamaño original
+            this.Scale(new SizeF(scaleFactor, scaleFactor));
+
             // Configurar las imágenes
             string rutaLogo = Program.Ruta_Base + @"Diseño Logo1.png";
             img_logo.Image = Image.FromFile(rutaLogo);

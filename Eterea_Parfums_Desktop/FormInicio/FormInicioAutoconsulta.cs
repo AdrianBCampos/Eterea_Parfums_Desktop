@@ -54,8 +54,8 @@ namespace Eterea_Parfums_Desktop
 
             this.TopMost = false;
             //ESCALAR TAMAÑO DEL FORM
-            //float scaleFactor = 0.8f; // 80% del tamaño original
-            //this.Scale(new SizeF(scaleFactor, scaleFactor));
+            float scaleFactor = 0.8f; // 80% del tamaño original
+            this.Scale(new SizeF(scaleFactor, scaleFactor));
 
             //barcodeReceiver = new BarcodeReceiver();
             //barcodeReceiver.StartServer(); // Inicia el servidor TCP
