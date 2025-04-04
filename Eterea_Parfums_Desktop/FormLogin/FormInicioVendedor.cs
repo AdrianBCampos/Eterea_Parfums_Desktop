@@ -32,14 +32,22 @@ namespace Eterea_Parfums_Desktop
             // Configurar el ToolTip para el botón de cerrar sesión
             toolTip.SetToolTip(btn_cerrar_sesion, "Cerrar sesión");
 
-            Facturar_UC adminUC = new Facturar_UC();
-            
+            Facturar_UC vendedorUC = new Facturar_UC();
+            addUserControl(vendedorUC);
 
             pictureBox10.Visible = false;
 
             // Cambiar el color de PictureBox
             pictureBox1.BackColor = Color.FromArgb(232, 186, 197);
             btn_facturar.BackColor = Color.FromArgb(232, 186, 197);
+        }
+
+        private void addUserControl(UserControl uc)
+        {
+            uc.Dock = DockStyle.Fill;
+            panel_admin.Controls.Clear();
+            panel_admin.Controls.Add(uc);
+            uc.BringToFront();
         }
 
         private void btn_cerrar_sesion_Click(object sender, EventArgs e)
@@ -53,14 +61,14 @@ namespace Eterea_Parfums_Desktop
         private void btn_facturar_Click(object sender, EventArgs e)
         {
             Facturar_UC facturarUC = new Facturar_UC();
-           
+            addUserControl(facturarUC);
             CambiarColorBoton1((Button)sender);
         }      
 
         private void btn_preparar_envios_Click(object sender, EventArgs e)
         {
             PrepararEnvios_UC prepararEnviosUC = new PrepararEnvios_UC();
-
+            addUserControl(prepararEnviosUC);
             CambiarColorBoton2((Button)sender);
         }
 
