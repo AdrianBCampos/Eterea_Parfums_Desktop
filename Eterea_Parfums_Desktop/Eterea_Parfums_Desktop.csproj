@@ -81,11 +81,11 @@
     <Compile Include="ControlesDeUsuario\Facturar\Facturar_UC.Designer.cs">
       <DependentUpon>Facturar_UC.cs</DependentUpon>
     </Compile>
-    <Compile Include="ControlesDeUsuario\GenerarInformes\InformesDeVentas1_UC.cs">
+    <Compile Include="ControlesDeUsuario\GenerarInformes\GenerarInformes_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ControlesDeUsuario\GenerarInformes\InformesDeVentas1_UC.Designer.cs">
-      <DependentUpon>InformesDeVentas1_UC.cs</DependentUpon>
+    <Compile Include="ControlesDeUsuario\GenerarInformes\GenerarInformes_UC.Designer.cs">
+      <DependentUpon>GenerarInformes_UC.cs</DependentUpon>
     </Compile>
     <Compile Include="ControlesDeUsuario\Gestionar\Gestionar_UC.cs">
       <SubType>UserControl</SubType>
@@ -382,8 +382,8 @@
     <EmbeddedResource Include="ControlesDeUsuario\Facturar\Facturar_UC.resx">
       <DependentUpon>Facturar_UC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlesDeUsuario\GenerarInformes\InformesDeVentas1_UC.resx">
-      <DependentUpon>InformesDeVentas1_UC.cs</DependentUpon>
+    <EmbeddedResource Include="ControlesDeUsuario\GenerarInformes\GenerarInformes_UC.resx">
+      <DependentUpon>GenerarInformes_UC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlesDeUsuario\Gestionar\Gestionar_UC.resx">
       <DependentUpon>Gestionar_UC.cs</DependentUpon>

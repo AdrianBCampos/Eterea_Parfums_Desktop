@@ -1,6 +1,6 @@
 ﻿namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 {
-    partial class InformesDeVentas1_UC
+    partial class GenerarInformes_UC
     {
         /// <summary> 
         /// Variable del diseñador necesaria.

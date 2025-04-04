@@ -136,7 +136,6 @@
             this.txt_bienvenido.Size = new System.Drawing.Size(249, 51);
             this.txt_bienvenido.TabIndex = 90;
             this.txt_bienvenido.Text = "Bienvenido:";
-            
             // 
             // txt_saludo
             // 
@@ -150,7 +149,6 @@
             this.txt_saludo.Size = new System.Drawing.Size(439, 46);
             this.txt_saludo.TabIndex = 91;
             this.txt_saludo.Text = "Nombre Administrador";
-           
             // 
             // btn_cerrar_sesion
             // 
@@ -228,7 +226,6 @@
             this.pictureBox7.Size = new System.Drawing.Size(1335, 76);
             this.pictureBox7.TabIndex = 374;
             this.pictureBox7.TabStop = false;
-            
             // 
             // pictureBox8
             // 
@@ -316,7 +313,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
-            this.ClientSize = new System.Drawing.Size(1535, 863);
+            this.ClientSize = new System.Drawing.Size(1535, 865);
             this.Controls.Add(this.panel_admin);
             this.Controls.Add(this.btn_generar_informes);
             this.Controls.Add(this.pictureBox9);

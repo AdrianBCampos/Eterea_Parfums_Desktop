@@ -18,9 +18,9 @@ using iTextSharp.tool.xml;
 
 namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 {
-    public partial class InformesDeVentas1_UC : UserControl
+    public partial class GenerarInformes_UC : UserControl
     {
-        public InformesDeVentas1_UC()
+        public GenerarInformes_UC()
         {
             InitializeComponent();      
         }
