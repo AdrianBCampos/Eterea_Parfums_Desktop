@@ -1,4 +1,5 @@
 ﻿using Eterea_Parfums_Desktop.ControlesDeUsuario;
+using Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Drawing;
@@ -54,24 +55,14 @@ namespace Eterea_Parfums_Desktop
             Facturar_UC facturarUC = new Facturar_UC();
            
             CambiarColorBoton1((Button)sender);
-        }
+        }      
 
-        private void btn_generar_informes_Click(object sender, EventArgs e)
+        private void btn_preparar_envios_Click(object sender, EventArgs e)
         {
-            FormListaDeEnvios listaDeEnvios = new FormListaDeEnvios();
-            listaDeEnvios.Show();
-            this.Hide();
+            PrepararEnvios_UC prepararEnviosUC = new PrepararEnvios_UC();
 
-            foreach (Form form in Application.OpenForms)
-            {
-                if (form.Name == "FormInicioAutoconsulta") // Asegúrate de que el nombre sea correcto
-                {
-                    form.Hide();
-                    break;
-                }
-            }
+            CambiarColorBoton2((Button)sender);
         }
-
 
         private void CambiarColorBoton1(Button botonSeleccionado)
         {
@@ -92,8 +83,33 @@ namespace Eterea_Parfums_Desktop
             pictureBox9.BackColor = Color.FromArgb(232, 196, 206);
 
             // Mostrar PictureBox         
-            pictureBox3.Visible = true;         
+            pictureBox3.Visible = true;
             pictureBox10.Visible = false;
+
+            // Guardar el botón actual como el anterior
+            botonAnterior = botonSeleccionado;
+        }
+
+        private void CambiarColorBoton2(Button botonSeleccionado)
+        {
+            // Restaurar el color del botón anterior si existe
+            if (botonAnterior != null)
+            {
+                botonAnterior.BackColor = Color.FromArgb(232, 196, 206); // Restaurar color original           
+            }
+
+            // Cambiar el color del botón seleccionado
+            botonSeleccionado.BackColor = Color.FromArgb(232, 186, 197);
+
+            btn_facturar.BackColor = Color.FromArgb(232, 196, 206);
+
+            // Cambiar el color de PictureBox          
+            pictureBox1.BackColor = Color.FromArgb(232, 196, 206);
+            pictureBox9.BackColor = Color.FromArgb(232, 186, 197);
+
+            // Mostrar PictureBox
+            pictureBox3.Visible = false;
+            pictureBox10.Visible = true;
 
             // Guardar el botón actual como el anterior
             botonAnterior = botonSeleccionado;

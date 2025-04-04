@@ -93,6 +93,12 @@
     <Compile Include="ControlesDeUsuario\Gestionar\Gestionar_UC.Designer.cs">
       <DependentUpon>Gestionar_UC.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlesDeUsuario\PrepararEnvios\PrepararEnvios_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\PrepararEnvios\PrepararEnvios_UC.Designer.cs">
+      <DependentUpon>PrepararEnvios_UC.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormInformeVenta\FormInformesDeVentas2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -387,6 +393,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlesDeUsuario\Gestionar\Gestionar_UC.resx">
       <DependentUpon>Gestionar_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesDeUsuario\PrepararEnvios\PrepararEnvios_UC.resx">
+      <DependentUpon>PrepararEnvios_UC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormInformeVenta\FormInformesDeVentas2.resx">
       <DependentUpon>FormInformesDeVentas2.cs</DependentUpon>

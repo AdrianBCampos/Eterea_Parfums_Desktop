@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.panel_admin = new System.Windows.Forms.Panel();
-            this.btn_generar_informes = new System.Windows.Forms.Button();
+            this.btn_preparar_envios = new System.Windows.Forms.Button();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.btn_facturar = new System.Windows.Forms.Button();
@@ -66,20 +66,20 @@
             this.panel_admin.TabIndex = 399;
             this.panel_admin.UseWaitCursor = true;
             // 
-            // btn_generar_informes
+            // btn_preparar_envios
             // 
-            this.btn_generar_informes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(196)))), ((int)(((byte)(206)))));
-            this.btn_generar_informes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_generar_informes.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_generar_informes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_generar_informes.Location = new System.Drawing.Point(784, 197);
-            this.btn_generar_informes.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_generar_informes.Name = "btn_generar_informes";
-            this.btn_generar_informes.Size = new System.Drawing.Size(728, 57);
-            this.btn_generar_informes.TabIndex = 385;
-            this.btn_generar_informes.Text = "GENERAR INFORMES";
-            this.btn_generar_informes.UseVisualStyleBackColor = false;
-            this.btn_generar_informes.Click += new System.EventHandler(this.btn_generar_informes_Click);
+            this.btn_preparar_envios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(196)))), ((int)(((byte)(206)))));
+            this.btn_preparar_envios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_preparar_envios.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_preparar_envios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.btn_preparar_envios.Location = new System.Drawing.Point(784, 197);
+            this.btn_preparar_envios.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_preparar_envios.Name = "btn_preparar_envios";
+            this.btn_preparar_envios.Size = new System.Drawing.Size(728, 57);
+            this.btn_preparar_envios.TabIndex = 385;
+            this.btn_preparar_envios.Text = "PREPARAR ENVIOS";
+            this.btn_preparar_envios.UseVisualStyleBackColor = false;
+            this.btn_preparar_envios.Click += new System.EventHandler(this.btn_preparar_envios_Click);
             // 
             // pictureBox9
             // 
@@ -235,7 +235,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
             this.ClientSize = new System.Drawing.Size(1535, 865);
             this.Controls.Add(this.panel_admin);
-            this.Controls.Add(this.btn_generar_informes);
+            this.Controls.Add(this.btn_preparar_envios);
             this.Controls.Add(this.pictureBox9);
             this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.btn_facturar);
@@ -271,7 +271,7 @@
 
         #endregion
         private System.Windows.Forms.Panel panel_admin;
-        private System.Windows.Forms.Button btn_generar_informes;
+        private System.Windows.Forms.Button btn_preparar_envios;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.Button btn_facturar;
