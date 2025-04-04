@@ -92,7 +92,9 @@ namespace Eterea_Parfums_Desktop
 
             CambiarColorBoton2((Button)sender);
 
-
+            FormNumeroDeCaja numeroDeCaja = new FormNumeroDeCaja();
+            numeroDeCaja.Show();
+            
         }
 
         private void btn_administrar_stock_Click(object sender, EventArgs e)
