@@ -88,7 +88,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void txt_buscar_nombre_TextChanged(object sender, EventArgs e)
         {
-            string filtroNombre = txt_filtro_nombre.Text.Trim();
+            string filtroNombre = txt_buscar_nombre.Text.Trim();
 
             // Actualiza el DataGridView con el filtro
             cargarPromociones(filtroNombre);
