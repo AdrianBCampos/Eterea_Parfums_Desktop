@@ -15,6 +15,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         {
             InitializeComponent();
 
+            this.Scale(new SizeF(Program.ScaleFactor, Program.ScaleFactor));
+
             // Asocia el evento KeyPress para aceptar solo números
             txt_buscar_dni.KeyPress += txt_buscar_dni_KeyPress;
             txt_buscar_dni.TextChanged += txt_buscar_dni_TextChanged;
