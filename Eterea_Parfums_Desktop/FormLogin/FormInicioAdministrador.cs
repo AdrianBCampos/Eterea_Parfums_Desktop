@@ -91,6 +91,8 @@ namespace Eterea_Parfums_Desktop
             addUserControl(facturarUC);
 
             CambiarColorBoton2((Button)sender);
+
+
         }
 
         private void btn_administrar_stock_Click(object sender, EventArgs e)

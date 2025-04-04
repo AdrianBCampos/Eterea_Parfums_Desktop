@@ -23,6 +23,8 @@ namespace Eterea_Parfums_Desktop
 
         public static Empleado logueado;
 
+        public static int sucursal = 1;
+
         public static String Ruta_Base;
         public static String Ruta_Web;
         public static String entorno = "adri";

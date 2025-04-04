@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BarcodeReceiver.cs" />
+    <Compile Include="Controladores\CajaControlador.cs" />
     <Compile Include="ControlesDeUsuario\AdministrarStock\AdministrarStock_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -283,6 +284,12 @@
     <Compile Include="FormABM\FormMenuABM.Designer.cs">
       <DependentUpon>FormMenuABM.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormVenta\FormNumeroDeCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVenta\FormNumeroDeCaja.Designer.cs">
+      <DependentUpon>FormNumeroDeCaja.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\AromaDelPerfume.cs" />
     <Compile Include="Modelos\Calle.cs" />
     <Compile Include="Modelos\Cliente.cs" />
@@ -350,12 +357,6 @@
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Empleado.cs" />
-    <Compile Include="FormVenta\FormNumeroDeCaja.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormVenta\FormNumeroDeCaja.Designer.cs">
-      <DependentUpon>FormNumeroDeCaja.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormStock\FormNumeroDeSucursal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -499,11 +500,11 @@
     <EmbeddedResource Include="FormLogin\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormVenta\FormNumeroDeCaja.resx">
-      <DependentUpon>FormNumeroDeCaja.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormStock\FormNumeroDeSucursal.resx">
       <DependentUpon>FormNumeroDeSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVenta\FormNumeroDeCaja.resx">
+      <DependentUpon>FormNumeroDeCaja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

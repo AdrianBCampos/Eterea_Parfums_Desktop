@@ -116,5 +116,27 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
 
+        public static string ObtenerNombreSucursalPorId(int sucursalId)
+        {
+
+
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            {
+                connection.Open();
+
+                string query = "SELECT nombre FROM dbo.sucursal WHERE id = @SucursalId";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@SucursalId", sucursalId);
+
+                    object result = cmd.ExecuteScalar();
+                    return result != null ? result.ToString() : "Sucursal desconocida";
+                }
+            }
+        }
+
+
+
     }
 }
