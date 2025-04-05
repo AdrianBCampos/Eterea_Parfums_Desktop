@@ -146,7 +146,7 @@ namespace Eterea_Parfums_Desktop
                     Facturar_UC facturacion = new Facturar_UC();
                     facturacion.NumeroCaja = numCaja;
                     facturacion.IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(Convert.ToInt32(numCaja), Program.sucursal, Program.logueado.usuario);
-                    facturacion.RecargarPantalla();
+                    
 
                     this.Close();
                 }

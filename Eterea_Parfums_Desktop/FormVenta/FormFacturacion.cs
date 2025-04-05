@@ -38,7 +38,7 @@ namespace Eterea_Parfums_Desktop
 
             txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
 
-            this.Load += FormFacturacion_Load;
+            this.Load += Facturar_UC_Load;
             txt_scan_factura.Leave += Txt_scan_factura_Leave;
             txt_scan_factura.TextChanged += Txt_scan_factura_TextChanged;
             Factura.CellContentClick += DataGridViewFactura_CellContentClick;
@@ -167,7 +167,7 @@ namespace Eterea_Parfums_Desktop
 
 
      
-        private void FormFacturacion_Load(object sender, EventArgs e)
+        private void Facturar_UC_Load(object sender, EventArgs e)
         {
             txt_numero_caja.Text = NumeroCaja;
             txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();

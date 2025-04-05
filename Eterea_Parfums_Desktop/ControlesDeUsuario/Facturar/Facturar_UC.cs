@@ -75,13 +75,13 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
             lbl_dniE.Hide();
             txt_scan_factura.Hide();
-        }
+        }    
 
-        public void RecargarPantalla()
+        private void FormFacturacion_Load(object sender, EventArgs e)
         {
-            // Refrescá tus controles como necesites
             txt_numero_caja.Text = NumeroCaja;
-            // Cargar ventas, resetear datos, etc.
+            txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
+            txt_scan_factura.Focus(); // Forzar el foco en txt_scan_factura al cargar el formulario
         }
 
         private void Txt_scan_factura_KeyPress(object sender, KeyPressEventArgs e)
@@ -162,12 +162,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
 
 
-        private void FormFacturacion_Load(object sender, EventArgs e)
-        {
-            txt_numero_caja.Text = NumeroCaja;
-            txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
-            txt_scan_factura.Focus(); // Forzar el foco en txt_scan_factura al cargar el formulario
-        }
+        
 
         private void Txt_scan_factura_Leave(object sender, EventArgs e)
         {
