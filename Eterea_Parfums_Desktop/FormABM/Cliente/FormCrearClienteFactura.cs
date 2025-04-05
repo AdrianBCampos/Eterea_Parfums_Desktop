@@ -1,4 +1,5 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
@@ -200,7 +201,7 @@ namespace Eterea_Parfums_Desktop
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FormFacturacion facturacion = new FormFacturacion();
+            Facturar_UC facturacion = new Facturar_UC();
             facturacion.Show();
             this.Close();
         }

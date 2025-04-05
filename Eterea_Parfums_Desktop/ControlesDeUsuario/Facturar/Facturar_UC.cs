@@ -29,8 +29,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         {
             InitializeComponent();
 
-            string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";
-            img_logo.Image = System.Drawing.Image.FromFile(rutaCompletaImagen);
+            
 
             txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
 
@@ -78,6 +77,12 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             txt_scan_factura.Hide();
         }
 
+        public void RecargarPantalla()
+        {
+            // Refrescá tus controles como necesites
+            txt_numero_caja.Text = NumeroCaja;
+            // Cargar ventas, resetear datos, etc.
+        }
 
         private void Txt_scan_factura_KeyPress(object sender, KeyPressEventArgs e)
         {

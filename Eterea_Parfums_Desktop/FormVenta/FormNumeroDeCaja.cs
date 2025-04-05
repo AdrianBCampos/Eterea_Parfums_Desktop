@@ -18,11 +18,12 @@ namespace Eterea_Parfums_Desktop
 
         public bool AutoTomarCaja { get; set; } = true;
 
+
+
         public FormNumeroDeCaja()
         {
             InitializeComponent();
-            string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";
-            img_logo.Image = Image.FromFile(rutaCompletaImagen);
+            
 
             lbl_error_caja.Visible = false;
 
@@ -55,7 +56,7 @@ namespace Eterea_Parfums_Desktop
                         NumeroCaja = cajaDisponible.Value.ToString();
                         ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
 
-                        FormFacturacion facturacion = new FormFacturacion();
+                        Facturar_UC facturacion = new Facturar_UC();
                         facturacion.NumeroCaja = NumeroCaja;
                         facturacion.IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(Convert.ToInt32(NumeroCaja), Program.sucursal, Program.logueado.usuario);
                         facturacion.Show();
@@ -145,7 +146,8 @@ namespace Eterea_Parfums_Desktop
                     Facturar_UC facturacion = new Facturar_UC();
                     facturacion.NumeroCaja = numCaja;
                     facturacion.IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(Convert.ToInt32(numCaja), Program.sucursal, Program.logueado.usuario);
-                    facturacion.Show();
+                    facturacion.RecargarPantalla();
+
                     this.Close();
                 }
                 else
