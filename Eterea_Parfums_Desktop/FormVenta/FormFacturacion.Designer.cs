@@ -254,7 +254,7 @@
             this.btn_consultas.TabIndex = 294;
             this.btn_consultas.Text = "Ir a Consultas";
             this.btn_consultas.UseVisualStyleBackColor = false;
-            this.btn_consultas.Click += new System.EventHandler(this.btn_consultas_Click);
+            
             // 
             // pictureBox2
             // 

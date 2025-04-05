@@ -200,12 +200,6 @@
     <Compile Include="FormInicio\FormEscanear.Designer.cs">
       <DependentUpon>FormEscanear.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormVenta\FormFacturacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormVenta\FormFacturacion.Designer.cs">
-      <DependentUpon>FormFacturacion.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormInicio\FormSeleccionarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,6 +277,12 @@
     </Compile>
     <Compile Include="FormABM\FormMenuABM.Designer.cs">
       <DependentUpon>FormMenuABM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVenta\FormFacturacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVenta\FormFacturacion.Designer.cs">
+      <DependentUpon>FormFacturacion.cs</DependentUpon>
     </Compile>
     <Compile Include="FormVenta\FormNumeroDeCaja.cs">
       <SubType>Form</SubType>
@@ -437,9 +437,6 @@
     <EmbeddedResource Include="FormInicio\FormEscanear.resx">
       <DependentUpon>FormEscanear.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormVenta\FormFacturacion.resx">
-      <DependentUpon>FormFacturacion.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormABM\Promo\FormEliminarPromo.resx">
       <DependentUpon>FormEliminarPromo.cs</DependentUpon>
     </EmbeddedResource>
@@ -502,6 +499,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormStock\FormNumeroDeSucursal.resx">
       <DependentUpon>FormNumeroDeSucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVenta\FormFacturacion.resx">
+      <DependentUpon>FormFacturacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVenta\FormNumeroDeCaja.resx">
       <DependentUpon>FormNumeroDeCaja.cs</DependentUpon>

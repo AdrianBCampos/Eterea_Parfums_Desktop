@@ -19,6 +19,8 @@ namespace Eterea_Parfums_Desktop
         public string NumeroCaja { get; set; }
         Cliente clientefactura = new Cliente();
 
+        public int IdHistorialCaja { get; set; }
+
         private StringBuilder codigoBarrasBuffer = new StringBuilder();
         private DateTime ultimaLectura = DateTime.Now;
         private const int TIEMPO_ENTRE_LECTURAS_MS = 100;
@@ -42,7 +44,7 @@ namespace Eterea_Parfums_Desktop
             Factura.CellContentClick += DataGridViewFactura_CellContentClick;
         
 
-        combo_forma_pago.SelectedIndexChanged -= combo_forma_pago_SelectedIndexChanged;
+            combo_forma_pago.SelectedIndexChanged -= combo_forma_pago_SelectedIndexChanged;
 
             txt_nombre_cliente.Text = "Consumidor Final";
             txt_condicion_iva.Text = "Consumidor final";
@@ -197,10 +199,31 @@ namespace Eterea_Parfums_Desktop
 
         private void button2_Click(object sender, EventArgs e)
         {
+            // Convertimos el número de caja de string a int
+            if (int.TryParse(NumeroCaja, out int numCaja))
+            {
+                CajaControlador.MarcarCajaComoDisponible(numCaja, Program.sucursal);
+            }
+
+            if (IdHistorialCaja > 0)
+            {
+                CajaControlador.RegistrarCierreDeCaja(IdHistorialCaja);
+            }
+
+
             FormNumeroDeCaja numeroDeCaja = new FormNumeroDeCaja();
+            numeroDeCaja.AutoTomarCaja = false; // No volver a tomar la única caja automáticamente
             numeroDeCaja.Show();
             this.Close();
         }
+
+
+       
+
+
+
+
+
 
         private void btn_buscar_Click(object sender, EventArgs e)
         {
@@ -257,12 +280,12 @@ namespace Eterea_Parfums_Desktop
             ActualizarTotales();
         }
 
-        private void btn_consultas_Click(object sender, EventArgs e)
+        /*private void btn_consultas_Click(object sender, EventArgs e)
         {
             FormConsultasPerfumeEmpleado consultasPerfumeEmpleado = new FormConsultasPerfumeEmpleado(this);
             consultasPerfumeEmpleado.Show();
             //this.Hide();
-        }
+        }*/
 
 
         private void DataGridViewFactura_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -325,6 +348,7 @@ namespace Eterea_Parfums_Desktop
 
             }
         }
+
         public void descuentoUnitario()
         {
             DataGridView dgv = this.GetFacturaDataGrid();

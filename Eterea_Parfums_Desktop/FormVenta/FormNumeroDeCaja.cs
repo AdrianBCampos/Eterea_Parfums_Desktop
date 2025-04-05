@@ -1,4 +1,5 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using System;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -141,7 +142,7 @@ namespace Eterea_Parfums_Desktop
                     NumeroCaja = numCaja;
                     ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
 
-                    FormFacturacion facturacion = new FormFacturacion();
+                    Facturar_UC facturacion = new Facturar_UC();
                     facturacion.NumeroCaja = numCaja;
                     facturacion.IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(Convert.ToInt32(numCaja), Program.sucursal, Program.logueado.usuario);
                     facturacion.Show();

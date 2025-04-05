@@ -1,4 +1,5 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace Eterea_Parfums_Desktop
     public partial class FormConsultasPerfumeEmpleado : Form
     {
 
-        private FormFacturacion facturacionForm;
+        private Facturar_UC facturacionForm;
 
         private static Perfume filtro = new Perfume();
 
@@ -34,7 +35,7 @@ namespace Eterea_Parfums_Desktop
         private static int current_pag = 1;
 
         public string NumeroCaja { get; set; }
-        public FormConsultasPerfumeEmpleado(FormFacturacion facturacion)
+        public FormConsultasPerfumeEmpleado(Facturar_UC facturacion)
         {
             InitializeComponent();
 
