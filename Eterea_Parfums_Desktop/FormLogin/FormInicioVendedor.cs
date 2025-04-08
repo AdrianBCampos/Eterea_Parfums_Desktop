@@ -1,4 +1,5 @@
-﻿using Eterea_Parfums_Desktop.Modelos;
+﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -28,6 +29,13 @@ namespace Eterea_Parfums_Desktop
             toolTip.SetToolTip(btn_cerrar_sesion, "Cerrar sesión");
         }
 
+        internal static bool HayOrdenesActivas()
+        {
+            OrdenControlador controlador = new OrdenControlador();
+            return controlador.ObtenerCantidadOrdenesActivas() > 0;
+        }
+
+
         private void btn_cerrar_sesion_Click(object sender, EventArgs e)
         {
             Program.logueado = new Empleado();
@@ -54,17 +62,15 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_gestionar_Click(object sender, EventArgs e)
         {
-            FormListaDeEnvios listaDeEnvios = new FormListaDeEnvios();
-            listaDeEnvios.Show();
-            this.Hide();
-
-            foreach (Form form in Application.OpenForms)
+            if (HayOrdenesActivas())
             {
-                if (form.Name == "FormInicioAutoconsulta") // Asegúrate de que el nombre sea correcto
-                {
-                    form.Hide();
-                    break;
-                }
+                FormListaDeEnvios listaDeEnvios = new FormListaDeEnvios();
+                listaDeEnvios.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("En este momento no hay órdenes activas para despachar.", "Sin órdenes activas", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

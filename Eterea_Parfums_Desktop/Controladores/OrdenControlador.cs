@@ -13,7 +13,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public DataTable ObtenerOrdenes()
         {
             string query = @"
-            SELECT DISTINCT o.numero_de_orden, f.num_factura, f.fecha, o.nombre_cliente, o.apellido_cliente
+            SELECT DISTINCT o.numero_de_orden, f.num_factura, f.fecha, o.nombre_cliente, o.apellido_cliente, o.dni, o.e_mail_cliente, o.domicilio_de_envio, o.codigo_despacho
             FROM dbo.orden o
             JOIN dbo.factura f ON o.num_factura = f.num_factura
             WHERE o.estado = @estado
@@ -84,23 +84,67 @@ namespace Eterea_Parfums_Desktop.Controladores
         }
 
 
-        public void GuardarQRyDesactivarOrden(int numeroOrden, string contenidoQR)
+
+
+        public string GenerarCodigoDespachoUnico()
         {
-            string query = @"
-        UPDATE dbo.orden
-        SET qr = @qr, estado = 0
-        WHERE numero_de_orden = @numeroOrden";
+            Random rnd = new Random();
+            string codigoUnico;
 
             using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
-            using (SqlCommand cmd = new SqlCommand(query, conn))
             {
-                cmd.Parameters.AddWithValue("@qr", contenidoQR);
-                cmd.Parameters.AddWithValue("@numeroOrden", numeroOrden);
-
                 conn.Open();
-                cmd.ExecuteNonQuery();
+                while (true)
+                {
+                    codigoUnico = rnd.Next(100000000, 999999999).ToString() + rnd.Next(0, 9).ToString();
+
+                    string queryCheck = "SELECT COUNT(*) FROM dbo.orden WHERE codigo_despacho = @codigo";
+                    using (SqlCommand checkCmd = new SqlCommand(queryCheck, conn))
+                    {
+                        checkCmd.Parameters.AddWithValue("@codigo", codigoUnico);
+                        int count = (int)checkCmd.ExecuteScalar();
+                        if (count == 0)
+                            return codigoUnico; // es único
+                    }
+                }
             }
         }
+
+        public void GuardarCodigoDespacho(int numeroOrden, string codigo)
+        {
+            using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
+            {
+                string query = "UPDATE dbo.orden SET codigo_despacho = @codigo WHERE numero_de_orden = @orden";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@codigo", codigo);
+                    cmd.Parameters.AddWithValue("@orden", numeroOrden);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+        public void DesactivarOrden(int numeroOrden)
+        {
+            using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
+            {
+                string query = "UPDATE dbo.orden SET estado = 0 WHERE numero_de_orden = @orden";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@orden", numeroOrden);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
 
 
 
