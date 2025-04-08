@@ -13,9 +13,14 @@ namespace Eterea_Parfums_Desktop
     public partial class FormStart : Form
     {
         private BarcodeReceiver barcodeReceiver;
+
+       
         public FormStart()
         {
             InitializeComponent();
+
+            lbl_escala.Visible = false;
+            comboEscala.Visible = false;
 
             comboEscala.Items.AddRange(new object[] {
                 "100%", "90%", "80%", "70%", "60%"
@@ -77,10 +82,20 @@ namespace Eterea_Parfums_Desktop
             FormInicioAutoconsulta formInicioAutoconsulta = new FormInicioAutoconsulta();
             formInicioAutoconsulta.ShowDialog();
             btn_start.Visible = false;
+            btn_escalar.Visible = false;
+            lbl_escala.Visible = false;
+            comboEscala.Visible = false;
 
         }
 
-      
+        private void button1_Click(object sender, EventArgs e)
+        {
+            btn_escalar.Visible = false;
+            lbl_escala.Visible = true;
+            comboEscala.Visible = true;
+        }
+
+
 
 
 

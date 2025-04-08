@@ -31,6 +31,7 @@
             this.btn_start = new System.Windows.Forms.Button();
             this.comboEscala = new System.Windows.Forms.ComboBox();
             this.lbl_escala = new System.Windows.Forms.Label();
+            this.btn_escalar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_start
@@ -64,12 +65,27 @@
             this.lbl_escala.TabIndex = 298;
             this.lbl_escala.Text = "Escala de interfaz";
             // 
+            // btn_escalar
+            // 
+            this.btn_escalar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
+            this.btn_escalar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_escalar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_escalar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.btn_escalar.Location = new System.Drawing.Point(575, 313);
+            this.btn_escalar.Name = "btn_escalar";
+            this.btn_escalar.Size = new System.Drawing.Size(241, 37);
+            this.btn_escalar.TabIndex = 299;
+            this.btn_escalar.Text = "Escalar interfaz";
+            this.btn_escalar.UseVisualStyleBackColor = false;
+            this.btn_escalar.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleVioletRed;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_escalar);
             this.Controls.Add(this.lbl_escala);
             this.Controls.Add(this.comboEscala);
             this.Controls.Add(this.btn_start);
@@ -88,5 +104,6 @@
         public System.Windows.Forms.Button btn_start;
         private System.Windows.Forms.ComboBox comboEscala;
         private System.Windows.Forms.Label lbl_escala;
+        public System.Windows.Forms.Button btn_escalar;
     }
 }

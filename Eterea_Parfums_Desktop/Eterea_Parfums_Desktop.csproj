@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BarcodeReceiver.cs" />
+    <Compile Include="Controladores\OrdenControlador.cs" />
     <Compile Include="ControlesDeUsuario\AdministrarStock\AdministrarStock_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
