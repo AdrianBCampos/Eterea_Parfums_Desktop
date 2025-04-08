@@ -1,4 +1,5 @@
-﻿using Eterea_Parfums_Desktop.ControlesDeUsuario;
+﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock;
 using Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes;
 using Eterea_Parfums_Desktop.Modelos;
@@ -87,14 +88,26 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_facturar_Click(object sender, EventArgs e)
         {
-            Facturar_UC facturarUC = new Facturar_UC();
-            addUserControl(facturarUC);
-
             CambiarColorBoton2((Button)sender);
 
-            FormNumeroDeCaja numeroDeCaja = new FormNumeroDeCaja();
-            numeroDeCaja.ShowDialog();
-            
+            /*FormNumeroDeCaja numeroDeCaja = new FormNumeroDeCaja();
+
+            numeroDeCaja.ConfirmarNumeroCaja += (s, numeroCaja) =>
+            {
+                Facturar_UC facturarUC = new Facturar_UC();
+                facturarUC.NumeroCaja = numeroCaja;
+                facturarUC.IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(
+                    Convert.ToInt32(numeroCaja), Program.sucursal, Program.logueado.usuario
+                );
+
+                addUserControl(facturarUC);
+            };
+
+            numeroDeCaja.ShowDialog();*/
+
+            Facturar_UC adminUC = new Facturar_UC();
+            addUserControl(adminUC);
+
         }
 
         private void btn_administrar_stock_Click(object sender, EventArgs e)
@@ -114,7 +127,7 @@ namespace Eterea_Parfums_Desktop
         }
 
 
-        private void addUserControl(UserControl uc)
+        public void addUserControl(UserControl uc)
         {
             uc.Dock = DockStyle.Fill;
             panel_admin.Controls.Clear();

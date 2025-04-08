@@ -56,10 +56,10 @@ namespace Eterea_Parfums_Desktop
                         NumeroCaja = cajaDisponible.Value.ToString();
                         ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
 
-                        Facturar_UC facturacion = new Facturar_UC();
+                        /*Facturar_UC facturacion = new Facturar_UC();
                         facturacion.NumeroCaja = NumeroCaja;
                         facturacion.IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(Convert.ToInt32(NumeroCaja), Program.sucursal, Program.logueado.usuario);
-                        facturacion.Show();
+                        facturacion.Show();*/
 
                         this.BeginInvoke(new Action(() => this.Close()));
                     }
@@ -91,7 +91,7 @@ namespace Eterea_Parfums_Desktop
         private void button2_Click(object sender, EventArgs e)
         {
 
-            if (Program.logueado.rol == "admin")
+            /*if (Program.logueado.rol == "admin")
             {
                 // Buscar si ya existe una instancia de FormInicioAdministrador
                 FormInicioAdministrador inicioAdmin = Application.OpenForms.OfType<FormInicioAdministrador>().FirstOrDefault();
@@ -106,6 +106,7 @@ namespace Eterea_Parfums_Desktop
                     inicioAdmin = new FormInicioAdministrador();
                     inicioAdmin.Show();
                 }
+
 
                 this.Close(); // Cierra el formulario actual (login)
             }
@@ -126,7 +127,12 @@ namespace Eterea_Parfums_Desktop
                 }
 
                 this.Close(); // Cierra el formulario actual (login)
-            }
+            }*/
+
+            // Cancelar el ingreso de caja y actualizar Facturar_UC
+          
+
+            this.Close(); // Cierra FormNumeroDeCaja
         }
 
 
@@ -143,10 +149,10 @@ namespace Eterea_Parfums_Desktop
                     NumeroCaja = numCaja;
                     ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
 
-                    Facturar_UC facturacion = new Facturar_UC();
+                    /*Facturar_UC facturacion = new Facturar_UC();
                     facturacion.NumeroCaja = numCaja;
                     facturacion.IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(Convert.ToInt32(numCaja), Program.sucursal, Program.logueado.usuario);
-                    
+                    */
 
                     this.Close();
                 }

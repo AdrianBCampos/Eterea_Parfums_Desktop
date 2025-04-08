@@ -29,8 +29,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         {
             InitializeComponent();
 
-            
-
             txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
 
             this.Load += FormFacturacion_Load;
@@ -75,13 +73,16 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
             lbl_dniE.Hide();
             txt_scan_factura.Hide();
-        }    
+            
+
+        }
 
         private void FormFacturacion_Load(object sender, EventArgs e)
         {
             txt_numero_caja.Text = NumeroCaja;
             txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
             txt_scan_factura.Focus(); // Forzar el foco en txt_scan_factura al cargar el formulario
+            
         }
 
         private void Txt_scan_factura_KeyPress(object sender, KeyPressEventArgs e)
@@ -146,23 +147,14 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
             int rowIndex = Factura.Rows.Add(perfume.id, 1, "", "", perfume.nombre, perfume.precio_en_pesos, "", "", ""); ;
 
-
-
             // Asignar botones a las celdas de la nueva fila
             Factura.Rows[rowIndex].Cells[2] = new DataGridViewButtonCell() { Value = "➕" };
             Factura.Rows[rowIndex].Cells[3] = new DataGridViewButtonCell() { Value = "➖" };
             Factura.Rows[rowIndex].Cells[8] = new DataGridViewButtonCell() { Value = "Eliminar" };// "🗑" 
 
-
-
-
             descuentoUnitario();
             ActualizarTotales();
         }
-
-
-
-        
 
         private void Txt_scan_factura_Leave(object sender, EventArgs e)
         {
@@ -184,12 +176,39 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         }
 
 
-
-
-
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click_1(object sender, EventArgs e)
         {
-            // Convertimos el número de caja de string a int
+            // Abre la pantalla para seleccionar otra caja
+            FormNumeroDeCaja numeroDeCaja = new FormNumeroDeCaja();
+            numeroDeCaja.AutoTomarCaja = false;
+
+            // Escucha el evento para actualizar la pantalla de facturación
+            numeroDeCaja.ConfirmarNumeroCaja += (s, nuevaCaja) =>
+            {
+                // Actualizar variables
+                NumeroCaja = nuevaCaja;
+                IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(
+                    Convert.ToInt32(nuevaCaja), Program.sucursal, Program.logueado.usuario
+                );
+
+                // Cargar nuevo UserControl
+                Facturar_UC nuevaFacturacion = new Facturar_UC();
+                nuevaFacturacion.NumeroCaja = NumeroCaja;
+                nuevaFacturacion.IdHistorialCaja = IdHistorialCaja;
+
+                var formPadre = this.FindForm() as FormInicioAdministrador;
+                if (formPadre != null)
+                {
+                    formPadre.addUserControl(nuevaFacturacion);
+                } // método que ya tenés para cambiar el contenido del panel
+            };
+
+            numeroDeCaja.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Cierra la caja actual
             if (int.TryParse(NumeroCaja, out int numCaja))
             {
                 CajaControlador.MarcarCajaComoDisponible(numCaja, Program.sucursal);
@@ -200,13 +219,15 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 CajaControlador.RegistrarCierreDeCaja(IdHistorialCaja);
             }
 
-
-            FormNumeroDeCaja numeroDeCaja = new FormNumeroDeCaja();
-            numeroDeCaja.AutoTomarCaja = false; // No volver a tomar la única caja automáticamente
-            numeroDeCaja.Show();
-            //this.Close();
+            MostrarCajaSinAsignar();
         }
 
+        private void MostrarCajaSinAsignar()
+        {
+            NumeroCaja = null;
+            IdHistorialCaja = 0;
+            txt_numero_caja.Text = "Caja sin asignar";
+        }
 
         private void btn_buscar_Click(object sender, EventArgs e)
         {
@@ -1030,5 +1051,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
+       
     }
 }
