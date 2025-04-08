@@ -24,6 +24,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         };
 
             return EjecutarConsultaConParametros(query, parametros);
+
         }
 
         public DataTable ObtenerPerfumesDeFactura(int numFactura)
@@ -79,6 +80,25 @@ namespace Eterea_Parfums_Desktop.Controladores
                 connection.Open();
                 int cantidad = (int)command.ExecuteScalar();
                 return cantidad;
+            }
+        }
+
+
+        public void GuardarQRyDesactivarOrden(int numeroOrden, string contenidoQR)
+        {
+            string query = @"
+        UPDATE dbo.orden
+        SET qr = @qr, estado = 0
+        WHERE numero_de_orden = @numeroOrden";
+
+            using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@qr", contenidoQR);
+                cmd.Parameters.AddWithValue("@numeroOrden", numeroOrden);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
             }
         }
 
