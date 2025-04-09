@@ -34,7 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt_scan_factura = new System.Windows.Forms.TextBox();
-            this.combo_forma_pago = new System.Windows.Forms.ComboBox();
             this.txt_numero_factura = new System.Windows.Forms.Label();
             this.txt_condicion_iva = new System.Windows.Forms.Label();
             this.txt_nombre_cliente = new System.Windows.Forms.Label();
@@ -43,11 +42,8 @@
             this.lbl_nombre_cliente = new System.Windows.Forms.Label();
             this.btn_imprimir = new System.Windows.Forms.Button();
             this.btn_enviar = new System.Windows.Forms.Button();
-            this.txt_email = new System.Windows.Forms.TextBox();
             this.lbl_email = new System.Windows.Forms.Label();
-            this.combo_descuento = new System.Windows.Forms.ComboBox();
             this.lbl_descuento = new System.Windows.Forms.Label();
-            this.combo_cuotas = new System.Windows.Forms.ComboBox();
             this.lbl_cuotas = new System.Windows.Forms.Label();
             this.lbl_forma_pago = new System.Windows.Forms.Label();
             this.txt_rec = new System.Windows.Forms.Label();
@@ -60,15 +56,6 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.Factura = new System.Windows.Forms.DataGridView();
-            this.Id_Perfume = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sumar1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.restar1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Nombre_Perfume = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio_Unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tot = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btn_consultas = new System.Windows.Forms.Button();
             this.btn_buscar = new System.Windows.Forms.Button();
@@ -119,6 +106,19 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txt_estadoCaja = new System.Windows.Forms.Label();
+            this.combo_forma_pago = new System.Windows.Forms.ComboBox();
+            this.txt_email = new System.Windows.Forms.TextBox();
+            this.combo_descuento = new System.Windows.Forms.ComboBox();
+            this.combo_cuotas = new System.Windows.Forms.ComboBox();
+            this.Id_Perfume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sumar1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.restar1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Nombre_Perfume = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio_Unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -153,16 +153,6 @@
             this.txt_scan_factura.Name = "txt_scan_factura";
             this.txt_scan_factura.Size = new System.Drawing.Size(197, 22);
             this.txt_scan_factura.TabIndex = 397;
-            // 
-            // combo_forma_pago
-            // 
-            this.combo_forma_pago.BackColor = System.Drawing.Color.White;
-            this.combo_forma_pago.FormattingEnabled = true;
-            this.combo_forma_pago.Location = new System.Drawing.Point(1327, 474);
-            this.combo_forma_pago.Margin = new System.Windows.Forms.Padding(4);
-            this.combo_forma_pago.Name = "combo_forma_pago";
-            this.combo_forma_pago.Size = new System.Drawing.Size(137, 24);
-            this.combo_forma_pago.TabIndex = 380;
             // 
             // txt_numero_factura
             // 
@@ -248,7 +238,7 @@
             this.btn_imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_imprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_imprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_imprimir.Location = new System.Drawing.Point(1714, 603);
+            this.btn_imprimir.Location = new System.Drawing.Point(1717, 537);
             this.btn_imprimir.Margin = new System.Windows.Forms.Padding(4);
             this.btn_imprimir.Name = "btn_imprimir";
             this.btn_imprimir.Size = new System.Drawing.Size(276, 62);
@@ -263,82 +253,50 @@
             this.btn_enviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_enviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_enviar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_enviar.Location = new System.Drawing.Point(1713, 528);
+            this.btn_enviar.Location = new System.Drawing.Point(1711, 622);
             this.btn_enviar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_enviar.Name = "btn_enviar";
-            this.btn_enviar.Size = new System.Drawing.Size(276, 62);
+            this.btn_enviar.Size = new System.Drawing.Size(276, 50);
             this.btn_enviar.TabIndex = 389;
             this.btn_enviar.Text = "Enviar por mail";
             this.btn_enviar.UseVisualStyleBackColor = false;
-            // 
-            // txt_email
-            // 
-            this.txt_email.BackColor = System.Drawing.Color.White;
-            this.txt_email.Location = new System.Drawing.Point(1358, 600);
-            this.txt_email.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_email.Name = "txt_email";
-            this.txt_email.Size = new System.Drawing.Size(311, 22);
-            this.txt_email.TabIndex = 387;
-            this.txt_email.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_email
             // 
             this.lbl_email.AutoSize = true;
             this.lbl_email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.lbl_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_email.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_email.Location = new System.Drawing.Point(1222, 605);
+            this.lbl_email.Location = new System.Drawing.Point(1202, 635);
             this.lbl_email.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_email.Name = "lbl_email";
-            this.lbl_email.Size = new System.Drawing.Size(98, 18);
+            this.lbl_email.Size = new System.Drawing.Size(146, 25);
             this.lbl_email.TabIndex = 386;
             this.lbl_email.Text = "Email Cliente:";
-            // 
-            // combo_descuento
-            // 
-            this.combo_descuento.BackColor = System.Drawing.Color.White;
-            this.combo_descuento.FormattingEnabled = true;
-            this.combo_descuento.Location = new System.Drawing.Point(1492, 534);
-            this.combo_descuento.Margin = new System.Windows.Forms.Padding(4);
-            this.combo_descuento.Name = "combo_descuento";
-            this.combo_descuento.Size = new System.Drawing.Size(169, 24);
-            this.combo_descuento.TabIndex = 384;
-            this.combo_descuento.SelectedIndexChanged += new System.EventHandler(this.combo_descuento_SelectedIndexChanged);
             // 
             // lbl_descuento
             // 
             this.lbl_descuento.AutoSize = true;
             this.lbl_descuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.lbl_descuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_descuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_descuento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_descuento.Location = new System.Drawing.Point(1221, 536);
+            this.lbl_descuento.Location = new System.Drawing.Point(1202, 559);
             this.lbl_descuento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_descuento.Name = "lbl_descuento";
-            this.lbl_descuento.Size = new System.Drawing.Size(222, 18);
+            this.lbl_descuento.Size = new System.Drawing.Size(324, 25);
             this.lbl_descuento.TabIndex = 385;
             this.lbl_descuento.Text = "Descuento por pago en efectivo:";
-            // 
-            // combo_cuotas
-            // 
-            this.combo_cuotas.BackColor = System.Drawing.Color.White;
-            this.combo_cuotas.FormattingEnabled = true;
-            this.combo_cuotas.Location = new System.Drawing.Point(1711, 476);
-            this.combo_cuotas.Margin = new System.Windows.Forms.Padding(4);
-            this.combo_cuotas.Name = "combo_cuotas";
-            this.combo_cuotas.Size = new System.Drawing.Size(139, 24);
-            this.combo_cuotas.TabIndex = 382;
-            this.combo_cuotas.SelectedIndexChanged += new System.EventHandler(this.combo_cuotas_SelectedIndexChanged);
             // 
             // lbl_cuotas
             // 
             this.lbl_cuotas.AutoSize = true;
             this.lbl_cuotas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.lbl_cuotas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_cuotas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_cuotas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_cuotas.Location = new System.Drawing.Point(1647, 482);
+            this.lbl_cuotas.Location = new System.Drawing.Point(1642, 480);
             this.lbl_cuotas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_cuotas.Name = "lbl_cuotas";
-            this.lbl_cuotas.Size = new System.Drawing.Size(60, 18);
+            this.lbl_cuotas.Size = new System.Drawing.Size(88, 25);
             this.lbl_cuotas.TabIndex = 383;
             this.lbl_cuotas.Text = "Cuotas:";
             // 
@@ -346,12 +304,12 @@
             // 
             this.lbl_forma_pago.AutoSize = true;
             this.lbl_forma_pago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.lbl_forma_pago.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_forma_pago.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_forma_pago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_forma_pago.Location = new System.Drawing.Point(1205, 479);
+            this.lbl_forma_pago.Location = new System.Drawing.Point(1202, 480);
             this.lbl_forma_pago.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_forma_pago.Name = "lbl_forma_pago";
-            this.lbl_forma_pago.Size = new System.Drawing.Size(115, 18);
+            this.lbl_forma_pago.Size = new System.Drawing.Size(166, 25);
             this.lbl_forma_pago.TabIndex = 381;
             this.lbl_forma_pago.Text = "Forma de Pago:";
             // 
@@ -437,10 +395,10 @@
             // 
             this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox6.Location = new System.Drawing.Point(1189, 582);
+            this.pictureBox6.Location = new System.Drawing.Point(1189, 613);
             this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(509, 98);
+            this.pictureBox6.Size = new System.Drawing.Size(811, 67);
             this.pictureBox6.TabIndex = 360;
             this.pictureBox6.TabStop = false;
             // 
@@ -462,7 +420,7 @@
             this.pictureBox3.Location = new System.Drawing.Point(1190, 459);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(810, 47);
+            this.pictureBox3.Size = new System.Drawing.Size(810, 65);
             this.pictureBox3.TabIndex = 358;
             this.pictureBox3.TabStop = false;
             // 
@@ -533,92 +491,6 @@
             this.Factura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Factura.Size = new System.Drawing.Size(1127, 375);
             this.Factura.TabIndex = 357;
-            // 
-            // Id_Perfume
-            // 
-            this.Id_Perfume.HeaderText = "ID";
-            this.Id_Perfume.MinimumWidth = 6;
-            this.Id_Perfume.Name = "Id_Perfume";
-            this.Id_Perfume.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Cantidad.FillWeight = 57.51565F;
-            this.Cantidad.HeaderText = "CANTIDAD";
-            this.Cantidad.MinimumWidth = 6;
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            this.Cantidad.Width = 137;
-            // 
-            // sumar1
-            // 
-            this.sumar1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.sumar1.FillWeight = 43.19315F;
-            this.sumar1.HeaderText = "+";
-            this.sumar1.MinimumWidth = 6;
-            this.sumar1.Name = "sumar1";
-            this.sumar1.ReadOnly = true;
-            this.sumar1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.sumar1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.sumar1.Width = 49;
-            // 
-            // restar1
-            // 
-            this.restar1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.restar1.FillWeight = 40.60915F;
-            this.restar1.HeaderText = "-";
-            this.restar1.MinimumWidth = 6;
-            this.restar1.Name = "restar1";
-            this.restar1.ReadOnly = true;
-            this.restar1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.restar1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.restar1.Width = 44;
-            // 
-            // Nombre_Perfume
-            // 
-            this.Nombre_Perfume.FillWeight = 402.6662F;
-            this.Nombre_Perfume.HeaderText = "NOMBRE";
-            this.Nombre_Perfume.MinimumWidth = 6;
-            this.Nombre_Perfume.Name = "Nombre_Perfume";
-            this.Nombre_Perfume.ReadOnly = true;
-            // 
-            // Precio_Unitario
-            // 
-            this.Precio_Unitario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Precio_Unitario.FillWeight = 57.51565F;
-            this.Precio_Unitario.HeaderText = "PRECIO UNITARIO ($)";
-            this.Precio_Unitario.MinimumWidth = 6;
-            this.Precio_Unitario.Name = "Precio_Unitario";
-            this.Precio_Unitario.ReadOnly = true;
-            this.Precio_Unitario.Width = 241;
-            // 
-            // Descuento
-            // 
-            this.Descuento.HeaderText = "DESCUENTO";
-            this.Descuento.MinimumWidth = 6;
-            this.Descuento.Name = "Descuento";
-            this.Descuento.ReadOnly = true;
-            // 
-            // Tot
-            // 
-            this.Tot.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Tot.FillWeight = 57.51565F;
-            this.Tot.HeaderText = "TOTAL ($)";
-            this.Tot.MinimumWidth = 6;
-            this.Tot.Name = "Tot";
-            this.Tot.ReadOnly = true;
-            this.Tot.Width = 133;
-            // 
-            // eliminar
-            // 
-            this.eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.eliminar.FillWeight = 57.51565F;
-            this.eliminar.HeaderText = "ELIMINAR";
-            this.eliminar.MinimumWidth = 6;
-            this.eliminar.Name = "eliminar";
-            this.eliminar.ReadOnly = true;
-            this.eliminar.Width = 104;
             // 
             // pictureBox2
             // 
@@ -766,10 +638,10 @@
             // 
             this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox5.Location = new System.Drawing.Point(1190, 514);
+            this.pictureBox5.Location = new System.Drawing.Point(1190, 528);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(509, 62);
+            this.pictureBox5.Size = new System.Drawing.Size(509, 81);
             this.pictureBox5.TabIndex = 388;
             this.pictureBox5.TabStop = false;
             // 
@@ -997,10 +869,10 @@
             // 
             this.pictureBox23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox23.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox23.Location = new System.Drawing.Point(1704, 514);
+            this.pictureBox23.Location = new System.Drawing.Point(1704, 528);
             this.pictureBox23.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox23.Name = "pictureBox23";
-            this.pictureBox23.Size = new System.Drawing.Size(296, 166);
+            this.pictureBox23.Size = new System.Drawing.Size(296, 81);
             this.pictureBox23.TabIndex = 417;
             this.pictureBox23.TabStop = false;
             // 
@@ -1234,11 +1106,156 @@
             this.txt_estadoCaja.TabIndex = 434;
             this.txt_estadoCaja.Text = "Estado de la caja";
             // 
+            // combo_forma_pago
+            // 
+            this.combo_forma_pago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.combo_forma_pago.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_forma_pago.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_forma_pago.FormattingEnabled = true;
+            this.combo_forma_pago.Location = new System.Drawing.Point(1385, 474);
+            this.combo_forma_pago.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_forma_pago.Name = "combo_forma_pago";
+            this.combo_forma_pago.Size = new System.Drawing.Size(217, 33);
+            this.combo_forma_pago.TabIndex = 435;
+            this.combo_forma_pago.SelectedIndexChanged += new System.EventHandler(this.combo_forma_pago_SelectedIndexChanged);
+            // 
+            // txt_email
+            // 
+            this.txt_email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_email.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_email.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_email.Location = new System.Drawing.Point(1365, 630);
+            this.txt_email.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_email.Name = "txt_email";
+            this.txt_email.Size = new System.Drawing.Size(330, 34);
+            this.txt_email.TabIndex = 436;
+            // 
+            // combo_descuento
+            // 
+            this.combo_descuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.combo_descuento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_descuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_descuento.FormattingEnabled = true;
+            this.combo_descuento.Location = new System.Drawing.Point(1567, 553);
+            this.combo_descuento.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_descuento.Name = "combo_descuento";
+            this.combo_descuento.Size = new System.Drawing.Size(107, 33);
+            this.combo_descuento.TabIndex = 437;
+            this.combo_descuento.SelectedIndexChanged += new System.EventHandler(this.combo_descuento_SelectedIndexChanged);
+            // 
+            // combo_cuotas
+            // 
+            this.combo_cuotas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.combo_cuotas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combo_cuotas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_cuotas.FormattingEnabled = true;
+            this.combo_cuotas.Location = new System.Drawing.Point(1749, 475);
+            this.combo_cuotas.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_cuotas.Name = "combo_cuotas";
+            this.combo_cuotas.Size = new System.Drawing.Size(217, 33);
+            this.combo_cuotas.TabIndex = 438;
+            this.combo_cuotas.SelectedIndexChanged += new System.EventHandler(this.combo_cuotas_SelectedIndexChanged);
+            // 
+            // Id_Perfume
+            // 
+            this.Id_Perfume.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Id_Perfume.HeaderText = "ID";
+            this.Id_Perfume.MinimumWidth = 6;
+            this.Id_Perfume.Name = "Id_Perfume";
+            this.Id_Perfume.ReadOnly = true;
+            this.Id_Perfume.Width = 40;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Cantidad.FillWeight = 57.51565F;
+            this.Cantidad.HeaderText = "CANTIDAD";
+            this.Cantidad.MinimumWidth = 6;
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            this.Cantidad.Width = 137;
+            // 
+            // sumar1
+            // 
+            this.sumar1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.sumar1.FillWeight = 43.19315F;
+            this.sumar1.HeaderText = "+";
+            this.sumar1.MinimumWidth = 6;
+            this.sumar1.Name = "sumar1";
+            this.sumar1.ReadOnly = true;
+            this.sumar1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.sumar1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.sumar1.Width = 49;
+            // 
+            // restar1
+            // 
+            this.restar1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.restar1.FillWeight = 40.60915F;
+            this.restar1.HeaderText = "-";
+            this.restar1.MinimumWidth = 6;
+            this.restar1.Name = "restar1";
+            this.restar1.ReadOnly = true;
+            this.restar1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.restar1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.restar1.Width = 44;
+            // 
+            // Nombre_Perfume
+            // 
+            this.Nombre_Perfume.FillWeight = 402.6662F;
+            this.Nombre_Perfume.HeaderText = "NOMBRE";
+            this.Nombre_Perfume.MinimumWidth = 6;
+            this.Nombre_Perfume.Name = "Nombre_Perfume";
+            this.Nombre_Perfume.ReadOnly = true;
+            // 
+            // Precio_Unitario
+            // 
+            this.Precio_Unitario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Precio_Unitario.FillWeight = 57.51565F;
+            this.Precio_Unitario.HeaderText = "PRECIO UNITARIO ($)";
+            this.Precio_Unitario.MinimumWidth = 6;
+            this.Precio_Unitario.Name = "Precio_Unitario";
+            this.Precio_Unitario.ReadOnly = true;
+            this.Precio_Unitario.Width = 241;
+            // 
+            // Descuento
+            // 
+            this.Descuento.HeaderText = "DESCUENTO";
+            this.Descuento.MinimumWidth = 6;
+            this.Descuento.Name = "Descuento";
+            this.Descuento.ReadOnly = true;
+            // 
+            // Tot
+            // 
+            this.Tot.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Tot.FillWeight = 57.51565F;
+            this.Tot.HeaderText = "TOTAL ($)";
+            this.Tot.MinimumWidth = 6;
+            this.Tot.Name = "Tot";
+            this.Tot.ReadOnly = true;
+            this.Tot.Width = 133;
+            // 
+            // eliminar
+            // 
+            this.eliminar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.eliminar.FillWeight = 57.51565F;
+            this.eliminar.HeaderText = "ELIMINAR";
+            this.eliminar.MinimumWidth = 6;
+            this.eliminar.Name = "eliminar";
+            this.eliminar.ReadOnly = true;
+            this.eliminar.Width = 104;
+            // 
             // Facturar_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
+            this.Controls.Add(this.combo_cuotas);
+            this.Controls.Add(this.combo_descuento);
+            this.Controls.Add(this.lbl_descuento);
+            this.Controls.Add(this.txt_email);
+            this.Controls.Add(this.btn_enviar);
+            this.Controls.Add(this.combo_forma_pago);
             this.Controls.Add(this.txt_estadoCaja);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
@@ -1268,18 +1285,12 @@
             this.Controls.Add(this.pictureBox15);
             this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.pictureBox14);
-            this.Controls.Add(this.combo_forma_pago);
             this.Controls.Add(this.txt_condicion_iva);
             this.Controls.Add(this.txt_nombre_cliente);
             this.Controls.Add(this.lbl_condicion_iva);
             this.Controls.Add(this.lbl_nombre_cliente);
             this.Controls.Add(this.btn_imprimir);
-            this.Controls.Add(this.btn_enviar);
-            this.Controls.Add(this.txt_email);
             this.Controls.Add(this.lbl_email);
-            this.Controls.Add(this.combo_descuento);
-            this.Controls.Add(this.lbl_descuento);
-            this.Controls.Add(this.combo_cuotas);
             this.Controls.Add(this.lbl_cuotas);
             this.Controls.Add(this.lbl_forma_pago);
             this.Controls.Add(this.lbl_total);
@@ -1351,7 +1362,6 @@
         #endregion
 
         private System.Windows.Forms.TextBox txt_scan_factura;
-        private System.Windows.Forms.ComboBox combo_forma_pago;
         private System.Windows.Forms.Label txt_numero_factura;
         private System.Windows.Forms.Label txt_condicion_iva;
         private System.Windows.Forms.Label txt_nombre_cliente;
@@ -1360,11 +1370,8 @@
         private System.Windows.Forms.Label lbl_nombre_cliente;
         private System.Windows.Forms.Button btn_imprimir;
         private System.Windows.Forms.Button btn_enviar;
-        private System.Windows.Forms.TextBox txt_email;
         private System.Windows.Forms.Label lbl_email;
-        private System.Windows.Forms.ComboBox combo_descuento;
         private System.Windows.Forms.Label lbl_descuento;
-        private System.Windows.Forms.ComboBox combo_cuotas;
         private System.Windows.Forms.Label lbl_cuotas;
         private System.Windows.Forms.Label lbl_forma_pago;
         private System.Windows.Forms.Label txt_rec;
@@ -1377,15 +1384,6 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.DataGridView Factura;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Perfume;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewButtonColumn sumar1;
-        private System.Windows.Forms.DataGridViewButtonColumn restar1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre_Perfume;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio_Unitario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descuento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tot;
-        private System.Windows.Forms.DataGridViewButtonColumn eliminar;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button btn_consultas;
         private System.Windows.Forms.Button btn_buscar;
@@ -1436,5 +1434,18 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label txt_estadoCaja;
+        private System.Windows.Forms.ComboBox combo_forma_pago;
+        private System.Windows.Forms.TextBox txt_email;
+        private System.Windows.Forms.ComboBox combo_descuento;
+        private System.Windows.Forms.ComboBox combo_cuotas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Perfume;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewButtonColumn sumar1;
+        private System.Windows.Forms.DataGridViewButtonColumn restar1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre_Perfume;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio_Unitario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descuento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tot;
+        private System.Windows.Forms.DataGridViewButtonColumn eliminar;
     }
 }

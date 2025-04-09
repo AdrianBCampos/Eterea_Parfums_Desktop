@@ -76,6 +76,19 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             txt_scan_factura.Hide();
 
             ActualizarEstadoCaja();
+
+            //Diseño del combo box
+            combo_forma_pago.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_forma_pago.DrawItem += comboBoxdiseño_DrawItem;
+            combo_forma_pago.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_cuotas.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_cuotas.DrawItem += comboBoxdiseño_DrawItem;
+            combo_cuotas.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_descuento.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_descuento.DrawItem += comboBoxdiseño_DrawItem;
+            combo_descuento.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void FormFacturacion_Load(object sender, EventArgs e)
@@ -1120,6 +1133,49 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
-        
+
+        //Diseño del combo box
+        private void comboBoxdiseño_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0)
+                return;
+
+            // Obtener el ComboBox y el texto del ítem actual
+            ComboBox combo = sender as ComboBox;
+            string text = combo.Items[e.Index].ToString();
+
+            // Definir colores personalizados
+            Color backgroundColor;
+            Color textColor;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                // Color cuando el ítem está seleccionado
+                backgroundColor = Color.FromArgb(195, 156, 164);
+                textColor = Color.White;
+            }
+            else
+            {
+                // Color cuando el ítem NO está seleccionado
+                backgroundColor = Color.FromArgb(250, 236, 239); // Color personalizado
+                textColor = Color.FromArgb(195, 156, 164);
+            }
+
+            // Pintar el fondo del ítem
+            using (SolidBrush brush = new SolidBrush(backgroundColor))
+            {
+                e.Graphics.FillRectangle(brush, e.Bounds);
+            }
+
+            // Dibujar el texto
+            TextRenderer.DrawText(e.Graphics, text, e.Font, e.Bounds, textColor, TextFormatFlags.Left);
+
+            // Evitar problemas visuales
+            e.DrawFocusRectangle();
+        }
+
+        //Diseño del boton del datagridview
+       
+
     }
 }
