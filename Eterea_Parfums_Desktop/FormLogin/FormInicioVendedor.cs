@@ -77,7 +77,7 @@ namespace Eterea_Parfums_Desktop
         private void btn_buscar_envios_Click(object sender, EventArgs e)
         {
             FormBuscarPedidos buscar = new FormBuscarPedidos();
-            buscar.Show(); // o buscar.ShowDialog();
+            buscar.Show();
             this.Hide();
         }
     }

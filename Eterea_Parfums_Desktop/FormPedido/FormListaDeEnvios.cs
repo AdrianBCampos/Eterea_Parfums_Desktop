@@ -19,8 +19,12 @@ namespace Eterea_Parfums_Desktop
         //private Bitmap qrBitmapParaImprimir;
         private string nombreSucursalActual;
 
-        public FormListaDeEnvios()
+        private int? numeroOrdenFiltrada = null;
+
+
+        public FormListaDeEnvios(int? numeroOrden = null)
         {
+            numeroOrdenFiltrada = numeroOrden;
 
             OrdenControlador controlador = new OrdenControlador();
             int cantidad = controlador.ObtenerCantidadOrdenesActivas();
@@ -35,6 +39,9 @@ namespace Eterea_Parfums_Desktop
             InitializeComponent();
 
             txt_cantidad_ordenes.Text = cantidad.ToString();
+
+            this.lbl_pedido_buscado.Visible = false; // oculto por defecto
+            this.Controls.Add(this.lbl_pedido_buscado);
 
             string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";
             img_logo.Image = Image.FromFile(rutaCompletaImagen);
@@ -68,7 +75,27 @@ namespace Eterea_Parfums_Desktop
         {
             OrdenControlador controlador = new OrdenControlador();
 
-            DataTable dtOrdenes = controlador.ObtenerOrdenes();
+            DataTable dtOrdenes;
+
+            if (numeroOrdenFiltrada.HasValue)
+            {
+                // Es un pedido buscado → ocultar cantidad total y mostrar leyenda personalizada
+                lbl_cantidad_ordenes.Visible = false;
+                txt_cantidad_ordenes.Visible = false;
+
+                lbl_pedido_buscado.Visible = true;
+                lbl_pedido_buscado.Text = $"Mostrando detalles del pedido N° {numeroOrdenFiltrada.Value}";
+                dtOrdenes = new OrdenControlador().BuscarOrdenPorNumero(numeroOrdenFiltrada.Value);
+            }
+            else
+            {
+                // Es la lista completa → mostrar total
+                lbl_cantidad_ordenes.Visible = true;
+                txt_cantidad_ordenes.Visible = true;
+                lbl_pedido_buscado.Visible = false;
+                dtOrdenes = new OrdenControlador().ObtenerOrdenes();
+            }
+
             //MessageBox.Show("Órdenes activas encontradas: " + dtOrdenes.Rows.Count);
             flowLayoutPanel1.Controls.Clear();
 

@@ -149,11 +149,21 @@ namespace Eterea_Parfums_Desktop.Controladores
         public DataTable BuscarOrdenPorNumero(int numeroOrden)
         {
             string query = @"
-        SELECT 
-            numero_de_orden, 
-            estado 
-        FROM dbo.orden
-        WHERE numero_de_orden = @numeroOrden";
+        SELECT DISTINCT 
+            o.numero_de_orden, 
+            f.num_factura, 
+            f.fecha, 
+            o.nombre_cliente, 
+            o.apellido_cliente, 
+            o.dni, 
+            o.e_mail_cliente, 
+            o.domicilio_de_envio, 
+            o.estado, 
+            o.codigo_despacho,
+            f.fecha AS fecha_compra
+        FROM dbo.orden o
+        JOIN dbo.factura f ON o.num_factura = f.num_factura
+        WHERE o.numero_de_orden = @numeroOrden AND o.estado = 1";
 
             using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -168,6 +178,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                 }
             }
         }
+
 
 
 

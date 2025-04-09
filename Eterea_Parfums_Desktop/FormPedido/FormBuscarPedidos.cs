@@ -25,12 +25,12 @@ namespace Eterea_Parfums_Desktop
             this.Close();
         }
 
-        private void btn_lista_envios_Click(object sender, EventArgs e)
+        /*private void btn_lista_envios_Click(object sender, EventArgs e)
         {
             FormListaDeEnvios listaDeEnvios = new FormListaDeEnvios();
             listaDeEnvios.Show();
             this.Close();
-        }
+        }*/
 
         private void btn_buscar_orden_Click(object sender, EventArgs e)
         {
@@ -51,30 +51,45 @@ namespace Eterea_Parfums_Desktop
                 return;
             }
 
+
             foreach (DataRow row in resultado.Rows)
             {
                 int estado = Convert.ToInt32(row["estado"]);
                 string estadoTexto = estado == 1 ? "Para despachar" : "Ya despachada";
+                string fechaCompra = Convert.ToDateTime(row["fecha_compra"]).ToShortDateString();
 
                 dgv_resultado.Rows.Add(
                     row["numero_de_orden"].ToString(),
                     estadoTexto,
-                    "Ver"
+                    fechaCompra
                 );
             }
         }
 
 
-
-        /*private void dgv_resultado_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void btn_preparar_envio_Click(object sender, EventArgs e)
         {
-            if (e.RowIndex >= 0 && dgv_resultado.Columns[e.ColumnIndex].HeaderText == "Ver")
-            {
-                int numeroOrden = Convert.ToInt32(dgv_resultado.Rows[e.RowIndex].Cells[0].Value);
-                FormDetalleOrden detalle = new FormDetalleOrden(numeroOrden);
-                detalle.ShowDialog();
-            }
-        }*/
+                if (dgv_resultado.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Seleccione una orden de la lista.");
+                    return;
+                }
+
+                int numeroOrden = Convert.ToInt32(dgv_resultado.SelectedRows[0].Cells[0].Value);
+                FormListaDeEnvios listaFiltrada = new FormListaDeEnvios(numeroOrden);
+                listaFiltrada.Show();
+                this.Hide();
+        }
+
+
+
+
+
+
+
+
+       
+
 
 
 
