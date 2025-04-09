@@ -177,16 +177,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void Txt_scan_factura_TextChanged(object sender, EventArgs e)
         {
-            if ((DateTime.Now - ultimaLectura).TotalMilliseconds > TIEMPO_ENTRE_LECTURAS_MS)
-            {
-                string codigo = txt_scan_factura.Text.Trim();
-                if (!string.IsNullOrEmpty(codigo))
-                {
-                    ProcesarCodigoBarras(codigo);
-                    txt_scan_factura.Clear();
-                }
-            }
-            ultimaLectura = DateTime.Now;
+
         }
 
 
