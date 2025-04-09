@@ -178,32 +178,53 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            // Abre la pantalla para seleccionar otra caja
-            FormNumeroDeCaja numeroDeCaja = new FormNumeroDeCaja();
-            numeroDeCaja.AutoTomarCaja = false;
+            Facturar_UC nuevaFacturacion = new Facturar_UC();
 
-            // Escucha el evento para actualizar la pantalla de facturación
-            numeroDeCaja.ConfirmarNumeroCaja += (s, nuevaCaja) =>
+            // Verifica si ya hay una caja asignada
+            if (!string.IsNullOrEmpty(Program.NumeroCajaActual) && Program.NumeroCajaActual != "Caja sin asignar")
             {
-                // Actualizar variables
-                NumeroCaja = nuevaCaja;
-                IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(
-                    Convert.ToInt32(nuevaCaja), Program.sucursal, Program.logueado.usuario
-                );
+                // Mostrar cartel
+                MessageBox.Show($"Ya hay una caja asignada: {Program.NumeroCajaActual}", "Caja ya asignada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Cargar nuevo UserControl
-                Facturar_UC nuevaFacturacion = new Facturar_UC();
-                nuevaFacturacion.NumeroCaja = NumeroCaja;
-                nuevaFacturacion.IdHistorialCaja = IdHistorialCaja;
+                // Usa la caja ya asignada
+                nuevaFacturacion.NumeroCaja = Program.NumeroCajaActual;
+                nuevaFacturacion.IdHistorialCaja = Program.IdHistorialCajaActual;
+            }
+            else
+            {
+                // No hay caja asignada, mostrar pantalla para elegir caja
+                FormNumeroDeCaja numeroDeCaja = new FormNumeroDeCaja();
+                numeroDeCaja.AutoTomarCaja = false;
 
-                var formPadre = this.FindForm() as FormInicioAdministrador;
-                if (formPadre != null)
+                numeroDeCaja.ConfirmarNumeroCaja += (s, nuevaCaja) =>
                 {
-                    formPadre.addUserControl(nuevaFacturacion);
-                } // método que ya tenés para cambiar el contenido del panel
-            };
+                    // Asignar nueva caja
+                    Program.NumeroCajaActual = nuevaCaja;
+                    Program.IdHistorialCajaActual = CajaControlador.RegistrarAperturaDeCaja(
+                        Convert.ToInt32(nuevaCaja), Program.sucursal, Program.logueado.usuario
+                    );
 
-            numeroDeCaja.ShowDialog();
+                    nuevaFacturacion.NumeroCaja = Program.NumeroCajaActual;
+                    nuevaFacturacion.IdHistorialCaja = Program.IdHistorialCajaActual;
+                };
+
+                numeroDeCaja.ShowDialog();
+
+                // Si sigue sin asignar número de caja
+                if (string.IsNullOrEmpty(nuevaFacturacion.NumeroCaja))
+                {
+                    nuevaFacturacion.NumeroCaja = "Caja sin asignar";
+                    nuevaFacturacion.IdHistorialCaja = 0;
+                    Program.NumeroCajaActual = "Caja sin asignar";
+                    Program.IdHistorialCajaActual = 0;
+                }
+            }
+
+            var formPadre = this.FindForm() as FormInicioAdministrador;
+            if (formPadre != null)
+            {
+                formPadre.addUserControl(nuevaFacturacion);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -221,6 +242,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
             // Actualizar la variable global para reflejar que no hay caja asignada
             Program.NumeroCajaActual = "Caja sin asignar";
+            Program.IdHistorialCajaActual = 0;
 
             // Actualizar visualmente el label o el texto correspondiente en el UC
             MostrarCajaSinAsignar();
