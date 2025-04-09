@@ -106,7 +106,7 @@
             this.lbl_filtro_genero.Location = new System.Drawing.Point(739, 179);
             this.lbl_filtro_genero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_filtro_genero.Name = "lbl_filtro_genero";
-            this.lbl_filtro_genero.Size = new System.Drawing.Size(169, 25);
+            this.lbl_filtro_genero.Size = new System.Drawing.Size(138, 20);
             this.lbl_filtro_genero.TabIndex = 286;
             this.lbl_filtro_genero.Text = "Filtrar por Género:";
             // 
@@ -120,7 +120,7 @@
             this.combo_filtro_genero.Location = new System.Drawing.Point(744, 206);
             this.combo_filtro_genero.Margin = new System.Windows.Forms.Padding(4);
             this.combo_filtro_genero.Name = "combo_filtro_genero";
-            this.combo_filtro_genero.Size = new System.Drawing.Size(332, 33);
+            this.combo_filtro_genero.Size = new System.Drawing.Size(332, 28);
             this.combo_filtro_genero.TabIndex = 285;
             this.combo_filtro_genero.SelectedIndexChanged += new System.EventHandler(this.combo_filtro_genero_SelectedIndexChanged);
             // 
@@ -133,7 +133,7 @@
             this.lbl_filtro_marca.Location = new System.Drawing.Point(308, 179);
             this.lbl_filtro_marca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_filtro_marca.Name = "lbl_filtro_marca";
-            this.lbl_filtro_marca.Size = new System.Drawing.Size(159, 25);
+            this.lbl_filtro_marca.Size = new System.Drawing.Size(128, 20);
             this.lbl_filtro_marca.TabIndex = 284;
             this.lbl_filtro_marca.Text = "Filtrar por Marca:";
             // 
@@ -148,7 +148,7 @@
             this.combo_filtro_marca.Location = new System.Drawing.Point(313, 208);
             this.combo_filtro_marca.Margin = new System.Windows.Forms.Padding(4);
             this.combo_filtro_marca.Name = "combo_filtro_marca";
-            this.combo_filtro_marca.Size = new System.Drawing.Size(332, 31);
+            this.combo_filtro_marca.Size = new System.Drawing.Size(332, 27);
             this.combo_filtro_marca.TabIndex = 283;
             this.combo_filtro_marca.SelectedIndexChanged += new System.EventHandler(this.combo_filtro_marca_SelectedIndexChanged);
             // 
@@ -161,7 +161,7 @@
             this.lbl_filtro_nombre.Location = new System.Drawing.Point(312, 114);
             this.lbl_filtro_nombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_filtro_nombre.Name = "lbl_filtro_nombre";
-            this.lbl_filtro_nombre.Size = new System.Drawing.Size(186, 25);
+            this.lbl_filtro_nombre.Size = new System.Drawing.Size(150, 20);
             this.lbl_filtro_nombre.TabIndex = 282;
             this.lbl_filtro_nombre.Text = "Buscar por Nombre:";
             // 
@@ -174,7 +174,7 @@
             this.txt_filtro_nombre.Location = new System.Drawing.Point(502, 111);
             this.txt_filtro_nombre.Margin = new System.Windows.Forms.Padding(4);
             this.txt_filtro_nombre.Name = "txt_filtro_nombre";
-            this.txt_filtro_nombre.Size = new System.Drawing.Size(344, 30);
+            this.txt_filtro_nombre.Size = new System.Drawing.Size(344, 26);
             this.txt_filtro_nombre.TabIndex = 281;
             this.txt_filtro_nombre.TextChanged += new System.EventHandler(this.txt_filtro_nombre_TextChanged);
             // 
@@ -198,7 +198,7 @@
             this.lbl_paginacion_Info.Location = new System.Drawing.Point(894, 797);
             this.lbl_paginacion_Info.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_paginacion_Info.Name = "lbl_paginacion_Info";
-            this.lbl_paginacion_Info.Size = new System.Drawing.Size(161, 25);
+            this.lbl_paginacion_Info.Size = new System.Drawing.Size(134, 20);
             this.lbl_paginacion_Info.TabIndex = 292;
             this.lbl_paginacion_Info.Text = "Paginación Info";
             // 
@@ -211,7 +211,7 @@
             this.lbl_numero_pagina.Location = new System.Drawing.Point(1320, 795);
             this.lbl_numero_pagina.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_numero_pagina.Name = "lbl_numero_pagina";
-            this.lbl_numero_pagina.Size = new System.Drawing.Size(27, 29);
+            this.lbl_numero_pagina.Size = new System.Drawing.Size(21, 24);
             this.lbl_numero_pagina.TabIndex = 291;
             this.lbl_numero_pagina.Text = "1";
             // 
@@ -304,7 +304,7 @@
             this.precio.MinimumWidth = 6;
             this.precio.Name = "precio";
             this.precio.ReadOnly = true;
-            this.precio.Width = 134;
+            this.precio.Width = 109;
             // 
             // agregar
             // 
@@ -364,7 +364,7 @@
             this.label1.Location = new System.Drawing.Point(640, 27);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(470, 51);
+            this.label1.Size = new System.Drawing.Size(381, 39);
             this.label1.TabIndex = 298;
             this.label1.Text = "Catálogo de Perfumes";
             // 
@@ -389,7 +389,7 @@
             this.lbl_codigoBarras.Location = new System.Drawing.Point(75, 792);
             this.lbl_codigoBarras.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_codigoBarras.Name = "lbl_codigoBarras";
-            this.lbl_codigoBarras.Size = new System.Drawing.Size(311, 36);
+            this.lbl_codigoBarras.Size = new System.Drawing.Size(246, 29);
             this.lbl_codigoBarras.TabIndex = 303;
             this.lbl_codigoBarras.Text = "ESCANEAR AHORA";
             // 
@@ -402,7 +402,7 @@
             this.txt_scan.Location = new System.Drawing.Point(456, 791);
             this.txt_scan.Margin = new System.Windows.Forms.Padding(4);
             this.txt_scan.Name = "txt_scan";
-            this.txt_scan.Size = new System.Drawing.Size(291, 38);
+            this.txt_scan.Size = new System.Drawing.Size(291, 32);
             this.txt_scan.TabIndex = 304;
             this.txt_scan.TextChanged += new System.EventHandler(this.txt_scan_TextChanged);
             // 
@@ -426,7 +426,7 @@
             this.label2.Location = new System.Drawing.Point(1138, 179);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(162, 25);
+            this.label2.Size = new System.Drawing.Size(131, 20);
             this.label2.TabIndex = 307;
             this.label2.Text = "Filtrar por Aroma:";
             // 
@@ -441,7 +441,7 @@
             this.combo_filtro_aroma.Location = new System.Drawing.Point(1143, 206);
             this.combo_filtro_aroma.Margin = new System.Windows.Forms.Padding(4);
             this.combo_filtro_aroma.Name = "combo_filtro_aroma";
-            this.combo_filtro_aroma.Size = new System.Drawing.Size(332, 31);
+            this.combo_filtro_aroma.Size = new System.Drawing.Size(332, 27);
             this.combo_filtro_aroma.TabIndex = 306;
             // 
             // label3
@@ -453,7 +453,7 @@
             this.label3.Location = new System.Drawing.Point(927, 113);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(247, 25);
+            this.label3.Size = new System.Drawing.Size(200, 20);
             this.label3.TabIndex = 309;
             this.label3.Text = "Mostrar todos los Articulos:";
             // 
@@ -467,7 +467,7 @@
             this.combo_filtro_articulos.Location = new System.Drawing.Point(1182, 108);
             this.combo_filtro_articulos.Margin = new System.Windows.Forms.Padding(4);
             this.combo_filtro_articulos.Name = "combo_filtro_articulos";
-            this.combo_filtro_articulos.Size = new System.Drawing.Size(284, 33);
+            this.combo_filtro_articulos.Size = new System.Drawing.Size(284, 28);
             this.combo_filtro_articulos.TabIndex = 308;
             this.combo_filtro_articulos.SelectedIndexChanged += new System.EventHandler(this.combo_filtro_articulos_SelectedIndexChanged);
             // 
@@ -547,7 +547,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             this.TopMost = true;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InicioAutoConsultas_KeyDown_1);
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

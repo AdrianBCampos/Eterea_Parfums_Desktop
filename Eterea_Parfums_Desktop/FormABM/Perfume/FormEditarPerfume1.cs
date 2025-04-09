@@ -4,6 +4,7 @@ using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -239,21 +240,39 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
+
+        private bool EsCodigoBarraPerfumeValido(string codigo)
+        {
+            if (string.IsNullOrEmpty(codigo) || codigo.Length != 13 || !codigo.All(char.IsDigit) || PerfumeControlador.getByCodigo(codigo) != null)
+            {
+                return false;
+            }
+            return ValidarEAN13(codigo);
+        }
+
+        private bool ValidarEAN13(string codigo)
+        {
+            int suma = 0;
+            for (int i = 0; i < 12; i++)
+            {
+                int digito = codigo[i] - '0';
+                suma += (i % 2 == 0) ? digito : digito * 3;
+            }
+            int digitoControlEsperado = (10 - (suma % 10)) % 10;
+            int digitoControlReal = codigo[12] - '0';
+
+            return digitoControlEsperado == digitoControlReal;
+        }
+
         private bool ValidarPerfume()
         {
 
             string errorMsg = "";
 
-            if (string.IsNullOrEmpty(txt_codigo.Text))
+            if (!EsCodigoBarraPerfumeValido(txt_codigo.Text))
             {
-                errorMsg += "Debes ingresar el código CODE128" + Environment.NewLine;
-                lbl_error_codigo.Text = "Debes ingresar el código CODE128";
-                lbl_error_codigo.Show();
-            }
-            else if (!EsCodigoBarraCODE128Valido(txt_codigo.Text))
-            {
-                errorMsg += "El código CODE128 es inválido. Verifique su formato." + Environment.NewLine;
-                lbl_error_codigo.Text = "El código CODE128 es inválido. Verifique su formato.";
+                errorMsg += "El código no es válido. Debe ser un código EAN-13 correcto.\n";
+                lbl_error_codigo.Text = "El código no es válido. Debe tener 13 dígitos.";
                 lbl_error_codigo.Show();
             }
 

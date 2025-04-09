@@ -232,10 +232,10 @@ namespace Eterea_Parfums_Desktop
             return perfume;
 
         }
-        
+
         private bool EsCodigoBarraPerfumeValido(string codigo)
         {
-            if (string.IsNullOrEmpty(codigo) || codigo.Length != 13 || !codigo.All(char.IsDigit))
+            if (string.IsNullOrEmpty(codigo) || codigo.Length != 13 || !codigo.All(char.IsDigit) || PerfumeControlador.getByCodigo(codigo) != null)
             {
                 return false;
             }
