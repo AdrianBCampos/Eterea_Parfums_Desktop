@@ -219,7 +219,15 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 CajaControlador.RegistrarCierreDeCaja(IdHistorialCaja);
             }
 
+            // Actualizar la variable global para reflejar que no hay caja asignada
+            Program.NumeroCajaActual = "Caja sin asignar";
+
+            // Actualizar visualmente el label o el texto correspondiente en el UC
             MostrarCajaSinAsignar();
+
+            // También podés limpiar las variables internas si querés
+            NumeroCaja = "Caja sin asignar";
+            IdHistorialCaja = 0;
         }
 
         private void MostrarCajaSinAsignar()

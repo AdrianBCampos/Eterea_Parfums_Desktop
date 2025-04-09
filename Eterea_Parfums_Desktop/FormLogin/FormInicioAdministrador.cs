@@ -50,6 +50,14 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_cerrar_sesion_Click(object sender, EventArgs e)
         {
+            // Verificar si hay una caja asignada y aún está abierta
+            if (Program.NumeroCajaActual != null && Program.NumeroCajaActual != "Caja sin asignar")
+            {
+                MessageBox.Show("No se puede cerrar sesión mientras haya una caja abierta. Cierre la caja primero.",
+                                "Caja abierta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // Cancela el cierre de sesión
+            }
+
             Program.logueado = new Empleado();
 
             // Buscar si FormStart ya está abierto
@@ -88,25 +96,41 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_facturar_Click(object sender, EventArgs e)
         {
+          
             CambiarColorBoton2((Button)sender);
 
-            /*FormNumeroDeCaja numeroDeCaja = new FormNumeroDeCaja();
-
-            numeroDeCaja.ConfirmarNumeroCaja += (s, numeroCaja) =>
+            // Verificamos si ya hay una caja asignada
+            if (Program.NumeroCajaActual != null && Program.NumeroCajaActual != "Caja sin asignar")
             {
+                // Ya hay caja asignada, abrir directamente el panel de facturación
                 Facturar_UC facturarUC = new Facturar_UC();
-                facturarUC.NumeroCaja = numeroCaja;
-                facturarUC.IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(
-                    Convert.ToInt32(numeroCaja), Program.sucursal, Program.logueado.usuario
-                );
+                facturarUC.NumeroCaja = Program.NumeroCajaActual;
+                facturarUC.IdHistorialCaja = Program.IdHistorialCajaActual;
 
                 addUserControl(facturarUC);
-            };
+            }
+            else
+            {
+                // No hay caja asignada, mostrar FormNumeroDeCaja para elegirla
+                FormNumeroDeCaja numeroDeCaja = new FormNumeroDeCaja();
 
-            numeroDeCaja.ShowDialog();*/
+                numeroDeCaja.ConfirmarNumeroCaja += (s, numeroCaja) =>
+                {
+                    Facturar_UC facturarUC = new Facturar_UC();
+                    facturarUC.NumeroCaja = numeroCaja;
+                    facturarUC.IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(
+                        Convert.ToInt32(numeroCaja), Program.sucursal, Program.logueado.usuario
+                    );
 
-            Facturar_UC adminUC = new Facturar_UC();
-            addUserControl(adminUC);
+                    // Guardamos en variables globales
+                    Program.NumeroCajaActual = numeroCaja;
+                    Program.IdHistorialCajaActual = facturarUC.IdHistorialCaja;
+
+                    addUserControl(facturarUC);
+                };
+
+                numeroDeCaja.ShowDialog();
+            }
 
         }
 

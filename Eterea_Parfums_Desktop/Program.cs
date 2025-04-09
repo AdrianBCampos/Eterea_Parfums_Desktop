@@ -24,6 +24,8 @@ namespace Eterea_Parfums_Desktop
         public static Empleado logueado;
 
         public static int sucursal = 1;
+        public static string NumeroCajaActual = "Caja sin asignar";
+        public static int IdHistorialCajaActual = 0;
 
         public static String Ruta_Base;
         public static String Ruta_Web;
