@@ -146,6 +146,28 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
 
+        public DataTable BuscarOrdenPorNumero(int numeroOrden)
+        {
+            string query = @"
+        SELECT 
+            numero_de_orden, 
+            estado 
+        FROM dbo.orden
+        WHERE numero_de_orden = @numeroOrden";
+
+            using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@numeroOrden", numeroOrden);
+
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+        }
 
 
 

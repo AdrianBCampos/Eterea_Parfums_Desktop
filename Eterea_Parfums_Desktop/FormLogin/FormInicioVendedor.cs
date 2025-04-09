@@ -73,5 +73,12 @@ namespace Eterea_Parfums_Desktop
                 MessageBox.Show("En este momento no hay órdenes activas para despachar.", "Sin órdenes activas", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void btn_buscar_envios_Click(object sender, EventArgs e)
+        {
+            FormBuscarPedidos buscar = new FormBuscarPedidos();
+            buscar.Show(); // o buscar.ShowDialog();
+            this.Hide();
+        }
     }
 }
