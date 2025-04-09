@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt_scan_factura = new System.Windows.Forms.TextBox();
             this.combo_forma_pago = new System.Windows.Forms.ComboBox();
             this.txt_numero_factura = new System.Windows.Forms.Label();
@@ -50,24 +50,11 @@
             this.combo_cuotas = new System.Windows.Forms.ComboBox();
             this.lbl_cuotas = new System.Windows.Forms.Label();
             this.lbl_forma_pago = new System.Windows.Forms.Label();
-            this.txt_desc = new System.Windows.Forms.Label();
-            this.txt_descuento_porcentaje = new System.Windows.Forms.TextBox();
             this.txt_rec = new System.Windows.Forms.Label();
-            this.txt_recargo = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txt_total = new System.Windows.Forms.TextBox();
             this.lbl_total = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txt_iva = new System.Windows.Forms.TextBox();
             this.lbl_iva = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txt_monto_descuento = new System.Windows.Forms.TextBox();
-            this.lbl_descuento_total = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txt_monto_recargo = new System.Windows.Forms.TextBox();
             this.lbl_recargo = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txt_subtotal = new System.Windows.Forms.TextBox();
             this.lbl_subtotal = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -111,6 +98,27 @@
             this.pictureBox18 = new System.Windows.Forms.PictureBox();
             this.pictureBox19 = new System.Windows.Forms.PictureBox();
             this.pictureBox20 = new System.Windows.Forms.PictureBox();
+            this.pictureBox21 = new System.Windows.Forms.PictureBox();
+            this.pictureBox22 = new System.Windows.Forms.PictureBox();
+            this.pictureBox23 = new System.Windows.Forms.PictureBox();
+            this.txt_subtotal = new System.Windows.Forms.TextBox();
+            this.txt_iva = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txt_monto_recargo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_monto_descuento = new System.Windows.Forms.TextBox();
+            this.lbl_descuento_total = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txt_recargo = new System.Windows.Forms.TextBox();
+            this.txt_descuento_porcentaje = new System.Windows.Forms.TextBox();
+            this.txt_desc = new System.Windows.Forms.Label();
+            this.pictureBox24 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txt_total = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txt_estadoCaja = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -132,11 +140,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_scan_factura
             // 
-            this.txt_scan_factura.Location = new System.Drawing.Point(1138, 22);
+            this.txt_scan_factura.Location = new System.Drawing.Point(1117, 30);
             this.txt_scan_factura.Margin = new System.Windows.Forms.Padding(4);
             this.txt_scan_factura.Name = "txt_scan_factura";
             this.txt_scan_factura.Size = new System.Drawing.Size(197, 22);
@@ -146,7 +158,7 @@
             // 
             this.combo_forma_pago.BackColor = System.Drawing.Color.White;
             this.combo_forma_pago.FormattingEnabled = true;
-            this.combo_forma_pago.Location = new System.Drawing.Point(1634, 502);
+            this.combo_forma_pago.Location = new System.Drawing.Point(1327, 474);
             this.combo_forma_pago.Margin = new System.Windows.Forms.Padding(4);
             this.combo_forma_pago.Name = "combo_forma_pago";
             this.combo_forma_pago.Size = new System.Drawing.Size(137, 24);
@@ -156,12 +168,12 @@
             // 
             this.txt_numero_factura.AutoSize = true;
             this.txt_numero_factura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.txt_numero_factura.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_numero_factura.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txt_numero_factura.Location = new System.Drawing.Point(1630, 249);
+            this.txt_numero_factura.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_numero_factura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_numero_factura.Location = new System.Drawing.Point(1644, 244);
             this.txt_numero_factura.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_numero_factura.Name = "txt_numero_factura";
-            this.txt_numero_factura.Size = new System.Drawing.Size(28, 20);
+            this.txt_numero_factura.Size = new System.Drawing.Size(39, 29);
             this.txt_numero_factura.TabIndex = 396;
             this.txt_numero_factura.Text = "N°";
             // 
@@ -171,7 +183,7 @@
             this.txt_condicion_iva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.txt_condicion_iva.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_condicion_iva.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_condicion_iva.Location = new System.Drawing.Point(965, 230);
+            this.txt_condicion_iva.Location = new System.Drawing.Point(951, 230);
             this.txt_condicion_iva.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_condicion_iva.Name = "txt_condicion_iva";
             this.txt_condicion_iva.Size = new System.Drawing.Size(122, 29);
@@ -195,12 +207,12 @@
             // 
             this.lbl_factura_n.AutoSize = true;
             this.lbl_factura_n.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.lbl_factura_n.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_factura_n.ForeColor = System.Drawing.Color.Black;
-            this.lbl_factura_n.Location = new System.Drawing.Point(1521, 247);
+            this.lbl_factura_n.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_factura_n.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_factura_n.Location = new System.Drawing.Point(1444, 242);
             this.lbl_factura_n.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_factura_n.Name = "lbl_factura_n";
-            this.lbl_factura_n.Size = new System.Drawing.Size(106, 20);
+            this.lbl_factura_n.Size = new System.Drawing.Size(167, 32);
             this.lbl_factura_n.TabIndex = 393;
             this.lbl_factura_n.Text = "Factura N°:";
             // 
@@ -210,7 +222,7 @@
             this.lbl_condicion_iva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_condicion_iva.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_condicion_iva.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_condicion_iva.Location = new System.Drawing.Point(586, 227);
+            this.lbl_condicion_iva.Location = new System.Drawing.Point(572, 227);
             this.lbl_condicion_iva.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_condicion_iva.Name = "lbl_condicion_iva";
             this.lbl_condicion_iva.Size = new System.Drawing.Size(345, 32);
@@ -234,11 +246,12 @@
             // 
             this.btn_imprimir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_imprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_imprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_imprimir.Location = new System.Drawing.Point(1792, 683);
+            this.btn_imprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_imprimir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.btn_imprimir.Location = new System.Drawing.Point(1714, 603);
             this.btn_imprimir.Margin = new System.Windows.Forms.Padding(4);
             this.btn_imprimir.Name = "btn_imprimir";
-            this.btn_imprimir.Size = new System.Drawing.Size(185, 39);
+            this.btn_imprimir.Size = new System.Drawing.Size(276, 62);
             this.btn_imprimir.TabIndex = 390;
             this.btn_imprimir.Text = "Imprimir Factura";
             this.btn_imprimir.UseVisualStyleBackColor = false;
@@ -248,11 +261,12 @@
             // 
             this.btn_enviar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_enviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_enviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_enviar.Location = new System.Drawing.Point(1542, 683);
+            this.btn_enviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_enviar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.btn_enviar.Location = new System.Drawing.Point(1713, 528);
             this.btn_enviar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_enviar.Name = "btn_enviar";
-            this.btn_enviar.Size = new System.Drawing.Size(185, 39);
+            this.btn_enviar.Size = new System.Drawing.Size(276, 62);
             this.btn_enviar.TabIndex = 389;
             this.btn_enviar.Text = "Enviar por mail";
             this.btn_enviar.UseVisualStyleBackColor = false;
@@ -260,7 +274,7 @@
             // txt_email
             // 
             this.txt_email.BackColor = System.Drawing.Color.White;
-            this.txt_email.Location = new System.Drawing.Point(1674, 638);
+            this.txt_email.Location = new System.Drawing.Point(1358, 600);
             this.txt_email.Margin = new System.Windows.Forms.Padding(4);
             this.txt_email.Name = "txt_email";
             this.txt_email.Size = new System.Drawing.Size(311, 22);
@@ -270,9 +284,10 @@
             // lbl_email
             // 
             this.lbl_email.AutoSize = true;
-            this.lbl_email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_email.Location = new System.Drawing.Point(1538, 643);
+            this.lbl_email.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_email.Location = new System.Drawing.Point(1222, 605);
             this.lbl_email.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_email.Name = "lbl_email";
             this.lbl_email.Size = new System.Drawing.Size(98, 18);
@@ -283,7 +298,7 @@
             // 
             this.combo_descuento.BackColor = System.Drawing.Color.White;
             this.combo_descuento.FormattingEnabled = true;
-            this.combo_descuento.Location = new System.Drawing.Point(1808, 572);
+            this.combo_descuento.Location = new System.Drawing.Point(1492, 534);
             this.combo_descuento.Margin = new System.Windows.Forms.Padding(4);
             this.combo_descuento.Name = "combo_descuento";
             this.combo_descuento.Size = new System.Drawing.Size(169, 24);
@@ -293,9 +308,10 @@
             // lbl_descuento
             // 
             this.lbl_descuento.AutoSize = true;
-            this.lbl_descuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_descuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_descuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_descuento.Location = new System.Drawing.Point(1537, 574);
+            this.lbl_descuento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_descuento.Location = new System.Drawing.Point(1221, 536);
             this.lbl_descuento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_descuento.Name = "lbl_descuento";
             this.lbl_descuento.Size = new System.Drawing.Size(222, 18);
@@ -306,7 +322,7 @@
             // 
             this.combo_cuotas.BackColor = System.Drawing.Color.White;
             this.combo_cuotas.FormattingEnabled = true;
-            this.combo_cuotas.Location = new System.Drawing.Point(1860, 502);
+            this.combo_cuotas.Location = new System.Drawing.Point(1711, 476);
             this.combo_cuotas.Margin = new System.Windows.Forms.Padding(4);
             this.combo_cuotas.Name = "combo_cuotas";
             this.combo_cuotas.Size = new System.Drawing.Size(139, 24);
@@ -316,9 +332,10 @@
             // lbl_cuotas
             // 
             this.lbl_cuotas.AutoSize = true;
-            this.lbl_cuotas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_cuotas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_cuotas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_cuotas.Location = new System.Drawing.Point(1796, 508);
+            this.lbl_cuotas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_cuotas.Location = new System.Drawing.Point(1647, 482);
             this.lbl_cuotas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_cuotas.Name = "lbl_cuotas";
             this.lbl_cuotas.Size = new System.Drawing.Size(60, 18);
@@ -328,237 +345,102 @@
             // lbl_forma_pago
             // 
             this.lbl_forma_pago.AutoSize = true;
-            this.lbl_forma_pago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_forma_pago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_forma_pago.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_forma_pago.Location = new System.Drawing.Point(1512, 507);
+            this.lbl_forma_pago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_forma_pago.Location = new System.Drawing.Point(1205, 479);
             this.lbl_forma_pago.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_forma_pago.Name = "lbl_forma_pago";
             this.lbl_forma_pago.Size = new System.Drawing.Size(115, 18);
             this.lbl_forma_pago.TabIndex = 381;
             this.lbl_forma_pago.Text = "Forma de Pago:";
             // 
-            // txt_desc
-            // 
-            this.txt_desc.AutoSize = true;
-            this.txt_desc.BackColor = System.Drawing.Color.White;
-            this.txt_desc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_desc.Location = new System.Drawing.Point(1959, 350);
-            this.txt_desc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.txt_desc.Name = "txt_desc";
-            this.txt_desc.Size = new System.Drawing.Size(24, 20);
-            this.txt_desc.TabIndex = 379;
-            this.txt_desc.Text = "%";
-            // 
-            // txt_descuento_porcentaje
-            // 
-            this.txt_descuento_porcentaje.BackColor = System.Drawing.Color.White;
-            this.txt_descuento_porcentaje.Location = new System.Drawing.Point(1933, 365);
-            this.txt_descuento_porcentaje.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_descuento_porcentaje.Name = "txt_descuento_porcentaje";
-            this.txt_descuento_porcentaje.Size = new System.Drawing.Size(67, 22);
-            this.txt_descuento_porcentaje.TabIndex = 378;
-            this.txt_descuento_porcentaje.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // txt_rec
             // 
             this.txt_rec.AutoSize = true;
-            this.txt_rec.BackColor = System.Drawing.Color.White;
-            this.txt_rec.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_rec.Location = new System.Drawing.Point(1533, 364);
+            this.txt_rec.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_rec.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_rec.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_rec.Location = new System.Drawing.Point(1891, 299);
             this.txt_rec.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_rec.Name = "txt_rec";
-            this.txt_rec.Size = new System.Drawing.Size(24, 20);
+            this.txt_rec.Size = new System.Drawing.Size(30, 25);
             this.txt_rec.TabIndex = 377;
             this.txt_rec.Text = "%";
-            // 
-            // txt_recargo
-            // 
-            this.txt_recargo.BackColor = System.Drawing.Color.White;
-            this.txt_recargo.Location = new System.Drawing.Point(1509, 363);
-            this.txt_recargo.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_recargo.Name = "txt_recargo";
-            this.txt_recargo.Size = new System.Drawing.Size(67, 22);
-            this.txt_recargo.TabIndex = 376;
-            this.txt_recargo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.White;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(1667, 452);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(18, 20);
-            this.label8.TabIndex = 375;
-            this.label8.Text = "$";
-            // 
-            // txt_total
-            // 
-            this.txt_total.BackColor = System.Drawing.Color.White;
-            this.txt_total.Location = new System.Drawing.Point(1661, 451);
-            this.txt_total.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_total.Name = "txt_total";
-            this.txt_total.Size = new System.Drawing.Size(196, 22);
-            this.txt_total.TabIndex = 374;
-            this.txt_total.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_total
             // 
             this.lbl_total.AutoSize = true;
-            this.lbl_total.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_total.Location = new System.Drawing.Point(1532, 454);
+            this.lbl_total.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.lbl_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_total.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_total.Location = new System.Drawing.Point(1404, 400);
             this.lbl_total.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_total.Name = "lbl_total";
-            this.lbl_total.Size = new System.Drawing.Size(45, 18);
+            this.lbl_total.Size = new System.Drawing.Size(92, 32);
             this.lbl_total.TabIndex = 373;
             this.lbl_total.Text = "Total:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.White;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(1667, 405);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(18, 20);
-            this.label6.TabIndex = 372;
-            this.label6.Text = "$";
-            // 
-            // txt_iva
-            // 
-            this.txt_iva.BackColor = System.Drawing.Color.White;
-            this.txt_iva.Location = new System.Drawing.Point(1661, 404);
-            this.txt_iva.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_iva.Name = "txt_iva";
-            this.txt_iva.Size = new System.Drawing.Size(196, 22);
-            this.txt_iva.TabIndex = 371;
-            this.txt_iva.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_iva
             // 
             this.lbl_iva.AutoSize = true;
-            this.lbl_iva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_iva.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_iva.Location = new System.Drawing.Point(1532, 408);
+            this.lbl_iva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.lbl_iva.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_iva.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_iva.Location = new System.Drawing.Point(1228, 346);
             this.lbl_iva.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_iva.Name = "lbl_iva";
-            this.lbl_iva.Size = new System.Drawing.Size(66, 18);
+            this.lbl_iva.Size = new System.Drawing.Size(104, 25);
             this.lbl_iva.TabIndex = 370;
             this.lbl_iva.Text = "IVA 21%:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.White;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(1723, 365);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(18, 20);
-            this.label4.TabIndex = 369;
-            this.label4.Text = "$";
-            // 
-            // txt_monto_descuento
-            // 
-            this.txt_monto_descuento.BackColor = System.Drawing.Color.White;
-            this.txt_monto_descuento.Location = new System.Drawing.Point(1717, 364);
-            this.txt_monto_descuento.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_monto_descuento.Name = "txt_monto_descuento";
-            this.txt_monto_descuento.Size = new System.Drawing.Size(196, 22);
-            this.txt_monto_descuento.TabIndex = 368;
-            this.txt_monto_descuento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lbl_descuento_total
-            // 
-            this.lbl_descuento_total.AutoSize = true;
-            this.lbl_descuento_total.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_descuento_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_descuento_total.Location = new System.Drawing.Point(1631, 369);
-            this.lbl_descuento_total.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_descuento_total.Name = "lbl_descuento_total";
-            this.lbl_descuento_total.Size = new System.Drawing.Size(84, 18);
-            this.lbl_descuento_total.TabIndex = 367;
-            this.lbl_descuento_total.Text = "Descuento:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1299, 364);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 20);
-            this.label1.TabIndex = 366;
-            this.label1.Text = "$";
-            // 
-            // txt_monto_recargo
-            // 
-            this.txt_monto_recargo.BackColor = System.Drawing.Color.White;
-            this.txt_monto_recargo.Location = new System.Drawing.Point(1293, 363);
-            this.txt_monto_recargo.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_monto_recargo.Name = "txt_monto_recargo";
-            this.txt_monto_recargo.Size = new System.Drawing.Size(196, 22);
-            this.txt_monto_recargo.TabIndex = 365;
-            this.txt_monto_recargo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_recargo
             // 
             this.lbl_recargo.AutoSize = true;
-            this.lbl_recargo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_recargo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_recargo.Location = new System.Drawing.Point(1225, 367);
+            this.lbl_recargo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.lbl_recargo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_recargo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_recargo.Location = new System.Drawing.Point(1573, 299);
             this.lbl_recargo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_recargo.Name = "lbl_recargo";
-            this.lbl_recargo.Size = new System.Drawing.Size(69, 18);
+            this.lbl_recargo.Size = new System.Drawing.Size(99, 25);
             this.lbl_recargo.TabIndex = 364;
             this.lbl_recargo.Text = "Recargo:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1612, 324);
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label3.Location = new System.Drawing.Point(1358, 299);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(18, 20);
+            this.label3.Size = new System.Drawing.Size(23, 25);
             this.label3.TabIndex = 363;
             this.label3.Text = "$";
-            // 
-            // txt_subtotal
-            // 
-            this.txt_subtotal.BackColor = System.Drawing.Color.White;
-            this.txt_subtotal.Location = new System.Drawing.Point(1606, 323);
-            this.txt_subtotal.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_subtotal.Name = "txt_subtotal";
-            this.txt_subtotal.Size = new System.Drawing.Size(196, 22);
-            this.txt_subtotal.TabIndex = 362;
-            this.txt_subtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_subtotal
             // 
             this.lbl_subtotal.AutoSize = true;
-            this.lbl_subtotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_subtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_subtotal.Location = new System.Drawing.Point(1477, 327);
+            this.lbl_subtotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.lbl_subtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_subtotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_subtotal.Location = new System.Drawing.Point(1228, 299);
             this.lbl_subtotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_subtotal.Name = "lbl_subtotal";
-            this.lbl_subtotal.Size = new System.Drawing.Size(71, 18);
+            this.lbl_subtotal.Size = new System.Drawing.Size(107, 25);
             this.lbl_subtotal.TabIndex = 361;
             this.lbl_subtotal.Text = "SubTotal:";
             // 
             // pictureBox6
             // 
-            this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox6.Location = new System.Drawing.Point(1505, 620);
+            this.pictureBox6.Location = new System.Drawing.Point(1189, 582);
             this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(509, 116);
+            this.pictureBox6.Size = new System.Drawing.Size(509, 98);
             this.pictureBox6.TabIndex = 360;
             this.pictureBox6.TabStop = false;
             // 
@@ -566,46 +448,48 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox4.Location = new System.Drawing.Point(1199, 226);
+            this.pictureBox4.Location = new System.Drawing.Point(1182, 227);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(816, 252);
+            this.pictureBox4.Size = new System.Drawing.Size(826, 219);
             this.pictureBox4.TabIndex = 359;
             this.pictureBox4.TabStop = false;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox3.Location = new System.Drawing.Point(1506, 485);
+            this.pictureBox3.Location = new System.Drawing.Point(1190, 459);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(509, 62);
+            this.pictureBox3.Size = new System.Drawing.Size(810, 47);
             this.pictureBox3.TabIndex = 358;
             this.pictureBox3.TabStop = false;
             // 
             // Factura
             // 
             this.Factura.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.Factura.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.Factura.AllowUserToDeleteRows = false;
+            this.Factura.AllowUserToResizeRows = false;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.Factura.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.Factura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Factura.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.Factura.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Factura.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.Factura.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Factura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.Factura.ColumnHeadersHeight = 24;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Factura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.Factura.ColumnHeadersHeight = 40;
             this.Factura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id_Perfume,
             this.Cantidad,
@@ -616,36 +500,38 @@
             this.Descuento,
             this.Tot,
             this.eliminar});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Factura.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Factura.DefaultCellStyle = dataGridViewCellStyle8;
             this.Factura.EnableHeadersVisualStyles = false;
             this.Factura.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.Factura.Location = new System.Drawing.Point(28, 294);
+            this.Factura.Location = new System.Drawing.Point(28, 297);
             this.Factura.Margin = new System.Windows.Forms.Padding(4);
             this.Factura.Name = "Factura";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Factura.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.Factura.RowHeadersVisible = false;
+            this.Factura.ReadOnly = true;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Factura.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.Factura.RowHeadersWidth = 51;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            this.Factura.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
+            this.Factura.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.Factura.RowTemplate.Height = 30;
-            this.Factura.Size = new System.Drawing.Size(1147, 411);
+            this.Factura.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.Factura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.Factura.Size = new System.Drawing.Size(1127, 375);
             this.Factura.TabIndex = 357;
             // 
             // Id_Perfume
@@ -663,7 +549,7 @@
             this.Cantidad.MinimumWidth = 6;
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.ReadOnly = true;
-            this.Cantidad.Width = 103;
+            this.Cantidad.Width = 137;
             // 
             // sumar1
             // 
@@ -672,9 +558,10 @@
             this.sumar1.HeaderText = "+";
             this.sumar1.MinimumWidth = 6;
             this.sumar1.Name = "sumar1";
+            this.sumar1.ReadOnly = true;
             this.sumar1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.sumar1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.sumar1.Width = 41;
+            this.sumar1.Width = 49;
             // 
             // restar1
             // 
@@ -683,9 +570,10 @@
             this.restar1.HeaderText = "-";
             this.restar1.MinimumWidth = 6;
             this.restar1.Name = "restar1";
+            this.restar1.ReadOnly = true;
             this.restar1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.restar1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.restar1.Width = 38;
+            this.restar1.Width = 44;
             // 
             // Nombre_Perfume
             // 
@@ -693,6 +581,7 @@
             this.Nombre_Perfume.HeaderText = "NOMBRE";
             this.Nombre_Perfume.MinimumWidth = 6;
             this.Nombre_Perfume.Name = "Nombre_Perfume";
+            this.Nombre_Perfume.ReadOnly = true;
             // 
             // Precio_Unitario
             // 
@@ -701,13 +590,15 @@
             this.Precio_Unitario.HeaderText = "PRECIO UNITARIO ($)";
             this.Precio_Unitario.MinimumWidth = 6;
             this.Precio_Unitario.Name = "Precio_Unitario";
-            this.Precio_Unitario.Width = 169;
+            this.Precio_Unitario.ReadOnly = true;
+            this.Precio_Unitario.Width = 241;
             // 
             // Descuento
             // 
             this.Descuento.HeaderText = "DESCUENTO";
             this.Descuento.MinimumWidth = 6;
             this.Descuento.Name = "Descuento";
+            this.Descuento.ReadOnly = true;
             // 
             // Tot
             // 
@@ -716,7 +607,8 @@
             this.Tot.HeaderText = "TOTAL ($)";
             this.Tot.MinimumWidth = 6;
             this.Tot.Name = "Tot";
-            this.Tot.Width = 96;
+            this.Tot.ReadOnly = true;
+            this.Tot.Width = 133;
             // 
             // eliminar
             // 
@@ -725,16 +617,17 @@
             this.eliminar.HeaderText = "ELIMINAR";
             this.eliminar.MinimumWidth = 6;
             this.eliminar.Name = "eliminar";
-            this.eliminar.Width = 73;
+            this.eliminar.ReadOnly = true;
+            this.eliminar.Width = 104;
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(8, 278);
+            this.pictureBox2.Location = new System.Drawing.Point(8, 279);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1185, 458);
+            this.pictureBox2.Size = new System.Drawing.Size(1169, 410);
             this.pictureBox2.TabIndex = 356;
             this.pictureBox2.TabStop = false;
             // 
@@ -744,7 +637,7 @@
             this.btn_consultas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_consultas.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_consultas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_consultas.Location = new System.Drawing.Point(1295, 158);
+            this.btn_consultas.Location = new System.Drawing.Point(1278, 158);
             this.btn_consultas.Margin = new System.Windows.Forms.Padding(4);
             this.btn_consultas.Name = "btn_consultas";
             this.btn_consultas.Size = new System.Drawing.Size(620, 46);
@@ -759,7 +652,7 @@
             this.btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_buscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_buscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_buscar.Location = new System.Drawing.Point(935, 158);
+            this.btn_buscar.Location = new System.Drawing.Point(915, 158);
             this.btn_buscar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_buscar.Name = "btn_buscar";
             this.btn_buscar.Size = new System.Drawing.Size(211, 46);
@@ -773,7 +666,7 @@
             this.lbl_dniE.AutoSize = true;
             this.lbl_dniE.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_dniE.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_dniE.Location = new System.Drawing.Point(440, 176);
+            this.lbl_dniE.Location = new System.Drawing.Point(432, 176);
             this.lbl_dniE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_dniE.Name = "lbl_dniE";
             this.lbl_dniE.Size = new System.Drawing.Size(36, 16);
@@ -786,7 +679,7 @@
             this.lbl_dni_cliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_dni_cliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_dni_cliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_dni_cliente.Location = new System.Drawing.Point(50, 165);
+            this.lbl_dni_cliente.Location = new System.Drawing.Point(48, 165);
             this.lbl_dni_cliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_dni_cliente.Name = "lbl_dni_cliente";
             this.lbl_dni_cliente.Size = new System.Drawing.Size(355, 32);
@@ -800,7 +693,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(8, 142);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1185, 132);
+            this.pictureBox1.Size = new System.Drawing.Size(1169, 132);
             this.pictureBox1.TabIndex = 350;
             this.pictureBox1.TabStop = false;
             // 
@@ -810,7 +703,7 @@
             this.txt_numero_caja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.txt_numero_caja.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_numero_caja.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_numero_caja.Location = new System.Drawing.Point(990, 88);
+            this.txt_numero_caja.Location = new System.Drawing.Point(980, 88);
             this.txt_numero_caja.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_numero_caja.Name = "txt_numero_caja";
             this.txt_numero_caja.Size = new System.Drawing.Size(255, 31);
@@ -823,7 +716,7 @@
             this.lbl_numero_caja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_numero_caja.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_numero_caja.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_numero_caja.Location = new System.Drawing.Point(842, 88);
+            this.lbl_numero_caja.Location = new System.Drawing.Point(832, 88);
             this.lbl_numero_caja.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_numero_caja.Name = "lbl_numero_caja";
             this.lbl_numero_caja.Size = new System.Drawing.Size(127, 32);
@@ -836,7 +729,7 @@
             this.txt_nombre_empleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.txt_nombre_empleado.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_nombre_empleado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_nombre_empleado.Location = new System.Drawing.Point(277, 89);
+            this.txt_nombre_empleado.Location = new System.Drawing.Point(283, 89);
             this.txt_nombre_empleado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_nombre_empleado.Name = "txt_nombre_empleado";
             this.txt_nombre_empleado.Size = new System.Drawing.Size(257, 31);
@@ -849,7 +742,7 @@
             this.lbl_cajero.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_cajero.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_cajero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_cajero.Location = new System.Drawing.Point(146, 89);
+            this.lbl_cajero.Location = new System.Drawing.Point(152, 89);
             this.lbl_cajero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_cajero.Name = "lbl_cajero";
             this.lbl_cajero.Size = new System.Drawing.Size(113, 32);
@@ -862,18 +755,18 @@
             this.lbl_facturacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_facturacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_facturacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_facturacion.Location = new System.Drawing.Point(598, 22);
+            this.lbl_facturacion.Location = new System.Drawing.Point(581, 22);
             this.lbl_facturacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_facturacion.Name = "lbl_facturacion";
-            this.lbl_facturacion.Size = new System.Drawing.Size(206, 39);
+            this.lbl_facturacion.Size = new System.Drawing.Size(199, 38);
             this.lbl_facturacion.TabIndex = 345;
             this.lbl_facturacion.Text = "Facturación";
             // 
             // pictureBox5
             // 
-            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox5.Location = new System.Drawing.Point(1506, 552);
+            this.pictureBox5.Location = new System.Drawing.Point(1190, 514);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(509, 62);
@@ -886,11 +779,11 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.button1.Location = new System.Drawing.Point(1785, 22);
+            this.button1.Location = new System.Drawing.Point(1693, 24);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(214, 97);
+            this.button1.Size = new System.Drawing.Size(288, 78);
             this.button1.TabIndex = 398;
             this.button1.Text = "Cerrar Caja";
             this.button1.UseVisualStyleBackColor = false;
@@ -902,13 +795,13 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.button2.Location = new System.Drawing.Point(1399, 22);
+            this.button2.Location = new System.Drawing.Point(1387, 23);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(378, 97);
+            this.button2.Size = new System.Drawing.Size(290, 79);
             this.button2.TabIndex = 399;
-            this.button2.Text = "Ingresar Numeor Caja";
+            this.button2.Text = "Abrir Caja";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
@@ -919,18 +812,18 @@
             this.pictureBox7.Location = new System.Drawing.Point(8, 6);
             this.pictureBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(1365, 132);
+            this.pictureBox7.Size = new System.Drawing.Size(1347, 132);
             this.pictureBox7.TabIndex = 400;
             this.pictureBox7.TabStop = false;
             // 
             // pictureBox8
             // 
-            this.pictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox8.Location = new System.Drawing.Point(1387, 13);
+            this.pictureBox8.Location = new System.Drawing.Point(1371, 13);
             this.pictureBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(619, 118);
+            this.pictureBox8.Size = new System.Drawing.Size(627, 118);
             this.pictureBox8.TabIndex = 401;
             this.pictureBox8.TabStop = false;
             // 
@@ -941,7 +834,7 @@
             this.pictureBox9.Location = new System.Drawing.Point(15, 12);
             this.pictureBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(1348, 60);
+            this.pictureBox9.Size = new System.Drawing.Size(1332, 60);
             this.pictureBox9.TabIndex = 402;
             this.pictureBox9.TabStop = false;
             // 
@@ -952,7 +845,7 @@
             this.pictureBox10.Location = new System.Drawing.Point(16, 78);
             this.pictureBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(673, 53);
+            this.pictureBox10.Size = new System.Drawing.Size(656, 53);
             this.pictureBox10.TabIndex = 403;
             this.pictureBox10.TabStop = false;
             // 
@@ -960,7 +853,7 @@
             // 
             this.pictureBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox11.Location = new System.Drawing.Point(695, 78);
+            this.pictureBox11.Location = new System.Drawing.Point(678, 78);
             this.pictureBox11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(669, 53);
@@ -971,10 +864,10 @@
             // 
             this.pictureBox12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
             this.pictureBox12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox12.Location = new System.Drawing.Point(1379, 6);
+            this.pictureBox12.Location = new System.Drawing.Point(1361, 6);
             this.pictureBox12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(636, 132);
+            this.pictureBox12.Size = new System.Drawing.Size(647, 132);
             this.pictureBox12.TabIndex = 405;
             this.pictureBox12.TabStop = false;
             // 
@@ -985,7 +878,7 @@
             this.pictureBox13.Location = new System.Drawing.Point(15, 148);
             this.pictureBox13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(877, 66);
+            this.pictureBox13.Size = new System.Drawing.Size(855, 66);
             this.pictureBox13.TabIndex = 406;
             this.pictureBox13.TabStop = false;
             // 
@@ -995,20 +888,20 @@
             this.txt_dni.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_dni.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_dni.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_dni.Location = new System.Drawing.Point(433, 163);
+            this.txt_dni.Location = new System.Drawing.Point(425, 163);
             this.txt_dni.Margin = new System.Windows.Forms.Padding(4);
             this.txt_dni.Name = "txt_dni";
-            this.txt_dni.Size = new System.Drawing.Size(419, 34);
+            this.txt_dni.Size = new System.Drawing.Size(405, 34);
             this.txt_dni.TabIndex = 407;
             // 
             // pictureBox14
             // 
             this.pictureBox14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox14.Location = new System.Drawing.Point(896, 148);
+            this.pictureBox14.Location = new System.Drawing.Point(876, 148);
             this.pictureBox14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(290, 66);
+            this.pictureBox14.Size = new System.Drawing.Size(293, 66);
             this.pictureBox14.TabIndex = 408;
             this.pictureBox14.TabStop = false;
             // 
@@ -1016,10 +909,10 @@
             // 
             this.pictureBox15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
             this.pictureBox15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox15.Location = new System.Drawing.Point(1199, 142);
+            this.pictureBox15.Location = new System.Drawing.Point(1182, 142);
             this.pictureBox15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(816, 80);
+            this.pictureBox15.Size = new System.Drawing.Size(826, 80);
             this.pictureBox15.TabIndex = 409;
             this.pictureBox15.TabStop = false;
             // 
@@ -1027,10 +920,10 @@
             // 
             this.pictureBox16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox16.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox16.Location = new System.Drawing.Point(1213, 149);
+            this.pictureBox16.Location = new System.Drawing.Point(1196, 149);
             this.pictureBox16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox16.Name = "pictureBox16";
-            this.pictureBox16.Size = new System.Drawing.Size(786, 65);
+            this.pictureBox16.Size = new System.Drawing.Size(802, 65);
             this.pictureBox16.TabIndex = 410;
             this.pictureBox16.TabStop = false;
             // 
@@ -1041,7 +934,7 @@
             this.pictureBox17.Location = new System.Drawing.Point(15, 219);
             this.pictureBox17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(533, 48);
+            this.pictureBox17.Size = new System.Drawing.Size(519, 48);
             this.pictureBox17.TabIndex = 411;
             this.pictureBox17.TabStop = false;
             // 
@@ -1049,10 +942,10 @@
             // 
             this.pictureBox18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox18.Location = new System.Drawing.Point(554, 219);
+            this.pictureBox18.Location = new System.Drawing.Point(540, 219);
             this.pictureBox18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox18.Name = "pictureBox18";
-            this.pictureBox18.Size = new System.Drawing.Size(632, 48);
+            this.pictureBox18.Size = new System.Drawing.Size(629, 48);
             this.pictureBox18.TabIndex = 412;
             this.pictureBox18.TabStop = false;
             // 
@@ -1060,10 +953,10 @@
             // 
             this.pictureBox19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox19.Location = new System.Drawing.Point(1205, 233);
+            this.pictureBox19.Location = new System.Drawing.Point(1188, 233);
             this.pictureBox19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox19.Name = "pictureBox19";
-            this.pictureBox19.Size = new System.Drawing.Size(801, 48);
+            this.pictureBox19.Size = new System.Drawing.Size(810, 48);
             this.pictureBox19.TabIndex = 413;
             this.pictureBox19.TabStop = false;
             // 
@@ -1071,18 +964,301 @@
             // 
             this.pictureBox20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox20.Location = new System.Drawing.Point(17, 287);
+            this.pictureBox20.Location = new System.Drawing.Point(17, 288);
             this.pictureBox20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox20.Name = "pictureBox20";
-            this.pictureBox20.Size = new System.Drawing.Size(1169, 435);
+            this.pictureBox20.Size = new System.Drawing.Size(1152, 392);
             this.pictureBox20.TabIndex = 414;
             this.pictureBox20.TabStop = false;
+            // 
+            // pictureBox21
+            // 
+            this.pictureBox21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
+            this.pictureBox21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox21.Location = new System.Drawing.Point(1182, 452);
+            this.pictureBox21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox21.Name = "pictureBox21";
+            this.pictureBox21.Size = new System.Drawing.Size(826, 237);
+            this.pictureBox21.TabIndex = 415;
+            this.pictureBox21.TabStop = false;
+            // 
+            // pictureBox22
+            // 
+            this.pictureBox22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.pictureBox22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox22.Location = new System.Drawing.Point(1188, 285);
+            this.pictureBox22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox22.Name = "pictureBox22";
+            this.pictureBox22.Size = new System.Drawing.Size(810, 101);
+            this.pictureBox22.TabIndex = 416;
+            this.pictureBox22.TabStop = false;
+            // 
+            // pictureBox23
+            // 
+            this.pictureBox23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.pictureBox23.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox23.Location = new System.Drawing.Point(1704, 514);
+            this.pictureBox23.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox23.Name = "pictureBox23";
+            this.pictureBox23.Size = new System.Drawing.Size(296, 166);
+            this.pictureBox23.TabIndex = 417;
+            this.pictureBox23.TabStop = false;
+            // 
+            // txt_subtotal
+            // 
+            this.txt_subtotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_subtotal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_subtotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_subtotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_subtotal.Location = new System.Drawing.Point(1354, 297);
+            this.txt_subtotal.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_subtotal.Name = "txt_subtotal";
+            this.txt_subtotal.Size = new System.Drawing.Size(178, 30);
+            this.txt_subtotal.TabIndex = 418;
+            this.txt_subtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txt_iva
+            // 
+            this.txt_iva.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_iva.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_iva.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_iva.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_iva.Location = new System.Drawing.Point(1355, 343);
+            this.txt_iva.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_iva.Name = "txt_iva";
+            this.txt_iva.Size = new System.Drawing.Size(178, 30);
+            this.txt_iva.TabIndex = 419;
+            this.txt_iva.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label2.Location = new System.Drawing.Point(1358, 345);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(23, 25);
+            this.label2.TabIndex = 420;
+            this.label2.Text = "$";
+            // 
+            // txt_monto_recargo
+            // 
+            this.txt_monto_recargo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_monto_recargo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_monto_recargo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_monto_recargo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_monto_recargo.Location = new System.Drawing.Point(1698, 296);
+            this.txt_monto_recargo.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_monto_recargo.Name = "txt_monto_recargo";
+            this.txt_monto_recargo.Size = new System.Drawing.Size(178, 30);
+            this.txt_monto_recargo.TabIndex = 421;
+            this.txt_monto_recargo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label1.Location = new System.Drawing.Point(1701, 299);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(23, 25);
+            this.label1.TabIndex = 422;
+            this.label1.Text = "$";
+            // 
+            // txt_monto_descuento
+            // 
+            this.txt_monto_descuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_monto_descuento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_monto_descuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_monto_descuento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_monto_descuento.Location = new System.Drawing.Point(1698, 343);
+            this.txt_monto_descuento.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_monto_descuento.Name = "txt_monto_descuento";
+            this.txt_monto_descuento.Size = new System.Drawing.Size(178, 30);
+            this.txt_monto_descuento.TabIndex = 423;
+            this.txt_monto_descuento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lbl_descuento_total
+            // 
+            this.lbl_descuento_total.AutoSize = true;
+            this.lbl_descuento_total.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.lbl_descuento_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_descuento_total.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_descuento_total.Location = new System.Drawing.Point(1573, 345);
+            this.lbl_descuento_total.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_descuento_total.Name = "lbl_descuento_total";
+            this.lbl_descuento_total.Size = new System.Drawing.Size(122, 25);
+            this.lbl_descuento_total.TabIndex = 367;
+            this.lbl_descuento_total.Text = "Descuento:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label4.Location = new System.Drawing.Point(1701, 345);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(23, 25);
+            this.label4.TabIndex = 424;
+            this.label4.Text = "$";
+            // 
+            // txt_recargo
+            // 
+            this.txt_recargo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_recargo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_recargo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_recargo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_recargo.Location = new System.Drawing.Point(1887, 297);
+            this.txt_recargo.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_recargo.Name = "txt_recargo";
+            this.txt_recargo.Size = new System.Drawing.Size(67, 30);
+            this.txt_recargo.TabIndex = 425;
+            // 
+            // txt_descuento_porcentaje
+            // 
+            this.txt_descuento_porcentaje.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_descuento_porcentaje.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_descuento_porcentaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_descuento_porcentaje.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_descuento_porcentaje.Location = new System.Drawing.Point(1887, 343);
+            this.txt_descuento_porcentaje.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_descuento_porcentaje.Name = "txt_descuento_porcentaje";
+            this.txt_descuento_porcentaje.Size = new System.Drawing.Size(67, 30);
+            this.txt_descuento_porcentaje.TabIndex = 426;
+            // 
+            // txt_desc
+            // 
+            this.txt_desc.AutoSize = true;
+            this.txt_desc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_desc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_desc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_desc.Location = new System.Drawing.Point(1891, 345);
+            this.txt_desc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.txt_desc.Name = "txt_desc";
+            this.txt_desc.Size = new System.Drawing.Size(30, 25);
+            this.txt_desc.TabIndex = 427;
+            this.txt_desc.Text = "%";
+            // 
+            // pictureBox24
+            // 
+            this.pictureBox24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.pictureBox24.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox24.Location = new System.Drawing.Point(1188, 391);
+            this.pictureBox24.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox24.Name = "pictureBox24";
+            this.pictureBox24.Size = new System.Drawing.Size(810, 50);
+            this.pictureBox24.TabIndex = 428;
+            this.pictureBox24.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label6.Location = new System.Drawing.Point(1548, 401);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(26, 29);
+            this.label6.TabIndex = 430;
+            this.label6.Text = "$";
+            // 
+            // txt_total
+            // 
+            this.txt_total.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_total.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_total.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_total.Location = new System.Drawing.Point(1545, 399);
+            this.txt_total.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_total.Name = "txt_total";
+            this.txt_total.Size = new System.Drawing.Size(223, 34);
+            this.txt_total.TabIndex = 429;
+            this.txt_total.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label5.Location = new System.Drawing.Point(1923, 345);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(30, 25);
+            this.label5.TabIndex = 432;
+            this.label5.Text = "%";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label7.Location = new System.Drawing.Point(1923, 299);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(30, 25);
+            this.label7.TabIndex = 431;
+            this.label7.Text = "%";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label8.Location = new System.Drawing.Point(1493, 103);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(185, 25);
+            this.label8.TabIndex = 433;
+            this.label8.Text = "Estado de la caja:";
+            // 
+            // txt_estadoCaja
+            // 
+            this.txt_estadoCaja.AutoSize = true;
+            this.txt_estadoCaja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_estadoCaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_estadoCaja.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_estadoCaja.Location = new System.Drawing.Point(1695, 103);
+            this.txt_estadoCaja.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.txt_estadoCaja.Name = "txt_estadoCaja";
+            this.txt_estadoCaja.Size = new System.Drawing.Size(161, 25);
+            this.txt_estadoCaja.TabIndex = 434;
+            this.txt_estadoCaja.Text = "Estado de la caja";
             // 
             // Facturar_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
+            this.Controls.Add(this.txt_estadoCaja);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txt_total);
+            this.Controls.Add(this.txt_desc);
+            this.Controls.Add(this.txt_descuento_porcentaje);
+            this.Controls.Add(this.txt_rec);
+            this.Controls.Add(this.txt_recargo);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txt_monto_descuento);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txt_monto_recargo);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txt_iva);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txt_subtotal);
             this.Controls.Add(this.txt_numero_factura);
             this.Controls.Add(this.lbl_factura_n);
             this.Controls.Add(this.pictureBox19);
@@ -1092,8 +1268,6 @@
             this.Controls.Add(this.pictureBox15);
             this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.pictureBox14);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.combo_forma_pago);
             this.Controls.Add(this.txt_condicion_iva);
             this.Controls.Add(this.txt_nombre_cliente);
@@ -1108,27 +1282,12 @@
             this.Controls.Add(this.combo_cuotas);
             this.Controls.Add(this.lbl_cuotas);
             this.Controls.Add(this.lbl_forma_pago);
-            this.Controls.Add(this.txt_desc);
-            this.Controls.Add(this.txt_descuento_porcentaje);
-            this.Controls.Add(this.txt_rec);
-            this.Controls.Add(this.txt_recargo);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.txt_total);
             this.Controls.Add(this.lbl_total);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.txt_iva);
             this.Controls.Add(this.lbl_iva);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txt_monto_descuento);
             this.Controls.Add(this.lbl_descuento_total);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txt_monto_recargo);
             this.Controls.Add(this.lbl_recargo);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txt_subtotal);
             this.Controls.Add(this.lbl_subtotal);
             this.Controls.Add(this.pictureBox6);
-            this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.Factura);
             this.Controls.Add(this.lbl_dniE);
@@ -1152,8 +1311,13 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox20);
             this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox22);
+            this.Controls.Add(this.pictureBox23);
+            this.Controls.Add(this.pictureBox21);
+            this.Controls.Add(this.pictureBox24);
+            this.Controls.Add(this.pictureBox4);
             this.Name = "Facturar_UC";
-            this.Size = new System.Drawing.Size(2023, 745);
+            this.Size = new System.Drawing.Size(2019, 698);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -1175,6 +1339,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1199,24 +1367,11 @@
         private System.Windows.Forms.ComboBox combo_cuotas;
         private System.Windows.Forms.Label lbl_cuotas;
         private System.Windows.Forms.Label lbl_forma_pago;
-        private System.Windows.Forms.Label txt_desc;
-        private System.Windows.Forms.TextBox txt_descuento_porcentaje;
         private System.Windows.Forms.Label txt_rec;
-        private System.Windows.Forms.TextBox txt_recargo;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txt_total;
         private System.Windows.Forms.Label lbl_total;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txt_iva;
         private System.Windows.Forms.Label lbl_iva;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txt_monto_descuento;
-        private System.Windows.Forms.Label lbl_descuento_total;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txt_monto_recargo;
         private System.Windows.Forms.Label lbl_recargo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txt_subtotal;
         private System.Windows.Forms.Label lbl_subtotal;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox pictureBox4;
@@ -1260,5 +1415,26 @@
         private System.Windows.Forms.PictureBox pictureBox18;
         private System.Windows.Forms.PictureBox pictureBox19;
         private System.Windows.Forms.PictureBox pictureBox20;
+        private System.Windows.Forms.PictureBox pictureBox21;
+        private System.Windows.Forms.PictureBox pictureBox22;
+        private System.Windows.Forms.PictureBox pictureBox23;
+        private System.Windows.Forms.TextBox txt_subtotal;
+        private System.Windows.Forms.TextBox txt_iva;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txt_monto_recargo;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txt_monto_descuento;
+        private System.Windows.Forms.Label lbl_descuento_total;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txt_recargo;
+        private System.Windows.Forms.TextBox txt_descuento_porcentaje;
+        private System.Windows.Forms.Label txt_desc;
+        private System.Windows.Forms.PictureBox pictureBox24;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txt_total;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label txt_estadoCaja;
     }
 }

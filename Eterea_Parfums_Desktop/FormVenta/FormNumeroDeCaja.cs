@@ -91,6 +91,13 @@ namespace Eterea_Parfums_Desktop
                 if (CajaControlador.MarcarCajaComoNoDisponible(numeroCaja, Program.sucursal))
                 {
                     NumeroCaja = numCaja;
+
+                    // Asignar variables globales
+                    Program.NumeroCajaActual = numCaja;
+                    Program.IdHistorialCajaActual = CajaControlador.RegistrarAperturaDeCaja(
+                        numeroCaja, Program.sucursal, Program.logueado.usuario
+                    );
+
                     ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
 
                     /*Facturar_UC facturacion = new Facturar_UC();

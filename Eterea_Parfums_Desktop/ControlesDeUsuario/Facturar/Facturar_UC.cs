@@ -10,6 +10,7 @@ using System.Net.Mail;
 using System.Net;
 using System.Text;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 {
@@ -73,8 +74,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
             lbl_dniE.Hide();
             txt_scan_factura.Hide();
-            
 
+            ActualizarEstadoCaja();
         }
 
         private void FormFacturacion_Load(object sender, EventArgs e)
@@ -82,7 +83,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             txt_numero_caja.Text = NumeroCaja;
             txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
             txt_scan_factura.Focus(); // Forzar el foco en txt_scan_factura al cargar el formulario
-            
+            ActualizarEstadoCaja();
         }
 
         private void Txt_scan_factura_KeyPress(object sender, KeyPressEventArgs e)
@@ -206,6 +207,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                     nuevaFacturacion.NumeroCaja = Program.NumeroCajaActual;
                     nuevaFacturacion.IdHistorialCaja = Program.IdHistorialCajaActual;
+
                 };
 
                 numeroDeCaja.ShowDialog();
@@ -218,13 +220,18 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     Program.NumeroCajaActual = "Caja sin asignar";
                     Program.IdHistorialCajaActual = 0;
                 }
+
+                
             }
 
             var formPadre = this.FindForm() as FormInicioAdministrador;
             if (formPadre != null)
             {
                 formPadre.addUserControl(nuevaFacturacion);
+
             }
+
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -250,6 +257,22 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             // También podés limpiar las variables internas si querés
             NumeroCaja = "Caja sin asignar";
             IdHistorialCaja = 0;
+
+            ActualizarEstadoCaja();
+        }
+
+        private void ActualizarEstadoCaja()
+        {
+            if (!string.IsNullOrEmpty(Program.NumeroCajaActual) && Program.NumeroCajaActual != "Caja sin asignar")
+            {
+                txt_estadoCaja.Text = "Abierta";
+                txt_estadoCaja.ForeColor = Color.Green;
+            }
+            else
+            {
+                txt_estadoCaja.Text = "Cerrada";
+                txt_estadoCaja.ForeColor = Color.Red;
+            }
         }
 
         private void MostrarCajaSinAsignar()
