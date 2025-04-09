@@ -43,6 +43,8 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.btn_cerrar_sesion = new System.Windows.Forms.PictureBox();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
+            this.btn_buscar_envios = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -75,7 +77,7 @@
             this.btn_preparar_envios.Location = new System.Drawing.Point(784, 197);
             this.btn_preparar_envios.Margin = new System.Windows.Forms.Padding(4);
             this.btn_preparar_envios.Name = "btn_preparar_envios";
-            this.btn_preparar_envios.Size = new System.Drawing.Size(728, 57);
+            this.btn_preparar_envios.Size = new System.Drawing.Size(346, 57);
             this.btn_preparar_envios.TabIndex = 385;
             this.btn_preparar_envios.Text = "PREPARAR ENVIOS";
             this.btn_preparar_envios.UseVisualStyleBackColor = false;
@@ -100,17 +102,6 @@
             this.pictureBox10.Size = new System.Drawing.Size(751, 81);
             this.pictureBox10.TabIndex = 404;
             this.pictureBox10.TabStop = false;
-            this.btn_gestionar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.btn_gestionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_gestionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_gestionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_gestionar.Location = new System.Drawing.Point(490, 112);
-            this.btn_gestionar.Name = "btn_gestionar";
-            this.btn_gestionar.Size = new System.Drawing.Size(202, 37);
-            this.btn_gestionar.TabIndex = 99;
-            this.btn_gestionar.Text = "PREPARAR ENVIOS";
-            this.btn_gestionar.UseVisualStyleBackColor = false;
-            this.btn_gestionar.Click += new System.EventHandler(this.btn_gestionar_Click);
             // 
             // btn_facturar
             // 
@@ -139,12 +130,13 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox3.Location = new System.Drawing.Point(13, 237);
+            this.pictureBox3.Location = new System.Drawing.Point(476, 170);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(751, 81);
-            this.pictureBox3.TabIndex = 402;
+            this.pictureBox3.Size = new System.Drawing.Size(229, 67);
+            this.pictureBox3.TabIndex = 350;
             this.pictureBox3.TabStop = false;
             // 
             // txt_saludo
@@ -156,7 +148,7 @@
             this.txt_saludo.Location = new System.Drawing.Point(667, 122);
             this.txt_saludo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_saludo.Name = "txt_saludo";
-            this.txt_saludo.Size = new System.Drawing.Size(361, 46);
+            this.txt_saludo.Size = new System.Drawing.Size(295, 37);
             this.txt_saludo.TabIndex = 389;
             this.txt_saludo.Text = "Nombre Vendedor";
             // 
@@ -169,7 +161,7 @@
             this.txt_bienvenido.Location = new System.Drawing.Point(356, 117);
             this.txt_bienvenido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_bienvenido.Name = "txt_bienvenido";
-            this.txt_bienvenido.Size = new System.Drawing.Size(249, 51);
+            this.txt_bienvenido.Size = new System.Drawing.Size(198, 39);
             this.txt_bienvenido.TabIndex = 388;
             this.txt_bienvenido.Text = "Bienvenido:";
             // 
@@ -203,7 +195,7 @@
             this.label9.Location = new System.Drawing.Point(620, 33);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(341, 51);
+            this.label9.Size = new System.Drawing.Size(274, 39);
             this.label9.TabIndex = 393;
             this.label9.Text = "Modo Vendedor";
             // 
@@ -242,34 +234,41 @@
             // 
             // btn_buscar_envios
             // 
-            this.btn_buscar_envios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
+            this.btn_buscar_envios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(196)))), ((int)(((byte)(206)))));
             this.btn_buscar_envios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_buscar_envios.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_buscar_envios.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_buscar_envios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_buscar_envios.Location = new System.Drawing.Point(490, 182);
+            this.btn_buscar_envios.Location = new System.Drawing.Point(1152, 197);
+            this.btn_buscar_envios.Margin = new System.Windows.Forms.Padding(4);
             this.btn_buscar_envios.Name = "btn_buscar_envios";
-            this.btn_buscar_envios.Size = new System.Drawing.Size(202, 37);
-            this.btn_buscar_envios.TabIndex = 349;
+            this.btn_buscar_envios.Size = new System.Drawing.Size(346, 57);
+            this.btn_buscar_envios.TabIndex = 405;
             this.btn_buscar_envios.Text = "BUSCAR ENVIOS";
             this.btn_buscar_envios.UseVisualStyleBackColor = false;
             this.btn_buscar_envios.Click += new System.EventHandler(this.btn_buscar_envios_Click);
             // 
-            // pictureBox3
+            // button1
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox3.Location = new System.Drawing.Point(476, 170);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(229, 67);
-            this.pictureBox3.TabIndex = 350;
-            this.pictureBox3.TabStop = false;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(196)))), ((int)(((byte)(206)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.button1.Location = new System.Drawing.Point(1012, 115);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(346, 57);
+            this.button1.TabIndex = 406;
+            this.button1.Text = "PREPARAR ENVIOS 2";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.btn_gestionar_Click);
             // 
             // FormInicioVendedor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
             this.ClientSize = new System.Drawing.Size(1535, 865);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_buscar_envios);
             this.Controls.Add(this.panel_admin);
             this.Controls.Add(this.btn_preparar_envios);
             this.Controls.Add(this.pictureBox9);
@@ -321,5 +320,7 @@
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.PictureBox btn_cerrar_sesion;
         private System.Windows.Forms.PictureBox pictureBox17;
+        private System.Windows.Forms.Button btn_buscar_envios;
+        private System.Windows.Forms.Button button1;
     }
 }

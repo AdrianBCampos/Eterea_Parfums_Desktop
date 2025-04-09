@@ -71,7 +71,7 @@ namespace Eterea_Parfums_Desktop
             Facturar_UC facturarUC = new Facturar_UC();
             addUserControl(facturarUC);
             CambiarColorBoton1((Button)sender);
-        }      
+        }
 
         private void btn_preparar_envios_Click(object sender, EventArgs e)
         {
@@ -94,8 +94,8 @@ namespace Eterea_Parfums_Desktop
             botonSeleccionado.BackColor = Color.FromArgb(232, 186, 197);
 
             // Cambiar el color de PictureBox
-            
-            pictureBox1.BackColor = Color.FromArgb(232, 186, 197);           
+
+            pictureBox1.BackColor = Color.FromArgb(232, 186, 197);
             pictureBox9.BackColor = Color.FromArgb(232, 196, 206);
 
             // Mostrar PictureBox         
@@ -129,6 +129,13 @@ namespace Eterea_Parfums_Desktop
 
             // Guardar el botón actual como el anterior
             botonAnterior = botonSeleccionado;
+
+
+
+           
+        }
+
+
         private void btn_gestionar_Click(object sender, EventArgs e)
         {
             if (HayOrdenesActivas())
@@ -143,13 +150,15 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
+
         private void btn_buscar_envios_Click(object sender, EventArgs e)
-        {
-            FormBuscarPedidos buscar = new FormBuscarPedidos();
-            buscar.Show();
-            this.Hide();
+            {
+                FormBuscarPedidos buscar = new FormBuscarPedidos();
+                buscar.Show();
+                this.Hide();
+
+            }
+
+
         }
-
-
     }
-}

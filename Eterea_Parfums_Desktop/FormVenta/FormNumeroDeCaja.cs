@@ -33,7 +33,7 @@ namespace Eterea_Parfums_Desktop
 
 
 
-        private void FormNumeroDeCaja_Load(object sender, EventArgs e)
+       /* private void FormNumeroDeCaja_Load(object sender, EventArgs e)
         {
             try
             {
@@ -77,7 +77,7 @@ namespace Eterea_Parfums_Desktop
             {
                 MessageBox.Show("Error en Load: " + ex.Message);
             }
-        }
+        }*/
 
         private void FormNumeroDeCaja_Load(object sender, EventArgs e)
         {
