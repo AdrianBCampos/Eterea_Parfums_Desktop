@@ -100,6 +100,17 @@
             this.pictureBox10.Size = new System.Drawing.Size(751, 81);
             this.pictureBox10.TabIndex = 404;
             this.pictureBox10.TabStop = false;
+            this.btn_gestionar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
+            this.btn_gestionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_gestionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_gestionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.btn_gestionar.Location = new System.Drawing.Point(490, 112);
+            this.btn_gestionar.Name = "btn_gestionar";
+            this.btn_gestionar.Size = new System.Drawing.Size(202, 37);
+            this.btn_gestionar.TabIndex = 99;
+            this.btn_gestionar.Text = "PREPARAR ENVIOS";
+            this.btn_gestionar.UseVisualStyleBackColor = false;
+            this.btn_gestionar.Click += new System.EventHandler(this.btn_gestionar_Click);
             // 
             // btn_facturar
             // 
@@ -228,6 +239,31 @@
             this.pictureBox17.Size = new System.Drawing.Size(1523, 850);
             this.pictureBox17.TabIndex = 395;
             this.pictureBox17.TabStop = false;
+            // 
+            // btn_buscar_envios
+            // 
+            this.btn_buscar_envios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
+            this.btn_buscar_envios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_buscar_envios.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_buscar_envios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.btn_buscar_envios.Location = new System.Drawing.Point(490, 182);
+            this.btn_buscar_envios.Name = "btn_buscar_envios";
+            this.btn_buscar_envios.Size = new System.Drawing.Size(202, 37);
+            this.btn_buscar_envios.TabIndex = 349;
+            this.btn_buscar_envios.Text = "BUSCAR ENVIOS";
+            this.btn_buscar_envios.UseVisualStyleBackColor = false;
+            this.btn_buscar_envios.Click += new System.EventHandler(this.btn_buscar_envios_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox3.Location = new System.Drawing.Point(476, 170);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(229, 67);
+            this.pictureBox3.TabIndex = 350;
+            this.pictureBox3.TabStop = false;
             // 
             // FormInicioVendedor
             // 

@@ -56,6 +56,9 @@ namespace Eterea_Parfums_Desktop
             //ESCALAR TAMAÑO DEL FORM
             //float scaleFactor = 0.8f; // 80% del tamaño original
             //this.Scale(new SizeF(scaleFactor, scaleFactor));
+            this.Scale(new SizeF(Program.ScaleFactor, Program.ScaleFactor));
+
+
 
             //barcodeReceiver = new BarcodeReceiver();
             //barcodeReceiver.StartServer(); // Inicia el servidor TCP
@@ -141,12 +144,46 @@ namespace Eterea_Parfums_Desktop
              }
          }*/
 
-        private void DetalleForm_FormClosed(object sender, FormClosedEventArgs e)
+        /*private void DetalleForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             ResetAutoConsulta();
+        }*/
+        private void txt_scan_TextChanged(object sender, EventArgs e)
+        {
+            if (!escaneoHabilitado || !txt_scan.Visible || !txt_scan.Enabled)
+            {
+                txt_scan.Text = ""; // Limpia si el campo no debería recibir datos
+                return;
+            }
+
+            string codigo = txt_scan.Text.Trim();
+
+            // Si el código tiene 12 dígitos, le agrega un "0" al inicio
+            if (codigo.Length == 12)
+            {
+                codigo = "0" + codigo;
+            }
+
+            if (string.IsNullOrEmpty(codigo))
+                return;
+
+            // Buscar el perfume por código modificado
+            Perfume perfumeEncontrado = PerfumeControlador.getByCodigo(codigo);
+            if (perfumeEncontrado != null)
+            {
+                // Si el perfume existe, abrir el formulario de detalles
+                FormVerDetallePerfume detalleForm = new FormVerDetallePerfume(perfumeEncontrado);
+                detalleForm.FormClosed += (s, args) => ResetAutoConsulta();
+                detalleForm.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Código no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ResetAutoConsulta();
+            }
         }
 
-        private void txt_scan_TextChanged(object sender, EventArgs e)
+        /*private void txt_scan_TextChanged(object sender, EventArgs e)
         {
             if (!escaneoHabilitado || !txt_scan.Visible || !txt_scan.Enabled)
             {
@@ -180,27 +217,29 @@ namespace Eterea_Parfums_Desktop
 
                 ResetAutoConsulta();
             }
-        }
-
-        /*private void txt_scan_TextChanged(object sender, EventArgs e)
-        {
-            if (!escaneoHabilitado) 
-            {
-                // ✅ Si el escaneo no está habilitado, limpiamos el TextBox y salimos del método
-                txt_scan.Clear();
-                return;
-            }
-            if (!string.IsNullOrEmpty(txt_scan.Text))
-            { 
-                GuardarTextoEnArchivo(txt_scan.Text);
-
-                // Usar BeginInvoke para ejecutar el evento KeyPress en el hilo principal
-                this.BeginInvoke(new Action(() =>
-                {
-                    txt_scan_KeyPress(txt_scan, new KeyPressEventArgs((char)Keys.Enter));
-                }));
-            }
         }*/
+
+        /*   private void txt_scan_TextChanged(object sender, EventArgs e)
+           {
+               string codigo = txt_scan.Text.Trim();
+               if (string.IsNullOrEmpty(codigo)) return;
+
+               if (PerfumeControlador.getByCodigo(codigo)!=null)
+               {
+                   // Si existe, abrir el formulario de detalles
+                   FormVerDetallePerfume detalleForm = new FormVerDetallePerfume(PerfumeControlador.getByCodigo(codigo));
+                   detalleForm.ShowDialog();
+               }
+               else
+               {
+                   // Si no existe, abrir el formulario de reintento
+                   FormEscanear escanearForm = new FormEscanear(this);
+                   escanearForm.ShowDialog();
+               }
+
+               // Reiniciar la UI al volver a formAutoConsulta
+               ResetAutoConsulta();
+           }*/
 
         public void ResetAutoConsulta()
         {

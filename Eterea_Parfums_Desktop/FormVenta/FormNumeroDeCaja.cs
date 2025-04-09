@@ -30,6 +30,55 @@ namespace Eterea_Parfums_Desktop
 
         }
 
+
+
+
+        private void FormNumeroDeCaja_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!AutoTomarCaja)
+                {
+                    // No hacer nada, solo mostrar pantalla con input de número de caja o botón
+                    txt_ing_numero_caja.Visible = true;
+                    lbl_error_caja.Visible = false;
+                    return;
+                }
+
+                int? cajaDisponible = CajaControlador.ObtenerUnicaCajaDisponibleEnSucursal(Program.sucursal);
+
+                if (cajaDisponible.HasValue)
+                {
+                    if (CajaControlador.MarcarCajaComoNoDisponible(cajaDisponible.Value, Program.sucursal))
+                    {
+                        NumeroCaja = cajaDisponible.Value.ToString();
+                        ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
+
+                        FormFacturacion facturacion = new FormFacturacion();
+                        facturacion.NumeroCaja = NumeroCaja;
+                        facturacion.IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(Convert.ToInt32(NumeroCaja), Program.sucursal, Program.logueado.usuario);
+                        facturacion.Show();
+
+                        this.BeginInvoke(new Action(() => this.Close()));
+                    }
+                    else
+                    {
+                        lbl_error_caja.Text = "La caja ya fue tomada por otro usuario. Intente con otra.";
+                        lbl_error_caja.Visible = true;
+                    }
+                }
+                else
+                {
+                    txt_ing_numero_caja.Visible = true;
+                    lbl_error_caja.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en Load: " + ex.Message);
+            }
+        }
+
         private void FormNumeroDeCaja_Load(object sender, EventArgs e)
         {
             try

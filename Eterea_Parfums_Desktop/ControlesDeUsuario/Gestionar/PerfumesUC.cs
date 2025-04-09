@@ -15,6 +15,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         public PerfumesUC()
         {
             InitializeComponent();
+
+            this.Scale(new SizeF(Program.ScaleFactor, Program.ScaleFactor));
+
             txt_buscar_codigo.MaxLength = 13;
             txt_buscar_codigo.KeyPress += txt_buscar_codigo_KeyPress;
             txt_buscar_codigo.TextChanged += txt_buscar_codigo_TextChanged;

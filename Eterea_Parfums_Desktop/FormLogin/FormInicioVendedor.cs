@@ -1,4 +1,5 @@
-﻿using Eterea_Parfums_Desktop.ControlesDeUsuario;
+﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
@@ -41,6 +42,13 @@ namespace Eterea_Parfums_Desktop
             pictureBox1.BackColor = Color.FromArgb(232, 186, 197);
             btn_facturar.BackColor = Color.FromArgb(232, 186, 197);
         }
+
+        internal static bool HayOrdenesActivas()
+        {
+            OrdenControlador controlador = new OrdenControlador();
+            return controlador.ObtenerCantidadOrdenesActivas() > 0;
+        }
+
 
         private void addUserControl(UserControl uc)
         {
@@ -121,6 +129,25 @@ namespace Eterea_Parfums_Desktop
 
             // Guardar el botón actual como el anterior
             botonAnterior = botonSeleccionado;
+        private void btn_gestionar_Click(object sender, EventArgs e)
+        {
+            if (HayOrdenesActivas())
+            {
+                FormListaDeEnvios listaDeEnvios = new FormListaDeEnvios();
+                listaDeEnvios.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("En este momento no hay órdenes activas para despachar.", "Sin órdenes activas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btn_buscar_envios_Click(object sender, EventArgs e)
+        {
+            FormBuscarPedidos buscar = new FormBuscarPedidos();
+            buscar.Show();
+            this.Hide();
         }
 
 

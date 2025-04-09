@@ -1,5 +1,6 @@
 ﻿using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -9,6 +10,8 @@ namespace Eterea_Parfums_Desktop
         public FormMenuABM()
         {
             InitializeComponent();
+
+            this.Scale(new SizeF(Program.ScaleFactor, Program.ScaleFactor));
 
             PerfumesUC perfumesUC = new PerfumesUC();
             addUserControl(perfumesUC);
