@@ -225,7 +225,7 @@ namespace Eterea_Parfums_Desktop
         
         private bool EsCodigoBarraPerfumeValido(string codigo)
         {
-            if (string.IsNullOrEmpty(codigo) || codigo.Length != 13 || !codigo.All(char.IsDigit))
+            if (string.IsNullOrEmpty(codigo) || codigo.Length != 13 || !codigo.All(char.IsDigit) || PerfumeControlador.getByCodigo(codigo) != null)
             {
                 return false;
             }
@@ -252,8 +252,8 @@ namespace Eterea_Parfums_Desktop
             string errorMsg = "";
             if (!EsCodigoBarraPerfumeValido(txt_codigo.Text))
             {
-                errorMsg += "El código no es válido. Debe ser un código EAN-13 correcto.\n";
-                lbl_error_codigo.Text = "El código no es válido. Debe tener 13 dígitos.";
+                errorMsg += "Código no valido o ya existente. Debe ser un código EAN-13 correcto.\n";
+                lbl_error_codigo.Text = "Código no es válido o existente. Debe tener 13 dígitos.";
                 lbl_error_codigo.Show();
             }
             else lbl_error_codigo.Visible = false;
