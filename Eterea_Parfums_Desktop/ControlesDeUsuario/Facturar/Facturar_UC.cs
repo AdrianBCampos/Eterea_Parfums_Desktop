@@ -261,64 +261,73 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void btn_buscar_Click(object sender, EventArgs e)
         {
+            if (Program.NumeroCajaActual != null && Program.NumeroCajaActual != "Caja sin asignar")
+            {
+                // Si hay caja asignada
+                if (string.IsNullOrWhiteSpace(txt_dni.Text))
+                {
+                    MessageBox.Show("Ingrese un número de DNI antes de buscar un cliente.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                // Validar la longitud del DNI
+                if (txt_dni.Text.Length != 8)
+                {
+                    MessageBox.Show("El número ingresado debe ser de 8 o 11 dígitos.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (!txt_dni.Text.All(char.IsDigit))
+                {
+                    MessageBox.Show("El DNI solo puede contener números.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-            if (string.IsNullOrWhiteSpace(txt_dni.Text))
-            {
-                MessageBox.Show("Ingrese un número de DNI antes de buscar un cliente.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            // Validar la longitud del DNI
-            if (txt_dni.Text.Length != 8)
-            {
-                MessageBox.Show("El número ingresado debe ser de 8 o 11 dígitos.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            if (!txt_dni.Text.All(char.IsDigit))
-            {
-                MessageBox.Show("El DNI solo puede contener números.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
 
+                int dni = int.Parse(txt_dni.Text);
+                Cliente cliente = ClienteControlador.obtenerPorDni(dni);
+                if (cliente != null)
+                {
+                    clientefactura = cliente;
+                }
+                if (cliente != null)
+                {
+                    // Si se encuentra el cliente, llenar los campos en el formulario actual
+                    txt_nombre_cliente.Text = cliente.nombre + " " + cliente.apellido;
+                    txt_condicion_iva.Text = cliente.condicion_frente_al_iva;
+                    txt_email.Text = cliente.e_mail;
 
-            int dni = int.Parse(txt_dni.Text);
-            Cliente cliente = ClienteControlador.obtenerPorDni(dni);
-            if (cliente != null)
-            {
-                clientefactura = cliente;
-            }
-            if (cliente != null)
-            {
-                // Si se encuentra el cliente, llenar los campos en el formulario actual
-                txt_nombre_cliente.Text = cliente.nombre + " " + cliente.apellido;
-                txt_condicion_iva.Text = cliente.condicion_frente_al_iva;
-                txt_email.Text = cliente.e_mail;
+                }
+                else
+                {
+                    int dniIngresado = int.Parse(txt_dni.Text);
+                    // Si no se encuentra el cliente, abrir el formulario para agregar un nuevo cliente
+                    FormCrearClienteFactura formCrearClienteFactura = new FormCrearClienteFactura(dni);
+                    formCrearClienteFactura.ShowDialog(); // Cambiado a ShowDialog para esperar que el formulario se cierre
 
+                    // Luego de cerrar el formulario de clientes, verifica si se creó un nuevo cliente
+                    Cliente nuevoCliente = ClienteControlador.obtenerPorDni(dniIngresado);
+                    if (nuevoCliente != null)
+                    {
+                        // Asigna los datos del nuevo cliente al formulario actual
+                        txt_nombre_cliente.Text = nuevoCliente.nombre + " " + nuevoCliente.apellido;
+                        txt_condicion_iva.Text = nuevoCliente.condicion_frente_al_iva;
+                        txt_email.Text = nuevoCliente.e_mail;
+                    }
+                }
+
+                ActualizarTotales();
             }
             else
             {
-                int dniIngresado = int.Parse(txt_dni.Text);
-                // Si no se encuentra el cliente, abrir el formulario para agregar un nuevo cliente
-                FormCrearClienteFactura formCrearClienteFactura = new FormCrearClienteFactura(dni);
-                formCrearClienteFactura.ShowDialog(); // Cambiado a ShowDialog para esperar que el formulario se cierre
-
-                // Luego de cerrar el formulario de clientes, verifica si se creó un nuevo cliente
-                Cliente nuevoCliente = ClienteControlador.obtenerPorDni(dniIngresado);
-                if (nuevoCliente != null)
-                {
-                    // Asigna los datos del nuevo cliente al formulario actual
-                    txt_nombre_cliente.Text = nuevoCliente.nombre + " " + nuevoCliente.apellido;
-                    txt_condicion_iva.Text = nuevoCliente.condicion_frente_al_iva;
-                    txt_email.Text = nuevoCliente.e_mail;
-                }
+                // No hay caja asignada, mostrar FormNumeroDeCaja para elegirla
+                MessageBox.Show("Debes ingresar un número de caja.", "Número de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            ActualizarTotales();
+            
         }
 
         private void btn_consultas_Click(object sender, EventArgs e)
         {
             FormConsultasPerfumeEmpleado consultasPerfumeEmpleado = new FormConsultasPerfumeEmpleado(this);
-            consultasPerfumeEmpleado.Show();
-            //this.Hide();
+            consultasPerfumeEmpleado.ShowDialog();          
         }
 
 
@@ -902,130 +911,137 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void btn_imprimir_Click(object sender, EventArgs e)
         {
-
-
-            SaveFileDialog guardarFactura = new SaveFileDialog();
-            guardarFactura.FileName = DateTime.Now.ToString("ddMMyyyyHHss") + ".pdf";
-            guardarFactura.Filter = "Archivos PDF (*.pdf)|*.pdf"; // Filtro para archivos PDF
-            guardarFactura.DefaultExt = "pdf"; // Extensión por defecto
-            guardarFactura.AddExtension = true; // Agrega la extensión si el usuario no la pone
-            string filePath = guardarFactura.FileName;
-
-            string condicionCliente = txt_condicion_iva.Text.Trim();
-            string PaginaHTML_Texto = "";
-
-            // Verificar si el cliente es Responsable Monotributo
-            if (condicionCliente.Contains("Responsable Inscripto"))
+            if (Program.NumeroCajaActual != null && Program.NumeroCajaActual != "Caja sin asignar")
             {
-                PaginaHTML_Texto = Properties.Resources.PlantillaFactura.ToString();
+                // Si hay caja asignada     
+                SaveFileDialog guardarFactura = new SaveFileDialog();
+                guardarFactura.FileName = DateTime.Now.ToString("ddMMyyyyHHss") + ".pdf";
+                guardarFactura.Filter = "Archivos PDF (*.pdf)|*.pdf"; // Filtro para archivos PDF
+                guardarFactura.DefaultExt = "pdf"; // Extensión por defecto
+                guardarFactura.AddExtension = true; // Agrega la extensión si el usuario no la pone
+                string filePath = guardarFactura.FileName;
 
+                string condicionCliente = txt_condicion_iva.Text.Trim();
+                string PaginaHTML_Texto = "";
 
-
-                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CLIENTE", txt_nombre_cliente.Text);
-                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DOCUMENTO", txt_dni.Text);
-                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NUMEROFACTURA", txt_numero_factura.Text);
-                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
-
-                string filas = string.Empty;
-                decimal total = 0;
-                foreach (DataGridViewRow row in Factura.Rows)
+                // Verificar si el cliente es Responsable Monotributo
+                if (condicionCliente.Contains("Responsable Inscripto"))
                 {
-                    filas += "<tr>";
-                    filas += "<td>" + row.Cells["Nombre_Perfume"].Value.ToString() + "</td>";
-                    filas += "<td>" + row.Cells["Precio_Unitario"].Value.ToString() + "</td>";
-                    filas += "<td>" + row.Cells["Cantidad"].Value.ToString() + "</td>";
-                    filas += "<td>" + row.Cells["Descuento"].Value.ToString() + "</td>";
-                    filas += "<td>" + row.Cells["Tot"].Value.ToString() + "</td>";
-                    filas += "</tr>";
-                    total += decimal.Parse(row.Cells["Tot"].Value.ToString());
+                    PaginaHTML_Texto = Properties.Resources.PlantillaFactura.ToString();
+
+
+
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CLIENTE", txt_nombre_cliente.Text);
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DOCUMENTO", txt_dni.Text);
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NUMEROFACTURA", txt_numero_factura.Text);
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
+
+                    string filas = string.Empty;
+                    decimal total = 0;
+                    foreach (DataGridViewRow row in Factura.Rows)
+                    {
+                        filas += "<tr>";
+                        filas += "<td>" + row.Cells["Nombre_Perfume"].Value.ToString() + "</td>";
+                        filas += "<td>" + row.Cells["Precio_Unitario"].Value.ToString() + "</td>";
+                        filas += "<td>" + row.Cells["Cantidad"].Value.ToString() + "</td>";
+                        filas += "<td>" + row.Cells["Descuento"].Value.ToString() + "</td>";
+                        filas += "<td>" + row.Cells["Tot"].Value.ToString() + "</td>";
+                        filas += "</tr>";
+                        total += decimal.Parse(row.Cells["Tot"].Value.ToString());
+                    }
+
+                    double precioTotal = double.Parse(txt_total.Text);
+                    double precioSubtotal = double.Parse(txt_subtotal.Text);
+                    double recargoTarjeta = double.Parse(txt_monto_recargo.Text);
+                    double descuento = double.Parse(txt_monto_descuento.Text);
+
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FILAS", filas);
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL", precioSubtotal.ToString());
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@RECARGO", recargoTarjeta.ToString());
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DESCUENTO", descuento.ToString());
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TOTAL", precioTotal.ToString());
+
+                }
+                else
+                {
+                    PaginaHTML_Texto = Properties.Resources.FacturaA.ToString();
+
+
+
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CLIENTE", txt_nombre_cliente.Text);
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DOCUMENTO", txt_dni.Text);
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NUMEROFACTURA", txt_numero_factura.Text);
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
+
+                    string filas = string.Empty;
+                    decimal total = 0;
+                    foreach (DataGridViewRow row in Factura.Rows)
+                    {
+                        filas += "<tr>";
+                        filas += "<td>" + row.Cells["Nombre_Perfume"].Value.ToString() + "</td>";
+                        filas += "<td>" + row.Cells["Precio_Unitario"].Value.ToString() + "</td>";
+                        filas += "<td>" + row.Cells["Cantidad"].Value.ToString() + "</td>";
+                        filas += "<td>" + row.Cells["Descuento"].Value.ToString() + "</td>";
+                        filas += "<td>" + row.Cells["Tot"].Value.ToString() + "</td>";
+                        filas += "</tr>";
+                        total += decimal.Parse(row.Cells["Tot"].Value.ToString());
+                    }
+
+                    double precioTotal = double.Parse(txt_total.Text);
+                    double precioSubtotal = double.Parse(txt_subtotal.Text);
+                    double recargoTarjeta = double.Parse(txt_monto_recargo.Text);
+                    double iva = double.Parse(txt_iva.Text);
+                    double descuento = double.Parse(txt_monto_descuento.Text);
+
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FILAS", filas);
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL", precioSubtotal.ToString());
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@RECARGO", recargoTarjeta.ToString());
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DESCUENTO", descuento.ToString());
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@IVA", iva.ToString());
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TOTAL", precioTotal.ToString());
                 }
 
-                double precioTotal = double.Parse(txt_total.Text);
-                double precioSubtotal = double.Parse(txt_subtotal.Text);
-                double recargoTarjeta = double.Parse(txt_monto_recargo.Text);
-                double descuento = double.Parse(txt_monto_descuento.Text);
+                if (guardarFactura.ShowDialog() == DialogResult.OK)
+                {
 
-                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FILAS", filas);
-                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL", precioSubtotal.ToString());
-                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@RECARGO", recargoTarjeta.ToString());
-                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DESCUENTO", descuento.ToString());
-                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TOTAL", precioTotal.ToString());
+                    using (FileStream stream = new FileStream(guardarFactura.FileName, FileMode.Create))
+                    {
+                        //Creamos un nuevo documento y lo definimos como PDF
+                        Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
 
+                        PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+                        pdfDoc.Open();
+
+                        //Agregamos la imagen del banner al documento
+                        iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.LogoEtereaFactura, System.Drawing.Imaging.ImageFormat.Png);
+                        img.ScaleToFit(60, 60);
+                        img.Alignment = iTextSharp.text.Image.UNDERLYING;
+
+                        //img.SetAbsolutePosition(10,100);
+                        img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
+                        pdfDoc.Add(img);
+
+                        using (StringReader sr = new StringReader(PaginaHTML_Texto))
+                        {
+                            XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                        }
+
+                        pdfDoc.Close();
+                        stream.Close();
+                    }
+                }
+                CrearFactura();
+                CrearDetalleFactura();
+
+                if (!string.IsNullOrWhiteSpace(txt_email.Text))
+                {
+                    EnviarCorreo(filePath, txt_email.Text.Trim());
+                }
             }
             else
             {
-                PaginaHTML_Texto = Properties.Resources.FacturaA.ToString();
-
-
-
-                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CLIENTE", txt_nombre_cliente.Text);
-                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DOCUMENTO", txt_dni.Text);
-                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NUMEROFACTURA", txt_numero_factura.Text);
-                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
-
-                string filas = string.Empty;
-                decimal total = 0;
-                foreach (DataGridViewRow row in Factura.Rows)
-                {
-                    filas += "<tr>";
-                    filas += "<td>" + row.Cells["Nombre_Perfume"].Value.ToString() + "</td>";
-                    filas += "<td>" + row.Cells["Precio_Unitario"].Value.ToString() + "</td>";
-                    filas += "<td>" + row.Cells["Cantidad"].Value.ToString() + "</td>";
-                    filas += "<td>" + row.Cells["Descuento"].Value.ToString() + "</td>";
-                    filas += "<td>" + row.Cells["Tot"].Value.ToString() + "</td>";
-                    filas += "</tr>";
-                    total += decimal.Parse(row.Cells["Tot"].Value.ToString());
-                }
-
-                double precioTotal = double.Parse(txt_total.Text);
-                double precioSubtotal = double.Parse(txt_subtotal.Text);
-                double recargoTarjeta = double.Parse(txt_monto_recargo.Text);
-                double iva = double.Parse(txt_iva.Text);
-                double descuento = double.Parse(txt_monto_descuento.Text);
-
-                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FILAS", filas);
-                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL", precioSubtotal.ToString());
-                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@RECARGO", recargoTarjeta.ToString());
-                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DESCUENTO", descuento.ToString());
-                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@IVA", iva.ToString());
-                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TOTAL", precioTotal.ToString());
-            }
-
-            if (guardarFactura.ShowDialog() == DialogResult.OK)
-            {
-
-                using (FileStream stream = new FileStream(guardarFactura.FileName, FileMode.Create))
-                {
-                    //Creamos un nuevo documento y lo definimos como PDF
-                    Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
-
-                    PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
-                    pdfDoc.Open();
-
-                    //Agregamos la imagen del banner al documento
-                    iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.LogoEtereaFactura, System.Drawing.Imaging.ImageFormat.Png);
-                    img.ScaleToFit(60, 60);
-                    img.Alignment = iTextSharp.text.Image.UNDERLYING;
-
-                    //img.SetAbsolutePosition(10,100);
-                    img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
-                    pdfDoc.Add(img);
-
-                    using (StringReader sr = new StringReader(PaginaHTML_Texto))
-                    {
-                        XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
-                    }
-
-                    pdfDoc.Close();
-                    stream.Close();
-                }
-            }
-            CrearFactura();
-            CrearDetalleFactura();
-
-            if (!string.IsNullOrWhiteSpace(txt_email.Text))
-            {
-                EnviarCorreo(filePath, txt_email.Text.Trim());
+                // No hay caja asignada, mostrar FormNumeroDeCaja para elegirla
+                MessageBox.Show("Debes ingresar un número de caja.", "Número de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -1081,6 +1097,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
-       
+        
     }
 }

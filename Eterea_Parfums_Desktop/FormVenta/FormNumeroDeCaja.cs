@@ -18,8 +18,6 @@ namespace Eterea_Parfums_Desktop
 
         public bool AutoTomarCaja { get; set; } = true;
 
-
-
         public FormNumeroDeCaja()
         {
             InitializeComponent();
@@ -31,9 +29,6 @@ namespace Eterea_Parfums_Desktop
             txt_nombre_suc.Text = SucursalControlador.ObtenerNombreSucursalPorId(Program.sucursal);
 
         }
-
-
-
 
         private void FormNumeroDeCaja_Load(object sender, EventArgs e)
         {
@@ -81,61 +76,10 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
-
-
-
-
-
-
-
         private void button2_Click(object sender, EventArgs e)
-        {
-
-            /*if (Program.logueado.rol == "admin")
-            {
-                // Buscar si ya existe una instancia de FormInicioAdministrador
-                FormInicioAdministrador inicioAdmin = Application.OpenForms.OfType<FormInicioAdministrador>().FirstOrDefault();
-
-                if (inicioAdmin != null)
-                {
-                    inicioAdmin.Show();
-                    inicioAdmin.BringToFront();
-                }
-                else
-                {
-                    inicioAdmin = new FormInicioAdministrador();
-                    inicioAdmin.Show();
-                }
-
-
-                this.Close(); // Cierra el formulario actual (login)
-            }
-            else
-            {
-                // Buscar si ya existe una instancia de FormInicioVendedor
-                FormInicioVendedor inicioVendedor = Application.OpenForms.OfType<FormInicioVendedor>().FirstOrDefault();
-
-                if (inicioVendedor != null)
-                {
-                    inicioVendedor.Show();
-                    inicioVendedor.BringToFront();
-                }
-                else
-                {
-                    inicioVendedor = new FormInicioVendedor();
-                    inicioVendedor.Show();
-                }
-
-                this.Close(); // Cierra el formulario actual (login)
-            }*/
-
-            // Cancelar el ingreso de caja y actualizar Facturar_UC
-          
-
+        {                
             this.Close(); // Cierra FormNumeroDeCaja
         }
-
-
 
         private void btn_continuar_Click(object sender, EventArgs e)
         {
@@ -172,12 +116,6 @@ namespace Eterea_Parfums_Desktop
                 txt_ing_numero_caja.Focus();
             }
         }
-
-
-
-
-
-
 
     }
 }

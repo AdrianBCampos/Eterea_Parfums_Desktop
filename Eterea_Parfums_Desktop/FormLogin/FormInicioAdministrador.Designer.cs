@@ -252,7 +252,7 @@
             this.panel_admin.AutoSize = true;
             this.panel_admin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
             this.panel_admin.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.panel_admin.Location = new System.Drawing.Point(12, 283);
+            this.panel_admin.Location = new System.Drawing.Point(12, 280);
             this.panel_admin.Margin = new System.Windows.Forms.Padding(4);
             this.panel_admin.Name = "panel_admin";
             this.panel_admin.Size = new System.Drawing.Size(1510, 567);
