@@ -697,12 +697,38 @@ namespace Eterea_Parfums_Desktop
             e.DrawFocusRectangle();
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            Program.BarcodeService.RegisterListener(OnBarcodeScanned);
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            Program.BarcodeService.UnregisterListener(OnBarcodeScanned);
+            base.OnFormClosed(e);
+        }
+
+        private void OnBarcodeScanned(string barcode)
+        {
+            if (!escaneoHabilitado) return;
+
+            this.Invoke((MethodInvoker)(() =>
+            {
+                txt_scan.Text = barcode;
+            }));
+        }
+
+
         private void btn_escanear_Click(object sender, EventArgs e)
         {
             /* Escanear escanear = new Escanear();
              escanear.Show();
              this.Hide();*/
             escaneoHabilitado = true;
+
+
 
             // Ocultar el botón y mostrar el TextBox
             btn_escanear.Visible = false;

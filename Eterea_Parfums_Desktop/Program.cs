@@ -13,8 +13,8 @@ namespace Eterea_Parfums_Desktop
 {
     static class Program
     {
-     
 
+        public static BarcodeReceiver BarcodeService = new BarcodeReceiver();
 
         /// <summary>
         /// Punto de entrada principal para la aplicación.

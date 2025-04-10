@@ -37,6 +37,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             txt_scan_factura.TextChanged += Txt_scan_factura_TextChanged;
             Factura.CellContentClick += DataGridViewFactura_CellContentClick;
 
+            // Simula el evento Load del UserControl
+            this.Load += (s, e) => {
+                Program.BarcodeService.RegisterListener(OnBarcodeScanned);
+            };
+
 
             combo_forma_pago.SelectedIndexChanged -= combo_forma_pago_SelectedIndexChanged;
 
@@ -1108,6 +1113,26 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             }
         }
 
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            Program.BarcodeService.RegisterListener(OnBarcodeScanned);
+        }
+
+        
+
+        private void OnBarcodeScanned(string barcode)
+        {
+            if (!this.Visible) return;
+
+            this.Invoke((MethodInvoker)(() =>
+            {
+                txt_scan_factura.Text = barcode;
+                ProcesarCodigoBarras(barcode);
+                txt_scan_factura.Clear();
+            }));
+        }
 
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
