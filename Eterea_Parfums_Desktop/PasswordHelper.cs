@@ -44,34 +44,45 @@ namespace Eterea_Parfums_Desktop
             // Convierte a Base64 para almacenar en la base de datos
             return Convert.ToBase64String(hashBytes);
         }
-       
+
 
 
         // Método para verificar la contraseña comparando el hash ingresado con el almacenado
         public static bool VerificarPassword(string passwordIngresada, string storedHash)
         {
-            // Convierte el hash almacenado de Base64 a bytes
-            byte[] hashBytes = Convert.FromBase64String(storedHash);
+            if (string.IsNullOrEmpty(passwordIngresada) || string.IsNullOrEmpty(storedHash))
+                return false;
 
-            // Extrae el salt (primeros 16 bytes)
-            byte[] salt = new byte[16];
-            Array.Copy(hashBytes, 0, salt, 0, 16);
-
-            // Genera el hash de la contraseña ingresada usando el mismo salt y configuración
-            using (var pbkdf2 = new Rfc2898DeriveBytes(passwordIngresada, salt, 10000))
+            try
             {
-                byte[] hash = pbkdf2.GetBytes(20);
-                // Compara byte a byte el hash generado con el almacenado
-                for (int i = 0; i < 20; i++)
-                {
-                    if (hashBytes[i + 16] != hash[i])
-                        return false;
-                }
-            }
-            return true;
-        }
-    }
+                byte[] hashBytes = Convert.FromBase64String(storedHash);
 
+                // Extrae el salt (primeros 16 bytes)
+                byte[] salt = new byte[16];
+                Array.Copy(hashBytes, 0, salt, 0, 16);
+
+                // Genera el hash de la contraseña ingresada usando el mismo salt y configuración
+                using (var pbkdf2 = new Rfc2898DeriveBytes(passwordIngresada, salt, 10000))
+                {
+                    byte[] hash = pbkdf2.GetBytes(20);
+                    // Compara byte a byte el hash generado con el almacenado
+                    for (int i = 0; i < 20; i++)
+                    {
+                        if (hashBytes[i + 16] != hash[i])
+                            return false;
+                    }
+                }
+
+                return true;
+            }
+            catch
+            {
+                // Maneja errores como formato inválido de Base64, etc.
+                return false;
+            }
+        }
+
+    }
 }
 
 
