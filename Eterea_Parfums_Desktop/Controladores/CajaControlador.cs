@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Eterea_Parfums_Desktop.Modelos;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -164,7 +165,22 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
         }
 
+        public static bool VerificarAperturaCaja(int numeroCaja, int idSucursal, string usuario, out int idHistorialCaja, out string mensajeError)
+        {
+            idHistorialCaja = 0;
+            mensajeError = "";
 
+            if (CajaControlador.MarcarCajaComoNoDisponible(numeroCaja, idSucursal))
+            {
+                idHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(numeroCaja, idSucursal, usuario);
+                return true;
+            }
+            else
+            {
+                mensajeError = "La caja ya fue tomada por otro usuario o no está disponible.";
+                return false;
+            }
+        }
 
 
 

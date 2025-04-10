@@ -136,29 +136,18 @@ namespace Eterea_Parfums_Desktop
 
             if (!string.IsNullOrWhiteSpace(numCaja) && int.TryParse(numCaja, out int numeroCaja))
             {
-                // Intentamos marcar la caja como no disponible atómicamente
-                if (CajaControlador.MarcarCajaComoNoDisponible(numeroCaja, Program.sucursal))
+                if (CajaControlador.VerificarAperturaCaja(numeroCaja, Program.sucursal, Program.logueado.usuario, out int idHistorial, out string error))
                 {
                     NumeroCaja = numCaja;
-
-                    // Asignar variables globales
                     Program.NumeroCajaActual = numCaja;
-                    Program.IdHistorialCajaActual = CajaControlador.RegistrarAperturaDeCaja(
-                        numeroCaja, Program.sucursal, Program.logueado.usuario
-                    );
+                    Program.IdHistorialCajaActual = idHistorial;
 
                     ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
-
-                    /*Facturar_UC facturacion = new Facturar_UC();
-                    facturacion.NumeroCaja = numCaja;
-                    facturacion.IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(Convert.ToInt32(numCaja), Program.sucursal, Program.logueado.usuario);
-                    */
-
                     this.Close();
                 }
                 else
                 {
-                    lbl_error_caja.Text = "La caja ya fue tomada por otro usuario o no está disponible.";
+                    lbl_error_caja.Text = error;
                     lbl_error_caja.Visible = true;
                     txt_ing_numero_caja.Clear();
                     txt_ing_numero_caja.Focus();
@@ -173,5 +162,6 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
+  
     }
 }

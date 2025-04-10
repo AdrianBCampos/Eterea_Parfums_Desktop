@@ -208,12 +208,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                 numeroDeCaja.ConfirmarNumeroCaja += (s, nuevaCaja) =>
                 {
-                    // Asignar nueva caja
-                    Program.NumeroCajaActual = nuevaCaja;
-                    Program.IdHistorialCajaActual = CajaControlador.RegistrarAperturaDeCaja(
-                        Convert.ToInt32(nuevaCaja), Program.sucursal, Program.logueado.usuario
-                    );
-
                     nuevaFacturacion.NumeroCaja = Program.NumeroCajaActual;
                     nuevaFacturacion.IdHistorialCaja = Program.IdHistorialCajaActual;
 
@@ -319,9 +313,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 if (cliente != null)
                 {
                     clientefactura = cliente;
-                }
-                if (cliente != null)
-                {
+                //}
+                //if (cliente != null)
+                //{
                     // Si se encuentra el cliente, llenar los campos en el formulario actual
                     txt_nombre_cliente.Text = cliente.nombre + " " + cliente.apellido;
                     txt_condicion_iva.Text = cliente.condicion_frente_al_iva;
@@ -333,7 +327,20 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     int dniIngresado = int.Parse(txt_dni.Text);
                     // Si no se encuentra el cliente, abrir el formulario para agregar un nuevo cliente
                     FormCrearClienteFactura formCrearClienteFactura = new FormCrearClienteFactura(dni);
-                    formCrearClienteFactura.ShowDialog(); // Cambiado a ShowDialog para esperar que el formulario se cierre
+                    //
+                    //formCrearClienteFactura.ShowDialog(); // Cambiado a ShowDialog para esperar que el formulario se cierre
+                    Form parentForm = this.FindForm(); // Encuentra el Form que contiene este UserControl
+
+                    if (parentForm != null)
+                    {
+                        formCrearClienteFactura.StartPosition = FormStartPosition.CenterParent;
+                        formCrearClienteFactura.ShowDialog(parentForm); // Lo abre sobre el formulario contenedor
+                    }
+                    else
+                    {
+                        formCrearClienteFactura.ShowDialog(); // Fallback si no encuentra el Form
+                    }
+
 
                     // Luego de cerrar el formulario de clientes, verifica si se creó un nuevo cliente
                     Cliente nuevoCliente = ClienteControlador.obtenerPorDni(dniIngresado);
@@ -1190,8 +1197,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             e.DrawFocusRectangle();
         }
 
+   
+
         //Diseño del boton del datagridview
-       
+
 
     }
 }
