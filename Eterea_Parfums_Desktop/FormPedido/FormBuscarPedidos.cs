@@ -16,6 +16,8 @@ namespace Eterea_Parfums_Desktop
 
             string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";
             img_logo.Image = Image.FromFile(rutaCompletaImagen);
+
+            dgv_resultado.SelectionChanged += (s, e) => ActualizarTextoBotonPrepararEnvio();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -64,7 +66,30 @@ namespace Eterea_Parfums_Desktop
                     fechaCompra
                 );
             }
+            ActualizarTextoBotonPrepararEnvio();
         }
+
+        private void ActualizarTextoBotonPrepararEnvio()
+        {
+            if (dgv_resultado.SelectedRows.Count == 0)
+            {
+                btn_preparar_envio.Text = "Ver detalles";
+                return;
+            }
+
+            // La columna del estado es la columna 1 (índice 1), según tu código
+            string estadoTexto = dgv_resultado.SelectedRows[0].Cells[1].Value?.ToString();
+
+            if (estadoTexto == "Para despachar")
+            {
+                btn_preparar_envio.Text = "VER DETALLES / PREPARAR ENVIO";
+            }
+            else
+            {
+                btn_preparar_envio.Text = "VER DETALLES";
+            }
+        }
+
 
 
         private void btn_preparar_envio_Click(object sender, EventArgs e)
@@ -76,7 +101,10 @@ namespace Eterea_Parfums_Desktop
                 }
 
                 int numeroOrden = Convert.ToInt32(dgv_resultado.SelectedRows[0].Cells[0].Value);
-                FormListaDeEnvios listaFiltrada = new FormListaDeEnvios(numeroOrden);
+                string estadoTexto = dgv_resultado.SelectedRows[0].Cells[1].Value?.ToString();
+                int estado = estadoTexto == "Para despachar" ? 1 : 0;
+
+                FormListaDeEnvios listaFiltrada = new FormListaDeEnvios(numeroOrden, estado, true);
                 listaFiltrada.Show();
                 this.Hide();
         }
