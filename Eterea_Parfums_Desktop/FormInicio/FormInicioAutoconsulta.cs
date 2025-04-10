@@ -51,12 +51,13 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
+            
 
             this.TopMost = false;
             //ESCALAR TAMAÑO DEL FORM
             //float scaleFactor = 0.8f; // 80% del tamaño original
             //this.Scale(new SizeF(scaleFactor, scaleFactor));
-            this.Scale(new SizeF(Program.ScaleFactor, Program.ScaleFactor));
+            //this.Scale(new SizeF(Program.ScaleFactor, Program.ScaleFactor));
 
 
 
@@ -148,6 +149,50 @@ namespace Eterea_Parfums_Desktop
         {
             ResetAutoConsulta();
         }*/
+
+        public void FormInicioAutoconsulta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.L)
+            {
+                FormStart formStart = Application.OpenForms.OfType<FormStart>().FirstOrDefault();
+
+                if (formStart != null)
+                {
+                    this.Hide();
+
+                    formStart.Show();
+                    formStart.BringToFront();
+                    formStart.SendToBack();
+
+                    FormLogin login = new FormLogin();
+                    login.Owner = formStart;
+                    login.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Error: No se encontró FormStart en ejecución.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            if (e.Control && e.KeyCode == Keys.X)
+            {
+                DialogResult result = MessageBox.Show(
+                    "¿Está seguro que desea cerrar la aplicación?",
+                    "Confirmar salida",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
+            }
+        }
+
+       
+
+
         private void txt_scan_TextChanged(object sender, EventArgs e)
         {
             if (!escaneoHabilitado || !txt_scan.Visible || !txt_scan.Enabled)

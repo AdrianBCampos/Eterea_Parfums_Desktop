@@ -144,9 +144,7 @@ namespace Eterea_Parfums_Desktop
 
         private async void close_Click(object sender, EventArgs e)
         {
-            // Ocultar el formulario de login
-            this.Hide();
-
+            
             // Esperar un poco para que se procese el cambio de formulario
             //await Task.Delay(100);
 
@@ -156,8 +154,14 @@ namespace Eterea_Parfums_Desktop
             formInicioAutoconsulta.WindowState = FormWindowState.Normal;
             formInicioAutoconsulta.TopMost = true;
             formInicioAutoconsulta.BringToFront();
+            formInicioAutoconsulta.Focus();
             formInicioAutoconsulta.Activate();
 
+
+            this.Hide();       // ocultamos el login para que no se note
+
+            // ⚠️ Esperar brevemente para asegurarnos que el nuevo formulario se dibuje
+            await Task.Delay(200); // Ajustá el tiempo si hace falta
             //Cerrar el formLogin
             this.Close();
         }
