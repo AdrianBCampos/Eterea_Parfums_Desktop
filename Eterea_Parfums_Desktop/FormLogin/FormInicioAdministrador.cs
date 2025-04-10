@@ -45,7 +45,8 @@ namespace Eterea_Parfums_Desktop
             pictureBox4.BackColor = Color.FromArgb(232, 186, 197);
             btn_gestionar.BackColor = Color.FromArgb(232, 186, 197);
 
-
+            // Obtener y mostrar el nombre de la sucursal en el label
+            txt_nombre_suc.Text = SucursalControlador.ObtenerNombreSucursalPorId(Program.sucursal);
         }
 
         private void btn_cerrar_sesion_Click(object sender, EventArgs e)

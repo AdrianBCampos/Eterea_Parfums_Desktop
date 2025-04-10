@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt_scan_factura = new System.Windows.Forms.TextBox();
             this.txt_numero_factura = new System.Windows.Forms.Label();
             this.txt_condicion_iva = new System.Windows.Forms.Label();
@@ -110,6 +110,7 @@
             this.txt_email = new System.Windows.Forms.TextBox();
             this.combo_descuento = new System.Windows.Forms.ComboBox();
             this.combo_cuotas = new System.Windows.Forms.ComboBox();
+            this.pictureBox25 = new System.Windows.Forms.PictureBox();
             this.Id_Perfume = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sumar1 = new System.Windows.Forms.DataGridViewButtonColumn();
@@ -144,6 +145,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).BeginInit();
             this.SuspendLayout();
             // 
             // txt_scan_factura
@@ -160,7 +162,7 @@
             this.txt_numero_factura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.txt_numero_factura.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_numero_factura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_numero_factura.Location = new System.Drawing.Point(1644, 244);
+            this.txt_numero_factura.Location = new System.Drawing.Point(1657, 244);
             this.txt_numero_factura.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_numero_factura.Name = "txt_numero_factura";
             this.txt_numero_factura.Size = new System.Drawing.Size(39, 29);
@@ -199,7 +201,7 @@
             this.lbl_factura_n.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_factura_n.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_factura_n.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_factura_n.Location = new System.Drawing.Point(1444, 242);
+            this.lbl_factura_n.Location = new System.Drawing.Point(1449, 242);
             this.lbl_factura_n.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_factura_n.Name = "lbl_factura_n";
             this.lbl_factura_n.Size = new System.Drawing.Size(167, 32);
@@ -293,7 +295,7 @@
             this.lbl_cuotas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_cuotas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_cuotas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_cuotas.Location = new System.Drawing.Point(1642, 480);
+            this.lbl_cuotas.Location = new System.Drawing.Point(1676, 480);
             this.lbl_cuotas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_cuotas.Name = "lbl_cuotas";
             this.lbl_cuotas.Size = new System.Drawing.Size(88, 25);
@@ -319,7 +321,7 @@
             this.txt_rec.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.txt_rec.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_rec.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_rec.Location = new System.Drawing.Point(1891, 299);
+            this.txt_rec.Location = new System.Drawing.Point(1900, 299);
             this.txt_rec.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_rec.Name = "txt_rec";
             this.txt_rec.Size = new System.Drawing.Size(30, 25);
@@ -358,7 +360,7 @@
             this.lbl_recargo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_recargo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_recargo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_recargo.Location = new System.Drawing.Point(1573, 299);
+            this.lbl_recargo.Location = new System.Drawing.Point(1574, 299);
             this.lbl_recargo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_recargo.Name = "lbl_recargo";
             this.lbl_recargo.Size = new System.Drawing.Size(99, 25);
@@ -429,24 +431,24 @@
             this.Factura.AllowUserToAddRows = false;
             this.Factura.AllowUserToDeleteRows = false;
             this.Factura.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            this.Factura.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.Factura.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Factura.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Factura.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.Factura.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Factura.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.Factura.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Factura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Factura.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.Factura.ColumnHeadersHeight = 40;
             this.Factura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id_Perfume,
@@ -458,34 +460,34 @@
             this.Descuento,
             this.Tot,
             this.eliminar});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Factura.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Factura.DefaultCellStyle = dataGridViewCellStyle3;
             this.Factura.EnableHeadersVisualStyles = false;
             this.Factura.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.Factura.Location = new System.Drawing.Point(28, 297);
             this.Factura.Margin = new System.Windows.Forms.Padding(4);
             this.Factura.Name = "Factura";
             this.Factura.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Factura.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Factura.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.Factura.RowHeadersWidth = 51;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
-            this.Factura.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            this.Factura.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.Factura.RowTemplate.Height = 30;
             this.Factura.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Factura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -575,7 +577,7 @@
             this.txt_numero_caja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.txt_numero_caja.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_numero_caja.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_numero_caja.Location = new System.Drawing.Point(980, 88);
+            this.txt_numero_caja.Location = new System.Drawing.Point(1016, 88);
             this.txt_numero_caja.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_numero_caja.Name = "txt_numero_caja";
             this.txt_numero_caja.Size = new System.Drawing.Size(255, 31);
@@ -588,7 +590,7 @@
             this.lbl_numero_caja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_numero_caja.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_numero_caja.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_numero_caja.Location = new System.Drawing.Point(832, 88);
+            this.lbl_numero_caja.Location = new System.Drawing.Point(844, 88);
             this.lbl_numero_caja.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_numero_caja.Name = "lbl_numero_caja";
             this.lbl_numero_caja.Size = new System.Drawing.Size(127, 32);
@@ -651,11 +653,11 @@
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.button1.Location = new System.Drawing.Point(1693, 24);
+            this.button1.Location = new System.Drawing.Point(1693, 20);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button1.Size = new System.Drawing.Size(288, 78);
+            this.button1.Size = new System.Drawing.Size(288, 65);
             this.button1.TabIndex = 398;
             this.button1.Text = "Cerrar Caja";
             this.button1.UseVisualStyleBackColor = false;
@@ -667,11 +669,11 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.button2.Location = new System.Drawing.Point(1387, 23);
+            this.button2.Location = new System.Drawing.Point(1387, 19);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(290, 79);
+            this.button2.Size = new System.Drawing.Size(290, 66);
             this.button2.TabIndex = 399;
             this.button2.Text = "Abrir Caja";
             this.button2.UseVisualStyleBackColor = false;
@@ -692,10 +694,10 @@
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox8.Location = new System.Drawing.Point(1371, 13);
+            this.pictureBox8.Location = new System.Drawing.Point(1371, 12);
             this.pictureBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(627, 118);
+            this.pictureBox8.Size = new System.Drawing.Size(627, 81);
             this.pictureBox8.TabIndex = 401;
             this.pictureBox8.TabStop = false;
             // 
@@ -921,7 +923,7 @@
             this.txt_monto_recargo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_monto_recargo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_monto_recargo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_monto_recargo.Location = new System.Drawing.Point(1698, 296);
+            this.txt_monto_recargo.Location = new System.Drawing.Point(1707, 296);
             this.txt_monto_recargo.Margin = new System.Windows.Forms.Padding(4);
             this.txt_monto_recargo.Name = "txt_monto_recargo";
             this.txt_monto_recargo.Size = new System.Drawing.Size(178, 30);
@@ -934,7 +936,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label1.Location = new System.Drawing.Point(1701, 299);
+            this.label1.Location = new System.Drawing.Point(1710, 299);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(23, 25);
@@ -947,7 +949,7 @@
             this.txt_monto_descuento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_monto_descuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_monto_descuento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_monto_descuento.Location = new System.Drawing.Point(1698, 343);
+            this.txt_monto_descuento.Location = new System.Drawing.Point(1707, 343);
             this.txt_monto_descuento.Margin = new System.Windows.Forms.Padding(4);
             this.txt_monto_descuento.Name = "txt_monto_descuento";
             this.txt_monto_descuento.Size = new System.Drawing.Size(178, 30);
@@ -960,7 +962,7 @@
             this.lbl_descuento_total.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_descuento_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_descuento_total.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_descuento_total.Location = new System.Drawing.Point(1573, 345);
+            this.lbl_descuento_total.Location = new System.Drawing.Point(1574, 345);
             this.lbl_descuento_total.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_descuento_total.Name = "lbl_descuento_total";
             this.lbl_descuento_total.Size = new System.Drawing.Size(122, 25);
@@ -973,7 +975,7 @@
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label4.Location = new System.Drawing.Point(1701, 345);
+            this.label4.Location = new System.Drawing.Point(1710, 345);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(23, 25);
@@ -986,7 +988,7 @@
             this.txt_recargo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_recargo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_recargo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_recargo.Location = new System.Drawing.Point(1887, 297);
+            this.txt_recargo.Location = new System.Drawing.Point(1896, 297);
             this.txt_recargo.Margin = new System.Windows.Forms.Padding(4);
             this.txt_recargo.Name = "txt_recargo";
             this.txt_recargo.Size = new System.Drawing.Size(67, 30);
@@ -998,7 +1000,7 @@
             this.txt_descuento_porcentaje.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_descuento_porcentaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_descuento_porcentaje.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_descuento_porcentaje.Location = new System.Drawing.Point(1887, 343);
+            this.txt_descuento_porcentaje.Location = new System.Drawing.Point(1896, 343);
             this.txt_descuento_porcentaje.Margin = new System.Windows.Forms.Padding(4);
             this.txt_descuento_porcentaje.Name = "txt_descuento_porcentaje";
             this.txt_descuento_porcentaje.Size = new System.Drawing.Size(67, 30);
@@ -1010,7 +1012,7 @@
             this.txt_desc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.txt_desc.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_desc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_desc.Location = new System.Drawing.Point(1891, 345);
+            this.txt_desc.Location = new System.Drawing.Point(1900, 345);
             this.txt_desc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_desc.Name = "txt_desc";
             this.txt_desc.Size = new System.Drawing.Size(30, 25);
@@ -1060,7 +1062,7 @@
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label5.Location = new System.Drawing.Point(1923, 345);
+            this.label5.Location = new System.Drawing.Point(1932, 345);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(30, 25);
@@ -1073,7 +1075,7 @@
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label7.Location = new System.Drawing.Point(1923, 299);
+            this.label7.Location = new System.Drawing.Point(1932, 299);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(30, 25);
@@ -1150,12 +1152,23 @@
             this.combo_cuotas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combo_cuotas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_cuotas.FormattingEnabled = true;
-            this.combo_cuotas.Location = new System.Drawing.Point(1749, 475);
+            this.combo_cuotas.Location = new System.Drawing.Point(1786, 475);
             this.combo_cuotas.Margin = new System.Windows.Forms.Padding(4);
             this.combo_cuotas.Name = "combo_cuotas";
-            this.combo_cuotas.Size = new System.Drawing.Size(217, 33);
+            this.combo_cuotas.Size = new System.Drawing.Size(169, 33);
             this.combo_cuotas.TabIndex = 438;
             this.combo_cuotas.SelectedIndexChanged += new System.EventHandler(this.combo_cuotas_SelectedIndexChanged);
+            // 
+            // pictureBox25
+            // 
+            this.pictureBox25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.pictureBox25.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox25.Location = new System.Drawing.Point(1371, 99);
+            this.pictureBox25.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox25.Name = "pictureBox25";
+            this.pictureBox25.Size = new System.Drawing.Size(627, 33);
+            this.pictureBox25.TabIndex = 439;
+            this.pictureBox25.TabStop = false;
             // 
             // Id_Perfume
             // 
@@ -1202,11 +1215,13 @@
             // 
             // Nombre_Perfume
             // 
+            this.Nombre_Perfume.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Nombre_Perfume.FillWeight = 402.6662F;
             this.Nombre_Perfume.HeaderText = "NOMBRE";
             this.Nombre_Perfume.MinimumWidth = 6;
             this.Nombre_Perfume.Name = "Nombre_Perfume";
             this.Nombre_Perfume.ReadOnly = true;
+            this.Nombre_Perfume.Width = 105;
             // 
             // Precio_Unitario
             // 
@@ -1250,16 +1265,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
+            this.Controls.Add(this.txt_estadoCaja);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.pictureBox25);
             this.Controls.Add(this.combo_cuotas);
             this.Controls.Add(this.combo_descuento);
             this.Controls.Add(this.lbl_descuento);
             this.Controls.Add(this.txt_email);
             this.Controls.Add(this.btn_enviar);
             this.Controls.Add(this.combo_forma_pago);
-            this.Controls.Add(this.txt_estadoCaja);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -1354,6 +1370,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1438,6 +1455,7 @@
         private System.Windows.Forms.TextBox txt_email;
         private System.Windows.Forms.ComboBox combo_descuento;
         private System.Windows.Forms.ComboBox combo_cuotas;
+        private System.Windows.Forms.PictureBox pictureBox25;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id_Perfume;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewButtonColumn sumar1;

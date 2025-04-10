@@ -128,6 +128,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void ProcesarCodigoBarras(string codigo)
         {
+            
+
             if (string.IsNullOrEmpty(codigo)) return;
 
             Perfume perfume = PerfumeControlador.getByCodigo(codigo);
@@ -137,6 +139,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 MessageBox.Show("Producto no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
+            Factura.RowHeadersVisible = false;
 
             foreach (DataGridViewRow fila in Factura.Rows)
             {
@@ -158,6 +163,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     return;
                 }
             }
+            Factura.CellPainting += Factura_CellPainting;
 
             int rowIndex = Factura.Rows.Add(perfume.id, 1, "", "", perfume.nombre, perfume.precio_en_pesos, "", "", ""); ;
 
@@ -168,6 +174,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
             descuentoUnitario();
             ActualizarTotales();
+
+            
         }
 
         private void Txt_scan_factura_Leave(object sender, EventArgs e)
@@ -369,6 +377,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void DataGridViewFactura_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            
+
             if (e.RowIndex >= 0 && e.ColumnIndex == 8)
             {
                 if (Factura.Rows.Count > 0 && e.RowIndex < Factura.Rows.Count)
@@ -426,6 +436,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 }
 
             }
+
+            
+
         }
 
         public void descuentoUnitario()
@@ -679,6 +692,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         }
         public DataGridView GetFacturaDataGrid()
         {
+            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
+            Factura.RowHeadersVisible = false;
+
+            Factura.CellPainting += Factura_CellPainting;
+
             return Factura;
         }
 
@@ -1175,7 +1193,35 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         }
 
         //Diseño del boton del datagridview
-       
+        
+        private void Factura_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0 && Factura.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                e.Handled = true;
+                e.PaintBackground(e.CellBounds, true);
 
+                // Crear un rectángulo para el botón
+                System.Drawing.Rectangle buttonRect = e.CellBounds;
+                buttonRect.Inflate(-2, -2); // Reducir tamaño para dar efecto de borde
+
+                // Definir colores personalizados
+                Color buttonColor = Color.FromArgb(228, 137, 164); // Color de fondo del botón
+                Color textColor = Color.FromArgb(250, 236, 239); // Color del texto
+
+                using (SolidBrush brush = new SolidBrush(buttonColor))
+                {
+                    e.Graphics.FillRectangle(brush, buttonRect);
+                }
+
+                // Dibujar el texto del botón
+                TextRenderer.DrawText(e.Graphics, (string)e.Value, e.CellStyle.Font, buttonRect, textColor,
+                                      TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+            }
+        }
+
+        
+
+        
     }
 }
