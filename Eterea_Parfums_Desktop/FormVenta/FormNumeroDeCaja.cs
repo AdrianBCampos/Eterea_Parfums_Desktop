@@ -100,10 +100,10 @@ namespace Eterea_Parfums_Desktop
                         NumeroCaja = cajaDisponible.Value.ToString();
                         ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
 
-                        /*Facturar_UC facturacion = new Facturar_UC();
+                        Facturar_UC facturacion = new Facturar_UC();
                         facturacion.NumeroCaja = NumeroCaja;
                         facturacion.IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(Convert.ToInt32(NumeroCaja), Program.sucursal, Program.logueado.usuario);
-                        facturacion.Show();*/
+                        facturacion.Show();
 
                         this.BeginInvoke(new Action(() => this.Close()));
                     }
@@ -136,18 +136,21 @@ namespace Eterea_Parfums_Desktop
 
             if (!string.IsNullOrWhiteSpace(numCaja) && int.TryParse(numCaja, out int numeroCaja))
             {
-                if (CajaControlador.VerificarAperturaCaja(numeroCaja, Program.sucursal, Program.logueado.usuario, out int idHistorial, out string error))
+                // Intentamos marcar la caja como no disponible atómicamente
+                if (CajaControlador.MarcarCajaComoNoDisponible(numeroCaja, Program.sucursal))
                 {
                     NumeroCaja = numCaja;
-                    Program.NumeroCajaActual = numCaja;
-                    Program.IdHistorialCajaActual = idHistorial;
-
                     ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
+
+                    FormFacturacion facturacion = new FormFacturacion();
+                    facturacion.NumeroCaja = numCaja;
+                    facturacion.IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(Convert.ToInt32(numCaja), Program.sucursal, Program.logueado.usuario);
+                    facturacion.Show();
                     this.Close();
                 }
                 else
                 {
-                    lbl_error_caja.Text = error;
+                    lbl_error_caja.Text = "La caja ya fue tomada por otro usuario o no está disponible.";
                     lbl_error_caja.Visible = true;
                     txt_ing_numero_caja.Clear();
                     txt_ing_numero_caja.Focus();
@@ -162,6 +165,5 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
-  
     }
 }

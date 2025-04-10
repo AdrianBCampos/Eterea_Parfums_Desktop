@@ -78,7 +78,7 @@
             this.lbl_facturacion = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_abrir_caja = new System.Windows.Forms.Button();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
@@ -88,7 +88,7 @@
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
             this.txt_dni = new System.Windows.Forms.TextBox();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.PictureBox();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.pictureBox18 = new System.Windows.Forms.PictureBox();
@@ -134,7 +134,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.button2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
@@ -644,7 +644,6 @@
             this.txt_numero_caja.Size = new System.Drawing.Size(207, 25);
             this.txt_numero_caja.TabIndex = 349;
             this.txt_numero_caja.Text = "Número de la Caja";
-           
             // 
             // lbl_numero_caja
             // 
@@ -720,20 +719,20 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // btn_abrir_caja
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.button2.Location = new System.Drawing.Point(1040, 19);
-            this.button2.Name = "button2";
-            this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(218, 64);
-            this.button2.TabIndex = 399;
-            this.button2.Text = "Abrir Caja";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            this.btn_abrir_caja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
+            this.btn_abrir_caja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_abrir_caja.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_abrir_caja.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.btn_abrir_caja.Location = new System.Drawing.Point(1040, 19);
+            this.btn_abrir_caja.Name = "btn_abrir_caja";
+            this.btn_abrir_caja.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_abrir_caja.Size = new System.Drawing.Size(218, 64);
+            this.btn_abrir_caja.TabIndex = 399;
+            this.btn_abrir_caja.Text = "Abrir Caja";
+            this.btn_abrir_caja.UseVisualStyleBackColor = false;
+            this.btn_abrir_caja.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // pictureBox7
             // 
@@ -834,16 +833,16 @@
             this.pictureBox14.TabIndex = 408;
             this.pictureBox14.TabStop = false;
             // 
-            // pictureBox15
+            // button2
             // 
-            this.pictureBox15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
-            this.pictureBox15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox15.Location = new System.Drawing.Point(886, 115);
-            this.pictureBox15.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(620, 65);
-            this.pictureBox15.TabIndex = 409;
-            this.pictureBox15.TabStop = false;
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button2.Location = new System.Drawing.Point(886, 115);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(620, 65);
+            this.button2.TabIndex = 409;
+            this.button2.TabStop = false;
             // 
             // pictureBox16
             // 
@@ -1206,7 +1205,7 @@
             this.Controls.Add(this.combo_forma_pago);
             this.Controls.Add(this.txt_estadoCaja);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btn_abrir_caja);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label7);
@@ -1230,7 +1229,7 @@
             this.Controls.Add(this.txt_scan_factura);
             this.Controls.Add(this.btn_consultas);
             this.Controls.Add(this.pictureBox16);
-            this.Controls.Add(this.pictureBox15);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.pictureBox14);
             this.Controls.Add(this.txt_condicion_iva);
@@ -1293,7 +1292,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.button2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
@@ -1346,7 +1345,7 @@
         private System.Windows.Forms.Label lbl_facturacion;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_abrir_caja;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox9;
@@ -1356,7 +1355,7 @@
         private System.Windows.Forms.PictureBox pictureBox13;
         private System.Windows.Forms.TextBox txt_dni;
         private System.Windows.Forms.PictureBox pictureBox14;
-        private System.Windows.Forms.PictureBox pictureBox15;
+        private System.Windows.Forms.PictureBox button2;
         private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.PictureBox pictureBox18;
