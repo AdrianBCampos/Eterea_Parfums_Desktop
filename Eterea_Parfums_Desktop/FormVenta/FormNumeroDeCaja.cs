@@ -33,63 +33,57 @@ namespace Eterea_Parfums_Desktop
 
 
 
-       /* private void FormNumeroDeCaja_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                if (!AutoTomarCaja)
-                {
-                    // No hacer nada, solo mostrar pantalla con input de número de caja o botón
-                    txt_ing_numero_caja.Visible = true;
-                    lbl_error_caja.Visible = false;
-                    return;
-                }
+        /* private void FormNumeroDeCaja_Load(object sender, EventArgs e)
+         {
+             try
+             {
+                 if (!AutoTomarCaja)
+                 {
+                     // No hacer nada, solo mostrar pantalla con input de número de caja o botón
+                     txt_ing_numero_caja.Visible = true;
+                     lbl_error_caja.Visible = false;
+                     return;
+                 }
 
-                int? cajaDisponible = CajaControlador.ObtenerUnicaCajaDisponibleEnSucursal(Program.sucursal);
+                 int? cajaDisponible = CajaControlador.ObtenerUnicaCajaDisponibleEnSucursal(Program.sucursal);
 
-                if (cajaDisponible.HasValue)
-                {
-                    if (CajaControlador.MarcarCajaComoNoDisponible(cajaDisponible.Value, Program.sucursal))
-                    {
-                        NumeroCaja = cajaDisponible.Value.ToString();
-                        ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
+                 if (cajaDisponible.HasValue)
+                 {
+                     if (CajaControlador.MarcarCajaComoNoDisponible(cajaDisponible.Value, Program.sucursal))
+                     {
+                         NumeroCaja = cajaDisponible.Value.ToString();
+                         ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
 
-                        FormFacturacion facturacion = new FormFacturacion();
-                        facturacion.NumeroCaja = NumeroCaja;
-                        facturacion.IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(Convert.ToInt32(NumeroCaja), Program.sucursal, Program.logueado.usuario);
-                        facturacion.Show();
+                         FormFacturacion facturacion = new FormFacturacion();
+                         facturacion.NumeroCaja = NumeroCaja;
+                         facturacion.IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(Convert.ToInt32(NumeroCaja), Program.sucursal, Program.logueado.usuario);
+                         facturacion.Show();
 
-                        this.BeginInvoke(new Action(() => this.Close()));
-                    }
-                    else
-                    {
-                        lbl_error_caja.Text = "La caja ya fue tomada por otro usuario. Intente con otra.";
-                        lbl_error_caja.Visible = true;
-                    }
-                }
-                else
-                {
-                    txt_ing_numero_caja.Visible = true;
-                    lbl_error_caja.Visible = false;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error en Load: " + ex.Message);
-            }
-        }*/
+                         this.BeginInvoke(new Action(() => this.Close()));
+                     }
+                     else
+                     {
+                         lbl_error_caja.Text = "La caja ya fue tomada por otro usuario. Intente con otra.";
+                         lbl_error_caja.Visible = true;
+                     }
+                 }
+                 else
+                 {
+                     txt_ing_numero_caja.Visible = true;
+                     lbl_error_caja.Visible = false;
+                 }
+             }
+             catch (Exception ex)
+             {
+                 MessageBox.Show("Error en Load: " + ex.Message);
+             }
+         }*/
 
         private void FormNumeroDeCaja_Load(object sender, EventArgs e)
         {
             try
             {
-                if (!AutoTomarCaja)
-                {
-                    // No hacer nada, solo mostrar pantalla con input de número de caja o botón
-                    txt_ing_numero_caja.Visible = true;
-                    lbl_error_caja.Visible = false;
-                    return;
-                }
+                if (!AutoTomarCaja) return;
 
                 int? cajaDisponible = CajaControlador.ObtenerUnicaCajaDisponibleEnSucursal(Program.sucursal);
 
@@ -98,14 +92,14 @@ namespace Eterea_Parfums_Desktop
                     if (CajaControlador.MarcarCajaComoNoDisponible(cajaDisponible.Value, Program.sucursal))
                     {
                         NumeroCaja = cajaDisponible.Value.ToString();
+
+                        // Guardar los datos globales una única vez
+                        Program.NumeroCajaActual = NumeroCaja;
+                        Program.IdHistorialCajaActual = CajaControlador.RegistrarAperturaDeCaja(
+                            Convert.ToInt32(NumeroCaja), Program.sucursal, Program.logueado.usuario);
+
                         ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
-
-                        Facturar_UC facturacion = new Facturar_UC();
-                        facturacion.NumeroCaja = NumeroCaja;
-                        facturacion.IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(Convert.ToInt32(NumeroCaja), Program.sucursal, Program.logueado.usuario);
-                        facturacion.Show();
-
-                        this.BeginInvoke(new Action(() => this.Close()));
+                        this.Close(); // Cerrar el form
                     }
                     else
                     {
@@ -124,6 +118,7 @@ namespace Eterea_Parfums_Desktop
                 MessageBox.Show("Error en Load: " + ex.Message);
             }
         }
+
 
         private void button2_Click(object sender, EventArgs e)
         {                
@@ -140,12 +135,17 @@ namespace Eterea_Parfums_Desktop
                 if (CajaControlador.MarcarCajaComoNoDisponible(numeroCaja, Program.sucursal))
                 {
                     NumeroCaja = numCaja;
-                    ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
 
-                    FormFacturacion facturacion = new FormFacturacion();
-                    facturacion.NumeroCaja = numCaja;
-                    facturacion.IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(Convert.ToInt32(numCaja), Program.sucursal, Program.logueado.usuario);
-                    facturacion.Show();
+                    // Solo registrar si aún no hay una caja asignada globalmente
+                    if (Program.NumeroCajaActual == "Caja sin asignar")
+                    {
+                        Program.NumeroCajaActual = NumeroCaja;
+                        Program.IdHistorialCajaActual = CajaControlador.RegistrarAperturaDeCaja(
+                            Convert.ToInt32(NumeroCaja), Program.sucursal, Program.logueado.usuario
+                        );
+                    }
+
+                    ConfirmarNumeroCaja?.Invoke(this, NumeroCaja);
                     this.Close();
                 }
                 else
@@ -164,6 +164,7 @@ namespace Eterea_Parfums_Desktop
                 txt_ing_numero_caja.Focus();
             }
         }
+
 
     }
 }

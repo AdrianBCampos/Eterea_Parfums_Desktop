@@ -13,6 +13,8 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             string rutaCompletaImagen = Program.Ruta_Base + @"Diseño Logo1.png";
             img_logo.Image = Image.FromFile(rutaCompletaImagen);
 

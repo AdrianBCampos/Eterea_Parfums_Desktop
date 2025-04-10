@@ -11,13 +11,17 @@ using System.Net;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
+using Eterea_Parfums_Desktop.Helpers;
 
 namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 {
     public partial class Facturar_UC : UserControl
     {
-        public string NumeroCaja { get; set; }
+        
+
+
         Cliente clientefactura = new Cliente();
+        public string numeroCaja;
 
         public int IdHistorialCaja { get; set; }
 
@@ -29,6 +33,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         public Facturar_UC()
         {
             InitializeComponent();
+
+           
 
             txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
 
@@ -98,37 +104,34 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void FormFacturacion_Load(object sender, EventArgs e)
         {
-            txt_numero_caja.Text = NumeroCaja;
-            txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
-            txt_scan_factura.Focus(); // Forzar el foco en txt_scan_factura al cargar el formulario
-            ActualizarEstadoCaja();
-        }
-
-        private void Txt_scan_factura_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if ((DateTime.Now - ultimaLectura).TotalMilliseconds > TIEMPO_ENTRE_LECTURAS_MS)
+            if (string.IsNullOrEmpty(Program.NumeroCajaActual) || Program.NumeroCajaActual == "Caja sin asignar")
             {
-                codigoBarrasBuffer.Clear();
-            }
+                FormNumeroDeCaja formNumero = new FormNumeroDeCaja();
+                formNumero.AutoTomarCaja = true;
 
-            ultimaLectura = DateTime.Now;
-
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                e.Handled = true;
-                string codigo = codigoBarrasBuffer.ToString().Trim();
-                if (!string.IsNullOrEmpty(codigo))
+                formNumero.ConfirmarNumeroCaja += (s, cajaElegida) =>
                 {
-                    ProcesarCodigoBarras(codigo);
-                    txt_scan_factura.Clear();
-                    codigoBarrasBuffer.Clear();
-                }
+                    numeroCaja = cajaElegida;
+                    IdHistorialCaja = Program.IdHistorialCajaActual;
+                    txt_numero_caja.Text = numeroCaja;
+                    ActualizarEstadoCaja();
+                };
+
+                formNumero.ShowDialog();
             }
             else
             {
-                codigoBarrasBuffer.Append(e.KeyChar);
+                numeroCaja = Program.NumeroCajaActual;
+                IdHistorialCaja = Program.IdHistorialCajaActual;
+                txt_numero_caja.Text = numeroCaja;
             }
+
+            txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
+            txt_scan_factura.Focus();
+            ActualizarEstadoCaja();
         }
+
+
 
 
         private void ProcesarCodigoBarras(string codigo)
@@ -188,85 +191,50 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            Facturar_UC nuevaFacturacion = new Facturar_UC();
-
-            // Verifica si ya hay una caja asignada
-            if (!string.IsNullOrEmpty(Program.NumeroCajaActual) && Program.NumeroCajaActual != "Caja sin asignar")
+            CajaManager.IntentarAbrirCajaDesdeBoton(this, (numeroCajaAsignada) =>
             {
-                // Mostrar cartel
-                MessageBox.Show($"Ya hay una caja asignada: {Program.NumeroCajaActual}", "Caja ya asignada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                numeroCaja = numeroCajaAsignada;
+                IdHistorialCaja = Program.IdHistorialCajaActual;
+                txt_numero_caja.Text = numeroCaja;
+                txt_estadoCaja.Text = "Abierta";
+                txt_estadoCaja.ForeColor = Color.Green;
+            });
 
-                // Usa la caja ya asignada
-                nuevaFacturacion.NumeroCaja = Program.NumeroCajaActual;
-                nuevaFacturacion.IdHistorialCaja = Program.IdHistorialCajaActual;
-            }
-            else
-            {
-                // No hay caja asignada, mostrar pantalla para elegir caja
-                FormNumeroDeCaja numeroDeCaja = new FormNumeroDeCaja();
-                numeroDeCaja.AutoTomarCaja = false;
 
-                numeroDeCaja.ConfirmarNumeroCaja += (s, nuevaCaja) =>
-                {
-                    nuevaFacturacion.NumeroCaja = Program.NumeroCajaActual;
-                    nuevaFacturacion.IdHistorialCaja = Program.IdHistorialCajaActual;
 
-                };
-
-                numeroDeCaja.ShowDialog();
-
-                // Si sigue sin asignar número de caja
-                if (string.IsNullOrEmpty(nuevaFacturacion.NumeroCaja))
-                {
-                    nuevaFacturacion.NumeroCaja = "Caja sin asignar";
-                    nuevaFacturacion.IdHistorialCaja = 0;
-                    Program.NumeroCajaActual = "Caja sin asignar";
-                    Program.IdHistorialCajaActual = 0;
-                }
-
-                
-            }
-
-            var formPadre = this.FindForm() as FormInicioAdministrador;
-            if (formPadre != null)
-            {
-                formPadre.addUserControl(nuevaFacturacion);
-
-            }
-
-            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Cierra la caja actual
-            if (int.TryParse(NumeroCaja, out int numCaja))
+            if (!CajaManager.HayCajaAsignada())
             {
-                CajaControlador.MarcarCajaComoDisponible(numCaja, Program.sucursal);
+                MessageBox.Show("No hay ninguna caja en uso.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
 
-            if (IdHistorialCaja > 0)
-            {
-                CajaControlador.RegistrarCierreDeCaja(IdHistorialCaja);
-            }
+            // Cerrar la caja correctamente y registrar en la base
+            CajaManager.CerrarCaja();
 
-            // Actualizar la variable global para reflejar que no hay caja asignada
-            Program.NumeroCajaActual = "Caja sin asignar";
-            Program.IdHistorialCajaActual = 0;
+            // Mostrar mensaje de confirmación
+            MessageBox.Show("Caja cerrada correctamente.", "Cierre de Caja", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Actualizar visualmente el label o el texto correspondiente en el UC
-            MostrarCajaSinAsignar();
+            // Actualizar interfaz
+            txt_numero_caja.Text = "Caja no asignada";
+            txt_estadoCaja.Text = "Cerrada";
+            txt_estadoCaja.ForeColor = Color.Red;
 
-            // También podés limpiar las variables internas si querés
-            NumeroCaja = "Caja sin asignar";
+            // Reset variables locales del UC también
+            numeroCaja = "Caja sin asignar";
             IdHistorialCaja = 0;
-
-            ActualizarEstadoCaja();
         }
+
 
         private void ActualizarEstadoCaja()
         {
-            if (!string.IsNullOrEmpty(Program.NumeroCajaActual) && Program.NumeroCajaActual != "Caja sin asignar")
+            string numero = Program.NumeroCajaActual;
+
+
+            if (!string.IsNullOrEmpty(numero) && numero != "Caja sin asignar")
             {
                 txt_estadoCaja.Text = "Abierta";
                 txt_estadoCaja.ForeColor = Color.Green;
@@ -280,14 +248,17 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void MostrarCajaSinAsignar()
         {
-            NumeroCaja = null;
-            IdHistorialCaja = 0;
+            numeroCaja = null;
+         
             txt_numero_caja.Text = "Caja sin asignar";
         }
 
         private void btn_buscar_Click(object sender, EventArgs e)
         {
-            if (Program.NumeroCajaActual != null && Program.NumeroCajaActual != "Caja sin asignar")
+            string numero = Program.NumeroCajaActual;
+
+
+            if (numero != null && numero != "Caja sin asignar")
             {
                 // Si hay caja asignada
                 if (string.IsNullOrWhiteSpace(txt_dni.Text))
@@ -950,7 +921,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void btn_imprimir_Click(object sender, EventArgs e)
         {
-            if (Program.NumeroCajaActual != null && Program.NumeroCajaActual != "Caja sin asignar")
+            var form = new FormNumeroDeCaja();
+            string numero = form.NumeroCaja;
+
+            if (numero != null && numero != "Caja sin asignar")
             {
                 // Si hay caja asignada     
                 SaveFileDialog guardarFactura = new SaveFileDialog();

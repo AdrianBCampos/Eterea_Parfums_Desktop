@@ -148,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BarcodeReceiver.cs" />
+    <Compile Include="CajaManager.cs" />
     <Compile Include="Controladores\CajaControlador.cs" />
     <Compile Include="Controladores\OrdenControlador.cs" />
     <Compile Include="ControlesDeUsuario\AdministrarStock\AdministrarStock_UC.cs">
@@ -180,7 +181,6 @@
     <Compile Include="ControlesDeUsuario\PrepararEnvios\PrepararEnvios_UC.Designer.cs">
       <DependentUpon>PrepararEnvios_UC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controladores\CajaControlador.cs" />
     <Compile Include="FormInformeVenta\FormInformesDeVentas2.cs">
       <SubType>Form</SubType>
     </Compile>
