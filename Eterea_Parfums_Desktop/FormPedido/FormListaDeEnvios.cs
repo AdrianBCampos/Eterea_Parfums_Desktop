@@ -197,12 +197,13 @@ namespace Eterea_Parfums_Desktop
                                          $"Cliente: {orden["nombre_cliente"]} {orden["apellido_cliente"]}\n" +
                                          $"DNI: {orden["dni"]}\n" +
                                          $"Email: {orden["e_mail_cliente"]}\n" +
-                                         $"Domicilio: {orden["domicilio_de_envio"]}\n" +
-                                         $"Codigo verificacion de despacho:{codigoDespacho}";
+                                         $"Domicilio: {orden["domicilio_de_envio"]}\n\n" +
+                                         $"Codigo verificacion de despacho: {codigoDespacho}\n" +
+                                         $"Orden despachada por: {txt_nombre_empleado.Text}";
 
-                   
 
-                   
+                     
+
 
                     // 4. Generar QR
                     using (var qrGenerator = new QRCoder.QRCodeGenerator())
