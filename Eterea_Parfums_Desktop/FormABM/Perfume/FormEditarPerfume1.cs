@@ -258,7 +258,8 @@ namespace Eterea_Parfums_Desktop
                 return "El código no es válido. Debe tener 13 dígitos numéricos.";
             }
 
-            if (PerfumeControlador.getByCodigo(txt_codigo.Text) != null)
+            var perfumeExistente = PerfumeControlador.getByCodigo(txt_codigo.Text);
+            if (perfumeExistente != null && perfumeExistente.codigo != perfume.codigo)
             {
                 lbl_error_codigo.Text = "El código ya está registrado.";
                 lbl_error_codigo.Show();
@@ -303,14 +304,7 @@ namespace Eterea_Parfums_Desktop
             string errorCodigo = ValidarCodigoDeBarra();
             if (!string.IsNullOrEmpty(errorCodigo))
             {
-                if (!(perfume.codigo == txt_codigo.Text))
-                {
-                    errorMsg += errorCodigo + Environment.NewLine;
-                }
-                else
-                {
-                    lbl_error_codigo.Visible = false;
-                }
+                errorMsg += errorCodigo + Environment.NewLine;
             }
             else
             {
@@ -531,35 +525,8 @@ namespace Eterea_Parfums_Desktop
             }
 
             return string.IsNullOrEmpty(errorMsg);
-
-
         }
 
-        private bool EsCodigoBarraCODE128Valido(string codigo)
-        {
-            // Validar que no esté vacío
-            if (string.IsNullOrEmpty(codigo))
-            {
-                return false;
-            }
-
-            // Validar longitud mínima (CODE128 puede variar según el contenido)
-            if (codigo.Length < 1 || codigo.Length > 128) // Longitud típica entre 1 y 128
-            {
-                return false;
-            }
-
-            // Validar que solo contenga caracteres permitidos (ASCII 0-127)
-            foreach (char c in codigo)
-            {
-                if (c < 32 || c > 126) // Incluye caracteres ASCII imprimibles
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
 
         internal void eliminarImgExistenteYGuardarNueva()
         {
