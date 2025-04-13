@@ -286,21 +286,15 @@ namespace Eterea_Parfums_Desktop
         private void txt_codigo_TextChanged(object sender, EventArgs e)
         {
             string errorCodigo = ValidarCodigoDeBarra();
-            if (!string.IsNullOrEmpty(errorCodigo))
-            {
-                string errorMsg = errorCodigo + Environment.NewLine;
-            }
-            else
-            {
-                lbl_error_codigo.Visible = false;
-            }
+            lbl_error_codigo.Visible = !string.IsNullOrEmpty(errorCodigo);
+
         }
 
         private bool ValidarPerfume()
         {
 
             string errorMsg = "";
-            /*string errorCodigo = ValidarCodigoDeBarra();
+            string errorCodigo = ValidarCodigoDeBarra();
             if (!string.IsNullOrEmpty(errorCodigo))
             {
                 errorMsg += errorCodigo + Environment.NewLine;
@@ -308,7 +302,7 @@ namespace Eterea_Parfums_Desktop
             else
             {
                 lbl_error_codigo.Visible = false;
-            }*/
+            }
 
 
             if (combo_genero.SelectedItem == null || string.IsNullOrEmpty(combo_genero.Text))

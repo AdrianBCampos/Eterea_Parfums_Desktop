@@ -293,20 +293,29 @@ namespace Eterea_Parfums_Desktop
         private void txt_codigo_TextChanged(object sender, EventArgs e)
         {
             string errorCodigo = ValidarCodigoDeBarra();
-            if (!string.IsNullOrEmpty(errorCodigo))
-            {
-                string errorMsg = errorCodigo + Environment.NewLine;
-            }
-            else
-            {
-                lbl_error_codigo.Visible = false;
-            }
+            lbl_error_codigo.Visible = !string.IsNullOrEmpty(errorCodigo);
         }
 
         private bool ValidarPerfume()
         {
 
             string errorMsg = "";
+            string errorCodigo = ValidarCodigoDeBarra();
+            if (!string.IsNullOrEmpty(errorCodigo))
+            {
+                if (!(perfume.codigo == txt_codigo.Text))
+                {
+                    errorMsg += errorCodigo + Environment.NewLine;
+                }
+                else
+                {
+                    lbl_error_codigo.Visible = false;
+                }
+            }
+            else
+            {
+                lbl_error_codigo.Visible = false;
+            }
 
             if (combo_marca.SelectedItem == null || string.IsNullOrEmpty(combo_marca.Text))
             {
