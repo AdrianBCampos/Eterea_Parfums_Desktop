@@ -241,13 +241,39 @@ namespace Eterea_Parfums_Desktop
         }
 
 
-        private bool EsCodigoBarraPerfumeValido(string codigo)
+
+        private string ValidarCodigoDeBarra()
         {
-            if (string.IsNullOrEmpty(codigo) || codigo.Length != 13 || !codigo.All(char.IsDigit) || PerfumeControlador.getByCodigo(codigo) != null)
+            if (string.IsNullOrEmpty(txt_codigo.Text))
             {
-                return false;
+                lbl_error_codigo.Text = "El código no puede estar vacío.";
+                lbl_error_codigo.Show();
+                return "El código no puede estar vacío.";
             }
-            return ValidarEAN13(codigo);
+
+            if (txt_codigo.Text.Length != 13 || !txt_codigo.Text.All(char.IsDigit))
+            {
+                lbl_error_codigo.Text = "El código no es válido. Debe tener 13 dígitos numéricos.";
+                lbl_error_codigo.Show();
+                return "El código no es válido. Debe tener 13 dígitos numéricos.";
+            }
+
+            if (PerfumeControlador.getByCodigo(txt_codigo.Text) != null)
+            {
+                lbl_error_codigo.Text = "El código ya está registrado.";
+                lbl_error_codigo.Show();
+                return "El código ya está registrado.";
+            }
+
+            if (!ValidarEAN13(txt_codigo.Text))
+            {
+                lbl_error_codigo.Text = "El código no es válido. No cumple con EAN-13.";
+                lbl_error_codigo.Show();
+                return "El código no es válido. No cumple con EAN-13.";
+            }
+
+            lbl_error_codigo.Visible = false;
+            return string.Empty; // No hay error
         }
 
         private bool ValidarEAN13(string codigo)
@@ -264,17 +290,23 @@ namespace Eterea_Parfums_Desktop
             return digitoControlEsperado == digitoControlReal;
         }
 
+        private void txt_codigo_TextChanged(object sender, EventArgs e)
+        {
+            string errorCodigo = ValidarCodigoDeBarra();
+            if (!string.IsNullOrEmpty(errorCodigo))
+            {
+                string errorMsg = errorCodigo + Environment.NewLine;
+            }
+            else
+            {
+                lbl_error_codigo.Visible = false;
+            }
+        }
+
         private bool ValidarPerfume()
         {
 
             string errorMsg = "";
-
-            if (!EsCodigoBarraPerfumeValido(txt_codigo.Text))
-            {
-                errorMsg += "El código no es válido. Debe ser un código EAN-13 correcto.\n";
-                lbl_error_codigo.Text = "El código no es válido. Debe tener 13 dígitos.";
-                lbl_error_codigo.Show();
-            }
 
             if (combo_marca.SelectedItem == null || string.IsNullOrEmpty(combo_marca.Text))
             {
@@ -626,7 +658,7 @@ namespace Eterea_Parfums_Desktop
            
         }
 
-       
+      
     }
 
 }
