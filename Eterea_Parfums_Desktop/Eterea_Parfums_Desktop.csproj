@@ -187,6 +187,9 @@
     <Compile Include="FormInformeVenta\FormInformesDeVentas2.Designer.cs">
       <DependentUpon>FormInformesDeVentas2.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormInicio\FormCartelCodigoNoEncontrado.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormLogin\FormInicioAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -483,6 +486,9 @@
     <EmbeddedResource Include="FormInformeVenta\FormInformesDeVentas2.resx">
       <DependentUpon>FormInformesDeVentas2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormInicio\FormCartelCodigoNoEncontrado.resx">
+      <DependentUpon>FormCartelCodigoNoEncontrado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLogin\FormInicioAdministrador.resx">
       <DependentUpon>FormInicioAdministrador.cs</DependentUpon>
     </EmbeddedResource>
@@ -635,6 +641,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\CerrarSesion.png" />
+    <None Include="Resources\warning-sign1.png" />
+    <None Include="Resources\warning-sign.png" />
     <None Include="Resources\FacturaA.html" />
     <Content Include="Resources\imagen_por_defecto.jpg" />
     <Content Include="Resources\LogoEterea.png" />

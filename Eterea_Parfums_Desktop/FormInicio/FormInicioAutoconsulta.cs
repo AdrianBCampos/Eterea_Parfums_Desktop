@@ -223,8 +223,10 @@ namespace Eterea_Parfums_Desktop
             }
             else
             {
-                MessageBox.Show("Código no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                ResetAutoConsulta();
+             
+                FormCartelCodigoNoEncontrado cartel = new FormCartelCodigoNoEncontrado(this);
+                cartel.ShowDialog();
+
             }
         }
 
@@ -288,11 +290,12 @@ namespace Eterea_Parfums_Desktop
 
         public void ResetAutoConsulta()
         {
-            txt_scan.Text = "";
+            escaneoHabilitado = false;
+            btn_escanear.Visible = true;
             txt_scan.Visible = false;
             txt_scan.Enabled = false;
             lbl_codigoBarras.Visible = false;
-            btn_escanear.Visible = true;
+            txt_scan.Text = ""; // ✅ Vacía el textbox
         }
 
         private void GuardarTextoEnArchivo(string texto)
@@ -782,7 +785,42 @@ namespace Eterea_Parfums_Desktop
             txt_scan.Focus(); // Poner el cursor en el TextBox
             lbl_codigoBarras.Visible = true;
             this.TopMost = false;  // Restaurar el estado normal de TopMost
+                                   // (Muy importante) Registrar nuevamente el listener
+            Program.BarcodeService.RegisterListener(OnBarcodeScanned);
         }
+
+        public void PrepararParaNuevoEscaneo()
+        {
+            escaneoHabilitado = false;  // Primero aseguro que está limpio
+            Program.BarcodeService.UnregisterListener(OnBarcodeScanned); // Evitar conflictos viejos
+            txt_scan.Text = "";
+            txt_scan.Enabled = false;
+            txt_scan.Visible = false;
+            lbl_codigoBarras.Visible = false;
+            btn_escanear.Visible = true;
+            btn_escanear.Focus(); // Opcional, si querés que quede seleccionado el botón
+        }
+
+        private void MostrarCartelCodigoNoEncontrado()
+        {
+            using (var cartel = new FormCartelCodigoNoEncontrado())
+            {
+                if (cartel.ShowDialog() == DialogResult.OK)
+                {
+                    if (cartel.Eleccion == FormCartelCodigoNoEncontrado.Resultado.IngresarManual)
+                    {
+                        // Abro FormEscanear
+                        FormEscanear formEscanear = new FormEscanear(this);
+                        formEscanear.ShowDialog();
+                    }
+                    else if (cartel.Eleccion == FormCartelCodigoNoEncontrado.Resultado.ReintentarEscaneo)
+                    {
+                        PrepararParaNuevoEscaneo(); // Método que limpia y habilita nuevamente escaneo
+                    }
+                }
+            }
+        }
+
 
 
         // Evento para capturar el código escaneado

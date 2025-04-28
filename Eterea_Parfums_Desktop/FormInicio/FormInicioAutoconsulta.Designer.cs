@@ -513,6 +513,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
             this.ClientSize = new System.Drawing.Size(1535, 865);
+            this.Controls.Add(this.img_logo);
             this.Controls.Add(this.txt_scan);
             this.Controls.Add(this.lbl_codigoBarras);
             this.Controls.Add(this.btn_escanear);
@@ -533,7 +534,6 @@
             this.Controls.Add(this.lbl_filtro_nombre);
             this.Controls.Add(this.txt_filtro_nombre);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.img_logo);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox5);
