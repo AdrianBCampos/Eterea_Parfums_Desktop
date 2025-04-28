@@ -278,11 +278,11 @@
     <Compile Include="ControlesDeUsuario\Gestionar\Promos_UC.Designer.cs">
       <DependentUpon>Promos_UC.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormInicio\FormEscanear.cs">
+    <Compile Include="FormInicio\FormIngresoCodigoManual.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormInicio\FormEscanear.Designer.cs">
-      <DependentUpon>FormEscanear.cs</DependentUpon>
+    <Compile Include="FormInicio\FormIngresoCodigoManual.Designer.cs">
+      <DependentUpon>FormIngresoCodigoManual.cs</DependentUpon>
     </Compile>
     <Compile Include="FormInicio\FormSeleccionarUsuario.cs">
       <SubType>Form</SubType>
@@ -522,8 +522,8 @@
     <EmbeddedResource Include="ControlesDeUsuario\Gestionar\Empleados_UC.resx">
       <DependentUpon>Empleados_UC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormInicio\FormEscanear.resx">
-      <DependentUpon>FormEscanear.cs</DependentUpon>
+    <EmbeddedResource Include="FormInicio\FormIngresoCodigoManual.resx">
+      <DependentUpon>FormIngresoCodigoManual.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormABM\Promo\FormEliminarPromo.resx">
       <DependentUpon>FormEliminarPromo.cs</DependentUpon>

@@ -5,11 +5,11 @@ using Eterea_Parfums_Desktop.Modelos;
 
 namespace Eterea_Parfums_Desktop
 {
-    public partial class FormEscanear : Form
+    public partial class FormIngresoCodigoManual : Form
     {
         private FormInicioAutoconsulta _inicioAutoConsultas;
 
-        public FormEscanear(FormInicioAutoconsulta inicioAutoConsultas)
+        public FormIngresoCodigoManual(FormInicioAutoconsulta inicioAutoConsultas)
         {
             InitializeComponent();
             _inicioAutoConsultas = inicioAutoConsultas;
@@ -18,7 +18,7 @@ namespace Eterea_Parfums_Desktop
         private void FormEscanear_Load(object sender, EventArgs e)
         {
             this.Activate();
-            txt_codigo_barras.Focus(); // Solo setea el foco
+            txt_codigo_barras.Focus(); // Poner foco automáticamente
         }
 
         private void txt_codigo_barras_KeyPress(object sender, KeyPressEventArgs e)
@@ -62,22 +62,10 @@ namespace Eterea_Parfums_Desktop
             }
             else
             {
-                DialogResult resultado = MessageBox.Show(
-                    "Código no encontrado.\n¿Desea intentar ingresarlo nuevamente?",
-                    "Código no encontrado",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-
-                if (resultado == DialogResult.Yes)
-                {
-                    txt_codigo_barras.Clear();
-                    txt_codigo_barras.Focus();
-                }
-                else
-                {
-                    this.Close();
-                    _inicioAutoConsultas?.ResetAutoConsulta();
-                }
+                // ❌ Código no encontrado, mostrar el FormCartelCodigoNoEncontrado
+                FormCartelCodigoNoEncontrado cartel = new FormCartelCodigoNoEncontrado(_inicioAutoConsultas);
+                this.Close(); // Cerramos este formulario de ingreso manual
+                cartel.ShowDialog();
             }
         }
 
@@ -88,16 +76,42 @@ namespace Eterea_Parfums_Desktop
             _inicioAutoConsultas?.PrepararParaNuevoEscaneo();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void txt_codigo_barras_TextChanged(object sender, EventArgs e)
         {
-            // Primero, cerrar el formulario de ingreso manual
-            this.Close();
+            string codigoIngresado = txt_codigo_barras.Text.Trim();
 
-            // Luego, restaurar la UI en FormInicioAutoconsulta para que el botón "Escanear" esté disponible
-            if (_inicioAutoConsultas != null)
+            // Si tiene exactamente 13 caracteres, hacer la búsqueda automática
+            if (codigoIngresado.Length == 13)
             {
-                _inicioAutoConsultas.PrepararParaNuevoEscaneo();
+                BuscarCodigo(codigoIngresado);
             }
         }
+
+        private void BuscarCodigo(string codigo)
+        {
+            Perfume perfumeEncontrado = PerfumeControlador.getByCodigo(codigo);
+
+            if (perfumeEncontrado != null)
+            {
+                // Si lo encuentra, mostrar el detalle
+                FormVerDetallePerfume detalleForm = new FormVerDetallePerfume(perfumeEncontrado);
+                detalleForm.FormClosed += (s, args) =>
+                {
+                    this.Close();
+                    _inicioAutoConsultas?.ResetAutoConsulta(); // Volver limpio al inicio
+                };
+                detalleForm.ShowDialog();
+            }
+            else
+            {
+                // ❌ Código no encontrado, mostrar el FormCartelCodigoNoEncontrado
+                FormCartelCodigoNoEncontrado cartel = new FormCartelCodigoNoEncontrado(_inicioAutoConsultas);
+                this.Close(); // Cerramos este formulario de ingreso manual
+                cartel.ShowDialog();
+            }
+        }
+
+
+
     }
 }

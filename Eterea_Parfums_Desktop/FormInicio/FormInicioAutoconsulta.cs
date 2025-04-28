@@ -810,7 +810,7 @@ namespace Eterea_Parfums_Desktop
                     if (cartel.Eleccion == FormCartelCodigoNoEncontrado.Resultado.IngresarManual)
                     {
                         // Abro FormEscanear
-                        FormEscanear formEscanear = new FormEscanear(this);
+                        FormIngresoCodigoManual formEscanear = new FormIngresoCodigoManual(this);
                         formEscanear.ShowDialog();
                     }
                     else if (cartel.Eleccion == FormCartelCodigoNoEncontrado.Resultado.ReintentarEscaneo)
