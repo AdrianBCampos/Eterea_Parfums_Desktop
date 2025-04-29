@@ -269,7 +269,7 @@ namespace Eterea_Parfums_Desktop
             else lbl_error_codigo.Visible = false;
 
 
-            if (combo_genero.SelectedItem == null || string.IsNullOrEmpty(combo_genero.Text))
+            if (combo_marca.SelectedItem == null || string.IsNullOrEmpty(combo_marca.Text))
             {
                 errorMsg += "Debes seleccionar la marca del perfume" + Environment.NewLine;
                 lbl_error_marca.Text = "Debes seleccionar la marca del perfume";

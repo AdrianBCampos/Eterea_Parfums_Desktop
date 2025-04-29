@@ -241,14 +241,20 @@ namespace Eterea_Parfums_Desktop
         }
 
 
-        private bool EsCodigoBarraPerfumeValido(string codigo)
+        private bool EsCodigoBarraValidoEnEdicion(string codigo)
         {
-            if (string.IsNullOrEmpty(codigo) || codigo.Length != 13 || !codigo.All(char.IsDigit) || PerfumeControlador.getByCodigo(codigo) != null)
-            {
+            if (string.IsNullOrEmpty(codigo) || codigo.Length != 13 || !codigo.All(char.IsDigit))
                 return false;
-            }
+
+            var existente = PerfumeControlador.getByCodigo(codigo);
+
+            // Si existe y NO es el mismo perfume que estamos editando, es inválido
+            if (existente != null && existente.id != perfume.id)
+                return false;
+
             return ValidarEAN13(codigo);
         }
+
 
         private bool ValidarEAN13(string codigo)
         {
@@ -268,15 +274,16 @@ namespace Eterea_Parfums_Desktop
         {
 
             string errorMsg = "";
-
-            if (!EsCodigoBarraPerfumeValido(txt_codigo.Text))
+            if (!EsCodigoBarraValidoEnEdicion(txt_codigo.Text))
             {
                 errorMsg += "El código no es válido. Debe ser un código EAN-13 correcto.\n";
                 lbl_error_codigo.Text = "El código no es válido. Debe tener 13 dígitos.";
                 lbl_error_codigo.Show();
             }
+            else lbl_error_codigo.Visible = false;
 
-            if (combo_marca.SelectedItem == null || string.IsNullOrEmpty(combo_marca.Text))
+
+            if (combo_genero.SelectedItem == null || string.IsNullOrEmpty(combo_marca.Text))
             {
                 errorMsg += "Debes seleccionar la marca del perfume" + Environment.NewLine;
                 lbl_error_marca.Text = "Debes seleccionar la marca del perfume";
@@ -494,7 +501,7 @@ namespace Eterea_Parfums_Desktop
 
         }
 
-        private bool EsCodigoBarraCODE128Valido(string codigo)
+       /* private bool EsCodigoBarraCODE128Valido(string codigo)
         {
             // Validar que no esté vacío
             if (string.IsNullOrEmpty(codigo))
@@ -518,7 +525,7 @@ namespace Eterea_Parfums_Desktop
             }
 
             return true;
-        }
+        }*/
 
         internal void eliminarImgExistenteYGuardarNueva()
         {
