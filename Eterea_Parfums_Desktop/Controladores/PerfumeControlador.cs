@@ -37,10 +37,10 @@ namespace Eterea_Parfums_Desktop.Controladores
                     genero.id = r.GetInt32(5);
                     pais.id = r.GetInt32(7);
 
-                    Marca marcaOb = MarcaControlador.getById(marca.id);
+                    Marca marcaOb = new Marca(marca.id, "");
                     TipoDePerfume tipo_de_perfumeOb = new TipoDePerfume(tipo_de_perfume.id, "");
-                    Genero generoOb = GeneroControlador.getById(genero.id);
-                    Pais paisOb = PaisControlador.getById(pais.id);
+                    Genero generoOb = new Genero(genero.id, "");
+                    Pais paisOb = new Pais(pais.id, "");
 
                     /*if (r.GetInt32(13) == 1)
                     {
@@ -57,7 +57,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
                 }
-                    r.Close();
+                r.Close();
                 DB_Controller.connection.Close();
 
             }

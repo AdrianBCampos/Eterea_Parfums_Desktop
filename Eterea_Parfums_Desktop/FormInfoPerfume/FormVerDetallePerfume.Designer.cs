@@ -1265,6 +1265,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.pictureBox16);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormVerDetallePerfume";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
