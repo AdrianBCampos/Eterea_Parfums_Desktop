@@ -329,15 +329,26 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             else
             {
                 // No hay caja asignada, mostrar FormNumeroDeCaja para elegirla
-                MessageBox.Show("Debes ingresar un número de caja.", "Número de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debes ingresar un número de caja.\n Haz click en 'Abrir Caja' ", "Número de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             
         }
 
         private void btn_consultas_Click(object sender, EventArgs e)
         {
-            FormConsultasPerfumeEmpleado consultasPerfumeEmpleado = new FormConsultasPerfumeEmpleado(this);
-            consultasPerfumeEmpleado.ShowDialog();          
+            string numero = Program.NumeroCajaActual;
+
+            if (numero != null && numero != "Caja sin asignar")
+            {
+                FormConsultasPerfumeEmpleado consultasPerfumeEmpleado = new FormConsultasPerfumeEmpleado(this);
+                consultasPerfumeEmpleado.ShowDialog();
+            }
+            else
+            {
+                // No hay caja asignada, mostrar FormNumeroDeCaja para elegirla
+                MessageBox.Show("Debes ingresar un número de caja.\n Haz click en 'Abrir Caja' ", "Número de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
         }
 
 
@@ -921,8 +932,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void btn_imprimir_Click(object sender, EventArgs e)
         {
-            var form = new FormNumeroDeCaja();
-            string numero = form.NumeroCaja;
+            string numero = Program.NumeroCajaActual;
 
             if (numero != null && numero != "Caja sin asignar")
             {
@@ -1054,7 +1064,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             else
             {
                 // No hay caja asignada, mostrar FormNumeroDeCaja para elegirla
-                MessageBox.Show("Debes ingresar un número de caja.", "Número de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("\"Debes ingresar un número de caja. \n Haz click en 'Abrir Caja' ", "Número de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -1171,7 +1181,21 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             e.DrawFocusRectangle();
         }
 
-   
+        private void btn_enviar_Click(object sender, EventArgs e)
+        {
+            string numero = Program.NumeroCajaActual;
+
+            if (numero != null && numero != "Caja sin asignar")
+            {
+
+            }
+            {
+                // No hay caja asignada, mostrar FormNumeroDeCaja para elegirla
+                MessageBox.Show("\"Debes ingresar un número de caja. \n Haz click en 'Abrir Caja' ", "Número de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
 
         //Diseño del boton del datagridview
 

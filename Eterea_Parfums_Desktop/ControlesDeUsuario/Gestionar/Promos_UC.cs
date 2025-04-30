@@ -61,6 +61,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     dataGridViewPromos.Rows[rowIndex].Cells[6].Value = "Editar";
                     dataGridViewPromos.Rows[rowIndex].Cells[7].Value = "Eliminar";
                 }
+                dataGridViewPromos.ClearSelection();
+
                 dataGridViewPromos.CellPainting += dataGridView1_CellPainting;
             }
         }

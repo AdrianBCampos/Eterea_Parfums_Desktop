@@ -605,7 +605,7 @@ namespace Eterea_Parfums_Desktop
             }
 
             int recargable = 0;
-            if (combo_spray.SelectedItem.ToString() == "Si")
+            if (combo_recargable.SelectedItem.ToString() == "Si")
             {
                 recargable = 1;
             }

@@ -26,39 +26,41 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         private void cargarClientes(string filtroDni = "")
         {
             //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
-            dataGridView1.RowHeadersVisible = false;
+            dataGridViewClientes.RowHeadersVisible = false;
 
             clientes = ClienteControlador.obtenerTodos();
 
-            dataGridView1.Rows.Clear();
+            dataGridViewClientes.Rows.Clear();
             foreach (Cliente cliente in clientes)
             {
                 if (cliente.activo == 1 && (string.IsNullOrEmpty(filtroDni) || cliente.dni.ToString().Contains(filtroDni)))
                 {
-                    int rowIndex = dataGridView1.Rows.Add();
+                    int rowIndex = dataGridViewClientes.Rows.Add();
 
-                    dataGridView1.Rows[rowIndex].Cells[0].Value = cliente.id.ToString();
-                    dataGridView1.Rows[rowIndex].Cells[1].Value = cliente.usuario.ToString();
-                    dataGridView1.Rows[rowIndex].Cells[2].Value = cliente.nombre.ToString();
-                    dataGridView1.Rows[rowIndex].Cells[3].Value = cliente.apellido.ToString();
-                    dataGridView1.Rows[rowIndex].Cells[4].Value = cliente.dni.ToString();
+                    dataGridViewClientes.Rows[rowIndex].Cells[0].Value = cliente.id.ToString();
+                    dataGridViewClientes.Rows[rowIndex].Cells[1].Value = cliente.usuario.ToString();
+                    dataGridViewClientes.Rows[rowIndex].Cells[2].Value = cliente.nombre.ToString();
+                    dataGridViewClientes.Rows[rowIndex].Cells[3].Value = cliente.apellido.ToString();
+                    dataGridViewClientes.Rows[rowIndex].Cells[4].Value = cliente.dni.ToString();
 
-                    dataGridView1.Rows[rowIndex].Cells[5].Value = cliente.celular.ToString();
-                    dataGridView1.Rows[rowIndex].Cells[6].Value = cliente.e_mail.ToString();
+                    dataGridViewClientes.Rows[rowIndex].Cells[5].Value = cliente.celular.ToString();
+                    dataGridViewClientes.Rows[rowIndex].Cells[6].Value = cliente.e_mail.ToString();
 
                     if (cliente.activo.ToString() == "1")
                     {
-                        dataGridView1.Rows[rowIndex].Cells[7].Value = "Activo";
+                        dataGridViewClientes.Rows[rowIndex].Cells[7].Value = "Activo";
                     }
                     else
                     {
-                        dataGridView1.Rows[rowIndex].Cells[7].Value = "Inactivo";
+                        dataGridViewClientes.Rows[rowIndex].Cells[7].Value = "Inactivo";
                     }
 
-                    dataGridView1.Rows[rowIndex].Cells[8].Value = "Editar";
-                    dataGridView1.Rows[rowIndex].Cells[9].Value = "Eliminar";
+                    dataGridViewClientes.Rows[rowIndex].Cells[8].Value = "Editar";
+                    dataGridViewClientes.Rows[rowIndex].Cells[9].Value = "Eliminar";
                 }
-                dataGridView1.CellPainting += dataGridView1_CellPainting;
+                dataGridViewClientes.ClearSelection();
+
+                dataGridViewClientes.CellPainting += dataGridView1_CellPainting;
             }
         }
 
@@ -84,7 +86,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             {
                 //EDITAMOS
 
-                int id = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                int id = int.Parse(dataGridViewClientes.Rows[e.RowIndex].Cells[0].Value.ToString());
 
                 Trace.WriteLine("El id es: " + id);
 
@@ -106,7 +108,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             else if (senderGrid.Columns[e.ColumnIndex].Name == "Eliminar")
             {
                 //ELIMINAMOS
-                int id = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                int id = int.Parse(dataGridViewClientes.Rows[e.RowIndex].Cells[0].Value.ToString());
 
                 Trace.WriteLine("El id es: " + id);
 
@@ -129,7 +131,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            if (e.ColumnIndex >= 0 && e.RowIndex >= 0 && dataGridView1.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0 && dataGridViewClientes.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
             {
                 e.Handled = true;
                 e.PaintBackground(e.CellBounds, true);

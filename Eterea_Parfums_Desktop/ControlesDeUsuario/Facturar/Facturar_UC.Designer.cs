@@ -252,6 +252,7 @@
             this.btn_enviar.TabIndex = 389;
             this.btn_enviar.Text = "Enviar por mail";
             this.btn_enviar.UseVisualStyleBackColor = false;
+            this.btn_enviar.Click += new System.EventHandler(this.btn_enviar_Click);
             // 
             // lbl_email
             // 

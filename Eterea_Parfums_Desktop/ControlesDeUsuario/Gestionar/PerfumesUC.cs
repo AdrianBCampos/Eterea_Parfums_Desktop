@@ -96,6 +96,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     dataGridViewPerfumes.Rows[rowIndex].Cells[12].Value = "Editar";
                     dataGridViewPerfumes.Rows[rowIndex].Cells[13].Value = "Eliminar";
                 }
+                dataGridViewPerfumes.ClearSelection();
 
                 dataGridViewPerfumes.CellPainting += dataGridView1_CellPainting;
 
