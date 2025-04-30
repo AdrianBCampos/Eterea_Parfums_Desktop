@@ -459,21 +459,22 @@ namespace Eterea_Parfums_Desktop
                     // case 0: todos → ya está aplicado
             }
 
-            // 2️⃣ Ordenar alfabéticamente por nombre (sin importar mayúsculas)
+           /* // 2️⃣ Ordenar alfabéticamente por nombre (sin importar mayúsculas)
             var perfumesOrdenados = perfumesFiltrados
-                .OrderBy(p => p.nombre.ToLowerInvariant())
-                .ToList();
+              .OrderBy(p => p.nombre.ToLowerInvariant())
+              .ToList();*/
 
-            // 3️⃣ Cargar al DataGridView
-            foreach (Perfume perfume in perfumesOrdenados)
+            //dataGridViewConsultas.Rows.Clear();
+            foreach (Perfume perfume in perfumesFiltrados)
             {
                 int rowIndex = dataGridViewConsultas.Rows.Add();
                 dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = perfume.nombre;
-                dataGridViewConsultas.Rows[rowIndex].Cells[1].Value = MarcaControlador.getById(perfume.marca.id).nombre;
-                dataGridViewConsultas.Rows[rowIndex].Cells[2].Value = GeneroControlador.getById(perfume.genero.id).genero;
+                dataGridViewConsultas.Rows[rowIndex].Cells[1].Value = perfume.marca.nombre;
+                dataGridViewConsultas.Rows[rowIndex].Cells[2].Value = perfume.genero.genero;
                 dataGridViewConsultas.Rows[rowIndex].Cells[3].Value = perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
                 dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = "Ver";
             }
+
 
             dataGridViewConsultas.ClearSelection();
             dataGridViewConsultas.CellPainting -= dataGridViewConsultas_CellPainting;

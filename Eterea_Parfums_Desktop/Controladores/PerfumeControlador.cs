@@ -16,7 +16,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             Genero genero = new Genero();
             Pais pais = new Pais();
 
-            string query = "select * from dbo.perfume;";
+            string query = "SELECT * FROM dbo.perfume ORDER BY nombre ASC;";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             try
             {
@@ -37,10 +37,10 @@ namespace Eterea_Parfums_Desktop.Controladores
                     genero.id = r.GetInt32(5);
                     pais.id = r.GetInt32(7);
 
-                    Marca marcaOb = new Marca(marca.id, "");
+                    Marca marcaOb = MarcaControlador.getById(marca.id);
                     TipoDePerfume tipo_de_perfumeOb = new TipoDePerfume(tipo_de_perfume.id, "");
-                    Genero generoOb = new Genero(genero.id, "");
-                    Pais paisOb = new Pais(pais.id, "");
+                    Genero generoOb = GeneroControlador.getById(genero.id);
+                    Pais paisOb = PaisControlador.getById(pais.id);
 
                     /*if (r.GetInt32(13) == 1)
                     {

@@ -104,6 +104,20 @@ namespace Eterea_Parfums_Desktop
 
         }
 
+        private string NormalizarTexto(string texto)
+        {
+            if (string.IsNullOrEmpty(texto)) return "";
+
+            var normalizado = texto.Normalize(System.Text.NormalizationForm.FormD);
+            var sinTildes = new string(normalizado
+                .Where(c => System.Globalization.CharUnicodeInfo.GetUnicodeCategory(c) != System.Globalization.UnicodeCategory.NonSpacingMark)
+                .ToArray());
+
+            return sinTildes.ToLowerInvariant();
+        }
+
+
+
         private void filtrar()
         {
             List<Nota> notas = NotaControlador.getAll();
@@ -111,7 +125,10 @@ namespace Eterea_Parfums_Desktop
             if (filtro != null)
             {
                 // Filtrar las notas según el nombre
-                notas_filtradas = notas.Where(x => x.nombre.ToLower().Contains(filtro)).ToList();
+                notas_filtradas = notas
+                  .Where(x => NormalizarTexto(x.nombre).Contains(NormalizarTexto(filtro)))
+                  .ToList();
+
 
                 if (notas_filtradas.Count > 0)
                 {
