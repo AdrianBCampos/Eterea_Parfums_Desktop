@@ -54,7 +54,7 @@ namespace Eterea_Parfums_Desktop
                 if (perfume != null)
                 {
                     int rowIndex = dataGridViewPerfumes.Rows.Add();
-                    string rutaCompletaImagen = Program.Ruta_Base + perfume.imagen1;
+                    string rutaCompletaImagen = Program.Ruta_Base + perfume.imagen1 + ".jpg";
 
                     int cellWidth = dataGridViewPerfumes.Columns[0].Width;
                     int cellHeight = dataGridViewPerfumes.RowTemplate.Height;

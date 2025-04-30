@@ -123,28 +123,55 @@ namespace Eterea_Parfums_Desktop
             Nota nota = null;
             TipoDeNota tipo_de_nota = null;
 
-            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
             dataGridViewNotasDelPerfume.RowHeadersVisible = false;
+            dataGridViewNotasDelPerfume.Rows.Clear();
+            dataGridViewNotasDelPerfume.DefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
 
-            if (notas_con_tipo_de_nota != null)
+            if (notas_con_tipo_de_nota != null && notas_con_tipo_de_nota.Any())
             {
-                dataGridViewNotasDelPerfume.Rows.Clear();
-                foreach (NotaConTipoDeNota nota_con_tipo_de_nota_ in notas_con_tipo_de_nota)
+                // Ordenar por ID del tipo de nota (1: salida, 2: corazón, 3: fondo)
+                var notasOrdenadas = notas_con_tipo_de_nota
+                    .OrderBy(n => n.tipoDeNota.id)
+                    .ToList();
+
+                foreach (NotaConTipoDeNota nota_con_tipo_de_nota_ in notasOrdenadas)
                 {
                     nota = NotaControlador.getById(nota_con_tipo_de_nota_.nota.id);
                     tipo_de_nota = TipoDeNotaControlador.getById(nota_con_tipo_de_nota_.tipoDeNota.id);
 
                     int rowIndex = dataGridViewNotasDelPerfume.Rows.Add();
                     dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[0].Value = nota_con_tipo_de_nota_.id;
-                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[1].Value = nota_con_tipo_de_nota_.tipoDeNota.nombre_tipo_de_nota;
-                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[2].Value = nota_con_tipo_de_nota_.nota.nombre;
+                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[1].Value = tipo_de_nota.nombre_tipo_de_nota;
+                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[2].Value = nota.nombre;
                     dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[3].Value = "Eliminar";
 
+                    // 🎨 Color de texto según el tipo de nota
+                    switch (tipo_de_nota.nombre_tipo_de_nota.ToLower().Trim())
+                    {
+                        case "nota de salida":
+                            dataGridViewNotasDelPerfume.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Green;
+                            break;
+                        case "nota de corazón":
+                            dataGridViewNotasDelPerfume.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Red;
+                            break;
+                        case "nota de fondo":
+                            dataGridViewNotasDelPerfume.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.MediumPurple;
+                            break;
+                        default:
+                            dataGridViewNotasDelPerfume.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                            break;
+                    }
                 }
 
+                // Quitar selección automática
+                dataGridViewNotasDelPerfume.ClearSelection();
+
+                // Asegurar que no se duplique el evento
+                dataGridViewNotasDelPerfume.CellPainting -= dataGridViewNotasDelPerfume_CellPainting;
                 dataGridViewNotasDelPerfume.CellPainting += dataGridViewNotasDelPerfume_CellPainting;
             }
         }
+
         private void btn_agregar_Click(object sender, EventArgs e)
         {
             string nombre_tipoDeNota_marcado = null;

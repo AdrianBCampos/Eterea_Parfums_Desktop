@@ -241,18 +241,40 @@ namespace Eterea_Parfums_Desktop
         }
 
 
-        private bool EsCodigoBarraValidoEnEdicion(string codigo)
+
+        private string ValidarCodigoDeBarra()
         {
-            if (string.IsNullOrEmpty(codigo) || codigo.Length != 13 || !codigo.All(char.IsDigit))
-                return false;
+            if (string.IsNullOrEmpty(txt_codigo.Text))
+            {
+                lbl_error_codigo.Text = "El código no puede estar vacío.";
+                lbl_error_codigo.Show();
+                return "El código no puede estar vacío.";
+            }
 
-            var existente = PerfumeControlador.getByCodigo(codigo);
+            if (txt_codigo.Text.Length != 13 || !txt_codigo.Text.All(char.IsDigit))
+            {
+                lbl_error_codigo.Text = "El código no es válido. Debe tener 13 dígitos numéricos.";
+                lbl_error_codigo.Show();
+                return "El código no es válido. Debe tener 13 dígitos numéricos.";
+            }
 
-            // Si existe y NO es el mismo perfume que estamos editando, es inválido
-            if (existente != null && existente.id != perfume.id)
-                return false;
+            var perfumeExistente = PerfumeControlador.getByCodigo(txt_codigo.Text);
+            if (perfumeExistente != null && perfumeExistente.codigo != perfume.codigo)
+            {
+                lbl_error_codigo.Text = "El código ya está registrado.";
+                lbl_error_codigo.Show();
+                return "El código ya está registrado.";
+            }
 
-            return ValidarEAN13(codigo);
+            if (!ValidarEAN13(txt_codigo.Text))
+            {
+                lbl_error_codigo.Text = "El código no es válido. No cumple con EAN-13.";
+                lbl_error_codigo.Show();
+                return "El código no es válido. No cumple con EAN-13.";
+            }
+
+            lbl_error_codigo.Visible = false;
+            return string.Empty; // No hay error
         }
 
 
@@ -270,15 +292,24 @@ namespace Eterea_Parfums_Desktop
             return digitoControlEsperado == digitoControlReal;
         }
 
+        private void txt_codigo_TextChanged(object sender, EventArgs e)
+        {
+            string errorCodigo = ValidarCodigoDeBarra();
+            lbl_error_codigo.Visible = !string.IsNullOrEmpty(errorCodigo);
+        }
+
         private bool ValidarPerfume()
         {
 
             string errorMsg = "";
-            if (!EsCodigoBarraValidoEnEdicion(txt_codigo.Text))
+            string errorCodigo = ValidarCodigoDeBarra();
+            if (!string.IsNullOrEmpty(errorCodigo))
             {
-                errorMsg += "El código no es válido. Debe ser un código EAN-13 correcto.\n";
-                lbl_error_codigo.Text = "El código no es válido. Debe tener 13 dígitos.";
-                lbl_error_codigo.Show();
+                errorMsg += errorCodigo + Environment.NewLine;
+            }
+            else
+            {
+                lbl_error_codigo.Visible = false;
             }
             else lbl_error_codigo.Visible = false;
 
@@ -497,35 +528,8 @@ namespace Eterea_Parfums_Desktop
             }
 
             return string.IsNullOrEmpty(errorMsg);
-
-
         }
 
-       /* private bool EsCodigoBarraCODE128Valido(string codigo)
-        {
-            // Validar que no esté vacío
-            if (string.IsNullOrEmpty(codigo))
-            {
-                return false;
-            }
-
-            // Validar longitud mínima (CODE128 puede variar según el contenido)
-            if (codigo.Length < 1 || codigo.Length > 128) // Longitud típica entre 1 y 128
-            {
-                return false;
-            }
-
-            // Validar que solo contenga caracteres permitidos (ASCII 0-127)
-            foreach (char c in codigo)
-            {
-                if (c < 32 || c > 126) // Incluye caracteres ASCII imprimibles
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }*/
 
         internal void eliminarImgExistenteYGuardarNueva()
         {
@@ -633,7 +637,7 @@ namespace Eterea_Parfums_Desktop
            
         }
 
-       
+      
     }
 
 }
