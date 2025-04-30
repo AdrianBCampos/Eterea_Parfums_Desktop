@@ -285,7 +285,7 @@ namespace Eterea_Parfums_Desktop
                 if (notas_con_tipo_de_nota.Any(x => x.id == notaConTipoDeNota.id))
                 {
                     Console.WriteLine("Nota con tipo de nota id: " + notaConTipoDeNota.id);
-                    lbl_error_seleccion_nota.Text = "Esta convinacion ya fue agregada";
+                    lbl_error_seleccion_nota.Text = "Esta combinacion ya fue agregada";
                     lbl_error_seleccion_nota.Visible = true;
 
                 }

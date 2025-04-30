@@ -37,7 +37,7 @@ namespace Eterea_Parfums_Desktop
 
         //LA PAGINA ACTUAL
         private static int current = 0;
-        private static int paginador = 3;
+        private static int paginador = 10;
 
         //TOTAL DE PRODUCTOS
         private static int total = 0;
@@ -394,30 +394,44 @@ namespace Eterea_Parfums_Desktop
 
         private void VisualizarPerfumes(List<Perfume> perfumeMostrar)
         {
-            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
             dataGridViewConsultas.RowHeadersVisible = false;
-
             dataGridViewConsultas.Rows.Clear();
-            foreach (Perfume perfume in perfumeMostrar)
-            {
-                // Verifica si se deben mostrar los activos, los no activos o todos los perfumes
-                if ((combo_filtro_articulos.SelectedIndex == 0) || // Todos los perfumes
-                    (combo_filtro_articulos.SelectedIndex == 1 && perfume.activo == 1) || // Solo los activos
-                    (combo_filtro_articulos.SelectedIndex == 2 && perfume.activo == 0)) // Solo los no activos
-                {
-                    int rowIndex = dataGridViewConsultas.Rows.Add();
 
-                    // Agregar valores a la fila de la tabla
-                    dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = perfume.nombre.ToString();
-                    dataGridViewConsultas.Rows[rowIndex].Cells[1].Value = (MarcaControlador.getById(perfume.marca.id)).nombre;
-                    dataGridViewConsultas.Rows[rowIndex].Cells[2].Value = (GeneroControlador.getById(perfume.genero.id)).genero;
-                    dataGridViewConsultas.Rows[rowIndex].Cells[3].Value = perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
-                    dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = "Ver";
-                }
+            // 1️⃣ Aplicar filtro según el combo
+            IEnumerable<Perfume> perfumesFiltrados = perfumeMostrar;
+
+            switch (combo_filtro_articulos.SelectedIndex)
+            {
+                case 1: // Solo activos
+                    perfumesFiltrados = perfumeMostrar.Where(p => p.activo == 1);
+                    break;
+                case 2: // Solo no activos
+                    perfumesFiltrados = perfumeMostrar.Where(p => p.activo == 0);
+                    break;
+                    // case 0: todos → ya está aplicado
             }
+
+            // 2️⃣ Ordenar alfabéticamente por nombre (sin importar mayúsculas)
+            var perfumesOrdenados = perfumesFiltrados
+                .OrderBy(p => p.nombre.ToLowerInvariant())
+                .ToList();
+
+            // 3️⃣ Cargar al DataGridView
+            foreach (Perfume perfume in perfumesOrdenados)
+            {
+                int rowIndex = dataGridViewConsultas.Rows.Add();
+                dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = perfume.nombre;
+                dataGridViewConsultas.Rows[rowIndex].Cells[1].Value = MarcaControlador.getById(perfume.marca.id).nombre;
+                dataGridViewConsultas.Rows[rowIndex].Cells[2].Value = GeneroControlador.getById(perfume.genero.id).genero;
+                dataGridViewConsultas.Rows[rowIndex].Cells[3].Value = perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
+                dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = "Ver";
+            }
+
+            dataGridViewConsultas.ClearSelection();
+            dataGridViewConsultas.CellPainting -= dataGridViewConsultas_CellPainting;
             dataGridViewConsultas.CellPainting += dataGridViewConsultas_CellPainting;
-            
         }
+
 
         private void btn_anterior_Click(object sender, EventArgs e)
         {
