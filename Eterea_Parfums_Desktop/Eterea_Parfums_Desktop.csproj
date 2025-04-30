@@ -77,6 +77,15 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\PDFsharp-MigraDoc-GDI.6.1.1\lib\net472\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Core, Version=1.0.3179.45, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.3179.45\lib\net462\Microsoft.Web.WebView2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.WinForms, Version=1.0.3179.45, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.3179.45\lib\net462\Microsoft.Web.WebView2.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Wpf, Version=1.0.3179.45, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.3179.45\lib\net462\Microsoft.Web.WebView2.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="MigraDoc.DocumentObjectModel, Version=6.1.1.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
       <HintPath>..\packages\PDFsharp-MigraDoc-GDI.6.1.1\lib\net472\MigraDoc.DocumentObjectModel.dll</HintPath>
     </Reference>
@@ -374,6 +383,12 @@
     <Compile Include="FormVenta\FormNumeroDeCaja.Designer.cs">
       <DependentUpon>FormNumeroDeCaja.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlesDeUsuario\PrepararEnvios\FormVisorPDF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\PrepararEnvios\FormVisorPDF.Designer.cs">
+      <DependentUpon>FormVisorPDF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modelos\AromaDelPerfume.cs" />
     <Compile Include="Modelos\Calle.cs" />
     <Compile Include="Modelos\Cliente.cs" />
@@ -594,6 +609,9 @@
     <EmbeddedResource Include="FormVenta\FormNumeroDeCaja.resx">
       <DependentUpon>FormNumeroDeCaja.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ControlesDeUsuario\PrepararEnvios\FormVisorPDF.resx">
+      <DependentUpon>FormVisorPDF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -658,5 +676,7 @@
       <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Web.WebView2.1.0.3179.45\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebView2.1.0.3179.45\build\Microsoft.Web.WebView2.targets'))" />
   </Target>
+  <Import Project="..\packages\Microsoft.Web.WebView2.1.0.3179.45\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.3179.45\build\Microsoft.Web.WebView2.targets')" />
 </Project>
