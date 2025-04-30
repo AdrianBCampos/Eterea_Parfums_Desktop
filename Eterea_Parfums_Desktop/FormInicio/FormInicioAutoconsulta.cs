@@ -33,7 +33,7 @@ namespace Eterea_Parfums_Desktop
 
         //public List<Stock> stock;
         //public List<Articulos> articulos;
-       
+
 
         //LA PAGINA ACTUAL
         private static int current = 0;
@@ -51,7 +51,10 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
-            
+            foreach (DataGridViewColumn col in dataGridViewConsultas.Columns)
+            {
+                col.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
 
             this.TopMost = false;
             //ESCALAR TAMAÑO DEL FORM
@@ -120,9 +123,9 @@ namespace Eterea_Parfums_Desktop
             lbl_numero_pagina.Text = current_pag.ToString();
             paginar(Perfumes_Completo);
 
-            
-          
-           
+
+
+
         }
 
         /* private void txt_scan_TextChanged(object sender, EventArgs e)
@@ -190,7 +193,7 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
-       
+
 
 
         private void txt_scan_TextChanged(object sender, EventArgs e)
@@ -223,7 +226,7 @@ namespace Eterea_Parfums_Desktop
             }
             else
             {
-             
+
                 FormCartelCodigoNoEncontrado cartel = new FormCartelCodigoNoEncontrado(this);
                 cartel.ShowDialog();
 
@@ -315,7 +318,7 @@ namespace Eterea_Parfums_Desktop
                 if (formStart != null)
                 {
                     // Ocultar FormInicioAutoconsulta antes de abrir FormLogin
-                    this.Hide();                 
+                    this.Hide();
 
                     // Traer FormStart al fondo pero asegurando que esté visible
                     formStart.Show();
@@ -442,45 +445,30 @@ namespace Eterea_Parfums_Desktop
 
         private void VisualizarPerfumes(List<Perfume> perfumeMostrar)
         {
+            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
             dataGridViewConsultas.RowHeadersVisible = false;
+
             dataGridViewConsultas.Rows.Clear();
-
-            // 1️⃣ Aplicar filtro según el combo
-            IEnumerable<Perfume> perfumesFiltrados = perfumeMostrar;
-
-            switch (combo_filtro_articulos.SelectedIndex)
+            foreach (Perfume perfume in perfumeMostrar)
             {
-                case 1: // Solo activos
-                    perfumesFiltrados = perfumeMostrar.Where(p => p.activo == 1);
-                    break;
-                case 2: // Solo no activos
-                    perfumesFiltrados = perfumeMostrar.Where(p => p.activo == 0);
-                    break;
-                    // case 0: todos → ya está aplicado
+                // Verifica si se deben mostrar los activos, los no activos o todos los perfumes
+                if ((combo_filtro_articulos.SelectedIndex == 0) || // Todos los perfumes
+                    (combo_filtro_articulos.SelectedIndex == 1 && perfume.activo == 1) || // Solo los activos
+                    (combo_filtro_articulos.SelectedIndex == 2 && perfume.activo == 0)) // Solo los no activos
+                {
+                    int rowIndex = dataGridViewConsultas.Rows.Add();
+
+                    // Agregar valores a la fila de la tabla
+                    dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = perfume.nombre.ToString();
+                    dataGridViewConsultas.Rows[rowIndex].Cells[1].Value = (MarcaControlador.getById(perfume.marca.id)).nombre;
+                    dataGridViewConsultas.Rows[rowIndex].Cells[2].Value = (GeneroControlador.getById(perfume.genero.id)).genero;
+                    dataGridViewConsultas.Rows[rowIndex].Cells[3].Value = perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
+                    dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = "Ver";
+                }
             }
-
-           /* // 2️⃣ Ordenar alfabéticamente por nombre (sin importar mayúsculas)
-            var perfumesOrdenados = perfumesFiltrados
-              .OrderBy(p => p.nombre.ToLowerInvariant())
-              .ToList();*/
-
-            //dataGridViewConsultas.Rows.Clear();
-            foreach (Perfume perfume in perfumesFiltrados)
-            {
-                int rowIndex = dataGridViewConsultas.Rows.Add();
-                dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = perfume.nombre;
-                dataGridViewConsultas.Rows[rowIndex].Cells[1].Value = perfume.marca.nombre;
-                dataGridViewConsultas.Rows[rowIndex].Cells[2].Value = perfume.genero.genero;
-                dataGridViewConsultas.Rows[rowIndex].Cells[3].Value = perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
-                dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = "Ver";
-            }
-
-
-            dataGridViewConsultas.ClearSelection();
-            dataGridViewConsultas.CellPainting -= dataGridViewConsultas_CellPainting;
             dataGridViewConsultas.CellPainting += dataGridViewConsultas_CellPainting;
-        }
 
+        }
 
         private void btn_anterior_Click(object sender, EventArgs e)
         {
