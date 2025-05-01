@@ -334,6 +334,18 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             
         }
 
+        private void txt_dni_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.Handled = true;
+                e.SuppressKeyPress = true; // evita el sonido 'ding'
+                btn_buscar.PerformClick(); // llama al botón como si hicieras clic
+            }
+        }
+
+
+
         private void btn_consultas_Click(object sender, EventArgs e)
         {
             string numero = Program.NumeroCajaActual;

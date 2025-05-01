@@ -822,7 +822,7 @@
             this.txt_dni.Name = "txt_dni";
             this.txt_dni.Size = new System.Drawing.Size(304, 28);
             this.txt_dni.TabIndex = 407;
-            this.txt_dni.Enter += new System.EventHandler(this.btn_buscar_Click);
+            this.txt_dni.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_dni_KeyDown);
             // 
             // pictureBox14
             // 
