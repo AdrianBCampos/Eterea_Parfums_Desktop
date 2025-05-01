@@ -9,7 +9,7 @@ namespace Eterea_Parfums_Desktop.Modelos
         public String clave { get; set; }
         public String nombre { get; set; }
         public String apellido { get; set; }
-        public int dni { get; set; }
+        public long dni { get; set; }
         public String condicion_frente_al_iva { get; set; }
         public DateTime? fecha_nacimiento { get; set; }
         public String celular { get; set; }
@@ -27,7 +27,7 @@ namespace Eterea_Parfums_Desktop.Modelos
         public int activo { get; set; }
         public String rol { get; set; }
 
-        public Cliente(int id, string usuario, string clave, string nombre, string apellido, int dni, string condicion_frente_al_iva, DateTime fecha_nacimiento,
+        public Cliente(int id, string usuario, string clave, string nombre, string apellido, long dni, string condicion_frente_al_iva, DateTime fecha_nacimiento,
             string celular, string e_mail, Pais pais_id, Provincia provincia_id, Localidad localidad_id, int codigo_postal, Calle calle_id,
             int numeracion_calle, string piso, string departamento, string comentarios_domicilio,
              int activo, string rol)

@@ -143,7 +143,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                                     "",
                                     r.GetString(3),
                                     r.GetString(4),
-                                    r.GetInt32(5),
+                                    r.GetInt64(5),
                                     r.GetString(6),
                                     r.IsDBNull(7) ? default(DateTime) : r.GetDateTime(7),
                                     r.GetString(8),
@@ -265,7 +265,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                         "",
                         r.GetString(3),
                         r.GetString(4),
-                        r.GetInt32(5),
+                        r.GetInt64(5),
                         r.GetString(6),
                         r.IsDBNull(7) ? default(DateTime) : r.GetDateTime(7), // Si es DBNull, asigna default(DateTime)
                         r.GetString(8),
@@ -304,7 +304,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         //GET ONE BY DNI
 
-        public static Cliente obtenerPorDni(int dni)
+        public static Cliente obtenerPorDni(long dni)
         {
             Cliente cliente = null;
 
@@ -336,7 +336,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                         r.GetString(2),                                 // Clave
                         r.GetString(3),                                 // Nombre
                         r.GetString(4),                                 // Apellido
-                        r.GetInt32(5),                                  // DNI
+                        r.GetInt64(5),                                  // DNI o CUIT
                         r.GetString(6),                                 // Condición frente al IVA
                         r.GetDateTime(7),                               // Fecha de nacimiento
                         r.GetString(8),                                 // Celular
