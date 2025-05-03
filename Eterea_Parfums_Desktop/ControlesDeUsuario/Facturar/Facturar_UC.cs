@@ -1085,8 +1085,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 }
                 CrearFactura();
                 CrearDetalleFactura();
-                txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
+               // txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
 
+                ReiniciarFormulario();
 
                 if (!string.IsNullOrWhiteSpace(txt_email.Text))
                 {
@@ -1098,6 +1099,24 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 // No hay caja asignada, mostrar FormNumeroDeCaja para elegirla
                 MessageBox.Show("Debes ingresar un número de caja.", "Número de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void ReiniciarFormulario()
+        {
+            txt_nombre_cliente.Text = "Consumidor Final";
+            txt_condicion_iva.Text = "Consumidor final";
+            txt_total.Text = "0,00";
+            txt_subtotal.Text = "0,00";
+            txt_monto_recargo.Text = "0,00";
+            txt_monto_descuento.Text = "0,00";
+            txt_iva.Text = "0,00";
+            txt_email.Text = "";
+            txt_dni.Text = "";
+            Factura.Rows.Clear();
+            combo_forma_pago.SelectedIndex = 0;
+            combo_descuento.SelectedIndex = 1;
+            combo_cuotas.SelectedIndex = 0;
+            txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
         }
 
         private void EnviarCorreo(string rutaArchivo, string correoDestino)
