@@ -1068,6 +1068,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 }
                 CrearFactura();
                 CrearDetalleFactura();
+                txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
 
                 if (!string.IsNullOrWhiteSpace(txt_email.Text))
                 {
