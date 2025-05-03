@@ -750,6 +750,16 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 int cuotas = Convert.ToInt32(combo_cuotas.SelectedItem);
                 float recargo = (cuotas - 1) * 5; // 5% de recargo por cada cuota extra
                 txt_rec.Text = recargo.ToString();
+                // Obtener el subtotal desde el textbox
+                float subtotal;
+                if (float.TryParse(txt_subtotal.Text, out subtotal))
+                {
+                    CalcularImporteRecargo(subtotal, recargo);
+                }
+                else
+                {
+                    MessageBox.Show("El subtotal no es un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
