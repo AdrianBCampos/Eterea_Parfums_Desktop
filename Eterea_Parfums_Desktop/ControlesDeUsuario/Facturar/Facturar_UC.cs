@@ -36,7 +36,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             txt_scan_factura.Leave += Txt_scan_factura_Leave;
             txt_scan_factura.TextChanged += Txt_scan_factura_TextChanged;
             Factura.CellContentClick += DataGridViewFactura_CellContentClick;
-
+            btn_pago.Visible = false;
 
             combo_forma_pago.SelectedIndexChanged -= combo_forma_pago_SelectedIndexChanged;
 
@@ -757,6 +757,23 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         {
             ActualizarDescuentosYCuotas();
             ActualizarTotales();
+            if (combo_forma_pago.SelectedItem.ToString() != "Efectivo")
+            {
+                btn_imprimir.Visible = false;
+                btn_pago.Visible = true;
+            }
+            else
+            {
+                btn_imprimir.Visible = true;
+                btn_pago.Visible = false;
+            }
+        }
+
+        private void btn_pago_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Pago realizado exitosamente", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            btn_imprimir.Visible = true;
+            btn_pago.Visible = false;
         }
 
         private void combo_cuotas_SelectedIndexChanged(object sender, EventArgs e)
@@ -1070,6 +1087,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 CrearDetalleFactura();
                 txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
 
+
                 if (!string.IsNullOrWhiteSpace(txt_email.Text))
                 {
                     EnviarCorreo(filePath, txt_email.Text.Trim());
@@ -1175,8 +1193,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             e.DrawFocusRectangle();
         }
 
+
+
         //Diseño del boton del datagridview
-       
+
 
     }
 }
