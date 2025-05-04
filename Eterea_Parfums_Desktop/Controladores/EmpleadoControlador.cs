@@ -12,18 +12,19 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         public static bool auth(string usuario, string password)
         {
-            
-            // Recupera el empleado de la base de datos (debes implementar este método)
+            // Recupera el empleado de la base de datos
             Empleado empleado = obtenerEmpleadoPorUsuario(usuario);
-            if (empleado == null)
+
+            // Si no se encontró el empleado o su clave es nula o vacía
+            if (empleado == null || string.IsNullOrEmpty(empleado.clave))
                 return false;
 
             // Verifica la contraseña utilizando el helper
-            return PasswordHelper.VerificarPassword(password, empleado.clave); // o empleado.PasswordHash si lo llamas así
-
+            return PasswordHelper.VerificarPassword(password, empleado.clave);
         }
 
-          
+
+
 
         /* public static bool auth(string usr, string pass)
          {

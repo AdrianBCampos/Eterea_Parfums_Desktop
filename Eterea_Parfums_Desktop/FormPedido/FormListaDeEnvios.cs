@@ -20,16 +20,21 @@ namespace Eterea_Parfums_Desktop
         private string nombreSucursalActual;
 
         private int? numeroOrdenFiltrada = null;
+        private int? estadoOrdenFiltrada = null;
+        private bool volverAFormBuscarPedidos = false;
 
 
-        public FormListaDeEnvios(int? numeroOrden = null)
+        public FormListaDeEnvios(int? numeroOrden = null, int? estado = null, bool volverABuscarPedidos = false)
         {
             numeroOrdenFiltrada = numeroOrden;
+            estadoOrdenFiltrada = estado;
+            this.volverAFormBuscarPedidos = volverABuscarPedidos;
+
 
             OrdenControlador controlador = new OrdenControlador();
             int cantidad = controlador.ObtenerCantidadOrdenesActivas();
 
-            if (cantidad == 0)
+            if (cantidad == 0 && !numeroOrden.HasValue)
             {
                 MessageBox.Show("En este momento no hay órdenes activas para despachar.", "Sin órdenes activas", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close(); // cierra el formulario antes de cargar
@@ -53,15 +58,25 @@ namespace Eterea_Parfums_Desktop
             nombreSucursalActual = SucursalControlador.ObtenerNombreSucursalPorId(Program.sucursal);
 
             this.Load += FormListaDeEnvios_Load;
-
+            this.estadoOrdenFiltrada = estadoOrdenFiltrada;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FormInicioVendedor InicioVendedor = new FormInicioVendedor();
-            InicioVendedor.Show();
+            if (volverAFormBuscarPedidos)
+            {
+                FormBuscarPedidos buscarPedidos = new FormBuscarPedidos();
+                buscarPedidos.Show();
+            }
+            else
+            {
+                FormInicioVendedor InicioVendedor = new FormInicioVendedor();
+                InicioVendedor.Show();          
+            }
             this.Close();
         }
+
+
 
         private void btn_consultas_Click(object sender, EventArgs e)
         {
@@ -84,7 +99,7 @@ namespace Eterea_Parfums_Desktop
                 txt_cantidad_ordenes.Visible = false;
 
                 lbl_pedido_buscado.Visible = true;
-                lbl_pedido_buscado.Text = $"Mostrando detalles del pedido N° {numeroOrdenFiltrada.Value}";
+                lbl_pedido_buscado.Text = $"Mostrando detalles de la Orden N° {numeroOrdenFiltrada.Value}";
                 dtOrdenes = new OrdenControlador().BuscarOrdenPorNumero(numeroOrdenFiltrada.Value);
             }
             else
@@ -141,7 +156,11 @@ namespace Eterea_Parfums_Desktop
                     Tag = numeroOrden
                 };
 
-              
+                // 🔽 Si la orden buscada ya fue despachada (estado = 0), ocultar botón
+                if (numeroOrdenFiltrada.HasValue && estadoOrdenFiltrada.HasValue && estadoOrdenFiltrada.Value == 0)
+                {
+                    btnImprimir.Visible = false;
+                }
 
 
                 btnImprimir.Click += (s, e) =>
@@ -178,12 +197,13 @@ namespace Eterea_Parfums_Desktop
                                          $"Cliente: {orden["nombre_cliente"]} {orden["apellido_cliente"]}\n" +
                                          $"DNI: {orden["dni"]}\n" +
                                          $"Email: {orden["e_mail_cliente"]}\n" +
-                                         $"Domicilio: {orden["domicilio_de_envio"]}\n" +
-                                         $"Codigo verificacion de despacho:{codigoDespacho}";
+                                         $"Domicilio: {orden["domicilio_de_envio"]}\n\n" +
+                                         $"Codigo verificacion de despacho: {codigoDespacho}\n" +
+                                         $"Orden despachada por: {txt_nombre_empleado.Text}";
 
-                   
 
-                   
+                     
+
 
                     // 4. Generar QR
                     using (var qrGenerator = new QRCoder.QRCodeGenerator())

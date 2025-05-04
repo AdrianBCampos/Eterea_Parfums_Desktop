@@ -309,6 +309,7 @@ namespace Eterea_Parfums_Desktop
             return string.Empty; // No hay error
         }
 
+
         private bool ValidarEAN13(string codigo)
         {
             int suma = 0;
@@ -342,8 +343,10 @@ namespace Eterea_Parfums_Desktop
             {
                 lbl_error_codigo.Visible = false;
             }
+            
 
-            if (combo_marca.SelectedItem == null || string.IsNullOrEmpty(combo_marca.Text))
+
+            if (combo_genero.SelectedItem == null || string.IsNullOrEmpty(combo_marca.Text))
             {
                 errorMsg += "Debes seleccionar la marca del perfume" + Environment.NewLine;
                 lbl_error_marca.Text = "Debes seleccionar la marca del perfume";
@@ -565,15 +568,16 @@ namespace Eterea_Parfums_Desktop
             if (imagen1 != null)
             {
                 Eliminar_Imagen_Existente(nombre_foto_uno);
-                saveImagenResources(out nombre_foto_uno, imagen1);
+                saveImagenResources(out nombre_foto_uno, imagen1, "envase");
             }
 
             if (imagen2 != null)
             {
                 Eliminar_Imagen_Existente(nombre_foto_dos);
-                saveImagenResources(out nombre_foto_dos, imagen2);
+                saveImagenResources(out nombre_foto_dos, imagen2, "envase y caja");
             }
         }
+
 
         private void btn_siguiente_Click(object sender, EventArgs e)
         {
@@ -602,22 +606,21 @@ namespace Eterea_Parfums_Desktop
 
             }
         }
-        private void saveImagenResources(out string nombreFoto, Image imagen)
+        private void saveImagenResources(out string nombreFoto, Image imagen, string sufijo)
         {
             try
             {
                 int numero_aleatorio = numeroAleatorio();
                 Console.WriteLine(numero_aleatorio);
-                nombreFoto = txt_nombre.Text + numero_aleatorio + "-envase";
+                nombreFoto = txt_nombre.Text + " - " + numero_aleatorio + " - " + sufijo;
                 imagen.Save(Program.Ruta_Base + nombreFoto + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-
             }
             catch (Exception ex)
             {
-                //NO SE PUDO GUARDAR LA FOTO
                 throw new Exception(ex.Message);
             }
         }
+
 
         private int numeroAleatorio()
         {

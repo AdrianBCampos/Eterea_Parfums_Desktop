@@ -19,6 +19,8 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
+  
+
             lbl_nombreE.Hide();
             lbl_apellidoE.Hide();
             lbl_dniE.Hide();
@@ -32,7 +34,7 @@ namespace Eterea_Parfums_Desktop
             combo_con_iva.Items.Add("Responsable Monotributo");
         }
 
-        public FormCrearClienteFactura(int dni)
+        public FormCrearClienteFactura(long dni)
         {
             InitializeComponent();
 
@@ -52,6 +54,25 @@ namespace Eterea_Parfums_Desktop
             combo_con_iva.Items.Add("Responsable Monotributo");
         }
 
+        private void Txt_dni_TextChanged(object sender, EventArgs e)
+        {
+            string texto = txt_dni.Text.Trim();
+
+            if (texto.Length == 8)
+            {
+                lbl_dni.Text = "DNI";
+            }
+            else if (texto.Length == 11)
+            {
+                lbl_dni.Text = "CUIT";
+            }
+            else
+            {
+                lbl_dni.Text = "Documento";
+            }
+        }
+
+
         private void btn_crear_cliente_Click(object sender, EventArgs e)
         {
             bool clienteValidado = validarCliente(out string errorMsg);
@@ -67,7 +88,7 @@ namespace Eterea_Parfums_Desktop
 
 
                 Cliente cliente = new Cliente(0, txt_nombre.Text, txt_dni.Text, txt_nombre.Text, txt_apellido.Text,
-                    int.Parse(txt_dni.Text), combo_con_iva.Text, fecha, "0", txt_email.Text,
+                    long.Parse(txt_dni.Text), combo_con_iva.Text, fecha, "0", txt_email.Text,
                     pais, provincia, localidad, 0, calle, 0,
                     "0", "0", " ",
                      1, rol);

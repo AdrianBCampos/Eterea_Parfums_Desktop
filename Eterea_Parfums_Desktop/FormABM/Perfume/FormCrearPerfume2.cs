@@ -123,12 +123,11 @@ namespace Eterea_Parfums_Desktop
             Nota nota = null;
             TipoDeNota tipo_de_nota = null;
 
-            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
             dataGridViewNotasDelPerfume.RowHeadersVisible = false;
             dataGridViewNotasDelPerfume.Rows.Clear();
             dataGridViewNotasDelPerfume.DefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
 
-            if (notas_con_tipo_de_nota != null)
+            if (notas_con_tipo_de_nota != null && notas_con_tipo_de_nota.Any())
             {
                 //dataGridViewNotasDelPerfume.Rows.Clear();
 
@@ -145,8 +144,8 @@ namespace Eterea_Parfums_Desktop
 
                     int rowIndex = dataGridViewNotasDelPerfume.Rows.Add();
                     dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[0].Value = nota_con_tipo_de_nota_.id;
-                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[1].Value = nota_con_tipo_de_nota_.tipoDeNota.nombre_tipo_de_nota;
-                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[2].Value = nota_con_tipo_de_nota_.nota.nombre;
+                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[1].Value = tipo_de_nota.nombre_tipo_de_nota;
+                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[2].Value = nota.nombre;
                     dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[3].Value = "Eliminar";
 
                     // 🎨 Color de texto según el tipo de nota
@@ -178,6 +177,7 @@ namespace Eterea_Parfums_Desktop
                 dataGridViewNotasDelPerfume.CellPainting += dataGridViewNotasDelPerfume_CellPainting;
             }
         }
+
         private void btn_agregar_Click(object sender, EventArgs e)
         {
             string nombre_tipoDeNota_marcado = null;

@@ -77,6 +77,15 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\PDFsharp-MigraDoc-GDI.6.1.1\lib\net472\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Core, Version=1.0.3179.45, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.3179.45\lib\net462\Microsoft.Web.WebView2.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.WinForms, Version=1.0.3179.45, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.3179.45\lib\net462\Microsoft.Web.WebView2.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebView2.Wpf, Version=1.0.3179.45, Culture=neutral, PublicKeyToken=2a8ab48044d2601e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.WebView2.1.0.3179.45\lib\net462\Microsoft.Web.WebView2.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="MigraDoc.DocumentObjectModel, Version=6.1.1.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
       <HintPath>..\packages\PDFsharp-MigraDoc-GDI.6.1.1\lib\net472\MigraDoc.DocumentObjectModel.dll</HintPath>
     </Reference>
@@ -148,6 +157,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BarcodeReceiver.cs" />
+    <Compile Include="CajaManager.cs" />
     <Compile Include="Controladores\CajaControlador.cs" />
     <Compile Include="Controladores\OrdenControlador.cs" />
     <Compile Include="ControlesDeUsuario\AdministrarStock\AdministrarStock_UC.cs">
@@ -180,12 +190,14 @@
     <Compile Include="ControlesDeUsuario\PrepararEnvios\PrepararEnvios_UC.Designer.cs">
       <DependentUpon>PrepararEnvios_UC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controladores\CajaControlador.cs" />
     <Compile Include="FormInformeVenta\FormInformesDeVentas2.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormInformeVenta\FormInformesDeVentas2.Designer.cs">
       <DependentUpon>FormInformesDeVentas2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormInicio\FormCartelCodigoNoEncontrado.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormLogin\FormInicioAdministrador.cs">
       <SubType>Form</SubType>
@@ -275,11 +287,11 @@
     <Compile Include="ControlesDeUsuario\Gestionar\Promos_UC.Designer.cs">
       <DependentUpon>Promos_UC.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormInicio\FormEscanear.cs">
+    <Compile Include="FormInicio\FormIngresoCodigoManual.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormInicio\FormEscanear.Designer.cs">
-      <DependentUpon>FormEscanear.cs</DependentUpon>
+    <Compile Include="FormInicio\FormIngresoCodigoManual.Designer.cs">
+      <DependentUpon>FormIngresoCodigoManual.cs</DependentUpon>
     </Compile>
     <Compile Include="FormInicio\FormSeleccionarUsuario.cs">
       <SubType>Form</SubType>
@@ -370,6 +382,12 @@
     </Compile>
     <Compile Include="FormVenta\FormNumeroDeCaja.Designer.cs">
       <DependentUpon>FormNumeroDeCaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\PrepararEnvios\FormVisorPDF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\PrepararEnvios\FormVisorPDF.Designer.cs">
+      <DependentUpon>FormVisorPDF.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelos\AromaDelPerfume.cs" />
     <Compile Include="Modelos\Calle.cs" />
@@ -483,6 +501,9 @@
     <EmbeddedResource Include="FormInformeVenta\FormInformesDeVentas2.resx">
       <DependentUpon>FormInformesDeVentas2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormInicio\FormCartelCodigoNoEncontrado.resx">
+      <DependentUpon>FormCartelCodigoNoEncontrado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLogin\FormInicioAdministrador.resx">
       <DependentUpon>FormInicioAdministrador.cs</DependentUpon>
     </EmbeddedResource>
@@ -516,8 +537,8 @@
     <EmbeddedResource Include="ControlesDeUsuario\Gestionar\Empleados_UC.resx">
       <DependentUpon>Empleados_UC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormInicio\FormEscanear.resx">
-      <DependentUpon>FormEscanear.cs</DependentUpon>
+    <EmbeddedResource Include="FormInicio\FormIngresoCodigoManual.resx">
+      <DependentUpon>FormIngresoCodigoManual.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormABM\Promo\FormEliminarPromo.resx">
       <DependentUpon>FormEliminarPromo.cs</DependentUpon>
@@ -588,6 +609,9 @@
     <EmbeddedResource Include="FormVenta\FormNumeroDeCaja.resx">
       <DependentUpon>FormNumeroDeCaja.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ControlesDeUsuario\PrepararEnvios\FormVisorPDF.resx">
+      <DependentUpon>FormVisorPDF.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -635,6 +659,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\CerrarSesion.png" />
+    <None Include="Resources\warning-sign1.png" />
+    <None Include="Resources\warning-sign.png" />
     <None Include="Resources\FacturaA.html" />
     <Content Include="Resources\imagen_por_defecto.jpg" />
     <Content Include="Resources\LogoEterea.png" />
@@ -650,5 +676,7 @@
       <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Web.WebView2.1.0.3179.45\build\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebView2.1.0.3179.45\build\Microsoft.Web.WebView2.targets'))" />
   </Target>
+  <Import Project="..\packages\Microsoft.Web.WebView2.1.0.3179.45\build\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.3179.45\build\Microsoft.Web.WebView2.targets')" />
 </Project>

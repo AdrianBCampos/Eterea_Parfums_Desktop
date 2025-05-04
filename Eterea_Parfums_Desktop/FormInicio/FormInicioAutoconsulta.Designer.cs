@@ -220,7 +220,7 @@
             this.dataGridViewConsultas.AllowUserToAddRows = false;
             this.dataGridViewConsultas.AllowUserToDeleteRows = false;
             this.dataGridViewConsultas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
@@ -274,11 +274,14 @@
             // 
             // nombre
             // 
+            this.nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.nombre.FillWeight = 125F;
+            this.nombre.Frozen = true;
             this.nombre.HeaderText = "Nombre del perfume";
             this.nombre.MinimumWidth = 6;
             this.nombre.Name = "nombre";
             this.nombre.ReadOnly = true;
+            this.nombre.Width = 469;
             // 
             // marca
             // 
@@ -513,6 +516,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
             this.ClientSize = new System.Drawing.Size(1535, 865);
+            this.Controls.Add(this.img_logo);
             this.Controls.Add(this.txt_scan);
             this.Controls.Add(this.lbl_codigoBarras);
             this.Controls.Add(this.btn_escanear);
@@ -533,7 +537,6 @@
             this.Controls.Add(this.lbl_filtro_nombre);
             this.Controls.Add(this.txt_filtro_nombre);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.img_logo);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox5);
@@ -587,14 +590,14 @@
         private System.Windows.Forms.ComboBox combo_filtro_aroma;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox combo_filtro_articulos;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        public System.Windows.Forms.Button btn_escanear;
+        private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn marca;
         private System.Windows.Forms.DataGridViewTextBoxColumn Genero;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio;
         private System.Windows.Forms.DataGridViewButtonColumn agregar;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        public System.Windows.Forms.Button btn_escanear;
-        private System.Windows.Forms.PictureBox pictureBox17;
     }
 }
 

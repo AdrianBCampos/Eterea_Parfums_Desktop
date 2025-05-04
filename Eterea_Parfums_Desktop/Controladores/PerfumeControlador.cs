@@ -16,7 +16,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             Genero genero = new Genero();
             Pais pais = new Pais();
 
-            string query = "select * from dbo.perfume;";
+            string query = "SELECT * FROM dbo.perfume ORDER BY nombre ASC;";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             try
             {
@@ -57,7 +57,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
                 }
-                    r.Close();
+                r.Close();
                 DB_Controller.connection.Close();
 
             }

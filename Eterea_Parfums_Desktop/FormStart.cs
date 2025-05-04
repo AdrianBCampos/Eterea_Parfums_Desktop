@@ -12,15 +12,16 @@ namespace Eterea_Parfums_Desktop
 {
     public partial class FormStart : Form
     {
-        private BarcodeReceiver barcodeReceiver;
+       
+
         public FormStart()
         {
             InitializeComponent();
 
            
 
-            barcodeReceiver = new BarcodeReceiver();
-            barcodeReceiver.StartServer(); // Inicia el servidor TCP
+            //barcodeReceiver = new BarcodeReceiver();
+            Program.BarcodeService.StartServer(); // Inicia el servidor TCP
 
             this.KeyPreview = true;
 

@@ -163,7 +163,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             f.fecha AS fecha_compra
         FROM dbo.orden o
         JOIN dbo.factura f ON o.num_factura = f.num_factura
-        WHERE o.numero_de_orden = @numeroOrden AND o.estado = 1";
+        WHERE o.numero_de_orden = @numeroOrden";
 
             using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
             using (SqlCommand cmd = new SqlCommand(query, conn))

@@ -33,11 +33,11 @@ namespace Eterea_Parfums_Desktop
 
         //public List<Stock> stock;
         //public List<Articulos> articulos;
-       
+
 
         //LA PAGINA ACTUAL
         private static int current = 0;
-        private static int paginador = 3;
+        private static int paginador = 10;
 
         //TOTAL DE PRODUCTOS
         private static int total = 0;
@@ -51,12 +51,16 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
+            foreach (DataGridViewColumn col in dataGridViewConsultas.Columns)
+            {
+                col.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
 
             this.TopMost = false;
             //ESCALAR TAMAÑO DEL FORM
             //float scaleFactor = 0.8f; // 80% del tamaño original
             //this.Scale(new SizeF(scaleFactor, scaleFactor));
-            this.Scale(new SizeF(Program.ScaleFactor, Program.ScaleFactor));
+            //this.Scale(new SizeF(Program.ScaleFactor, Program.ScaleFactor));
 
 
 
@@ -119,9 +123,9 @@ namespace Eterea_Parfums_Desktop
             lbl_numero_pagina.Text = current_pag.ToString();
             paginar(Perfumes_Completo);
 
-            
-          
-           
+
+
+
         }
 
         /* private void txt_scan_TextChanged(object sender, EventArgs e)
@@ -148,6 +152,50 @@ namespace Eterea_Parfums_Desktop
         {
             ResetAutoConsulta();
         }*/
+
+        public void FormInicioAutoconsulta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.L)
+            {
+                FormStart formStart = Application.OpenForms.OfType<FormStart>().FirstOrDefault();
+
+                if (formStart != null)
+                {
+                    this.Hide();
+
+                    formStart.Show();
+                    formStart.BringToFront();
+                    formStart.SendToBack();
+
+                    FormLogin login = new FormLogin();
+                    login.Owner = formStart;
+                    login.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Error: No se encontró FormStart en ejecución.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            if (e.Control && e.KeyCode == Keys.X)
+            {
+                DialogResult result = MessageBox.Show(
+                    "¿Está seguro que desea cerrar la aplicación?",
+                    "Confirmar salida",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    Application.Exit();
+                }
+            }
+        }
+
+
+
+
         private void txt_scan_TextChanged(object sender, EventArgs e)
         {
             if (!escaneoHabilitado || !txt_scan.Visible || !txt_scan.Enabled)
@@ -178,8 +226,10 @@ namespace Eterea_Parfums_Desktop
             }
             else
             {
-                MessageBox.Show("Código no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                ResetAutoConsulta();
+
+                FormCartelCodigoNoEncontrado cartel = new FormCartelCodigoNoEncontrado(this);
+                cartel.ShowDialog();
+
             }
         }
 
@@ -243,11 +293,12 @@ namespace Eterea_Parfums_Desktop
 
         public void ResetAutoConsulta()
         {
-            txt_scan.Text = "";
+            escaneoHabilitado = false;
+            btn_escanear.Visible = true;
             txt_scan.Visible = false;
             txt_scan.Enabled = false;
             lbl_codigoBarras.Visible = false;
-            btn_escanear.Visible = true;
+            txt_scan.Text = ""; // ✅ Vacía el textbox
         }
 
         private void GuardarTextoEnArchivo(string texto)
@@ -267,7 +318,7 @@ namespace Eterea_Parfums_Desktop
                 if (formStart != null)
                 {
                     // Ocultar FormInicioAutoconsulta antes de abrir FormLogin
-                    this.Hide();                 
+                    this.Hide();
 
                     // Traer FormStart al fondo pero asegurando que esté visible
                     formStart.Show();
@@ -415,8 +466,10 @@ namespace Eterea_Parfums_Desktop
                     dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = "Ver";
                 }
             }
+            dataGridViewConsultas.ClearSelection();
+
             dataGridViewConsultas.CellPainting += dataGridViewConsultas_CellPainting;
-            
+
         }
 
         private void btn_anterior_Click(object sender, EventArgs e)
@@ -697,12 +750,38 @@ namespace Eterea_Parfums_Desktop
             e.DrawFocusRectangle();
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            Program.BarcodeService.RegisterListener(OnBarcodeScanned);
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            Program.BarcodeService.UnregisterListener(OnBarcodeScanned);
+            base.OnFormClosed(e);
+        }
+
+        private void OnBarcodeScanned(string barcode)
+        {
+            if (!escaneoHabilitado) return;
+
+            this.Invoke((MethodInvoker)(() =>
+            {
+                txt_scan.Text = barcode;
+            }));
+        }
+
+
         private void btn_escanear_Click(object sender, EventArgs e)
         {
             /* Escanear escanear = new Escanear();
              escanear.Show();
              this.Hide();*/
             escaneoHabilitado = true;
+
+
 
             // Ocultar el botón y mostrar el TextBox
             btn_escanear.Visible = false;
@@ -711,7 +790,42 @@ namespace Eterea_Parfums_Desktop
             txt_scan.Focus(); // Poner el cursor en el TextBox
             lbl_codigoBarras.Visible = true;
             this.TopMost = false;  // Restaurar el estado normal de TopMost
+                                   // (Muy importante) Registrar nuevamente el listener
+            Program.BarcodeService.RegisterListener(OnBarcodeScanned);
         }
+
+        public void PrepararParaNuevoEscaneo()
+        {
+            escaneoHabilitado = false;  // Primero aseguro que está limpio
+            Program.BarcodeService.UnregisterListener(OnBarcodeScanned); // Evitar conflictos viejos
+            txt_scan.Text = "";
+            txt_scan.Enabled = false;
+            txt_scan.Visible = false;
+            lbl_codigoBarras.Visible = false;
+            btn_escanear.Visible = true;
+            btn_escanear.Focus(); // Opcional, si querés que quede seleccionado el botón
+        }
+
+        private void MostrarCartelCodigoNoEncontrado()
+        {
+            using (var cartel = new FormCartelCodigoNoEncontrado())
+            {
+                if (cartel.ShowDialog() == DialogResult.OK)
+                {
+                    if (cartel.Eleccion == FormCartelCodigoNoEncontrado.Resultado.IngresarManual)
+                    {
+                        // Abro FormEscanear
+                        FormIngresoCodigoManual formEscanear = new FormIngresoCodigoManual(this);
+                        formEscanear.ShowDialog();
+                    }
+                    else if (cartel.Eleccion == FormCartelCodigoNoEncontrado.Resultado.ReintentarEscaneo)
+                    {
+                        PrepararParaNuevoEscaneo(); // Método que limpia y habilita nuevamente escaneo
+                    }
+                }
+            }
+        }
+
 
 
         // Evento para capturar el código escaneado

@@ -11,7 +11,7 @@ namespace Eterea_Parfums_Desktop.Controladores
     {
         public static int? ObtenerUnicaCajaDisponibleEnSucursal(int sucursalId)
         {
-           
+
 
             using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
             {
@@ -50,7 +50,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         public static bool CajaDisponibleEnSucursal(int numeroCaja, int sucursalId)
         {
-            
+
 
             using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
             {
@@ -172,4 +172,6 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
     }
+
 }
+

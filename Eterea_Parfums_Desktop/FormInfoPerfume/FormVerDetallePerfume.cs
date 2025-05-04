@@ -3,6 +3,7 @@ using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 namespace Eterea_Parfums_Desktop
 {
@@ -85,37 +86,57 @@ namespace Eterea_Parfums_Desktop
 
         private void cargarDataGridViewNotasDePerfume()
         {
-            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
             dataGridViewTipoNota.RowHeadersVisible = false;
+            dataGridViewTipoNota.Rows.Clear();
 
-            //CARGAR DATAGRIDVIEW DE NOTAS DE PERFUME
+
             List<NotasDelPerfume> notas_del_perfume = NotasDelPerfumeControlador.getByIDPerfume(perfume.id);
             List<NotaConTipoDeNota> notas_con_tipo_de_nota = new List<NotaConTipoDeNota>();
 
-            Nota nota = null;
-            TipoDeNota tipo_de_nota = null;
-
             if (notas_del_perfume != null)
             {
-                //dataGridViewNotasDelPerfume.DataSource = notas;
                 foreach (NotasDelPerfume nota_del_perfume in notas_del_perfume)
                 {
-                    notas_con_tipo_de_nota.Add(NotaConTipoDeNotaControlador.getByID(nota_del_perfume.notaConTipoDeNota.id));
+                    var notaConTipo = NotaConTipoDeNotaControlador.getByID(nota_del_perfume.notaConTipoDeNota.id);
+                    if (notaConTipo != null)
+                        notas_con_tipo_de_nota.Add(notaConTipo);
                 }
             }
 
-            if (notas_con_tipo_de_nota != null)
+            if (notas_con_tipo_de_nota.Any())
             {
-                dataGridViewTipoNota.Rows.Clear();
-                foreach (NotaConTipoDeNota nota_con_tipo_de_nota_ in notas_con_tipo_de_nota)
+                // Ordenar por el ID del tipo de nota (1: salida, 2: corazón, 3: fondo)
+                var notasOrdenadas = notas_con_tipo_de_nota
+                    .OrderBy(n => n.tipoDeNota.id)
+                    .ToList();
+
+                foreach (var notaConTipo in notasOrdenadas)
                 {
-                    nota = NotaControlador.getById(nota_con_tipo_de_nota_.nota.id);
-                    tipo_de_nota = TipoDeNotaControlador.getById(nota_con_tipo_de_nota_.tipoDeNota.id);
+                    Nota nota = NotaControlador.getById(notaConTipo.nota.id);
+                    TipoDeNota tipo = TipoDeNotaControlador.getById(notaConTipo.tipoDeNota.id);
 
                     int rowIndex = dataGridViewTipoNota.Rows.Add();
-                    dataGridViewTipoNota.Rows[rowIndex].Cells[0].Value = nota_con_tipo_de_nota_.id;
-                    dataGridViewTipoNota.Rows[rowIndex].Cells[1].Value = tipo_de_nota.nombre_tipo_de_nota;
+                    dataGridViewTipoNota.Rows[rowIndex].Cells[0].Value = notaConTipo.id;
+                    dataGridViewTipoNota.Rows[rowIndex].Cells[1].Value = tipo.nombre_tipo_de_nota;
                     dataGridViewTipoNota.Rows[rowIndex].Cells[2].Value = nota.nombre;
+
+                    // 🎨 Asignar color de texto según el tipo de nota
+                    switch (tipo.nombre_tipo_de_nota.ToLower().Trim())
+                    {
+                        case "nota de salida":
+                            dataGridViewTipoNota.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Green;
+                            break;
+                        case "nota de corazón":
+                            dataGridViewTipoNota.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Red;
+                            break;
+                        case "nota de fondo":
+                            dataGridViewTipoNota.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.MediumPurple;
+                            break;
+                        default:
+                            dataGridViewTipoNota.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                            break;
+                    }
+                    dataGridViewTipoNota.ClearSelection();
                 }
             }
         }
@@ -432,6 +453,6 @@ namespace Eterea_Parfums_Desktop
             this.Close();
         }
 
-      
+     
     }
 }

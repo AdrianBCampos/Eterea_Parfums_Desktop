@@ -230,24 +230,25 @@ namespace Eterea_Parfums_Desktop
 
             if (string.IsNullOrWhiteSpace(txt_dni.Text))
             {
-                MessageBox.Show("Ingrese un número de DNI antes de buscar un cliente.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ingrese un número de DNI o CUIT antes de hacer clic en buscar un cliente.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             // Validar la longitud del DNI
-            if (txt_dni.Text.Length != 8)
+            if (txt_dni.Text.Length != 8 && txt_dni.Text.Length != 11)
             {
-                MessageBox.Show("El número ingresado debe ser de 8 o 11 dígitos.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El número ingresado debe tener 8 u 11 dígitos.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (!txt_dni.Text.All(char.IsDigit))
             {
-                MessageBox.Show("El DNI solo puede contener números.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("El DNI o CUIT solo puede contener números, sin guiones.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
 
-            int dni = int.Parse(txt_dni.Text);
+            long dni = long.Parse(txt_dni.Text);
             Cliente cliente = ClienteControlador.obtenerPorDni(dni);
+
             if (cliente != null)
             {
                 clientefactura = cliente;
@@ -262,7 +263,7 @@ namespace Eterea_Parfums_Desktop
             }
             else
             {
-                int dniIngresado = int.Parse(txt_dni.Text);
+                long dniIngresado = long.Parse(txt_dni.Text);
                 // Si no se encuentra el cliente, abrir el formulario para agregar un nuevo cliente
                 FormCrearClienteFactura formCrearClienteFactura = new FormCrearClienteFactura(dni);
                 formCrearClienteFactura.ShowDialog(); // Cambiado a ShowDialog para esperar que el formulario se cierre
@@ -1044,6 +1045,5 @@ namespace Eterea_Parfums_Desktop
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
-     
     }
 }

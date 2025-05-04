@@ -1,6 +1,7 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
 using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios;
+using Eterea_Parfums_Desktop.Helpers;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Drawing;
@@ -33,14 +34,16 @@ namespace Eterea_Parfums_Desktop
             // Configurar el ToolTip para el botón de cerrar sesión
             toolTip.SetToolTip(btn_cerrar_sesion, "Cerrar sesión");
 
-            Facturar_UC vendedorUC = new Facturar_UC();
-            addUserControl(vendedorUC);
+          
 
             pictureBox10.Visible = false;
 
             // Cambiar el color de PictureBox
             pictureBox1.BackColor = Color.FromArgb(232, 186, 197);
             btn_facturar.BackColor = Color.FromArgb(232, 186, 197);
+
+            this.Shown += FormInicioVendedor_Shown;
+
         }
 
         internal static bool HayOrdenesActivas()
@@ -60,10 +63,32 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_cerrar_sesion_Click(object sender, EventArgs e)
         {
-            Program.logueado = new Empleado();
-            FormLogin login = new FormLogin();
-            login.Show();
-            this.Close();
+            if (CajaManager.HayCajaAsignada())
+            {
+                MessageBox.Show(
+                    "Hay una caja abierta en uso.\nDebes cerrarla antes de cerrar sesión.",
+                    "Cierre de sesión bloqueado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            var confirm = MessageBox.Show("¿Estás seguro que deseas cerrar sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm == DialogResult.Yes)
+            {
+                // Limpiar datos de sesión
+                Program.logueado = null;
+                CajaManager.ResetCaja();
+
+                // Mostrar el login encima del FormStart
+                FormLogin formLogin = new FormLogin();
+                formLogin.StartPosition = FormStartPosition.CenterScreen;
+                formLogin.Show(); // Mostrar encima del FormStart
+
+                // Cerrar este form (FormInicioAdministrador)
+                this.Close();
+            }
         }
 
         private void btn_facturar_Click(object sender, EventArgs e)
@@ -78,6 +103,12 @@ namespace Eterea_Parfums_Desktop
             PrepararEnvios_UC prepararEnviosUC = new PrepararEnvios_UC();
             addUserControl(prepararEnviosUC);
             CambiarColorBoton2((Button)sender);
+        }
+
+        private void FormInicioVendedor_Shown(object sender, EventArgs e)
+        {
+            Facturar_UC vendedorUC = new Facturar_UC();
+            addUserControl(vendedorUC);
         }
 
         private void CambiarColorBoton1(Button botonSeleccionado)
