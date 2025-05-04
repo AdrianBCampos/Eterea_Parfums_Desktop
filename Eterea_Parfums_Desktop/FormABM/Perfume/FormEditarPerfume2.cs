@@ -111,7 +111,7 @@ namespace Eterea_Parfums_Desktop
             if (filtro != null)
             {
                 // Filtrar las notas según el nombre
-                notas_filtradas = notas.Where(x => x.nombre.ToLower().Contains(filtro)).ToList();
+                notas_filtradas = notas.Where(x => x.nombre != null && x.nombre.ToLower().StartsWith(filtro)).ToList();
 
                 if (notas_filtradas.Count > 0)
                 {
@@ -121,7 +121,7 @@ namespace Eterea_Parfums_Desktop
                 {
                     MessageBox.Show("No se encontró ninguna nota con ese nombre");
                     lbl_buscar_nota.Text = "";
-                    txt_nota.Text = "";
+                    txt_nota.Clear();
                 }
             }
             else
@@ -238,7 +238,10 @@ namespace Eterea_Parfums_Desktop
                     lbl_error_seleccion_nota.Visible = false;
                     notas_con_tipo_de_nota.Add(notaConTipoDeNota);
                     notas_del_perfume.Add(notasDelPerfume);
-                    MessageBox.Show("Se ha guardado la nota y el tipo de nota del perfume correctamente");
+                    //uncheckear el checkedlistbox
+                    checkedListBoxNota.SetItemChecked(checkedListBoxNota.SelectedIndex, false);
+                    //Limpiar el textbox de la nota
+                    txt_nota.Clear();
                     cargarDataGridViewNotasDePerfume(notas_con_tipo_de_nota);
                 }
 
@@ -344,7 +347,7 @@ namespace Eterea_Parfums_Desktop
             formEditarProducto.Show();
         }
 
-       /* private void checkedListBoxNota_ItemCheck(object sender, ItemCheckEventArgs e)
+       private void checkedListBoxNota_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             this.BeginInvoke(new Action(() =>
             {
@@ -368,7 +371,7 @@ namespace Eterea_Parfums_Desktop
                     lbl_tipo_de_nota.Text = ultimoMarcado;
                 }
             }));
-        }*/
+        }
 
 
          

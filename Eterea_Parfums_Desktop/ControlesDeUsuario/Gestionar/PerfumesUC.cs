@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop.ControlesDeUsuario
@@ -45,6 +46,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             dataGridViewPerfumes.RowHeadersVisible = false;
 
             perfumes = PerfumeControlador.getAll();
+            List<Stock> stocks = StockControlador.getAll();
 
             dataGridViewPerfumes.Rows.Clear();
             foreach (Perfume perfume in perfumes)
@@ -61,6 +63,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     dataGridViewPerfumes.Rows[rowIndex].Cells[5].Value = (GeneroControlador.getById(perfume.genero.id)).genero;
                     dataGridViewPerfumes.Rows[rowIndex].Cells[6].Value = perfume.presentacion_ml.ToString();
                     dataGridViewPerfumes.Rows[rowIndex].Cells[7].Value = (PaisControlador.getById(perfume.pais.id)).nombre;
+
+ 
 
                     if (perfume.spray.ToString() == "1")
                     {
@@ -83,15 +87,13 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     dataGridViewPerfumes.Rows[rowIndex].Cells[10].Value = perfume.precio_en_pesos.ToString();
 
 
-                    if (perfume.activo.ToString() == "1")
-                    {
-                        dataGridViewPerfumes.Rows[rowIndex].Cells[11].Value = "Si";
-                    }
-                    else
-                    {
-                        dataGridViewPerfumes.Rows[rowIndex].Cells[11].Value = "No";
-                    }
+                    // Agrupar por id de perfume y sumar las cantidades
+                    var stockTotal = stocks
+                        .Where(s => s.perfume.id == perfume.id)
+                        .Sum(p => p.cantidad);
+                   
 
+                    dataGridViewPerfumes.Rows[rowIndex].Cells[11].Value = stockTotal.ToString();
 
                     dataGridViewPerfumes.Rows[rowIndex].Cells[12].Value = "Editar";
                     dataGridViewPerfumes.Rows[rowIndex].Cells[13].Value = "Eliminar";

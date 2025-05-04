@@ -39,6 +39,38 @@ namespace Eterea_Parfums_Desktop
             CargarOpciones(combo_recargable);
             CargarOpciones(combo_activo);
             cargarDatos(perfume);
+
+            //Diseño del combo box
+            combo_activo.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_activo.DrawItem += comboBoxdiseño_DrawItem;
+            combo_activo.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_marca.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_marca.DrawItem += comboBoxdiseño_DrawItem;
+            combo_marca.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_genero.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_genero.DrawItem += comboBoxdiseño_DrawItem;
+            combo_genero.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_tipo_de_perfume.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_tipo_de_perfume.DrawItem += comboBoxdiseño_DrawItem;
+            combo_tipo_de_perfume.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_spray.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_spray.DrawItem += comboBoxdiseño_DrawItem;
+            combo_spray.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_recargable.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_recargable.DrawItem += comboBoxdiseño_DrawItem;
+            combo_recargable.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_pais.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_pais.DrawItem += comboBoxdiseño_DrawItem;
+            combo_pais.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            //Limito la cantidad de digitos que se pueden ingresar en el txt_codigo
+            txt_codigo.MaxLength = 13;
         }
 
 
@@ -602,7 +634,7 @@ namespace Eterea_Parfums_Desktop
             }
 
             int recargable = 0;
-            if (combo_spray.SelectedItem.ToString() == "Si")
+            if (combo_recargable.SelectedItem.ToString() == "Si")
             {
                 recargable = 1;
             }
@@ -634,7 +666,48 @@ namespace Eterea_Parfums_Desktop
            
         }
 
-      
+
+        //Diseño del combo box
+        private void comboBoxdiseño_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0)
+                return;
+
+            // Obtener el ComboBox y el texto del ítem actual
+            ComboBox combo = sender as ComboBox;
+            string text = combo.Items[e.Index].ToString();
+
+            // Definir colores personalizados
+            Color backgroundColor;
+            Color textColor;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                // Color cuando el ítem está seleccionado
+                backgroundColor = Color.FromArgb(195, 156, 164);
+                textColor = Color.White;
+            }
+            else
+            {
+                // Color cuando el ítem NO está seleccionado
+                backgroundColor = Color.FromArgb(250, 236, 239); // Color personalizado
+                textColor = Color.FromArgb(195, 156, 164);
+            }
+
+            // Pintar el fondo del ítem
+            using (SolidBrush brush = new SolidBrush(backgroundColor))
+            {
+                e.Graphics.FillRectangle(brush, e.Bounds);
+            }
+
+            // Dibujar el texto
+            TextRenderer.DrawText(e.Graphics, text, e.Font, e.Bounds, textColor, TextFormatFlags.Left);
+
+            // Evitar problemas visuales
+            e.DrawFocusRectangle();
+        }
+
+
     }
 
 }

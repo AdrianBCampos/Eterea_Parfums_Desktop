@@ -64,6 +64,9 @@ namespace Eterea_Parfums_Desktop
             combo_pais.DrawMode = DrawMode.OwnerDrawFixed;
             combo_pais.DrawItem += comboBoxdiseño_DrawItem;
             combo_pais.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            //Limito la cantidad de digitos que se pueden ingresar en el txt_codigo
+            txt_codigo.MaxLength = 13;
         }
 
         private void LblErrorSetVisibleFalse()
@@ -205,7 +208,7 @@ namespace Eterea_Parfums_Desktop
             }
 
             int recargable = 0;
-            if (combo_spray.SelectedItem.ToString() == "Si")
+            if (combo_recargable.SelectedItem.ToString() == "Si")
             {
                 recargable = 1;
             }
@@ -287,7 +290,6 @@ namespace Eterea_Parfums_Desktop
         {
             string errorCodigo = ValidarCodigoDeBarra();
             lbl_error_codigo.Visible = !string.IsNullOrEmpty(errorCodigo);
-
         }
 
         private bool ValidarPerfume()
