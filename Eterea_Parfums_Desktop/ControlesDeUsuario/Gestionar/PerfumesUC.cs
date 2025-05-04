@@ -51,7 +51,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             dataGridViewPerfumes.Rows.Clear();
             foreach (Perfume perfume in perfumes)
             {
-                if (perfume.activo == 1 && (string.IsNullOrEmpty(filtroPerfume) || perfume.codigo.Contains(filtroPerfume)))
+                if (string.IsNullOrEmpty(filtroPerfume) || perfume.codigo.Contains(filtroPerfume))
                 {
                     int rowIndex = dataGridViewPerfumes.Rows.Add();
 
