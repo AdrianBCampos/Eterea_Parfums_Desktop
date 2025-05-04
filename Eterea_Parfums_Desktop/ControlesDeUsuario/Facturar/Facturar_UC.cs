@@ -36,7 +36,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             txt_scan_factura.Leave += Txt_scan_factura_Leave;
             txt_scan_factura.TextChanged += Txt_scan_factura_TextChanged;
             Factura.CellContentClick += DataGridViewFactura_CellContentClick;
-
+            btn_pago.Visible = false;
 
             combo_forma_pago.SelectedIndexChanged -= combo_forma_pago_SelectedIndexChanged;
 
@@ -750,6 +750,16 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 int cuotas = Convert.ToInt32(combo_cuotas.SelectedItem);
                 float recargo = (cuotas - 1) * 5; // 5% de recargo por cada cuota extra
                 txt_rec.Text = recargo.ToString();
+                // Obtener el subtotal desde el textbox
+                float subtotal;
+                if (float.TryParse(txt_subtotal.Text, out subtotal))
+                {
+                    CalcularImporteRecargo(subtotal, recargo);
+                }
+                else
+                {
+                    MessageBox.Show("El subtotal no es un número válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -757,6 +767,23 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         {
             ActualizarDescuentosYCuotas();
             ActualizarTotales();
+            if (combo_forma_pago.SelectedItem.ToString() != "Efectivo")
+            {
+                btn_imprimir.Visible = false;
+                btn_pago.Visible = true;
+            }
+            else
+            {
+                btn_imprimir.Visible = true;
+                btn_pago.Visible = false;
+            }
+        }
+
+        private void btn_pago_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Pago realizado exitosamente", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            btn_imprimir.Visible = true;
+            btn_pago.Visible = false;
         }
 
         private void combo_cuotas_SelectedIndexChanged(object sender, EventArgs e)
@@ -1068,6 +1095,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 }
                 CrearFactura();
                 CrearDetalleFactura();
+               // txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
+
+                ReiniciarFormulario();
 
                 if (!string.IsNullOrWhiteSpace(txt_email.Text))
                 {
@@ -1079,6 +1109,24 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 // No hay caja asignada, mostrar FormNumeroDeCaja para elegirla
                 MessageBox.Show("Debes ingresar un número de caja.", "Número de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void ReiniciarFormulario()
+        {
+            txt_nombre_cliente.Text = "Consumidor Final";
+            txt_condicion_iva.Text = "Consumidor final";
+            txt_total.Text = "0,00";
+            txt_subtotal.Text = "0,00";
+            txt_monto_recargo.Text = "0,00";
+            txt_monto_descuento.Text = "0,00";
+            txt_iva.Text = "0,00";
+            txt_email.Text = "";
+            txt_dni.Text = "";
+            Factura.Rows.Clear();
+            combo_forma_pago.SelectedIndex = 0;
+            combo_descuento.SelectedIndex = 1;
+            combo_cuotas.SelectedIndex = 0;
+            txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
         }
 
         private void EnviarCorreo(string rutaArchivo, string correoDestino)
@@ -1174,8 +1222,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             e.DrawFocusRectangle();
         }
 
+
+
         //Diseño del boton del datagridview
-       
+
 
     }
 }
