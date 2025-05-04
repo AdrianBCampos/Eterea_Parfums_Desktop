@@ -39,6 +39,38 @@ namespace Eterea_Parfums_Desktop
             CargarOpciones(combo_recargable);
             CargarOpciones(combo_activo);
             cargarDatos(perfume);
+
+            //Diseño del combo box
+            combo_activo.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_activo.DrawItem += comboBoxdiseño_DrawItem;
+            combo_activo.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_marca.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_marca.DrawItem += comboBoxdiseño_DrawItem;
+            combo_marca.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_genero.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_genero.DrawItem += comboBoxdiseño_DrawItem;
+            combo_genero.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_tipo_de_perfume.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_tipo_de_perfume.DrawItem += comboBoxdiseño_DrawItem;
+            combo_tipo_de_perfume.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_spray.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_spray.DrawItem += comboBoxdiseño_DrawItem;
+            combo_spray.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_recargable.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_recargable.DrawItem += comboBoxdiseño_DrawItem;
+            combo_recargable.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_pais.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_pais.DrawItem += comboBoxdiseño_DrawItem;
+            combo_pais.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            //Limito la cantidad de digitos que se pueden ingresar en el txt_codigo
+            txt_codigo.MaxLength = 13;
         }
 
 
@@ -241,13 +273,40 @@ namespace Eterea_Parfums_Desktop
         }
 
 
-        private bool EsCodigoBarraPerfumeValido(string codigo)
+
+        private string ValidarCodigoDeBarra()
         {
-            if (string.IsNullOrEmpty(codigo) || codigo.Length != 13 || !codigo.All(char.IsDigit) || PerfumeControlador.getByCodigo(codigo) != null)
+            if (string.IsNullOrEmpty(txt_codigo.Text))
             {
-                return false;
+                lbl_error_codigo.Text = "El código no puede estar vacío.";
+                lbl_error_codigo.Show();
+                return "El código no puede estar vacío.";
             }
-            return ValidarEAN13(codigo);
+
+            if (txt_codigo.Text.Length != 13 || !txt_codigo.Text.All(char.IsDigit))
+            {
+                lbl_error_codigo.Text = "El código no es válido. Debe tener 13 dígitos numéricos.";
+                lbl_error_codigo.Show();
+                return "El código no es válido. Debe tener 13 dígitos numéricos.";
+            }
+
+            var perfumeExistente = PerfumeControlador.getByCodigo(txt_codigo.Text);
+            if (perfumeExistente != null && perfumeExistente.codigo != perfume.codigo)
+            {
+                lbl_error_codigo.Text = "El código ya está registrado.";
+                lbl_error_codigo.Show();
+                return "El código ya está registrado.";
+            }
+
+            if (!ValidarEAN13(txt_codigo.Text))
+            {
+                lbl_error_codigo.Text = "El código no es válido. No cumple con EAN-13.";
+                lbl_error_codigo.Show();
+                return "El código no es válido. No cumple con EAN-13.";
+            }
+
+            lbl_error_codigo.Visible = false;
+            return string.Empty; // No hay error
         }
 
         private bool ValidarEAN13(string codigo)
@@ -264,16 +323,24 @@ namespace Eterea_Parfums_Desktop
             return digitoControlEsperado == digitoControlReal;
         }
 
+        private void txt_codigo_TextChanged(object sender, EventArgs e)
+        {
+            string errorCodigo = ValidarCodigoDeBarra();
+            lbl_error_codigo.Visible = !string.IsNullOrEmpty(errorCodigo);
+        }
+
         private bool ValidarPerfume()
         {
 
             string errorMsg = "";
-
-            if (!EsCodigoBarraPerfumeValido(txt_codigo.Text))
+            string errorCodigo = ValidarCodigoDeBarra();
+            if (!string.IsNullOrEmpty(errorCodigo))
             {
-                errorMsg += "El código no es válido. Debe ser un código EAN-13 correcto.\n";
-                lbl_error_codigo.Text = "El código no es válido. Debe tener 13 dígitos.";
-                lbl_error_codigo.Show();
+                errorMsg += errorCodigo + Environment.NewLine;
+            }
+            else
+            {
+                lbl_error_codigo.Visible = false;
             }
 
             if (combo_marca.SelectedItem == null || string.IsNullOrEmpty(combo_marca.Text))
@@ -490,35 +557,8 @@ namespace Eterea_Parfums_Desktop
             }
 
             return string.IsNullOrEmpty(errorMsg);
-
-
         }
 
-        private bool EsCodigoBarraCODE128Valido(string codigo)
-        {
-            // Validar que no esté vacío
-            if (string.IsNullOrEmpty(codigo))
-            {
-                return false;
-            }
-
-            // Validar longitud mínima (CODE128 puede variar según el contenido)
-            if (codigo.Length < 1 || codigo.Length > 128) // Longitud típica entre 1 y 128
-            {
-                return false;
-            }
-
-            // Validar que solo contenga caracteres permitidos (ASCII 0-127)
-            foreach (char c in codigo)
-            {
-                if (c < 32 || c > 126) // Incluye caracteres ASCII imprimibles
-                {
-                    return false;
-                }
-            }
-
-            return true;
-        }
 
         internal void eliminarImgExistenteYGuardarNueva()
         {
@@ -594,7 +634,7 @@ namespace Eterea_Parfums_Desktop
             }
 
             int recargable = 0;
-            if (combo_spray.SelectedItem.ToString() == "Si")
+            if (combo_recargable.SelectedItem.ToString() == "Si")
             {
                 recargable = 1;
             }
@@ -626,7 +666,48 @@ namespace Eterea_Parfums_Desktop
            
         }
 
-       
+
+        //Diseño del combo box
+        private void comboBoxdiseño_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0)
+                return;
+
+            // Obtener el ComboBox y el texto del ítem actual
+            ComboBox combo = sender as ComboBox;
+            string text = combo.Items[e.Index].ToString();
+
+            // Definir colores personalizados
+            Color backgroundColor;
+            Color textColor;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                // Color cuando el ítem está seleccionado
+                backgroundColor = Color.FromArgb(195, 156, 164);
+                textColor = Color.White;
+            }
+            else
+            {
+                // Color cuando el ítem NO está seleccionado
+                backgroundColor = Color.FromArgb(250, 236, 239); // Color personalizado
+                textColor = Color.FromArgb(195, 156, 164);
+            }
+
+            // Pintar el fondo del ítem
+            using (SolidBrush brush = new SolidBrush(backgroundColor))
+            {
+                e.Graphics.FillRectangle(brush, e.Bounds);
+            }
+
+            // Dibujar el texto
+            TextRenderer.DrawText(e.Graphics, text, e.Font, e.Bounds, textColor, TextFormatFlags.Left);
+
+            // Evitar problemas visuales
+            e.DrawFocusRectangle();
+        }
+
+
     }
 
 }
