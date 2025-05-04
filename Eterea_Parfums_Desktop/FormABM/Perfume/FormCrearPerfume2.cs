@@ -44,7 +44,6 @@ namespace Eterea_Parfums_Desktop
             cargarDataGridViewNotasDePerfume();
             lbl_error_seleccion_aroma.Visible = false;
             lbl_error_seleccion_nota.Visible = false;
-            this.formProducto = formProducto;
 
             this.Load += new System.EventHandler(this.FormCrearPerfume2_Load);
             checkedListBoxAroma.ItemCheck += checkedListBoxAroma_ItemCheck;
@@ -108,16 +107,16 @@ namespace Eterea_Parfums_Desktop
                 {
                     MessageBox.Show("No se encontró ninguna nota con ese nombre");
                     lbl_buscar_nota.Text = "";
+                    lbl_nota.Text = "Nota";
                     txt_nota.Clear();
                 }
             }
             else
             {
-                MessageBox.Show("No se encontró ninguna nota con ese nombre");
                 lbl_buscar_nota.Text = "";
-                txt_nota.Clear();
             }
         }
+
 
         private void cargarDataGridViewNotasDePerfume()
         {
@@ -126,11 +125,20 @@ namespace Eterea_Parfums_Desktop
 
             //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
             dataGridViewNotasDelPerfume.RowHeadersVisible = false;
+            dataGridViewNotasDelPerfume.Rows.Clear();
+            dataGridViewNotasDelPerfume.DefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
 
             if (notas_con_tipo_de_nota != null)
             {
-                dataGridViewNotasDelPerfume.Rows.Clear();
-                foreach (NotaConTipoDeNota nota_con_tipo_de_nota_ in notas_con_tipo_de_nota)
+                //dataGridViewNotasDelPerfume.Rows.Clear();
+
+                // Ordenar por ID del tipo de nota (1: salida, 2: corazón, 3: fondo)
+                var notasOrdenadas = notas_con_tipo_de_nota
+                    .OrderBy(n => n.tipoDeNota.id)
+                    .ToList();
+
+
+                foreach (NotaConTipoDeNota nota_con_tipo_de_nota_ in notasOrdenadas)
                 {
                     nota = NotaControlador.getById(nota_con_tipo_de_nota_.nota.id);
                     tipo_de_nota = TipoDeNotaControlador.getById(nota_con_tipo_de_nota_.tipoDeNota.id);
@@ -141,8 +149,32 @@ namespace Eterea_Parfums_Desktop
                     dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[2].Value = nota_con_tipo_de_nota_.nota.nombre;
                     dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[3].Value = "Eliminar";
 
+                    // 🎨 Color de texto según el tipo de nota
+                    switch (tipo_de_nota.nombre_tipo_de_nota.ToLower().Trim())
+                    {
+                        case "nota de salida":
+                            dataGridViewNotasDelPerfume.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Green;
+                            break;
+                        case "nota de corazón":
+                            dataGridViewNotasDelPerfume.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Red;
+                            break;
+                        case "nota de fondo":
+                            dataGridViewNotasDelPerfume.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.MediumPurple;
+                            break;
+                        default:
+                            dataGridViewNotasDelPerfume.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                            break;
+
+                    }
+
                 }
 
+
+                // Quitar selección automática
+                dataGridViewNotasDelPerfume.ClearSelection();
+
+                // Asegurar que no se duplique el evento
+                dataGridViewNotasDelPerfume.CellPainting -= dataGridViewNotasDelPerfume_CellPainting;
                 dataGridViewNotasDelPerfume.CellPainting += dataGridViewNotasDelPerfume_CellPainting;
             }
         }
@@ -197,6 +229,7 @@ namespace Eterea_Parfums_Desktop
                     checkedListBoxNota.SetItemChecked(checkedListBoxNota.SelectedIndex, false);
                     //Limpiar el textbox de la nota
                     txt_nota.Clear();
+                    lbl_nota.Text = "Nota";
                     cargarDataGridViewNotasDePerfume();
                 }
 
@@ -300,7 +333,7 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
-        //Diseño del boton del datagridview
+        //Diseño del boton del datagridview*************
         private void dataGridViewNotasDelPerfume_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.ColumnIndex >= 0 && e.RowIndex >= 0 && dataGridViewNotasDelPerfume.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
@@ -328,7 +361,7 @@ namespace Eterea_Parfums_Desktop
         }
 
 
-
+        //verificar ********** rayooo
 
         private void checkedListBoxAroma_ItemCheck(object sender, ItemCheckEventArgs e)
         {
@@ -351,7 +384,7 @@ namespace Eterea_Parfums_Desktop
             });
         }
 
-
+        //Verificar rayooo
         private void checkedListBoxAroma_DrawItem(object sender, DrawItemEventArgs e)
         {
             // Evita el fondo por defecto
