@@ -109,20 +109,6 @@ namespace Eterea_Parfums_Desktop
 
         }
 
-        private string NormalizarTexto(string texto)
-        {
-            if (string.IsNullOrEmpty(texto)) return "";
-
-            var normalizado = texto.Normalize(System.Text.NormalizationForm.FormD);
-            var sinTildes = new string(normalizado
-                .Where(c => System.Globalization.CharUnicodeInfo.GetUnicodeCategory(c) != System.Globalization.UnicodeCategory.NonSpacingMark)
-                .ToArray());
-
-            return sinTildes.ToLowerInvariant();
-        }
-
-
-
         private void filtrar()
         {
             List<Nota> notas = NotaControlador.getAll();
@@ -131,7 +117,6 @@ namespace Eterea_Parfums_Desktop
             {
                 // Filtrar las notas según el nombre
                 notas_filtradas = notas.Where(x => x.nombre != null && x.nombre.ToLower().StartsWith(filtro)).ToList();
-
 
                 if (notas_filtradas.Count > 0)
                 {
@@ -148,22 +133,15 @@ namespace Eterea_Parfums_Desktop
             else
             {
                 lbl_buscar_nota.Text = "";
-            
+
             }
         }
 
         private void cargarDataGridViewNotasDePerfume()
         {
-            // Ocultar encabezado de filas
-            dataGridViewNotasDelPerfume.RowHeadersVisible = false;
-
-            // Fuente y estilo uniforme
-            dataGridViewNotasDelPerfume.DefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Regular);
-
-            // Limpiar listas y el DataGridView
+            //CARGAR DATAGRIDVIEW DE NOTAS DE PERFUME
             notas_del_perfume = NotasDelPerfumeControlador.getByIDPerfume(perfume.id);
             notas_con_tipo_de_nota = new List<NotaConTipoDeNota>();
-            dataGridViewNotasDelPerfume.Rows.Clear();
 
             Nota nota = null;
             TipoDeNota tipo_de_nota = null;
@@ -175,15 +153,15 @@ namespace Eterea_Parfums_Desktop
 
             if (notas_del_perfume != null)
             {
+                //dataGridViewNotasDelPerfume.DataSource = notas;
                 foreach (NotasDelPerfume nota_del_perfume in notas_del_perfume)
                 {
-                    var notaConTipo = NotaConTipoDeNotaControlador.getByID(nota_del_perfume.notaConTipoDeNota.id);
-                    if (notaConTipo != null)
-                        notas_con_tipo_de_nota.Add(notaConTipo);
+                    notas_con_tipo_de_nota.Add(NotaConTipoDeNotaControlador.getByID(nota_del_perfume.notaConTipoDeNota.id));
+
                 }
             }
 
-            if (notas_con_tipo_de_nota.Any())
+            if (notas_con_tipo_de_nota != null)
             {
                 //dataGridViewNotasDelPerfume.Rows.Clear();
 
@@ -194,12 +172,12 @@ namespace Eterea_Parfums_Desktop
 
                 foreach (NotaConTipoDeNota nota_con_tipo_de_nota_ in notasOrdenadas)
                 {
-                    Nota nota = NotaControlador.getById(notaConTipo.nota.id);
-                    TipoDeNota tipo = TipoDeNotaControlador.getById(notaConTipo.tipoDeNota.id);
+                    nota = NotaControlador.getById(nota_con_tipo_de_nota_.nota.id);
+                    tipo_de_nota = TipoDeNotaControlador.getById(nota_con_tipo_de_nota_.tipoDeNota.id);
 
                     int rowIndex = dataGridViewNotasDelPerfume.Rows.Add();
-                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[0].Value = notaConTipo.id;
-                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[1].Value = tipo.nombre_tipo_de_nota;
+                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[0].Value = nota_con_tipo_de_nota_.id;
+                    dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[1].Value = tipo_de_nota.nombre_tipo_de_nota;
                     dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[2].Value = nota.nombre;
                     dataGridViewNotasDelPerfume.Rows[rowIndex].Cells[3].Value = "Eliminar";
 
@@ -227,17 +205,10 @@ namespace Eterea_Parfums_Desktop
 
                 // Asegurar que no se duplique el evento
                 dataGridViewNotasDelPerfume.CellPainting -= dataGridViewNotasDelPerfume_CellPainting;
-
-                // Quitar selección automática
-                dataGridViewNotasDelPerfume.ClearSelection();
-
-                // Agregar evento de pintura si usás estilo para el botón "Eliminar"
-                dataGridViewNotasDelPerfume.CellPainting -= dataGridViewNotasDelPerfume_CellPainting;
                 dataGridViewNotasDelPerfume.CellPainting += dataGridViewNotasDelPerfume_CellPainting;
-                
+
             }
         }
-
 
         private void cargarDataGridViewNotasDePerfume(List<NotaConTipoDeNota> notaConTipoDeNotas)
         {
@@ -297,7 +268,6 @@ namespace Eterea_Parfums_Desktop
                 dataGridViewNotasDelPerfume.CellPainting += dataGridViewNotasDelPerfume_CellPainting;
             }
         }
-
         private void btn_agregar_Click(object sender, EventArgs e)
         {
             string tipoDeNotaMarcado = null;
@@ -331,7 +301,7 @@ namespace Eterea_Parfums_Desktop
                 if (notas_con_tipo_de_nota.Any(x => x.id == notaConTipoDeNota.id))
                 {
                     Console.WriteLine("Nota con tipo de nota id: " + notaConTipoDeNota.id);
-                    lbl_error_seleccion_nota.Text = "Esta combinacion ya fue agregada";
+                    lbl_error_seleccion_nota.Text = "Esta convinacion ya fue agregada";
                     lbl_error_seleccion_nota.Visible = true;
 
                 }
@@ -359,7 +329,7 @@ namespace Eterea_Parfums_Desktop
 
         }
 
-      
+
         private void btn_finalizar_Click(object sender, EventArgs e)
         {
             if (checkedListBoxAroma.CheckedItems.Count == 0)
@@ -432,7 +402,7 @@ namespace Eterea_Parfums_Desktop
         }
 
 
-       private void checkedListBoxNota_ItemCheck(object sender, ItemCheckEventArgs e)
+        private void checkedListBoxNota_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             this.BeginInvoke(new Action(() =>
             {
@@ -553,7 +523,7 @@ namespace Eterea_Parfums_Desktop
             checkedListBoxAroma.DrawMode = DrawMode.OwnerDrawFixed;
             checkedListBoxAroma.DrawItem += checkedListBoxAroma_DrawItem;
         }
-        
+
 
 
 

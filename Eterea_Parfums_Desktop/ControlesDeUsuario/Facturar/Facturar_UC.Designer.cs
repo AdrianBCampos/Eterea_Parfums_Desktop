@@ -253,7 +253,7 @@
             this.btn_enviar.TabIndex = 389;
             this.btn_enviar.Text = "Enviar por mail";
             this.btn_enviar.UseVisualStyleBackColor = false;
-            this.btn_enviar.Click += new System.EventHandler(this.btn_enviar_Click);
+            //this.btn_enviar.Click += new System.EventHandler(this.btn_enviar_Click);
             // 
             // lbl_email
             // 
@@ -846,14 +846,14 @@
             this.button2.Size = new System.Drawing.Size(620, 65);
             this.button2.TabIndex = 409;
             this.button2.TabStop = false;
-            this.pictureBox15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
-            this.pictureBox15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox15.Location = new System.Drawing.Point(886, 115);
-            this.pictureBox15.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(620, 65);
-            this.pictureBox15.TabIndex = 409;
-            this.pictureBox15.TabStop = false;
+            //this.pictureBox15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
+            //this.pictureBox15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            //this.pictureBox15.Location = new System.Drawing.Point(886, 115);
+            //this.pictureBox15.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            //this.pictureBox15.Name = "pictureBox15";
+            //this.pictureBox15.Size = new System.Drawing.Size(620, 65);
+            //this.pictureBox15.TabIndex = 409;
+            //this.pictureBox15.TabStop = false;
             // 
             // pictureBox16
             // 
