@@ -12,7 +12,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Pais> getAll()
         {
             List<Pais> list = new List<Pais>();
-            string query = "select * from dbo.pais;";
+            string query = "SELECT * FROM dbo.pais ORDER BY nombre ASC;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
