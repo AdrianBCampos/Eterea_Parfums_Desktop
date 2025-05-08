@@ -987,6 +987,7 @@
             this.Controls.Add(this.pictureBox9);
             this.Controls.Add(this.pictureBox12);
             this.Controls.Add(this.pictureBox13);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "FormPromo";
