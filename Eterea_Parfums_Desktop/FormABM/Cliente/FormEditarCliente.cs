@@ -45,28 +45,32 @@ namespace Eterea_Parfums_Desktop
             combo_pais.Items.Clear();
             foreach (Pais pais in paises)
             {
-                combo_pais.Items.Add(pais.nombre.ToString());
+                if (pais.id != 1)
+                    combo_pais.Items.Add(pais.nombre.ToString());
             }
 
             provincias = ProvinciaControlador.getAll();
             combo_provincia.Items.Clear();
             foreach (Provincia provincia in provincias)
             {
-                combo_provincia.Items.Add(provincia.nombre.ToString());
+                if (provincia.id != 1)
+                    combo_provincia.Items.Add(provincia.nombre.ToString());
             }
 
             localidades = LocalidadControlador.getAll();
             combo_localidad.Items.Clear();
             foreach (Localidad localidad in localidades)
             {
-                combo_localidad.Items.Add(localidad.nombre.ToString());
+                if (localidad.id != 1)
+                    combo_localidad.Items.Add(localidad.nombre.ToString());
             }
 
             calles = CalleControlador.getAll();
             combo_calle.Items.Clear();
             foreach (Calle calle in calles)
             {
-                combo_calle.Items.Add(calle.nombre.ToString());
+                if (calle.id != 1)
+                    combo_calle.Items.Add(calle.nombre.ToString());
             }
 
             combo_activo.Items.Clear();
