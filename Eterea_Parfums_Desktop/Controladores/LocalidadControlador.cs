@@ -13,7 +13,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Localidad> getAll()
         {
             List<Localidad> list = new List<Localidad>();
-            string query = "select * from dbo.localidad;";
+            string query = "select * from dbo.localidad ORDER BY nombre ASC;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 

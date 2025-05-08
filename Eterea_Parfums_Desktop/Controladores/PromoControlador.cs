@@ -113,7 +113,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Promocion> obtenerTodos()
         {
             List<Promocion> list = new List<Promocion>();
-            string query = "select * from dbo.promocion;";
+            string query = "select * from dbo.promocion ORDER BY nombre ASC;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 

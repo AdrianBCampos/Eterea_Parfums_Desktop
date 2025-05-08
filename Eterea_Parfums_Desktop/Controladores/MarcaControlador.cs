@@ -12,7 +12,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Marca> getAll()
         {
             List<Marca> list = new List<Marca>();
-            string query = "select * from dbo.marca;";
+            string query = "select * from dbo.marca ORDER BY nombre ASC;";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 

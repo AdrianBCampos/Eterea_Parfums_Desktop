@@ -10,7 +10,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<TipoDeAroma> getAll()
         {
             List<TipoDeAroma> tipo_de_aromas = new List<TipoDeAroma>();
-            string query = "SELECT * FROM dbo.tipo_de_aroma";
+            string query = "SELECT * FROM dbo.tipo_de_aroma ORDER BY nombre ASC";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
             try
