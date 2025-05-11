@@ -527,7 +527,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                             if (descuentoUnitario == 1) //Descuento del 10% cuando es impar mayor a 1
                             {
                                 // Obtener el descuento del perfume (en porcentaje)
-                                descuentoPorcentaje = promoController.obtenerPromocionIdPorPerfumeConDescuento10(perfumeId) ?? 0;
+                                descuentoPorcentaje = promoController.obtenerPromocionPorPerfumeConDescuento10(perfumeId) ?? 0;
 
 
                                 Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
@@ -554,7 +554,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                             if (descuentoUnitario == 2) //Descuento cuando no tiene descuento mayor a 20%
                             {
                                 // Obtener el descuento del perfume (en porcentaje)
-                                descuentoPorcentaje = promoController.obtenerPromocionIdPorPerfumeConDescuento10(perfumeId) ?? 0;
+                                descuentoPorcentaje = promoController.obtenerPromocionPorPerfumeConDescuento10(perfumeId) ?? 0;
 
 
                                 Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
