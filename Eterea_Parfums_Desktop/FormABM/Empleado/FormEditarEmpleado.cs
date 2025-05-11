@@ -23,7 +23,7 @@ namespace Eterea_Parfums_Desktop
         public List<Localidad> localidades;
         public List<Calle> calles;
         public List<Sucursal> sucursales;
-        public FormEditarEmpleado()
+       /* public FormEditarEmpleado()
         {
             InitializeComponent();
 
@@ -97,7 +97,7 @@ namespace Eterea_Parfums_Desktop
 
             //    situacion = "Edicion";
 
-        }
+        }*/
 
         // ------------------------------------------------------------------------------------------------------------------------
         //SOBRECARGAR EL CONSTRUCTOR PARA INICIAR EL FORM CON LA INFO CARGADA, PARA EDITAR
@@ -399,6 +399,16 @@ namespace Eterea_Parfums_Desktop
                 string error = "El DNI tiene que ser de 8 o 11 dígitos." + Environment.NewLine;
                 lbl_dniE.Text = error;
                 lbl_dniE.Show();
+            }
+            else
+            {
+                var empleadoId = EmpleadoControlador.BuscarIdPorDni(txt_dni.Text);
+                if (empleadoId != null)
+                {
+                    string error = "Ya existe un empleado con ese DNI." + Environment.NewLine;
+                    lbl_dniE.Text = error;
+                    lbl_dniE.Show();
+                }
             }
 
             if (!DateTime.TryParse(dateTime_nac.Text, out _))

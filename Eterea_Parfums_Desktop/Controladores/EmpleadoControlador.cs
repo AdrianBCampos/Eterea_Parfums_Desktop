@@ -542,76 +542,49 @@ namespace Eterea_Parfums_Desktop.Controladores
             return idSuc;
         }
 
-
-        /*public static int obtenerIdSucursal(int id_empleado)
+        public static int? BuscarIdPorDni(string dni)
         {
-            int idSuc = 0;
+            int? idEmpleado = null;
 
-            string query = "SELECT sucursal_id FROM dbo.empleado WHERE id = @id";
+            string query = "SELECT id FROM empleado WHERE dni = @dni";
 
-            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-
-            try
+            using (SqlCommand cmd = new SqlCommand(query, DB_Controller.connection))
             {
-                DB_Controller.connection.Open();
-                cmd.Parameters.AddWithValue("@id", id_empleado);
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
+                // Intentamos convertir el string a int
+                if (!int.TryParse(dni, out int dniNumerico))
                 {
-                    // Verificar si el valor no es nulo antes de intentar convertirlo
-                    if (!reader.IsDBNull(0))
-                    {
-                        idSuc = reader.GetInt32(0);
-                    }
-                    else
-                    {
-                        // Manejar el caso en el que el valor sea nulo (por ejemplo, asignar un valor predeterminado)
-                        idSuc = -1; // o cualquier valor que desees
-                    }
+                    throw new Exception("El DNI proporcionado no es numérico.");
                 }
-                DB_Controller.connection.Close();
-                return idSuc;
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Hay un error en la query: " + e.Message);
-            }
-        }*/
-        /*using (SqlConnection connection = new SqlConnection(DB_Controller.connectionString))
-        {
-            using (SqlCommand cmd = new SqlCommand(query, connection))
-            {
-                cmd.Parameters.AddWithValue("@id", id_empleado);
+
+                cmd.Parameters.AddWithValue("@dni", dniNumerico);
 
                 try
                 {
-                    connection.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
+                    DB_Controller.connection.Open();
 
-                    if (reader.Read())
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        // Verificar si el valor no es nulo antes de intentar convertirlo
-                        if (!reader.IsDBNull(0))
+                        if (reader.Read())
                         {
-                            idSuc = reader.GetInt32(0);
-                        }
-                        else
-                        {
-                            // Manejar el caso en el que el valor sea nulo (por ejemplo, asignar un valor predeterminado)
-                            idSuc = -1; // o cualquier valor que desees
+                            idEmpleado = reader.GetInt32(0);
                         }
                     }
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
-                    // Manejar la excepción (por ejemplo, log o lanzar una nueva excepción)
-                    throw new Exception("Error al ejecutar la consulta SQL: " + e.Message);
+                    throw new Exception("Error al buscar el empleado por DNI: " + ex.Message);
+                }
+                finally
+                {
+                    if (DB_Controller.connection.State == System.Data.ConnectionState.Open)
+                        DB_Controller.connection.Close();
                 }
             }
+
+            return idEmpleado; // null si no se encontró
         }
 
-        return idSuc;
-    }*/
+
+
     }
 }
