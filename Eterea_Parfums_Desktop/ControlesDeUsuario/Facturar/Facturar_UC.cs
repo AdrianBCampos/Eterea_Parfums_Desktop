@@ -934,20 +934,25 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                             return;
                         }
                         int? promocion_id = promoController.obtenerPromocionIdPorPerfume(perfume_id);
+                        int? promocion_id10 = promoController.obtenerPromocionIdPorPerfumeConDescuento10(perfume_id);
 
-                        if (promocion_id == null)
+                        if (cantidad > 1 && promocion_id != null)
                         {
-                            // Maneja el caso donde no se encontró la promoción
-                            Console.WriteLine("No se encontró promoción para este perfume.");
+                            MessageBox.Show($"PromocionID: {promocion_id}");
+                        }
+                        else if (cantidad == 1 && promocion_id10 != null)
+                        {
+                            promocion_id = promoController.obtenerPromocionIdPorPerfumeConDescuento10(perfume_id);
+                            MessageBox.Show($"PromocionID: {promocion_id}");
                         }
                         else
                         {
-                            // Usar el valor de promocion_id (sabemos que no es null)
-                            Console.WriteLine("Promoción encontrada: " + promocion_id.Value);
+                            promocion_id = 1;
+                            MessageBox.Show($"PromocionID: {promocion_id}");
                         }
 
 
-                        MessageBox.Show($"Enviando datos: NumFactura: {numFactura}, PerfumeID: {perfume_id}, Cantidad: {cantidad}, PrecioUnitario: {precio_unitario}, PromocionID: {promocion_id}");
+                        MessageBox.Show($"Enviando datos2: NumFactura: {numFactura}, PerfumeID: {perfume_id}, Cantidad: {cantidad}, PrecioUnitario: {precio_unitario}, PromocionID: {promocion_id}");
 
                         bool exito = DetalleFacturaControlador.crearDetalleFactura(numFactura, perfume_id, cantidad, precio_unitario, promocion_id);
 
@@ -956,6 +961,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                             MessageBox.Show($"Error al agregar el perfume ID {perfume_id} al detalle de la factura.");
                             return;
                         }
+
+                          int sucursalId = (EmpleadoControlador.obtenerPorId(Program.logueado.id)).sucursal_id.id;
+                          StockControlador.updateStock(perfume_id, sucursalId , - cantidad);
+                     MessageBox.Show($"Actualizando stock de perfume {perfume_id} en sucursal {sucursalId} con cantidad {-cantidad}"); 
+
                     }
                 }
 
