@@ -852,6 +852,10 @@ namespace Eterea_Parfums_Desktop
                             MessageBox.Show($"Error al agregar el perfume ID {perfume_id} al detalle de la factura.");
                             return;
                         }
+
+                             int sucursalId = (EmpleadoControlador.obtenerPorId(Program.logueado.id)).sucursal_id.id;
+                             StockControlador.updateStock(perfume_id, sucursalId , - cantidad);
+                        
                     }
                 }
 
