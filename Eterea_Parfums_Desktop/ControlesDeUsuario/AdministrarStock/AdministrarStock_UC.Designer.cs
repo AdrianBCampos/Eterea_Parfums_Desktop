@@ -59,6 +59,7 @@
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lbl_error_codigo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -190,7 +191,7 @@
             this.pictureBox5.Location = new System.Drawing.Point(15, 199);
             this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(1229, 76);
+            this.pictureBox5.Size = new System.Drawing.Size(1229, 91);
             this.pictureBox5.TabIndex = 414;
             this.pictureBox5.TabStop = false;
             // 
@@ -200,7 +201,7 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label2.Location = new System.Drawing.Point(130, 220);
+            this.label2.Location = new System.Drawing.Point(130, 225);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(341, 38);
@@ -222,10 +223,10 @@
             // 
             this.pictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox8.Location = new System.Drawing.Point(15, 282);
+            this.pictureBox8.Location = new System.Drawing.Point(15, 296);
             this.pictureBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(350, 401);
+            this.pictureBox8.Size = new System.Drawing.Size(350, 387);
             this.pictureBox8.TabIndex = 424;
             this.pictureBox8.TabStop = false;
             // 
@@ -233,10 +234,10 @@
             // 
             this.pictureBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox10.Location = new System.Drawing.Point(371, 282);
+            this.pictureBox10.Location = new System.Drawing.Point(371, 296);
             this.pictureBox10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(873, 401);
+            this.pictureBox10.Size = new System.Drawing.Size(873, 387);
             this.pictureBox10.TabIndex = 425;
             this.pictureBox10.TabStop = false;
             // 
@@ -246,7 +247,7 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label3.Location = new System.Drawing.Point(389, 307);
+            this.label3.Location = new System.Drawing.Point(389, 325);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(323, 38);
@@ -339,21 +340,22 @@
             this.txt_codigo_producto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_codigo_producto.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_codigo_producto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_codigo_producto.Location = new System.Drawing.Point(558, 220);
+            this.txt_codigo_producto.Location = new System.Drawing.Point(559, 223);
             this.txt_codigo_producto.Margin = new System.Windows.Forms.Padding(4);
             this.txt_codigo_producto.Name = "txt_codigo_producto";
             this.txt_codigo_producto.Size = new System.Drawing.Size(543, 34);
             this.txt_codigo_producto.TabIndex = 437;
             this.txt_codigo_producto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_codigo_producto.TextChanged += new System.EventHandler(this.txt_codigo_producto_TextChanged);
             this.txt_codigo_producto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_codigo_producto_KeyPress);
             // 
             // img_perfume
             // 
             this.img_perfume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.img_perfume.Location = new System.Drawing.Point(26, 294);
+            this.img_perfume.Location = new System.Drawing.Point(26, 307);
             this.img_perfume.Margin = new System.Windows.Forms.Padding(4);
             this.img_perfume.Name = "img_perfume";
-            this.img_perfume.Size = new System.Drawing.Size(328, 378);
+            this.img_perfume.Size = new System.Drawing.Size(328, 365);
             this.img_perfume.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.img_perfume.TabIndex = 438;
             this.img_perfume.TabStop = false;
@@ -461,11 +463,24 @@
             this.pictureBox2.TabIndex = 407;
             this.pictureBox2.TabStop = false;
             // 
+            // lbl_error_codigo
+            // 
+            this.lbl_error_codigo.AutoSize = true;
+            this.lbl_error_codigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.lbl_error_codigo.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_error_codigo.Location = new System.Drawing.Point(562, 262);
+            this.lbl_error_codigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_error_codigo.Name = "lbl_error_codigo";
+            this.lbl_error_codigo.Size = new System.Drawing.Size(36, 16);
+            this.lbl_error_codigo.TabIndex = 446;
+            this.lbl_error_codigo.Text = "Error";
+            // 
             // AdministrarStock_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
+            this.Controls.Add(this.lbl_error_codigo);
             this.Controls.Add(this.txt_cantidad_producto);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.pictureBox12);
@@ -549,5 +564,6 @@
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.PictureBox pictureBox12;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label lbl_error_codigo;
     }
 }

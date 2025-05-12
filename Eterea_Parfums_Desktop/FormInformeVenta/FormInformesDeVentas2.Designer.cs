@@ -61,9 +61,10 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(430, 182);
+            this.label1.Location = new System.Drawing.Point(573, 224);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(13, 18);
+            this.label1.Size = new System.Drawing.Size(16, 24);
             this.label1.TabIndex = 142;
             this.label1.Text = ":";
             // 
@@ -75,10 +76,11 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(714, 11);
+            this.button2.Location = new System.Drawing.Point(952, 14);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(34, 32);
+            this.button2.Size = new System.Drawing.Size(45, 39);
             this.button2.TabIndex = 126;
             this.button2.Text = "X";
             this.button2.UseVisualStyleBackColor = false;
@@ -90,10 +92,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(40, 61);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Location = new System.Drawing.Point(53, 75);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(722, 362);
+            this.pictureBox2.Size = new System.Drawing.Size(963, 446);
             this.pictureBox2.TabIndex = 125;
             this.pictureBox2.TabStop = false;
             // 
@@ -103,9 +105,10 @@
             this.lbl_informe_general.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_informe_general.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_informe_general.ForeColor = System.Drawing.Color.Black;
-            this.lbl_informe_general.Location = new System.Drawing.Point(325, 35);
+            this.lbl_informe_general.Location = new System.Drawing.Point(433, 43);
+            this.lbl_informe_general.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_informe_general.Name = "lbl_informe_general";
-            this.lbl_informe_general.Size = new System.Drawing.Size(143, 18);
+            this.lbl_informe_general.Size = new System.Drawing.Size(177, 24);
             this.lbl_informe_general.TabIndex = 121;
             this.lbl_informe_general.Text = "Informe Inventario";
             // 
@@ -115,9 +118,10 @@
             this.btn_exportar_pdf.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_exportar_pdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_exportar_pdf.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_exportar_pdf.Location = new System.Drawing.Point(306, 457);
+            this.btn_exportar_pdf.Location = new System.Drawing.Point(408, 562);
+            this.btn_exportar_pdf.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_exportar_pdf.Name = "btn_exportar_pdf";
-            this.btn_exportar_pdf.Size = new System.Drawing.Size(137, 37);
+            this.btn_exportar_pdf.Size = new System.Drawing.Size(183, 46);
             this.btn_exportar_pdf.TabIndex = 122;
             this.btn_exportar_pdf.Text = "Exportar PDF";
             this.btn_exportar_pdf.UseVisualStyleBackColor = false;
@@ -170,7 +174,8 @@
             this.dataGridViewPerfumes.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewPerfumes.EnableHeadersVisualStyles = false;
             this.dataGridViewPerfumes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.dataGridViewPerfumes.Location = new System.Drawing.Point(42, 64);
+            this.dataGridViewPerfumes.Location = new System.Drawing.Point(56, 79);
+            this.dataGridViewPerfumes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridViewPerfumes.Name = "dataGridViewPerfumes";
             this.dataGridViewPerfumes.ReadOnly = true;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -190,12 +195,13 @@
             this.dataGridViewPerfumes.RowTemplate.Height = 40;
             this.dataGridViewPerfumes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewPerfumes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPerfumes.Size = new System.Drawing.Size(718, 358);
+            this.dataGridViewPerfumes.Size = new System.Drawing.Size(957, 441);
             this.dataGridViewPerfumes.TabIndex = 292;
             // 
             // Imagen
             // 
             this.Imagen.HeaderText = "Imagen";
+            this.Imagen.MinimumWidth = 6;
             this.Imagen.Name = "Imagen";
             this.Imagen.ReadOnly = true;
             this.Imagen.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -265,6 +271,7 @@
             // Sucursal
             // 
             this.Sucursal.HeaderText = "Sucursal";
+            this.Sucursal.MinimumWidth = 6;
             this.Sucursal.Name = "Sucursal";
             this.Sucursal.ReadOnly = true;
             // 
@@ -277,10 +284,10 @@
             // 
             // FormInformesDeVentas2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(778, 506);
+            this.ClientSize = new System.Drawing.Size(1037, 623);
             this.Controls.Add(this.dataGridViewPerfumes);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
@@ -288,6 +295,7 @@
             this.Controls.Add(this.lbl_informe_general);
             this.Controls.Add(this.btn_exportar_pdf);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormInformesDeVentas2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InformesDeVentas3";

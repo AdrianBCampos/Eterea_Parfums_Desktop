@@ -29,6 +29,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
 
             // Imagen inicial por defecto
             CargarImagenPorDefecto();
+
+            lbl_error_codigo.Visible = false;
         }
 
         
@@ -51,6 +53,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
             // Si el perfume no existe, perfume.nombre es null
             return perfume.nombre != null;
         }
+
+       
 
         private bool Validar_Datos_Stock()
         {
@@ -75,6 +79,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
             if (!string.IsNullOrEmpty(mensaje))
             {
                 MessageBox.Show(mensaje);
+                lbl_error_codigo.Text = mensaje;
+                lbl_error_codigo.Visible = true;
                 // Limpiar los campos
                 SetearDatos();
             }
@@ -112,7 +118,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
                 else
                 {
                     txt_datos_producto.Text = perfume.nombre; // Muestra el nombre del perfume si existe
-                    txt_tamaño_producto.Text = perfume.presentacion_ml.ToString();
+                    txt_tamaño_producto.Text = perfume.presentacion_ml.ToString() + " ML";
 
                     // Agrupar por id de perfume y sumar las cantidades
                     var stockTotal = stocks
@@ -120,13 +126,15 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
                         .Sum(p => p.cantidad);
 
                     // Mostrar stock total en el campo correspondiente
-                    txt_cantidad_actual_producto.Text = stockTotal.ToString() + " ML";
+                    txt_cantidad_actual_producto.Text = stockTotal.ToString();
 
                     string nombreImagen = perfume.imagen1.ToString();
                     string rutaCompletaImagen = Program.Ruta_Base + nombreImagen + ".jpg";
                     img_perfume.Image = Image.FromFile(rutaCompletaImagen);
                 }
             }
+
+           
         }
 
         private void txt_cantidad_producto_TextChanged(object sender, EventArgs e)

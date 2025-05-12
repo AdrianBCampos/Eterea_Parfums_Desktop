@@ -148,6 +148,7 @@ namespace Eterea_Parfums_Desktop
         {
             ResetAutoConsulta();
         }*/
+
         private void txt_scan_TextChanged(object sender, EventArgs e)
         {
             if (!escaneoHabilitado || !txt_scan.Visible || !txt_scan.Enabled)

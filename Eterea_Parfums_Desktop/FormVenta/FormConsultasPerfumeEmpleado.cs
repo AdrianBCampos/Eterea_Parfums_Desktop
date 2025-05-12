@@ -251,7 +251,7 @@ namespace Eterea_Parfums_Desktop
                 Perfume perfumeSeleccionado = Perfumes_Paginados[rowIndex];
 
                 FormVerDetallePerfume detallesForm = new FormVerDetallePerfume(perfumeSeleccionado);
-                detallesForm.Show();
+                detallesForm.ShowDialog();
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == 5)
             {
