@@ -237,7 +237,8 @@ namespace Eterea_Parfums_Desktop
             combo_pais.Items.Clear();
             foreach (Pais pais in paises)
             {
-                combo_pais.Items.Add(pais.nombre.ToString());
+                if (pais.id != 1)
+                    combo_pais.Items.Add(pais.nombre.ToString());
             }
         }
 

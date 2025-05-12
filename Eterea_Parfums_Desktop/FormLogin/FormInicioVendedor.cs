@@ -184,9 +184,10 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_buscar_envios_Click(object sender, EventArgs e)
             {
-                FormBuscarPedidos buscar = new FormBuscarPedidos();
-                buscar.Show();
-                this.Hide();
+              
+                BuscarPedidos_UC buscarPedidosUC = new BuscarPedidos_UC();
+                addUserControl(buscarPedidosUC);
+                CambiarColorBoton2((Button)sender);
 
             }
 

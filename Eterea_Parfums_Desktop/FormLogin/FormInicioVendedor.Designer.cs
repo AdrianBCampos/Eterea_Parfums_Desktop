@@ -44,7 +44,6 @@
             this.btn_cerrar_sesion = new System.Windows.Forms.PictureBox();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.btn_buscar_envios = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -247,27 +246,11 @@
             this.btn_buscar_envios.UseVisualStyleBackColor = false;
             this.btn_buscar_envios.Click += new System.EventHandler(this.btn_buscar_envios_Click);
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(196)))), ((int)(((byte)(206)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.button1.Location = new System.Drawing.Point(1012, 115);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(346, 57);
-            this.button1.TabIndex = 406;
-            this.button1.Text = "PREPARAR ENVIOS 2";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.btn_gestionar_Click);
-            // 
             // FormInicioVendedor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
             this.ClientSize = new System.Drawing.Size(1535, 865);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_buscar_envios);
             this.Controls.Add(this.panel_admin);
             this.Controls.Add(this.btn_preparar_envios);
@@ -321,6 +304,5 @@
         private System.Windows.Forms.PictureBox btn_cerrar_sesion;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.Button btn_buscar_envios;
-        private System.Windows.Forms.Button button1;
     }
 }
