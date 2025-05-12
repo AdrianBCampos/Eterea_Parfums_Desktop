@@ -13,7 +13,7 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
-            string rutaCompletaImagen = Program.Ruta_Base + @"Diseño Logo1.png";
+            string rutaCompletaImagen = Program.Ruta_Base + @"Diseño Logo2.png";
             img_logo.Image = Image.FromFile(rutaCompletaImagen);
 
             lbl_error_user.Visible = false;

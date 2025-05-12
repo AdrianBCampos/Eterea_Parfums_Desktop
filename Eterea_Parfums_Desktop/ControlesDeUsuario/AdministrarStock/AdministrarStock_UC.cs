@@ -120,7 +120,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
                         .Sum(p => p.cantidad);
 
                     // Mostrar stock total en el campo correspondiente
-                    txt_cantidad_actual_producto.Text = stockTotal.ToString();
+                    txt_cantidad_actual_producto.Text = stockTotal.ToString() + " ML";
 
                     string nombreImagen = perfume.imagen1.ToString();
                     string rutaCompletaImagen = Program.Ruta_Base + nombreImagen + ".jpg";
