@@ -168,6 +168,9 @@ namespace Eterea_Parfums_Desktop
             GenerarInformes_UC informesDeVentas1UC = new GenerarInformes_UC();
             addUserControl(informesDeVentas1UC);
 
+            FormSeleccionarInformeVenta formSeleccionarInformeVenta = new FormSeleccionarInformeVenta();
+            formSeleccionarInformeVenta.ShowDialog();
+
             CambiarColorBoton4((Button)sender);
         }
 

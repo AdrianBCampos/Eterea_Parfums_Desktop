@@ -31,13 +31,13 @@ namespace Eterea_Parfums_Desktop
             if (combobox_informe.SelectedIndex == 0)
             {
                 FormInformesDeVentas1 InformesDeVentas1 = new FormInformesDeVentas1();
-                InformesDeVentas1.Show();
+                InformesDeVentas1.ShowDialog();
                 this.Hide();
             }
             else if (combobox_informe.SelectedIndex == 1)
             {
                 FormInformesDeVentas2 InformesDeVentas2 = new FormInformesDeVentas2();
-                InformesDeVentas2.Show();
+                InformesDeVentas2.ShowDialog();
                 this.Hide();
             }
         }
