@@ -137,10 +137,30 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_administrar_stock_Click(object sender, EventArgs e)
         {
-            AdministrarStock_UC administrarStockUC = new AdministrarStock_UC();
-            addUserControl(administrarStockUC);
+            CambiarColorBoton3((Button)sender);                     
 
-            CambiarColorBoton3((Button)sender);
+            // Verificamos si ya hay una caja asignada
+            if (Program.sucursal != 0)
+            {
+                // Ya hay caja asignada, abrir directamente el panel de facturación
+                AdministrarStock_UC administrarStockUC = new AdministrarStock_UC(Program.sucursal);                                  
+                
+                addUserControl(administrarStockUC);
+            }
+            else
+            {
+                // No hay sucursal asignada, mostrar FormNumeroDeSucursal para elegirla
+                FormNumeroDeSucursal formNumeroDeSucursal = new FormNumeroDeSucursal();
+                formNumeroDeSucursal.ConfirmarNumeroSucursal += (s, nuevaSucursal) =>
+                {
+                    Program.sucursal = nuevaSucursal;
+                    AdministrarStock_UC administrarStockUC = new AdministrarStock_UC(Program.sucursal);
+                    addUserControl(administrarStockUC);
+                };
+
+                formNumeroDeSucursal.ShowDialog();
+            }
+
         }    
 
         private void btn_generar_informes_Click(object sender, EventArgs e)

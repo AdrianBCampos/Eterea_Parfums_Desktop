@@ -28,30 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbl_numero_caja = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btn_continuar = new System.Windows.Forms.Button();
             this.txt_ing_numero_caja = new System.Windows.Forms.TextBox();
             this.lbl_error_caja = new System.Windows.Forms.Label();
             this.txt_nombre_suc = new System.Windows.Forms.Label();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
+            this.btn_continuar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lbl_numero_caja
-            // 
-            this.lbl_numero_caja.AutoSize = true;
-            this.lbl_numero_caja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_numero_caja.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_numero_caja.ForeColor = System.Drawing.Color.Black;
-            this.lbl_numero_caja.Location = new System.Drawing.Point(47, 73);
-            this.lbl_numero_caja.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbl_numero_caja.Name = "lbl_numero_caja";
-            this.lbl_numero_caja.Size = new System.Drawing.Size(168, 24);
-            this.lbl_numero_caja.TabIndex = 93;
-            this.lbl_numero_caja.Text = "Numero de Caja:";
             // 
             // button2
             // 
@@ -59,8 +46,8 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(614, 12);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Location = new System.Drawing.Point(666, 12);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button2.Size = new System.Drawing.Size(45, 39);
@@ -76,28 +63,14 @@
             this.pictureBox1.Location = new System.Drawing.Point(12, 58);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(647, 81);
+            this.pictureBox1.Size = new System.Drawing.Size(699, 81);
             this.pictureBox1.TabIndex = 91;
             this.pictureBox1.TabStop = false;
             // 
-            // btn_continuar
-            // 
-            this.btn_continuar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.btn_continuar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_continuar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_continuar.Location = new System.Drawing.Point(460, 73);
-            this.btn_continuar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btn_continuar.Name = "btn_continuar";
-            this.btn_continuar.Size = new System.Drawing.Size(183, 46);
-            this.btn_continuar.TabIndex = 90;
-            this.btn_continuar.Text = "Continuar";
-            this.btn_continuar.UseVisualStyleBackColor = false;
-            this.btn_continuar.Click += new System.EventHandler(this.btn_continuar_Click);
-            // 
             // txt_ing_numero_caja
             // 
-            this.txt_ing_numero_caja.Location = new System.Drawing.Point(267, 76);
-            this.txt_ing_numero_caja.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_ing_numero_caja.Location = new System.Drawing.Point(329, 83);
+            this.txt_ing_numero_caja.Margin = new System.Windows.Forms.Padding(4);
             this.txt_ing_numero_caja.Name = "txt_ing_numero_caja";
             this.txt_ing_numero_caja.Size = new System.Drawing.Size(153, 22);
             this.txt_ing_numero_caja.TabIndex = 96;
@@ -108,7 +81,7 @@
             this.lbl_error_caja.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_error_caja.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_error_caja.ForeColor = System.Drawing.Color.Red;
-            this.lbl_error_caja.Location = new System.Drawing.Point(144, 106);
+            this.lbl_error_caja.Location = new System.Drawing.Point(27, 107);
             this.lbl_error_caja.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_error_caja.Name = "lbl_error_caja";
             this.lbl_error_caja.Size = new System.Drawing.Size(54, 25);
@@ -133,23 +106,50 @@
             this.pictureBox17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox17.Location = new System.Drawing.Point(5, 7);
             this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(663, 142);
+            this.pictureBox17.Size = new System.Drawing.Size(714, 142);
             this.pictureBox17.TabIndex = 374;
             this.pictureBox17.TabStop = false;
             // 
+            // btn_continuar
+            // 
+            this.btn_continuar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
+            this.btn_continuar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_continuar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_continuar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.btn_continuar.Location = new System.Drawing.Point(508, 76);
+            this.btn_continuar.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_continuar.Name = "btn_continuar";
+            this.btn_continuar.Size = new System.Drawing.Size(193, 43);
+            this.btn_continuar.TabIndex = 438;
+            this.btn_continuar.Text = "Confirmar";
+            this.btn_continuar.UseVisualStyleBackColor = false;
+            this.btn_continuar.Click += new System.EventHandler(this.btn_continuar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label1.Location = new System.Drawing.Point(23, 68);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(278, 38);
+            this.label1.TabIndex = 439;
+            this.label1.Text = "Número de Caja:";
+            // 
             // FormNumeroDeCaja
             // 
-            this.AcceptButton = this.btn_continuar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
-            this.ClientSize = new System.Drawing.Size(673, 154);
+            this.ClientSize = new System.Drawing.Size(725, 155);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btn_continuar);
             this.Controls.Add(this.txt_nombre_suc);
             this.Controls.Add(this.lbl_error_caja);
             this.Controls.Add(this.txt_ing_numero_caja);
-            this.Controls.Add(this.lbl_numero_caja);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.btn_continuar);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox17);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -167,13 +167,13 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label lbl_numero_caja;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btn_continuar;
         private System.Windows.Forms.TextBox txt_ing_numero_caja;
         private System.Windows.Forms.Label lbl_error_caja;
         private System.Windows.Forms.Label txt_nombre_suc;
         private System.Windows.Forms.PictureBox pictureBox17;
+        private System.Windows.Forms.Button btn_continuar;
+        private System.Windows.Forms.Label label1;
     }
 }

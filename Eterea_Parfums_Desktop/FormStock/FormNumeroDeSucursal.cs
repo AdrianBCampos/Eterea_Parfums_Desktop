@@ -9,12 +9,14 @@ namespace Eterea_Parfums_Desktop
 {
     public partial class FormNumeroDeSucursal : Form
     {
+        // Evento público que otros formularios pueden "escuchar"
+        public event EventHandler<int> ConfirmarNumeroSucursal;
+
         public FormNumeroDeSucursal()
         {
             InitializeComponent();
 
-            string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";
-            img_logo.Image = Image.FromFile(rutaCompletaImagen);
+            string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";          
             CargarSucursales();
         }
 
@@ -39,14 +41,18 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_continuar_Click(object sender, EventArgs e)
         {
+            if (combo_sucursales.SelectedItem == null)
+            {
+                MessageBox.Show("Por favor seleccione una sucursal.");
+                return;
+            }
 
             int idSucursal = int.Parse(combo_sucursales.SelectedItem.ToString());
 
-            
+            // Lanza el evento con la sucursal seleccionada
+            ConfirmarNumeroSucursal?.Invoke(this, idSucursal);
 
-            FormStock stock = new FormStock(idSucursal);
-            stock.Show();
-            this.Hide();
+            this.Close(); // Cierra esta ventana, vuelve al formulario que la abrió
         }
 
         

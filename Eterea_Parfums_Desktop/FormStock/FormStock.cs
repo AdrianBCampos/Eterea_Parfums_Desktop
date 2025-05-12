@@ -9,6 +9,7 @@ namespace Eterea_Parfums_Desktop
     {
         private Perfume perfume;
         private int idSucursal;
+        
         public FormStock()
         {
             InitializeComponent();
