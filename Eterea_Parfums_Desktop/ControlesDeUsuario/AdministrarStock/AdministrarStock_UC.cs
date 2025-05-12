@@ -26,6 +26,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
             txt_codigo_producto.MaxLength = 13;
             txt_codigo_producto.KeyPress += txt_codigo_producto_KeyPress;
             txt_codigo_producto.TextChanged += txt_codigo_producto_TextChanged;
+
+            // Imagen inicial por defecto
+            CargarImagenPorDefecto();
         }
 
         
@@ -34,6 +37,12 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
         {
             FormNumeroDeSucursal FormNumeroDeSucursal = new FormNumeroDeSucursal();
             FormNumeroDeSucursal.ShowDialog();
+        }
+
+        private void CargarImagenPorDefecto()
+        {
+            img_perfume.Image = Properties.Resources.sinImagen;
+
         }
 
         private bool validarSiExisteCodigoPerfume(string codigo)
@@ -78,12 +87,20 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
             txt_codigo_producto.Clear(); // Borra el texto si el código no existe
             txt_datos_producto.Text = ""; // Limpia el campo de datos del producto
             txt_cantidad_producto.Text = "";
+            txt_tamaño_producto.Text = "";
+            txt_cantidad_actual_producto.Text = "";
+
+            img_perfume.Image = Properties.Resources.sinImagen;
+            
             perfume = null;
+                        
         }
 
 
         private void txt_codigo_producto_TextChanged(object sender, EventArgs e)
         {
+            List<Stock> stocks = StockControlador.getAll();
+
             if (txt_codigo_producto.Text.Length == 13)
             {
                 if (!validarSiExisteCodigoPerfume(txt_codigo_producto.Text.Trim()))
@@ -96,8 +113,33 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
                 {
                     txt_datos_producto.Text = perfume.nombre; // Muestra el nombre del perfume si existe
                     txt_tamaño_producto.Text = perfume.presentacion_ml.ToString();
-                    //txt_cantidad_actual_producto.Text = perfume.
+
+                    // Agrupar por id de perfume y sumar las cantidades
+                    var stockTotal = stocks
+                        .Where(s => s.perfume.id == perfume.id)
+                        .Sum(p => p.cantidad);
+
+                    // Mostrar stock total en el campo correspondiente
+                    txt_cantidad_actual_producto.Text = stockTotal.ToString();
+
+                    string nombreImagen = perfume.imagen1.ToString();
+                    string rutaCompletaImagen = Program.Ruta_Base + nombreImagen + ".jpg";
+                    img_perfume.Image = Image.FromFile(rutaCompletaImagen);
                 }
+            }
+        }
+
+        private void txt_cantidad_producto_TextChanged(object sender, EventArgs e)
+        {
+            if (perfume != null && int.TryParse(txt_cantidad_producto.Text, out int cantidadNueva))
+            {
+                int stockActual = StockControlador.getStock(perfume.id, idSucursal);
+                int total = (stockActual != -1 ? stockActual : 0) + cantidadNueva;
+                txt_total_stock.Text = total.ToString();
+            }
+            else
+            {
+                txt_total_stock.Text = ""; // Limpiar si no hay datos válidos
             }
         }
 
@@ -140,5 +182,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
                 inicioAdministrador.Show();
             }
         }
+
+        
     }
 }
