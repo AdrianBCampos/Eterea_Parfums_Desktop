@@ -136,7 +136,7 @@ namespace Eterea_Parfums_Desktop
                     {
                         fila.Cells[1].Value = cantidadActual + 1;
                         PerfumeEnPromoControlador promoController = new PerfumeEnPromoControlador();
-                        int descuentoPorcentaje = promoController.obtenerMayorDescuentoPorPerfume(perfume.id) ?? 0; //CAMBIE ALGO ACAAAAAA MAXI
+                        int descuentoPorcentaje = promoController.obtenerMayorDescuentoPorPerfume(perfume.id) ?? 0;
                         decimal precioUnitario = Convert.ToDecimal(perfume.precio_en_pesos);
                         decimal descuentoMonto = ((precioUnitario * descuentoPorcentaje) / 100);
                         fila.Cells[6].Value = descuentoMonto;
@@ -450,7 +450,7 @@ namespace Eterea_Parfums_Desktop
                         if (descuentoUnitario == 1) //Descuento del 10% cuando es impar mayor a 1
                         {
                             // Obtener el descuento del perfume (en porcentaje)
-                            descuentoPorcentaje = promoController.obtenerPromocionIdPorPerfumeConDescuento10(perfumeId) ?? 0;
+                            descuentoPorcentaje = promoController.obtenerPromocionPorPerfumeConDescuento10(perfumeId) ?? 0;
 
 
                             Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
@@ -477,7 +477,7 @@ namespace Eterea_Parfums_Desktop
                             if (descuentoUnitario == 2) //Descuento cuando no tiene descuento mayor a 20%
                             {
                                 // Obtener el descuento del perfume (en porcentaje)
-                                descuentoPorcentaje = promoController.obtenerPromocionIdPorPerfumeConDescuento10(perfumeId) ?? 0;
+                                descuentoPorcentaje = promoController.obtenerPromocionPorPerfumeConDescuento10(perfumeId) ?? 0;
 
 
                                 Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
@@ -526,11 +526,6 @@ namespace Eterea_Parfums_Desktop
             }
             // Mostrar la suma en un TextBox
             txt_subtotal.Text = sumaPrecios.ToString("N2");
-        }
-
-        private void CalcularImporteRecargo(float recargo, float subtotal)
-        {
-            txt_monto_recargo.Text = (subtotal * recargo / 100).ToString("N2");
         }
 
         private void desc()
@@ -699,30 +694,6 @@ namespace Eterea_Parfums_Desktop
             }
             ActualizarTotales();
         }
-        /*
-        private void VerificarCondicionIVA(float subtotal, float recargo, float descuento)
-        {
-            string condicionCliente = txt_condicion_iva.Text.Trim();
-
-            // Verificar si el cliente es Responsable Monotributo
-            if (condicionCliente.Contains("Responsable Monotributo"))
-            {
-                // Deshabilitar el campo de IVA
-                txt_iva.Enabled = true;
-                txt_iva.Text = CalcularIVA(subtotal, recargo, descuento).ToString("0.00");
-            }
-            else if (condicionCliente.Contains("Consumidor Final"))
-            {
-                // Si no es monotributista, habilitar el campo de IVA
-                txt_iva.Enabled = false;
-                txt_iva.Text = "0,00";
-            }
-            else if (condicionCliente.Contains("Responsable Inscripto") || condicionCliente.Contains("Responsable no Inscripto"))
-            {
-                txt_iva.Enabled = true;
-                txt_iva.Text = CalcularIVA(subtotal, recargo, descuento).ToString("0.00");
-            }
-        }*/
 
         private void CrearFactura()
         {
@@ -829,21 +800,27 @@ namespace Eterea_Parfums_Desktop
                             MessageBox.Show($"El precio unitario en la fila del perfume ID {perfume_id} no es un número válido o es menor o igual a cero.");
                             return;
                         }
-                        int? promocion_id = promoController.obtenerPromocionIdPorPerfume(perfume_id);
 
-                        if (promocion_id == null)
+                        int? promocion_id = promoController.obtenerPromocionIdPorPerfume(perfume_id);
+                        int? promocion_id10 = promoController.obtenerPromocionIdPorPerfumeConDescuento10(perfume_id);
+
+                        if (cantidad > 1 && promocion_id != null)
                         {
-                            // Maneja el caso donde no se encontró la promoción
-                            Console.WriteLine("No se encontró promoción para este perfume.");
+                            MessageBox.Show($"PromocionID: {promocion_id}");
                         }
+                        else if (cantidad == 1 && promocion_id10 != null)
+                        {
+                            promocion_id = promoController.obtenerPromocionIdPorPerfumeConDescuento10(perfume_id);
+                            MessageBox.Show($"PromocionID: {promocion_id}");
+                        } 
                         else
                         {
-                            // Usar el valor de promocion_id (sabemos que no es null)
-                            Console.WriteLine("Promoción encontrada: " + promocion_id.Value);
+                            promocion_id = 1;
+                            MessageBox.Show($"PromocionID: {promocion_id}");
                         }
 
 
-                        MessageBox.Show($"Enviando datos: NumFactura: {numFactura}, PerfumeID: {perfume_id}, Cantidad: {cantidad}, PrecioUnitario: {precio_unitario}, PromocionID: {promocion_id}");
+                        MessageBox.Show($"Enviando datos2: NumFactura: {numFactura}, PerfumeID: {perfume_id}, Cantidad: {cantidad}, PrecioUnitario: {precio_unitario}, PromocionID: {promocion_id}");
 
                         bool exito = DetalleFacturaControlador.crearDetalleFactura(numFactura, perfume_id, cantidad, precio_unitario, promocion_id);
 
@@ -852,6 +829,11 @@ namespace Eterea_Parfums_Desktop
                             MessageBox.Show($"Error al agregar el perfume ID {perfume_id} al detalle de la factura.");
                             return;
                         }
+                        // TERMINAR CON EL METODO PARA DESCONTAR EL STOCK CUANDO SE FACTURAAAAAAAA MAXI
+                           /*  int sucursalId = (EmpleadoControlador.obtenerPorId(Program.logueado.id)).sucursal_id.id;
+                             StockControlador.updateStock(perfume_id, sucursalId , - cantidad);
+                        MessageBox.Show($"Actualizando stock de perfume {perfume_id} en sucursal {sucursalId} con cantidad {-cantidad}"); */
+
                     }
                 }
 

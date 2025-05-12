@@ -250,6 +250,16 @@ namespace Eterea_Parfums_Desktop
                 lbl_dniE.Text = error;
                 lbl_dniE.Show();
             }
+            else
+            {
+                var empleadoId = EmpleadoControlador.BuscarIdPorDni(txt_dni.Text);
+                if (empleadoId != null)
+                {
+                    string error = "Ya existe un empleado con ese DNI." + Environment.NewLine;
+                    lbl_dniE.Text = error;
+                    lbl_dniE.Show();
+                }
+            }
 
             if (!DateTime.TryParse(dateTime_nac.Text, out _))
             {

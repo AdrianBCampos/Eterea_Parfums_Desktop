@@ -302,7 +302,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public int? obtenerPromocionIdPorPerfume(int perfumeId)
         {
             string query = @"
-SELECT TOP 1 p.id
+                SELECT TOP 1 p.id
                 FROM dbo.perfumes_en_promo pep
                 JOIN dbo.promocion p ON pep.promocion_id = p.id
                 WHERE pep.perfume_id = @perfumeId AND p.activo = 1 AND p.descuento >= 20
@@ -340,7 +340,7 @@ SELECT TOP 1 p.id
             return promocionId;
         }
 
-        public int? obtenerPromocionIdPorPerfumeConDescuento10(int perfumeId)
+        public int? obtenerPromocionPorPerfumeConDescuento10(int perfumeId)
         {
             string query = @"
             SELECT TOP 1 p.descuento
@@ -380,6 +380,47 @@ SELECT TOP 1 p.id
             }
 
             return descuento;
+        }
+
+        public int? obtenerPromocionIdPorPerfumeConDescuento10(int perfumeId)
+        {
+            string query = @"
+                SELECT TOP 1 p.id
+                FROM dbo.perfumes_en_promo pep
+                JOIN dbo.promocion p ON pep.promocion_id = p.id
+                WHERE pep.perfume_id = @perfumeId AND p.activo = 1 AND p.descuento = 10
+                ORDER BY p.id DESC;
+                ";
+
+            int? promocionId = null;  // Usamos int? para permitir valores nulos
+
+            using (SqlConnection connection = new SqlConnection(DB_Controller.connection.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@perfumeId", perfumeId);
+
+                    try
+                    {
+                        connection.Open();
+                        object result = cmd.ExecuteScalar(); // Obtener un único valor
+
+                        if (result != null && result != DBNull.Value)
+                        {
+                            promocionId = Convert.ToInt32(result); // Convertimos a int
+                        }
+
+                        Console.WriteLine($"Perfume ID: {perfumeId}, Promoción Aplicada: {promocionId}");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error al obtener promoción para perfume ID {perfumeId}: {ex.Message}");
+                        throw new Exception("Error al obtener la promoción del perfume.", ex);
+                    }
+                }
+            }
+
+            return promocionId;
         }
 
     }

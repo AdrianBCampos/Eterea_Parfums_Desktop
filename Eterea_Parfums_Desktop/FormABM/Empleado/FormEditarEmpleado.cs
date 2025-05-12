@@ -23,7 +23,7 @@ namespace Eterea_Parfums_Desktop
         public List<Localidad> localidades;
         public List<Calle> calles;
         public List<Sucursal> sucursales;
-        public FormEditarEmpleado()
+        /*public FormEditarEmpleado()
         {
             InitializeComponent();
 
@@ -97,7 +97,7 @@ namespace Eterea_Parfums_Desktop
 
             //    situacion = "Edicion";
 
-        }
+        }*/
 
         // ------------------------------------------------------------------------------------------------------------------------
         //SOBRECARGAR EL CONSTRUCTOR PARA INICIAR EL FORM CON LA INFO CARGADA, PARA EDITAR
@@ -390,15 +390,25 @@ namespace Eterea_Parfums_Desktop
 
             if (string.IsNullOrEmpty(txt_dni.Text))
             {
-                string error = "Debe ingresar el número de DNI del usuario." + Environment.NewLine;
-                lbl_dniE.Text = error;
+                lbl_dniE.Text = "Debe ingresar el número de DNI del usuario.";
                 lbl_dniE.Show();
+                errorMsg += lbl_dniE.Text + Environment.NewLine;
             }
             else if (txt_dni.Text.Length != 8 && txt_dni.Text.Length != 11)
             {
-                string error = "El DNI tiene que ser de 8 o 11 dígitos." + Environment.NewLine;
-                lbl_dniE.Text = error;
+                lbl_dniE.Text = "El DNI tiene que ser de 8 o 11 dígitos.";
                 lbl_dniE.Show();
+                errorMsg += lbl_dniE.Text + Environment.NewLine;
+            }
+            else
+            {
+                var empleadoId = EmpleadoControlador.BuscarIdPorDni(txt_dni.Text);
+                if (empleadoId != null)
+                {
+                    lbl_dniE.Text = "Ya existe un empleado con ese DNI.";
+                    lbl_dniE.Show();
+                    errorMsg += lbl_dniE.Text + Environment.NewLine;
+                }
             }
 
             if (!DateTime.TryParse(dateTime_nac.Text, out _))
@@ -463,20 +473,6 @@ namespace Eterea_Parfums_Desktop
                 lbl_num_calleE.Show();
                 errorMsg += lbl_num_calleE.Text + Environment.NewLine;
             }
-
-            /*        if (string.IsNullOrEmpty(txt_piso.Text) || !int.TryParse(txt_piso.Text, out _))
-                {
-                    lbl_pisoE.Text = "Debe ingresar un piso valido.";
-                    lbl_pisoE.Show();
-                    errorMsg += lbl_pisoE.Text + Environment.NewLine;
-                } */
-
-            /*    if (string.IsNullOrEmpty(txt_departamento.Text))
-            {
-                lbl_departamentoE.Text = "Debe ingresar un piso valido.";
-                lbl_departamentoE.Show();
-                errorMsg += lbl_departamentoE.Text + Environment.NewLine;
-            } */
 
             if (combo_sucursal.SelectedItem == null)
             {
