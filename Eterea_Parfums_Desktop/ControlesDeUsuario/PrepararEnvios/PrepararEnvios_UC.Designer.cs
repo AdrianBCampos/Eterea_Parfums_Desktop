@@ -41,6 +41,7 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.btn_volver = new System.Windows.Forms.Button();
             lbl_lista_envios = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).BeginInit();
@@ -49,6 +50,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
+            // 
+            // lbl_lista_envios
+            // 
+            lbl_lista_envios.AutoSize = true;
+            lbl_lista_envios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
+            lbl_lista_envios.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            lbl_lista_envios.ForeColor = System.Drawing.Color.White;
+            lbl_lista_envios.Location = new System.Drawing.Point(151, 21);
+            lbl_lista_envios.Name = "lbl_lista_envios";
+            lbl_lista_envios.Size = new System.Drawing.Size(267, 18);
+            lbl_lista_envios.TabIndex = 328;
+            lbl_lista_envios.Text = "LISTA DE ENVIOS A DESPACHAR";
             // 
             // pictureBox1
             // 
@@ -128,18 +141,6 @@
             this.lbl_responsable.TabIndex = 329;
             this.lbl_responsable.Text = "Responsable:";
             // 
-            // lbl_lista_envios
-            // 
-            lbl_lista_envios.AutoSize = true;
-            lbl_lista_envios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
-            lbl_lista_envios.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            lbl_lista_envios.ForeColor = System.Drawing.Color.White;
-            lbl_lista_envios.Location = new System.Drawing.Point(151, 21);
-            lbl_lista_envios.Name = "lbl_lista_envios";
-            lbl_lista_envios.Size = new System.Drawing.Size(267, 18);
-            lbl_lista_envios.TabIndex = 328;
-            lbl_lista_envios.Text = "LISTA DE ENVIOS A DESPACHAR";
-            // 
             // txt_cantidad_ordenes
             // 
             this.txt_cantidad_ordenes.AutoSize = true;
@@ -196,11 +197,23 @@
             this.pictureBox6.TabIndex = 320;
             this.pictureBox6.TabStop = false;
             // 
+            // btn_volver
+            // 
+            this.btn_volver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
+            this.btn_volver.Location = new System.Drawing.Point(280, 505);
+            this.btn_volver.Name = "btn_volver";
+            this.btn_volver.Size = new System.Drawing.Size(130, 23);
+            this.btn_volver.TabIndex = 355;
+            this.btn_volver.Text = "Volver";
+            this.btn_volver.UseVisualStyleBackColor = false;
+            this.btn_volver.Click += new System.EventHandler(this.btn_volver_Click);
+            // 
             // PrepararEnvios_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
+            this.Controls.Add(this.btn_volver);
             this.Controls.Add(this.txt_cantidad_ordenes);
             this.Controls.Add(this.lbl_pedido_buscado);
             this.Controls.Add(this.lbl_cantidad_ordenes);
@@ -216,7 +229,7 @@
             this.Controls.Add(this.pictureBox6);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PrepararEnvios_UC";
-            this.Size = new System.Drawing.Size(721, 497);
+            this.Size = new System.Drawing.Size(721, 542);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -241,5 +254,6 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Button btn_volver;
     }
 }

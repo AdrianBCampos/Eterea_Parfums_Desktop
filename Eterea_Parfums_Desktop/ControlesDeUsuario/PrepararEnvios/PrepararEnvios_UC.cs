@@ -15,14 +15,18 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
         private int? estadoOrdenFiltrada = null;
         private bool volverAFormBuscarPedidos = false;
         private string nombreSucursalActual;
+        private bool mostrarBotonVolver;
 
-        public PrepararEnvios_UC(int? numeroOrden = null, int? estado = null, bool volverABuscarPedidos = false)
+
+
+        public PrepararEnvios_UC(int? numeroOrden = null, int? estado = null, bool volverABuscarPedidos = false, bool mostrarBotonVolver = false)
         {
             InitializeComponent();
 
             numeroOrdenFiltrada = numeroOrden;
             estadoOrdenFiltrada = estado;
             this.volverAFormBuscarPedidos = volverABuscarPedidos;
+            this.mostrarBotonVolver = mostrarBotonVolver;
 
 
             OrdenControlador controlador = new OrdenControlador();
@@ -50,6 +54,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
 
         private void PrepararEnvios_UC_Load(object sender, EventArgs e)
         {
+            btn_volver.Visible = mostrarBotonVolver;
             CargarOrdenes();
         }
 
@@ -117,9 +122,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
                 // 🔽 BOTÓN "Imprimir Etiqueta"
                 Button btnImprimir = new Button
                 {
-                    Text = "Imprimir Etiqueta",
+                    Text = "Despachar la orden y crear su etiqueta de envío.",
                     Location = new Point(5, 195),
-                    Width = 150,
+                    Width = 200,
                     Tag = numeroOrden
                 };
 
@@ -191,17 +196,35 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
                     //  Imprimir
                     //ImprimirOrden();
 
-                    // Refrescar pantalla
-                    CargarOrdenes();
-                    int cantidad = controlador.ObtenerCantidadOrdenesActivas();
-                    txt_cantidad_ordenes.Text = cantidad.ToString();
 
-                    // ✅ Si ya no quedan órdenes, mostrar mensaje y volver
-                    if (cantidad == 0)
+                    // Verificar si se debe regresar al BuscarPedidos_UC
+                    if (volverAFormBuscarPedidos)
                     {
-                        MessageBox.Show("Ya fueron despachadas todas las órdenes.", "Despacho completo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // Mostrar mensaje de confirmación
+                        MessageBox.Show("La orden buscada fue despachada correctamente.", "Orden despachada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        //this.Parent.Controls.Remove(this);
+                        // Navegar de regreso al BuscarPedidos_UC
+                        Control parent = this.Parent;
+                        if (parent != null)
+                        {
+                            parent.Controls.Clear();
+                            var buscarPedidosUC = new BuscarPedidos_UC();
+                            parent.Controls.Add(buscarPedidosUC);
+                            buscarPedidosUC.Dock = DockStyle.Fill;
+                        }
+                    }
+                    else
+                    {
+                        // Si no se accedió desde BuscarPedidos_UC, simplemente recargar las órdenes
+                        CargarOrdenes();
+                        int cantidad = controlador.ObtenerCantidadOrdenesActivas();
+                        txt_cantidad_ordenes.Text = cantidad.ToString();
+
+                        // Si ya no quedan órdenes, mostrar mensaje
+                        if (cantidad == 0)
+                        {
+                            MessageBox.Show("Ya fueron despachadas todas las órdenes.", "Despacho completo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 };
 
@@ -323,6 +346,25 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
                 MessageBox.Show("Error al imprimir el PDF: " + ex.Message);
             }
         }
+
+        private void btn_volver_Click(object sender, EventArgs e)
+        {
+            // Obtener el contenedor principal (FormInicioVendedor)
+            Control parent = this.Parent;
+            if (parent != null)
+            {
+                // Limpiar los controles actuales
+                parent.Controls.Clear();
+
+                // Crear una nueva instancia de BuscarPedidos_UC
+                var buscarPedidosUC = new BuscarPedidos_UC();
+
+                // Agregar el nuevo control al contenedor
+                parent.Controls.Add(buscarPedidosUC);
+                buscarPedidosUC.Dock = DockStyle.Fill;
+            }
+        }
+
 
     }
 }
