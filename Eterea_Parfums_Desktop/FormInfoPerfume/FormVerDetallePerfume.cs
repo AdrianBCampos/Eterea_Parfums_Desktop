@@ -519,6 +519,23 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_ver_promociones_Click(object sender, EventArgs e)
         {
+            // Obtener todas las promociones del perfume
+            List<Promocion> promociones = PerfumeEnPromoControlador.getByIDPerfume(perfume.id);
+
+            // Filtrar las promociones válidas (excluir la promo con id 1)
+            List<Promocion> promocionesValidas = promociones
+                .Where(p => p.id != 1) // Excluir la promo con id = 1 ("sin promo")
+                .ToList();
+
+            if (promocionesValidas.Count == 0)
+            {
+                MessageBox.Show("Este perfume no tiene promociones disponibles.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+
+
+            // Si tiene promociones reales, abrir el formulario
             FormVerPromociones verPromociones = new FormVerPromociones(perfume);
             verPromociones.ShowDialog();
             this.Close();
@@ -528,7 +545,5 @@ namespace Eterea_Parfums_Desktop
         {
             this.Close();
         }
-
-     
     }
 }

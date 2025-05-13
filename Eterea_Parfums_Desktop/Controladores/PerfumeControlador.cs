@@ -72,6 +72,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         public static bool create(Perfume perfume)
         {
+            int nuevoId = GetByMaxId() + 1;
 
 
             string query = "insert into dbo.perfume values" +
@@ -94,7 +95,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
-            cmd.Parameters.AddWithValue("@id", GetByMaxId() + 1);
+            cmd.Parameters.AddWithValue("@id", nuevoId);
             cmd.Parameters.AddWithValue("@codigo", perfume.codigo);
             cmd.Parameters.AddWithValue("@marca", perfume.marca.id);
             cmd.Parameters.AddWithValue("@nombre", perfume.nombre);
@@ -111,12 +112,19 @@ namespace Eterea_Parfums_Desktop.Controladores
             cmd.Parameters.AddWithValue("@imagen1", perfume.imagen1);
             cmd.Parameters.AddWithValue("@imagen2", perfume.imagen2);
 
+
+
             Console.WriteLine("genero_id" + perfume.genero.id);
             try
             {
 
                 DB_Controller.connection.Open();
                 cmd.ExecuteNonQuery();
+
+
+                // 🔗 Asegurar relación con promoción ID 1 si no tiene otra
+                PerfumeEnPromoControlador.AsegurarRelacionSinPromo(nuevoId);
+
                 DB_Controller.connection.Close();
                 return true;
             }
@@ -206,6 +214,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static bool update(Perfume perfume)
         {
             bool result = false;
+
             string query = "update dbo.perfume set " +
                 "codigo = @codigo, " +
                 "marca_id = @marca, " +

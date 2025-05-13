@@ -54,7 +54,9 @@ namespace Eterea_Parfums_Desktop
             dataGridViewpromociones.Rows.Clear();
 
             // Obtener promociones asociadas al perfume
-            List<Promocion> promociones = PerfumeEnPromoControlador.getByIDPerfume(perfume.id);
+            List<Promocion> promociones = PerfumeEnPromoControlador.getByIDPerfume(perfume.id)
+                 .Where(p => p.id != 1) // Excluir promo "sin promo"
+                 .ToList();
 
             if (promociones != null && promociones.Count > 0)
             {
