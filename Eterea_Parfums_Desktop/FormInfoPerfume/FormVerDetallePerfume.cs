@@ -64,16 +64,25 @@ namespace Eterea_Parfums_Desktop
 
             //Diseño del combo box
             combo_medios_pago.DrawMode = DrawMode.OwnerDrawFixed;
-            combo_medios_pago.DrawItem += comboBoxdiseño_DrawItem;
             combo_medios_pago.DropDownStyle = ComboBoxStyle.DropDownList;
+            combo_medios_pago.BackColor = Color.FromArgb(161, 136, 127); // color de fondo 
+            combo_medios_pago.ForeColor = Color.White; // color de texto
+            combo_medios_pago.DrawItem += comboBoxdiseño_DrawItem;
+          
 
             combo_cuotas.DrawMode = DrawMode.OwnerDrawFixed;
-            combo_cuotas.DrawItem += comboBoxdiseño_DrawItem;
             combo_cuotas.DropDownStyle = ComboBoxStyle.DropDownList;
+            combo_cuotas.BackColor = Color.FromArgb(161, 136, 127); // color de fondo
+            combo_cuotas.ForeColor = Color.White; // color de texto
+            combo_cuotas.DrawItem += comboBoxdiseño_DrawItem;
+            
+
+            
 
             combo_descuento.DrawMode = DrawMode.OwnerDrawFixed;
-            combo_descuento.DrawItem += comboBoxdiseño_DrawItem;
             combo_descuento.DropDownStyle = ComboBoxStyle.DropDownList;
+            combo_descuento.DrawItem += comboBoxdiseño_DrawItem;
+            
 
             ConfigurarDescuentos();
             cargarDataGridViewNotasDePerfume();
@@ -403,14 +412,14 @@ namespace Eterea_Parfums_Desktop
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {
                 // Color cuando el ítem está seleccionado
-                backgroundColor = Color.FromArgb(195, 156, 164);
-                textColor = Color.White;
+                backgroundColor = Color.FromArgb(250, 236, 239);
+                textColor = Color.FromArgb(195, 156, 164);
             }
             else
             {
                 // Color cuando el ítem NO está seleccionado
-                backgroundColor = Color.FromArgb(250, 236, 239); // Color personalizado
-                textColor = Color.FromArgb(195, 156, 164);
+                backgroundColor = Color.FromArgb(195, 156, 164); // Color personalizado
+                textColor = Color.White;
             }
 
             // Pintar el fondo del ítem
@@ -419,8 +428,16 @@ namespace Eterea_Parfums_Desktop
                 e.Graphics.FillRectangle(brush, e.Bounds);
             }
 
+            // Medir el texto
+            Size textSize = TextRenderer.MeasureText(text, e.Font);
+
+            // Calcular posición centrada
+            int x = e.Bounds.Left + (e.Bounds.Width - textSize.Width) / 2;
+            int y = e.Bounds.Top + (e.Bounds.Height - textSize.Height) / 2;
+
             // Dibujar el texto
-            TextRenderer.DrawText(e.Graphics, text, e.Font, e.Bounds, textColor, TextFormatFlags.Left);
+            TextRenderer.DrawText(e.Graphics, text, e.Font, new Point(x, y), textColor);
+
 
             // Evitar problemas visuales
             e.DrawFocusRectangle();
