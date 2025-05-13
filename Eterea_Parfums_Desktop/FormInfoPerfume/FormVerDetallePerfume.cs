@@ -44,8 +44,8 @@ namespace Eterea_Parfums_Desktop
                 combo_cuotas.Enabled = false;
                 combo_descuento.Enabled = false;
 
-                lbl_medios_pago.ForeColor = Color.Gray;
-                lbl_cuotas.ForeColor = Color.Gray;
+                lbl_medios_pago.ForeColor = Color.LightGray;
+                lbl_cuotas.ForeColor = Color.LightGray;
             }
             else
             {
