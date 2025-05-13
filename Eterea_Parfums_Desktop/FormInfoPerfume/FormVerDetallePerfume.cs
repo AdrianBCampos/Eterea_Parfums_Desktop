@@ -25,9 +25,46 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
+            this.perfume = perfumeSeleccionado;
+
             txt_nombre_perfume.Text = perfumeSeleccionado.nombre;
+
+            if (perfumeSeleccionado.activo == 0)
+            {
+                txt_precio_lista.Text = "Sin Stock";
+                txt_recargo.Text = "0,00";
+                txt_valor_cuota.Text = "0,00";
+                txt_valor_recargo.Text = "0,00";
+                txt_precio_final.Text = "0,00";
+
+                label3.Visible = false;
+
+                // Desactivar combos
+                combo_medios_pago.Enabled = false;
+                combo_cuotas.Enabled = false;
+                combo_descuento.Enabled = false;
+
+                lbl_medios_pago.ForeColor = Color.Gray;
+                lbl_cuotas.ForeColor = Color.Gray;
+            }
+            else
+            {
+                txt_precio_lista.Text = perfumeSeleccionado.precio_en_pesos.ToString("N2");
+                label3.Visible = true;
+
+                // Asegurar que los combos estén habilitados si el perfume es activo
+                combo_medios_pago.Enabled = true;
+                combo_cuotas.Enabled = true;
+                combo_descuento.Enabled = true;
+
+                lbl_medios_pago.ForeColor = Color.Brown;
+                lbl_cuotas.ForeColor = Color.Brown;
+            }
+
+
             richTextBox_descripcion.Text = perfumeSeleccionado.descripcion;
-            txt_precio_lista.Text = perfumeSeleccionado.precio_en_pesos.ToString("N2");
+
+           
 
             txt_marca.Text = MarcaControlador.getById(perfumeSeleccionado.marca.id).nombre;
             txt_genero.Text = GeneroControlador.getById(perfumeSeleccionado.genero.id).genero;
@@ -373,12 +410,34 @@ namespace Eterea_Parfums_Desktop
 
         private void combo_cuotas_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Si el perfume no está activo, no hacemos cálculos
+            if (perfume == null || perfume.activo == 0)
+            {
+                txt_recargo.Text = "0,00";
+                txt_valor_cuota.Text = "0,00";
+                txt_valor_recargo.Text = "0,00";
+                txt_precio_final.Text = "0,00";
+
+                lbl_medios_pago.ForeColor = Color.LightGray;
+                lbl_cuotas.ForeColor = Color.LightGray;
+
+                return;
+            }
+          
+            // Si está activo, procedemos con el cálculo normalmente
             string formaPago = combo_medios_pago.SelectedItem.ToString();
+
             CalcularRecargo(formaPago);
             CalcularValorCuota(float.Parse(txt_recargo.Text), float.Parse(txt_precio_lista.Text));
             CalcularImporteRecargo(float.Parse(txt_precio_lista.Text), float.Parse(txt_recargo.Text));
 
+            // Restaurar colores por si se reactivó desde un perfume activo
+            lbl_medios_pago.ForeColor = Color.Brown;
+            lbl_cuotas.ForeColor = Color.Brown;
+
+
         }
+
 
         private void CalcularValorCuota(float recargo, float precio)
         {
