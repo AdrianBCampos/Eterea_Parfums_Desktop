@@ -130,9 +130,7 @@ namespace Eterea_Parfums_Desktop
             CambiarColorBoton4((Button)sender);
 
             GenerarInformes_UC informesDeVentas1UC = new GenerarInformes_UC();
-            addUserControl(informesDeVentas1UC);
-
-            
+            addUserControl(informesDeVentas1UC);           
         }
 
 
