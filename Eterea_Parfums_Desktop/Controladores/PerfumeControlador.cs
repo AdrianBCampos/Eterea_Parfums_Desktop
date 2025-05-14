@@ -268,25 +268,65 @@ namespace Eterea_Parfums_Desktop.Controladores
             return result;
         }
 
+        /* public static bool delete(int id)
+         {
+             bool result = false;
+             string query = "update dbo.perfume set activo = 0 where id = @id;";
+             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+             cmd.Parameters.AddWithValue("@id", id);
+             try
+             {
+                 DB_Controller.connection.Open();
+                 cmd.ExecuteNonQuery();
+                 DB_Controller.connection.Close();
+                 result = true;
+             }
+             catch (Exception e)
+             {
+                 throw new Exception("Hay un error en la query: " + e.Message);
+             }
+             return result;
+         }*/
+
+
         public static bool delete(int id)
         {
             bool result = false;
-            string query = "update dbo.perfume set activo = 0 where id = @id;";
-            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-            cmd.Parameters.AddWithValue("@id", id);
+
             try
             {
                 DB_Controller.connection.Open();
-                cmd.ExecuteNonQuery();
-                DB_Controller.connection.Close();
+                SqlTransaction transaction = DB_Controller.connection.BeginTransaction();
+
+                // 1. Marcar como inactivo
+                string queryUpdate = "UPDATE dbo.perfume SET activo = 0 WHERE id = @id;";
+                SqlCommand cmdUpdate = new SqlCommand(queryUpdate, DB_Controller.connection, transaction);
+                cmdUpdate.Parameters.AddWithValue("@id", id);
+                cmdUpdate.ExecuteNonQuery();
+
+                // 2. Eliminar relaciones con promo excepto la ID = 1
+                PerfumeEnPromoControlador.EliminarRelacionesPromoExceptoSinPromo(id, transaction);
+
+                // 3. Confirmar transacción
+                transaction.Commit();
                 result = true;
             }
             catch (Exception e)
             {
-                throw new Exception("Hay un error en la query: " + e.Message);
+                try { DB_Controller.connection?.Close(); } catch { }
+                throw new Exception("Error al eliminar el perfume: " + e.Message);
             }
+            finally
+            {
+                if (DB_Controller.connection.State == System.Data.ConnectionState.Open)
+                    DB_Controller.connection.Close();
+            }
+
             return result;
         }
+
+
+
 
         public static List<Perfume> filtrarPorNombre(string nombre)
         {

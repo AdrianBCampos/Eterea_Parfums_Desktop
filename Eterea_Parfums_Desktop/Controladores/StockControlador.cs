@@ -40,7 +40,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         }
 
 
-        public static void updateStock(int perfume_id, int sucursal_id, int cantidad)
+        /*public static void updateStock(int perfume_id, int sucursal_id, int cantidad)
         {
             string query = "UPDATE dbo.stock SET cantidad = cantidad + @cantidad WHERE perfume_id = @perfume_id AND sucursal_id = @sucursal_id;";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
@@ -57,7 +57,64 @@ namespace Eterea_Parfums_Desktop.Controladores
             {
                 Trace.Write("Error al actualizar la DB: " + e.Message);
             }
+        }*/
+
+        public static void updateStock(int perfume_id, int sucursal_id, int cantidad)
+        {
+            string queryUpdate = @"
+                UPDATE dbo.stock 
+                SET cantidad = cantidad + @cantidad 
+                WHERE perfume_id = @perfume_id AND sucursal_id = @sucursal_id;";
+
+                            string queryCheckStock = @"
+                SELECT SUM(cantidad) 
+                FROM dbo.stock 
+                WHERE perfume_id = @perfume_id;";
+
+                            string queryInactivarPerfume = @"
+                UPDATE dbo.perfume 
+                SET activo = 0 
+                WHERE id = @perfume_id;";
+
+            SqlCommand cmdUpdate = new SqlCommand(queryUpdate, DB_Controller.connection);
+            cmdUpdate.Parameters.AddWithValue("@cantidad", cantidad);
+            cmdUpdate.Parameters.AddWithValue("@perfume_id", perfume_id);
+            cmdUpdate.Parameters.AddWithValue("@sucursal_id", sucursal_id);
+
+            SqlCommand cmdCheck = new SqlCommand(queryCheckStock, DB_Controller.connection);
+            cmdCheck.Parameters.AddWithValue("@perfume_id", perfume_id);
+
+            SqlCommand cmdInactivar = new SqlCommand(queryInactivarPerfume, DB_Controller.connection);
+            cmdInactivar.Parameters.AddWithValue("@perfume_id", perfume_id);
+
+            try
+            {
+                DB_Controller.connection.Open();
+
+                // Actualiza el stock
+                cmdUpdate.ExecuteNonQuery();
+
+                // Verifica el stock total
+                object result = cmdCheck.ExecuteScalar();
+                int stockTotal = (result != DBNull.Value) ? Convert.ToInt32(result) : 0;
+
+                // Si no hay stock en ninguna sucursal, marcar como inactivo
+                if (stockTotal <= 0)
+                {
+                    cmdInactivar.ExecuteNonQuery();
+                }
+
+                DB_Controller.connection.Close();
+            }
+            catch (Exception e)
+            {
+                Trace.Write("Error al actualizar la DB: " + e.Message);
+                DB_Controller.connection.Close();
+            }
         }
+
+
+
 
         public static void insertStock(int perfume_id, int sucursal_id, int cantidad)
         {

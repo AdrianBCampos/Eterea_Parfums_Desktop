@@ -438,5 +438,19 @@ namespace Eterea_Parfums_Desktop.Controladores
         }
 
 
+        public static void EliminarRelacionesPromoExceptoSinPromo(int idPerfume, SqlTransaction transaction)
+        {
+            string query = @"
+        DELETE FROM dbo.perfumes_en_promo
+        WHERE perfume_id = @idPerfume AND promocion_id <> 1;";
+
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection, transaction);
+            cmd.Parameters.AddWithValue("@idPerfume", idPerfume);
+
+            cmd.ExecuteNonQuery();
+        }
+
+
+
     }
 }

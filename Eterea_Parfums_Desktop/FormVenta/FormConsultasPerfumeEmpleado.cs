@@ -146,7 +146,7 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_posterior_Click_1(object sender, EventArgs e)
         {
-            if (current >= paginador)
+            if (current + paginador < total)
             {
                 current = current + paginador;
                 current_pag = current_pag + 1;

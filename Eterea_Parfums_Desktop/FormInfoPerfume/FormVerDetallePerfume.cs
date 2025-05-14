@@ -132,9 +132,8 @@ namespace Eterea_Parfums_Desktop
             CargarDataGridViewAromas();
         }
 
-        public FormVerDetallePerfume()
-        {
-        }
+
+
 
         private void cargarDataGridViewNotasDePerfume()
         {
