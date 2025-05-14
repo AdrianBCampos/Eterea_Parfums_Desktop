@@ -46,6 +46,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
             CargarImagenPorDefecto();
 
             lbl_error_codigo.Visible = false;
+            lbl_error_stock.Visible = false;
         }
 
         
@@ -66,12 +67,12 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
         {
             perfume = PerfumeControlador.getByCodigo(codigo);
             // Si el perfume no existe, perfume.nombre es null
-            return perfume.nombre != null;
+            return perfume != null;
         }
 
        
 
-        private bool Validar_Datos_Stock()
+        private bool Validar_Datos_Codigo()
         {
             string mensaje = "";
             if (string.IsNullOrEmpty(txt_codigo_producto.Text))
@@ -82,6 +83,22 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
             {
                 mensaje += "\nCódigo ingresado es inexistente.";
             }
+
+            if (!string.IsNullOrEmpty(mensaje))
+            {
+                lbl_error_codigo.Text = mensaje;
+                lbl_error_codigo.Visible = true;
+                // Limpiar los campos
+                SetearDatos();
+            }
+
+            return string.IsNullOrEmpty(mensaje);
+        }
+
+
+        private bool Validar_Datos_Stock()
+        {
+            string mensaje = "";
             if (string.IsNullOrEmpty(txt_cantidad_producto.Text))
             {
                 mensaje += "\nPor favor, ingrese cantidad de producto.";
@@ -93,16 +110,14 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
 
             if (!string.IsNullOrEmpty(mensaje))
             {
-                MessageBox.Show(mensaje);
-                lbl_error_codigo.Text = mensaje;
-                lbl_error_codigo.Visible = true;
+                lbl_error_stock.Text = mensaje;
+                lbl_error_stock.Visible = true;
                 // Limpiar los campos
                 SetearDatos();
             }
 
             return string.IsNullOrEmpty(mensaje);
         }
-
         private void SetearDatos()
         {
             txt_codigo_producto.Clear(); // Borra el texto si el código no existe
@@ -126,8 +141,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
             {
                 if (!validarSiExisteCodigoPerfume(txt_codigo_producto.Text.Trim()))
                 {
-                    MessageBox.Show("Código inexistente, intente nuevamente.");
-                    SetearDatos();
+       
+                    lbl_error_codigo.Text = "Código ingresado es inexistente.";
+                    lbl_error_codigo.Visible = true;
+                    //SetearDatos();
 
                 }
                 else
@@ -177,7 +194,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
         private void btn_confirmar_Click(object sender, EventArgs e)
         {
 
-            if (Validar_Datos_Stock())
+            if (Validar_Datos_Stock() && Validar_Datos_Codigo())
             {
                 int cantidad = int.Parse(txt_cantidad_producto.Text);
                 //Si el stock ya existe, se actualiza la cantidad
@@ -193,16 +210,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
                 MessageBox.Show("Se ha ingresado con éxito.");
                 SetearDatos();
 
-            }
-        }
-
-        private void Stock_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            // Verifica que la razón de cierre no sea por un cierre forzado de la aplicación
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                FormInicioAdministrador inicioAdministrador = new FormInicioAdministrador();
-                inicioAdministrador.Show();
             }
         }
 
