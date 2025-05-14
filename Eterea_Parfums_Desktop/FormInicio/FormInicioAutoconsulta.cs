@@ -425,6 +425,7 @@ namespace Eterea_Parfums_Desktop
 
                     dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = "Ver";
                 }
+                dataGridViewConsultas.ClearSelection();
             }
         }
 
