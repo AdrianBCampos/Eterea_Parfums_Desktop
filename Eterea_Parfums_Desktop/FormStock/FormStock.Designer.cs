@@ -40,6 +40,8 @@
             this.txt_numero_sucursal = new System.Windows.Forms.Label();
             this.lbl_datos = new System.Windows.Forms.Label();
             this.txt_datos_producto = new System.Windows.Forms.Label();
+            this.lbl_error_general = new System.Windows.Forms.Label();
+            this.lbl_error_codigo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -208,12 +210,38 @@
             this.txt_datos_producto.TabIndex = 99;
             this.txt_datos_producto.Text = "Datos del Producto";
             // 
+            // lbl_error_general
+            // 
+            this.lbl_error_general.AutoSize = true;
+            this.lbl_error_general.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_error_general.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_error_general.ForeColor = System.Drawing.Color.Red;
+            this.lbl_error_general.Location = new System.Drawing.Point(268, 273);
+            this.lbl_error_general.Name = "lbl_error_general";
+            this.lbl_error_general.Size = new System.Drawing.Size(40, 17);
+            this.lbl_error_general.TabIndex = 100;
+            this.lbl_error_general.Text = "Error";
+            // 
+            // lbl_error_codigo
+            // 
+            this.lbl_error_codigo.AutoSize = true;
+            this.lbl_error_codigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_error_codigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_error_codigo.ForeColor = System.Drawing.Color.Red;
+            this.lbl_error_codigo.Location = new System.Drawing.Point(279, 156);
+            this.lbl_error_codigo.Name = "lbl_error_codigo";
+            this.lbl_error_codigo.Size = new System.Drawing.Size(40, 17);
+            this.lbl_error_codigo.TabIndex = 101;
+            this.lbl_error_codigo.Text = "Error";
+            // 
             // FormStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(599, 363);
+            this.Controls.Add(this.lbl_error_codigo);
+            this.Controls.Add(this.lbl_error_general);
             this.Controls.Add(this.txt_datos_producto);
             this.Controls.Add(this.lbl_datos);
             this.Controls.Add(this.txt_numero_sucursal);
@@ -233,7 +261,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AgregarStock";
             this.TopMost = true;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Stock_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -255,5 +282,7 @@
         private System.Windows.Forms.Label txt_numero_sucursal;
         private System.Windows.Forms.Label lbl_datos;
         private System.Windows.Forms.Label txt_datos_producto;
+        private System.Windows.Forms.Label lbl_error_general;
+        private System.Windows.Forms.Label lbl_error_codigo;
     }
 }

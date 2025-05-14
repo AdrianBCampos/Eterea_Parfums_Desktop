@@ -24,6 +24,8 @@ namespace Eterea_Parfums_Desktop
             txt_codigo_producto.KeyPress += txt_codigo_producto_KeyPress;
             txt_codigo_producto.TextChanged += txt_codigo_producto_TextChanged;
 
+            lbl_error_general.Visible = false; // Oculta el mensaje de error al inicio
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -37,7 +39,7 @@ namespace Eterea_Parfums_Desktop
         {
             perfume = PerfumeControlador.getByCodigo(codigo);
             // Si el perfume no existe, perfume.nombre es null
-            return perfume.nombre != null;
+            return perfume != null;
         }
 
         private bool Validar_Datos_Stock()
@@ -62,8 +64,8 @@ namespace Eterea_Parfums_Desktop
 
             if (!string.IsNullOrEmpty(mensaje))
             {
-                MessageBox.Show(mensaje);
-                // Limpiar los campos
+                lbl_error_general.Text = mensaje;
+                lbl_error_general.Visible = true;
                 SetearDatos();
             }
 
@@ -85,7 +87,8 @@ namespace Eterea_Parfums_Desktop
             {
                 if (!validarSiExisteCodigoPerfume(txt_codigo_producto.Text.Trim()))
                 {
-                    MessageBox.Show("Código inexistente, intente nuevamente.");
+                    //MessageBox.Show("Código inexistente, intente nuevamente.");
+                    lbl_error_codigo.Text = "Código inexistente, intente nuevamente.";
                     SetearDatos();
 
                 }
@@ -126,7 +129,7 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
-        private void Stock_FormClosed(object sender, FormClosedEventArgs e)
+        /*private void Stock_FormClosed(object sender, FormClosedEventArgs e)
         {
             // Verifica que la razón de cierre no sea por un cierre forzado de la aplicación
             if (e.CloseReason == CloseReason.UserClosing)
@@ -134,6 +137,6 @@ namespace Eterea_Parfums_Desktop
                 FormInicioAdministrador inicioAdministrador = new FormInicioAdministrador();
                 inicioAdministrador.Show();
             }
-        }
+        }*/
     }
 }

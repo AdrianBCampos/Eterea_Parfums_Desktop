@@ -136,9 +136,10 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_administrar_stock_Click(object sender, EventArgs e)
         {
-            AdministrarStock_UC administrarStockUC = new AdministrarStock_UC();
-            addUserControl(administrarStockUC);
-
+            //AdministrarStock_UC administrarStockUC = new AdministrarStock_UC();
+            //addUserControl(administrarStockUC);
+            FormStock formStock = new FormStock();
+            formStock.ShowDialog();
             CambiarColorBoton3((Button)sender);
         }    
 
