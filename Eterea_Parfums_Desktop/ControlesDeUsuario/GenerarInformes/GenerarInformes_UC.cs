@@ -24,26 +24,35 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
         {
             InitializeComponent();
 
-            //combobox_informe.DrawMode = DrawMode.OwnerDrawFixed;
-           // combobox_informe.DrawItem += comboBoxDiseño_DrawItem;
-           // combobox_informe.DropDownStyle = ComboBoxStyle.DropDownList;
+            InformesDeVentas1_UC adminUC = new InformesDeVentas1_UC();
+            addUserControl(adminUC);
 
-            //combobox_informe.SelectedIndex = 0; // Seleccionar el primer usuario por defecto
+            combobox_informe.DrawMode = DrawMode.OwnerDrawFixed;
+            combobox_informe.DrawItem += comboBoxDiseño_DrawItem;
+            combobox_informe.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combobox_informe.SelectedIndex = 0; // Seleccionar el primer informe por defecto
+        }
+
+        public void addUserControl(UserControl uc)
+        {
+            uc.Dock = DockStyle.Fill;
+            panel_info_ventas.Controls.Clear();
+            panel_info_ventas.Controls.Add(uc);
+            uc.BringToFront();
         }
 
         private void btn_continuar_Click(object sender, EventArgs e)
         {
             if (combobox_informe.SelectedIndex == 0)
             {
-                FormInformesDeVentas1 InformesDeVentas1 = new FormInformesDeVentas1();
-                InformesDeVentas1.Show();
-                this.Hide();
+                InformesDeVentas1_UC adminUC = new InformesDeVentas1_UC();
+                addUserControl(adminUC);
             }
             else if (combobox_informe.SelectedIndex == 1)
             {
-                FormInformesDeVentas2 InformesDeVentas2 = new FormInformesDeVentas2();
-                InformesDeVentas2.Show();
-                this.Hide();
+                InformesDeVentas2_UC adminUC = new InformesDeVentas2_UC();
+                addUserControl(adminUC);
             }
         }
 

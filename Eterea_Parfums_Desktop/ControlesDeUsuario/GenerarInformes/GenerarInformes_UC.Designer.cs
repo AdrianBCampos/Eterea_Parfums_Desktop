@@ -36,7 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.combobox_informe = new System.Windows.Forms.ComboBox();
             this.btn_continuar = new System.Windows.Forms.Button();
-            this.panel_abm = new System.Windows.Forms.Panel();
+            this.panel_info_ventas = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -52,9 +52,9 @@
             this.lbl_facturacion.Location = new System.Drawing.Point(875, 27);
             this.lbl_facturacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_facturacion.Name = "lbl_facturacion";
-            this.lbl_facturacion.Size = new System.Drawing.Size(396, 48);
+            this.lbl_facturacion.Size = new System.Drawing.Size(288, 38);
             this.lbl_facturacion.TabIndex = 406;
-            this.lbl_facturacion.Text = "Informes de Ventas";
+            this.lbl_facturacion.Text = "Generar Informes";
             // 
             // pictureBox9
             // 
@@ -119,6 +119,9 @@
             this.combobox_informe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combobox_informe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combobox_informe.FormattingEnabled = true;
+            this.combobox_informe.Items.AddRange(new object[] {
+            "Ventas en un período",
+            "Inventario"});
             this.combobox_informe.Location = new System.Drawing.Point(848, 124);
             this.combobox_informe.Margin = new System.Windows.Forms.Padding(4);
             this.combobox_informe.Name = "combobox_informe";
@@ -140,24 +143,24 @@
             this.btn_continuar.UseVisualStyleBackColor = false;
             this.btn_continuar.Click += new System.EventHandler(this.btn_continuar_Click);
             // 
-            // panel_abm
+            // panel_info_ventas
             // 
-            this.panel_abm.AutoSize = true;
-            this.panel_abm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
-            this.panel_abm.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.panel_abm.Location = new System.Drawing.Point(6, 195);
-            this.panel_abm.Margin = new System.Windows.Forms.Padding(4);
-            this.panel_abm.Name = "panel_abm";
-            this.panel_abm.Size = new System.Drawing.Size(1999, 492);
-            this.panel_abm.TabIndex = 416;
-            this.panel_abm.UseWaitCursor = true;
+            this.panel_info_ventas.AutoSize = true;
+            this.panel_info_ventas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
+            this.panel_info_ventas.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.panel_info_ventas.Location = new System.Drawing.Point(6, 195);
+            this.panel_info_ventas.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_info_ventas.Name = "panel_info_ventas";
+            this.panel_info_ventas.Size = new System.Drawing.Size(1999, 492);
+            this.panel_info_ventas.TabIndex = 416;
+            this.panel_info_ventas.UseWaitCursor = true;
             // 
             // GenerarInformes_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
-            this.Controls.Add(this.panel_abm);
+            this.Controls.Add(this.panel_info_ventas);
             this.Controls.Add(this.btn_continuar);
             this.Controls.Add(this.combobox_informe);
             this.Controls.Add(this.label1);
@@ -187,6 +190,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox combobox_informe;
         private System.Windows.Forms.Button btn_continuar;
-        private System.Windows.Forms.Panel panel_abm;
+        private System.Windows.Forms.Panel panel_info_ventas;
     }
 }

@@ -166,10 +166,7 @@ namespace Eterea_Parfums_Desktop
         private void btn_generar_informes_Click(object sender, EventArgs e)
         {
             GenerarInformes_UC informesDeVentas1UC = new GenerarInformes_UC();
-            addUserControl(informesDeVentas1UC);
-
-            FormSeleccionarInformeVenta formSeleccionarInformeVenta = new FormSeleccionarInformeVenta();
-            formSeleccionarInformeVenta.ShowDialog();
+            addUserControl(informesDeVentas1UC);       
 
             CambiarColorBoton4((Button)sender);
         }
