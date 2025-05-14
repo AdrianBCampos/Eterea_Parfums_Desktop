@@ -17,9 +17,6 @@ namespace Eterea_Parfums_Desktop
     {
         private bool escaneoHabilitado = false; // ✅ Inicialmente deshabilitado
 
-
-        //private BarcodeReceiver barcodeReceiver;
-
         private static Perfume filtro = new Perfume();
 
         private List<Perfume> Perfumes_Completo = new List<Perfume>();
@@ -31,10 +28,6 @@ namespace Eterea_Parfums_Desktop
 
         private List<TipoDeAroma> aromas;
 
-        //public List<Stock> stock;
-        //public List<Articulos> articulos;
-
-
         //LA PAGINA ACTUAL
         private static int current = 0;
         private static int paginador = 10;
@@ -43,8 +36,6 @@ namespace Eterea_Parfums_Desktop
         private static int total = 0;
         private static int last_pag = 0;
         private static int current_pag = 1;
-
-        //private BarcodeScannerWatcher watcher;
 
         private int? aromaIdSeleccionado = null;
 
@@ -59,15 +50,12 @@ namespace Eterea_Parfums_Desktop
             }
 
             this.TopMost = false;
-            //ESCALAR TAMAÑO DEL FORM
-            //float scaleFactor = 0.8f; // 80% del tamaño original
-            //this.Scale(new SizeF(scaleFactor, scaleFactor));
-            //this.Scale(new SizeF(Program.ScaleFactor, Program.ScaleFactor));
 
+            /*ESCALAR TAMAÑO DEL FORM
+            float scaleFactor = 0.8f; // 80% del tamaño original
+            this.Scale(new SizeF(scaleFactor, scaleFactor));
+            this.Scale(new SizeF(Program.ScaleFactor, Program.ScaleFactor));*/
 
-
-            //barcodeReceiver = new BarcodeReceiver();
-            //barcodeReceiver.StartServer(); // Inicia el servidor TCP
 
             //Ocultar campos de escaneo 
             lbl_codigoBarras.Visible = false;
@@ -547,43 +535,7 @@ namespace Eterea_Parfums_Desktop
 
 
 
-        /*private void combo_filtro_stock_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (combo_filtro_stock.SelectedIndex == 1) // Disponible
-            {
-                filtro.stock = 1; // Filtra los perfumes con stock disponible
-            }
-            else if (combo_filtro_stock.SelectedIndex == 2) // Sin stock
-            {
-                filtro.stock = 0; // Filtra los perfumes sin stock
-            }
-            else
-            {
-                filtro.stock = -1; // No filtra el stock (todas las opciones)
-            }
-            filtrar(); // Llamar a la función de filtrado
-        }*/
-
-
-        /*private void combo_filtro_aroma_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            if (combo_filtro_aroma.SelectedIndex > 0)
-            {
-                string aromaSeleccionado = combo_filtro_aroma.SelectedItem.ToString();
-                TipoDeAroma aroma = TipoDeAromaControlador.getByNombre(aromaSeleccionado);
-                if (aroma != null)
-                {
-                    filtro.aroma = aroma;
-                    filtrar();
-                }
-            }
-            else
-            {
-                filtro.aroma = null;
-                filtrar();
-            }
-        }*/
-
+       
 
         private void filtrar()
         {
@@ -605,20 +557,7 @@ namespace Eterea_Parfums_Desktop
                 Perfumes_Filtrado = Perfumes_Filtrado.Where(x => x.activo == filtro.activo).ToList();
             }
 
-            /* // Filtrado por stock
-             if (filtro.stock != -1)
-             {
-                 Perfumes_Filtrado = Perfumes_Filtrado.Where(x => x.stock == filtro.stock).ToList();
-             }
-            */
-
-            /*if (filtro.aroma != null)
-            {
-                Perfumes_Filtrado = Perfumes_Filtrado
-                    .Where(x => x.AromasDelPerfume
-                        .Any(a => a.tipoDeAroma.id == filtro.aroma.id))
-                    .ToList();
-            }*/
+          
 
             if (filtro.nombre != null)
             {
@@ -822,77 +761,7 @@ namespace Eterea_Parfums_Desktop
 
 
 
-        // Evento para capturar el código escaneado
-        /*private void txt_scan_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                e.Handled = true;
-
-                string codigoBarras = txt_scan.Text.Trim();
-
-                if (!string.IsNullOrEmpty(codigoBarras))
-                {
-                    txt_scan.Enabled = false;
-
-                    Perfume perfumeEncontrado = PerfumeControlador.getByCodigo(codigoBarras);
-
-                    if (perfumeEncontrado != null)
-                    {
-                        FormVerDetallePerfume formDetalle = new FormVerDetallePerfume(perfumeEncontrado);
-                        formDetalle.ShowDialog(); // Bloquea la ejecución hasta que se cierre
-
-                        // Cuando se cierra VerDetallePerfume, se vuelve a mostrar el botón Escanear
-                        btn_escanear.Visible = true;
-                        txt_scan.Visible = false;
-                        lbl_codigoBarras.Visible = false;
-                    }
-                    else
-                    {
-                        FormEscanear formEscanear = new FormEscanear(this);
-                        formEscanear.ShowDialog();
-                    }
-                }
-                else
-                {
-                    FormEscanear formEscanear = new FormEscanear(this);
-                    formEscanear.ShowDialog();
-                }
-
-                txt_scan.Clear();
-                txt_scan.Enabled = true;
-                txt_scan.Focus();
-                escaneoHabilitado = false;
-            }
-        }*/
-
-
-        /*public void SimularIngresoTeclado(string barcode)
-        {
-            if (!escaneoHabilitado) return; // Si el escaneo no está habilitado, ignorar el código
-
-            if (InvokeRequired)
-            {
-                Invoke((MethodInvoker)(() =>
-                {
-                    txt_scan.Text = barcode;
-                    SendKeys.SendWait("{ENTER}"); // Enviar Enter automáticamente
-                }));
-            }
-            else
-            {
-                txt_scan.Text = barcode;
-                SendKeys.SendWait("{ENTER}");
-            }
-        }*/
-
-        /*public bool IsFocused()
-        {
-            return txt_scan.Focused;
-        }*/
-
-
+     
 
         private void Form_Click(object sender, EventArgs e)
         {
