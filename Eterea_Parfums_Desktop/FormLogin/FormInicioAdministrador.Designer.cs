@@ -49,8 +49,6 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.txt_nombre_suc = new System.Windows.Forms.Label();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.btn_cerrar_sesion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -64,7 +62,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_administrar_stock
@@ -133,7 +130,7 @@
             this.txt_bienvenido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.txt_bienvenido.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_bienvenido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_bienvenido.Location = new System.Drawing.Point(355, 118);
+            this.txt_bienvenido.Location = new System.Drawing.Point(355, 116);
             this.txt_bienvenido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_bienvenido.Name = "txt_bienvenido";
             this.txt_bienvenido.Size = new System.Drawing.Size(249, 51);
@@ -146,7 +143,7 @@
             this.txt_saludo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.txt_saludo.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_saludo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_saludo.Location = new System.Drawing.Point(666, 123);
+            this.txt_saludo.Location = new System.Drawing.Point(666, 121);
             this.txt_saludo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_saludo.Name = "txt_saludo";
             this.txt_saludo.Size = new System.Drawing.Size(439, 46);
@@ -226,7 +223,7 @@
             this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox7.Location = new System.Drawing.Point(187, 102);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(1014, 76);
+            this.pictureBox7.Size = new System.Drawing.Size(1335, 76);
             this.pictureBox7.TabIndex = 374;
             this.pictureBox7.TabStop = false;
             // 
@@ -312,36 +309,11 @@
             this.pictureBox10.TabIndex = 383;
             this.pictureBox10.TabStop = false;
             // 
-            // txt_nombre_suc
-            // 
-            this.txt_nombre_suc.AutoSize = true;
-            this.txt_nombre_suc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.txt_nombre_suc.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_nombre_suc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_nombre_suc.Location = new System.Drawing.Point(1259, 128);
-            this.txt_nombre_suc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.txt_nombre_suc.Name = "txt_nombre_suc";
-            this.txt_nombre_suc.Size = new System.Drawing.Size(133, 32);
-            this.txt_nombre_suc.TabIndex = 385;
-            this.txt_nombre_suc.Text = "Sucursal";
-            // 
-            // pictureBox11
-            // 
-            this.pictureBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.pictureBox11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox11.Location = new System.Drawing.Point(1207, 102);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(315, 76);
-            this.pictureBox11.TabIndex = 386;
-            this.pictureBox11.TabStop = false;
-            // 
             // FormInicioAdministrador
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
             this.ClientSize = new System.Drawing.Size(1535, 865);
-            this.Controls.Add(this.txt_nombre_suc);
-            this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.panel_admin);
             this.Controls.Add(this.btn_generar_informes);
             this.Controls.Add(this.pictureBox9);
@@ -380,7 +352,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -408,7 +379,5 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox10;
-        private System.Windows.Forms.Label txt_nombre_suc;
-        private System.Windows.Forms.PictureBox pictureBox11;
     }
 }

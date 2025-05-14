@@ -2,6 +2,7 @@
 using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock;
 using Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes;
+using Eterea_Parfums_Desktop.Helpers;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Drawing;
@@ -22,7 +23,7 @@ namespace Eterea_Parfums_Desktop
             InitializeComponent();
 
             // Configurar las imágenes
-            string rutaLogo = Program.Ruta_Base + @"Diseño Logo2.png";
+            string rutaLogo = Program.Ruta_Base + @"Diseño Logo1.png";
             img_logo.Image = Image.FromFile(rutaLogo);
 
             string rutaCerrarSesion = Program.Ruta_Base + @"CerrarSesion.png";
@@ -45,47 +46,40 @@ namespace Eterea_Parfums_Desktop
             pictureBox4.BackColor = Color.FromArgb(232, 186, 197);
             btn_gestionar.BackColor = Color.FromArgb(232, 186, 197);
 
-            // Obtener y mostrar el nombre de la sucursal en el label
-            txt_nombre_suc.Text = SucursalControlador.ObtenerNombreSucursalPorId(Program.sucursal);
+
         }
 
         private void btn_cerrar_sesion_Click(object sender, EventArgs e)
         {
-            // Verificar si hay una caja asignada y aún está abierta
-            if (Program.NumeroCajaActual != null && Program.NumeroCajaActual != "Caja sin asignar")
+            if (CajaManager.HayCajaAsignada())
             {
-                MessageBox.Show("No se puede cerrar sesión mientras haya una caja abierta. Cierre la caja primero.",
-                                "Caja abierta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; // Cancela el cierre de sesión
+                MessageBox.Show(
+                    "Hay una caja abierta en uso.\nDebes cerrarla antes de cerrar sesión.",
+                    "Cierre de sesión bloqueado",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
             }
 
-            Program.logueado = new Empleado();
-
-            // Buscar si FormStart ya está abierto
-            FormStart formStart = null;
-            foreach (Form form in Application.OpenForms)
+            var confirm = MessageBox.Show("¿Estás seguro que deseas cerrar sesión?", "Cerrar sesión", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm == DialogResult.Yes)
             {
-                if (form is FormStart)
-                {
-                    formStart = (FormStart)form;
-                    break;
-                }
+                // Limpiar datos de sesión
+                Program.logueado = null;
+                CajaManager.ResetCaja();
+
+                // Mostrar el login encima del FormStart
+                FormLogin formLogin = new FormLogin();
+                formLogin.StartPosition = FormStartPosition.CenterScreen;
+                formLogin.Show(); // Mostrar encima del FormStart
+
+                // Cerrar este form (FormInicioAdministrador)
+                this.Close();
             }
-
-            // Asegurar que FormStart siga visible y en el fondo
-            if (formStart != null)
-            {
-                formStart.Show();
-                formStart.SendToBack(); // Lo envía al fondo
-            }
-
-            // Mostrar el login sobre FormStart
-            FormLogin login = new FormLogin();
-            login.Show();
-
-            // Cerrar este formulario (FormInicioAdministrador)
-            this.Close();
         }
+
+
 
         private void btn_gestionar_Click(object sender, EventArgs e)
         {
@@ -97,76 +91,24 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_facturar_Click(object sender, EventArgs e)
         {
-          
+
             CambiarColorBoton2((Button)sender);
-
-            // Verificamos si ya hay una caja asignada
-            if (Program.NumeroCajaActual != null && Program.NumeroCajaActual != "Caja sin asignar")
-            {
-                // Ya hay caja asignada, abrir directamente el panel de facturación
-                Facturar_UC facturarUC = new Facturar_UC();
-                facturarUC.NumeroCaja = Program.NumeroCajaActual;
-                facturarUC.IdHistorialCaja = Program.IdHistorialCajaActual;
-
-                addUserControl(facturarUC);
-            }
-            else
-            {
-                // No hay caja asignada, mostrar FormNumeroDeCaja para elegirla
-                FormNumeroDeCaja numeroDeCaja = new FormNumeroDeCaja();
-
-                numeroDeCaja.ConfirmarNumeroCaja += (s, numeroCaja) =>
-                {
-                    Facturar_UC facturarUC = new Facturar_UC();
-                    facturarUC.NumeroCaja = numeroCaja;
-                    facturarUC.IdHistorialCaja = CajaControlador.RegistrarAperturaDeCaja(
-                        Convert.ToInt32(numeroCaja), Program.sucursal, Program.logueado.usuario
-                    );
-
-                    // Guardamos en variables globales
-                    Program.NumeroCajaActual = numeroCaja;
-                    Program.IdHistorialCajaActual = facturarUC.IdHistorialCaja;
-
-                    addUserControl(facturarUC);
-                };
-
-                numeroDeCaja.ShowDialog();
-            }
+            CajaManager.VerificarCajaAlIngresarAFacturar(this);
 
         }
 
         private void btn_administrar_stock_Click(object sender, EventArgs e)
         {
-            CambiarColorBoton3((Button)sender);                     
+            AdministrarStock_UC administrarStockUC = new AdministrarStock_UC();
+            addUserControl(administrarStockUC);
 
-            // Verificamos si ya hay una caja asignada
-            if (Program.sucursal != 0)
-            {
-                // Ya hay una sucursal asignada, abrir directamente el panel de stock
-                AdministrarStock_UC administrarStockUC = new AdministrarStock_UC(Program.sucursal);                                  
-                
-                addUserControl(administrarStockUC);
-            }
-            else
-            {
-                // No hay sucursal asignada, mostrar FormNumeroDeSucursal para elegirla
-                FormNumeroDeSucursal formNumeroDeSucursal = new FormNumeroDeSucursal();
-                formNumeroDeSucursal.ConfirmarNumeroSucursal += (s, nuevaSucursal) =>
-                {
-                    Program.sucursal = nuevaSucursal;
-                    AdministrarStock_UC administrarStockUC = new AdministrarStock_UC(Program.sucursal);
-                    addUserControl(administrarStockUC);
-                };
-
-                formNumeroDeSucursal.ShowDialog();
-            }
-
+            CambiarColorBoton3((Button)sender);
         }    
 
         private void btn_generar_informes_Click(object sender, EventArgs e)
         {
             GenerarInformes_UC informesDeVentas1UC = new GenerarInformes_UC();
-            addUserControl(informesDeVentas1UC);       
+            addUserControl(informesDeVentas1UC);
 
             CambiarColorBoton4((Button)sender);
         }
