@@ -680,10 +680,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 txt_total.Text = (subtotal + recargo - descuento).ToString("N2");
             }
         }
-        public DataGridView GetFacturaDataGrid()
-        {
-            return Factura;
-        }
+        
 
 
         public void ActualizarTotales()
@@ -701,7 +698,15 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         }
 
 
+        public DataGridView GetFacturaDataGrid()
+        {
+            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
+            Factura.RowHeadersVisible = false;
 
+            Factura.CellPainting += Factura_CellPainting;
+
+            return Factura;
+        }
 
 
 
