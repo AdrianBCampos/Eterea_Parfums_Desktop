@@ -25,6 +25,18 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
+
+            foreach (DataGridViewColumn col in dataGridViewTipoNota.Columns)
+            {
+                col.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
+
+            foreach (DataGridViewColumn col in dataGridViewAromas.Columns)
+            {
+                col.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
             this.perfume = perfumeSeleccionado;
 
             txt_nombre_perfume.Text = perfumeSeleccionado.nombre;
@@ -215,6 +227,7 @@ namespace Eterea_Parfums_Desktop
                     dataGridViewAromas.Rows[rowIndex].Cells[0].Value = aromaDelPerfume.tipoDeAroma.id; // ID del aroma
                     dataGridViewAromas.Rows[rowIndex].Cells[1].Value = tipoDeAroma.nombre; // Nombre del tipo de aroma
                 }
+                dataGridViewAromas.ClearSelection();
             }
         }
 
