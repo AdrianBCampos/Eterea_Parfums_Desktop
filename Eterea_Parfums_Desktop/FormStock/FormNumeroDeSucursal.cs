@@ -18,6 +18,10 @@ namespace Eterea_Parfums_Desktop
 
             string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";          
             CargarSucursales();
+
+            combo_sucursales.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_sucursales.DrawItem += comboBoxDiseño_DrawItem;
+            combo_sucursales.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void CargarSucursales()
@@ -26,7 +30,7 @@ namespace Eterea_Parfums_Desktop
             combo_sucursales.Items.Clear();
             foreach (Sucursal sucursal in sucursales)
             {
-                combo_sucursales.Items.Add(sucursal.id.ToString());
+                combo_sucursales.Items.Add(sucursal.nombre.ToString());
             }
 
         }
@@ -47,14 +51,60 @@ namespace Eterea_Parfums_Desktop
                 return;
             }
 
-            int idSucursal = int.Parse(combo_sucursales.SelectedItem.ToString());
+            string nombreSucursal = combo_sucursales.SelectedItem.ToString();
+            var sucursalSeleccionada = SucursalControlador.getAll().FirstOrDefault(s => s.nombre == nombreSucursal);
 
-            // Lanza el evento con la sucursal seleccionada
-            ConfirmarNumeroSucursal?.Invoke(this, idSucursal);
-
-            this.Close(); // Cierra esta ventana, vuelve al formulario que la abrió
+            if (sucursalSeleccionada != null)
+            {
+                int idSucursal = sucursalSeleccionada.id;
+                ConfirmarNumeroSucursal?.Invoke(this, idSucursal);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("No se pudo encontrar la sucursal seleccionada.");
+            }
         }
 
-        
+        private void comboBoxDiseño_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0)
+                return;
+
+            // Obtener el ComboBox y el texto del ítem actual
+            ComboBox combo = sender as ComboBox;
+
+            string text = combo.Items[e.Index].ToString();
+
+            // Definir colores personalizados
+            Color backgroundColor;
+            Color textColor;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                // Color cuando el ítem está seleccionado
+                backgroundColor = Color.FromArgb(195, 156, 164);
+                textColor = Color.White;
+            }
+            else
+            {
+                // Color cuando el ítem NO está seleccionado
+                backgroundColor = Color.FromArgb(250, 236, 239); // Color personalizado
+                textColor = Color.FromArgb(195, 156, 164);
+            }
+
+            // Pintar el fondo del ítem
+            using (SolidBrush brush = new SolidBrush(backgroundColor))
+            {
+                e.Graphics.FillRectangle(brush, e.Bounds);
+            }
+
+            // Dibujar el texto
+            TextRenderer.DrawText(e.Graphics, text, e.Font, e.Bounds, textColor, TextFormatFlags.Left);
+
+            // Evitar problemas visuales
+            e.DrawFocusRectangle();
+        }
+
     }
 }

@@ -17,11 +17,26 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
         private Perfume perfume;
         private int idSucursal;     
 
+
         public AdministrarStock_UC(int idSucursal)
         {
             InitializeComponent();
             this.idSucursal = idSucursal;
-            txt_numero_sucursal.Text = idSucursal.ToString();
+            
+            Sucursal sucursal = SucursalControlador.getById(idSucursal);
+
+            if (sucursal != null)
+            {
+                txt_numero_sucursal.Text = sucursal.nombre;
+            }
+            else
+            {
+                txt_numero_sucursal.Text = "Sucursal no encontrada";
+            }
+
+            //txt_numero_sucursal.Text = idSucursal.ToString();
+
+
             //txt_cantidad_producto.Text = "0";
             txt_codigo_producto.MaxLength = 13;
             txt_codigo_producto.KeyPress += txt_codigo_producto_KeyPress;

@@ -127,12 +127,12 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label1.Location = new System.Drawing.Point(290, 118);
+            this.label1.Location = new System.Drawing.Point(266, 118);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(295, 38);
+            this.label1.Size = new System.Drawing.Size(381, 38);
             this.label1.TabIndex = 408;
-            this.label1.Text = "Sucursal Número:";
+            this.label1.Text = "Sucursal Seleccionada:";
             // 
             // txt_numero_sucursal
             // 
@@ -140,7 +140,7 @@
             this.txt_numero_sucursal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.txt_numero_sucursal.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_numero_sucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_numero_sucursal.Location = new System.Drawing.Point(656, 118);
+            this.txt_numero_sucursal.Location = new System.Drawing.Point(683, 118);
             this.txt_numero_sucursal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_numero_sucursal.Name = "txt_numero_sucursal";
             this.txt_numero_sucursal.Size = new System.Drawing.Size(333, 38);

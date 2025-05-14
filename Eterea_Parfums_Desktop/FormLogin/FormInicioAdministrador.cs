@@ -142,7 +142,7 @@ namespace Eterea_Parfums_Desktop
             // Verificamos si ya hay una caja asignada
             if (Program.sucursal != 0)
             {
-                // Ya hay caja asignada, abrir directamente el panel de facturación
+                // Ya hay una sucursal asignada, abrir directamente el panel de stock
                 AdministrarStock_UC administrarStockUC = new AdministrarStock_UC(Program.sucursal);                                  
                 
                 addUserControl(administrarStockUC);
