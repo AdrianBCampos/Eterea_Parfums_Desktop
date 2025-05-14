@@ -401,6 +401,8 @@ namespace Eterea_Parfums_Desktop
                 if (mostrarPerfume)
                 {
                     int rowIndex = dataGridViewConsultas.Rows.Add();
+                    DataGridViewRow row = dataGridViewConsultas.Rows[rowIndex];
+                    row.Tag = perfume; // ✅ Asocia el objeto perfume a la fila
 
                     string precioMostrado = (perfume.activo == 0 || stockDisponible <= 0)
                         ? "Sin Stock"
@@ -647,8 +649,12 @@ namespace Eterea_Parfums_Desktop
 
             if (e.RowIndex >= 0 && e.ColumnIndex == 4) // Verifica que se haga clic en la columna correcta
             {
-                int rowIndex = e.RowIndex;
-                Perfume perfumeSeleccionado = Perfumes_Paginados[rowIndex];
+                DataGridViewRow row = dataGridViewConsultas.Rows[e.RowIndex];
+                Perfume perfumeSeleccionado = row.Tag as Perfume;
+
+                if (perfumeSeleccionado == null)
+                    return;
+
 
                 // Crear la ventana de detalles
                 FormVerDetallePerfume detallesForm = new FormVerDetallePerfume(perfumeSeleccionado);

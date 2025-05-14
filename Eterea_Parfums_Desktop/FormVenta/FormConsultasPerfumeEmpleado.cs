@@ -116,21 +116,26 @@ namespace Eterea_Parfums_Desktop
         private void VisualizarPerfumes(List<Perfume> perfumeMostrar)
         {
             dataGridViewConsultas.Rows.Clear();
+            dataGridViewConsultas.Rows.Clear();
+
             foreach (Perfume perfume in perfumeMostrar)
             {
                 if (perfume.activo == 1)
                 {
                     int rowIndex = dataGridViewConsultas.Rows.Add();
 
-                    //dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = perfume.sku.ToString();
-                    dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = perfume.nombre.ToString();
-                    dataGridViewConsultas.Rows[rowIndex].Cells[1].Value = (MarcaControlador.getById(perfume.marca.id)).nombre;
-                    dataGridViewConsultas.Rows[rowIndex].Cells[2].Value = (GeneroControlador.getById(perfume.genero.id)).genero;
-                    dataGridViewConsultas.Rows[rowIndex].Cells[3].Value = perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
-                    dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = "Ver";
-                    dataGridViewConsultas.Rows[rowIndex].Cells[5].Value = "Agregar";
+                    DataGridViewRow row = dataGridViewConsultas.Rows[rowIndex];
+                    row.Tag = perfume; // ✅ Asocia el objeto Perfume a la fila
+
+                    row.Cells[0].Value = perfume.nombre;
+                    row.Cells[1].Value = MarcaControlador.getById(perfume.marca.id).nombre;
+                    row.Cells[2].Value = GeneroControlador.getById(perfume.genero.id).genero;
+                    row.Cells[3].Value = perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
+                    row.Cells[4].Value = "Ver";
+                    row.Cells[5].Value = "Agregar";
                 }
             }
+
         }
 
         private void btn_anterior_Click_1(object sender, EventArgs e)
@@ -247,8 +252,12 @@ namespace Eterea_Parfums_Desktop
 
             if (e.RowIndex >= 0 && e.ColumnIndex == 4)
             {
-                int rowIndex = e.RowIndex;
-                Perfume perfumeSeleccionado = Perfumes_Paginados[rowIndex];
+                DataGridViewRow row = dataGridViewConsultas.Rows[e.RowIndex];
+                Perfume perfumeSeleccionado = row.Tag as Perfume;
+
+                if (perfumeSeleccionado == null)
+                    return;
+
 
                 FormVerDetallePerfume detallesForm = new FormVerDetallePerfume(perfumeSeleccionado);
                 detallesForm.Show();
