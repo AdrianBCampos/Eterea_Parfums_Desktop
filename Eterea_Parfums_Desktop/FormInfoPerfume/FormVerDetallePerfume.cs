@@ -39,6 +39,9 @@ namespace Eterea_Parfums_Desktop
 
                 label3.Visible = false;
 
+                txt_precio_lista.ForeColor = Color.Red;
+
+
                 // Desactivar combos
                 combo_medios_pago.Enabled = false;
                 combo_cuotas.Enabled = false;
@@ -59,6 +62,9 @@ namespace Eterea_Parfums_Desktop
 
                 lbl_medios_pago.ForeColor = Color.Brown;
                 lbl_cuotas.ForeColor = Color.Brown;
+
+                txt_precio_lista.ForeColor = Color.Black;
+
             }
 
 
@@ -170,13 +176,13 @@ namespace Eterea_Parfums_Desktop
                     switch (tipo.nombre_tipo_de_nota.ToLower().Trim())
                     {
                         case "nota de salida":
-                            dataGridViewTipoNota.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Green;
+                            dataGridViewTipoNota.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.DodgerBlue;
                             break;
                         case "nota de corazón":
-                            dataGridViewTipoNota.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Red;
+                            dataGridViewTipoNota.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.DeepPink;
                             break;
                         case "nota de fondo":
-                            dataGridViewTipoNota.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.MediumPurple;
+                            dataGridViewTipoNota.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.SeaGreen;
                             break;
                         default:
                             dataGridViewTipoNota.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Black;

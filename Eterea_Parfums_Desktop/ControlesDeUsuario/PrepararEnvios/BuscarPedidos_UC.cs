@@ -19,6 +19,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             img_logo.Image = Image.FromFile(rutaCompletaImagen);
 
             dgv_resultado.SelectionChanged += (s, e) => ActualizarTextoBotonPrepararEnvio();
+
+          
+           
+            txt_orden_n.KeyDown += Txt_orden_n_KeyDown;
+
         }
 
         private void btn_buscar_orden_Click(object sender, EventArgs e)
@@ -97,5 +102,18 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 parentContainer.Controls.Add(prepararEnviosFiltradoUC);
             }
         }
+
+        private void Txt_orden_n_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_buscar_orden.PerformClick();
+                e.SuppressKeyPress = true; // evita el 'ding' del Enter
+            }
+        }
+
+
+
+
     }
 }

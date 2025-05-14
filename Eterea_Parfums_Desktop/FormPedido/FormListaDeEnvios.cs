@@ -58,7 +58,7 @@ namespace Eterea_Parfums_Desktop
             nombreSucursalActual = SucursalControlador.ObtenerNombreSucursalPorId(Program.sucursal);
 
             this.Load += FormListaDeEnvios_Load;
-            this.estadoOrdenFiltrada = estadoOrdenFiltrada;
+           
         }
 
         private void button2_Click(object sender, EventArgs e)

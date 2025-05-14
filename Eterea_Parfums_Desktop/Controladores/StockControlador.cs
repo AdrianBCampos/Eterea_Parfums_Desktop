@@ -111,5 +111,57 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
             return stocks;
         }
+
+        /*public static int ObtenerStockPorPerfumeYSucursal(int perfumeId, int sucursalId)
+        {
+            string query = "SELECT ISNULL(SUM(cantidad), 0) FROM dbo.stock WHERE perfume_id = @perfumeId AND sucursal_id = @sucursalId";
+
+            using (SqlCommand cmd = new SqlCommand(query, DB_Controller.connection))
+            {
+                cmd.Parameters.AddWithValue("@perfumeId", perfumeId);
+                cmd.Parameters.AddWithValue("@sucursalId", sucursalId);
+
+                DB_Controller.connection.Open();
+                int stock = Convert.ToInt32(cmd.ExecuteScalar());
+                DB_Controller.connection.Close();
+
+                return stock;
+            }
+        }*/
+
+
+        public static Dictionary<int, int> ObtenerTodosLosStocksPorSucursal(int sucursalId)
+        {
+            string query = @"
+        SELECT perfume_id, SUM(cantidad) AS total_stock
+        FROM dbo.stock
+        WHERE sucursal_id = @sucursalId
+        GROUP BY perfume_id";
+
+            Dictionary<int, int> resultado = new Dictionary<int, int>();
+
+            using (SqlCommand cmd = new SqlCommand(query, DB_Controller.connection))
+            {
+                cmd.Parameters.AddWithValue("@sucursalId", sucursalId);
+
+                DB_Controller.connection.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int perfumeId = reader.GetInt32(0);
+                        int totalStock = reader.GetInt32(1);
+                        resultado[perfumeId] = totalStock;
+                    }
+                }
+                DB_Controller.connection.Close();
+            }
+
+            return resultado;
+        }
+
+
+
+
     }
 }
