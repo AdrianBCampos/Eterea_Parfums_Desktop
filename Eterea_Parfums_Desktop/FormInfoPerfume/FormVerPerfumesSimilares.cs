@@ -196,6 +196,7 @@ namespace Eterea_Parfums_Desktop
                     dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
                     dataGridViewConsultas.Rows[rowIndex].Cells[5].Value = "Ver";
                 }
+                dataGridViewConsultas.ClearSelection();
             }
         }
 
