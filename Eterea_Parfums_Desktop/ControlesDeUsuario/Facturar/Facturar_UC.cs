@@ -147,6 +147,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 return;
             }
 
+            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
+            Factura.RowHeadersVisible = false;
+
             foreach (DataGridViewRow fila in Factura.Rows)
             {
                 if (fila.Cells[0].Value.ToString() == perfume.id.ToString()) // Columna ID
@@ -167,6 +170,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     return;
                 }
             }
+
+            Factura.CellPainting += Factura_CellPainting;
 
             int rowIndex = Factura.Rows.Add(perfume.id, 1, "", "", perfume.nombre, perfume.precio_en_pesos, "", "", ""); ;
 
@@ -1212,6 +1217,21 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         }
 
 
+
+        private void btn_enviar_Click(object sender, EventArgs e)
+        {
+            string numero = Program.NumeroCajaActual;
+
+            if (numero != null && numero != "Caja sin asignar")
+            {
+
+            }
+            {
+                // No hay caja asignada, mostrar FormNumeroDeCaja para elegirla
+                MessageBox.Show("\"Debes ingresar un número de caja. \n Haz click en 'Abrir Caja' ", "Número de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         //Diseño del combo box
         private void comboBoxdiseño_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -1252,24 +1272,32 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             e.DrawFocusRectangle();
         }
 
-        private void btn_enviar_Click(object sender, EventArgs e)
+        //Diseño del boton del datagridview
+        private void Factura_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            string numero = Program.NumeroCajaActual;
-
-            if (numero != null && numero != "Caja sin asignar")
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0 && Factura.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
             {
+                e.Handled = true;
+                e.PaintBackground(e.CellBounds, true);
 
-            }
-            {
-                // No hay caja asignada, mostrar FormNumeroDeCaja para elegirla
-                MessageBox.Show("\"Debes ingresar un número de caja. \n Haz click en 'Abrir Caja' ", "Número de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // Crear un rectángulo para el botón
+                System.Drawing.Rectangle buttonRect = e.CellBounds;
+                buttonRect.Inflate(-2, -2); // Reducir tamaño para dar efecto de borde
+
+                // Definir colores personalizados
+                Color buttonColor = Color.FromArgb(228, 137, 164); // Color de fondo del botón
+                Color textColor = Color.FromArgb(250, 236, 239); // Color del texto
+
+                using (SolidBrush brush = new SolidBrush(buttonColor))
+                {
+                    e.Graphics.FillRectangle(brush, buttonRect);
+                }
+
+                // Dibujar el texto del botón
+                TextRenderer.DrawText(e.Graphics, (string)e.Value, e.CellStyle.Font, buttonRect, textColor,
+                                      TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
             }
         }
-
-
-
-        //Diseño del boton del datagridview
-
 
     }
 }
