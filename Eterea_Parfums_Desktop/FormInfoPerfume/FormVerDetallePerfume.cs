@@ -75,7 +75,7 @@ namespace Eterea_Parfums_Desktop
                 lbl_medios_pago.ForeColor = Color.Brown;
                 lbl_cuotas.ForeColor = Color.Brown;
 
-                txt_precio_lista.ForeColor = Color.Black;
+                
 
             }
 
@@ -563,5 +563,12 @@ namespace Eterea_Parfums_Desktop
         {
             this.Close();
         }
+
+        private void txt_fecha_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+    
     }
 }
