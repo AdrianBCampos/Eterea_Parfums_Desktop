@@ -72,7 +72,6 @@ namespace Eterea_Parfums_Desktop
                         dataGridViewPerfumes.Rows[rowIndex].Cells[0].Value = null; // O una imagen por defecto
                     }
                     ((DataGridViewImageCell)dataGridViewPerfumes.Rows[rowIndex].Cells[0]).ImageLayout = DataGridViewImageCellLayout.Zoom;
-                    dataGridViewPerfumes.Rows[rowIndex].Cells[0].Value = System.Drawing.Image.FromFile(rutaCompletaImagen);
                     dataGridViewPerfumes.Rows[rowIndex].Cells[1].Value = perfume.codigo;
                     dataGridViewPerfumes.Rows[rowIndex].Cells[2].Value = (MarcaControlador.getById(perfume.marca.id)).nombre;
                     dataGridViewPerfumes.Rows[rowIndex].Cells[3].Value = perfume.nombre.ToString();

@@ -178,6 +178,18 @@
     <Compile Include="ControlesDeUsuario\GenerarInformes\GenerarInformes_UC.Designer.cs">
       <DependentUpon>GenerarInformes_UC.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlesDeUsuario\GenerarInformes\InformesDeVentas1_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\GenerarInformes\InformesDeVentas1_UC.Designer.cs">
+      <DependentUpon>InformesDeVentas1_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\GenerarInformes\InformesDeVentas2_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\GenerarInformes\InformesDeVentas2_UC.Designer.cs">
+      <DependentUpon>InformesDeVentas2_UC.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlesDeUsuario\Gestionar\Gestionar_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -222,6 +234,12 @@
     </Compile>
     <Compile Include="FormStart.Designer.cs">
       <DependentUpon>FormStart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormStock\FormNumeroDeSucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStock\FormNumeroDeSucursal.Designer.cs">
+      <DependentUpon>FormNumeroDeSucursal.cs</DependentUpon>
     </Compile>
     <Compile Include="FormVenta\FormConsultasPerfumeEmpleado.cs">
       <SubType>Form</SubType>
@@ -383,17 +401,17 @@
     <Compile Include="FormVenta\FormFacturacion.Designer.cs">
       <DependentUpon>FormFacturacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormVenta\FormNumeroDeCaja.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormVenta\FormNumeroDeCaja.Designer.cs">
-      <DependentUpon>FormNumeroDeCaja.cs</DependentUpon>
-    </Compile>
     <Compile Include="ControlesDeUsuario\PrepararEnvios\FormVisorPDF.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ControlesDeUsuario\PrepararEnvios\FormVisorPDF.Designer.cs">
       <DependentUpon>FormVisorPDF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormVenta\FormNumeroDeCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVenta\FormNumeroDeCaja.Designer.cs">
+      <DependentUpon>FormNumeroDeCaja.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelos\AromaDelPerfume.cs" />
     <Compile Include="Modelos\Calle.cs" />
@@ -463,12 +481,6 @@
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Empleado.cs" />
-    <Compile Include="FormStock\FormNumeroDeSucursal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormStock\FormNumeroDeSucursal.Designer.cs">
-      <DependentUpon>FormNumeroDeSucursal.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FormInfoPerfume\FormVerDetallePerfume.cs">
@@ -498,6 +510,12 @@
     <EmbeddedResource Include="ControlesDeUsuario\GenerarInformes\GenerarInformes_UC.resx">
       <DependentUpon>GenerarInformes_UC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ControlesDeUsuario\GenerarInformes\InformesDeVentas1_UC.resx">
+      <DependentUpon>InformesDeVentas1_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesDeUsuario\GenerarInformes\InformesDeVentas2_UC.resx">
+      <DependentUpon>InformesDeVentas2_UC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlesDeUsuario\Gestionar\Gestionar_UC.resx">
       <DependentUpon>Gestionar_UC.cs</DependentUpon>
     </EmbeddedResource>
@@ -521,6 +539,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormStart.resx">
       <DependentUpon>FormStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormStock\FormNumeroDeSucursal.resx">
+      <DependentUpon>FormNumeroDeSucursal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormVenta\FormConsultasPerfumeEmpleado.resx">
       <DependentUpon>FormConsultasPerfumeEmpleado.cs</DependentUpon>
@@ -609,17 +630,14 @@
     <EmbeddedResource Include="FormLogin\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormStock\FormNumeroDeSucursal.resx">
-      <DependentUpon>FormNumeroDeSucursal.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormVenta\FormFacturacion.resx">
       <DependentUpon>FormFacturacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormVenta\FormNumeroDeCaja.resx">
-      <DependentUpon>FormNumeroDeCaja.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ControlesDeUsuario\PrepararEnvios\FormVisorPDF.resx">
       <DependentUpon>FormVisorPDF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVenta\FormNumeroDeCaja.resx">
+      <DependentUpon>FormNumeroDeCaja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
