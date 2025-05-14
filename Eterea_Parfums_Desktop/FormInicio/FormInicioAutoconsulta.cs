@@ -17,9 +17,6 @@ namespace Eterea_Parfums_Desktop
     {
         private bool escaneoHabilitado = false; // ✅ Inicialmente deshabilitado
 
-
-        //private BarcodeReceiver barcodeReceiver;
-
         private static Perfume filtro = new Perfume();
 
         private List<Perfume> Perfumes_Completo = new List<Perfume>();
@@ -31,10 +28,6 @@ namespace Eterea_Parfums_Desktop
 
         private List<TipoDeAroma> aromas;
 
-        //public List<Stock> stock;
-        //public List<Articulos> articulos;
-
-
         //LA PAGINA ACTUAL
         private static int current = 0;
         private static int paginador = 10;
@@ -44,7 +37,7 @@ namespace Eterea_Parfums_Desktop
         private static int last_pag = 0;
         private static int current_pag = 1;
 
-        //private BarcodeScannerWatcher watcher;
+        private int? aromaIdSeleccionado = null;
 
 
         public FormInicioAutoconsulta()
@@ -57,15 +50,12 @@ namespace Eterea_Parfums_Desktop
             }
 
             this.TopMost = false;
-            //ESCALAR TAMAÑO DEL FORM
-            //float scaleFactor = 0.8f; // 80% del tamaño original
-            //this.Scale(new SizeF(scaleFactor, scaleFactor));
-            //this.Scale(new SizeF(Program.ScaleFactor, Program.ScaleFactor));
 
+            /*ESCALAR TAMAÑO DEL FORM
+            float scaleFactor = 0.8f; // 80% del tamaño original
+            this.Scale(new SizeF(scaleFactor, scaleFactor));
+            this.Scale(new SizeF(Program.ScaleFactor, Program.ScaleFactor));*/
 
-
-            //barcodeReceiver = new BarcodeReceiver();
-            //barcodeReceiver.StartServer(); // Inicia el servidor TCP
 
             //Ocultar campos de escaneo 
             lbl_codigoBarras.Visible = false;
@@ -128,30 +118,7 @@ namespace Eterea_Parfums_Desktop
 
         }
 
-        /* private void txt_scan_TextChanged(object sender, EventArgs e)
-         {
-             if (!escaneoHabilitado) 
-             {
-                 // ✅ Si el escaneo no está habilitado, limpiamos el TextBox y salimos del método
-                 txt_scan.Clear();
-                 return;
-             }
-             if (!string.IsNullOrEmpty(txt_scan.Text))
-             { 
-                 GuardarTextoEnArchivo(txt_scan.Text);
 
-                 // Usar BeginInvoke para ejecutar el evento KeyPress en el hilo principal
-                 this.BeginInvoke(new Action(() =>
-                 {
-                     txt_scan_KeyPress(txt_scan, new KeyPressEventArgs((char)Keys.Enter));
-                 }));
-             }
-         }*/
-
-        /*private void DetalleForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            ResetAutoConsulta();
-        }*/
 
         public void FormInicioAutoconsulta_KeyDown(object sender, KeyEventArgs e)
         {
@@ -233,64 +200,7 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
-        /*private void txt_scan_TextChanged(object sender, EventArgs e)
-        {
-            if (!escaneoHabilitado || !txt_scan.Visible || !txt_scan.Enabled)
-            {
-                txt_scan.Text = ""; // Limpia si el campo no debería recibir datos
-                return;
-            }
-
-            string codigo = txt_scan.Text.Trim();
-            if (string.IsNullOrEmpty(codigo)) return;
-
-            if (PerfumeControlador.getByCodigo(codigo) != null)
-            {
-                // Si el perfume existe, abrir el formulario de detalles
-                FormVerDetallePerfume detalleForm = new FormVerDetallePerfume(PerfumeControlador.getByCodigo(codigo));
-
-                // Evento para resetear la UI al cerrar el formulario
-                detalleForm.FormClosed += (s, args) => ResetAutoConsulta();
-
-                detalleForm.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Código no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                // Si no existe, abrir el formulario de reintento
-                //FormEscanear escanearForm = new FormEscanear(this);
-
-                // Evento para resetear la UI al cerrar el formulario
-                //escanearForm.FormClosed += (s, args) => ResetAutoConsulta();
-
-                //escanearForm.ShowDialog();
-
-                ResetAutoConsulta();
-            }
-        }*/
-
-        /*   private void txt_scan_TextChanged(object sender, EventArgs e)
-           {
-               string codigo = txt_scan.Text.Trim();
-               if (string.IsNullOrEmpty(codigo)) return;
-
-               if (PerfumeControlador.getByCodigo(codigo)!=null)
-               {
-                   // Si existe, abrir el formulario de detalles
-                   FormVerDetallePerfume detalleForm = new FormVerDetallePerfume(PerfumeControlador.getByCodigo(codigo));
-                   detalleForm.ShowDialog();
-               }
-               else
-               {
-                   // Si no existe, abrir el formulario de reintento
-                   FormEscanear escanearForm = new FormEscanear(this);
-                   escanearForm.ShowDialog();
-               }
-
-               // Reiniciar la UI al volver a formAutoConsulta
-               ResetAutoConsulta();
-           }*/
-
+    
         public void ResetAutoConsulta()
         {
             escaneoHabilitado = false;
@@ -301,11 +211,11 @@ namespace Eterea_Parfums_Desktop
             txt_scan.Text = ""; // ✅ Vacía el textbox
         }
 
-        private void GuardarTextoEnArchivo(string texto)
+       /* private void GuardarTextoEnArchivo(string texto)
         {
             string rutaArchivo = @"C:\Users\intersan\Desktop\TESIS\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\txt_scan.txt";
             File.WriteAllText(rutaArchivo, texto);
-        }
+        }*/
 
         private void InicioAutoConsultas_KeyDown_1(object sender, KeyEventArgs e)
         {
@@ -410,9 +320,9 @@ namespace Eterea_Parfums_Desktop
         private void CargarArticulos()
         {
             combo_filtro_articulos.Items.Clear();
+            combo_filtro_articulos.Items.Add("Perfumes a la venta");
             combo_filtro_articulos.Items.Add("Todos los Perfumes");
-            combo_filtro_articulos.Items.Add("Activos");
-            combo_filtro_articulos.Items.Add("No Activos");
+            combo_filtro_articulos.Items.Add("Perfumes sin stock");
             combo_filtro_articulos.SelectedIndex = 0;  // Establece la opción por defecto
         }
 
@@ -449,27 +359,62 @@ namespace Eterea_Parfums_Desktop
             dataGridViewConsultas.RowHeadersVisible = false;
 
             dataGridViewConsultas.Rows.Clear();
+
+            var stockPorPerfume = StockControlador.ObtenerTodosLosStocksPorSucursal(Program.sucursal);
+
+
             foreach (Perfume perfume in perfumeMostrar)
             {
-                // Verifica si se deben mostrar los activos, los no activos o todos los perfumes
-                if ((combo_filtro_articulos.SelectedIndex == 0) || // Todos los perfumes
-                    (combo_filtro_articulos.SelectedIndex == 1 && perfume.activo == 1) || // Solo los activos
-                    (combo_filtro_articulos.SelectedIndex == 2 && perfume.activo == 0)) // Solo los no activos
+                int stockDisponible = stockPorPerfume.ContainsKey(perfume.id) ? stockPorPerfume[perfume.id] : 0;
+
+
+                bool mostrarPerfume = false;
+
+                if (combo_filtro_articulos.SelectedIndex == 0)
+                {
+                    // Perfumes a la venta: activos y con stock
+                    mostrarPerfume = perfume.activo == 1 && stockDisponible > 0;
+                }
+                else if (combo_filtro_articulos.SelectedIndex == 1)
+                {
+                    // Todos los perfumes
+                    mostrarPerfume = true;
+                }
+                else if (combo_filtro_articulos.SelectedIndex == 2)
+                {
+                    // Sin stock: inactivos o stock <= 0
+                    mostrarPerfume = perfume.activo == 0 || stockDisponible <= 0;
+                }
+
+                if (mostrarPerfume)
                 {
                     int rowIndex = dataGridViewConsultas.Rows.Add();
+                    DataGridViewRow row = dataGridViewConsultas.Rows[rowIndex];
+                    row.Tag = perfume; // ✅ Asocia el objeto perfume a la fila
 
-                    // Agregar valores a la fila de la tabla
-                    dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = perfume.nombre.ToString();
-                    dataGridViewConsultas.Rows[rowIndex].Cells[1].Value = (MarcaControlador.getById(perfume.marca.id)).nombre;
-                    dataGridViewConsultas.Rows[rowIndex].Cells[2].Value = (GeneroControlador.getById(perfume.genero.id)).genero;
-                    dataGridViewConsultas.Rows[rowIndex].Cells[3].Value = perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
+                    string precioMostrado = (perfume.activo == 0 || stockDisponible <= 0)
+                        ? "Sin Stock"
+                        : perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
+
+                    dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = perfume.nombre;
+                    dataGridViewConsultas.Rows[rowIndex].Cells[1].Value = MarcaControlador.getById(perfume.marca.id).nombre;
+                    dataGridViewConsultas.Rows[rowIndex].Cells[2].Value = GeneroControlador.getById(perfume.genero.id).genero;
+                    dataGridViewConsultas.Rows[rowIndex].Cells[3].Value = precioMostrado;
+                    if (precioMostrado == "Sin Stock")
+                    {
+                        dataGridViewConsultas.Rows[rowIndex].Cells[3].Style.ForeColor = Color.Red;
+                        dataGridViewConsultas.Rows[rowIndex].Cells[3].Style.Font = new Font(dataGridViewConsultas.DefaultCellStyle.Font, FontStyle.Bold);
+                    }
+                    else
+                    {
+                        dataGridViewConsultas.Rows[rowIndex].Cells[3].Style.ForeColor = Color.Black;
+                        dataGridViewConsultas.Rows[rowIndex].Cells[3].Style.Font = dataGridViewConsultas.DefaultCellStyle.Font;
+                    }
+
                     dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = "Ver";
                 }
+                dataGridViewConsultas.ClearSelection();
             }
-            dataGridViewConsultas.ClearSelection();
-
-            dataGridViewConsultas.CellPainting += dataGridViewConsultas_CellPainting;
-
         }
 
         private void btn_anterior_Click(object sender, EventArgs e)
@@ -551,41 +496,23 @@ namespace Eterea_Parfums_Desktop
 
         private void combo_filtro_articulos_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (combo_filtro_articulos.SelectedIndex == 1) // Activos
+            if (combo_filtro_articulos.SelectedIndex == 0) // Perfumes a la venta
             {
-                filtro.activo = 1; // Filtra los perfumes activos (activo = 1)
+                filtro.activo = -1; // No filtramos por activo porque el control lo hace VisualizarPerfumes con stock
             }
-            else if (combo_filtro_articulos.SelectedIndex == 2) // No activos
+            else if (combo_filtro_articulos.SelectedIndex == 1) // Todos los Perfumes
             {
-                filtro.activo = 0; // Filtra los perfumes no activos (activo = 0)
+                filtro.activo = -1; // ✅ Mostrar todos, sin filtrar por activo
             }
-            else
+            else if (combo_filtro_articulos.SelectedIndex == 2) // Perfumes sin stock
             {
-                filtro.activo = -1; // Indica que no se debe filtrar por el estado (todos los perfumes)
+                filtro.activo = -1; // También mostrar todos, el filtro por stock lo hace VisualizarPerfumes
             }
-            filtrar(); // Llamar a la función de filtrado
+
+            filtrar();
         }
 
-
-        /*private void combo_filtro_stock_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (combo_filtro_stock.SelectedIndex == 1) // Disponible
-            {
-                filtro.stock = 1; // Filtra los perfumes con stock disponible
-            }
-            else if (combo_filtro_stock.SelectedIndex == 2) // Sin stock
-            {
-                filtro.stock = 0; // Filtra los perfumes sin stock
-            }
-            else
-            {
-                filtro.stock = -1; // No filtra el stock (todas las opciones)
-            }
-            filtrar(); // Llamar a la función de filtrado
-        }*/
-
-
-        /*private void combo_filtro_aroma_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void combo_filtro_aroma_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (combo_filtro_aroma.SelectedIndex > 0)
             {
@@ -593,17 +520,22 @@ namespace Eterea_Parfums_Desktop
                 TipoDeAroma aroma = TipoDeAromaControlador.getByNombre(aromaSeleccionado);
                 if (aroma != null)
                 {
-                    filtro.aroma = aroma;
+                    aromaIdSeleccionado = aroma.id;
                     filtrar();
                 }
             }
             else
             {
-                filtro.aroma = null;
+                aromaIdSeleccionado = null;
                 filtrar();
             }
-        }*/
 
+        }
+
+
+
+
+       
 
         private void filtrar()
         {
@@ -625,26 +557,23 @@ namespace Eterea_Parfums_Desktop
                 Perfumes_Filtrado = Perfumes_Filtrado.Where(x => x.activo == filtro.activo).ToList();
             }
 
-            /* // Filtrado por stock
-             if (filtro.stock != -1)
-             {
-                 Perfumes_Filtrado = Perfumes_Filtrado.Where(x => x.stock == filtro.stock).ToList();
-             }
-            */
-
-            /*if (filtro.aroma != null)
-            {
-                Perfumes_Filtrado = Perfumes_Filtrado
-                    .Where(x => x.AromasDelPerfume
-                        .Any(a => a.tipoDeAroma.id == filtro.aroma.id))
-                    .ToList();
-            }*/
+          
 
             if (filtro.nombre != null)
             {
                 Perfumes_Filtrado = Perfumes_Filtrado.Where(x => x.nombre.ToLower().Contains(filtro.nombre)).ToList();
                 //Perfumes_Filtrado = PerfumeController.filtrarPorNombre(filtro.nombre);
             }
+
+            if (aromaIdSeleccionado != null)
+            {
+                List<int> perfumesConAroma = AromaDelPerfumeControlador.getPerfumeIdsPorAroma(aromaIdSeleccionado.Value);
+                Perfumes_Filtrado = Perfumes_Filtrado
+                    .Where(p => perfumesConAroma.Contains(p.id))
+                    .ToList();
+            }
+
+
 
             total = Perfumes_Filtrado.Count;
             last_pag = (int)Math.Ceiling((double)total / paginador);
@@ -660,8 +589,12 @@ namespace Eterea_Parfums_Desktop
 
             if (e.RowIndex >= 0 && e.ColumnIndex == 4) // Verifica que se haga clic en la columna correcta
             {
-                int rowIndex = e.RowIndex;
-                Perfume perfumeSeleccionado = Perfumes_Paginados[rowIndex];
+                DataGridViewRow row = dataGridViewConsultas.Rows[e.RowIndex];
+                Perfume perfumeSeleccionado = row.Tag as Perfume;
+
+                if (perfumeSeleccionado == null)
+                    return;
+
 
                 // Crear la ventana de detalles
                 FormVerDetallePerfume detallesForm = new FormVerDetallePerfume(perfumeSeleccionado);
@@ -828,77 +761,7 @@ namespace Eterea_Parfums_Desktop
 
 
 
-        // Evento para capturar el código escaneado
-        /*private void txt_scan_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                e.Handled = true;
-
-                string codigoBarras = txt_scan.Text.Trim();
-
-                if (!string.IsNullOrEmpty(codigoBarras))
-                {
-                    txt_scan.Enabled = false;
-
-                    Perfume perfumeEncontrado = PerfumeControlador.getByCodigo(codigoBarras);
-
-                    if (perfumeEncontrado != null)
-                    {
-                        FormVerDetallePerfume formDetalle = new FormVerDetallePerfume(perfumeEncontrado);
-                        formDetalle.ShowDialog(); // Bloquea la ejecución hasta que se cierre
-
-                        // Cuando se cierra VerDetallePerfume, se vuelve a mostrar el botón Escanear
-                        btn_escanear.Visible = true;
-                        txt_scan.Visible = false;
-                        lbl_codigoBarras.Visible = false;
-                    }
-                    else
-                    {
-                        FormEscanear formEscanear = new FormEscanear(this);
-                        formEscanear.ShowDialog();
-                    }
-                }
-                else
-                {
-                    FormEscanear formEscanear = new FormEscanear(this);
-                    formEscanear.ShowDialog();
-                }
-
-                txt_scan.Clear();
-                txt_scan.Enabled = true;
-                txt_scan.Focus();
-                escaneoHabilitado = false;
-            }
-        }*/
-
-
-        /*public void SimularIngresoTeclado(string barcode)
-        {
-            if (!escaneoHabilitado) return; // Si el escaneo no está habilitado, ignorar el código
-
-            if (InvokeRequired)
-            {
-                Invoke((MethodInvoker)(() =>
-                {
-                    txt_scan.Text = barcode;
-                    SendKeys.SendWait("{ENTER}"); // Enviar Enter automáticamente
-                }));
-            }
-            else
-            {
-                txt_scan.Text = barcode;
-                SendKeys.SendWait("{ENTER}");
-            }
-        }*/
-
-        /*public bool IsFocused()
-        {
-            return txt_scan.Focused;
-        }*/
-
-
+     
 
         private void Form_Click(object sender, EventArgs e)
         {

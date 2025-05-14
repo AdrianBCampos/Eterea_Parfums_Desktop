@@ -1255,7 +1255,8 @@ namespace Eterea_Parfums_Desktop
 
         private bool ValidarNombrePromo(ref string errorMsg)
         {
-            string caracteresPermitidos = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 %.,-:()";
+            string caracteresPermitidos = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÁÉÍÓÚÑáéíóúñ0123456789 %.,-:()\r\n";
+
             string nombre = txt_nomb_promo.Text;
             bool esValido = true;
 
@@ -1286,7 +1287,8 @@ namespace Eterea_Parfums_Desktop
 
         private bool ValidarDescripcionPromo(ref string errorMsg)
         {
-            string caracteresPermitidos = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 %.,-:()";
+            string caracteresPermitidos = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzÁÉÍÓÚÑáéíóúñ0123456789 %.,-:()¡!\r\n";
+
             string descripcion = txt_descripcion_promo.Text;
             bool esValido = true;
 
@@ -1302,10 +1304,10 @@ namespace Eterea_Parfums_Desktop
             }
             if (!EsTextoValido(descripcion, caracteresPermitidos))
             {
-                MostrarError(lbl_error_desc_promo, "Solo letras, números, espacios y los caracteres: %, ., ,, -, :, (, ).", ref errorMsg);
+                MostrarError(lbl_error_desc_promo, "Solo letras, números, espacios y los caracteres: %, ., ,, -, :, (, ), ¡, !.", ref errorMsg);
                 esValido = false;
             }
-            if (descripcion.Count(c => c == '%') > 1 || new[] { '.', ',', '-', ':', '(', ')' }.Any(c => descripcion.Count(ch => ch == c) > 2))
+            if (descripcion.Count(c => c == '%') > 1 || new[] { '.', ',', '-', ':', '(', ')', '¡', '!' }.Any(c => descripcion.Count(ch => ch == c) > 2))
             {
                 MostrarError(lbl_error_desc_promo, "Solo un símbolo '%' y hasta 2 de c/u de: ., ,, -, :, (, ).", ref errorMsg);
                 esValido = false;

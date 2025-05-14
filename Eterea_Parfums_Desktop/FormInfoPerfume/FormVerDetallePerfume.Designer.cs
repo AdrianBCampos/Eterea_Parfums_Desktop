@@ -41,7 +41,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.combo_medios_pago = new System.Windows.Forms.ComboBox();
-            this.txt_precio_lista = new System.Windows.Forms.TextBox();
             this.lbl_precio_lista = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -121,6 +120,7 @@
             this.aroma = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
+            this.txt_precio_lista = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_perfume)).BeginInit();
@@ -144,30 +144,20 @@
             // 
             // combo_medios_pago
             // 
-            this.combo_medios_pago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.combo_medios_pago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(136)))), ((int)(((byte)(127)))));
+            this.combo_medios_pago.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.combo_medios_pago.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combo_medios_pago.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_medios_pago.FormattingEnabled = true;
-            this.combo_medios_pago.Location = new System.Drawing.Point(993, 119);
+            this.combo_medios_pago.Location = new System.Drawing.Point(993, 123);
             this.combo_medios_pago.MaximumSize = new System.Drawing.Size(290, 0);
             this.combo_medios_pago.MaxLength = 20;
             this.combo_medios_pago.MinimumSize = new System.Drawing.Size(200, 0);
             this.combo_medios_pago.Name = "combo_medios_pago";
-            this.combo_medios_pago.Size = new System.Drawing.Size(200, 28);
-            this.combo_medios_pago.TabIndex = 284;
+            this.combo_medios_pago.Size = new System.Drawing.Size(200, 27);
+            this.combo_medios_pago.TabIndex = 0;
+            this.combo_medios_pago.TabStop = false;
             this.combo_medios_pago.SelectedIndexChanged += new System.EventHandler(this.combo_medios_pago_SelectedIndexChanged);
-            // 
-            // txt_precio_lista
-            // 
-            this.txt_precio_lista.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.txt_precio_lista.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_precio_lista.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_precio_lista.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_precio_lista.Location = new System.Drawing.Point(993, 89);
-            this.txt_precio_lista.Name = "txt_precio_lista";
-            this.txt_precio_lista.Size = new System.Drawing.Size(200, 26);
-            this.txt_precio_lista.TabIndex = 283;
-            this.txt_precio_lista.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_precio_lista
             // 
@@ -208,23 +198,24 @@
             this.lbl_medios_pago.AutoSize = true;
             this.lbl_medios_pago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_medios_pago.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_medios_pago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_medios_pago.Location = new System.Drawing.Point(880, 125);
+            this.lbl_medios_pago.ForeColor = System.Drawing.Color.Brown;
+            this.lbl_medios_pago.Location = new System.Drawing.Point(880, 117);
             this.lbl_medios_pago.Name = "lbl_medios_pago";
-            this.lbl_medios_pago.Size = new System.Drawing.Size(100, 15);
+            this.lbl_medios_pago.Size = new System.Drawing.Size(110, 30);
             this.lbl_medios_pago.TabIndex = 288;
-            this.lbl_medios_pago.Text = "Medios de Pago:";
+            this.lbl_medios_pago.Text = "Seleccione \r\nun medio de pago:";
             // 
             // combo_cuotas
             // 
-            this.combo_cuotas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.combo_cuotas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(161)))), ((int)(((byte)(136)))), ((int)(((byte)(127)))));
             this.combo_cuotas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combo_cuotas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_cuotas.FormattingEnabled = true;
-            this.combo_cuotas.Location = new System.Drawing.Point(993, 188);
+            this.combo_cuotas.Location = new System.Drawing.Point(993, 195);
             this.combo_cuotas.Name = "combo_cuotas";
             this.combo_cuotas.Size = new System.Drawing.Size(200, 28);
-            this.combo_cuotas.TabIndex = 289;
+            this.combo_cuotas.TabIndex = 0;
+            this.combo_cuotas.TabStop = false;
             this.combo_cuotas.SelectedIndexChanged += new System.EventHandler(this.combo_cuotas_SelectedIndexChanged);
             // 
             // lbl_cuotas
@@ -232,12 +223,12 @@
             this.lbl_cuotas.AutoSize = true;
             this.lbl_cuotas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_cuotas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_cuotas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_cuotas.Location = new System.Drawing.Point(880, 201);
+            this.lbl_cuotas.ForeColor = System.Drawing.Color.Brown;
+            this.lbl_cuotas.Location = new System.Drawing.Point(880, 191);
             this.lbl_cuotas.Name = "lbl_cuotas";
-            this.lbl_cuotas.Size = new System.Drawing.Size(48, 15);
+            this.lbl_cuotas.Size = new System.Drawing.Size(109, 30);
             this.lbl_cuotas.TabIndex = 290;
-            this.lbl_cuotas.Text = "Cuotas:";
+            this.lbl_cuotas.Text = "Seleccione\r\nnúmero de cuotas:";
             // 
             // txt_recargo
             // 
@@ -247,8 +238,10 @@
             this.txt_recargo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.txt_recargo.Location = new System.Drawing.Point(993, 308);
             this.txt_recargo.Name = "txt_recargo";
+            this.txt_recargo.ReadOnly = true;
             this.txt_recargo.Size = new System.Drawing.Size(200, 26);
             this.txt_recargo.TabIndex = 292;
+            this.txt_recargo.TabStop = false;
             this.txt_recargo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_recargo
@@ -269,10 +262,12 @@
             this.txt_valor_cuota.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_valor_cuota.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_valor_cuota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_valor_cuota.Location = new System.Drawing.Point(993, 223);
+            this.txt_valor_cuota.Location = new System.Drawing.Point(993, 235);
             this.txt_valor_cuota.Name = "txt_valor_cuota";
+            this.txt_valor_cuota.ReadOnly = true;
             this.txt_valor_cuota.Size = new System.Drawing.Size(200, 26);
             this.txt_valor_cuota.TabIndex = 294;
+            this.txt_valor_cuota.TabStop = false;
             this.txt_valor_cuota.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_valor_cuota
@@ -281,7 +276,7 @@
             this.lbl_valor_cuota.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_valor_cuota.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_valor_cuota.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_valor_cuota.Location = new System.Drawing.Point(880, 228);
+            this.lbl_valor_cuota.Location = new System.Drawing.Point(880, 240);
             this.lbl_valor_cuota.Name = "lbl_valor_cuota";
             this.lbl_valor_cuota.Size = new System.Drawing.Size(73, 15);
             this.lbl_valor_cuota.TabIndex = 293;
@@ -295,8 +290,10 @@
             this.txt_precio_final.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.txt_precio_final.Location = new System.Drawing.Point(993, 504);
             this.txt_precio_final.Name = "txt_precio_final";
+            this.txt_precio_final.ReadOnly = true;
             this.txt_precio_final.Size = new System.Drawing.Size(200, 26);
             this.txt_precio_final.TabIndex = 296;
+            this.txt_precio_final.TabStop = false;
             this.txt_precio_final.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_precio_final
@@ -315,9 +312,9 @@
             // 
             this.btn_ver_promociones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_ver_promociones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_ver_promociones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ver_promociones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ver_promociones.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_ver_promociones.Location = new System.Drawing.Point(22, 497);
+            this.btn_ver_promociones.Location = new System.Drawing.Point(22, 501);
             this.btn_ver_promociones.Name = "btn_ver_promociones";
             this.btn_ver_promociones.Size = new System.Drawing.Size(202, 31);
             this.btn_ver_promociones.TabIndex = 297;
@@ -351,13 +348,13 @@
             // 
             this.btn_buscar_perfumes_simi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_buscar_perfumes_simi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_buscar_perfumes_simi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_buscar_perfumes_simi.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_buscar_perfumes_simi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.btn_buscar_perfumes_simi.Location = new System.Drawing.Point(22, 422);
             this.btn_buscar_perfumes_simi.Name = "btn_buscar_perfumes_simi";
-            this.btn_buscar_perfumes_simi.Size = new System.Drawing.Size(202, 49);
+            this.btn_buscar_perfumes_simi.Size = new System.Drawing.Size(202, 59);
             this.btn_buscar_perfumes_simi.TabIndex = 300;
-            this.btn_buscar_perfumes_simi.Text = "Buscar Perfumes Similares";
+            this.btn_buscar_perfumes_simi.Text = "Buscar Perfumes\r\n Similares";
             this.btn_buscar_perfumes_simi.UseVisualStyleBackColor = false;
             this.btn_buscar_perfumes_simi.Click += new System.EventHandler(this.btn_buscar_perfumes_simi_Click);
             // 
@@ -368,8 +365,10 @@
             this.richTextBox_descripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.richTextBox_descripcion.Location = new System.Drawing.Point(250, 88);
             this.richTextBox_descripcion.Name = "richTextBox_descripcion";
+            this.richTextBox_descripcion.ReadOnly = true;
             this.richTextBox_descripcion.Size = new System.Drawing.Size(345, 108);
             this.richTextBox_descripcion.TabIndex = 301;
+            this.richTextBox_descripcion.TabStop = false;
             this.richTextBox_descripcion.Text = "";
             // 
             // lbl_detalles_perfumes
@@ -438,7 +437,7 @@
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label4.Location = new System.Drawing.Point(998, 228);
+            this.label4.Location = new System.Drawing.Point(998, 240);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 15);
             this.label4.TabIndex = 308;
@@ -460,11 +459,13 @@
             this.combo_descuento.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.combo_descuento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combo_descuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combo_descuento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.combo_descuento.FormattingEnabled = true;
             this.combo_descuento.Location = new System.Drawing.Point(993, 416);
             this.combo_descuento.Name = "combo_descuento";
             this.combo_descuento.Size = new System.Drawing.Size(200, 28);
             this.combo_descuento.TabIndex = 310;
+            this.combo_descuento.TabStop = false;
             this.combo_descuento.SelectedIndexChanged += new System.EventHandler(this.combo_descuento_SelectedIndexChanged_1);
             // 
             // lbl_descuento
@@ -485,10 +486,12 @@
             this.txt_marca.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_marca.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_marca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_marca.Location = new System.Drawing.Point(743, 81);
+            this.txt_marca.Location = new System.Drawing.Point(743, 84);
             this.txt_marca.Name = "txt_marca";
+            this.txt_marca.ReadOnly = true;
             this.txt_marca.Size = new System.Drawing.Size(120, 26);
             this.txt_marca.TabIndex = 312;
+            this.txt_marca.TabStop = false;
             this.txt_marca.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txt_genero
@@ -499,8 +502,10 @@
             this.txt_genero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.txt_genero.Location = new System.Drawing.Point(743, 114);
             this.txt_genero.Name = "txt_genero";
+            this.txt_genero.ReadOnly = true;
             this.txt_genero.Size = new System.Drawing.Size(120, 26);
             this.txt_genero.TabIndex = 313;
+            this.txt_genero.TabStop = false;
             this.txt_genero.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_marca
@@ -547,8 +552,10 @@
             this.txt_pais.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.txt_pais.Location = new System.Drawing.Point(743, 148);
             this.txt_pais.Name = "txt_pais";
+            this.txt_pais.ReadOnly = true;
             this.txt_pais.Size = new System.Drawing.Size(120, 26);
             this.txt_pais.TabIndex = 318;
+            this.txt_pais.TabStop = false;
             this.txt_pais.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_fecha
@@ -571,9 +578,12 @@
             this.txt_fecha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.txt_fecha.Location = new System.Drawing.Point(743, 219);
             this.txt_fecha.Name = "txt_fecha";
+            this.txt_fecha.ReadOnly = true;
             this.txt_fecha.Size = new System.Drawing.Size(120, 26);
             this.txt_fecha.TabIndex = 320;
+            this.txt_fecha.TabStop = false;
             this.txt_fecha.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_fecha.TextChanged += new System.EventHandler(this.txt_fecha_TextChanged);
             // 
             // lbl_ml
             // 
@@ -583,9 +593,9 @@
             this.lbl_ml.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.lbl_ml.Location = new System.Drawing.Point(617, 188);
             this.lbl_ml.Name = "lbl_ml";
-            this.lbl_ml.Size = new System.Drawing.Size(116, 15);
+            this.lbl_ml.Size = new System.Drawing.Size(82, 15);
             this.lbl_ml.TabIndex = 323;
-            this.lbl_ml.Text = "Presentación en ml:";
+            this.lbl_ml.Text = "Presentación:";
             // 
             // txt_ml
             // 
@@ -595,8 +605,10 @@
             this.txt_ml.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.txt_ml.Location = new System.Drawing.Point(743, 183);
             this.txt_ml.Name = "txt_ml";
+            this.txt_ml.ReadOnly = true;
             this.txt_ml.Size = new System.Drawing.Size(120, 26);
             this.txt_ml.TabIndex = 322;
+            this.txt_ml.TabStop = false;
             this.txt_ml.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txt_tipo
@@ -607,8 +619,10 @@
             this.txt_tipo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.txt_tipo.Location = new System.Drawing.Point(250, 235);
             this.txt_tipo.Name = "txt_tipo";
+            this.txt_tipo.ReadOnly = true;
             this.txt_tipo.Size = new System.Drawing.Size(345, 26);
             this.txt_tipo.TabIndex = 324;
+            this.txt_tipo.TabStop = false;
             this.txt_tipo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label8
@@ -643,8 +657,10 @@
             this.txt_codigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.txt_codigo.Location = new System.Drawing.Point(678, 502);
             this.txt_codigo.Name = "txt_codigo";
+            this.txt_codigo.ReadOnly = true;
             this.txt_codigo.Size = new System.Drawing.Size(185, 26);
             this.txt_codigo.TabIndex = 327;
+            this.txt_codigo.TabStop = false;
             this.txt_codigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox5
@@ -678,8 +694,10 @@
             this.txt_valor_descuento.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.txt_valor_descuento.Location = new System.Drawing.Point(993, 452);
             this.txt_valor_descuento.Name = "txt_valor_descuento";
+            this.txt_valor_descuento.ReadOnly = true;
             this.txt_valor_descuento.Size = new System.Drawing.Size(200, 26);
             this.txt_valor_descuento.TabIndex = 331;
+            this.txt_valor_descuento.TabStop = false;
             this.txt_valor_descuento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_valor_descuento
@@ -726,8 +744,10 @@
             this.txt_valor_recargo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.txt_valor_recargo.Location = new System.Drawing.Point(993, 345);
             this.txt_valor_recargo.Name = "txt_valor_recargo";
+            this.txt_valor_recargo.ReadOnly = true;
             this.txt_valor_recargo.Size = new System.Drawing.Size(200, 26);
             this.txt_valor_recargo.TabIndex = 335;
+            this.txt_valor_recargo.TabStop = false;
             this.txt_valor_recargo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_valor_recargo
@@ -828,8 +848,10 @@
             this.txt_spray.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.txt_spray.Location = new System.Drawing.Point(743, 254);
             this.txt_spray.Name = "txt_spray";
+            this.txt_spray.ReadOnly = true;
             this.txt_spray.Size = new System.Drawing.Size(120, 26);
             this.txt_spray.TabIndex = 345;
+            this.txt_spray.TabStop = false;
             this.txt_spray.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_recargable
@@ -852,16 +874,19 @@
             this.txt_recargable.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.txt_recargable.Location = new System.Drawing.Point(743, 289);
             this.txt_recargable.Name = "txt_recargable";
+            this.txt_recargable.ReadOnly = true;
             this.txt_recargable.Size = new System.Drawing.Size(120, 26);
             this.txt_recargable.TabIndex = 347;
+            this.txt_recargable.TabStop = false;
             this.txt_recargable.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dataGridViewTipoNota
             // 
             this.dataGridViewTipoNota.AllowUserToAddRows = false;
             this.dataGridViewTipoNota.AllowUserToDeleteRows = false;
+            this.dataGridViewTipoNota.AllowUserToResizeColumns = false;
             this.dataGridViewTipoNota.AllowUserToResizeRows = false;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
@@ -1047,7 +1072,7 @@
             this.pictureBox10.Location = new System.Drawing.Point(14, 411);
             this.pictureBox10.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(222, 68);
+            this.pictureBox10.Size = new System.Drawing.Size(222, 79);
             this.pictureBox10.TabIndex = 358;
             this.pictureBox10.TabStop = false;
             // 
@@ -1067,10 +1092,10 @@
             // 
             this.pictureBox15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox15.Location = new System.Drawing.Point(14, 484);
+            this.pictureBox15.Location = new System.Drawing.Point(14, 494);
             this.pictureBox15.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(222, 56);
+            this.pictureBox15.Size = new System.Drawing.Size(222, 46);
             this.pictureBox15.TabIndex = 367;
             this.pictureBox15.TabStop = false;
             // 
@@ -1093,9 +1118,9 @@
             // 
             this.dataGridViewAromas.AllowUserToAddRows = false;
             this.dataGridViewAromas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(191)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridViewAromas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle20;
@@ -1106,7 +1131,7 @@
             this.dataGridViewAromas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle21.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.White;
@@ -1118,7 +1143,7 @@
             this.aroma});
             dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle22.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.White;
@@ -1130,15 +1155,16 @@
             this.dataGridViewAromas.Name = "dataGridViewAromas";
             dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewAromas.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
             this.dataGridViewAromas.RowHeadersWidth = 51;
             dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
-            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridViewAromas.RowsDefaultCellStyle = dataGridViewCellStyle24;
@@ -1156,7 +1182,7 @@
             // aroma
             // 
             this.aroma.FillWeight = 125F;
-            this.aroma.HeaderText = "Aroma del Perfume";
+            this.aroma.HeaderText = "Familia Olfativa";
             this.aroma.MinimumWidth = 6;
             this.aroma.Name = "aroma";
             // 
@@ -1182,6 +1208,20 @@
             this.pictureBox16.Size = new System.Drawing.Size(1208, 542);
             this.pictureBox16.TabIndex = 370;
             this.pictureBox16.TabStop = false;
+            // 
+            // txt_precio_lista
+            // 
+            this.txt_precio_lista.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_precio_lista.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_precio_lista.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_precio_lista.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_precio_lista.Location = new System.Drawing.Point(993, 89);
+            this.txt_precio_lista.Name = "txt_precio_lista";
+            this.txt_precio_lista.ReadOnly = true;
+            this.txt_precio_lista.Size = new System.Drawing.Size(200, 26);
+            this.txt_precio_lista.TabIndex = 283;
+            this.txt_precio_lista.TabStop = false;
+            this.txt_precio_lista.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // FormVerDetallePerfume
             // 
@@ -1297,7 +1337,6 @@
 
         #endregion
         private System.Windows.Forms.ComboBox combo_medios_pago;
-        private System.Windows.Forms.TextBox txt_precio_lista;
         private System.Windows.Forms.Label lbl_precio_lista;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
@@ -1370,12 +1409,13 @@
         private System.Windows.Forms.PictureBox pictureBox15;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridViewAromas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idaroma;
-        private System.Windows.Forms.DataGridViewTextBoxColumn aroma;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn nota;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idaroma;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aroma;
+        private System.Windows.Forms.TextBox txt_precio_lista;
     }
 }

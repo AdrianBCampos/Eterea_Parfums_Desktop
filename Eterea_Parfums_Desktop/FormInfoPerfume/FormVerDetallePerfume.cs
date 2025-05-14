@@ -25,9 +25,64 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
+
+            foreach (DataGridViewColumn col in dataGridViewTipoNota.Columns)
+            {
+                col.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
+
+            foreach (DataGridViewColumn col in dataGridViewAromas.Columns)
+            {
+                col.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+
+            this.perfume = perfumeSeleccionado;
+
             txt_nombre_perfume.Text = perfumeSeleccionado.nombre;
+
+            if (perfumeSeleccionado.activo == 0)
+            {
+                txt_precio_lista.Text = "Sin Stock";
+                txt_recargo.Text = "0,00";
+                txt_valor_cuota.Text = "0,00";
+                txt_valor_recargo.Text = "0,00";
+                txt_precio_final.Text = "0,00";
+
+                label3.Visible = false;
+
+                txt_precio_lista.ForeColor = Color.Red;
+
+
+                // Desactivar combos
+                combo_medios_pago.Enabled = false;
+                combo_cuotas.Enabled = false;
+                combo_descuento.Enabled = false;
+
+                lbl_medios_pago.ForeColor = Color.LightGray;
+                lbl_cuotas.ForeColor = Color.LightGray;
+            }
+            else
+            {
+                txt_precio_lista.Text = perfumeSeleccionado.precio_en_pesos.ToString("N2");
+                label3.Visible = true;
+
+                // Asegurar que los combos estén habilitados si el perfume es activo
+                combo_medios_pago.Enabled = true;
+                combo_cuotas.Enabled = true;
+                combo_descuento.Enabled = true;
+
+                lbl_medios_pago.ForeColor = Color.Brown;
+                lbl_cuotas.ForeColor = Color.Brown;
+
+                
+
+            }
+
+
             richTextBox_descripcion.Text = perfumeSeleccionado.descripcion;
-            txt_precio_lista.Text = perfumeSeleccionado.precio_en_pesos.ToString("N2");
+
+           
 
             txt_marca.Text = MarcaControlador.getById(perfumeSeleccionado.marca.id).nombre;
             txt_genero.Text = GeneroControlador.getById(perfumeSeleccionado.genero.id).genero;
@@ -64,25 +119,33 @@ namespace Eterea_Parfums_Desktop
 
             //Diseño del combo box
             combo_medios_pago.DrawMode = DrawMode.OwnerDrawFixed;
-            combo_medios_pago.DrawItem += comboBoxdiseño_DrawItem;
             combo_medios_pago.DropDownStyle = ComboBoxStyle.DropDownList;
+            combo_medios_pago.BackColor = Color.FromArgb(161, 136, 127); // color de fondo 
+            combo_medios_pago.ForeColor = Color.White; // color de texto
+            combo_medios_pago.DrawItem += comboBoxdiseño_DrawItem;
+          
 
             combo_cuotas.DrawMode = DrawMode.OwnerDrawFixed;
-            combo_cuotas.DrawItem += comboBoxdiseño_DrawItem;
             combo_cuotas.DropDownStyle = ComboBoxStyle.DropDownList;
+            combo_cuotas.BackColor = Color.FromArgb(161, 136, 127); // color de fondo
+            combo_cuotas.ForeColor = Color.White; // color de texto
+            combo_cuotas.DrawItem += comboBoxdiseño_DrawItem;
+            
+
+            
 
             combo_descuento.DrawMode = DrawMode.OwnerDrawFixed;
-            combo_descuento.DrawItem += comboBoxdiseño_DrawItem;
             combo_descuento.DropDownStyle = ComboBoxStyle.DropDownList;
+            combo_descuento.DrawItem += comboBoxdiseño_DrawItem;
+            
 
             ConfigurarDescuentos();
             cargarDataGridViewNotasDePerfume();
             CargarDataGridViewAromas();
         }
 
-        public FormVerDetallePerfume()
-        {
-        }
+
+
 
         private void cargarDataGridViewNotasDePerfume()
         {
@@ -124,13 +187,13 @@ namespace Eterea_Parfums_Desktop
                     switch (tipo.nombre_tipo_de_nota.ToLower().Trim())
                     {
                         case "nota de salida":
-                            dataGridViewTipoNota.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Green;
+                            dataGridViewTipoNota.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.DodgerBlue;
                             break;
                         case "nota de corazón":
-                            dataGridViewTipoNota.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Red;
+                            dataGridViewTipoNota.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.DeepPink;
                             break;
                         case "nota de fondo":
-                            dataGridViewTipoNota.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.MediumPurple;
+                            dataGridViewTipoNota.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.SeaGreen;
                             break;
                         default:
                             dataGridViewTipoNota.Rows[rowIndex].DefaultCellStyle.ForeColor = Color.Black;
@@ -164,6 +227,7 @@ namespace Eterea_Parfums_Desktop
                     dataGridViewAromas.Rows[rowIndex].Cells[0].Value = aromaDelPerfume.tipoDeAroma.id; // ID del aroma
                     dataGridViewAromas.Rows[rowIndex].Cells[1].Value = tipoDeAroma.nombre; // Nombre del tipo de aroma
                 }
+                dataGridViewAromas.ClearSelection();
             }
         }
 
@@ -364,12 +428,34 @@ namespace Eterea_Parfums_Desktop
 
         private void combo_cuotas_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Si el perfume no está activo, no hacemos cálculos
+            if (perfume == null || perfume.activo == 0)
+            {
+                txt_recargo.Text = "0,00";
+                txt_valor_cuota.Text = "0,00";
+                txt_valor_recargo.Text = "0,00";
+                txt_precio_final.Text = "0,00";
+
+                lbl_medios_pago.ForeColor = Color.LightGray;
+                lbl_cuotas.ForeColor = Color.LightGray;
+
+                return;
+            }
+          
+            // Si está activo, procedemos con el cálculo normalmente
             string formaPago = combo_medios_pago.SelectedItem.ToString();
+
             CalcularRecargo(formaPago);
             CalcularValorCuota(float.Parse(txt_recargo.Text), float.Parse(txt_precio_lista.Text));
             CalcularImporteRecargo(float.Parse(txt_precio_lista.Text), float.Parse(txt_recargo.Text));
 
+            // Restaurar colores por si se reactivó desde un perfume activo
+            lbl_medios_pago.ForeColor = Color.Brown;
+            lbl_cuotas.ForeColor = Color.Brown;
+
+
         }
+
 
         private void CalcularValorCuota(float recargo, float precio)
         {
@@ -403,14 +489,14 @@ namespace Eterea_Parfums_Desktop
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {
                 // Color cuando el ítem está seleccionado
-                backgroundColor = Color.FromArgb(195, 156, 164);
-                textColor = Color.White;
+                backgroundColor = Color.FromArgb(250, 236, 239);
+                textColor = Color.FromArgb(195, 156, 164);
             }
             else
             {
                 // Color cuando el ítem NO está seleccionado
-                backgroundColor = Color.FromArgb(250, 236, 239); // Color personalizado
-                textColor = Color.FromArgb(195, 156, 164);
+                backgroundColor = Color.FromArgb(195, 156, 164); // Color personalizado
+                textColor = Color.White;
             }
 
             // Pintar el fondo del ítem
@@ -419,8 +505,16 @@ namespace Eterea_Parfums_Desktop
                 e.Graphics.FillRectangle(brush, e.Bounds);
             }
 
+            // Medir el texto
+            Size textSize = TextRenderer.MeasureText(text, e.Font);
+
+            // Calcular posición centrada
+            int x = e.Bounds.Left + (e.Bounds.Width - textSize.Width) / 2;
+            int y = e.Bounds.Top + (e.Bounds.Height - textSize.Height) / 2;
+
             // Dibujar el texto
-            TextRenderer.DrawText(e.Graphics, text, e.Font, e.Bounds, textColor, TextFormatFlags.Left);
+            TextRenderer.DrawText(e.Graphics, text, e.Font, new Point(x, y), textColor);
+
 
             // Evitar problemas visuales
             e.DrawFocusRectangle();
@@ -443,6 +537,23 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_ver_promociones_Click(object sender, EventArgs e)
         {
+            // Obtener todas las promociones del perfume
+            List<Promocion> promociones = PerfumeEnPromoControlador.getByIDPerfume(perfume.id);
+
+            // Filtrar las promociones válidas (excluir la promo con id 1)
+            List<Promocion> promocionesValidas = promociones
+                .Where(p => p.id != 1) // Excluir la promo con id = 1 ("sin promo")
+                .ToList();
+
+            if (promocionesValidas.Count == 0)
+            {
+                MessageBox.Show("Este perfume no tiene promociones disponibles.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+
+
+            // Si tiene promociones reales, abrir el formulario
             FormVerPromociones verPromociones = new FormVerPromociones(perfume);
             verPromociones.ShowDialog();
             this.Close();
@@ -453,6 +564,11 @@ namespace Eterea_Parfums_Desktop
             this.Close();
         }
 
-     
+        private void txt_fecha_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+    
     }
 }

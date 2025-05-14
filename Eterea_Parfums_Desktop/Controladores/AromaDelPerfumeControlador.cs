@@ -73,6 +73,39 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
             return result;
         }
+
+        public static List<int> getPerfumeIdsPorAroma(int aromaId)
+        {
+            List<int> perfumeIds = new List<int>();
+
+            string query = "SELECT DISTINCT perfume_id FROM dbo.aroma_del_perfume WHERE tipo_de_aroma_id = @aromaId";
+
+            using (SqlCommand cmd = new SqlCommand(query, DB_Controller.connection))
+            {
+                cmd.Parameters.AddWithValue("@aromaId", aromaId);
+
+                DB_Controller.connection.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        perfumeIds.Add(reader.GetInt32(0));
+                    }
+                }
+
+                DB_Controller.connection.Close();
+            }
+
+            return perfumeIds;
+        }
+
+
+
+
+
+
+
     }
 
 

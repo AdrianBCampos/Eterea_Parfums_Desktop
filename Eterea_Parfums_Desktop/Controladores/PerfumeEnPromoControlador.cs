@@ -423,5 +423,34 @@ namespace Eterea_Parfums_Desktop.Controladores
             return promocionId;
         }
 
+        public static void AsegurarRelacionSinPromo(int idPerfume, SqlTransaction transaccion = null)
+        {
+            string query = "IF NOT EXISTS (SELECT * FROM dbo.perfumes_en_promo WHERE perfume_id = @idPerfume) " +
+                           "INSERT INTO dbo.perfumes_en_promo (perfume_id, promocion_id) VALUES (@idPerfume, 1);";
+
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+            cmd.Parameters.AddWithValue("@idPerfume", idPerfume);
+
+            if (transaccion != null)
+                cmd.Transaction = transaccion;
+
+            cmd.ExecuteNonQuery();
+        }
+
+
+        public static void EliminarRelacionesPromoExceptoSinPromo(int idPerfume, SqlTransaction transaction)
+        {
+            string query = @"
+        DELETE FROM dbo.perfumes_en_promo
+        WHERE perfume_id = @idPerfume AND promocion_id <> 1;";
+
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection, transaction);
+            cmd.Parameters.AddWithValue("@idPerfume", idPerfume);
+
+            cmd.ExecuteNonQuery();
+        }
+
+
+
     }
 }
