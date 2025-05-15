@@ -201,16 +201,16 @@ namespace Eterea_Parfums_Desktop
 
         internal Perfume crear()
         {
-            int spray = 0;
+            bool spray = false;
             if (combo_spray.SelectedItem.ToString() == "Si")
             {
-                spray = 1;
+                spray = true;
             }
 
-            int recargable = 0;
+            bool recargable = false;
             if (combo_recargable.SelectedItem.ToString() == "Si")
             {
-                recargable = 1;
+                recargable = true;
             }
 
             bool activo = true;

@@ -150,10 +150,10 @@ namespace Eterea_Parfums_Desktop
         {
             // ACA ANTES DE EJECUTAR CUALQUIER COSA, TIENEN QUE HACERSE LAS VALIDACIONES...
 
-            int activo = 1;
+            bool activo = true;
             if (combo_activo.SelectedItem.ToString() == "Inactivo")
             {
-                activo = 0;
+                activo = false;
             }
 
             string rol = "vendedor"; // Valor por defecto

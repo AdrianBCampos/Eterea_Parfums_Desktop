@@ -258,7 +258,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                         r.GetInt32(5), r.GetDateTime(6), r.GetString(7), r.GetString(8), pais,
                         provincia, localidad, r.GetInt32(12), calle, r.GetInt32(14),
                         r.GetString(15), r.GetString(16), r.GetString(17),
-                        suc, r.GetDateTime(19), r.GetInt32(20), r.GetInt32(21), r.GetString(22)));
+                        suc, r.GetDateTime(19), r.GetInt32(20), r.GetBoolean(21), r.GetString(22)));
 
                     Trace.WriteLine("Vendedor encontrado, nombre: " + r.GetString(1));
 
@@ -315,7 +315,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                         r.GetInt32(5), r.GetDateTime(6), r.GetString(7), r.GetString(8), pais,
                         provincia, localidad, r.GetInt32(12), calle, r.GetInt32(14),
                         r.GetString(15), r.GetString(16), r.GetString(17),
-                        sucursal, r.GetDateTime(19), r.GetInt32(20), r.GetInt32(21), r.GetString(22));
+                        sucursal, r.GetDateTime(19), r.GetInt32(20), r.GetBoolean(21), r.GetString(22));
                 }
                 r.Close();
                 DB_Controller.connection.Close();
@@ -388,7 +388,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                         sucursal,
                         r.GetDateTime(19),// fecha_ingreso
                         r.GetInt32(20),   // sueldo
-                        r.GetInt32(21),   // activo
+                        r.GetBoolean(21),   // activo
                         r.GetString(22)   // rol
                     );
                 }

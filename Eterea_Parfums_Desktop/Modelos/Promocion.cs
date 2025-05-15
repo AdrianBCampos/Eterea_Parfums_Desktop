@@ -9,11 +9,11 @@ namespace Eterea_Parfums_Desktop.Modelos
         public DateTime fecha_inicio { get; set; }
         public DateTime fecha_fin { get; set; }
         public int descuento { get; set; }
-        public int activo { get; set; }
+        public bool activo { get; set; }
         public string descripcion { get; set; }
         public string banner { get; set; }
 
-        public Promocion(int id, string nombre, DateTime fecha_inicio, DateTime fecha_fin, int descuento, int activo, string descripcion, string banner)
+        public Promocion(int id, string nombre, DateTime fecha_inicio, DateTime fecha_fin, int descuento, bool activo, string descripcion, string banner)
         {
             this.id = id;
             this.nombre = nombre;
