@@ -105,14 +105,13 @@ namespace Eterea_Parfums_Desktop
             richTextBox_descripcion.Text = perfume.descripcion;
             txt_anio_de_lanzamiento.Text = perfume.anio_de_lanzamiento.ToString();
             txt_precio.Text = perfume.precio_en_pesos.ToString();
-            if (perfume.activo.ToString() == "1")
+            if (perfume.activo.HasValue && perfume.activo.Value)
             {
-                combo_activo.Text = "Si";
+                combo_activo.SelectedItem = "Si";
             }
             else
             {
-                combo_activo.Text = "No";
-
+                combo_activo.SelectedItem = "No";
             }
             nombre_foto_uno = perfume.imagen1;
             nombre_foto_dos = perfume.imagen2;
