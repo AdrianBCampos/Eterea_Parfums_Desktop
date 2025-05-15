@@ -41,7 +41,7 @@ namespace Eterea_Parfums_Desktop
 
             txt_nombre_perfume.Text = perfumeSeleccionado.nombre;
 
-            if (perfumeSeleccionado.activo == 0)
+            if (perfumeSeleccionado.activo == false)
             {
                 txt_precio_lista.Text = "Sin Stock";
                 txt_recargo.Text = "0,00";
@@ -429,7 +429,7 @@ namespace Eterea_Parfums_Desktop
         private void combo_cuotas_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Si el perfume no está activo, no hacemos cálculos
-            if (perfume == null || perfume.activo == 0)
+            if (perfume == null || perfume.activo == false)
             {
                 txt_recargo.Text = "0,00";
                 txt_valor_cuota.Text = "0,00";

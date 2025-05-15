@@ -174,7 +174,7 @@
             this.txt_filtro_nombre.Location = new System.Drawing.Point(502, 111);
             this.txt_filtro_nombre.Margin = new System.Windows.Forms.Padding(4);
             this.txt_filtro_nombre.Name = "txt_filtro_nombre";
-            this.txt_filtro_nombre.Size = new System.Drawing.Size(344, 26);
+            this.txt_filtro_nombre.Size = new System.Drawing.Size(415, 26);
             this.txt_filtro_nombre.TabIndex = 281;
             this.txt_filtro_nombre.TextChanged += new System.EventHandler(this.txt_filtro_nombre_TextChanged);
             // 
@@ -460,12 +460,12 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label3.Location = new System.Drawing.Point(927, 113);
+            this.label3.Location = new System.Drawing.Point(1107, 111);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(200, 20);
+            this.label3.Size = new System.Drawing.Size(67, 20);
             this.label3.TabIndex = 309;
-            this.label3.Text = "Mostrar todos los Articulos:";
+            this.label3.Text = "Mostrar:";
             // 
             // combo_filtro_articulos
             // 
@@ -474,7 +474,7 @@
             this.combo_filtro_articulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_filtro_articulos.ForeColor = System.Drawing.SystemColors.Window;
             this.combo_filtro_articulos.FormattingEnabled = true;
-            this.combo_filtro_articulos.Location = new System.Drawing.Point(1182, 108);
+            this.combo_filtro_articulos.Location = new System.Drawing.Point(1191, 108);
             this.combo_filtro_articulos.Margin = new System.Windows.Forms.Padding(4);
             this.combo_filtro_articulos.Name = "combo_filtro_articulos";
             this.combo_filtro_articulos.Size = new System.Drawing.Size(284, 28);

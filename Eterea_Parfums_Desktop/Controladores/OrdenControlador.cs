@@ -30,20 +30,20 @@ namespace Eterea_Parfums_Desktop.Controladores
         public DataTable ObtenerPerfumesDeFactura(int numFactura)
         {
             string query = @"
-    SELECT 
-        df.cantidad AS Cantidad,
-        p.nombre AS NombrePerfume,
-        m.nombre AS Marca,
-        tp.tipo_de_perfume AS Tipo,
-        g.genero AS Genero,
-        CAST(p.presentacion_ml AS varchar) + ' ml' AS Presentacion
-    FROM detalle_factura df
-    JOIN perfume p ON df.perfume_id = p.id
-    JOIN marca m ON p.marca_id = m.id
-    JOIN tipo_de_perfume tp ON p.tipo_de_perfume_id = tp.id
-    JOIN genero g ON p.genero_id = g.id
-    WHERE df.num_factura = @numFactura
-";
+                SELECT 
+                    df.cantidad AS Cantidad,
+                    p.nombre AS NombrePerfume,
+                    m.nombre AS Marca,
+                    tp.tipo_de_perfume AS Tipo,
+                    g.genero AS Genero,
+                    CAST(p.presentacion_ml AS varchar) + ' ml' AS Presentacion
+                FROM detalle_factura df
+                JOIN perfume p ON df.perfume_id = p.id
+                JOIN marca m ON p.marca_id = m.id
+                JOIN tipo_de_perfume tp ON p.tipo_de_perfume_id = tp.id
+                JOIN genero g ON p.genero_id = g.id
+                WHERE df.num_factura = @numFactura
+            ";
 
 
             SqlParameter[] parametros = {
@@ -149,21 +149,21 @@ namespace Eterea_Parfums_Desktop.Controladores
         public DataTable BuscarOrdenPorNumero(int numeroOrden)
         {
             string query = @"
-        SELECT DISTINCT 
-            o.numero_de_orden, 
-            f.num_factura, 
-            f.fecha, 
-            o.nombre_cliente, 
-            o.apellido_cliente, 
-            o.dni, 
-            o.e_mail_cliente, 
-            o.domicilio_de_envio, 
-            o.estado, 
-            o.codigo_despacho,
-            f.fecha AS fecha_compra
-        FROM dbo.orden o
-        JOIN dbo.factura f ON o.num_factura = f.num_factura
-        WHERE o.numero_de_orden = @numeroOrden";
+                SELECT DISTINCT 
+                    o.numero_de_orden, 
+                    f.num_factura, 
+                    f.fecha, 
+                    o.nombre_cliente, 
+                    o.apellido_cliente, 
+                    o.dni, 
+                    o.e_mail_cliente, 
+                    o.domicilio_de_envio, 
+                    o.estado, 
+                    o.codigo_despacho,
+                    f.fecha AS fecha_compra
+                FROM dbo.orden o
+                JOIN dbo.factura f ON o.num_factura = f.num_factura
+                WHERE o.numero_de_orden = @numeroOrden";
 
             using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
             using (SqlCommand cmd = new SqlCommand(query, conn))

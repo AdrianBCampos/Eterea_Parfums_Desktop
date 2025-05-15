@@ -643,10 +643,10 @@ namespace Eterea_Parfums_Desktop
                 recargable = 1;
             }
 
-            int activo = 1;
+            bool activo = true;
             if (combo_activo.SelectedItem.ToString() == "No")
             {
-                activo = 0;
+                activo = false;
             }
 
 

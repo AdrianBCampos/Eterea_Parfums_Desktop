@@ -41,7 +41,7 @@ namespace Eterea_Parfums_Desktop
             //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
             dataGridViewPerfumes.RowHeadersVisible = false;
             perfumes = PerfumeControlador.getAll()
-            .Where(p => p.activo == 1)
+            .Where(p => p.activo == true)
             .ToList();
 
             stocks = StockControlador.getAll();

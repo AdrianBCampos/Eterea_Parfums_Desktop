@@ -120,7 +120,7 @@ namespace Eterea_Parfums_Desktop
 
             foreach (Perfume perfume in perfumeMostrar)
             {
-                if (perfume.activo == 1)
+                if (perfume.activo == true)
                 {
                     int rowIndex = dataGridViewConsultas.Rows.Add();
 

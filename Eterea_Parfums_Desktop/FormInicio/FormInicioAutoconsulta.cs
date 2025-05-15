@@ -1,4 +1,5 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
@@ -105,13 +106,13 @@ namespace Eterea_Parfums_Desktop
 
             this.KeyPreview = true;
 
+            //Perfumes_Completo = PerfumeControlador.getAll();
+            //Perfumes_Filtrado = PerfumeControlador.filtrarPorNombre(filtro.nombre);
             Perfumes_Completo = PerfumeControlador.getAll();
-            Perfumes_Filtrado = PerfumeControlador.filtrarPorNombre(filtro.nombre);
+            filtro.activo = true; // Esto asegura que al inicio solo se muestren los perfumes activos
+            filtrar();
 
-            total = Perfumes_Completo.Count;
-            last_pag = (int)Math.Ceiling((double)total / paginador);
-            lbl_numero_pagina.Text = current_pag.ToString();
-            paginar(Perfumes_Completo);
+            
 
 
 
@@ -326,6 +327,8 @@ namespace Eterea_Parfums_Desktop
             combo_filtro_articulos.SelectedIndex = 0;  // Establece la opción por defecto
         }
 
+
+
         private void paginar(List<Perfume> perfumeMostrar)
         {
             Perfumes_Paginados = perfumeMostrar.Skip(current).Take(paginador).ToList();
@@ -373,7 +376,7 @@ namespace Eterea_Parfums_Desktop
                 if (combo_filtro_articulos.SelectedIndex == 0)
                 {
                     // Perfumes a la venta: activos y con stock
-                    mostrarPerfume = perfume.activo == 1 && stockDisponible > 0;
+                    mostrarPerfume = perfume.activo == true && stockDisponible > 0;
                 }
                 else if (combo_filtro_articulos.SelectedIndex == 1)
                 {
@@ -383,7 +386,7 @@ namespace Eterea_Parfums_Desktop
                 else if (combo_filtro_articulos.SelectedIndex == 2)
                 {
                     // Sin stock: inactivos o stock <= 0
-                    mostrarPerfume = perfume.activo == 0 || stockDisponible <= 0;
+                    mostrarPerfume = perfume.activo == false || stockDisponible <= 0;
                 }
 
                 if (mostrarPerfume)
@@ -392,7 +395,7 @@ namespace Eterea_Parfums_Desktop
                     DataGridViewRow row = dataGridViewConsultas.Rows[rowIndex];
                     row.Tag = perfume; // ✅ Asocia el objeto perfume a la fila
 
-                    string precioMostrado = (perfume.activo == 0 || stockDisponible <= 0)
+                    string precioMostrado = (perfume.activo == false || stockDisponible <= 0)
                         ? "Sin Stock"
                         : perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
 
@@ -498,19 +501,20 @@ namespace Eterea_Parfums_Desktop
         {
             if (combo_filtro_articulos.SelectedIndex == 0) // Perfumes a la venta
             {
-                filtro.activo = -1; // No filtramos por activo porque el control lo hace VisualizarPerfumes con stock
+                filtro.activo = true;
             }
-            else if (combo_filtro_articulos.SelectedIndex == 1) // Todos los Perfumes
+            else if (combo_filtro_articulos.SelectedIndex == 1) // Todos los perfumes
             {
-                filtro.activo = -1; // ✅ Mostrar todos, sin filtrar por activo
+                filtro.activo = null; // No filtramos por activo
             }
             else if (combo_filtro_articulos.SelectedIndex == 2) // Perfumes sin stock
             {
-                filtro.activo = -1; // También mostrar todos, el filtro por stock lo hace VisualizarPerfumes
+                filtro.activo = null; // No filtramos por activo, el control lo hace VisualizarPerfumes
             }
 
             filtrar();
         }
+
 
         private void combo_filtro_aroma_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -551,11 +555,12 @@ namespace Eterea_Parfums_Desktop
                 Perfumes_Filtrado = Perfumes_Filtrado.Where(x => x.genero.id == filtro.genero.id).ToList();
             }
 
-            // Filtrado por estado activo (ahora es un int)
-            if (filtro.activo != -1) // Si el filtro no es "todos los perfumes"
+            // Filtrado por estado activo (ahora es un bool)
+            if (filtro.activo.HasValue)// Si el filtro no es "todos los perfumes"
             {
                 Perfumes_Filtrado = Perfumes_Filtrado.Where(x => x.activo == filtro.activo).ToList();
             }
+          
 
           
 
