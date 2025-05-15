@@ -17,7 +17,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 {
     public partial class Facturar_UC : UserControl
     {
-        
+
 
 
         Cliente clientefactura = new Cliente();
@@ -34,7 +34,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         {
             InitializeComponent();
 
-           
+          
 
             txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
 
@@ -232,8 +232,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             // Reset variables locales del UC también
             numeroCaja = "Caja sin asignar";
             IdHistorialCaja = 0;
+        
+
         }
 
+      
 
         private void ActualizarEstadoCaja()
         {
@@ -255,7 +258,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         private void MostrarCajaSinAsignar()
         {
             numeroCaja = null;
-         
+
             txt_numero_caja.Text = "Caja sin asignar";
         }
 
@@ -290,9 +293,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 if (cliente != null)
                 {
                     clientefactura = cliente;
-                //}
-                //if (cliente != null)
-                //{
+                    //}
+                    //if (cliente != null)
+                    //{
                     // Si se encuentra el cliente, llenar los campos en el formulario actual
                     txt_nombre_cliente.Text = cliente.nombre + " " + cliente.apellido;
                     txt_condicion_iva.Text = cliente.condicion_frente_al_iva;
@@ -337,7 +340,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 // No hay caja asignada, mostrar FormNumeroDeCaja para elegirla
                 MessageBox.Show("Debes ingresar un número de caja.\n Haz click en 'Abrir Caja' ", "Número de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
+
         }
 
         private void txt_dni_KeyDown(object sender, KeyEventArgs e)
@@ -680,7 +683,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 txt_total.Text = (subtotal + recargo - descuento).ToString("N2");
             }
         }
-        
+
 
 
         public void ActualizarTotales()
@@ -972,9 +975,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                             return;
                         }
 
-                          int sucursalId = (EmpleadoControlador.obtenerPorId(Program.logueado.id)).sucursal_id.id;
-                          StockControlador.updateStock(perfume_id, sucursalId , - cantidad);
-                     MessageBox.Show($"Actualizando stock de perfume {perfume_id} en sucursal {sucursalId} con cantidad {-cantidad}"); 
+                        int sucursalId = (EmpleadoControlador.obtenerPorId(Program.logueado.id)).sucursal_id.id;
+                        StockControlador.updateStock(perfume_id, sucursalId, -cantidad);
+                        MessageBox.Show($"Actualizando stock de perfume {perfume_id} en sucursal {sucursalId} con cantidad {-cantidad}");
 
                     }
                 }
@@ -1115,7 +1118,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 }
                 CrearFactura();
                 CrearDetalleFactura();
-               // txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
+                // txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
 
                 ReiniciarFormulario();
 
@@ -1192,7 +1195,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             Program.BarcodeService.RegisterListener(OnBarcodeScanned);
         }
 
-        
+
 
         private void OnBarcodeScanned(string barcode)
         {
@@ -1303,6 +1306,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                                       TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
             }
         }
+
+     
+
 
     }
 }

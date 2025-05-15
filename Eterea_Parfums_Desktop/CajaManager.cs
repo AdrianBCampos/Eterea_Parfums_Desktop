@@ -130,9 +130,10 @@ namespace Eterea_Parfums_Desktop.Helpers
 
         private static void AbrirFacturarUC(FormInicioAdministrador formInicio)
         {
-            Facturar_UC facturar = new Facturar_UC();
-            formInicio.addUserControl(facturar);
+            formInicio.MostrarFacturar();  // reutiliza el mismo Facturar_UC si ya existe
         }
+
+
 
     }
 }
