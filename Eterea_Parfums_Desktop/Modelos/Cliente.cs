@@ -24,13 +24,13 @@ namespace Eterea_Parfums_Desktop.Modelos
         public String departamento { get; set; }
         public String comentarios_domicilio { get; set; }
 
-        public int activo { get; set; }
+        public bool activo { get; set; }
         public String rol { get; set; }
 
         public Cliente(int id, string usuario, string clave, string nombre, string apellido, long dni, string condicion_frente_al_iva, DateTime fecha_nacimiento,
             string celular, string e_mail, Pais pais_id, Provincia provincia_id, Localidad localidad_id, int codigo_postal, Calle calle_id,
             int numeracion_calle, string piso, string departamento, string comentarios_domicilio,
-             int activo, string rol)
+             bool activo, string rol)
         {
             this.id = id;
             this.usuario = usuario;
@@ -60,7 +60,7 @@ namespace Eterea_Parfums_Desktop.Modelos
 
         }
 
-        public Cliente(int id, int activo)
+        public Cliente(int id, bool activo)
         {
             this.id = id;
             this.activo = activo;

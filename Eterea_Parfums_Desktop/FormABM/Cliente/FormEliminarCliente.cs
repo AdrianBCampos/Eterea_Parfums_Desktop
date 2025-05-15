@@ -38,7 +38,7 @@ namespace Eterea_Parfums_Desktop
         private void eliminar()
         {
 
-            int activo = 0;
+            bool activo = false;
 
             Cliente cliente = new Cliente(id_eliminar, activo);
 
