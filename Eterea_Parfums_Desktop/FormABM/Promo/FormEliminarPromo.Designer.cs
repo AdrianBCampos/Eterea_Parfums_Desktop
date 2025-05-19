@@ -131,7 +131,7 @@
             this.Controls.Add(this.lbl_crear_promo);
             this.Controls.Add(this.pic_fondo_promo_seleccionada_eliminar);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "FormEliminarPromo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

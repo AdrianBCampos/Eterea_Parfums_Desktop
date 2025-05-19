@@ -49,9 +49,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 70);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 57);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(462, 63);
+            this.pictureBox1.Size = new System.Drawing.Size(346, 51);
             this.pictureBox1.TabIndex = 214;
             this.pictureBox1.TabStop = false;
             // 
@@ -61,10 +62,9 @@
             this.btn_eliminar_cliente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_eliminar_cliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_eliminar_cliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_eliminar_cliente.Location = new System.Drawing.Point(154, 217);
-            this.btn_eliminar_cliente.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_eliminar_cliente.Location = new System.Drawing.Point(116, 176);
             this.btn_eliminar_cliente.Name = "btn_eliminar_cliente";
-            this.btn_eliminar_cliente.Size = new System.Drawing.Size(183, 46);
+            this.btn_eliminar_cliente.Size = new System.Drawing.Size(137, 37);
             this.btn_eliminar_cliente.TabIndex = 216;
             this.btn_eliminar_cliente.Text = "Eliminar";
             this.btn_eliminar_cliente.UseVisualStyleBackColor = false;
@@ -76,10 +76,9 @@
             this.lbl_dni.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_dni.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_dni.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_dni.Location = new System.Drawing.Point(32, 158);
-            this.lbl_dni.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_dni.Location = new System.Drawing.Point(24, 128);
             this.lbl_dni.Name = "lbl_dni";
-            this.lbl_dni.Size = new System.Drawing.Size(64, 29);
+            this.lbl_dni.Size = new System.Drawing.Size(50, 24);
             this.lbl_dni.TabIndex = 221;
             this.lbl_dni.Text = "DNI:";
             // 
@@ -89,10 +88,9 @@
             this.lbl_nombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_nombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_nombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_nombre.Location = new System.Drawing.Point(32, 89);
-            this.lbl_nombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_nombre.Location = new System.Drawing.Point(24, 72);
             this.lbl_nombre.Name = "lbl_nombre";
-            this.lbl_nombre.Size = new System.Drawing.Size(114, 29);
+            this.lbl_nombre.Size = new System.Drawing.Size(91, 24);
             this.lbl_nombre.TabIndex = 219;
             this.lbl_nombre.Text = "Nombre:";
             // 
@@ -102,10 +100,9 @@
             this.txt_dni_eliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.txt_dni_eliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_dni_eliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_dni_eliminar.Location = new System.Drawing.Point(192, 155);
-            this.txt_dni_eliminar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.txt_dni_eliminar.Location = new System.Drawing.Point(144, 126);
             this.txt_dni_eliminar.Name = "txt_dni_eliminar";
-            this.txt_dni_eliminar.Size = new System.Drawing.Size(207, 32);
+            this.txt_dni_eliminar.Size = new System.Drawing.Size(164, 26);
             this.txt_dni_eliminar.TabIndex = 224;
             this.txt_dni_eliminar.Text = "Numero de DNI";
             // 
@@ -115,11 +112,10 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(417, 10);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Location = new System.Drawing.Point(313, 8);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(57, 53);
+            this.button2.Size = new System.Drawing.Size(43, 43);
             this.button2.TabIndex = 435;
             this.button2.Text = "X";
             this.button2.UseVisualStyleBackColor = false;
@@ -131,10 +127,9 @@
             this.lbl_crear_clientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_crear_clientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_crear_clientes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_crear_clientes.Location = new System.Drawing.Point(109, 23);
-            this.lbl_crear_clientes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_crear_clientes.Location = new System.Drawing.Point(82, 19);
             this.lbl_crear_clientes.Name = "lbl_crear_clientes";
-            this.lbl_crear_clientes.Size = new System.Drawing.Size(231, 32);
+            this.lbl_crear_clientes.Size = new System.Drawing.Size(182, 26);
             this.lbl_crear_clientes.TabIndex = 433;
             this.lbl_crear_clientes.Text = "Eliminar Cliente";
             // 
@@ -142,9 +137,10 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox4.Location = new System.Drawing.Point(12, 11);
+            this.pictureBox4.Location = new System.Drawing.Point(9, 9);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(398, 53);
+            this.pictureBox4.Size = new System.Drawing.Size(298, 43);
             this.pictureBox4.TabIndex = 434;
             this.pictureBox4.TabStop = false;
             // 
@@ -152,9 +148,10 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 139);
+            this.pictureBox2.Location = new System.Drawing.Point(9, 113);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(462, 63);
+            this.pictureBox2.Size = new System.Drawing.Size(346, 51);
             this.pictureBox2.TabIndex = 436;
             this.pictureBox2.TabStop = false;
             // 
@@ -162,9 +159,10 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox3.Location = new System.Drawing.Point(12, 208);
+            this.pictureBox3.Location = new System.Drawing.Point(9, 169);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(462, 66);
+            this.pictureBox3.Size = new System.Drawing.Size(346, 54);
             this.pictureBox3.TabIndex = 437;
             this.pictureBox3.TabStop = false;
             // 
@@ -174,19 +172,18 @@
             this.txt_nombre_cliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.txt_nombre_cliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_nombre_cliente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_nombre_cliente.Location = new System.Drawing.Point(192, 86);
-            this.txt_nombre_cliente.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.txt_nombre_cliente.Location = new System.Drawing.Point(144, 70);
             this.txt_nombre_cliente.Name = "txt_nombre_cliente";
-            this.txt_nombre_cliente.Size = new System.Drawing.Size(264, 40);
+            this.txt_nombre_cliente.Size = new System.Drawing.Size(164, 26);
             this.txt_nombre_cliente.TabIndex = 438;
             this.txt_nombre_cliente.Text = "Nombre Cliente";
             // 
-            // FormEliminarClienteABM
+            // FormEliminarCliente
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(481, 282);
+            this.ClientSize = new System.Drawing.Size(361, 229);
             this.Controls.Add(this.txt_nombre_cliente);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.lbl_crear_clientes);
@@ -198,7 +195,9 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox3);
-            this.Name = "FormEliminarClienteABM";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "FormEliminarCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEliminarClienteABM";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

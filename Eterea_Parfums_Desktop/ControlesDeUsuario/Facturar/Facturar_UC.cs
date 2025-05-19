@@ -47,6 +47,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             // Simula el evento Load del UserControl
             this.Load += (s, e) => {
                 Program.BarcodeService.RegisterListener(OnBarcodeScanned);
+
+            this.Cursor = Cursors.Default;
+            this.UseWaitCursor = false;
+
             };
 
 

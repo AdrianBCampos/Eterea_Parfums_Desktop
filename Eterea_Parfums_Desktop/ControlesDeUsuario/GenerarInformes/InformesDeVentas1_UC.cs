@@ -21,9 +21,13 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
         public InformesDeVentas1_UC()
         {
             InitializeComponent();
+
+            this.Cursor = Cursors.Default;
+            this.UseWaitCursor = false;
+
         }
 
-       
+
 
         private bool validarFecha()
         {

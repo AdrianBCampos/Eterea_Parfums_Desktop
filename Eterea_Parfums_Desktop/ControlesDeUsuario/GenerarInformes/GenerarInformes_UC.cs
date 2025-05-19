@@ -32,6 +32,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             combobox_informe.DropDownStyle = ComboBoxStyle.DropDownList;
 
             combobox_informe.SelectedIndex = 0; // Seleccionar el primer informe por defecto
+
+            this.Cursor = Cursors.Default;
+            this.UseWaitCursor = false;
+
+
         }
 
         public void addUserControl(UserControl uc)

@@ -21,6 +21,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
             this.Scale(new SizeF(Program.ScaleFactor, Program.ScaleFactor));
 
+           
+
             PerfumesUC perfumesUC = new PerfumesUC();
             addUserControl(perfumesUC);
 
@@ -34,7 +36,14 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             pictureBox3.BackColor = Color.FromArgb(209, 167, 180);
             btn_perfumes.BackColor = Color.FromArgb(209, 167, 180);
 
-        }   
+            this.Cursor = Cursors.Default;
+            this.UseWaitCursor = false;
+
+            panel_abm.Cursor = Cursors.Default;
+            panel_abm.UseWaitCursor = false;
+
+
+        }
 
         private void btn_perfumes_Click_1(object sender, EventArgs e)
         {

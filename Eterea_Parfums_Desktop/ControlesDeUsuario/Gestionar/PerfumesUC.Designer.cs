@@ -70,10 +70,10 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(150)))), ((int)(((byte)(170)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(11, 11);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(8, 9);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1678, 652);
+            this.pictureBox2.Size = new System.Drawing.Size(1258, 530);
             this.pictureBox2.TabIndex = 228;
             this.pictureBox2.TabStop = false;
             // 
@@ -83,10 +83,9 @@
             this.txt_buscar_codigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_buscar_codigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_buscar_codigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_buscar_codigo.Location = new System.Drawing.Point(584, 109);
-            this.txt_buscar_codigo.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_buscar_codigo.Location = new System.Drawing.Point(438, 89);
             this.txt_buscar_codigo.Name = "txt_buscar_codigo";
-            this.txt_buscar_codigo.Size = new System.Drawing.Size(543, 34);
+            this.txt_buscar_codigo.Size = new System.Drawing.Size(408, 28);
             this.txt_buscar_codigo.TabIndex = 290;
             // 
             // label2
@@ -95,10 +94,9 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(150)))), ((int)(((byte)(170)))));
-            this.label2.Location = new System.Drawing.Point(143, 112);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(107, 91);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(345, 29);
+            this.label2.Size = new System.Drawing.Size(273, 24);
             this.label2.TabIndex = 289;
             this.label2.Text = "Filtrar Perfumes por Código:";
             // 
@@ -108,10 +106,9 @@
             this.lbl_empleados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
             this.lbl_empleados.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_empleados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(150)))), ((int)(((byte)(170)))));
-            this.lbl_empleados.Location = new System.Drawing.Point(703, 37);
-            this.lbl_empleados.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_empleados.Location = new System.Drawing.Point(527, 30);
             this.lbl_empleados.Name = "lbl_empleados";
-            this.lbl_empleados.Size = new System.Drawing.Size(297, 38);
+            this.lbl_empleados.Size = new System.Drawing.Size(249, 31);
             this.lbl_empleados.TabIndex = 288;
             this.lbl_empleados.Text = "Lista de Perfumes";
             // 
@@ -121,10 +118,9 @@
             this.btn_crear_perfume.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_crear_perfume.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_crear_perfume.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_crear_perfume.Location = new System.Drawing.Point(1390, 103);
-            this.btn_crear_perfume.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_crear_perfume.Location = new System.Drawing.Point(1042, 84);
             this.btn_crear_perfume.Name = "btn_crear_perfume";
-            this.btn_crear_perfume.Size = new System.Drawing.Size(227, 46);
+            this.btn_crear_perfume.Size = new System.Drawing.Size(170, 37);
             this.btn_crear_perfume.TabIndex = 287;
             this.btn_crear_perfume.Text = "Crear Perfume";
             this.btn_crear_perfume.UseVisualStyleBackColor = false;
@@ -134,10 +130,10 @@
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox3.Location = new System.Drawing.Point(26, 21);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox3.Location = new System.Drawing.Point(20, 17);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(1646, 71);
+            this.pictureBox3.Size = new System.Drawing.Size(1234, 58);
             this.pictureBox3.TabIndex = 284;
             this.pictureBox3.TabStop = false;
             // 
@@ -145,10 +141,10 @@
             // 
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox4.Location = new System.Drawing.Point(26, 96);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox4.Location = new System.Drawing.Point(20, 78);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(1303, 62);
+            this.pictureBox4.Size = new System.Drawing.Size(977, 50);
             this.pictureBox4.TabIndex = 285;
             this.pictureBox4.TabStop = false;
             // 
@@ -156,10 +152,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(1335, 96);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(1001, 78);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(337, 62);
+            this.pictureBox1.Size = new System.Drawing.Size(253, 50);
             this.pictureBox1.TabIndex = 286;
             this.pictureBox1.TabStop = false;
             // 
@@ -167,6 +163,7 @@
             // 
             this.dataGridViewPerfumes.AllowUserToAddRows = false;
             this.dataGridViewPerfumes.AllowUserToDeleteRows = false;
+            this.dataGridViewPerfumes.AllowUserToResizeColumns = false;
             this.dataGridViewPerfumes.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
@@ -187,6 +184,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewPerfumes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewPerfumes.ColumnHeadersHeight = 45;
+            this.dataGridViewPerfumes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewPerfumes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Codigo,
@@ -212,8 +210,7 @@
             this.dataGridViewPerfumes.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewPerfumes.EnableHeadersVisualStyles = false;
             this.dataGridViewPerfumes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.dataGridViewPerfumes.Location = new System.Drawing.Point(26, 167);
-            this.dataGridViewPerfumes.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridViewPerfumes.Location = new System.Drawing.Point(20, 136);
             this.dataGridViewPerfumes.Name = "dataGridViewPerfumes";
             this.dataGridViewPerfumes.ReadOnly = true;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -225,6 +222,7 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewPerfumes.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewPerfumes.RowHeadersWidth = 51;
+            this.dataGridViewPerfumes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
             dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
@@ -232,7 +230,7 @@
             this.dataGridViewPerfumes.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewPerfumes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewPerfumes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPerfumes.Size = new System.Drawing.Size(1646, 485);
+            this.dataGridViewPerfumes.Size = new System.Drawing.Size(1234, 394);
             this.dataGridViewPerfumes.TabIndex = 291;
             this.dataGridViewPerfumes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPerfumes_CellContentClick_1);
             // 
@@ -366,7 +364,7 @@
             // 
             // PerfumesUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
             this.Controls.Add(this.dataGridViewPerfumes);
@@ -378,9 +376,8 @@
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PerfumesUC";
-            this.Size = new System.Drawing.Size(1700, 678);
+            this.Size = new System.Drawing.Size(1275, 551);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();

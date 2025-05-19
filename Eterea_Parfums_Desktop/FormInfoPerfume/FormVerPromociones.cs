@@ -29,6 +29,9 @@ namespace Eterea_Parfums_Desktop
             string rutaCompletaImagen1 = Program.Ruta_Base + @"Diseño Promo.png";
             pictureBox9.Image = Image.FromFile(rutaCompletaImagen1);
 
+            string rutaCompletaImagen2 = Program.Ruta_Base + @"promo_no_acumulable_2.png";
+            promos_no_acumulables.Image = Image.FromFile(rutaCompletaImagen2);
+
             //perfume = perfumeSeleccionado;
             CargarDataGridViewPromociones();
         }

@@ -18,6 +18,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         {
             InitializeComponent();
             cargarPromociones();
+            dataGridViewPromos.Cursor = Cursors.Default;
         }
 
 
