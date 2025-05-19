@@ -66,6 +66,7 @@
             // 
             this.dataGridViewClientes.AllowUserToAddRows = false;
             this.dataGridViewClientes.AllowUserToDeleteRows = false;
+            this.dataGridViewClientes.AllowUserToResizeColumns = false;
             this.dataGridViewClientes.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
