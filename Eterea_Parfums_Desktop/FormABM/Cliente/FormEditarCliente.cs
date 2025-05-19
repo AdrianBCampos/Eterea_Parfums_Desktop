@@ -3,6 +3,7 @@ using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Net;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -314,6 +315,16 @@ namespace Eterea_Parfums_Desktop
                 string error = "El DNI tiene que ser de 8 o 11 dígitos." + Environment.NewLine;
                 lbl_dniE.Text = error;
                 lbl_dniE.Show();
+            }
+            else
+            {
+                var empleadoId = ClienteControlador.BuscarIdPorDni(txt_dni.Text);
+                if (empleadoId != null)
+                {
+                    lbl_dniE.Text = "Ya existe un cliente con ese DNI.";
+                    lbl_dniE.Show();
+                    errorMsg += lbl_dniE.Text + Environment.NewLine;
+                }
             }
 
             if (!DateTime.TryParse(dateTime_nac.Text, out _))
