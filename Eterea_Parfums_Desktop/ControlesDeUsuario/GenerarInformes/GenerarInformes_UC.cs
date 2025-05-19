@@ -31,7 +31,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             combobox_informe.DrawItem += comboBoxDiseño_DrawItem;
             combobox_informe.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            combobox_informe.SelectedIndex = 0; // Seleccionar el primer informe por defecto
+            combobox_informe.SelectedIndex = 0; // Seleccionar el primer informe por defecto      
         }
 
         public void addUserControl(UserControl uc)
@@ -39,7 +39,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             uc.Dock = DockStyle.Fill;
             panel_info_ventas.Controls.Clear();
             panel_info_ventas.Controls.Add(uc);
-            uc.BringToFront();
+            uc.BringToFront();           
         }
 
         private void btn_continuar_Click(object sender, EventArgs e)
