@@ -23,8 +23,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             InitializeComponent();
         }
 
-       
-
         private bool validarFecha()
         {
             if (dateTimeInicio.Value >= dateTimeFinal.Value)
