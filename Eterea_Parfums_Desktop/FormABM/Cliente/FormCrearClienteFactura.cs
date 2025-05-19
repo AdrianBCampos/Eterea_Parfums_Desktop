@@ -32,9 +32,7 @@ namespace Eterea_Parfums_Desktop
             combo_con_iva.Items.Add("Responsable no Inscripto");
             combo_con_iva.Items.Add("Responsable Monotributo");
 
-            combo_con_iva.DrawMode = DrawMode.OwnerDrawFixed;
-            combo_con_iva.DrawItem += comboBoxdiseño_DrawItem;
-            combo_con_iva.DropDownStyle = ComboBoxStyle.DropDownList;
+            
         }
 
         public FormCrearClienteFactura(long dni)
@@ -55,6 +53,10 @@ namespace Eterea_Parfums_Desktop
             combo_con_iva.Items.Add("Responsable Inscripto");
             combo_con_iva.Items.Add("Responsable no Inscripto");
             combo_con_iva.Items.Add("Responsable Monotributo");
+
+            combo_con_iva.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_con_iva.DrawItem += comboBoxdiseño_DrawItem;
+            combo_con_iva.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void Txt_dni_TextChanged(object sender, EventArgs e)
