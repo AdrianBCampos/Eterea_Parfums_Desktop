@@ -208,6 +208,12 @@
     <Compile Include="ControlesDeUsuario\PrepararEnvios\PrepararEnvios_UC.Designer.cs">
       <DependentUpon>PrepararEnvios_UC.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormABM\Cliente\FormCrearClienteFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormABM\Cliente\FormCrearClienteFactura.Designer.cs">
+      <DependentUpon>FormCrearClienteFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormInformeVenta\FormInformesDeVentas2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +228,12 @@
     </Compile>
     <Compile Include="FormLogin\FormInicioAdministrador.Designer.cs">
       <DependentUpon>FormInicioAdministrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogin\FormInicioVendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin\FormInicioVendedor.Designer.cs">
+      <DependentUpon>FormInicioVendedor.cs</DependentUpon>
     </Compile>
     <Compile Include="FormPedido\FormBuscarPedidos.cs">
       <SubType>Form</SubType>
@@ -334,12 +346,6 @@
     </Compile>
     <Compile Include="FormABM\Cliente\FormCrearCliente.Designer.cs">
       <DependentUpon>FormCrearCliente.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormABM\Cliente\FormCrearClienteFactura.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormABM\Cliente\FormCrearClienteFactura.Designer.cs">
-      <DependentUpon>FormCrearClienteFactura.cs</DependentUpon>
     </Compile>
     <Compile Include="FormABM\Promo\FormPromo.cs">
       <SubType>Form</SubType>
@@ -462,12 +468,6 @@
     <Compile Include="FormInicio\FormInicioAutoconsulta.Designer.cs">
       <DependentUpon>FormInicioAutoconsulta.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormLogin\FormInicioVendedor.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormLogin\FormInicioVendedor.Designer.cs">
-      <DependentUpon>FormInicioVendedor.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormPedido\FormListaDeEnvios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -525,6 +525,9 @@
     <EmbeddedResource Include="ControlesDeUsuario\PrepararEnvios\PrepararEnvios_UC.resx">
       <DependentUpon>PrepararEnvios_UC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormABM\Cliente\FormCrearClienteFactura.resx">
+      <DependentUpon>FormCrearClienteFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormInformeVenta\FormInformesDeVentas2.resx">
       <DependentUpon>FormInformesDeVentas2.cs</DependentUpon>
     </EmbeddedResource>
@@ -533,6 +536,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin\FormInicioAdministrador.resx">
       <DependentUpon>FormInicioAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin\FormInicioVendedor.resx">
+      <DependentUpon>FormInicioVendedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPedido\FormBuscarPedidos.resx">
       <DependentUpon>FormBuscarPedidos.cs</DependentUpon>
@@ -579,9 +585,6 @@
     <EmbeddedResource Include="FormABM\Promo\FormPromo.resx">
       <DependentUpon>FormPromo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormABM\Cliente\FormCrearClienteFactura.resx">
-      <DependentUpon>FormCrearClienteFactura.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormABM\Cliente\FormEditarCliente.resx">
       <DependentUpon>FormEditarCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -620,9 +623,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormInicio\FormInicioAutoconsulta.resx">
       <DependentUpon>FormInicioAutoconsulta.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormLogin\FormInicioVendedor.resx">
-      <DependentUpon>FormInicioVendedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPedido\FormListaDeEnvios.resx">
       <DependentUpon>FormListaDeEnvios.cs</DependentUpon>

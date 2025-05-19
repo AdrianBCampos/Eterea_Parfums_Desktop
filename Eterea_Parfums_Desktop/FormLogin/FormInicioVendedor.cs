@@ -37,6 +37,7 @@ namespace Eterea_Parfums_Desktop
           
 
             pictureBox10.Visible = false;
+            pictureBox5.Visible = false;
 
             // Cambiar el color de PictureBox
             pictureBox1.BackColor = Color.FromArgb(232, 186, 197);
@@ -44,6 +45,8 @@ namespace Eterea_Parfums_Desktop
 
             this.Shown += FormInicioVendedor_Shown;
 
+            // Obtener y mostrar el nombre de la sucursal en el label
+            txt_nombre_suc.Text = SucursalControlador.ObtenerNombreSucursalPorId(Program.sucursal);
         }
 
         internal static bool HayOrdenesActivas()
@@ -93,17 +96,25 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_facturar_Click(object sender, EventArgs e)
         {
+            CambiarColorBoton1((Button)sender);
             Facturar_UC facturarUC = new Facturar_UC();
             addUserControl(facturarUC);
-            CambiarColorBoton1((Button)sender);
         }
 
         private void btn_preparar_envios_Click(object sender, EventArgs e)
         {
+            CambiarColorBoton2((Button)sender);
             PrepararEnvios_UC prepararEnviosUC = new PrepararEnvios_UC();
             addUserControl(prepararEnviosUC);
-            CambiarColorBoton2((Button)sender);
         }
+
+        private void btn_buscar_envios_Click(object sender, EventArgs e)
+        {
+            CambiarColorBoton3((Button)sender);
+            BuscarPedidos_UC buscarPedidosUC = new BuscarPedidos_UC();
+            addUserControl(buscarPedidosUC);
+        }
+
 
         private void FormInicioVendedor_Shown(object sender, EventArgs e)
         {
@@ -127,10 +138,12 @@ namespace Eterea_Parfums_Desktop
             // Cambiar el color de PictureBox
 
             pictureBox1.BackColor = Color.FromArgb(232, 186, 197);
+            pictureBox2.BackColor = Color.FromArgb(232, 196, 206);
             pictureBox9.BackColor = Color.FromArgb(232, 196, 206);
 
             // Mostrar PictureBox         
             pictureBox3.Visible = true;
+            pictureBox5.Visible = false;
             pictureBox10.Visible = false;
 
             // Guardar el botón actual como el anterior
@@ -152,18 +165,45 @@ namespace Eterea_Parfums_Desktop
 
             // Cambiar el color de PictureBox          
             pictureBox1.BackColor = Color.FromArgb(232, 196, 206);
-            pictureBox9.BackColor = Color.FromArgb(232, 186, 197);
+            pictureBox2.BackColor = Color.FromArgb(232, 186, 197);
+            pictureBox9.BackColor = Color.FromArgb(232, 196, 206);
 
             // Mostrar PictureBox
             pictureBox3.Visible = false;
+            pictureBox5.Visible = false;
             pictureBox10.Visible = true;
 
             // Guardar el botón actual como el anterior
             botonAnterior = botonSeleccionado;
-
-
-
            
+        }
+
+        private void CambiarColorBoton3(Button botonSeleccionado)
+        {
+            // Restaurar el color del botón anterior si existe
+            if (botonAnterior != null)
+            {
+                botonAnterior.BackColor = Color.FromArgb(232, 196, 206); // Restaurar color original           
+            }
+
+            // Cambiar el color del botón seleccionado
+            botonSeleccionado.BackColor = Color.FromArgb(232, 186, 197);
+
+            btn_facturar.BackColor = Color.FromArgb(232, 196, 206);
+
+            // Cambiar el color de PictureBox          
+            pictureBox1.BackColor = Color.FromArgb(232, 196, 206);
+            pictureBox2.BackColor = Color.FromArgb(232, 196, 206);
+            pictureBox9.BackColor = Color.FromArgb(232, 186, 197);
+
+            // Mostrar PictureBox
+            pictureBox3.Visible = false;
+            pictureBox5.Visible = true;
+            pictureBox10.Visible = false;
+
+            // Guardar el botón actual como el anterior
+            botonAnterior = botonSeleccionado;
+
         }
 
 
@@ -182,15 +222,5 @@ namespace Eterea_Parfums_Desktop
         }
 
 
-        private void btn_buscar_envios_Click(object sender, EventArgs e)
-            {
-              
-                BuscarPedidos_UC buscarPedidosUC = new BuscarPedidos_UC();
-                addUserControl(buscarPedidosUC);
-                CambiarColorBoton2((Button)sender);
-
-            }
-
-
-        }
     }
+}
