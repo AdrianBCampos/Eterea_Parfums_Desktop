@@ -112,6 +112,27 @@ namespace Eterea_Parfums_Desktop
                     richTextBox_descripcion.Text = promocionSeleccionada.descripcion;
 
                     pictureBox9.Visible = false;
+
+                    // Cargar imagen de la promoción en foto_promo
+                    if (!string.IsNullOrEmpty(promocionSeleccionada.banner))
+                    {
+                        string rutaCompletaBanner = Program.Ruta_Base + promocionSeleccionada.banner + ".jpg";
+
+                        if (System.IO.File.Exists(rutaCompletaBanner))
+                        {
+                            foto_promo.Image = Image.FromFile(rutaCompletaBanner);
+                            foto_promo.Visible = true;
+                        }
+                        else
+                        {
+                            foto_promo.Image = null;
+                            MessageBox.Show("La imagen del banner no se encontró.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        foto_promo.Image = null;
+                    }
                 }
             }
         }
@@ -143,6 +164,10 @@ namespace Eterea_Parfums_Desktop
 
         }
 
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
 
     }
 }

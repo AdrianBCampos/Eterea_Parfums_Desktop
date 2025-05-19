@@ -32,7 +32,8 @@ namespace Eterea_Parfums_Desktop
             { 40, "2da Unidad 80% Dto." },
             { 35, "2da Unidad 70% Dto." },
             { 25, "2da Unidad 50% Dto." },
-            { 10, "Descuento especial del 10%" }
+            { 10, "Descuento especial del 10%" },
+            { 0, "Sin descuento" }
         };
 
         private List<DataGridViewRow> backupRows = new List<DataGridViewRow>();
