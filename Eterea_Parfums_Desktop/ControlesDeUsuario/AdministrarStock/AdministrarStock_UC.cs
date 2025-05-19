@@ -34,8 +34,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
                 txt_numero_sucursal.Text = "Sucursal no encontrada";
             }
 
-            //txt_numero_sucursal.Text = idSucursal.ToString();
-
 
             //txt_cantidad_producto.Text = "0";
             txt_codigo_producto.MaxLength = 13;
@@ -70,50 +68,50 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
             return perfume != null;
         }
 
-       
 
+        // Validar datos de entrada del código de perfume
         private bool Validar_Datos_Codigo()
         {
             string mensaje = "";
             if (string.IsNullOrEmpty(txt_codigo_producto.Text))
             {
-                mensaje += "Por favor, ingrese un código de producto.";
+                mensaje = "Por favor, ingrese un código de producto.";
             }
             else if (txt_codigo_producto.Text.Length != 13)
             {
-                mensaje += "\nCódigo ingresado es inexistente.";
+                mensaje = "Código ingresado es inexistente.";
+            }
+            else if (!validarSiExisteCodigoPerfume(txt_codigo_producto.Text.Trim()))
+            {
+                mensaje = "Código ingresado es inexistente.";
             }
 
             if (!string.IsNullOrEmpty(mensaje))
             {
                 lbl_error_codigo.Text = mensaje;
                 lbl_error_codigo.Visible = true;
-                // Limpiar los campos
-                SetearDatos();
             }
 
             return string.IsNullOrEmpty(mensaje);
         }
 
-
+        // Validar datos de entrada del stock de perfume
         private bool Validar_Datos_Stock()
         {
             string mensaje = "";
             if (string.IsNullOrEmpty(txt_cantidad_producto.Text))
             {
-                mensaje += "\nPor favor, ingrese cantidad de producto.";
+                mensaje = "Por favor, ingrese cantidad de producto.";
             }
             else if (int.Parse(txt_cantidad_producto.Text) < 0)
             {
-                mensaje += "\nPor favor, ingrese una cantidad valida.";
+                mensaje = "Por favor, ingrese una cantidad valida.";
             }
 
             if (!string.IsNullOrEmpty(mensaje))
             {
                 lbl_error_stock.Text = mensaje;
                 lbl_error_stock.Visible = true;
-                // Limpiar los campos
-                SetearDatos();
             }
 
             return string.IsNullOrEmpty(mensaje);
@@ -132,7 +130,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
                         
         }
 
-
+        
         private void txt_codigo_producto_TextChanged(object sender, EventArgs e)
         {
             List<Stock> stocks = StockControlador.getAll();
@@ -144,7 +142,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
        
                     lbl_error_codigo.Text = "Código ingresado es inexistente.";
                     lbl_error_codigo.Visible = true;
-                    //SetearDatos();
+
 
                 }
                 else
@@ -193,25 +191,36 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
 
         private void btn_confirmar_Click(object sender, EventArgs e)
         {
+            // Limpiar mensajes anteriores
+            lbl_error_codigo.Text = "";
+            lbl_error_codigo.Visible = false;
+            lbl_error_stock.Text = "";
+            lbl_error_stock.Visible = false;
+            bool stockValido = Validar_Datos_Stock();
+            bool codigoValido = Validar_Datos_Codigo();
 
-            if (Validar_Datos_Stock() && Validar_Datos_Codigo())
+            // Si alguna validación falla, no continuar
+            if (!stockValido || !codigoValido)
             {
-                int cantidad = int.Parse(txt_cantidad_producto.Text);
-                //Si el stock ya existe, se actualiza la cantidad
-                if (StockControlador.getStock(perfume.id, idSucursal) != -1)
-                {
-                    StockControlador.updateStock(perfume.id, idSucursal, cantidad);
-
-                }
-                else
-                {
-                    StockControlador.insertStock(perfume.id, idSucursal, cantidad);
-                }
-                MessageBox.Show("Se ha ingresado con éxito.");
-                SetearDatos();
-
+                return;
             }
-        }
+
+            int cantidad = int.Parse(txt_cantidad_producto.Text);
+
+            // Si el stock ya existe, se actualiza la cantidad
+            if (StockControlador.getStock(perfume.id, idSucursal) != -1)
+            {
+                StockControlador.updateStock(perfume.id, idSucursal, cantidad);
+            }
+            else
+            {
+                StockControlador.insertStock(perfume.id, idSucursal, cantidad);
+            }
+
+            MessageBox.Show("Se ha ingresado con éxito.");
+            SetearDatos();
+        
+    }
 
         
     }
