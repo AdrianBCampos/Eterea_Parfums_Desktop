@@ -1119,6 +1119,7 @@
             // dataGridViewAromas
             // 
             this.dataGridViewAromas.AllowUserToAddRows = false;
+            this.dataGridViewAromas.AllowUserToDeleteRows = false;
             this.dataGridViewAromas.AllowUserToResizeRows = false;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(191)))), ((int)(((byte)(192)))));
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1154,7 +1155,7 @@
             this.dataGridViewAromas.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewAromas.EnableHeadersVisualStyles = false;
             this.dataGridViewAromas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.dataGridViewAromas.Location = new System.Drawing.Point(618, 354);
+            this.dataGridViewAromas.Location = new System.Drawing.Point(616, 354);
             this.dataGridViewAromas.Name = "dataGridViewAromas";
             this.dataGridViewAromas.ReadOnly = true;
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;

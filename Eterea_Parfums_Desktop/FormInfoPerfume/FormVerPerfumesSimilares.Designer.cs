@@ -42,12 +42,6 @@
             this.lbl_paginacion_Info = new System.Windows.Forms.Label();
             this.lbl_numero_pagina = new System.Windows.Forms.Label();
             this.dataGridViewConsultas = new System.Windows.Forms.DataGridView();
-            this.Imagen = new System.Windows.Forms.DataGridViewImageColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.agregar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.txt_nombre_perfume = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.img_perfume = new System.Windows.Forms.PictureBox();
@@ -61,6 +55,12 @@
             this.combo_filtro_marca = new System.Windows.Forms.ComboBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
+            this.Imagen = new System.Windows.Forms.DataGridViewImageColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.agregar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsultas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -220,6 +220,7 @@
             this.dataGridViewConsultas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.dataGridViewConsultas.Location = new System.Drawing.Point(246, 124);
             this.dataGridViewConsultas.Name = "dataGridViewConsultas";
+            this.dataGridViewConsultas.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -241,48 +242,6 @@
             this.dataGridViewConsultas.Size = new System.Drawing.Size(942, 359);
             this.dataGridViewConsultas.TabIndex = 333;
             this.dataGridViewConsultas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewConsultas_CellContentClick_1);
-            // 
-            // Imagen
-            // 
-            this.Imagen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Imagen.HeaderText = "Imagen";
-            this.Imagen.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.Imagen.Name = "Imagen";
-            // 
-            // nombre
-            // 
-            this.nombre.FillWeight = 125F;
-            this.nombre.HeaderText = "Nombre del perfume";
-            this.nombre.MinimumWidth = 6;
-            this.nombre.Name = "nombre";
-            // 
-            // marca
-            // 
-            this.marca.FillWeight = 125F;
-            this.marca.HeaderText = "Marca";
-            this.marca.MinimumWidth = 6;
-            this.marca.Name = "marca";
-            // 
-            // genero
-            // 
-            this.genero.HeaderText = "Genero";
-            this.genero.MinimumWidth = 6;
-            this.genero.Name = "genero";
-            // 
-            // precio
-            // 
-            this.precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.precio.HeaderText = "Precio ($)";
-            this.precio.MinimumWidth = 6;
-            this.precio.Name = "precio";
-            this.precio.Width = 106;
-            // 
-            // agregar
-            // 
-            this.agregar.FillWeight = 50F;
-            this.agregar.HeaderText = "Ver mas";
-            this.agregar.MinimumWidth = 6;
-            this.agregar.Name = "agregar";
             // 
             // txt_nombre_perfume
             // 
@@ -433,6 +392,64 @@
             this.pictureBox16.TabIndex = 371;
             this.pictureBox16.TabStop = false;
             // 
+            // Imagen
+            // 
+            this.Imagen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Imagen.HeaderText = "Imagen";
+            this.Imagen.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Imagen.Name = "Imagen";
+            this.Imagen.ReadOnly = true;
+            this.Imagen.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // nombre
+            // 
+            this.nombre.FillWeight = 125F;
+            this.nombre.HeaderText = "Nombre del perfume";
+            this.nombre.MinimumWidth = 6;
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            this.nombre.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.nombre.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // marca
+            // 
+            this.marca.FillWeight = 125F;
+            this.marca.HeaderText = "Marca";
+            this.marca.MinimumWidth = 6;
+            this.marca.Name = "marca";
+            this.marca.ReadOnly = true;
+            this.marca.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.marca.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // genero
+            // 
+            this.genero.HeaderText = "Genero";
+            this.genero.MinimumWidth = 6;
+            this.genero.Name = "genero";
+            this.genero.ReadOnly = true;
+            this.genero.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.genero.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // precio
+            // 
+            this.precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.precio.HeaderText = "Precio ($)";
+            this.precio.MinimumWidth = 6;
+            this.precio.Name = "precio";
+            this.precio.ReadOnly = true;
+            this.precio.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.precio.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.precio.Width = 87;
+            // 
+            // agregar
+            // 
+            this.agregar.FillWeight = 50F;
+            this.agregar.HeaderText = "Ver mas";
+            this.agregar.MinimumWidth = 6;
+            this.agregar.Name = "agregar";
+            this.agregar.ReadOnly = true;
+            this.agregar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
             // FormVerPerfumesSimilares
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -503,12 +520,12 @@
         private System.Windows.Forms.Label lbl_filtro_marca;
         private System.Windows.Forms.ComboBox combo_filtro_marca;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.DataGridViewImageColumn Imagen;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn marca;
         private System.Windows.Forms.DataGridViewTextBoxColumn genero;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio;
         private System.Windows.Forms.DataGridViewButtonColumn agregar;
-        private System.Windows.Forms.PictureBox pictureBox16;
     }
 }

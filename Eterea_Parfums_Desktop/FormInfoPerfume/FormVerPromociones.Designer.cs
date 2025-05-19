@@ -43,9 +43,6 @@
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.dataGridViewpromociones = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.agregar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.lbl_descripcion = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -67,6 +64,9 @@
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.pictureBox_marco_foto_promo = new System.Windows.Forms.PictureBox();
             this.foto_promo = new System.Windows.Forms.PictureBox();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.agregar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_perfume)).BeginInit();
@@ -233,6 +233,7 @@
             this.dataGridViewpromociones.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.dataGridViewpromociones.Location = new System.Drawing.Point(255, 85);
             this.dataGridViewpromociones.Name = "dataGridViewpromociones";
+            this.dataGridViewpromociones.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -251,27 +252,6 @@
             this.dataGridViewpromociones.Size = new System.Drawing.Size(440, 309);
             this.dataGridViewpromociones.TabIndex = 373;
             this.dataGridViewpromociones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewpromociones_CellContentClick);
-            // 
-            // id
-            // 
-            this.id.HeaderText = "Id";
-            this.id.MinimumWidth = 6;
-            this.id.Name = "id";
-            this.id.Visible = false;
-            // 
-            // nombre
-            // 
-            this.nombre.FillWeight = 125F;
-            this.nombre.HeaderText = "Nombre de la Promoción";
-            this.nombre.MinimumWidth = 6;
-            this.nombre.Name = "nombre";
-            // 
-            // agregar
-            // 
-            this.agregar.FillWeight = 50F;
-            this.agregar.HeaderText = "Ver mas";
-            this.agregar.MinimumWidth = 6;
-            this.agregar.Name = "agregar";
             // 
             // lbl_descripcion
             // 
@@ -516,6 +496,35 @@
             this.foto_promo.TabIndex = 409;
             this.foto_promo.TabStop = false;
             // 
+            // id
+            // 
+            this.id.HeaderText = "Id";
+            this.id.MinimumWidth = 6;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.id.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.id.Visible = false;
+            // 
+            // nombre
+            // 
+            this.nombre.FillWeight = 125F;
+            this.nombre.HeaderText = "Nombre de la Promoción";
+            this.nombre.MinimumWidth = 6;
+            this.nombre.Name = "nombre";
+            this.nombre.ReadOnly = true;
+            this.nombre.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.nombre.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // agregar
+            // 
+            this.agregar.FillWeight = 50F;
+            this.agregar.HeaderText = "Ver mas";
+            this.agregar.MinimumWidth = 6;
+            this.agregar.Name = "agregar";
+            this.agregar.ReadOnly = true;
+            this.agregar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
             // FormVerPromociones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -601,9 +610,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lbl_detalles_descuento;
         private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
-        private System.Windows.Forms.DataGridViewButtonColumn agregar;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label8;
@@ -612,5 +618,8 @@
         private System.Windows.Forms.PictureBox pictureBox16;
         private System.Windows.Forms.PictureBox pictureBox_marco_foto_promo;
         private System.Windows.Forms.PictureBox foto_promo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewButtonColumn agregar;
     }
 }
