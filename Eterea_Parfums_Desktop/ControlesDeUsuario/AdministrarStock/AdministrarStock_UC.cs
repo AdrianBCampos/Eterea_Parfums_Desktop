@@ -45,9 +45,13 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
 
             lbl_error_codigo.Visible = false;
             lbl_error_stock.Visible = false;
+
+            this.Cursor = Cursors.Default;
+            this.UseWaitCursor = false;
+
         }
 
-        
+
 
         private void btn_sucursal_Click(object sender, EventArgs e)
         {

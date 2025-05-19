@@ -32,7 +32,8 @@ namespace Eterea_Parfums_Desktop
             { 40, "2da Unidad 80% Dto." },
             { 35, "2da Unidad 70% Dto." },
             { 25, "2da Unidad 50% Dto." },
-            { 10, "Descuento especial del 10%" }
+            { 10, "Descuento especial del 10%" },
+            { 0, "Sin descuento" }
         };
 
         private List<DataGridViewRow> backupRows = new List<DataGridViewRow>();
@@ -559,7 +560,7 @@ namespace Eterea_Parfums_Desktop
             dateTime_fin_promo.Value = promo.fecha_fin;
 
             // Establecer si la promoción está activa
-            if (promo.activo == 1)
+            if (promo.activo == true)
             {
                 combo_activo_promo.SelectedItem = "Si";
             }
@@ -914,7 +915,7 @@ namespace Eterea_Parfums_Desktop
                 nombre = txt_nomb_promo.Text,
                 fecha_inicio = dateTime_inicio_promo.Value,
                 fecha_fin = dateTime_fin_promo.Value,
-                activo = combo_activo_promo.SelectedIndex == 0 ? 1 : 0,
+                activo = combo_activo_promo.SelectedIndex == 0,
                 descripcion = txt_descripcion_promo.Text,
                 banner = $"{txt_nomb_promo.Text}-{num}-banner"
             };
@@ -1154,7 +1155,7 @@ namespace Eterea_Parfums_Desktop
             int idPromoEdit = idPromo;
             var seleccionTipoPromo = (KeyValuePair<int, string>)combo_tipo_promo.SelectedItem;
             int descuentoClave = seleccionTipoPromo.Key;
-            int activo = combo_activo_promo.SelectedIndex == 0 ? 1 : 0;
+            bool activo = combo_activo_promo.SelectedIndex == 0;
 
             Promocion promoActual = PromoControlador.obtenerPorId(idPromo);
             string nombreBannerAnterior = promoActual.banner;

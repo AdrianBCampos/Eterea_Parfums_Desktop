@@ -34,7 +34,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             dataGridViewEmpleados.Rows.Clear();
             foreach (Empleado empleado in empleados)
             {
-                if (empleado.activo == 1 && (string.IsNullOrEmpty(filtroDni) || empleado.dni.ToString().Contains(filtroDni)))
+                if (empleado.activo == true && (string.IsNullOrEmpty(filtroDni) || empleado.dni.ToString().Contains(filtroDni)))
                 {
                     int rowIndex = dataGridViewEmpleados.Rows.Add();
 

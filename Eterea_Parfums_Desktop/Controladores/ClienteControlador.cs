@@ -157,7 +157,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                                     r.IsDBNull(16) ? "" : r.GetString(16),
                                     r.IsDBNull(17) ? "" : r.GetString(17),
                                     r.IsDBNull(18) ? "" : r.GetString(18),
-                                    r.GetInt32(19),
+                                    r.GetBoolean(19),
                                     r.GetString(20)
                                 ));
 
@@ -279,7 +279,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                         r.IsDBNull(16) ? "" : r.GetString(16), // Si es DBNull, asigna ""
                         r.IsDBNull(17) ? "" : r.GetString(17), // Si es DBNull, asigna ""
                         r.IsDBNull(18) ? "" : r.GetString(18), // Si es DBNull, asigna ""
-                        r.GetInt32(19),
+                        r.GetBoolean(19),
                         r.GetString(20)
                     );
                 }
@@ -350,7 +350,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                         r.IsDBNull(16) ? "" : r.GetString(16),          // Piso
                         r.IsDBNull(17) ? "" : r.GetString(17),          // Departamento
                         r.IsDBNull(18) ? "" : r.GetString(18),          // Comentarios domicilio
-                        r.GetInt32(19),                                 // Activo (corregido)
+                        r.GetBoolean(19),                                 // Activo (corregido)
                         r.GetString(20)                                 // Rol
                     );
 

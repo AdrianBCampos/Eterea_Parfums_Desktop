@@ -337,7 +337,7 @@
             // img_perfume
             // 
             this.img_perfume.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.img_perfume.Location = new System.Drawing.Point(19, 65);
+            this.img_perfume.Location = new System.Drawing.Point(20, 65);
             this.img_perfume.Name = "img_perfume";
             this.img_perfume.Size = new System.Drawing.Size(202, 329);
             this.img_perfume.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -906,6 +906,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTipoNota.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTipoNota.ColumnHeadersHeight = 30;
+            this.dataGridViewTipoNota.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewTipoNota.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.tipo,
@@ -932,6 +933,7 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTipoNota.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewTipoNota.RowHeadersWidth = 51;
+            this.dataGridViewTipoNota.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
@@ -1103,7 +1105,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 17.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(1163, 11);
             this.button1.Name = "button1";
@@ -1117,6 +1119,7 @@
             // dataGridViewAromas
             // 
             this.dataGridViewAromas.AllowUserToAddRows = false;
+            this.dataGridViewAromas.AllowUserToDeleteRows = false;
             this.dataGridViewAromas.AllowUserToResizeRows = false;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(191)))), ((int)(((byte)(192)))));
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1138,6 +1141,7 @@
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewAromas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewAromas.ColumnHeadersHeight = 30;
+            this.dataGridViewAromas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewAromas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idaroma,
             this.aroma});
@@ -1151,7 +1155,7 @@
             this.dataGridViewAromas.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewAromas.EnableHeadersVisualStyles = false;
             this.dataGridViewAromas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.dataGridViewAromas.Location = new System.Drawing.Point(618, 354);
+            this.dataGridViewAromas.Location = new System.Drawing.Point(616, 354);
             this.dataGridViewAromas.Name = "dataGridViewAromas";
             this.dataGridViewAromas.ReadOnly = true;
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1163,6 +1167,7 @@
             dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewAromas.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridViewAromas.RowHeadersWidth = 51;
+            this.dataGridViewAromas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
             dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle12.ForeColor = System.Drawing.Color.DimGray;
@@ -1208,7 +1213,7 @@
             this.pictureBox16.Location = new System.Drawing.Point(4, 3);
             this.pictureBox16.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox16.Name = "pictureBox16";
-            this.pictureBox16.Size = new System.Drawing.Size(1208, 542);
+            this.pictureBox16.Size = new System.Drawing.Size(1198, 546);
             this.pictureBox16.TabIndex = 370;
             this.pictureBox16.TabStop = false;
             // 
@@ -1231,7 +1236,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(1208, 542);
+            this.ClientSize = new System.Drawing.Size(1208, 552);
             this.Controls.Add(this.lbl_descripcion);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridViewAromas);

@@ -85,7 +85,7 @@ namespace Eterea_Parfums_Desktop
             txt_presentacion.Text = perfume.presentacion_ml.ToString();
             combo_pais.Text = perfume.pais.nombre;
             combo_spray.Text = perfume.spray.ToString();
-            if (perfume.spray == 1)
+            if (perfume.spray == true)
             {
                 combo_spray.SelectedItem = "Si";
             }
@@ -94,7 +94,7 @@ namespace Eterea_Parfums_Desktop
                 combo_spray.SelectedItem = "No";
             }
             combo_recargable.Text = perfume.recargable.ToString();
-            if (perfume.recargable == 1)
+            if (perfume.recargable == true)
             {
                 combo_recargable.SelectedItem = "Si";
             }
@@ -630,16 +630,16 @@ namespace Eterea_Parfums_Desktop
 
         internal Perfume editar()
         {
-            int spray = 0;
+            bool spray = false;
             if (combo_spray.SelectedItem.ToString() == "Si")
             {
-                spray = 1;
+                spray = true;
             }
 
-            int recargable = 0;
+            bool recargable = false;
             if (combo_recargable.SelectedItem.ToString() == "Si")
             {
-                recargable = 1;
+                recargable = true;
             }
 
             bool activo = true;

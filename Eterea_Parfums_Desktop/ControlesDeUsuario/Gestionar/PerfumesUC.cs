@@ -23,6 +23,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             txt_buscar_codigo.KeyPress += txt_buscar_codigo_KeyPress;
             txt_buscar_codigo.TextChanged += txt_buscar_codigo_TextChanged;
             cargarPerfumes();
+            dataGridViewPerfumes.Cursor = Cursors.Default;
         }
 
         private void btn_crear_perfume_Click_1(object sender, EventArgs e)

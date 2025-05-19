@@ -19,10 +19,12 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             img_logo.Image = Image.FromFile(rutaCompletaImagen);
 
             dgv_resultado.SelectionChanged += (s, e) => ActualizarTextoBotonPrepararEnvio();
-
-          
            
             txt_orden_n.KeyDown += Txt_orden_n_KeyDown;
+
+            this.Cursor = Cursors.Default;
+            this.UseWaitCursor = false;
+
 
         }
 

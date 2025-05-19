@@ -18,6 +18,11 @@ namespace Eterea_Parfums_Desktop
         // Variable para almacenar el botón previamente seleccionado
         private Button botonAnterior;
 
+        private Facturar_UC facturarUC;
+    
+
+
+
         public FormInicioAdministrador()
         {
             InitializeComponent();
@@ -48,6 +53,9 @@ namespace Eterea_Parfums_Desktop
 
             // Obtener y mostrar el nombre de la sucursal en el label
             txt_nombre_suc.Text = SucursalControlador.ObtenerNombreSucursalPorId(Program.sucursal);
+        
+
+
         }
 
         private void btn_cerrar_sesion_Click(object sender, EventArgs e)
@@ -92,11 +100,15 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_facturar_Click(object sender, EventArgs e)
         {
-
             CambiarColorBoton2((Button)sender);
-            CajaManager.VerificarCajaAlIngresarAFacturar(this);
 
+            if (facturarUC == null || facturarUC.IsDisposed)
+                facturarUC = new Facturar_UC();
+
+            addUserControl(facturarUC);
         }
+
+
 
         private void btn_administrar_stock_Click(object sender, EventArgs e)
         {
@@ -261,6 +273,14 @@ namespace Eterea_Parfums_Desktop
             botonAnterior = botonSeleccionado;
         }
 
-        
+        public void MostrarFacturar()
+        {
+            if (facturarUC == null)
+                facturarUC = new Facturar_UC();
+
+            addUserControl(facturarUC);
+        }
+
+
     }
 }

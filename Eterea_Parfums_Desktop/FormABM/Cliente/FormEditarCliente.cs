@@ -199,7 +199,7 @@ namespace Eterea_Parfums_Desktop
             combo_activo.Items.Add("Activo");
             combo_activo.Items.Add("Inactivo");
 
-            if (cliente.activo == 1)
+            if (cliente.activo == true)
             {
                 combo_activo.SelectedItem = "Activo";
             }
@@ -231,10 +231,10 @@ namespace Eterea_Parfums_Desktop
 
         private void editar()
         {
-            int activo = 1;
+            bool activo = true;
             if (combo_activo.SelectedItem.ToString() == "Inactivo")
             {
-                activo = 0;
+                activo = false;
             }
 
             string rol = "cliente";

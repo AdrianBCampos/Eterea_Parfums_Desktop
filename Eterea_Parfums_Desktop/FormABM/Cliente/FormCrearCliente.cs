@@ -130,10 +130,10 @@ namespace Eterea_Parfums_Desktop
             //if (clienteValidado)
             //{
 
-            int activo = 1;
+            bool activo = true;
             if (combo_activo.SelectedItem.ToString() == "Inactivo")
             {
-                activo = 0;
+                activo = false;
             }
 
             string rol = "cliente";

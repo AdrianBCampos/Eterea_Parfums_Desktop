@@ -130,7 +130,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                         r.GetDateTime(2),
                         r.GetDateTime(3),
                         r.GetInt32(4),
-                        r.GetInt32(5),
+                        r.GetBoolean(5),
                         r.GetString(6),
                         r.GetString(7)));
 
@@ -171,7 +171,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                 {
 
                     promo = new Promocion(r.GetInt32(0), r.GetString(1), r.GetDateTime(2), r.GetDateTime(3),
-                        r.GetInt32(4), r.GetInt32(5), r.GetString(6),
+                        r.GetInt32(4), r.GetBoolean(5), r.GetString(6),
                         r.GetString(7));
                 }
                 r.Close();

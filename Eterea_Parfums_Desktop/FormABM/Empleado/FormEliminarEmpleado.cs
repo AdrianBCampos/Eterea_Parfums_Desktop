@@ -31,7 +31,7 @@ namespace Eterea_Parfums_Desktop
         private void eliminar()
         {
 
-            int activo = 0;
+            bool activo = false;
 
             Empleado empleado = new Empleado(id_eliminar, activo);
 

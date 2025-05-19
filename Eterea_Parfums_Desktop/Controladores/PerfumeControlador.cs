@@ -52,7 +52,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
                     lista_perfumes.Add(new Perfume(r.GetInt32(0), r.GetString(1), marcaOb, r.GetString(3),
                         tipo_de_perfumeOb, generoOb, r.GetInt32(6), paisOb,
-                        r.GetInt32(8), r.GetInt32(9), r.GetString(10), r.GetInt32(11), r.GetDouble(12),
+                       r.GetBoolean(8), r.GetBoolean(9), r.GetString(10), r.GetInt32(11), r.GetDouble(12),
                         r.GetBoolean(13), r.GetString(14), r.GetString(15)));
 
 
@@ -160,8 +160,8 @@ namespace Eterea_Parfums_Desktop.Controladores
                     perfume.genero = genero;
                     perfume.presentacion_ml = r.GetInt32(6);
                     perfume.pais = pais;
-                    perfume.spray = r.GetInt32(8);
-                    perfume.recargable = r.GetInt32(9);
+                    perfume.spray = r.GetBoolean(8);
+                    perfume.recargable = r.GetBoolean(9);
                     perfume.descripcion = r.GetString(10);
                     perfume.anio_de_lanzamiento = r.GetInt32(11);
                     perfume.precio_en_pesos = r.GetDouble(12);
@@ -373,7 +373,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
                         list.Add(new Perfume(r.GetInt32(0), r.GetString(1), marcaOb, r.GetString(3),
                             tipo_de_perfumeOb, generoOb, r.GetInt32(6), paisOb,
-                            r.GetInt32(8), r.GetInt32(9), r.GetString(10), r.GetInt32(11), r.GetDouble(12),
+                            r.GetBoolean(8), r.GetBoolean(9), r.GetString(10), r.GetInt32(11), r.GetDouble(12),
                             r.GetBoolean(13), r.GetString(14), r.GetString(15)));
 
 
@@ -419,8 +419,8 @@ namespace Eterea_Parfums_Desktop.Controladores
                     perfume.genero = genero;
                     perfume.presentacion_ml = r.GetInt32(6);
                     perfume.pais = pais;
-                    perfume.spray = r.GetInt32(8);
-                    perfume.recargable = r.GetInt32(9);
+                    perfume.spray = r.GetBoolean(8);
+                    perfume.recargable = r.GetBoolean(9);
                     perfume.descripcion = r.GetString(10);
                     perfume.anio_de_lanzamiento = r.GetInt32(11);
                     perfume.precio_en_pesos = r.GetDouble(12);
@@ -524,8 +524,8 @@ namespace Eterea_Parfums_Desktop.Controladores
                         genero,
                         r.GetInt32(6),
                         pais,
-                        r.GetInt32(8),
-                        r.GetInt32(9),
+                        r.GetBoolean(8),
+                        r.GetBoolean(9),
                         r.GetString(10),
                         r.GetInt32(11),
                         r.GetDouble(12),

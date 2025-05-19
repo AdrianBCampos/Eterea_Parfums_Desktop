@@ -49,6 +49,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
             nombreSucursalActual = SucursalControlador.ObtenerNombreSucursalPorId(Program.sucursal);
 
             this.Load += PrepararEnvios_UC_Load;
+
+            this.Cursor = Cursors.Default;
+            this.UseWaitCursor = false;
+
         }
 
 
