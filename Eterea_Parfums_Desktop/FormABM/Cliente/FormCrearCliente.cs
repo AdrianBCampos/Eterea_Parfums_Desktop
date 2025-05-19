@@ -247,6 +247,17 @@ namespace Eterea_Parfums_Desktop
                 lbl_dniE.Text = error;
                 lbl_dniE.Show();
             }
+            else
+            {
+                var empleadoId = ClienteControlador.BuscarIdPorDni(txt_dni.Text);
+                if (empleadoId != null)
+                {
+                    string error = "Ya existe un cliente con ese DNI." + Environment.NewLine;
+                    lbl_dniE.Text = error;
+                    lbl_dniE.Show();
+                }
+            }
+
 
             //Fecha Nacimiento
             if (!DateTime.TryParse(dateTime_nac.Text, out _))

@@ -495,5 +495,47 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             throw new NotImplementedException();
         }
+
+        public static int? BuscarIdPorDni(string dni)
+        {
+            int? idCliente = null;
+
+            string query = "SELECT id FROM cliente WHERE dni = @dni";
+
+            using (SqlCommand cmd = new SqlCommand(query, DB_Controller.connection))
+            {
+                // Intentamos convertir el string a int
+                if (!int.TryParse(dni, out int dniNumerico))
+                {
+                    throw new Exception("El DNI proporcionado no es numérico.");
+                }
+
+                cmd.Parameters.AddWithValue("@dni", dniNumerico);
+
+                try
+                {
+                    DB_Controller.connection.Open();
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            idCliente = reader.GetInt32(0);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al buscar el empleado por DNI: " + ex.Message);
+                }
+                finally
+                {
+                    if (DB_Controller.connection.State == System.Data.ConnectionState.Open)
+                        DB_Controller.connection.Close();
+                }
+            }
+
+            return idCliente; // null si no se encontró
+        }
     }
 }
