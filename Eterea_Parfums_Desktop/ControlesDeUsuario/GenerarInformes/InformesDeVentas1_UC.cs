@@ -56,6 +56,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                 return;
             }
 
+
+            lbl_inicio.Text = dateTimeInicio.Value.ToString("dd-MM-yyyy");
+            lbl_fin.Text = dateTimeFinal.Value.ToString("dd-MM-yyyy");
+
             txt_cantidad_ventas.Text = facturas.Count.ToString();
             txt_monto_total.Text = facturas.Sum(f => f.precio_total).ToString("C2");
 
