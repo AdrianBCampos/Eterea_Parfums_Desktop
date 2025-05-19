@@ -138,7 +138,7 @@
             this.txt_menos_vendido.AutoSize = true;
             this.txt_menos_vendido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.txt_menos_vendido.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_menos_vendido.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txt_menos_vendido.ForeColor = System.Drawing.Color.SeaGreen;
             this.txt_menos_vendido.Location = new System.Drawing.Point(1275, 227);
             this.txt_menos_vendido.Name = "txt_menos_vendido";
             this.txt_menos_vendido.Size = new System.Drawing.Size(145, 24);
@@ -162,7 +162,7 @@
             this.txt_monto_total.AutoSize = true;
             this.txt_monto_total.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.txt_monto_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_monto_total.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txt_monto_total.ForeColor = System.Drawing.Color.SeaGreen;
             this.txt_monto_total.Location = new System.Drawing.Point(811, 161);
             this.txt_monto_total.Name = "txt_monto_total";
             this.txt_monto_total.Size = new System.Drawing.Size(109, 24);
@@ -279,7 +279,7 @@
             this.lbl_fin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_fin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_fin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_fin.Location = new System.Drawing.Point(949, 85);
+            this.lbl_fin.Location = new System.Drawing.Point(948, 85);
             this.lbl_fin.Name = "lbl_fin";
             this.lbl_fin.Size = new System.Drawing.Size(73, 25);
             this.lbl_fin.TabIndex = 420;
