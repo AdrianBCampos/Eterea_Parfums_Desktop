@@ -97,8 +97,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                 }
 
                 //dataGridViewPerfumes.CellPainting += dataGridView1_CellPainting;
-
+        
             }
+            // Quitar selección automática
+            dataGridViewPerfumes.ClearSelection();
         }
 
         private void btn_descargar_pdf_Click(object sender, EventArgs e)

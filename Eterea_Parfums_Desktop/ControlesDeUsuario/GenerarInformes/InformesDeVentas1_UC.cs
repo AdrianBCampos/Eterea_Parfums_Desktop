@@ -21,15 +21,17 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
         public InformesDeVentas1_UC()
         {
             InitializeComponent();
+            lbl_error_fecha.Text = "";
         }
 
         private bool validarFecha()
         {
             if (dateTimeInicio.Value >= dateTimeFinal.Value)
             {
-                MessageBox.Show("La fecha de inicio no puede ser mayor o igual a la fecha final.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                lbl_error_fecha.Text = "La fecha de inicio no puede ser mayor o igual a la fecha final.";
                 return false;
             }
+            lbl_error_fecha.Text = "";
             return true;
         }
 
@@ -45,6 +47,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             // Validación de las fechas
             if (validarFecha() == false)
             {
+                resetearDatos();
                 return;
             }
 
@@ -98,6 +101,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             // Validación de las fechas
             if (validarFecha() == false)
             {
+                MessageBox.Show("La fecha de inicio no puede ser mayor o igual a la fecha final.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 

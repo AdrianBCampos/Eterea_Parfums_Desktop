@@ -57,6 +57,7 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.lbl_desde = new System.Windows.Forms.Label();
             this.lbl_seleccione_fecha = new System.Windows.Forms.Label();
+            this.lbl_error_fecha = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -278,7 +279,7 @@
             this.lbl_fin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_fin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_fin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_fin.Location = new System.Drawing.Point(964, 85);
+            this.lbl_fin.Location = new System.Drawing.Point(949, 85);
             this.lbl_fin.Name = "lbl_fin";
             this.lbl_fin.Size = new System.Drawing.Size(73, 25);
             this.lbl_fin.TabIndex = 420;
@@ -403,11 +404,23 @@
             this.lbl_seleccione_fecha.TabIndex = 439;
             this.lbl_seleccione_fecha.Text = "Filtro de Fechas";
             // 
+            // lbl_error_fecha
+            // 
+            this.lbl_error_fecha.AutoSize = true;
+            this.lbl_error_fecha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.lbl_error_fecha.ForeColor = System.Drawing.Color.Crimson;
+            this.lbl_error_fecha.Location = new System.Drawing.Point(64, 289);
+            this.lbl_error_fecha.Name = "lbl_error_fecha";
+            this.lbl_error_fecha.Size = new System.Drawing.Size(29, 13);
+            this.lbl_error_fecha.TabIndex = 448;
+            this.lbl_error_fecha.Text = "Error";
+            // 
             // InformesDeVentas1_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
+            this.Controls.Add(this.lbl_error_fecha);
             this.Controls.Add(this.lbl_seleccione_fecha);
             this.Controls.Add(this.dateTimeFinal);
             this.Controls.Add(this.lbl_fecha_final);
@@ -486,5 +499,6 @@
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Label lbl_desde;
         private System.Windows.Forms.Label lbl_seleccione_fecha;
+        private System.Windows.Forms.Label lbl_error_fecha;
     }
 }
