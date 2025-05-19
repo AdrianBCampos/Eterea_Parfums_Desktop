@@ -906,6 +906,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTipoNota.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTipoNota.ColumnHeadersHeight = 30;
+            this.dataGridViewTipoNota.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewTipoNota.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.tipo,
@@ -1139,6 +1140,7 @@
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewAromas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewAromas.ColumnHeadersHeight = 30;
+            this.dataGridViewAromas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewAromas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idaroma,
             this.aroma});

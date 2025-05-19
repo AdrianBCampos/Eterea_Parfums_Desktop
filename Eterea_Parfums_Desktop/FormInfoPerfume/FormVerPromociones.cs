@@ -67,6 +67,9 @@ namespace Eterea_Parfums_Desktop
                     dataGridViewpromociones.Rows[rowIndex].Cells[1].Value = promo.nombre;
                     dataGridViewpromociones.Rows[rowIndex].Cells[2].Value = "Ver";
                 }
+                // 👉 Limpiar la selección de filas al terminar de cargar
+                dataGridViewpromociones.ClearSelection();
+
                 dataGridViewpromociones.CellPainting += dataGridViewpromociones_CellPainting;
             }
             else
