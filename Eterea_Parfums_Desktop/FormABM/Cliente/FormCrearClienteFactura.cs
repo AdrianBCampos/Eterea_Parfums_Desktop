@@ -96,7 +96,7 @@ namespace Eterea_Parfums_Desktop
                     long.Parse(txt_dni.Text), combo_con_iva.Text, fecha, "0", txt_email.Text,
                     pais, provincia, localidad, 0, calle, 0,
                     "0", "0", " ",
-                     1, rol);
+                     true, rol);
 
                 if (ClienteControlador.crearCliente(cliente))
                 {

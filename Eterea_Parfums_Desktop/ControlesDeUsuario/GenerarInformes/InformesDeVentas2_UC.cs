@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.Modelos;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,25 +12,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Eterea_Parfums_Desktop.Controladores;
-using Eterea_Parfums_Desktop.Modelos;
-using iTextSharp.text.pdf;
-using iTextSharp.text;
 
 namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 {
     public partial class InformesDeVentas2_UC : UserControl
     {
-
         private List<Perfume> perfumes;
         private List<Stock> stocks;
+
         public InformesDeVentas2_UC()
         {
             InitializeComponent();
-
-            this.Cursor = Cursors.Default;
-            this.UseWaitCursor = false;
-
             cargarDatos();
         }
 
@@ -101,13 +97,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                 }
 
                 //dataGridViewPerfumes.CellPainting += dataGridView1_CellPainting;
-        
+
             }
-            // Quitar selección automática
-            dataGridViewPerfumes.ClearSelection();
         }
 
-        private void btn_descargar_pdf_Click(object sender, EventArgs e)
+        private void btn_exportar_pdf_Click(object sender, EventArgs e)
         {
             SaveFileDialog guardarInventario = new SaveFileDialog();
             guardarInventario.FileName = DateTime.Now.ToString("ddMMyyyyHHss") + ".pdf";
@@ -245,5 +239,4 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             }
         }
     }
-
 }

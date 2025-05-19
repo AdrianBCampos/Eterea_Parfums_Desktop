@@ -21,14 +21,13 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
         public InformesDeVentas1_UC()
         {
             InitializeComponent();
+            DateTime fechaSeleccionada1 = dateTimeInicio.Value;
+            lbl_fecha_Inicio.Text = fechaSeleccionada1.ToString("dd 'de' MMMM 'de' yyyy");
+            DateTime fechaSeleccionada2 = dateTimeFinal.Value;
+            lbl_fecha_Fin.Text = fechaSeleccionada2.ToString("dd 'de' MMMM 'de' yyyy");
 
-            this.Cursor = Cursors.Default;
-            this.UseWaitCursor = false;
-
-            lbl_error_fecha.Text = "";
+            lbl_error_fecha.Visible = false;
         }
-
-
 
         private bool validarFecha()
         {
@@ -53,7 +52,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             // Validación de las fechas
             if (validarFecha() == false)
             {
-                resetearDatos();
                 return;
             }
 
@@ -64,10 +62,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                 resetearDatos();
                 return;
             }
-
-
-            lbl_inicio.Text = dateTimeInicio.Value.ToString("dd-MM-yyyy");
-            lbl_fin.Text = dateTimeFinal.Value.ToString("dd-MM-yyyy");
 
             txt_cantidad_ventas.Text = facturas.Count.ToString();
             txt_monto_total.Text = facturas.Sum(f => f.precio_total).ToString("C2");
@@ -174,14 +168,21 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             }
         }
 
+
         private void dateTimeInicio_ValueChanged(object sender, EventArgs e)
         {
             cargarDatos();
+            DateTime fechaSeleccionada = dateTimeInicio.Value;
+            lbl_fecha_Inicio.Text = fechaSeleccionada.ToString("dd 'de' MMMM 'de' yyyy");
+                 
         }
 
         private void dateTimeFinal_ValueChanged(object sender, EventArgs e)
         {
             cargarDatos();
-        }
+            DateTime fechaSeleccionada = dateTimeFinal.Value;
+            lbl_fecha_Fin.Text = fechaSeleccionada.ToString("dd 'de' MMMM 'de' yyyy");
+        } 
+
     }
 }
