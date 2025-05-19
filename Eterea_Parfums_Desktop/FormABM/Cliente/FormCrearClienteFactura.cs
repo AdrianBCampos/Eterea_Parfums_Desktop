@@ -3,6 +3,7 @@ using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -19,8 +20,6 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
-  
-
             lbl_nombreE.Hide();
             lbl_apellidoE.Hide();
             lbl_dniE.Hide();
@@ -32,6 +31,10 @@ namespace Eterea_Parfums_Desktop
             combo_con_iva.Items.Add("Responsable Inscripto");
             combo_con_iva.Items.Add("Responsable no Inscripto");
             combo_con_iva.Items.Add("Responsable Monotributo");
+
+            combo_con_iva.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_con_iva.DrawItem += comboBoxdiseño_DrawItem;
+            combo_con_iva.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         public FormCrearClienteFactura(long dni)
@@ -220,11 +223,49 @@ namespace Eterea_Parfums_Desktop
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Facturar_UC facturacion = new Facturar_UC();
-            facturacion.Show();
+        private void button2_Click(object sender, EventArgs e)
+        {          
             this.Close();
+        }
+
+        //Diseño del combo box
+        private void comboBoxdiseño_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0)
+                return;
+
+            // Obtener el ComboBox y el texto del ítem actual
+            ComboBox combo = sender as ComboBox;
+            string text = combo.Items[e.Index].ToString();
+
+            // Definir colores personalizados
+            Color backgroundColor;
+            Color textColor;
+
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                // Color cuando el ítem está seleccionado
+                backgroundColor = Color.FromArgb(195, 156, 164);
+                textColor = Color.White;
+            }
+            else
+            {
+                // Color cuando el ítem NO está seleccionado
+                backgroundColor = Color.FromArgb(250, 236, 239); // Color personalizado
+                textColor = Color.FromArgb(195, 156, 164);
+            }
+
+            // Pintar el fondo del ítem
+            using (SolidBrush brush = new SolidBrush(backgroundColor))
+            {
+                e.Graphics.FillRectangle(brush, e.Bounds);
+            }
+
+            // Dibujar el texto
+            TextRenderer.DrawText(e.Graphics, text, e.Font, e.Bounds, textColor, TextFormatFlags.Left);
+
+            // Evitar problemas visuales
+            e.DrawFocusRectangle();
         }
     }
 }
