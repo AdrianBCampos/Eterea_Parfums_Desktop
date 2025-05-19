@@ -96,9 +96,9 @@
             this.lbl_facturacion.Location = new System.Drawing.Point(878, 25);
             this.lbl_facturacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_facturacion.Name = "lbl_facturacion";
-            this.lbl_facturacion.Size = new System.Drawing.Size(317, 38);
+            this.lbl_facturacion.Size = new System.Drawing.Size(451, 48);
             this.lbl_facturacion.TabIndex = 466;
-            this.lbl_facturacion.Text = "Informes de Ventas";
+            this.lbl_facturacion.Text = "Informes de Inventario";
             // 
             // pictureBox9
             // 
