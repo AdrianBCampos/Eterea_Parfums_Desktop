@@ -34,7 +34,6 @@
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.btn_facturar = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.txt_saludo = new System.Windows.Forms.Label();
             this.txt_bienvenido = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
@@ -44,15 +43,23 @@
             this.btn_cerrar_sesion = new System.Windows.Forms.PictureBox();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.btn_buscar_envios = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.txt_nombre_suc = new System.Windows.Forms.Label();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_cerrar_sesion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_admin
@@ -63,7 +70,7 @@
             this.panel_admin.Location = new System.Drawing.Point(13, 284);
             this.panel_admin.Margin = new System.Windows.Forms.Padding(4);
             this.panel_admin.Name = "panel_admin";
-            this.panel_admin.Size = new System.Drawing.Size(1510, 567);
+            this.panel_admin.Size = new System.Drawing.Size(1509, 567);
             this.panel_admin.TabIndex = 399;
             this.panel_admin.UseWaitCursor = true;
             // 
@@ -73,10 +80,10 @@
             this.btn_preparar_envios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_preparar_envios.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_preparar_envios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_preparar_envios.Location = new System.Drawing.Point(784, 197);
+            this.btn_preparar_envios.Location = new System.Drawing.Point(531, 197);
             this.btn_preparar_envios.Margin = new System.Windows.Forms.Padding(4);
             this.btn_preparar_envios.Name = "btn_preparar_envios";
-            this.btn_preparar_envios.Size = new System.Drawing.Size(346, 57);
+            this.btn_preparar_envios.Size = new System.Drawing.Size(476, 57);
             this.btn_preparar_envios.TabIndex = 385;
             this.btn_preparar_envios.Text = "PREPARAR ENVIOS";
             this.btn_preparar_envios.UseVisualStyleBackColor = false;
@@ -86,9 +93,9 @@
             // 
             this.pictureBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(196)))), ((int)(((byte)(206)))));
             this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox9.Location = new System.Drawing.Point(772, 186);
+            this.pictureBox9.Location = new System.Drawing.Point(1023, 186);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(751, 81);
+            this.pictureBox9.Size = new System.Drawing.Size(499, 81);
             this.pictureBox9.TabIndex = 398;
             this.pictureBox9.TabStop = false;
             // 
@@ -96,9 +103,9 @@
             // 
             this.pictureBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
             this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox10.Location = new System.Drawing.Point(772, 237);
+            this.pictureBox10.Location = new System.Drawing.Point(518, 237);
             this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(751, 81);
+            this.pictureBox10.Size = new System.Drawing.Size(499, 81);
             this.pictureBox10.TabIndex = 404;
             this.pictureBox10.TabStop = false;
             // 
@@ -111,7 +118,7 @@
             this.btn_facturar.Location = new System.Drawing.Point(24, 197);
             this.btn_facturar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_facturar.Name = "btn_facturar";
-            this.btn_facturar.Size = new System.Drawing.Size(728, 57);
+            this.btn_facturar.Size = new System.Drawing.Size(475, 57);
             this.btn_facturar.TabIndex = 386;
             this.btn_facturar.Text = "FACTURAR";
             this.btn_facturar.UseVisualStyleBackColor = false;
@@ -123,20 +130,9 @@
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Location = new System.Drawing.Point(13, 186);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(751, 81);
+            this.pictureBox1.Size = new System.Drawing.Size(499, 81);
             this.pictureBox1.TabIndex = 401;
             this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox3.Location = new System.Drawing.Point(476, 170);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(229, 67);
-            this.pictureBox3.TabIndex = 350;
-            this.pictureBox3.TabStop = false;
             // 
             // txt_saludo
             // 
@@ -147,7 +143,7 @@
             this.txt_saludo.Location = new System.Drawing.Point(667, 122);
             this.txt_saludo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_saludo.Name = "txt_saludo";
-            this.txt_saludo.Size = new System.Drawing.Size(295, 37);
+            this.txt_saludo.Size = new System.Drawing.Size(361, 46);
             this.txt_saludo.TabIndex = 389;
             this.txt_saludo.Text = "Nombre Vendedor";
             // 
@@ -160,7 +156,7 @@
             this.txt_bienvenido.Location = new System.Drawing.Point(356, 117);
             this.txt_bienvenido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_bienvenido.Name = "txt_bienvenido";
-            this.txt_bienvenido.Size = new System.Drawing.Size(198, 39);
+            this.txt_bienvenido.Size = new System.Drawing.Size(249, 51);
             this.txt_bienvenido.TabIndex = 388;
             this.txt_bienvenido.Text = "Bienvenido:";
             // 
@@ -170,7 +166,7 @@
             this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox7.Location = new System.Drawing.Point(188, 103);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(1335, 76);
+            this.pictureBox7.Size = new System.Drawing.Size(1013, 76);
             this.pictureBox7.TabIndex = 396;
             this.pictureBox7.TabStop = false;
             // 
@@ -194,7 +190,7 @@
             this.label9.Location = new System.Drawing.Point(620, 33);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(274, 39);
+            this.label9.Size = new System.Drawing.Size(341, 51);
             this.label9.TabIndex = 393;
             this.label9.Text = "Modo Vendedor";
             // 
@@ -237,24 +233,81 @@
             this.btn_buscar_envios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_buscar_envios.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_buscar_envios.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_buscar_envios.Location = new System.Drawing.Point(1152, 197);
+            this.btn_buscar_envios.Location = new System.Drawing.Point(1035, 197);
             this.btn_buscar_envios.Margin = new System.Windows.Forms.Padding(4);
             this.btn_buscar_envios.Name = "btn_buscar_envios";
-            this.btn_buscar_envios.Size = new System.Drawing.Size(346, 57);
+            this.btn_buscar_envios.Size = new System.Drawing.Size(477, 57);
             this.btn_buscar_envios.TabIndex = 405;
             this.btn_buscar_envios.Text = "BUSCAR ENVIOS";
             this.btn_buscar_envios.UseVisualStyleBackColor = false;
             this.btn_buscar_envios.Click += new System.EventHandler(this.btn_buscar_envios_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox3.Location = new System.Drawing.Point(13, 237);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(499, 81);
+            this.pictureBox3.TabIndex = 407;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox5.Location = new System.Drawing.Point(1023, 215);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(499, 81);
+            this.pictureBox5.TabIndex = 409;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(196)))), ((int)(((byte)(206)))));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox2.Location = new System.Drawing.Point(518, 186);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(499, 81);
+            this.pictureBox2.TabIndex = 408;
+            this.pictureBox2.TabStop = false;
+            // 
+            // txt_nombre_suc
+            // 
+            this.txt_nombre_suc.AutoSize = true;
+            this.txt_nombre_suc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.txt_nombre_suc.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_nombre_suc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_nombre_suc.Location = new System.Drawing.Point(1259, 129);
+            this.txt_nombre_suc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.txt_nombre_suc.Name = "txt_nombre_suc";
+            this.txt_nombre_suc.Size = new System.Drawing.Size(133, 32);
+            this.txt_nombre_suc.TabIndex = 410;
+            this.txt_nombre_suc.Text = "Sucursal";
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox11.Location = new System.Drawing.Point(1207, 103);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(315, 76);
+            this.pictureBox11.TabIndex = 411;
+            this.pictureBox11.TabStop = false;
             // 
             // FormInicioVendedor
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
             this.ClientSize = new System.Drawing.Size(1535, 865);
-            this.Controls.Add(this.btn_buscar_envios);
+            this.Controls.Add(this.txt_nombre_suc);
             this.Controls.Add(this.panel_admin);
-            this.Controls.Add(this.btn_preparar_envios);
+            this.Controls.Add(this.pictureBox11);
+            this.Controls.Add(this.btn_buscar_envios);
             this.Controls.Add(this.pictureBox9);
+            this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.btn_preparar_envios);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.btn_facturar);
             this.Controls.Add(this.pictureBox1);
@@ -276,12 +329,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_cerrar_sesion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,7 +350,6 @@
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.Button btn_facturar;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label txt_saludo;
         private System.Windows.Forms.Label txt_bienvenido;
         private System.Windows.Forms.PictureBox pictureBox7;
@@ -304,5 +359,10 @@
         private System.Windows.Forms.PictureBox btn_cerrar_sesion;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.Button btn_buscar_envios;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label txt_nombre_suc;
+        private System.Windows.Forms.PictureBox pictureBox11;
     }
 }
