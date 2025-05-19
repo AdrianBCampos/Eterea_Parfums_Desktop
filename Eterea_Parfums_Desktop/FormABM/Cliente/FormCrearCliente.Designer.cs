@@ -843,6 +843,7 @@
             this.combo_con_iva.Name = "combo_con_iva";
             this.combo_con_iva.Size = new System.Drawing.Size(314, 28);
             this.combo_con_iva.TabIndex = 176;
+            
             // 
             // pictureBox4
             // 
@@ -983,7 +984,7 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // FormCrearClienteABM
+            // FormCrearCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1061,7 +1062,7 @@
             this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.pictureBox12);
-            this.Name = "FormCrearClienteABM";
+            this.Name = "FormCrearCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCrearClienteABM";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
