@@ -23,19 +23,37 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             InitializeComponent();
      
 
-            lbl_error_fecha.Visible = false;
+            lbl_error_fecha.Text = "";
+            lbl_error_fecha2.Text = "";
         }
 
-        private bool validarFecha()
+        private bool validarFechas()
         {
+            bool esValido = true;
+
             if (dateTimeInicio.Value >= dateTimeFinal.Value)
             {
                 lbl_error_fecha.Text = "La fecha de inicio no puede ser mayor o igual a la fecha final.";
-                return false;
+                esValido = false;
             }
-            lbl_error_fecha.Text = "";
-            return true;
+            else
+            {
+                lbl_error_fecha.Text = "";
+            }
+
+            if (dateTimeFinal.Value > DateTime.Now)
+            {
+                lbl_error_fecha2.Text = "La fecha final no puede ser mayor a la fecha actual.";
+                esValido = false;
+            }
+            else
+            {
+                lbl_error_fecha2.Text = "";
+            }
+
+            return esValido;
         }
+
 
         private void resetearDatos()
         {
@@ -46,9 +64,14 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
         }
         private void cargarDatos()
         {
+
+            lbl_fecha_Inicio.Text = dateTimeInicio.Value.ToString("dd 'de' MMMM 'de' yyyy");
+            lbl_fecha_Fin.Text = dateTimeFinal.Value.ToString("dd 'de' MMMM 'de' yyyy");
+
             // Validación de las fechas
-            if (validarFecha() == false)
+            if (!validarFechas())
             {
+                resetearDatos();
                 return;
             }
 
@@ -60,11 +83,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                 return;
             }
 
-            DateTime fechaSeleccionada1 = dateTimeInicio.Value;
-            lbl_fecha_Inicio.Text = fechaSeleccionada1.ToString("dd 'de' MMMM 'de' yyyy");
-            DateTime fechaSeleccionada2 = dateTimeFinal.Value;
-            lbl_fecha_Fin.Text = fechaSeleccionada2.ToString("dd 'de' MMMM 'de' yyyy");
-
+          
             txt_cantidad_ventas.Text = facturas.Count.ToString();
             txt_monto_total.Text = facturas.Sum(f => f.precio_total).ToString("C2");
 
@@ -101,12 +120,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
         private void btn_exportar_pdf_Click(object sender, EventArgs e)
         {
             // Validación de las fechas
-            if (validarFecha() == false)
+            if (!validarFechas())
             {
-                MessageBox.Show("La fecha de inicio no puede ser mayor o igual a la fecha final.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error verifique las fechas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
 
             SaveFileDialog guardarFactura = new SaveFileDialog
             {
