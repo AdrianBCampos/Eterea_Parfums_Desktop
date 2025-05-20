@@ -366,7 +366,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             if (numero != null && numero != "Caja sin asignar")
             {
                 FormConsultasPerfumeEmpleado consultasPerfumeEmpleado = new FormConsultasPerfumeEmpleado(this);
-                consultasPerfumeEmpleado.ShowDialog();
+                consultasPerfumeEmpleado.Show();
+                consultasPerfumeEmpleado.BringToFront();
+                consultasPerfumeEmpleado.TopMost = true;
             }
             else
             {
