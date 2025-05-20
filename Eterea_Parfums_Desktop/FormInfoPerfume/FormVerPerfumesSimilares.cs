@@ -138,7 +138,7 @@ namespace Eterea_Parfums_Desktop
         private void btn_ver_detalles_Click(object sender, EventArgs e)
         {
             FormVerDetallePerfume verDetallePerfume = new FormVerDetallePerfume(perfume);
-            verDetallePerfume.ShowDialog();
+            verDetallePerfume.ShowDialog(this);
             this.Close();
         }
 
@@ -209,8 +209,12 @@ namespace Eterea_Parfums_Desktop
                 int rowIndex = e.RowIndex;
                 Perfume perfumeSeleccionado = Perfumes_Paginados[rowIndex];
 
+                this.BringToFront();
+                this.TopMost = true;
+                this.TopMost = false;
+
                 FormVerDetallePerfume detallesForm = new FormVerDetallePerfume(perfumeSeleccionado);
-                detallesForm.ShowDialog();
+                detallesForm.ShowDialog(this);
 
                 this.Close();
             }

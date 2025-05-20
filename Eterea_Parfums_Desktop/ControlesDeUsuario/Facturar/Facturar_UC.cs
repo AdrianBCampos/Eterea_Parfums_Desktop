@@ -228,6 +228,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             // Mostrar mensaje de confirmación
             MessageBox.Show("Caja cerrada correctamente.", "Cierre de Caja", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            Factura.Rows.Clear();
+
             // Actualizar interfaz
             txt_numero_caja.Text = "Caja no asignada";
             txt_estadoCaja.Text = "Cerrada";

@@ -260,7 +260,11 @@ namespace Eterea_Parfums_Desktop
 
 
                 FormVerDetallePerfume detallesForm = new FormVerDetallePerfume(perfumeSeleccionado);
-                detallesForm.Show();
+                detallesForm.Show(this);
+               /*detallesForm.BringToFront();
+                detallesForm.Activate(); // Asegura que reciba el foco
+                detallesForm.TopMost = true;*/
+
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == 5)
             {

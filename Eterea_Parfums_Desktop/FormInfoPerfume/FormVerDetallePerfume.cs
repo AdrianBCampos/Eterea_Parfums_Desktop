@@ -529,7 +529,11 @@ namespace Eterea_Parfums_Desktop
             // Si el formulario no se cerró por falta de datos, mostrarlo
             if (!verPerfumesSimilares.IsDisposed)
             {
-                verPerfumesSimilares.ShowDialog();
+                /*this.BringToFront();
+                this.TopMost = true;
+                this.TopMost = false;*/
+
+                verPerfumesSimilares.ShowDialog(this);
                 this.Close(); // Cerrar el formulario actual solo si el otro se abrió con éxito
             }
         }
@@ -554,8 +558,12 @@ namespace Eterea_Parfums_Desktop
 
 
             // Si tiene promociones reales, abrir el formulario
+            /*this.BringToFront();
+            this.TopMost = true;
+            this.TopMost = false;*/
+
             FormVerPromociones verPromociones = new FormVerPromociones(perfume);
-            verPromociones.ShowDialog();
+            verPromociones.ShowDialog(this);
             this.Close();
         }
 
