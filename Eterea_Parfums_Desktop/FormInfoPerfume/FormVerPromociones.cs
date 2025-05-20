@@ -39,7 +39,7 @@ namespace Eterea_Parfums_Desktop
         private void btn_ver_detalles_Click(object sender, EventArgs e)
         {
             FormVerDetallePerfume verDetallePerfume = new FormVerDetallePerfume(perfume);
-            verDetallePerfume.ShowDialog();
+            verDetallePerfume.ShowDialog(this);
             this.Close();
         }
 
