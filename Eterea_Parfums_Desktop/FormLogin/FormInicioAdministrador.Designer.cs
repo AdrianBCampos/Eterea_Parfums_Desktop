@@ -136,7 +136,7 @@
             this.txt_bienvenido.Location = new System.Drawing.Point(355, 116);
             this.txt_bienvenido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_bienvenido.Name = "txt_bienvenido";
-            this.txt_bienvenido.Size = new System.Drawing.Size(249, 51);
+            this.txt_bienvenido.Size = new System.Drawing.Size(394, 79);
             this.txt_bienvenido.TabIndex = 90;
             this.txt_bienvenido.Text = "Bienvenido:";
             // 
@@ -149,7 +149,7 @@
             this.txt_saludo.Location = new System.Drawing.Point(666, 121);
             this.txt_saludo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_saludo.Name = "txt_saludo";
-            this.txt_saludo.Size = new System.Drawing.Size(439, 46);
+            this.txt_saludo.Size = new System.Drawing.Size(693, 73);
             this.txt_saludo.TabIndex = 91;
             this.txt_saludo.Text = "Nombre Administrador";
             // 
@@ -194,7 +194,7 @@
             this.label9.Location = new System.Drawing.Point(619, 32);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(426, 51);
+            this.label9.Size = new System.Drawing.Size(666, 79);
             this.label9.TabIndex = 344;
             this.label9.Text = "Modo Administrador";
             // 
@@ -321,7 +321,7 @@
             this.txt_nombre_suc.Location = new System.Drawing.Point(1259, 128);
             this.txt_nombre_suc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_nombre_suc.Name = "txt_nombre_suc";
-            this.txt_nombre_suc.Size = new System.Drawing.Size(133, 32);
+            this.txt_nombre_suc.Size = new System.Drawing.Size(200, 52);
             this.txt_nombre_suc.TabIndex = 387;
             this.txt_nombre_suc.Text = "Sucursal";
             // 
@@ -367,7 +367,6 @@
             this.Name = "FormInicioAdministrador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InicioAdministrador";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.btn_cerrar_sesion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
