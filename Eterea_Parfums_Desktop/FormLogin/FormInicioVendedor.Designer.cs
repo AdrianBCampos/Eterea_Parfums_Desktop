@@ -143,7 +143,7 @@
             this.txt_saludo.Location = new System.Drawing.Point(667, 122);
             this.txt_saludo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_saludo.Name = "txt_saludo";
-            this.txt_saludo.Size = new System.Drawing.Size(361, 46);
+            this.txt_saludo.Size = new System.Drawing.Size(572, 73);
             this.txt_saludo.TabIndex = 389;
             this.txt_saludo.Text = "Nombre Vendedor";
             // 
@@ -156,7 +156,7 @@
             this.txt_bienvenido.Location = new System.Drawing.Point(356, 117);
             this.txt_bienvenido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_bienvenido.Name = "txt_bienvenido";
-            this.txt_bienvenido.Size = new System.Drawing.Size(249, 51);
+            this.txt_bienvenido.Size = new System.Drawing.Size(394, 79);
             this.txt_bienvenido.TabIndex = 388;
             this.txt_bienvenido.Text = "Bienvenido:";
             // 
@@ -190,7 +190,7 @@
             this.label9.Location = new System.Drawing.Point(620, 33);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(341, 51);
+            this.label9.Size = new System.Drawing.Size(533, 79);
             this.label9.TabIndex = 393;
             this.label9.Text = "Modo Vendedor";
             // 
@@ -281,7 +281,7 @@
             this.txt_nombre_suc.Location = new System.Drawing.Point(1259, 129);
             this.txt_nombre_suc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_nombre_suc.Name = "txt_nombre_suc";
-            this.txt_nombre_suc.Size = new System.Drawing.Size(133, 32);
+            this.txt_nombre_suc.Size = new System.Drawing.Size(200, 52);
             this.txt_nombre_suc.TabIndex = 410;
             this.txt_nombre_suc.Text = "Sucursal";
             // 
@@ -325,7 +325,6 @@
             this.Name = "FormInicioVendedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InicioVendedor";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
