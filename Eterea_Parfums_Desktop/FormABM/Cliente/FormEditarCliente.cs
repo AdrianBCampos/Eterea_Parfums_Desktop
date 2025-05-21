@@ -115,6 +115,10 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
+            this.DoubleBuffered = true;
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
+            this.UpdateStyles();
+
             lbl_usuarioE.Hide();
             lbl_nombreE.Hide();
             lbl_claveE.Hide();

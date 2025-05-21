@@ -193,6 +193,11 @@ namespace Eterea_Parfums_Desktop
                 FormVerDetallePerfume detalleForm = new FormVerDetallePerfume(perfumeEncontrado);
                 detalleForm.FormClosed += (s, args) => ResetAutoConsulta();
 
+                //FormStart formStart = Application.OpenForms["FormStart"] as FormStart;
+                //formStart?.BringToFront();
+                //formStart?.Activate();
+
+
                 ModalHelper.MostrarModalConFondoOscuro(detalleForm);
                
 

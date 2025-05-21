@@ -12,12 +12,6 @@ namespace Eterea_Parfums_Desktop
 
         private Perfume _perfumeParaVer;
 
-        
-
-
-        
-   
-
 
         public FormIngresoCodigoManual(Form formInvocador)
         {
@@ -68,6 +62,7 @@ namespace Eterea_Parfums_Desktop
 
             if (perfumeEncontrado != null)
             {
+
                 lbl_codigo_erroneo.Visible = false; // Ocultamos error anterior si lo había
 
                 FormVerDetallePerfume detalleForm = new FormVerDetallePerfume(perfumeEncontrado);
@@ -93,10 +88,10 @@ namespace Eterea_Parfums_Desktop
             {
                 FormVerDetallePerfume detalle = new FormVerDetallePerfume(_perfumeParaVer);
 
-                ModalHelper.MostrarModalSinAgregarNuevoFondo(detalle);
-
-                var metodoReset = _formInvocador.GetType().GetMethod("ResetAutoConsulta");
-                metodoReset?.Invoke(_formInvocador, null);
+                // Llama al método del invocador para reiniciar escaneo
+                var metodo = _formInvocador?.GetType().GetMethod("ResetAutoConsulta");
+                metodo?.Invoke(_formInvocador, null);
+               
             }
         }
 
@@ -135,6 +130,8 @@ namespace Eterea_Parfums_Desktop
 
             if (perfumeEncontrado != null)
             {
+                _perfumeParaVer = perfumeEncontrado; // ✅ ASIGNÁS EL PERFUME AQUÍ
+
                 lbl_codigo_erroneo.Visible = false; // Ocultamos error anterior si lo había
 
                 FormVerDetallePerfume detalleForm = new FormVerDetallePerfume(perfumeEncontrado);
@@ -159,6 +156,7 @@ namespace Eterea_Parfums_Desktop
             lbl_codigo_erroneo.Visible = false;
             btnIngresarManual.Visible = false;
             btnVolverEscanear.Visible = false;
+            lbl_numero_codigo.Visible = true;
 
             txt_codigo_barras.Clear();
             txt_codigo_barras.Visible = true;
@@ -173,5 +171,7 @@ namespace Eterea_Parfums_Desktop
             var metodo = _formInvocador?.GetType().GetMethod("ResetAutoConsulta");
             metodo?.Invoke(_formInvocador, null);
         }
+
+      
     }
 }

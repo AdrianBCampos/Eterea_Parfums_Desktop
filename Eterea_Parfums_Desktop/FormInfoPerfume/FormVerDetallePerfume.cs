@@ -25,7 +25,6 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
-
             foreach (DataGridViewColumn col in dataGridViewTipoNota.Columns)
             {
                 col.SortMode = DataGridViewColumnSortMode.NotSortable;

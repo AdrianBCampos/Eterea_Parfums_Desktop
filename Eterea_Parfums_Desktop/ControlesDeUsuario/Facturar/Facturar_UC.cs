@@ -236,7 +236,13 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             // Reset variables locales del UC también
             numeroCaja = "Caja sin asignar";
             IdHistorialCaja = 0;
-        
+
+            // Limpiar datos del cliente
+            txt_dni.Text = "";
+            txt_nombre_cliente.Text = "";
+            txt_condicion_iva.Text = "";
+            txt_email.Text = "";
+
 
         }
 

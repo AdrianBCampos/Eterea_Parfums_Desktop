@@ -7,22 +7,20 @@ public static class ModalHelper
 {
     public static DialogResult MostrarModalConFondoOscuro(Form formularioModal)
     {
-        // ✅ Detectar correctamente el formulario principal (aunque estés en un UserControl)
-        Form owner = formularioModal.Owner ?? GetFormularioPrincipalActivo();
+        Form owner = GetFormularioPrincipalActivo();
 
-        // ✅ Mostrar fondo oscuro con referencia al owner
-        FormFondoOscuro.Mostrar(owner);
+        if (FormFondoOscuro.Instance == null || FormFondoOscuro.Instance.IsDisposed)
+        {
+            FormFondoOscuro.Mostrar(owner);
+        }
 
-        // ✅ Enviar el fondo al fondo después de mostrarlo
         FormFondoOscuro.EnviarAlFondo();
 
-        // ✅ Asegurar visibilidad del modal
-        formularioModal.TopMost = true;
         formularioModal.StartPosition = FormStartPosition.CenterScreen;
         formularioModal.ShowInTaskbar = false;
+        formularioModal.TopMost = true;
 
-        // ✅ Mostrar modal y luego ocultar fondo
-        DialogResult resultado = formularioModal.ShowDialog();
+        var resultado = formularioModal.ShowDialog(owner);
 
         FormFondoOscuro.Ocultar();
         return resultado;
@@ -30,15 +28,8 @@ public static class ModalHelper
 
     private static Form GetFormularioPrincipalActivo()
     {
-        Form active = Form.ActiveForm;
-
-        if (active != null && active.Visible)
-            return active;
-
-        // Si no hay formulario activo, buscar uno visible
-        return Application.OpenForms
-            .Cast<Form>()
-            .FirstOrDefault(f => f.Visible && f.Enabled && f.Modal == false);
+        return Application.OpenForms.Cast<Form>()
+            .FirstOrDefault(f => f.Visible && f.Enabled && f.Modal == false && !(f is FormFondoOscuro));
     }
 
     public static DialogResult MostrarModalSinAgregarNuevoFondo(Form modal)
@@ -51,5 +42,4 @@ public static class ModalHelper
 
         return modal.ShowDialog();
     }
-
 }

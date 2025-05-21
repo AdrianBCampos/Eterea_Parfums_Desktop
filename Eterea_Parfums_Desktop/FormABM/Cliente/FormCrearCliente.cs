@@ -105,6 +105,8 @@ namespace Eterea_Parfums_Desktop
             combo_localidad.DrawMode = DrawMode.OwnerDrawFixed;
             combo_localidad.DrawItem += comboBoxdiseño_DrawItem;
             combo_localidad.DropDownStyle = ComboBoxStyle.DropDownList;
+
+          
         }
 
         private void btn_crear_cliente_Click(object sender, EventArgs e)
