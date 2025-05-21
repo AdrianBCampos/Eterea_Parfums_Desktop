@@ -83,6 +83,8 @@ namespace Eterea_Parfums_Desktop
                 formLogin.StartPosition = FormStartPosition.CenterScreen;
                 formLogin.Show(); // Mostrar encima del FormStart
 
+
+
                 // Cerrar este form (FormInicioAdministrador)
                 this.Close();
             }

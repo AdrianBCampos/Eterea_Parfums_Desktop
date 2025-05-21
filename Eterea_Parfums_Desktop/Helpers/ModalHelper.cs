@@ -6,23 +6,20 @@ namespace Eterea_Parfums_Desktop.Helpers
     {
         private static bool overlayActivo = false;
 
-        public static DialogResult MostrarModalConFondoOscuro(Form modal)
+        public static DialogResult MostrarModalConFondoOscuro(Form formularioModal)
         {
-            if (!overlayActivo)
+            FormFondoOscuro.Mostrar();
+
+            // Forzamos que el formulario modal esté encima antes de mostrarlo
+            formularioModal.Load += (s, e) =>
             {
-                FormFondoOscuro.Mostrar();
-                overlayActivo = true;
-            }
+                FormFondoOscuro.EnviarAlFondo(); // ✅ Mueve el fondo detrás
+                formularioModal.BringToFront();  // ✅ Asegura visibilidad
+            };
 
-            modal.StartPosition = FormStartPosition.CenterScreen;
-            modal.ShowInTaskbar = false;
-            modal.TopMost = true;
+            DialogResult resultado = formularioModal.ShowDialog();
 
-            DialogResult resultado = modal.ShowDialog();
-
-            overlayActivo = false;
             FormFondoOscuro.Ocultar();
-
             return resultado;
         }
 

@@ -594,8 +594,6 @@ namespace Eterea_Parfums_Desktop
 
         private void dataGridViewConsultas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var senderGrid = (DataGridView)sender;
-
             if (e.RowIndex >= 0 && e.ColumnIndex == 4) // Verifica que se haga clic en la columna correcta
             {
                 DataGridViewRow row = dataGridViewConsultas.Rows[e.RowIndex];
@@ -604,24 +602,34 @@ namespace Eterea_Parfums_Desktop
                 if (perfumeSeleccionado == null)
                     return;
 
+                // ✅ Mostrar fondo oscuro
+                FormFondoOscuro fondoOscuro = new FormFondoOscuro();
+                fondoOscuro.Show();
 
-                // Crear la ventana de detalles
+                // ✅ Crear formulario detalle
                 FormVerDetallePerfume detallesForm = new FormVerDetallePerfume(perfumeSeleccionado);
-                detallesForm.Owner = this; // Hace que se muestre sobre FormInicioAutoconsulta
+                detallesForm.StartPosition = FormStartPosition.CenterScreen;
+                detallesForm.TopMost = true;
 
-                // Deshabilitar FormInicioAutoconsulta para evitar interacciones
+                // ✅ Deshabilitar este formulario
                 this.Enabled = false;
 
-                // Asegurar que FormDetallePerfume siempre quede por delante
-                detallesForm.TopMost = true; // Lo pone en la parte superior
-                detallesForm.Show();
-                detallesForm.TopMost = false; // Restablece su estado para evitar bloqueos
-                detallesForm.BringToFront(); // Lo trae al frente
+                // ✅ Al cerrar: cerrar fondo y reactivar este form
+                detallesForm.FormClosing += (s, args) =>
+                {
+                    this.Enabled = true;
+                    fondoOscuro.Close();
+                    this.BringToFront();
+                };
 
-                // Restaurar FormInicioAutoconsulta al cerrar FormDetallePerfume
-                detallesForm.FormClosing += (s, args) => this.Enabled = true;
+                // ✅ Mostrar detalle
+                detallesForm.Show();
+
+                // ✅ Después de mostrar, enviar fondo al fondo
+                FormFondoOscuro.EnviarAlFondo();
             }
         }
+
 
 
         //Diseño del boton del datagridview

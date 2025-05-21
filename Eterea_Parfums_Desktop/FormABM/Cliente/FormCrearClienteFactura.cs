@@ -19,9 +19,6 @@ namespace Eterea_Parfums_Desktop
 
         private long _dni;
 
-    
-
- 
 
         public FormCrearClienteFactura(long dni)
         {
@@ -42,20 +39,29 @@ namespace Eterea_Parfums_Desktop
             lbl_cond_ivaE.Hide();
             lbl_emailE.Hide();
 
-            if (_dni.ToString().Length == 8)
-            {
-                lbl_dni.Text = "DNI";
-                lbl_nombre.Text = "Nombre";
-                lbl_apellido.Text = "Apellido";
-            }
-            else if (_dni.ToString().Length == 11)
+            if (_dni.ToString().Length == 11)
             {
                 lbl_dni.Text = "CUIT";
                 lbl_nombre.Text = "Empresa";
                 lbl_apellido.Text = "Tipo";
+
+                lbl_nombreE.Text = "Debe ingresar la razón social.";
+                lbl_apellidoE.Text = "Debe ingresar el tipo de sociedad.";
             }
+            else if (_dni.ToString().Length == 8)
+            {
+                lbl_dni.Text = "DNI";
+                lbl_nombre.Text = "Nombre";
+                lbl_apellido.Text = "Apellido";
+
+
+                lbl_nombreE.Text = "Debe ingresar un nombre.";
+                lbl_apellidoE.Text = "Debe ingresar un apellido.";
+            }
+           
 
             txt_dni.Text = _dni.ToString(); // ✅ Esta es la línea correcta
+            txt_dni.ReadOnly = true;
 
             combo_con_iva.Items.Clear();
             combo_con_iva.Items.Add("Consumidor Final");
@@ -67,7 +73,7 @@ namespace Eterea_Parfums_Desktop
             combo_con_iva.DrawItem += comboBoxdiseño_DrawItem;
             combo_con_iva.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            txt_dni.ReadOnly = true;
+            
         }
 
 
@@ -123,8 +129,7 @@ namespace Eterea_Parfums_Desktop
 
             if (string.IsNullOrEmpty(txt_nombre.Text))
             {
-                errorMsg += "Debes ingresar el nombre" + Environment.NewLine;
-                lbl_nombreE.Text = "Debes ingresar tu nombre de pila";
+              
                 lbl_nombreE.Show();
             }
             else if (!Regex.IsMatch(txt_nombre.Text, @"^[a-zA-Z]+$"))
@@ -143,8 +148,7 @@ namespace Eterea_Parfums_Desktop
 
             if (string.IsNullOrEmpty(txt_apellido.Text))
             {
-                errorMsg += "Debes ingresar el apellido" + Environment.NewLine;
-                lbl_apellidoE.Text = "Debes ingresar tu apellido";
+              
                 lbl_apellidoE.Show();
 
             }
@@ -153,13 +157,13 @@ namespace Eterea_Parfums_Desktop
             {
                 if (!Regex.IsMatch(txt_apellido.Text, @"^[a-zA-Z]+$"))
                 {
-                    errorMsg += "El apellido solo puede contener letras" + Environment.NewLine;
-                    lbl_apellidoE.Text = "El apellido solo puede contener letras";
+                    errorMsg += "Solo puede contener letras" + Environment.NewLine;
+                    lbl_apellidoE.Text = "Solo puede contener letras";
                 }
                 if (txt_apellido.Text.Length > 45)
                 {
-                    errorMsg += "El apellido no puede tener más de 45 caracteres" + Environment.NewLine;
-                    lbl_apellidoE.Text = "El apellido no puede tener más de 45 caracteres";
+                    errorMsg += "No puede tener más de 45 caracteres" + Environment.NewLine;
+                    lbl_apellidoE.Text = "No puede tener más de 45 caracteres";
                 }
                 lbl_apellidoE.Show();
             }

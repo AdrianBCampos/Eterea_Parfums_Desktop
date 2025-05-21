@@ -8,7 +8,7 @@ namespace Eterea_Parfums_Desktop
         private static FormFondoOscuro _instancia;
         private static int _contadorFormularios = 0;
 
-        private FormFondoOscuro()
+        public FormFondoOscuro()
         {
             this.FormBorderStyle = FormBorderStyle.None;
             this.ShowInTaskbar = false;
@@ -41,5 +41,16 @@ namespace Eterea_Parfums_Desktop
                 _contadorFormularios = 0;
             }
         }
+
+        public static void EnviarAlFondo()
+        {
+            if (_instancia != null && !_instancia.IsDisposed)
+            {
+                _instancia.TopMost = false;
+                _instancia.SendToBack();
+            }
+        }
+
+
     }
 }

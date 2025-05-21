@@ -12,13 +12,25 @@ namespace Eterea_Parfums_Desktop
 
         private Perfume _perfumeParaVer;
 
+        
+
+
+        
+   
+
 
         public FormIngresoCodigoManual(Form formInvocador)
         {
             InitializeComponent();
+
             _formInvocador = formInvocador;
 
+            this.lbl_codigo_erroneo.Visible = false;
+
             this.FormClosed += FormIngresoCodigoManual_FormClosed;
+
+            btnIngresarManual.Visible = false;
+            btnVolverEscanear.Visible = false;
         }
 
         private void FormEscanear_Load(object sender, EventArgs e)
@@ -56,14 +68,22 @@ namespace Eterea_Parfums_Desktop
 
             if (perfumeEncontrado != null)
             {
-                _perfumeParaVer = perfumeEncontrado;
-                this.Close(); // NO mostrar acá el detalle
+                lbl_codigo_erroneo.Visible = false; // Ocultamos error anterior si lo había
+
+                FormVerDetallePerfume detalleForm = new FormVerDetallePerfume(perfumeEncontrado);
+                ModalHelper.MostrarModalSinAgregarNuevoFondo(detalleForm);
+                this.Close();
             }
             else
             {
-                this.Close();
-                FormCartelCodigoNoEncontrado cartel = new FormCartelCodigoNoEncontrado(_formInvocador);
-                ModalHelper.MostrarModalSinAgregarNuevoFondo(cartel);
+                // Código inválido: mostrar opciones
+                lbl_codigo_erroneo.Text = "¿Qué desea hacer?";
+                lbl_codigo_erroneo.Visible = true;
+                lbl_numero_codigo.Visible = false;
+
+                txt_codigo_barras.Visible = false;
+                btnIngresarManual.Visible = true;
+                btnVolverEscanear.Visible = true;
             }
         }
 
@@ -115,20 +135,43 @@ namespace Eterea_Parfums_Desktop
 
             if (perfumeEncontrado != null)
             {
-                _perfumeParaVer = perfumeEncontrado;
-                this.Close(); // NO mostrar nada acá
+                lbl_codigo_erroneo.Visible = false; // Ocultamos error anterior si lo había
+
+                FormVerDetallePerfume detalleForm = new FormVerDetallePerfume(perfumeEncontrado);
+                ModalHelper.MostrarModalSinAgregarNuevoFondo(detalleForm);
+                this.Close();
             }
             else
             {
-                this.Close(); // Cerramos primero
+                // Código inválido: mostrar opciones
+                lbl_codigo_erroneo.Text = "¿Qué desea hacer?";
+                lbl_codigo_erroneo.Visible = true;
+                lbl_numero_codigo.Visible = false;
 
-                FormCartelCodigoNoEncontrado cartel = new FormCartelCodigoNoEncontrado(_formInvocador);
-                ModalHelper.MostrarModalSinAgregarNuevoFondo(cartel);
+                txt_codigo_barras.Visible = false;
+                btnIngresarManual.Visible = true;
+                btnVolverEscanear.Visible = true;
             }
         }
 
+        private void btnIngresarManual_Click(object sender, EventArgs e)
+        {
+            lbl_codigo_erroneo.Visible = false;
+            btnIngresarManual.Visible = false;
+            btnVolverEscanear.Visible = false;
 
+            txt_codigo_barras.Clear();
+            txt_codigo_barras.Visible = true;
+            txt_codigo_barras.Focus();
+        }
 
+        private void btnVolverEscanear_Click(object sender, EventArgs e)
+        {
+            this.Close();
 
+            // Llama al método del invocador para reiniciar escaneo
+            var metodo = _formInvocador?.GetType().GetMethod("ResetAutoConsulta");
+            metodo?.Invoke(_formInvocador, null);
+        }
     }
 }

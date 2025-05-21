@@ -34,6 +34,9 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.lbl_lector = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.lbl_codigo_erroneo = new System.Windows.Forms.Label();
+            this.btnVolverEscanear = new System.Windows.Forms.Button();
+            this.btnIngresarManual = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -109,6 +112,42 @@
             this.pictureBox3.TabIndex = 306;
             this.pictureBox3.TabStop = false;
             // 
+            // lbl_codigo_erroneo
+            // 
+            this.lbl_codigo_erroneo.AutoSize = true;
+            this.lbl_codigo_erroneo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_codigo_erroneo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_codigo_erroneo.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.lbl_codigo_erroneo.Location = new System.Drawing.Point(159, 76);
+            this.lbl_codigo_erroneo.Name = "lbl_codigo_erroneo";
+            this.lbl_codigo_erroneo.Size = new System.Drawing.Size(66, 24);
+            this.lbl_codigo_erroneo.TabIndex = 307;
+            this.lbl_codigo_erroneo.Text = "label1";
+            // 
+            // btnVolverEscanear
+            // 
+            this.btnVolverEscanear.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
+            this.btnVolverEscanear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolverEscanear.Location = new System.Drawing.Point(265, 116);
+            this.btnVolverEscanear.Name = "btnVolverEscanear";
+            this.btnVolverEscanear.Size = new System.Drawing.Size(204, 36);
+            this.btnVolverEscanear.TabIndex = 309;
+            this.btnVolverEscanear.Text = "Volver a Escanear";
+            this.btnVolverEscanear.UseVisualStyleBackColor = false;
+            this.btnVolverEscanear.Click += new System.EventHandler(this.btnVolverEscanear_Click);
+            // 
+            // btnIngresarManual
+            // 
+            this.btnIngresarManual.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
+            this.btnIngresarManual.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIngresarManual.Location = new System.Drawing.Point(21, 116);
+            this.btnIngresarManual.Name = "btnIngresarManual";
+            this.btnIngresarManual.Size = new System.Drawing.Size(204, 36);
+            this.btnIngresarManual.TabIndex = 308;
+            this.btnIngresarManual.Text = "Reingresar Manualmente";
+            this.btnIngresarManual.UseVisualStyleBackColor = false;
+            this.btnIngresarManual.Click += new System.EventHandler(this.btnIngresarManual_Click);
+            // 
             // FormIngresoCodigoManual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -116,6 +155,9 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(493, 190);
+            this.Controls.Add(this.btnVolverEscanear);
+            this.Controls.Add(this.btnIngresarManual);
+            this.Controls.Add(this.lbl_codigo_erroneo);
             this.Controls.Add(this.lbl_lector);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.txt_codigo_barras);
@@ -143,5 +185,8 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lbl_lector;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label lbl_codigo_erroneo;
+        private System.Windows.Forms.Button btnVolverEscanear;
+        private System.Windows.Forms.Button btnIngresarManual;
     }
 }

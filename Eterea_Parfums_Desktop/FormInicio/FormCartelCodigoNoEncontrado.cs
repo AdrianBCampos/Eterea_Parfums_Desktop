@@ -222,12 +222,15 @@ namespace Eterea_Parfums_Desktop
             {
                 FormIngresoCodigoManual formIngreso = new FormIngresoCodigoManual(_formInvocador);
                 ModalHelper.MostrarModalSinAgregarNuevoFondo(formIngreso);
+                abrirIngresoManual = false;
+                volverAEscanear = false;
             }
             else if (volverAEscanear)
             {
                 var metodo = _formInvocador.GetType().GetMethod("ResetAutoConsulta");
                 metodo?.Invoke(_formInvocador, null);
             }
+         
         }
 
 
