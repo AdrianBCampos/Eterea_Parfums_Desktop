@@ -19,12 +19,19 @@ namespace Eterea_Parfums_Desktop
             this.Bounds = Screen.PrimaryScreen.Bounds;
         }
 
-        public static void Mostrar()
+        public static void Mostrar(Form owner)
         {
             if (_instancia == null || _instancia.IsDisposed)
             {
                 _instancia = new FormFondoOscuro();
-                _instancia.Show();
+
+                // Solo asignamos Owner si hay uno válido
+                if (owner != null)
+                {
+                    _instancia.Owner = owner;
+                }
+
+                _instancia.Show(); // ❌ No usar Show(owner)
             }
 
             _contadorFormularios++;

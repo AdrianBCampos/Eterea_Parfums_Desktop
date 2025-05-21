@@ -1,37 +1,55 @@
-﻿using System.Windows.Forms;
+﻿using Eterea_Parfums_Desktop;
+using System.Windows.Forms;
+using System.Linq;
 
-namespace Eterea_Parfums_Desktop.Helpers
+
+public static class ModalHelper
 {
-    public static class ModalHelper
+    public static DialogResult MostrarModalConFondoOscuro(Form formularioModal)
     {
-        private static bool overlayActivo = false;
+        // ✅ Detectar correctamente el formulario principal (aunque estés en un UserControl)
+        Form owner = formularioModal.Owner ?? GetFormularioPrincipalActivo();
 
-        public static DialogResult MostrarModalConFondoOscuro(Form formularioModal)
-        {
-            FormFondoOscuro.Mostrar();
+        // ✅ Mostrar fondo oscuro con referencia al owner
+        FormFondoOscuro.Mostrar(owner);
 
-            // Forzamos que el formulario modal esté encima antes de mostrarlo
-            formularioModal.Load += (s, e) =>
-            {
-                FormFondoOscuro.EnviarAlFondo(); // ✅ Mueve el fondo detrás
-                formularioModal.BringToFront();  // ✅ Asegura visibilidad
-            };
+        // ✅ Enviar el fondo al fondo después de mostrarlo
+        FormFondoOscuro.EnviarAlFondo();
 
-            DialogResult resultado = formularioModal.ShowDialog();
+        // ✅ Asegurar visibilidad del modal
+        formularioModal.TopMost = true;
+        formularioModal.StartPosition = FormStartPosition.CenterScreen;
+        formularioModal.ShowInTaskbar = false;
 
-            FormFondoOscuro.Ocultar();
-            return resultado;
-        }
+        // ✅ Mostrar modal y luego ocultar fondo
+        DialogResult resultado = formularioModal.ShowDialog();
 
-        public static DialogResult MostrarModalSinAgregarNuevoFondo(Form modal)
-        {
-            // Se usa cuando ya hay fondo activo
-            modal.StartPosition = FormStartPosition.CenterScreen;
-            modal.ShowInTaskbar = false;
-            modal.TopMost = true;
+        FormFondoOscuro.Ocultar();
+        return resultado;
+    }
 
-            return modal.ShowDialog();
-        }
+    private static Form GetFormularioPrincipalActivo()
+    {
+        Form active = Form.ActiveForm;
+
+        if (active != null && active.Visible)
+            return active;
+
+        // Si no hay formulario activo, buscar uno visible
+        return Application.OpenForms
+            .Cast<Form>()
+            .FirstOrDefault(f => f.Visible && f.Enabled && f.Modal == false);
+    }
+
+    public static DialogResult MostrarModalSinAgregarNuevoFondo(Form modal)
+    {
+        modal.StartPosition = FormStartPosition.CenterScreen;
+        modal.ShowInTaskbar = false;
+        modal.TopMost = true;
+
+        FormFondoOscuro.EnviarAlFondo();
+
+        return modal.ShowDialog();
     }
 
 }
