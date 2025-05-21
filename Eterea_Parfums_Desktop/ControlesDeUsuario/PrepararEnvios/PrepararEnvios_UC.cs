@@ -37,6 +37,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
                 MessageBox.Show("En este momento no hay órdenes activas para despachar.", "Sin órdenes activas", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
+            txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
+            txt_nombre_empleado.Visible = false;
+
             txt_cantidad_ordenes.Text = cantidad.ToString();
 
             this.lbl_pedido_buscado.Visible = false; // oculto por defecto
