@@ -425,7 +425,7 @@
     <Compile Include="FormVenta\FormNumeroDeCaja.Designer.cs">
       <DependentUpon>FormNumeroDeCaja.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helper\ModalHelper.cs" />
+    <Compile Include="Helpers\ModalHelper.cs" />
     <Compile Include="Modelos\AromaDelPerfume.cs" />
     <Compile Include="Modelos\Calle.cs" />
     <Compile Include="Modelos\Cliente.cs" />
@@ -453,7 +453,7 @@
     <Compile Include="FormABM\Perfume\FormCrearPerfume1.Designer.cs">
       <DependentUpon>FormCrearPerfume1.cs</DependentUpon>
     </Compile>
-    <Compile Include="PasswordHelper.cs" />
+    <Compile Include="Helpers\PasswordHelper.cs" />
     <Compile Include="PromocionService.cs" />
     <Compile Include="FormStock\FormStock.cs">
       <SubType>Form</SubType>
