@@ -7,12 +7,12 @@ namespace Eterea_Parfums_Desktop
 {
     public partial class FormIngresoCodigoManual : Form
     {
-        private FormInicioAutoconsulta _inicioAutoConsultas;
+        private Form _formInvocador;
 
-        public FormIngresoCodigoManual(FormInicioAutoconsulta inicioAutoConsultas)
+        public FormIngresoCodigoManual(Form formInvocador)
         {
             InitializeComponent();
-            _inicioAutoConsultas = inicioAutoConsultas;
+            _formInvocador = formInvocador;
         }
 
         private void FormEscanear_Load(object sender, EventArgs e)
@@ -55,7 +55,8 @@ namespace Eterea_Parfums_Desktop
                 formDetalle.FormClosed += (s, args) =>
                 {
                     this.Close();
-                    _inicioAutoConsultas?.ResetAutoConsulta();
+                    var metodoReset = _formInvocador.GetType().GetMethod("ResetAutoConsulta");
+                    metodoReset?.Invoke(_formInvocador, null);
                 };
 
                 formDetalle.ShowDialog();
@@ -63,8 +64,8 @@ namespace Eterea_Parfums_Desktop
             else
             {
                 // ❌ Código no encontrado, mostrar el FormCartelCodigoNoEncontrado
-                FormCartelCodigoNoEncontrado cartel = new FormCartelCodigoNoEncontrado(_inicioAutoConsultas);
-                this.Close(); // Cerramos este formulario de ingreso manual
+                FormCartelCodigoNoEncontrado cartel = new FormCartelCodigoNoEncontrado(_formInvocador);
+                this.Close();
                 cartel.ShowDialog();
             }
         }
@@ -72,8 +73,12 @@ namespace Eterea_Parfums_Desktop
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-            _inicioAutoConsultas?.ResetAutoConsulta();
-            _inicioAutoConsultas?.PrepararParaNuevoEscaneo();
+            var metodoReset = _formInvocador.GetType().GetMethod("ResetAutoConsulta");
+            metodoReset?.Invoke(_formInvocador, null);
+
+            var metodoPreparar = _formInvocador.GetType().GetMethod("PrepararParaNuevoEscaneo");
+            metodoPreparar?.Invoke(_formInvocador, null);
+
         }
 
         private void txt_codigo_barras_TextChanged(object sender, EventArgs e)
@@ -98,15 +103,16 @@ namespace Eterea_Parfums_Desktop
                 detalleForm.FormClosed += (s, args) =>
                 {
                     this.Close();
-                    _inicioAutoConsultas?.ResetAutoConsulta(); // Volver limpio al inicio
+                    var metodoReset = _formInvocador.GetType().GetMethod("ResetAutoConsulta");
+                    metodoReset?.Invoke(_formInvocador, null);
                 };
                 detalleForm.ShowDialog();
             }
             else
             {
                 // ❌ Código no encontrado, mostrar el FormCartelCodigoNoEncontrado
-                FormCartelCodigoNoEncontrado cartel = new FormCartelCodigoNoEncontrado(_inicioAutoConsultas);
-                this.Close(); // Cerramos este formulario de ingreso manual
+                FormCartelCodigoNoEncontrado cartel = new FormCartelCodigoNoEncontrado(_formInvocador);
+                this.Close();
                 cartel.ShowDialog();
             }
         }

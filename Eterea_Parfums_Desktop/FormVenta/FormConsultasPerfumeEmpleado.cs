@@ -17,6 +17,8 @@ namespace Eterea_Parfums_Desktop
     {
         private bool escaneoHabilitado = false; // ✅ Inicialmente deshabilitado
 
+        private Facturar_UC facturacionForm;
+
         private static Perfume filtro = new Perfume();
 
         private List<Perfume> Perfumes_Completo = new List<Perfume>();
@@ -39,10 +41,14 @@ namespace Eterea_Parfums_Desktop
 
         private int? aromaIdSeleccionado = null;
 
+        public string NumeroCaja { get; set; }
+
 
         public FormConsultasPerfumeEmpleado(Facturar_UC facturacion)
         {
             InitializeComponent();
+
+            facturacionForm = facturacion;
 
             foreach (DataGridViewColumn col in dataGridViewConsultas.Columns)
             {
@@ -113,7 +119,7 @@ namespace Eterea_Parfums_Desktop
         }
 
 
-        /*private void txt_scan_TextChanged(object sender, EventArgs e)
+        private void txt_scan_TextChanged(object sender, EventArgs e)
         {
             if (!escaneoHabilitado || !txt_scan.Visible || !txt_scan.Enabled)
             {
@@ -148,7 +154,7 @@ namespace Eterea_Parfums_Desktop
                 cartel.ShowDialog();
 
             }
-        }*/
+        }
 
 
         public void ResetAutoConsulta()
@@ -167,7 +173,7 @@ namespace Eterea_Parfums_Desktop
              File.WriteAllText(rutaArchivo, texto);
          }*/
 
-        private void InicioAutoConsultas_KeyDown_1(object sender, KeyEventArgs e)
+        private void ConsultaEmpleado_KeyDown(object sender, KeyEventArgs e)
         {
             // Detectar si se presionan las teclas Ctrl + L
             if (e.Control && e.KeyCode == Keys.L)
@@ -364,7 +370,7 @@ namespace Eterea_Parfums_Desktop
                     }
 
                     dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = "Ver";
-                    dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = "Agregar";
+                    dataGridViewConsultas.Rows[rowIndex].Cells[5].Value = "Agregar";
 
                 }
                 dataGridViewConsultas.ClearSelection();
@@ -717,11 +723,7 @@ namespace Eterea_Parfums_Desktop
 
         private void Form_Click(object sender, EventArgs e)
         {
-            // Si txt_scan está visible y se hace clic fuera de él, oculta los controles de escaneo
-            if (txt_scan.Visible)
-            {
-                RestaurarUI();
-            }
+
         }
 
 

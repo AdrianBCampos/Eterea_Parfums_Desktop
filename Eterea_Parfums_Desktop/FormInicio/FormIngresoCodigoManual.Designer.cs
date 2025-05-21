@@ -56,11 +56,12 @@
             this.lbl_numero_codigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.lbl_numero_codigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_numero_codigo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lbl_numero_codigo.Location = new System.Drawing.Point(94, 76);
+            this.lbl_numero_codigo.Location = new System.Drawing.Point(94, 69);
             this.lbl_numero_codigo.Name = "lbl_numero_codigo";
-            this.lbl_numero_codigo.Size = new System.Drawing.Size(302, 20);
+            this.lbl_numero_codigo.Size = new System.Drawing.Size(306, 40);
             this.lbl_numero_codigo.TabIndex = 301;
-            this.lbl_numero_codigo.Text = "Ingrese el código de barras manualmente";
+            this.lbl_numero_codigo.Text = "Ingrese el código de barras manualmente.\r\nAl finalizar presione \"Enter\"\r\n";
+            this.lbl_numero_codigo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txt_codigo_barras
             // 

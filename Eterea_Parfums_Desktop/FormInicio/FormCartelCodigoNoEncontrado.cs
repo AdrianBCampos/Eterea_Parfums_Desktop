@@ -14,12 +14,17 @@ namespace Eterea_Parfums_Desktop
         private PictureBox pictureBox3;
         private Label lbl_pregunta;
         private PictureBox pictureBox4;
-        private FormInicioAutoconsulta _formInicioAutoconsulta;
-        public FormCartelCodigoNoEncontrado(FormInicioAutoconsulta formInicio)
+        private Form _formInvocador;
+
+
+
+
+        public FormCartelCodigoNoEncontrado(Form formInvocador)
         {
             InitializeComponent();
-            _formInicioAutoconsulta = formInicio;
+            _formInvocador = formInvocador;
         }
+
 
         public enum Resultado
         {
@@ -188,7 +193,8 @@ namespace Eterea_Parfums_Desktop
 
         private void btnIngresarManual_Click_1(object sender, EventArgs e)
         {
-            FormIngresoCodigoManual formIngreso = new FormIngresoCodigoManual(_formInicioAutoconsulta);
+            FormIngresoCodigoManual formIngreso = new FormIngresoCodigoManual(_formInvocador);
+
 
             // Mostrar el formulario de ingreso MANUAL pero en otro hilo de ejecución
             Task.Run(() =>
@@ -209,7 +215,11 @@ namespace Eterea_Parfums_Desktop
             this.Close();
 
             // Volver a habilitar la UI de escaneo normal en FormInicioAutoconsulta
-            _formInicioAutoconsulta.ResetAutoConsulta(); // Deja el botón "Escanear" visible otra vez
+            var metodo = _formInvocador.GetType().GetMethod("ResetAutoConsulta");
+            if (metodo != null)
+            {
+                metodo.Invoke(_formInvocador, null);
+            }
         }
     }
 }
