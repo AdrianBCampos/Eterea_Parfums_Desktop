@@ -199,10 +199,9 @@ namespace Eterea_Parfums_Desktop
             }
             else
             {
-
                 FormCartelCodigoNoEncontrado cartel = new FormCartelCodigoNoEncontrado(this);
-                cartel.ShowDialog();
-
+                //Mostrar con fondo oscuro
+                ModalHelper.MostrarModalConFondoOscuro(cartel);
             }
         }
 

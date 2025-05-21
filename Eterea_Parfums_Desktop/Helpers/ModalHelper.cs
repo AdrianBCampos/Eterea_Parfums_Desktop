@@ -1,32 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop.Helpers
 {
     public static class ModalHelper
     {
+        private static bool overlayActivo = false;
+
         public static DialogResult MostrarModalConFondoOscuro(Form modal)
         {
-            using (FormFondoOscuro fondoOscuro = new FormFondoOscuro())
+            if (!overlayActivo)
             {
-                fondoOscuro.Show();
-
-                modal.StartPosition = FormStartPosition.CenterScreen;
-                modal.ShowInTaskbar = false;
-                modal.TopMost = true;
-
-                DialogResult resultado = modal.ShowDialog();
-
-                fondoOscuro.Close();
-
-                return resultado;
+                FormFondoOscuro.Mostrar();
+                overlayActivo = true;
             }
+
+            modal.StartPosition = FormStartPosition.CenterScreen;
+            modal.ShowInTaskbar = false;
+            modal.TopMost = true;
+
+            DialogResult resultado = modal.ShowDialog();
+
+            overlayActivo = false;
+            FormFondoOscuro.Ocultar();
+
+            return resultado;
         }
 
-    }
-}
+        public static DialogResult MostrarModalSinAgregarNuevoFondo(Form modal)
+        {
+            // Se usa cuando ya hay fondo activo
+            modal.StartPosition = FormStartPosition.CenterScreen;
+            modal.ShowInTaskbar = false;
+            modal.TopMost = true;
 
+            return modal.ShowDialog();
+        }
+    }
+
+}

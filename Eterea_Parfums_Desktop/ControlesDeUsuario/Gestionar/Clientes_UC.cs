@@ -1,4 +1,5 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.Helpers;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
@@ -67,7 +68,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         private void btn_crear_cliente_Click(object sender, EventArgs e)
         {
             FormCrearCliente formCrearClienteABM = new FormCrearCliente();
-            DialogResult dr = formCrearClienteABM.ShowDialog(this);
+
+            // ✅ Mostrar con fondo oscuro
+            DialogResult dr = ModalHelper.MostrarModalConFondoOscuro(formCrearClienteABM);
 
             if (dr == DialogResult.OK)
             {
@@ -94,7 +97,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                 FormEditarCliente formEditarClienteABM = new FormEditarCliente(cliente_editar);
 
-                DialogResult dr = formEditarClienteABM.ShowDialog(this);
+                // ✅ Mostrar con fondo oscuro
+                DialogResult dr = ModalHelper.MostrarModalConFondoOscuro(formEditarClienteABM);
 
                 if (dr == DialogResult.OK)
                 {
@@ -116,7 +120,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                 FormEliminarCliente formEliminarClienteABM = new FormEliminarCliente(cliente_eliminar, id);
 
-                DialogResult dr = formEliminarClienteABM.ShowDialog(this);
+                // ✅ Mostrar con fondo oscuro
+                DialogResult dr = ModalHelper.MostrarModalConFondoOscuro(formEliminarClienteABM);
 
                 if (dr == DialogResult.OK)
                 {

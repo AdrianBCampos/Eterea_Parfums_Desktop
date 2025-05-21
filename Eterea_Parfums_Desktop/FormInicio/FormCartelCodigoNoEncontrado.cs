@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Eterea_Parfums_Desktop.Helpers;
+using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,6 +17,8 @@ namespace Eterea_Parfums_Desktop
         private PictureBox pictureBox4;
         private Form _formInvocador;
 
+        private bool abrirIngresoManual = false;
+        private bool volverAEscanear = false;
 
 
 
@@ -23,6 +26,9 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
             _formInvocador = formInvocador;
+
+            this.FormClosed += FormCartelCodigoNoEncontrado_FormClosed;
+
         }
 
 
@@ -40,12 +46,12 @@ namespace Eterea_Parfums_Desktop
             this.StartPosition = FormStartPosition.CenterScreen;
         }
 
-        private void btnIngresarManual_Click(object sender, EventArgs e)
+        /*private void btnIngresarManual_Click(object sender, EventArgs e)
         {
             Eleccion = Resultado.IngresarManual;
             this.DialogResult = DialogResult.OK;
             this.Close();
-        }
+        }*/
 
         private void btnReintentar_Click(object sender, EventArgs e)
         {
@@ -193,25 +199,13 @@ namespace Eterea_Parfums_Desktop
 
         private void btnIngresarManual_Click_1(object sender, EventArgs e)
         {
-            FormIngresoCodigoManual formIngreso = new FormIngresoCodigoManual(_formInvocador);
-
-
-            // Mostrar el formulario de ingreso MANUAL pero en otro hilo de ejecución
-            Task.Run(() =>
-            {
-                Application.OpenForms[0].Invoke(new Action(() =>
-                {
-                    formIngreso.ShowDialog();
-                }));
-            });
-
-            // Cerrar el cartel
-            this.Close();
+            abrirIngresoManual = true;
+            this.Close(); // solo cerramos, y actuamos desde FormClosed
         }
 
         private void btnVolverEscanear_Click_1(object sender, EventArgs e)
         {
-            // Cerrar el cartel personalizado
+            volverAEscanear = true;
             this.Close();
 
             // Volver a habilitar la UI de escaneo normal en FormInicioAutoconsulta
@@ -221,5 +215,22 @@ namespace Eterea_Parfums_Desktop
                 metodo.Invoke(_formInvocador, null);
             }
         }
+
+        private void FormCartelCodigoNoEncontrado_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (abrirIngresoManual)
+            {
+                FormIngresoCodigoManual formIngreso = new FormIngresoCodigoManual(_formInvocador);
+                ModalHelper.MostrarModalSinAgregarNuevoFondo(formIngreso);
+            }
+            else if (volverAEscanear)
+            {
+                var metodo = _formInvocador.GetType().GetMethod("ResetAutoConsulta");
+                metodo?.Invoke(_formInvocador, null);
+            }
+        }
+
+
+
     }
 }

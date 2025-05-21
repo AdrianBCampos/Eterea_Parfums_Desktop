@@ -313,7 +313,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     FormCrearClienteFactura formCrearClienteFactura = new FormCrearClienteFactura(dni);
                     //
                     //formCrearClienteFactura.ShowDialog(); // Cambiado a ShowDialog para esperar que el formulario se cierre
-                    Form parentForm = this.FindForm(); // Encuentra el Form que contiene este UserControl
+                    /*Form parentForm = this.FindForm(); // Encuentra el Form que contiene este UserControl
+                                                       // Mostrar con fondo oscuro
+                   
 
                     if (parentForm != null)
                     {
@@ -323,7 +325,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     else
                     {
                         formCrearClienteFactura.ShowDialog(); // Fallback si no encuentra el Form
-                    }
+                    }*/
+
+                    // ✅ Mostrar con fondo oscuro sin preocuparte por el form padre
+                    DialogResult dr = ModalHelper.MostrarModalConFondoOscuro(formCrearClienteFactura);
+
 
 
                     // Luego de cerrar el formulario de clientes, verifica si se creó un nuevo cliente

@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System.Windows.Forms;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
 {
     public partial class FormFondoOscuro : Form
     {
-        public FormFondoOscuro()
+        private static FormFondoOscuro _instancia;
+        private static int _contadorFormularios = 0;
+
+        private FormFondoOscuro()
         {
-            InitializeComponent(); // solo si estás usando el diseñador
             this.FormBorderStyle = FormBorderStyle.None;
             this.ShowInTaskbar = false;
             this.StartPosition = FormStartPosition.Manual;
@@ -23,6 +18,28 @@ namespace Eterea_Parfums_Desktop
             this.TopMost = true;
             this.Bounds = Screen.PrimaryScreen.Bounds;
         }
-    }
 
+        public static void Mostrar()
+        {
+            if (_instancia == null || _instancia.IsDisposed)
+            {
+                _instancia = new FormFondoOscuro();
+                _instancia.Show();
+            }
+
+            _contadorFormularios++;
+        }
+
+        public static void Ocultar()
+        {
+            _contadorFormularios--;
+
+            if (_contadorFormularios <= 0 && _instancia != null && !_instancia.IsDisposed)
+            {
+                _instancia.Close();
+                _instancia = null;
+                _contadorFormularios = 0;
+            }
+        }
+    }
 }

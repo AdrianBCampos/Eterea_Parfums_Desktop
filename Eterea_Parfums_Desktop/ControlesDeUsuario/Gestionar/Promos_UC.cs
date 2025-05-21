@@ -1,4 +1,5 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.Helpers;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
@@ -101,7 +102,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         {
             FormPromo crearPromo = new FormPromo();
 
-            DialogResult dr = crearPromo.ShowDialog(this);
+            DialogResult dr = ModalHelper.MostrarModalConFondoOscuro(crearPromo);
 
             if (dr == DialogResult.OK)
             {
@@ -129,7 +130,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     // Crear una nueva instancia del formulario de edición
                     Promocion promocion_editar = PromoControlador.obtenerPorId(idPromo);
                     FormPromo formEditarPromo = new FormPromo(promocion_editar);
-                    DialogResult dr = formEditarPromo.ShowDialog(this);
+                    // ✅ Mostrar con fondo oscuro
+                    DialogResult dr = ModalHelper.MostrarModalConFondoOscuro(formEditarPromo);
 
                     if (dr == DialogResult.OK)
                     {
@@ -158,7 +160,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     FormEliminarPromo formEliminarPromo = new FormEliminarPromo(idPromoEliminar, nombrePromoEliminar);
 
                     // Mostrar el formulario
-                    formEliminarPromo.ShowDialog(this);
+                    // ✅ Mostrar con fondo oscuro
+                    DialogResult dr = ModalHelper.MostrarModalConFondoOscuro(formEliminarPromo);
                     cargarPromociones();
                 }
                 else

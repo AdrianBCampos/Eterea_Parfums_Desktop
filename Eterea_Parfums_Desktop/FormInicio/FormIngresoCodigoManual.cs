@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.Helpers;
 using Eterea_Parfums_Desktop.Modelos;
 
 namespace Eterea_Parfums_Desktop
@@ -9,10 +10,15 @@ namespace Eterea_Parfums_Desktop
     {
         private Form _formInvocador;
 
+        private Perfume _perfumeParaVer;
+
+
         public FormIngresoCodigoManual(Form formInvocador)
         {
             InitializeComponent();
             _formInvocador = formInvocador;
+
+            this.FormClosed += FormIngresoCodigoManual_FormClosed;
         }
 
         private void FormEscanear_Load(object sender, EventArgs e)
@@ -50,25 +56,30 @@ namespace Eterea_Parfums_Desktop
 
             if (perfumeEncontrado != null)
             {
-                FormVerDetallePerfume formDetalle = new FormVerDetallePerfume(perfumeEncontrado);
-
-                formDetalle.FormClosed += (s, args) =>
-                {
-                    this.Close();
-                    var metodoReset = _formInvocador.GetType().GetMethod("ResetAutoConsulta");
-                    metodoReset?.Invoke(_formInvocador, null);
-                };
-
-                formDetalle.ShowDialog();
+                _perfumeParaVer = perfumeEncontrado;
+                this.Close(); // NO mostrar acá el detalle
             }
             else
             {
-                // ❌ Código no encontrado, mostrar el FormCartelCodigoNoEncontrado
-                FormCartelCodigoNoEncontrado cartel = new FormCartelCodigoNoEncontrado(_formInvocador);
                 this.Close();
-                cartel.ShowDialog();
+                FormCartelCodigoNoEncontrado cartel = new FormCartelCodigoNoEncontrado(_formInvocador);
+                ModalHelper.MostrarModalSinAgregarNuevoFondo(cartel);
             }
         }
+
+        private void FormIngresoCodigoManual_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (_perfumeParaVer != null)
+            {
+                FormVerDetallePerfume detalle = new FormVerDetallePerfume(_perfumeParaVer);
+
+                ModalHelper.MostrarModalSinAgregarNuevoFondo(detalle);
+
+                var metodoReset = _formInvocador.GetType().GetMethod("ResetAutoConsulta");
+                metodoReset?.Invoke(_formInvocador, null);
+            }
+        }
+
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
@@ -94,28 +105,28 @@ namespace Eterea_Parfums_Desktop
 
         private void BuscarCodigo(string codigo)
         {
+            if (string.IsNullOrEmpty(codigo))
+            {
+                MessageBox.Show("Ingrese un código de barras.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             Perfume perfumeEncontrado = PerfumeControlador.getByCodigo(codigo);
 
             if (perfumeEncontrado != null)
             {
-                // Si lo encuentra, mostrar el detalle
-                FormVerDetallePerfume detalleForm = new FormVerDetallePerfume(perfumeEncontrado);
-                detalleForm.FormClosed += (s, args) =>
-                {
-                    this.Close();
-                    var metodoReset = _formInvocador.GetType().GetMethod("ResetAutoConsulta");
-                    metodoReset?.Invoke(_formInvocador, null);
-                };
-                detalleForm.ShowDialog();
+                _perfumeParaVer = perfumeEncontrado;
+                this.Close(); // NO mostrar nada acá
             }
             else
             {
-                // ❌ Código no encontrado, mostrar el FormCartelCodigoNoEncontrado
+                this.Close(); // Cerramos primero
+
                 FormCartelCodigoNoEncontrado cartel = new FormCartelCodigoNoEncontrado(_formInvocador);
-                this.Close();
-                cartel.ShowDialog();
+                ModalHelper.MostrarModalSinAgregarNuevoFondo(cartel);
             }
         }
+
 
 
 

@@ -4,6 +4,7 @@ using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Net;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -16,48 +17,59 @@ namespace Eterea_Parfums_Desktop
         public List<Localidad> localidades;
         public List<Calle> calles;
 
-        public FormCrearClienteFactura()
-        {
-            InitializeComponent();
+        private long _dni;
 
-            lbl_nombreE.Hide();
-            lbl_apellidoE.Hide();
-            lbl_dniE.Hide();
-            lbl_cond_ivaE.Hide();
-            lbl_emailE.Hide();
+    
 
-            combo_con_iva.Items.Clear();
-            combo_con_iva.Items.Add("Consumidor Final");
-            combo_con_iva.Items.Add("Responsable Inscripto");
-            combo_con_iva.Items.Add("Responsable no Inscripto");
-            combo_con_iva.Items.Add("Responsable Monotributo");
-
-            
-        }
+ 
 
         public FormCrearClienteFactura(long dni)
         {
             InitializeComponent();
 
+            _dni = dni;
+            this.Load += FormCrearClienteFactura_Load; // ✅ SUSCRIPCIÓN AL EVENTO
+
+            
+
+            
+        }
+        private void FormCrearClienteFactura_Load(object sender, EventArgs e)
+        {
             lbl_nombreE.Hide();
             lbl_apellidoE.Hide();
             lbl_dniE.Hide();
             lbl_cond_ivaE.Hide();
             lbl_emailE.Hide();
 
-            // Establece el valor del DNI en el TextBox txt_dni
-            txt_dni.Text = dni.ToString();
+            if (_dni.ToString().Length == 8)
+            {
+                lbl_dni.Text = "DNI";
+                lbl_nombre.Text = "Nombre";
+                lbl_apellido.Text = "Apellido";
+            }
+            else if (_dni.ToString().Length == 11)
+            {
+                lbl_dni.Text = "CUIT";
+                lbl_nombre.Text = "Empresa";
+                lbl_apellido.Text = "Tipo";
+            }
+
+            txt_dni.Text = _dni.ToString(); // ✅ Esta es la línea correcta
 
             combo_con_iva.Items.Clear();
             combo_con_iva.Items.Add("Consumidor Final");
             combo_con_iva.Items.Add("Responsable Inscripto");
-            combo_con_iva.Items.Add("Responsable no Inscripto");
-            combo_con_iva.Items.Add("Responsable Monotributo");
+            combo_con_iva.Items.Add("Exento");
+            combo_con_iva.Items.Add("Monotributista");
 
             combo_con_iva.DrawMode = DrawMode.OwnerDrawFixed;
             combo_con_iva.DrawItem += comboBoxdiseño_DrawItem;
             combo_con_iva.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            txt_dni.ReadOnly = true;
         }
+
 
         private void Txt_dni_TextChanged(object sender, EventArgs e)
         {
