@@ -10,6 +10,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using Eterea_Parfums_Desktop.Helpers;
 
 
 namespace Eterea_Parfums_Desktop
@@ -190,7 +192,10 @@ namespace Eterea_Parfums_Desktop
                 // Si el perfume existe, abrir el formulario de detalles
                 FormVerDetallePerfume detalleForm = new FormVerDetallePerfume(perfumeEncontrado);
                 detalleForm.FormClosed += (s, args) => ResetAutoConsulta();
-                detalleForm.ShowDialog();
+
+                ModalHelper.MostrarModalConFondoOscuro(detalleForm);
+               
+
             }
             else
             {

@@ -1,4 +1,5 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.Helpers;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
@@ -28,9 +29,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void btn_crear_perfume_Click_1(object sender, EventArgs e)
         {
-            FormCrearPerfume1 productos = new FormCrearPerfume1(this);          
+            FormCrearPerfume1 productos = new FormCrearPerfume1(this);
 
-            DialogResult dr = productos.ShowDialog(this);
+            DialogResult dr = ModalHelper.MostrarModalConFondoOscuro(productos);
+
+
 
             if (dr == DialogResult.OK)
             {
