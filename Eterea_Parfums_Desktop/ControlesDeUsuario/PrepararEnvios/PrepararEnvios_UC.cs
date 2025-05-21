@@ -42,10 +42,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
             this.lbl_pedido_buscado.Visible = false; // oculto por defecto
             this.Controls.Add(this.lbl_pedido_buscado);
 
-            string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";
-            img_logo.Image = Image.FromFile(rutaCompletaImagen);
+            
 
-            txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
+            
             nombreSucursalActual = SucursalControlador.ObtenerNombreSucursalPorId(Program.sucursal);
 
             this.Load += PrepararEnvios_UC_Load;
