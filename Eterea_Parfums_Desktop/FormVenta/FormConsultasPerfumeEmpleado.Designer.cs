@@ -97,7 +97,6 @@
             this.txt_scan.Name = "txt_scan";
             this.txt_scan.Size = new System.Drawing.Size(219, 32);
             this.txt_scan.TabIndex = 393;
-            this.txt_scan.TextChanged += new System.EventHandler(this.txt_scan_TextChanged);
             // 
             // lbl_codigoBarras
             // 
@@ -564,7 +563,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ConsultasPerfumeEmpleado";
             this.TopMost = true;
-
             ((System.ComponentModel.ISupportInitialize)(this.img_logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewConsultas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

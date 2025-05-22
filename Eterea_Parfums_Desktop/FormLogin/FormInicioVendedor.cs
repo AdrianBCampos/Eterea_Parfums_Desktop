@@ -17,6 +17,9 @@ namespace Eterea_Parfums_Desktop
         // Variable para almacenar el botón previamente seleccionado
         private Button botonAnterior;
 
+        private Facturar_UC facturarUC;
+
+
         public FormInicioVendedor()
         {
             InitializeComponent();
@@ -97,7 +100,10 @@ namespace Eterea_Parfums_Desktop
         private void btn_facturar_Click(object sender, EventArgs e)
         {
             CambiarColorBoton1((Button)sender);
-            Facturar_UC facturarUC = new Facturar_UC();
+
+            if (facturarUC == null)
+                facturarUC = new Facturar_UC();
+
             addUserControl(facturarUC);
         }
 
@@ -118,8 +124,10 @@ namespace Eterea_Parfums_Desktop
 
         private void FormInicioVendedor_Shown(object sender, EventArgs e)
         {
-            Facturar_UC vendedorUC = new Facturar_UC();
-            addUserControl(vendedorUC);
+            if (facturarUC == null)
+                facturarUC = new Facturar_UC();
+
+            addUserControl(facturarUC);
         }
 
         private void CambiarColorBoton1(Button botonSeleccionado)

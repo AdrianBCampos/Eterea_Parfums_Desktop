@@ -10,11 +10,13 @@ public class BarcodeReceiver
 {
     private TcpListener _server;
     private readonly int _port = 5000;
-    private List<Action<string>> _listeners = new List<Action<string>>();
+
+    // ✅ NUEVO: evento que podés suscribir y desuscribir en los formularios
+    public static event Action<string> OnCodigoLeido;
 
     public void StartServer()
     {
-        if (_server != null) return; // evita doble inicialización
+        if (_server != null) return;
 
         _server = new TcpListener(IPAddress.Any, _port);
         _server.Start();
@@ -32,34 +34,11 @@ public class BarcodeReceiver
                 int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
                 string barcode = Encoding.UTF8.GetString(buffer, 0, bytesRead).Trim();
 
-                NotifyListeners(barcode);
+                // ✅ Disparar el evento
+                OnCodigoLeido?.Invoke(barcode);
             }
-        }
-    }
-
-    private void NotifyListeners(string barcode)
-    {
-        foreach (var listener in _listeners)
-        {
-            listener?.Invoke(barcode);
-        }
-    }
-
-    public void RegisterListener(Action<string> listener)
-    {
-        if (!_listeners.Contains(listener))
-        {
-            _listeners.Add(listener);
-        }
-    }
-
-    public void UnregisterListener(Action<string> listener)
-    {
-        if (_listeners.Contains(listener))
-        {
-            _listeners.Remove(listener);
         }
     }
 }
 
-    
+

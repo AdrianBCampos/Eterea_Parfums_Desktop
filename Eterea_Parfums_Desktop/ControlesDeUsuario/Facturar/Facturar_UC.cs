@@ -46,15 +46,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             Factura.CellContentClick += DataGridViewFactura_CellContentClick;
             btn_pago.Visible = false;
 
-            // Simula el evento Load del UserControl
-            this.Load += (s, e) => {
-                Program.BarcodeService.RegisterListener(OnBarcodeScanned);
-
-            this.Cursor = Cursors.Default;
-            this.UseWaitCursor = false;
-
-            };
-
+           
 
             combo_forma_pago.SelectedIndexChanged -= combo_forma_pago_SelectedIndexChanged;
 
@@ -115,13 +107,50 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         {
             if (this.Visible)
             {
-                Program.BarcodeService.RegisterListener(OnBarcodeScanned);
+                BarcodeReceiver.OnCodigoLeido -= ProcesarCodigoLeido;
+                BarcodeReceiver.OnCodigoLeido += ProcesarCodigoLeido;
             }
             else
             {
-                Program.BarcodeService.UnregisterListener(OnBarcodeScanned); // Si lo tenés implementado
+                BarcodeReceiver.OnCodigoLeido -= ProcesarCodigoLeido;
             }
         }
+
+        private void ProcesarCodigoLeido(string codigo)
+        {
+            if (!this.Visible || string.IsNullOrEmpty(numeroCaja) || numeroCaja == "Caja sin asignar")
+            {
+                if (!yaMostroAdvertenciaCaja)
+                {
+                    yaMostroAdvertenciaCaja = true;
+                    MessageBox.Show("No se puede escanear productos sin una caja abierta.", "Caja no asignada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return;
+            }
+
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() => ProcesarCodigoLeido(codigo)));
+                return;
+            }
+
+            txt_scan_factura.Text = codigo;
+            ProcesarCodigoBarras(codigo);
+            txt_scan_factura.Clear();
+        }
+
+    
+        public void DesactivarEscaner()
+        {
+            BarcodeReceiver.OnCodigoLeido -= ProcesarCodigoLeido;
+        }
+
+        public void ActivarEscaner()
+        {
+            BarcodeReceiver.OnCodigoLeido -= ProcesarCodigoLeido;
+            BarcodeReceiver.OnCodigoLeido += ProcesarCodigoLeido;
+        }
+
 
 
         private void FormFacturacion_Load(object sender, EventArgs e)
@@ -1235,37 +1264,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         }
 
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            Program.BarcodeService.RegisterListener(OnBarcodeScanned);
-        }
+       
 
 
 
-        private void OnBarcodeScanned(string barcode)
-        {
-            if (!this.Visible) return;
-
-            this.Invoke((MethodInvoker)(() =>
-            {
-                // Verificar si hay caja asignada antes de procesar
-                if (string.IsNullOrEmpty(numeroCaja) || numeroCaja == "Caja sin asignar")
-                {
-                    if (!yaMostroAdvertenciaCaja)
-                    {
-                        yaMostroAdvertenciaCaja = true;
-                        MessageBox.Show("No se puede escanear productos sin una caja abierta.", "Caja no asignada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    return;
-                }
-
-                txt_scan_factura.Text = barcode;
-                ProcesarCodigoBarras(barcode);
-                txt_scan_factura.Clear();
-            }));
-        }
-
+      
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Enter)
