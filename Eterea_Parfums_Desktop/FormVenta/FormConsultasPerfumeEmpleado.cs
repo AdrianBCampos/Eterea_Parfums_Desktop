@@ -173,60 +173,7 @@ namespace Eterea_Parfums_Desktop
              File.WriteAllText(rutaArchivo, texto);
          }*/
 
-        private void ConsultaEmpleado_KeyDown(object sender, KeyEventArgs e)
-        {
-            // Detectar si se presionan las teclas Ctrl + L
-            if (e.Control && e.KeyCode == Keys.L)
-            {
-                // Obtener la referencia de FormStart (debe estar siempre abierto)
-                FormStart formStart = Application.OpenForms.OfType<FormStart>().FirstOrDefault();
-
-                if (formStart != null)
-                {
-                    // Ocultar FormInicioAutoconsulta antes de abrir FormLogin
-                    this.Hide();
-
-                    // Traer FormStart al fondo pero asegurando que esté visible
-                    formStart.Show();
-                    formStart.BringToFront();
-                    formStart.SendToBack(); // Se asegura de que no esté minimizado ni cubierto
-
-                    // Crear y mostrar FormLogin asegurando que FormStart siga visible en el fondo
-                    FormLogin login = new FormLogin();
-                    login.Owner = formStart; // Asigna FormStart como dueño de FormLogin
-                    login.ShowDialog(); // Mostrar de forma modal
-
-                    // Restaurar FormInicioAutoconsulta si es necesario al cerrar el login
-                    //this.Show(this);
-
-
-                }
-                else
-                {
-                    MessageBox.Show("Error: No se encontró FormStart en ejecución.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-                return; // Evitar que se sigan evaluando otras teclas
-            }
-
-
-            // Detectar si se presionan las teclas Ctrl + X
-            if (e.Control && e.KeyCode == Keys.X)
-            {
-                DialogResult result = MessageBox.Show(
-                    "¿Está seguro que desea cerrar la aplicación?",
-                    "Confirmar salida",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question
-                );
-
-                if (result == DialogResult.Yes)
-                {
-                    Application.Exit();
-                }
-            }
-        }
-
+       
 
         private void CargarMarcas()
         {
@@ -574,7 +521,82 @@ namespace Eterea_Parfums_Desktop
                 // Restaurar FormInicioAutoconsulta al cerrar FormDetallePerfume
                 detallesForm.FormClosing += (s, args) => this.Enabled = true;
             }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == 5)
+            {
+                int rowIndex = e.RowIndex;
+                Perfume perfumeSeleccionado = Perfumes_Paginados[rowIndex];
+                completarFactura(perfumeSeleccionado);
+                facturacionForm.ActualizarTotales();
+                this.Close();
+
+            }
         }
+
+        private void completarFactura(Perfume perfumeSeleccionado)
+        {
+            // Buscar si el perfume ya está en la factura
+            DataGridViewRow existingRow = null;
+
+            foreach (DataGridViewRow row in facturacionForm.GetFacturaDataGrid().Rows)
+            {
+                if (row.Cells["Nombre_Perfume"].Value != null && row.Cells["Nombre_Perfume"].Value.ToString() == perfumeSeleccionado.nombre)
+                {
+                    existingRow = row;
+                    break;
+                }
+            }
+
+            if (existingRow != null)
+            {
+                // Si el perfume ya está en la factura, incrementar la cantidad
+                int cantidad = Convert.ToInt32(existingRow.Cells["Cantidad"].Value);
+                existingRow.Cells["Cantidad"].Value = cantidad + 1;
+
+                // Multiplicar el precio unitario por la cantidad para obtener el nuevo subtotal
+                float precioUnitario = float.Parse(existingRow.Cells["Precio_Unitario"].Value.ToString());
+                float nuevoSubtotal = precioUnitario * int.Parse(existingRow.Cells["Cantidad"].Value.ToString());
+                existingRow.Cells[7].Value = nuevoSubtotal;
+                /*PerfumeEnPromoControlador promoController = new PerfumeEnPromoControlador();
+                int descuentoPorcentaje = promoController.ObtenerMayorDescuentoPorPerfume(perfumeSeleccionado.id);
+                decimal descuentoMonto = (precioUnitario * Convert.ToDecimal(descuentoPorcentaje)) / 100;
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Descuento"].Value = descuentoMonto;
+                
+                // Recalcular el total y otros valores necesarios
+
+                /*   totalFactura();
+                   CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_recargo.Text));
+                   desc();
+                   sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
+                   */
+            }
+            else
+            {
+                // Si el perfume no está en la factura, agregar una nueva fila
+                int rowIndex = facturacionForm.GetFacturaDataGrid().Rows.Add();
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells[0].Value = perfumeSeleccionado.id.ToString();
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Nombre_Perfume"].Value = perfumeSeleccionado.nombre.ToString();
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Cantidad"].Value = 1;
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells[2].Value = "➕";
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells[3].Value = "➖";
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Precio_Unitario"].Value = perfumeSeleccionado.precio_en_pesos.ToString();
+                PerfumeEnPromoControlador promoController = new PerfumeEnPromoControlador();
+                int descuentoPorcentaje = promoController.obtenerMayorDescuentoPorPerfume(perfumeSeleccionado.id) ?? 0;
+                decimal precioUnitario = Convert.ToDecimal(perfumeSeleccionado.precio_en_pesos);
+                decimal descuentoMonto = ((precioUnitario * descuentoPorcentaje) / 100);
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Descuento"].Value = descuentoMonto;
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Tot"].Value = perfumeSeleccionado.precio_en_pesos.ToString();
+                facturacionForm.GetFacturaDataGrid().Rows[rowIndex].Cells["Eliminar"].Value = "Eliminar";
+                facturacionForm.descuentoUnitario();
+
+                /*   // Recalcular el total y otros valores necesarios
+                   totalFactura();
+                   CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_recargo.Text));
+                   desc();
+                   sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
+              */
+            }
+        }
+
 
 
         //Diseño del boton del datagridview
@@ -727,10 +749,10 @@ namespace Eterea_Parfums_Desktop
         }
 
 
-        public void MostrarErrorCodigo()
+        /*public void MostrarErrorCodigo()
         {
             MessageBox.Show("Error al leer el código de barras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+        }*/
 
         public void RestaurarUI()
         {
