@@ -171,7 +171,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     yaMostroAdvertenciaCaja = false;
                 };
 
-                formNumero.ShowDialog();
+                ModalHelper.MostrarModalConFondoOscuro(formNumero);
             }
             else
             {

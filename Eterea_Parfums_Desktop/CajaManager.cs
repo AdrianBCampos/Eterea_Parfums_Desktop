@@ -96,7 +96,7 @@ namespace Eterea_Parfums_Desktop.Helpers
                 FormNumeroDeCaja formCaja = new FormNumeroDeCaja();
                 formCaja.ConfirmarNumeroCaja += (s, numeroCaja) => AbrirFacturarUC(formInicio);
 
-                formCaja.ShowDialog();
+                ModalHelper.MostrarModalConFondoOscuro(formCaja);
             }
         }
     
@@ -124,7 +124,7 @@ namespace Eterea_Parfums_Desktop.Helpers
                 MessageBox.Show($"Caja {numeroCaja} abierta correctamente.", "Caja abierta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 onCajaAsignada?.Invoke(numeroCaja); // <-- llamar a la acción de actualización de interfaz
             };
-            formCaja.ShowDialog();
+            ModalHelper.MostrarModalConFondoOscuro(formCaja);
         }
 
 
