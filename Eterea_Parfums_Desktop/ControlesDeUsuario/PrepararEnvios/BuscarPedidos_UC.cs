@@ -15,9 +15,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
             lbl_orden_error.Visible = false;
 
-            string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";
-            img_logo.Image = Image.FromFile(rutaCompletaImagen);
-
+            
             dgv_resultado.SelectionChanged += (s, e) => ActualizarTextoBotonPrepararEnvio();
            
             txt_orden_n.KeyDown += Txt_orden_n_KeyDown;
@@ -30,6 +28,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void btn_buscar_orden_Click(object sender, EventArgs e)
         {
+            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
+            dgv_resultado.RowHeadersVisible = false;
+
             if (!int.TryParse(txt_orden_n.Text, out int numeroOrden))
             {
                 MessageBox.Show("Ingrese un número de orden válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -114,8 +115,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             }
         }
 
-
-
-
+        
     }
 }
