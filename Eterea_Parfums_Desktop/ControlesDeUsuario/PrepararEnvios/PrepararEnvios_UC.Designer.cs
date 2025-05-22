@@ -74,13 +74,13 @@
             // lbl_pedido_buscado
             // 
             this.lbl_pedido_buscado.AutoSize = true;
-            this.lbl_pedido_buscado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_pedido_buscado.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_pedido_buscado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.lbl_pedido_buscado.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_pedido_buscado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_pedido_buscado.Location = new System.Drawing.Point(1590, 118);
+            this.lbl_pedido_buscado.Location = new System.Drawing.Point(1761, 120);
             this.lbl_pedido_buscado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_pedido_buscado.Name = "lbl_pedido_buscado";
-            this.lbl_pedido_buscado.Size = new System.Drawing.Size(194, 29);
+            this.lbl_pedido_buscado.Size = new System.Drawing.Size(222, 32);
             this.lbl_pedido_buscado.TabIndex = 332;
             this.lbl_pedido_buscado.Text = "Pedido Filtrado";
             // 
@@ -112,11 +112,14 @@
             // 
             // btn_volver
             // 
-            this.btn_volver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
-            this.btn_volver.Location = new System.Drawing.Point(383, 122);
+            this.btn_volver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
+            this.btn_volver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_volver.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_volver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.btn_volver.Location = new System.Drawing.Point(427, 115);
             this.btn_volver.Margin = new System.Windows.Forms.Padding(4);
             this.btn_volver.Name = "btn_volver";
-            this.btn_volver.Size = new System.Drawing.Size(173, 28);
+            this.btn_volver.Size = new System.Drawing.Size(173, 45);
             this.btn_volver.TabIndex = 355;
             this.btn_volver.Text = "Volver";
             this.btn_volver.UseVisualStyleBackColor = false;
@@ -208,9 +211,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
+            this.Controls.Add(this.lbl_pedido_buscado);
             this.Controls.Add(this.btn_volver);
             this.Controls.Add(this.txt_cantidad_ordenes);
-            this.Controls.Add(this.lbl_pedido_buscado);
             this.Controls.Add(this.lbl_cantidad_ordenes);
             this.Controls.Add(this.txt_nombre_empleado);
             this.Controls.Add(this.pictureBox6);
