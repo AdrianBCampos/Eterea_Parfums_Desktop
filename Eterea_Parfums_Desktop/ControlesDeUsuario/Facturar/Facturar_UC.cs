@@ -1000,6 +1000,16 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         {
             string numero = Program.NumeroCajaActual;
 
+            if (Factura.Rows.Count == 0)
+            {
+                MessageBox.Show("Debe agregar al menos un artículo para facturar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+
+            
+
             if (numero != null && numero != "Caja sin asignar")
             {
                 // Si hay caja asignada     
@@ -1134,6 +1144,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             {
                 // No hay caja asignada, mostrar FormNumeroDeCaja para elegirla
                 MessageBox.Show("\"Debes ingresar un número de caja. \n Haz click en 'Abrir Caja' ", "Número de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
             }
         }
 
