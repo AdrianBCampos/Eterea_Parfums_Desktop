@@ -854,8 +854,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 // Obtener los valores de los controles del formulario
                 int numFactura = int.Parse(txt_numero_factura.Text);
                 DateTime fecha = DateTime.Now;
-                int sucursalId = (EmpleadoControlador.obtenerPorId(Program.logueado.id)).sucursal_id.id;
-                //int sucursalId = Program.logueado.sucursal_id.id; 
+                int sucursalId = Program.sucursal;
                 int vendedorId = Program.logueado.id;
                 int clienteId = clientefactura.id;
                 if (clienteId == 0)
@@ -979,7 +978,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                             return;
                         }
 
-                        int sucursalId = (EmpleadoControlador.obtenerPorId(Program.logueado.id)).sucursal_id.id;
+                        int sucursalId = Program.sucursal;
                         StockControlador.updateStock(perfume_id, sucursalId, -cantidad);
                         MessageBox.Show($"Actualizando stock de perfume {perfume_id} en sucursal {sucursalId} con cantidad {-cantidad}");
 
