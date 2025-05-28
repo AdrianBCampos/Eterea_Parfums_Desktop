@@ -108,6 +108,9 @@ namespace Eterea_Parfums_Desktop
                 facturarUC = new Facturar_UC();
 
             addUserControl(facturarUC);
+
+            facturarUC.BringToFront();
+            facturarUC.Visible = true;
         }
 
 

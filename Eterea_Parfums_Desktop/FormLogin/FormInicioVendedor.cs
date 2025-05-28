@@ -105,6 +105,9 @@ namespace Eterea_Parfums_Desktop
                 facturarUC = new Facturar_UC();
 
             addUserControl(facturarUC);
+
+            facturarUC.BringToFront();
+            facturarUC.Visible = true;
         }
 
         private void btn_preparar_envios_Click(object sender, EventArgs e)
@@ -128,6 +131,9 @@ namespace Eterea_Parfums_Desktop
                 facturarUC = new Facturar_UC();
 
             addUserControl(facturarUC);
+
+            facturarUC.BringToFront();
+            facturarUC.Visible = true;
         }
 
         private void CambiarColorBoton1(Button botonSeleccionado)

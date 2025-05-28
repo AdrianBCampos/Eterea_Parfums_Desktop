@@ -134,6 +134,12 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 return;
             }
 
+            if (codigo.Length == 12)
+            {
+                codigo = "0" + codigo;
+            }
+
+
             txt_scan_factura.Text = codigo;
             ProcesarCodigoBarras(codigo);
             txt_scan_factura.Clear();
@@ -167,8 +173,14 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     txt_numero_caja.Text = numeroCaja;
                     ActualizarEstadoCaja();
 
+
                     // 👉 Reiniciamos el flag aquí
                     yaMostroAdvertenciaCaja = false;
+
+
+                    // 🔥 ACTIVAR EL ESCANER AQUÍ EXPLÍCITAMENTE
+                    BarcodeReceiver.OnCodigoLeido -= ProcesarCodigoLeido;
+                    BarcodeReceiver.OnCodigoLeido += ProcesarCodigoLeido;
                 };
 
                 ModalHelper.MostrarModalConFondoOscuro(formNumero);
