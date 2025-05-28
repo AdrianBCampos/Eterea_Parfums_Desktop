@@ -28,6 +28,10 @@ namespace Eterea_Parfums_Desktop
             // Obtener y mostrar el nombre de la sucursal en el label
             txt_nombre_suc.Text = SucursalControlador.ObtenerNombreSucursalPorId(Program.sucursal);
 
+            txt_ing_numero_caja.KeyDown += Txt_ing_numero_caja_KeyDown; // Se asigna el evento
+
+            this.Shown += FormNumeroDeCaja_Shown; // 🔥 Nuevo evento
+
         }
 
 
@@ -83,7 +87,13 @@ namespace Eterea_Parfums_Desktop
         {
             try
             {
-                if (!AutoTomarCaja) return;
+                if (!AutoTomarCaja)
+                {
+                    txt_ing_numero_caja.Visible = true;
+                    lbl_error_caja.Visible = false;
+                    txt_ing_numero_caja.Focus();  // 🔥 Establecer foco aquí
+                    return;
+                }
 
                 int? cajaDisponible = CajaControlador.ObtenerUnicaCajaDisponibleEnSucursal(Program.sucursal);
 
@@ -93,7 +103,6 @@ namespace Eterea_Parfums_Desktop
                     {
                         NumeroCaja = cajaDisponible.Value.ToString();
 
-                        // Guardar los datos globales una única vez
                         Program.NumeroCajaActual = NumeroCaja;
                         Program.IdHistorialCajaActual = CajaControlador.RegistrarAperturaDeCaja(
                             Convert.ToInt32(NumeroCaja), Program.sucursal, Program.logueado.usuario);
@@ -105,12 +114,14 @@ namespace Eterea_Parfums_Desktop
                     {
                         lbl_error_caja.Text = "La caja ya fue tomada por otro usuario. Intente con otra.";
                         lbl_error_caja.Visible = true;
+                        txt_ing_numero_caja.Focus();  // 🔥 Establecer foco aquí si ocurre error
                     }
                 }
                 else
                 {
                     txt_ing_numero_caja.Visible = true;
                     lbl_error_caja.Visible = false;
+                    txt_ing_numero_caja.Focus();  // 🔥 Establecer foco aquí
                 }
             }
             catch (Exception ex)
@@ -164,6 +175,25 @@ namespace Eterea_Parfums_Desktop
                 txt_ing_numero_caja.Focus();
             }
         }
+
+        private void Txt_ing_numero_caja_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true; // Evita el sonido de beep
+                btn_continuar.PerformClick(); // Simula el click del botón confirmar
+            }
+        }
+
+        private void FormNumeroDeCaja_Shown(object sender, EventArgs e)
+        {
+            if (txt_ing_numero_caja.Visible && txt_ing_numero_caja.Enabled)
+            {
+                txt_ing_numero_caja.Focus(); // 🔥 Ahora sí el foco se establece correctamente
+            }
+        }
+
+
 
 
     }
