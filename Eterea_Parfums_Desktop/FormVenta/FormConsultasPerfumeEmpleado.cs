@@ -760,8 +760,11 @@ namespace Eterea_Parfums_Desktop
                 ResetAutoConsulta(); // ✅ Oculta todo
 
                 var detalle = new FormVerDetallePerfume(perfume);
-                detalle.FormClosed += (s, e) => ResetAutoConsulta();
+                detalle.FormClosed += (s, e) =>
+                
+                ResetAutoConsulta();
                 detalle.ShowDialog();
+
             }
             else
             {
