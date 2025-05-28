@@ -131,7 +131,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 txt_numero_caja.Text = numeroCaja;
             }
 
-            txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
+            int puntoDeVenta = Program.sucursal;
+            string puntoDeVentaString = puntoDeVenta.ToString("D4");
+            string numeroDeFacturaString = FacturaControlador.ObtenerProximoIdFactura().ToString("D8");
+            txt_numero_factura.Text = puntoDeVentaString + numeroDeFacturaString;
+            
             txt_scan_factura.Focus();
             ActualizarEstadoCaja();
         }
@@ -1163,7 +1167,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             combo_forma_pago.SelectedIndex = 0;
             combo_descuento.SelectedIndex = 1;
             combo_cuotas.SelectedIndex = 0;
-            txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
+            int puntoDeVenta = Program.sucursal;
+            string puntoDeVentaString = puntoDeVenta.ToString("D4");
+            string numeroDeFacturaString = FacturaControlador.ObtenerProximoIdFactura().ToString("D8");
+            txt_numero_factura.Text = puntoDeVentaString + numeroDeFacturaString;
         }
 
         private void EnviarCorreo(string rutaArchivo, string correoDestino)
