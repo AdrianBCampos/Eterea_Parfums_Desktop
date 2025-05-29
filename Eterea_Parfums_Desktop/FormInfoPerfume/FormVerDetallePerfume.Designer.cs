@@ -583,8 +583,7 @@
             this.txt_fecha.TabIndex = 320;
             this.txt_fecha.TabStop = false;
             this.txt_fecha.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txt_fecha.TextChanged += new System.EventHandler(this.txt_fecha_TextChanged);
-            // 
+            
             // lbl_ml
             // 
             this.lbl_ml.AutoSize = true;

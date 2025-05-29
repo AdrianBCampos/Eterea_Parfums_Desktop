@@ -10,6 +10,8 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using Eterea_Parfums_Desktop.Helpers;
 
 
 namespace Eterea_Parfums_Desktop
@@ -44,6 +46,9 @@ namespace Eterea_Parfums_Desktop
         public FormInicioAutoconsulta()
         {
             InitializeComponent();
+
+            this.VisibleChanged += FormInicioAutoconsulta_VisibleChanged;
+
 
             foreach (DataGridViewColumn col in dataGridViewConsultas.Columns)
             {
@@ -119,6 +124,36 @@ namespace Eterea_Parfums_Desktop
 
         }
 
+        private void FormInicioAutoconsulta_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                BarcodeReceiver.OnCodigoLeido -= ProcesarCodigoLeido;
+                BarcodeReceiver.OnCodigoLeido += ProcesarCodigoLeido;
+            }
+            else
+            {
+                BarcodeReceiver.OnCodigoLeido -= ProcesarCodigoLeido;
+            }
+        }
+
+
+        private void ProcesarCodigoLeido(string codigo)
+        {
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() => ProcesarCodigoLeido(codigo)));
+                return;
+            }
+
+
+            escaneoHabilitado = true;
+            txt_scan.Text = codigo;
+            // ✅ Se fuerza la llamada al evento:
+            txt_scan_TextChanged(txt_scan, EventArgs.Empty);
+        }
+
+
 
 
         public void FormInicioAutoconsulta_KeyDown(object sender, KeyEventArgs e)
@@ -161,7 +196,11 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
-
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (!txt_scan.Focused)
+                txt_scan.Focus();
+        }
 
 
         private void txt_scan_TextChanged(object sender, EventArgs e)
@@ -190,14 +229,28 @@ namespace Eterea_Parfums_Desktop
                 // Si el perfume existe, abrir el formulario de detalles
                 FormVerDetallePerfume detalleForm = new FormVerDetallePerfume(perfumeEncontrado);
                 detalleForm.FormClosed += (s, args) => ResetAutoConsulta();
-                detalleForm.ShowDialog();
+
+                //FormStart formStart = Application.OpenForms["FormStart"] as FormStart;
+                //formStart?.BringToFront();
+                //formStart?.Activate();
+
+
+                ModalHelper.MostrarModalConFondoOscuro(detalleForm);
+               
+
             }
             else
             {
+                // Restablecer el escaneo
+                ResetAutoConsulta();
 
+                //Mostrar el mensaje para decidir que hacer al fallar el escaneo
                 FormCartelCodigoNoEncontrado cartel = new FormCartelCodigoNoEncontrado(this);
-                cartel.ShowDialog();
+                //Mostrar con fondo oscuro
+                ModalHelper.MostrarModalConFondoOscuro(cartel);
 
+              
+                
             }
         }
 
@@ -590,8 +643,6 @@ namespace Eterea_Parfums_Desktop
 
         private void dataGridViewConsultas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            var senderGrid = (DataGridView)sender;
-
             if (e.RowIndex >= 0 && e.ColumnIndex == 4) // Verifica que se haga clic en la columna correcta
             {
                 DataGridViewRow row = dataGridViewConsultas.Rows[e.RowIndex];
@@ -600,24 +651,34 @@ namespace Eterea_Parfums_Desktop
                 if (perfumeSeleccionado == null)
                     return;
 
+                // ✅ Mostrar fondo oscuro
+                FormFondoOscuro fondoOscuro = new FormFondoOscuro();
+                fondoOscuro.Show();
 
-                // Crear la ventana de detalles
+                // ✅ Crear formulario detalle
                 FormVerDetallePerfume detallesForm = new FormVerDetallePerfume(perfumeSeleccionado);
-                detallesForm.Owner = this; // Hace que se muestre sobre FormInicioAutoconsulta
+                detallesForm.StartPosition = FormStartPosition.CenterScreen;
+                detallesForm.TopMost = true;
 
-                // Deshabilitar FormInicioAutoconsulta para evitar interacciones
+                // ✅ Deshabilitar este formulario
                 this.Enabled = false;
 
-                // Asegurar que FormDetallePerfume siempre quede por delante
-                detallesForm.TopMost = true; // Lo pone en la parte superior
-                detallesForm.Show();
-                detallesForm.TopMost = false; // Restablece su estado para evitar bloqueos
-                detallesForm.BringToFront(); // Lo trae al frente
+                // ✅ Al cerrar: cerrar fondo y reactivar este form
+                detallesForm.FormClosing += (s, args) =>
+                {
+                    this.Enabled = true;
+                    fondoOscuro.Close();
+                    this.BringToFront();
+                };
 
-                // Restaurar FormInicioAutoconsulta al cerrar FormDetallePerfume
-                detallesForm.FormClosing += (s, args) => this.Enabled = true;
+                // ✅ Mostrar detalle
+                detallesForm.Show();
+
+                // ✅ Después de mostrar, enviar fondo al fondo
+                FormFondoOscuro.EnviarAlFondo();
             }
         }
+
 
 
         //Diseño del boton del datagridview
@@ -688,28 +749,7 @@ namespace Eterea_Parfums_Desktop
             e.DrawFocusRectangle();
         }
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-
-            Program.BarcodeService.RegisterListener(OnBarcodeScanned);
-        }
-
-        protected override void OnFormClosed(FormClosedEventArgs e)
-        {
-            Program.BarcodeService.UnregisterListener(OnBarcodeScanned);
-            base.OnFormClosed(e);
-        }
-
-        private void OnBarcodeScanned(string barcode)
-        {
-            if (!escaneoHabilitado) return;
-
-            this.Invoke((MethodInvoker)(() =>
-            {
-                txt_scan.Text = barcode;
-            }));
-        }
+  
 
 
         private void btn_escanear_Click(object sender, EventArgs e)
@@ -729,13 +769,13 @@ namespace Eterea_Parfums_Desktop
             lbl_codigoBarras.Visible = true;
             this.TopMost = false;  // Restaurar el estado normal de TopMost
                                    // (Muy importante) Registrar nuevamente el listener
-            Program.BarcodeService.RegisterListener(OnBarcodeScanned);
+           
         }
 
         public void PrepararParaNuevoEscaneo()
         {
             escaneoHabilitado = false;  // Primero aseguro que está limpio
-            Program.BarcodeService.UnregisterListener(OnBarcodeScanned); // Evitar conflictos viejos
+           
             txt_scan.Text = "";
             txt_scan.Enabled = false;
             txt_scan.Visible = false;

@@ -29,6 +29,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         private DateTime ultimaLectura = DateTime.Now;
         private const int TIEMPO_ENTRE_LECTURAS_MS = 100;
 
+        private bool yaMostroAdvertenciaCaja = false;  // lo ponés como campo en la clase
+
 
         public Facturar_UC()
         {
@@ -44,15 +46,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             Factura.CellContentClick += DataGridViewFactura_CellContentClick;
             btn_pago.Visible = false;
 
-            // Simula el evento Load del UserControl
-            this.Load += (s, e) => {
-                Program.BarcodeService.RegisterListener(OnBarcodeScanned);
-
-            this.Cursor = Cursors.Default;
-            this.UseWaitCursor = false;
-
-            };
-
+           
 
             combo_forma_pago.SelectedIndexChanged -= combo_forma_pago_SelectedIndexChanged;
 
@@ -91,6 +85,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             lbl_dniE.Hide();
             txt_scan_factura.Hide();
 
+            this.Cursor = Cursors.Default;
+            this.UseWaitCursor = false;
+
             ActualizarEstadoCaja();
 
             //Diseño del combo box
@@ -105,7 +102,65 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             combo_descuento.DrawMode = DrawMode.OwnerDrawFixed;
             combo_descuento.DrawItem += comboBoxdiseño_DrawItem;
             combo_descuento.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            this.VisibleChanged += Facturar_UC_VisibleChanged;
         }
+
+        private void Facturar_UC_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                BarcodeReceiver.OnCodigoLeido -= ProcesarCodigoLeido;
+                BarcodeReceiver.OnCodigoLeido += ProcesarCodigoLeido;
+            }
+            else
+            {
+                BarcodeReceiver.OnCodigoLeido -= ProcesarCodigoLeido;
+            }
+        }
+
+        private void ProcesarCodigoLeido(string codigo)
+        {
+            if (!this.Visible || string.IsNullOrEmpty(numeroCaja) || numeroCaja == "Caja sin asignar")
+            {
+                if (!yaMostroAdvertenciaCaja)
+                {
+                    yaMostroAdvertenciaCaja = true;
+                    MessageBox.Show("No se puede escanear productos sin una caja abierta.", "Caja no asignada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                return;
+            }
+
+            if (InvokeRequired)
+            {
+                Invoke(new Action(() => ProcesarCodigoLeido(codigo)));
+                return;
+            }
+
+            if (codigo.Length == 12)
+            {
+                codigo = "0" + codigo;
+            }
+
+
+            txt_scan_factura.Text = codigo;
+            ProcesarCodigoBarras(codigo);
+            txt_scan_factura.Clear();
+        }
+
+    
+        public void DesactivarEscaner()
+        {
+            BarcodeReceiver.OnCodigoLeido -= ProcesarCodigoLeido;
+        }
+
+        public void ActivarEscaner()
+        {
+            BarcodeReceiver.OnCodigoLeido -= ProcesarCodigoLeido;
+            BarcodeReceiver.OnCodigoLeido += ProcesarCodigoLeido;
+        }
+
+
 
         private void FormFacturacion_Load(object sender, EventArgs e)
         {
@@ -120,9 +175,18 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     IdHistorialCaja = Program.IdHistorialCajaActual;
                     txt_numero_caja.Text = numeroCaja;
                     ActualizarEstadoCaja();
+
+
+                    // 👉 Reiniciamos el flag aquí
+                    yaMostroAdvertenciaCaja = false;
+
+
+                    // 🔥 ACTIVAR EL ESCANER AQUÍ EXPLÍCITAMENTE
+                    BarcodeReceiver.OnCodigoLeido -= ProcesarCodigoLeido;
+                    BarcodeReceiver.OnCodigoLeido += ProcesarCodigoLeido;
                 };
 
-                formNumero.ShowDialog();
+                ModalHelper.MostrarModalConFondoOscuro(formNumero);
             }
             else
             {
@@ -236,11 +300,25 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             // Reset variables locales del UC también
             numeroCaja = "Caja sin asignar";
             IdHistorialCaja = 0;
-        
+
+            // Limpiar datos del cliente
+            txt_dni.Text = "";
+            txt_nombre_cliente.Text = "";
+            txt_condicion_iva.Text = "";
+            txt_email.Text = "";
+
+            // Limpiar perfumes de la factura si hay alguno cargado
+            if (Factura.Rows.Count > 0)
+            {
+                Factura.Rows.Clear();
+            }
+
+
+
 
         }
 
-      
+
 
         private void ActualizarEstadoCaja()
         {
@@ -313,7 +391,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     FormCrearClienteFactura formCrearClienteFactura = new FormCrearClienteFactura(dni);
                     //
                     //formCrearClienteFactura.ShowDialog(); // Cambiado a ShowDialog para esperar que el formulario se cierre
-                    Form parentForm = this.FindForm(); // Encuentra el Form que contiene este UserControl
+                    /*Form parentForm = this.FindForm(); // Encuentra el Form que contiene este UserControl
+                                                       // Mostrar con fondo oscuro
+                   
 
                     if (parentForm != null)
                     {
@@ -323,7 +403,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     else
                     {
                         formCrearClienteFactura.ShowDialog(); // Fallback si no encuentra el Form
-                    }
+                    }*/
+
+                    // ✅ Mostrar con fondo oscuro sin preocuparte por el form padre
+                    DialogResult dr = ModalHelper.MostrarModalConFondoOscuro(formCrearClienteFactura);
+
 
 
                     // Luego de cerrar el formulario de clientes, verifica si se creó un nuevo cliente
@@ -366,7 +450,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             if (numero != null && numero != "Caja sin asignar")
             {
                 FormConsultasPerfumeEmpleado consultasPerfumeEmpleado = new FormConsultasPerfumeEmpleado(this);
-                consultasPerfumeEmpleado.ShowDialog();
+                ModalHelper.MostrarModalConFondoOscuro(consultasPerfumeEmpleado);
+
+
             }
             else
             {
@@ -1193,27 +1279,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         }
 
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            Program.BarcodeService.RegisterListener(OnBarcodeScanned);
-        }
+       
 
 
 
-        private void OnBarcodeScanned(string barcode)
-        {
-            if (!this.Visible) return;
-
-            this.Invoke((MethodInvoker)(() =>
-            {
-                txt_scan_factura.Text = barcode;
-                ProcesarCodigoBarras(barcode);
-                txt_scan_factura.Clear();
-            }));
-        }
-
-
+      
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Enter)

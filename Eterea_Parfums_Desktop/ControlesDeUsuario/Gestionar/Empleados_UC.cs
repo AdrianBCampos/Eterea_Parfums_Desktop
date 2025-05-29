@@ -1,4 +1,5 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.Helpers;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
@@ -66,7 +67,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         private void btn_crear_empleado_Click(object sender, EventArgs e)
         {
             FormCrearEmpleado frmVend = new FormCrearEmpleado();
-            DialogResult dr = frmVend.ShowDialog(this);
+            DialogResult dr = ModalHelper.MostrarModalConFondoOscuro(frmVend);
 
             if (dr == DialogResult.OK)
             {
@@ -93,7 +94,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                 FormEditarEmpleado frmVend = new FormEditarEmpleado(empleado_editar);
 
-                DialogResult dr = frmVend.ShowDialog(this);
+                // ✅ Mostrar con fondo oscuro
+                DialogResult dr = ModalHelper.MostrarModalConFondoOscuro(frmVend);
 
                 if (dr == DialogResult.OK)
                 {
@@ -115,7 +117,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                 FormEliminarEmpleado frmVend = new FormEliminarEmpleado(empleado_eliminar, id);
 
-                DialogResult dr = frmVend.ShowDialog(this);
+                // ✅ Mostrar con fondo oscuro
+                DialogResult dr = ModalHelper.MostrarModalConFondoOscuro(frmVend);
 
                 if (dr == DialogResult.OK)
                 {

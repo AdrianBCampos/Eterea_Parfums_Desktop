@@ -1,18 +1,30 @@
 ﻿using System;
 using System.Windows.Forms;
 using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.Helpers;
 using Eterea_Parfums_Desktop.Modelos;
 
 namespace Eterea_Parfums_Desktop
 {
     public partial class FormIngresoCodigoManual : Form
     {
-        private FormInicioAutoconsulta _inicioAutoConsultas;
+        private Form _formInvocador;
 
-        public FormIngresoCodigoManual(FormInicioAutoconsulta inicioAutoConsultas)
+        private Perfume _perfumeParaVer;
+
+
+        public FormIngresoCodigoManual(Form formInvocador)
         {
             InitializeComponent();
-            _inicioAutoConsultas = inicioAutoConsultas;
+
+            _formInvocador = formInvocador;
+
+            this.lbl_codigo_erroneo.Visible = false;
+
+            this.FormClosed += FormIngresoCodigoManual_FormClosed;
+
+            btnIngresarManual.Visible = false;
+            btnVolverEscanear.Visible = false;
         }
 
         private void FormEscanear_Load(object sender, EventArgs e)
@@ -50,30 +62,49 @@ namespace Eterea_Parfums_Desktop
 
             if (perfumeEncontrado != null)
             {
-                FormVerDetallePerfume formDetalle = new FormVerDetallePerfume(perfumeEncontrado);
 
-                formDetalle.FormClosed += (s, args) =>
-                {
-                    this.Close();
-                    _inicioAutoConsultas?.ResetAutoConsulta();
-                };
+                lbl_codigo_erroneo.Visible = false; // Ocultamos error anterior si lo había
 
-                formDetalle.ShowDialog();
+                FormVerDetallePerfume detalleForm = new FormVerDetallePerfume(perfumeEncontrado);
+                ModalHelper.MostrarModalSinAgregarNuevoFondo(detalleForm);
+                this.Close();
             }
             else
             {
-                // ❌ Código no encontrado, mostrar el FormCartelCodigoNoEncontrado
-                FormCartelCodigoNoEncontrado cartel = new FormCartelCodigoNoEncontrado(_inicioAutoConsultas);
-                this.Close(); // Cerramos este formulario de ingreso manual
-                cartel.ShowDialog();
+                // Código inválido: mostrar opciones
+                lbl_codigo_erroneo.Text = "¿Qué desea hacer?";
+                lbl_codigo_erroneo.Visible = true;
+                lbl_numero_codigo.Visible = false;
+
+                txt_codigo_barras.Visible = false;
+                btnIngresarManual.Visible = true;
+                btnVolverEscanear.Visible = true;
             }
         }
+
+        private void FormIngresoCodigoManual_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (_perfumeParaVer != null)
+            {
+                FormVerDetallePerfume detalle = new FormVerDetallePerfume(_perfumeParaVer);
+
+                // Llama al método del invocador para reiniciar escaneo
+                var metodo = _formInvocador?.GetType().GetMethod("ResetAutoConsulta");
+                metodo?.Invoke(_formInvocador, null);
+               
+            }
+        }
+
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
-            _inicioAutoConsultas?.ResetAutoConsulta();
-            _inicioAutoConsultas?.PrepararParaNuevoEscaneo();
+            var metodoReset = _formInvocador.GetType().GetMethod("ResetAutoConsulta");
+            metodoReset?.Invoke(_formInvocador, null);
+
+            var metodoPreparar = _formInvocador.GetType().GetMethod("PrepararParaNuevoEscaneo");
+            metodoPreparar?.Invoke(_formInvocador, null);
+
         }
 
         private void txt_codigo_barras_TextChanged(object sender, EventArgs e)
@@ -89,29 +120,58 @@ namespace Eterea_Parfums_Desktop
 
         private void BuscarCodigo(string codigo)
         {
+            if (string.IsNullOrEmpty(codigo))
+            {
+                MessageBox.Show("Ingrese un código de barras.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             Perfume perfumeEncontrado = PerfumeControlador.getByCodigo(codigo);
 
             if (perfumeEncontrado != null)
             {
-                // Si lo encuentra, mostrar el detalle
+                _perfumeParaVer = perfumeEncontrado; // ✅ ASIGNÁS EL PERFUME AQUÍ
+
+                lbl_codigo_erroneo.Visible = false; // Ocultamos error anterior si lo había
+
                 FormVerDetallePerfume detalleForm = new FormVerDetallePerfume(perfumeEncontrado);
-                detalleForm.FormClosed += (s, args) =>
-                {
-                    this.Close();
-                    _inicioAutoConsultas?.ResetAutoConsulta(); // Volver limpio al inicio
-                };
-                detalleForm.ShowDialog();
+                ModalHelper.MostrarModalSinAgregarNuevoFondo(detalleForm);
+                this.Close();
             }
             else
             {
-                // ❌ Código no encontrado, mostrar el FormCartelCodigoNoEncontrado
-                FormCartelCodigoNoEncontrado cartel = new FormCartelCodigoNoEncontrado(_inicioAutoConsultas);
-                this.Close(); // Cerramos este formulario de ingreso manual
-                cartel.ShowDialog();
+                // Código inválido: mostrar opciones
+                lbl_codigo_erroneo.Text = "¿Qué desea hacer?";
+                lbl_codigo_erroneo.Visible = true;
+                lbl_numero_codigo.Visible = false;
+
+                txt_codigo_barras.Visible = false;
+                btnIngresarManual.Visible = true;
+                btnVolverEscanear.Visible = true;
             }
         }
 
+        private void btnIngresarManual_Click(object sender, EventArgs e)
+        {
+            lbl_codigo_erroneo.Visible = false;
+            btnIngresarManual.Visible = false;
+            btnVolverEscanear.Visible = false;
+            lbl_numero_codigo.Visible = true;
 
+            txt_codigo_barras.Clear();
+            txt_codigo_barras.Visible = true;
+            txt_codigo_barras.Focus();
+        }
 
+        private void btnVolverEscanear_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+            // Llama al método del invocador para reiniciar escaneo
+            var metodo = _formInvocador?.GetType().GetMethod("ResetAutoConsulta");
+            metodo?.Invoke(_formInvocador, null);
+        }
+
+      
     }
 }

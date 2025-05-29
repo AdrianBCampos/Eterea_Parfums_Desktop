@@ -25,7 +25,6 @@ namespace Eterea_Parfums_Desktop
         {
             InitializeComponent();
 
-
             foreach (DataGridViewColumn col in dataGridViewTipoNota.Columns)
             {
                 col.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -529,7 +528,7 @@ namespace Eterea_Parfums_Desktop
             // Si el formulario no se cerró por falta de datos, mostrarlo
             if (!verPerfumesSimilares.IsDisposed)
             {
-                verPerfumesSimilares.ShowDialog();
+                verPerfumesSimilares.ShowDialog(this);
                 this.Close(); // Cerrar el formulario actual solo si el otro se abrió con éxito
             }
         }
@@ -555,7 +554,7 @@ namespace Eterea_Parfums_Desktop
 
             // Si tiene promociones reales, abrir el formulario
             FormVerPromociones verPromociones = new FormVerPromociones(perfume);
-            verPromociones.ShowDialog();
+            verPromociones.ShowDialog(this);
             this.Close();
         }
 
@@ -564,11 +563,6 @@ namespace Eterea_Parfums_Desktop
             this.Close();
         }
 
-        private void txt_fecha_TextChanged(object sender, EventArgs e)
-        {
 
-        }
-
-    
     }
 }

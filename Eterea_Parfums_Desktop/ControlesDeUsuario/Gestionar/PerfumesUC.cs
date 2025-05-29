@@ -1,4 +1,5 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.Helpers;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
@@ -28,9 +29,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void btn_crear_perfume_Click_1(object sender, EventArgs e)
         {
-            FormCrearPerfume1 productos = new FormCrearPerfume1(this);          
+            FormCrearPerfume1 productos = new FormCrearPerfume1(this);
 
-            DialogResult dr = productos.ShowDialog(this);
+            DialogResult dr = ModalHelper.MostrarModalConFondoOscuro(productos);
+
+
 
             if (dr == DialogResult.OK)
             {
@@ -124,15 +127,33 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 TipoDePerfume tipo_de_perfume = TipoDePerfumeControlador.getById(perfume_editar.tipo_de_perfume.id);
                 Genero genero = GeneroControlador.getById(perfume_editar.genero.id);
                 Pais pais = PaisControlador.getById(perfume_editar.pais.id);
-                perfume_editar = new Perfume(perfume_editar.id, perfume_editar.codigo, marca, perfume_editar.nombre, tipo_de_perfume, genero, perfume_editar.presentacion_ml, pais, perfume_editar.spray, perfume_editar.recargable, perfume_editar.descripcion, perfume_editar.anio_de_lanzamiento, perfume_editar.precio_en_pesos, perfume_editar.activo, perfume_editar.imagen1, perfume_editar.imagen2);
+
+                perfume_editar = new Perfume(
+                    perfume_editar.id,
+                    perfume_editar.codigo,
+                    marca,
+                    perfume_editar.nombre,
+                    tipo_de_perfume,
+                    genero,
+                    perfume_editar.presentacion_ml,
+                    pais,
+                    perfume_editar.spray,
+                    perfume_editar.recargable,
+                    perfume_editar.descripcion,
+                    perfume_editar.anio_de_lanzamiento,
+                    perfume_editar.precio_en_pesos,
+                    perfume_editar.activo,
+                    perfume_editar.imagen1,
+                    perfume_editar.imagen2
+                );
+
                 FormEditarPerfume1 formEditarProductoABM = new FormEditarPerfume1(perfume_editar, this);
 
 
-                //ACTUALIZAR LA LISTA
-                //cargarPerfumes();
-                //formEditarProductoABM.ShowDialog();
+                
 
-                DialogResult dr = formEditarProductoABM.ShowDialog(this);
+                // ✅ Mostrar con fondo oscuro
+                DialogResult dr = ModalHelper.MostrarModalConFondoOscuro(formEditarProductoABM);
 
                 if (dr == DialogResult.OK)
                 {
@@ -149,9 +170,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 //ELIMINAMOS
                 int id = int.Parse(dataGridViewPerfumes.Rows[e.RowIndex].Cells[0].Value.ToString());
                 Perfume perfume = PerfumeControlador.getByID(id);
+
                 FormEliminarPerfume formEliminarProductoABM = new FormEliminarPerfume(perfume, this);
 
-                DialogResult dr = formEliminarProductoABM.ShowDialog(this);
+                // ✅ Mostrar con fondo oscuro
+                DialogResult dr = ModalHelper.MostrarModalConFondoOscuro(formEliminarProductoABM);
 
                 if (dr == DialogResult.OK)
                 {

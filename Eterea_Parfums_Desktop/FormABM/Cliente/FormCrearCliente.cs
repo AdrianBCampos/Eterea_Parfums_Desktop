@@ -78,8 +78,8 @@ namespace Eterea_Parfums_Desktop
             combo_con_iva.Items.Clear();
             combo_con_iva.Items.Add("Consumidor Final");
             combo_con_iva.Items.Add("Responsable Inscripto");
-            combo_con_iva.Items.Add("Responsable no Inscripto");
-            combo_con_iva.Items.Add("Responsable Monotributo");
+            combo_con_iva.Items.Add("Exento");
+            combo_con_iva.Items.Add("Monotributista");
 
             //Diseño del combo box
             combo_activo.DrawMode = DrawMode.OwnerDrawFixed;
@@ -105,6 +105,8 @@ namespace Eterea_Parfums_Desktop
             combo_localidad.DrawMode = DrawMode.OwnerDrawFixed;
             combo_localidad.DrawItem += comboBoxdiseño_DrawItem;
             combo_localidad.DropDownStyle = ComboBoxStyle.DropDownList;
+
+          
         }
 
         private void btn_crear_cliente_Click(object sender, EventArgs e)
