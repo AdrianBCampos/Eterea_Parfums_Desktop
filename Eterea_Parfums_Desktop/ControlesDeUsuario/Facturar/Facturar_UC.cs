@@ -198,7 +198,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             int puntoDeVenta = Program.sucursal;
             string puntoDeVentaString = puntoDeVenta.ToString("D4");
             string numeroDeFacturaString = FacturaControlador.ObtenerProximoIdFactura().ToString("D8");
-            txt_numero_factura.Text = puntoDeVentaString + numeroDeFacturaString;
+            txt_numero_factura.Text = puntoDeVentaString + "-" + numeroDeFacturaString;
             
             txt_scan_factura.Focus();
             ActualizarEstadoCaja();
