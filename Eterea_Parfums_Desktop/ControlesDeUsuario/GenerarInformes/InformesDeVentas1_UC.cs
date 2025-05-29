@@ -18,27 +18,54 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 {
     public partial class InformesDeVentas1_UC : UserControl
     {
+        private int numeroSucursal;
         public InformesDeVentas1_UC()
         {
             InitializeComponent();
-            DateTime fechaSeleccionada1 = dateTimeInicio.Value;
-            lbl_fecha_Inicio.Text = fechaSeleccionada1.ToString("dd 'de' MMMM 'de' yyyy");
-            DateTime fechaSeleccionada2 = dateTimeFinal.Value;
-            lbl_fecha_Fin.Text = fechaSeleccionada2.ToString("dd 'de' MMMM 'de' yyyy");
 
-            lbl_error_fecha.Visible = false;
+
+            lbl_error_fecha.Text = "";
+            lbl_error_fecha2.Text = "";
+        }
+        public InformesDeVentas1_UC(int numeroSucursal)
+        {
+            InitializeComponent();
+     
+
+            lbl_error_fecha.Text = "";
+            lbl_error_fecha2.Text = "";
+            this.numeroSucursal = numeroSucursal;
+
+            lbl_info.Text = numeroSucursal.ToString();
         }
 
-        private bool validarFecha()
+        private bool validarFechas()
         {
+            bool esValido = true;
+
             if (dateTimeInicio.Value >= dateTimeFinal.Value)
             {
                 lbl_error_fecha.Text = "La fecha de inicio no puede ser mayor o igual a la fecha final.";
-                return false;
+                esValido = false;
             }
-            lbl_error_fecha.Text = "";
-            return true;
+            else
+            {
+                lbl_error_fecha.Text = "";
+            }
+
+            if (dateTimeFinal.Value > DateTime.Now)
+            {
+                lbl_error_fecha2.Text = "La fecha final no puede ser mayor a la fecha actual.";
+                esValido = false;
+            }
+            else
+            {
+                lbl_error_fecha2.Text = "";
+            }
+
+            return esValido;
         }
+
 
         private void resetearDatos()
         {
@@ -49,13 +76,21 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
         }
         private void cargarDatos()
         {
+
+            lbl_fecha_Inicio.Text = dateTimeInicio.Value.ToString("dd 'de' MMMM 'de' yyyy");
+            lbl_fecha_Fin.Text = dateTimeFinal.Value.ToString("dd 'de' MMMM 'de' yyyy");
+
             // Validación de las fechas
-            if (validarFecha() == false)
+            if (!validarFechas())
             {
+                resetearDatos();
                 return;
             }
 
             List<Factura> facturas = FacturaControlador.getAllIntervaloFechas(dateTimeInicio.Value, dateTimeFinal.Value);
+
+            //SE FILTRA POR SUCURSAL
+            facturas = facturas.Where(f => f.sucursal_id.id == numeroSucursal).ToList();
 
             if (facturas.Count == 0)
             {
@@ -63,6 +98,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                 return;
             }
 
+          
             txt_cantidad_ventas.Text = facturas.Count.ToString();
             txt_monto_total.Text = facturas.Sum(f => f.precio_total).ToString("C2");
 
@@ -72,39 +108,75 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             {
                 List<DetalleFactura> detalles = DetalleFacturaControlador.getByIdFactura(factura.num_factura);
                 Console.WriteLine("Cantidad de detales: " + detalles.Count());
+                //Se completa la información de cada detalle de factura con el perfume correspondiente
                 foreach (DetalleFactura detalle in detalles)
                 {
                     var detalle_factura = detalle;
                     detalle_factura.perfume = PerfumeControlador.getByID(detalle.perfume.id);
-                    Console.WriteLine("perfumeID " + detalle_factura.perfume.id + "perfume " + detalle_factura.perfume.nombre);
+                    //Console.WriteLine("perfumeID " + detalle_factura.perfume.id + "perfume " + detalle_factura.perfume.nombre);
                     detalles_Totales.Add(detalle_factura);
                 }
             }
-            txt_mas_vendido.Text = detalles_Totales
-            .GroupBy(d => d.perfume)
-            .OrderByDescending(g => g.Sum(d => d.cantidad)) // Ordenar por la suma de cantidades vendidas
-            .First().Key.nombre;  // Obtener el nombre del perfume con más ventas
 
 
+            if (detalles_Totales.Count == 0)
+            {
+                resetearDatos();
+                return;
+            }
 
-            //txt_mas_vendido.Text = facturas.GroupBy(f => f.num_factura).OrderByDescending(g => g.Count()).First().Key.ToString();
-            txt_menos_vendido.Text = detalles_Totales
-            .GroupBy(d => d.perfume)
-            .OrderBy(g => g.Sum(d => d.cantidad)) // Ordenar por la suma de cantidades vendidas
-            .First().Key.nombre;  // Obtener el nombre del perfume con más ventas
 
+            // Agrupar perfumes por ventas
+            var perfumesAgrupados = detalles_Totales
+                .GroupBy(d => d.perfume)
+                .Select(g => new
+                {
+                    Perfume = g.Key,
+                    CantidadVendida = g.Sum(d => d.cantidad)
+                })
+                .ToList();
+
+            // Encontrar la mayor cantidad vendida
+            int mayorCantidad = perfumesAgrupados.Max(p => p.CantidadVendida);
+
+            // Filtrar los perfumes que tienen esa mayor cantidad
+            var perfumesMasVendidos = perfumesAgrupados
+                .Where(p => p.CantidadVendida == mayorCantidad)
+                .Select(p => p.Perfume.nombre)
+                .ToList();
+
+            // Concatenar los nombres
+            string nombresMasVendidos = string.Join(", ", perfumesMasVendidos);
+
+            // Asignar al TextBox
+            txt_mas_vendido.Text = nombresMasVendidos;
+
+
+            // Encontrar la menor cantidad vendida
+            int menorCantidad = perfumesAgrupados.Min(p => p.CantidadVendida);
+
+            // Filtrar los perfumes que tienen esa menor cantidad
+            var perfumesMenosVendidos = perfumesAgrupados
+                .Where(p => p.CantidadVendida == menorCantidad)
+                .Select(p => p.Perfume.nombre)
+                .ToList();
+
+            // Concatenar los nombres
+            string nombresMenosVendidos = string.Join(", ", perfumesMenosVendidos);
+
+            // Asignar al TextBox
+            txt_menos_vendido.Text = nombresMenosVendidos;
 
         }
 
         private void btn_exportar_pdf_Click(object sender, EventArgs e)
         {
             // Validación de las fechas
-            if (validarFecha() == false)
+            if (!validarFechas())
             {
-                MessageBox.Show("La fecha de inicio no puede ser mayor o igual a la fecha final.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error verifique las fechas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
 
             SaveFileDialog guardarFactura = new SaveFileDialog
             {
@@ -172,16 +244,16 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
         private void dateTimeInicio_ValueChanged(object sender, EventArgs e)
         {
             cargarDatos();
-            DateTime fechaSeleccionada = dateTimeInicio.Value;
-            lbl_fecha_Inicio.Text = fechaSeleccionada.ToString("dd 'de' MMMM 'de' yyyy");
+            //DateTime fechaSeleccionada = dateTimeInicio.Value;
+            //lbl_fecha_Inicio.Text = fechaSeleccionada.ToString("dd 'de' MMMM 'de' yyyy");
                  
         }
 
         private void dateTimeFinal_ValueChanged(object sender, EventArgs e)
         {
             cargarDatos();
-            DateTime fechaSeleccionada = dateTimeFinal.Value;
-            lbl_fecha_Fin.Text = fechaSeleccionada.ToString("dd 'de' MMMM 'de' yyyy");
+            //DateTime fechaSeleccionada = dateTimeFinal.Value;
+            //lbl_fecha_Fin.Text = fechaSeleccionada.ToString("dd 'de' MMMM 'de' yyyy");
         } 
 
     }

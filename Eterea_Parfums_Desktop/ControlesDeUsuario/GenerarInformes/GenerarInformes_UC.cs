@@ -20,11 +20,13 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 {
     public partial class GenerarInformes_UC : UserControl
     {
+        FormNumeroDeSucursal FormNumeroDeSucursal;
+        int numeroSucursal;
         public GenerarInformes_UC()
         {
             InitializeComponent();
-
-            InformesDeVentas1_UC adminUC = new InformesDeVentas1_UC();
+            numeroSucursal = Program.sucursal;
+            InformesDeVentas1_UC adminUC = new InformesDeVentas1_UC(numeroSucursal);
             addUserControl(adminUC);
 
             combobox_informe.DrawMode = DrawMode.OwnerDrawFixed;
@@ -36,8 +38,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             this.Cursor = Cursors.Default;
             this.UseWaitCursor = false;
 
-
         }
+
+
 
         public void addUserControl(UserControl uc)
         {
@@ -51,12 +54,13 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
         {
             if (combobox_informe.SelectedIndex == 0)
             {
-                InformesDeVentas1_UC adminUC = new InformesDeVentas1_UC();
+                InformesDeVentas1_UC adminUC = new InformesDeVentas1_UC(numeroSucursal);
+
                 addUserControl(adminUC);
             }
             else if (combobox_informe.SelectedIndex == 1)
             {
-                InformesDeVentas2_UC adminUC = new InformesDeVentas2_UC();
+                InformesDeVentas2_UC adminUC = new InformesDeVentas2_UC(numeroSucursal);
                 addUserControl(adminUC);
             }
         }
@@ -101,5 +105,31 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             e.DrawFocusRectangle();
         }
 
+        private void btn_sucursal_Click(object sender, EventArgs e)
+        {
+            FormNumeroDeSucursal = new FormNumeroDeSucursal();
+
+            // Suscripción al evento aquí
+            FormNumeroDeSucursal.ConfirmarNumeroSucursal += (s, id) =>
+            {
+                //Actualizando en numero de sucursal
+                numeroSucursal = id;
+
+                // Recreando los UseControl con el nuevo número de sucursal actualizado
+                if (combobox_informe.SelectedIndex == 0)
+                {
+                    InformesDeVentas1_UC adminUC = new InformesDeVentas1_UC(numeroSucursal);
+                    addUserControl(adminUC);
+                }
+                else if (combobox_informe.SelectedIndex == 1)
+                {
+                    InformesDeVentas2_UC adminUC = new InformesDeVentas2_UC(numeroSucursal);
+                    addUserControl(adminUC);
+                }
+
+            };
+
+            FormNumeroDeSucursal.ShowDialog();
+        }
     }
 }

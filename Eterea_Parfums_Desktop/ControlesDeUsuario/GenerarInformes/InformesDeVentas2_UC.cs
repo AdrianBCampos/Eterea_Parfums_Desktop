@@ -19,11 +19,14 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
     {
         private List<Perfume> perfumes;
         private List<Stock> stocks;
+        private int numeroSucursal;
 
-        public InformesDeVentas2_UC()
+        public InformesDeVentas2_UC(int numeroSucursal)
         {
             InitializeComponent();
+            this.numeroSucursal = numeroSucursal;
             cargarDatos();
+            lbl_info.Text = numeroSucursal.ToString();
         }
 
         private System.Drawing.Image redimensionarImagen(System.Drawing.Image img, int cellWidth, int cellHeight)
@@ -46,8 +49,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             .Where(p => p.activo == true)
             .ToList();
 
-            stocks = StockControlador.getAll();
-
+            stocks = StockControlador.getAll()
+            .Where(s => s.sucursal != null && s.sucursal.id == numeroSucursal)
+            .ToList();
+      
 
             dataGridViewPerfumes.Rows.Clear();
             foreach (Stock stock in stocks)
@@ -103,6 +108,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 
         private void btn_exportar_pdf_Click(object sender, EventArgs e)
         {
+            //Datos sucursal
+            Sucursal sucursal = SucursalControlador.getById(numeroSucursal);
             SaveFileDialog guardarInventario = new SaveFileDialog();
             guardarInventario.FileName = DateTime.Now.ToString("ddMMyyyyHHss") + ".pdf";
             guardarInventario.Filter = "Archivos PDF (*.pdf)|*.pdf";
@@ -138,7 +145,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                     headerParagraph.Add(Chunk.NEWLINE);  //Salto de línea
                     headerParagraph.Add(new Chunk("INVENTARIO", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 21)));
                     headerParagraph.Add(Chunk.NEWLINE);  //Salto de línea
-                    headerParagraph.Add(new Chunk("Direccion: Av. Corrientes 1234, Buenos Aires, Argentina", FontFactory.GetFont(FontFactory.HELVETICA, 14)));
+                    headerParagraph.Add(new Chunk("Direccion: "+sucursal.calle_id.nombre+" "+sucursal.numeracion_calle+", "+sucursal.provincia_id.nombre+", "+sucursal.pais_id.nombre, FontFactory.GetFont(FontFactory.HELVETICA, 14)));
                     headerParagraph.Add(Chunk.NEWLINE);  //Salto de línea
                     headerParagraph.Add(new Chunk("Telefono: 1234-5678", FontFactory.GetFont(FontFactory.HELVETICA, 14)));
                     headerParagraph.Add(Chunk.NEWLINE);
