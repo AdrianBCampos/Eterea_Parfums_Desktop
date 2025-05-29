@@ -58,6 +58,7 @@
             this.btn_exportar_pdf = new System.Windows.Forms.Button();
             this.lbl_error_fecha = new System.Windows.Forms.Label();
             this.lbl_error_fecha2 = new System.Windows.Forms.Label();
+            this.lbl_info = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -416,11 +417,24 @@
             this.lbl_error_fecha2.TabIndex = 467;
             this.lbl_error_fecha2.Text = "Error";
             // 
+            // lbl_info
+            // 
+            this.lbl_info.AutoSize = true;
+            this.lbl_info.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.lbl_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_info.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_info.Location = new System.Drawing.Point(1149, 18);
+            this.lbl_info.Name = "lbl_info";
+            this.lbl_info.Size = new System.Drawing.Size(180, 31);
+            this.lbl_info.TabIndex = 475;
+            this.lbl_info.Text = "info sucursal";
+            // 
             // InformesDeVentas1_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
+            this.Controls.Add(this.lbl_info);
             this.Controls.Add(this.lbl_error_fecha2);
             this.Controls.Add(this.lbl_error_fecha);
             this.Controls.Add(this.btn_exportar_pdf);
@@ -500,5 +514,6 @@
         private System.Windows.Forms.Button btn_exportar_pdf;
         private System.Windows.Forms.Label lbl_error_fecha;
         private System.Windows.Forms.Label lbl_error_fecha2;
+        private System.Windows.Forms.Label lbl_info;
     }
 }

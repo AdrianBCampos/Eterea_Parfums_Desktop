@@ -19,11 +19,15 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
     {
         private List<Perfume> perfumes;
         private List<Stock> stocks;
+        private int numeroSucursal;
 
-        public InformesDeVentas2_UC()
+        public InformesDeVentas2_UC(int numeroSucursal)
         {
             InitializeComponent();
             cargarDatos();
+            this.numeroSucursal = numeroSucursal;
+
+            lbl_info.Text = numeroSucursal.ToString();
         }
 
         private System.Drawing.Image redimensionarImagen(System.Drawing.Image img, int cellWidth, int cellHeight)
@@ -47,6 +51,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             .ToList();
 
             stocks = StockControlador.getAll();
+            stocks = stocks.Where(s => s.sucursal.id == numeroSucursal).ToList();
 
 
             dataGridViewPerfumes.Rows.Clear();

@@ -18,13 +18,25 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 {
     public partial class InformesDeVentas1_UC : UserControl
     {
+        private int numeroSucursal;
         public InformesDeVentas1_UC()
+        {
+            InitializeComponent();
+
+
+            lbl_error_fecha.Text = "";
+            lbl_error_fecha2.Text = "";
+        }
+        public InformesDeVentas1_UC(int numeroSucursal)
         {
             InitializeComponent();
      
 
             lbl_error_fecha.Text = "";
             lbl_error_fecha2.Text = "";
+            this.numeroSucursal = numeroSucursal;
+
+            lbl_info.Text = numeroSucursal.ToString();
         }
 
         private bool validarFechas()
@@ -76,6 +88,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             }
 
             List<Factura> facturas = FacturaControlador.getAllIntervaloFechas(dateTimeInicio.Value, dateTimeFinal.Value);
+
+            //SE FILTRA POR SUCURSAL
+            facturas = facturas.Where(f => f.sucursal_id.id == numeroSucursal).ToList();
 
             if (facturas.Count == 0)
             {

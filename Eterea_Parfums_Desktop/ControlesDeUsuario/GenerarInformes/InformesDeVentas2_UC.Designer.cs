@@ -49,6 +49,7 @@
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lbl_info = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
@@ -61,10 +62,9 @@
             this.btn_exportar_pdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_exportar_pdf.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_exportar_pdf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_exportar_pdf.Location = new System.Drawing.Point(855, 416);
-            this.btn_exportar_pdf.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_exportar_pdf.Location = new System.Drawing.Point(641, 338);
             this.btn_exportar_pdf.Name = "btn_exportar_pdf";
-            this.btn_exportar_pdf.Size = new System.Drawing.Size(279, 49);
+            this.btn_exportar_pdf.Size = new System.Drawing.Size(209, 40);
             this.btn_exportar_pdf.TabIndex = 471;
             this.btn_exportar_pdf.Text = "Exportar PDF";
             this.btn_exportar_pdf.UseVisualStyleBackColor = false;
@@ -74,10 +74,10 @@
             // 
             this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox7.Location = new System.Drawing.Point(23, 102);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox7.Location = new System.Drawing.Point(17, 83);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(1954, 372);
+            this.pictureBox7.Size = new System.Drawing.Size(1466, 302);
             this.pictureBox7.TabIndex = 470;
             this.pictureBox7.TabStop = false;
             // 
@@ -85,10 +85,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 91);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(8, 74);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1979, 392);
+            this.pictureBox1.Size = new System.Drawing.Size(1484, 318);
             this.pictureBox1.TabIndex = 468;
             this.pictureBox1.TabStop = false;
             // 
@@ -98,10 +98,9 @@
             this.lbl_facturacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_facturacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_facturacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_facturacion.Location = new System.Drawing.Point(854, 25);
-            this.lbl_facturacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_facturacion.Location = new System.Drawing.Point(640, 20);
             this.lbl_facturacion.Name = "lbl_facturacion";
-            this.lbl_facturacion.Size = new System.Drawing.Size(361, 38);
+            this.lbl_facturacion.Size = new System.Drawing.Size(306, 31);
             this.lbl_facturacion.TabIndex = 466;
             this.lbl_facturacion.Text = "Informes de Inventario";
             // 
@@ -109,10 +108,10 @@
             // 
             this.pictureBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox9.Location = new System.Drawing.Point(11, 10);
-            this.pictureBox9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox9.Location = new System.Drawing.Point(8, 8);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(1978, 74);
+            this.pictureBox9.Size = new System.Drawing.Size(1484, 60);
             this.pictureBox9.TabIndex = 467;
             this.pictureBox9.TabStop = false;
             // 
@@ -163,8 +162,8 @@
             this.dataGridViewPerfumes.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewPerfumes.EnableHeadersVisualStyles = false;
             this.dataGridViewPerfumes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.dataGridViewPerfumes.Location = new System.Drawing.Point(32, 114);
-            this.dataGridViewPerfumes.Margin = new System.Windows.Forms.Padding(5);
+            this.dataGridViewPerfumes.Location = new System.Drawing.Point(24, 93);
+            this.dataGridViewPerfumes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridViewPerfumes.Name = "dataGridViewPerfumes";
             this.dataGridViewPerfumes.ReadOnly = true;
             this.dataGridViewPerfumes.RowHeadersWidth = 51;
@@ -175,7 +174,7 @@
             this.dataGridViewPerfumes.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewPerfumes.RowTemplate.Height = 35;
             this.dataGridViewPerfumes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPerfumes.Size = new System.Drawing.Size(1935, 290);
+            this.dataGridViewPerfumes.Size = new System.Drawing.Size(1451, 236);
             this.dataGridViewPerfumes.TabIndex = 473;
             // 
             // Imagen
@@ -251,7 +250,7 @@
             this.Precio.Name = "Precio";
             this.Precio.ReadOnly = true;
             this.Precio.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Precio.Width = 134;
+            this.Precio.Width = 109;
             // 
             // Sucursal
             // 
@@ -269,19 +268,33 @@
             this.Stock.ReadOnly = true;
             this.Stock.Width = 70;
             // 
+            // lbl_info
+            // 
+            this.lbl_info.AutoSize = true;
+            this.lbl_info.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.lbl_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_info.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_info.Location = new System.Drawing.Point(1021, 20);
+            this.lbl_info.Name = "lbl_info";
+            this.lbl_info.Size = new System.Drawing.Size(180, 31);
+            this.lbl_info.TabIndex = 474;
+            this.lbl_info.Text = "info sucursal";
+            // 
             // InformesDeVentas2_UC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
+            this.Controls.Add(this.lbl_info);
             this.Controls.Add(this.dataGridViewPerfumes);
             this.Controls.Add(this.btn_exportar_pdf);
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lbl_facturacion);
             this.Controls.Add(this.pictureBox9);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "InformesDeVentas2_UC";
-            this.Size = new System.Drawing.Size(1999, 492);
+            this.Size = new System.Drawing.Size(1499, 400);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
@@ -310,5 +323,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sucursal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
+        private System.Windows.Forms.Label lbl_info;
     }
 }

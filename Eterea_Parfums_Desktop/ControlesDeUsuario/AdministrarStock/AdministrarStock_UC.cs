@@ -51,14 +51,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
 
         }
 
-
-
-        private void btn_sucursal_Click(object sender, EventArgs e)
-        {
-            FormNumeroDeSucursal FormNumeroDeSucursal = new FormNumeroDeSucursal();
-            FormNumeroDeSucursal.ShowDialog();
-        }
-
         private void CargarImagenPorDefecto()
         {
             img_perfume.Image = Properties.Resources.sinImagen;

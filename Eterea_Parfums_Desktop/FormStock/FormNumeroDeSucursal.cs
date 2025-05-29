@@ -19,6 +19,10 @@ namespace Eterea_Parfums_Desktop
             string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";          
             CargarSucursales();
 
+            Sucursal sucursal = SucursalControlador.getById(Program.sucursal);
+
+            //combo_sucursales.SelectedIndex = sucursal.id; // Seleccionar la sucursal actual por defecto
+
             combo_sucursales.DrawMode = DrawMode.OwnerDrawFixed;
             combo_sucursales.DrawItem += comboBoxDiseño_DrawItem;
             combo_sucursales.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -35,13 +39,13 @@ namespace Eterea_Parfums_Desktop
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        /*private void button2_Click(object sender, EventArgs e)
         {
             FormInicioAdministrador InicioAdministrador = new FormInicioAdministrador();
             InicioAdministrador.Show();
             this.Close();
         
-        }
+        }*/
 
         private void btn_continuar_Click(object sender, EventArgs e)
         {
