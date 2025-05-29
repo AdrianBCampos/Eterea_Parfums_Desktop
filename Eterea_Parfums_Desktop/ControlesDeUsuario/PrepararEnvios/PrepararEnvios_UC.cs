@@ -37,15 +37,17 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
                 MessageBox.Show("En este momento no hay órdenes activas para despachar.", "Sin órdenes activas", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
+            txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
+            txt_nombre_empleado.Visible = false;
+
             txt_cantidad_ordenes.Text = cantidad.ToString();
 
             this.lbl_pedido_buscado.Visible = false; // oculto por defecto
             this.Controls.Add(this.lbl_pedido_buscado);
 
-            string rutaCompletaImagen = Program.Ruta_Base + @"LogoEterea.png";
-            img_logo.Image = Image.FromFile(rutaCompletaImagen);
+            
 
-            txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
+            
             nombreSucursalActual = SucursalControlador.ObtenerNombreSucursalPorId(Program.sucursal);
 
             this.Load += PrepararEnvios_UC_Load;
@@ -107,14 +109,15 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
                 {
                     Text = $"Orden Nº {numeroOrden} - Cliente: {orden["nombre_cliente"]} {orden["apellido_cliente"]} - DNI: {orden["dni"]} - Fecha: {Convert.ToDateTime(orden["fecha"]).ToShortDateString()}",
                     Location = new Point(5, 5),
-                    Font = new Font("Segoe UI", 9, FontStyle.Bold),
+                    Font = new Font("Segoe UI", 16, FontStyle.Bold),
+                    ForeColor = Color.FromArgb(195, 156, 164),
                     AutoSize = true
                 };
 
                 DataGridView dgvPerfumes = new DataGridView
                 {
                     DataSource = controlador.ObtenerPerfumesDeFactura(numFactura),
-                    Location = new Point(5, 30),
+                    Location = new Point(5, 40),
                     Width = panelOrden.Width - 10,
                     Height = 160,
                     ReadOnly = true,
@@ -123,12 +126,19 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
                     AllowUserToDeleteRows = false
                 };
 
+                PersonalizarDataGridView(dgvPerfumes);
+
                 // 🔽 BOTÓN "Imprimir Etiqueta"
                 Button btnImprimir = new Button
                 {
                     Text = "Despachar la orden y crear su etiqueta de envío.",
-                    Location = new Point(5, 195),
-                    Width = 200,
+                    Location = new Point(500, 205),
+                    Width = 450,
+                    Height = 40,
+                    Font = new Font("Segoe UI", 14, FontStyle.Bold),
+                    BackColor = Color.FromArgb(228, 137, 164),     // Color de fondo
+                    ForeColor = Color.FromArgb(250, 236, 239),                       // Color del texto
+                    FlatStyle = FlatStyle.Flat,
                     Tag = numeroOrden
                 };
 
@@ -242,6 +252,49 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
                 flowLayoutPanel1.Controls.Add(panelOrden);
             }
         }
+
+
+        private void PersonalizarDataGridView(DataGridView dgv)
+        {
+            // Fuente y colores
+            dgv.Font = new Font("Segoe UI", 10);
+            dgv.BackgroundColor = Color.FromArgb(235, 199, 206);  // Color personalizado
+            dgv.BorderStyle = BorderStyle.None;
+
+            // Encabezado de columnas
+            dgv.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(195, 156, 164);
+            dgv.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 14, FontStyle.Bold);
+            dgv.EnableHeadersVisualStyles = false;
+            dgv.ColumnHeadersHeight = 40; // Aumentar el tamaño del encabezado
+            dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+
+            // Celdas normales
+            dgv.DefaultCellStyle.BackColor = Color.FromArgb(235, 199, 206);
+            dgv.DefaultCellStyle.ForeColor = Color.Black;
+            dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(242, 217, 222);
+            dgv.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+            // Bordes
+            dgv.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgv.GridColor = Color.FromArgb(195, 156, 164);
+
+            // Ajuste de filas
+            dgv.RowTemplate.Height = 30;
+            dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+            // Otros
+            dgv.AllowUserToResizeRows = false;
+            dgv.RowHeadersVisible = false;
+
+            // no cambiar tamaño de columnas y filas
+            dgv.AllowUserToResizeColumns = false;
+            dgv.AllowUserToResizeRows = false;
+
+            dgv.DefaultCellStyle.SelectionBackColor = Color.FromArgb(235, 199, 206);
+        }
+
 
 
         private void CrearPdfEtiqueta(string contenidoTexto, Bitmap qrImage, int numeroOrden)
@@ -369,7 +422,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
             }
         }
 
-
+       
     }
 }
 
