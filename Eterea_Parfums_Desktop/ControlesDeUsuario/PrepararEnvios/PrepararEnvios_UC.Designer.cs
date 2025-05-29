@@ -56,7 +56,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(17, 194);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1979, 487);
+            this.pictureBox1.Size = new System.Drawing.Size(1979, 432);
             this.pictureBox1.TabIndex = 319;
             this.pictureBox1.TabStop = false;
             // 
@@ -67,7 +67,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(30, 205);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(4);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1953, 465);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1953, 409);
             this.flowLayoutPanel1.TabIndex = 327;
             this.flowLayoutPanel1.WrapContents = false;
             // 
@@ -77,7 +77,7 @@
             this.lbl_pedido_buscado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_pedido_buscado.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_pedido_buscado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_pedido_buscado.Location = new System.Drawing.Point(1761, 120);
+            this.lbl_pedido_buscado.Location = new System.Drawing.Point(1379, 30);
             this.lbl_pedido_buscado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_pedido_buscado.Name = "lbl_pedido_buscado";
             this.lbl_pedido_buscado.Size = new System.Drawing.Size(222, 32);
@@ -116,7 +116,7 @@
             this.btn_volver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_volver.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_volver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_volver.Location = new System.Drawing.Point(427, 115);
+            this.btn_volver.Location = new System.Drawing.Point(921, 637);
             this.btn_volver.Margin = new System.Windows.Forms.Padding(4);
             this.btn_volver.Name = "btn_volver";
             this.btn_volver.Size = new System.Drawing.Size(173, 45);
@@ -188,7 +188,7 @@
             this.txt_nombre_empleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.txt_nombre_empleado.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_nombre_empleado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_nombre_empleado.Location = new System.Drawing.Point(63, 121);
+            this.txt_nombre_empleado.Location = new System.Drawing.Point(69, 121);
             this.txt_nombre_empleado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_nombre_empleado.Name = "txt_nombre_empleado";
             this.txt_nombre_empleado.Size = new System.Drawing.Size(300, 31);
@@ -211,8 +211,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
-            this.Controls.Add(this.lbl_pedido_buscado);
             this.Controls.Add(this.btn_volver);
+            this.Controls.Add(this.lbl_pedido_buscado);
             this.Controls.Add(this.txt_cantidad_ordenes);
             this.Controls.Add(this.lbl_cantidad_ordenes);
             this.Controls.Add(this.txt_nombre_empleado);
