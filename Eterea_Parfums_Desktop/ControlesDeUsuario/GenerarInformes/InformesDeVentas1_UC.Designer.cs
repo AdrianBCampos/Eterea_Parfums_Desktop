@@ -59,6 +59,7 @@
             this.lbl_error_fecha = new System.Windows.Forms.Label();
             this.lbl_error_fecha2 = new System.Windows.Forms.Label();
             this.lbl_info = new System.Windows.Forms.Label();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -68,6 +69,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimeFinal
@@ -96,7 +98,7 @@
             this.txt_menos_vendido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.txt_menos_vendido.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_menos_vendido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_menos_vendido.Location = new System.Drawing.Point(1190, 280);
+            this.txt_menos_vendido.Location = new System.Drawing.Point(1123, 280);
             this.txt_menos_vendido.Name = "txt_menos_vendido";
             this.txt_menos_vendido.Size = new System.Drawing.Size(163, 26);
             this.txt_menos_vendido.TabIndex = 460;
@@ -108,7 +110,7 @@
             this.txt_mas_vendido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.txt_mas_vendido.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_mas_vendido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_mas_vendido.Location = new System.Drawing.Point(1190, 223);
+            this.txt_mas_vendido.Location = new System.Drawing.Point(1097, 223);
             this.txt_mas_vendido.Name = "txt_mas_vendido";
             this.txt_mas_vendido.Size = new System.Drawing.Size(139, 26);
             this.txt_mas_vendido.TabIndex = 459;
@@ -120,7 +122,7 @@
             this.txt_monto_total.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.txt_monto_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_monto_total.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_monto_total.Location = new System.Drawing.Point(433, 280);
+            this.txt_monto_total.Location = new System.Drawing.Point(370, 280);
             this.txt_monto_total.Name = "txt_monto_total";
             this.txt_monto_total.Size = new System.Drawing.Size(125, 26);
             this.txt_monto_total.TabIndex = 458;
@@ -132,7 +134,7 @@
             this.txt_cantidad_ventas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.txt_cantidad_ventas.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_cantidad_ventas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_cantidad_ventas.Location = new System.Drawing.Point(433, 223);
+            this.txt_cantidad_ventas.Location = new System.Drawing.Point(342, 223);
             this.txt_cantidad_ventas.Name = "txt_cantidad_ventas";
             this.txt_cantidad_ventas.Size = new System.Drawing.Size(173, 26);
             this.txt_cantidad_ventas.TabIndex = 457;
@@ -366,7 +368,7 @@
             this.pictureBox9.Location = new System.Drawing.Point(8, 6);
             this.pictureBox9.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(1484, 60);
+            this.pictureBox9.Size = new System.Drawing.Size(1181, 60);
             this.pictureBox9.TabIndex = 438;
             this.pictureBox9.TabStop = false;
             // 
@@ -423,11 +425,22 @@
             this.lbl_info.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_info.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_info.Location = new System.Drawing.Point(1149, 18);
+            this.lbl_info.Location = new System.Drawing.Point(1217, 18);
             this.lbl_info.Name = "lbl_info";
             this.lbl_info.Size = new System.Drawing.Size(180, 31);
             this.lbl_info.TabIndex = 475;
             this.lbl_info.Text = "info sucursal";
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox10.Location = new System.Drawing.Point(1193, 6);
+            this.pictureBox10.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(299, 60);
+            this.pictureBox10.TabIndex = 476;
+            this.pictureBox10.TabStop = false;
             // 
             // InformesDeVentas1_UC
             // 
@@ -435,6 +448,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
             this.Controls.Add(this.lbl_info);
+            this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.lbl_error_fecha2);
             this.Controls.Add(this.lbl_error_fecha);
             this.Controls.Add(this.btn_exportar_pdf);
@@ -477,6 +491,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -515,5 +530,6 @@
         private System.Windows.Forms.Label lbl_error_fecha;
         private System.Windows.Forms.Label lbl_error_fecha2;
         private System.Windows.Forms.Label lbl_info;
+        private System.Windows.Forms.PictureBox pictureBox10;
     }
 }
