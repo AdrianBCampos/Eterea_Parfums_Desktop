@@ -41,7 +41,6 @@
             this.lbl_condicion_iva = new System.Windows.Forms.Label();
             this.lbl_nombre_cliente = new System.Windows.Forms.Label();
             this.btn_imprimir = new System.Windows.Forms.Button();
-            this.btn_enviar = new System.Windows.Forms.Button();
             this.lbl_email = new System.Windows.Forms.Label();
             this.lbl_descuento = new System.Windows.Forms.Label();
             this.lbl_cuotas = new System.Windows.Forms.Label();
@@ -241,19 +240,6 @@
             this.btn_imprimir.Text = "Imprimir Factura";
             this.btn_imprimir.UseVisualStyleBackColor = false;
             this.btn_imprimir.Click += new System.EventHandler(this.btn_imprimir_Click);
-            // 
-            // btn_enviar
-            // 
-            this.btn_enviar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.btn_enviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_enviar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_enviar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_enviar.Location = new System.Drawing.Point(1283, 505);
-            this.btn_enviar.Name = "btn_enviar";
-            this.btn_enviar.Size = new System.Drawing.Size(207, 41);
-            this.btn_enviar.TabIndex = 389;
-            this.btn_enviar.Text = "Enviar por mail";
-            this.btn_enviar.UseVisualStyleBackColor = false;
             // 
             // lbl_email
             // 
@@ -1176,7 +1162,7 @@
             this.txt_email.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.txt_email.Location = new System.Drawing.Point(1024, 512);
             this.txt_email.Name = "txt_email";
-            this.txt_email.Size = new System.Drawing.Size(248, 28);
+            this.txt_email.Size = new System.Drawing.Size(452, 28);
             this.txt_email.TabIndex = 436;
             // 
             // combo_descuento
@@ -1227,7 +1213,6 @@
             this.Controls.Add(this.combo_descuento);
             this.Controls.Add(this.lbl_descuento);
             this.Controls.Add(this.txt_email);
-            this.Controls.Add(this.btn_enviar);
             this.Controls.Add(this.combo_forma_pago);
             this.Controls.Add(this.txt_estadoCaja);
             this.Controls.Add(this.button1);
@@ -1343,7 +1328,6 @@
         private System.Windows.Forms.Label lbl_condicion_iva;
         private System.Windows.Forms.Label lbl_nombre_cliente;
         private System.Windows.Forms.Button btn_imprimir;
-        private System.Windows.Forms.Button btn_enviar;
         private System.Windows.Forms.Label lbl_email;
         private System.Windows.Forms.Label lbl_descuento;
         private System.Windows.Forms.Label lbl_cuotas;

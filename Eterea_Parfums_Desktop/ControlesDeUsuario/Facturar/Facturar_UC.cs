@@ -195,7 +195,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 txt_numero_caja.Text = numeroCaja;
             }
 
-            txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
+            int puntoDeVenta = Program.sucursal;
+            string puntoDeVentaString = puntoDeVenta.ToString("D4");
+            string numeroDeFacturaString = FacturaControlador.ObtenerProximoIdFactura().ToString("D8");
+            txt_numero_factura.Text = puntoDeVentaString + numeroDeFacturaString;
+            
             txt_scan_factura.Focus();
             ActualizarEstadoCaja();
         }
@@ -940,8 +944,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 // Obtener los valores de los controles del formulario
                 int numFactura = int.Parse(txt_numero_factura.Text);
                 DateTime fecha = DateTime.Now;
-                int sucursalId = (EmpleadoControlador.obtenerPorId(Program.logueado.id)).sucursal_id.id;
-                //int sucursalId = Program.logueado.sucursal_id.id; 
+                int sucursalId = Program.sucursal;
                 int vendedorId = Program.logueado.id;
                 int clienteId = clientefactura.id;
                 if (clienteId == 0)
@@ -1065,7 +1068,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                             return;
                         }
 
-                        int sucursalId = (EmpleadoControlador.obtenerPorId(Program.logueado.id)).sucursal_id.id;
+                        int sucursalId = Program.sucursal;
                         StockControlador.updateStock(perfume_id, sucursalId, -cantidad);
                         MessageBox.Show($"Actualizando stock de perfume {perfume_id} en sucursal {sucursalId} con cantidad {-cantidad}");
 
@@ -1086,6 +1089,16 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         private void btn_imprimir_Click(object sender, EventArgs e)
         {
             string numero = Program.NumeroCajaActual;
+
+            if (Factura.Rows.Count == 0)
+            {
+                MessageBox.Show("Debe agregar al menos un artículo para facturar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            else
+            {
+
+            
 
             if (numero != null && numero != "Caja sin asignar")
             {
@@ -1222,6 +1235,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 // No hay caja asignada, mostrar FormNumeroDeCaja para elegirla
                 MessageBox.Show("\"Debes ingresar un número de caja. \n Haz click en 'Abrir Caja' ", "Número de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            }
         }
 
         private void ReiniciarFormulario()
@@ -1239,7 +1253,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             combo_forma_pago.SelectedIndex = 0;
             combo_descuento.SelectedIndex = 1;
             combo_cuotas.SelectedIndex = 0;
-            txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
+            int puntoDeVenta = Program.sucursal;
+            string puntoDeVentaString = puntoDeVenta.ToString("D4");
+            string numeroDeFacturaString = FacturaControlador.ObtenerProximoIdFactura().ToString("D8");
+            txt_numero_factura.Text = puntoDeVentaString + numeroDeFacturaString;
         }
 
         private void EnviarCorreo(string rutaArchivo, string correoDestino)
