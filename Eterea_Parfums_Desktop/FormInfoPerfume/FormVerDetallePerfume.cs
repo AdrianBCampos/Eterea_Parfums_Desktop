@@ -563,11 +563,6 @@ namespace Eterea_Parfums_Desktop
             this.Close();
         }
 
-        private void txt_fecha_TextChanged(object sender, EventArgs e)
-        {
 
-        }
-
-    
     }
 }

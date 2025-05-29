@@ -85,6 +85,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             lbl_dniE.Hide();
             txt_scan_factura.Hide();
 
+            this.Cursor = Cursors.Default;
+            this.UseWaitCursor = false;
+
             ActualizarEstadoCaja();
 
             //Diseño del combo box
