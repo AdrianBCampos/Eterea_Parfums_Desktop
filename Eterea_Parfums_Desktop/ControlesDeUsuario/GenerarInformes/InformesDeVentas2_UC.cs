@@ -50,8 +50,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             .Where(p => p.activo == true)
             .ToList();
 
-            stocks = StockControlador.getAll();
-            stocks = stocks.Where(s => s.sucursal.id == numeroSucursal).ToList();
+            stocks = StockControlador.getAll()
+             .Where(s => s.sucursal.id == numeroSucursal)
+             .ToList();
 
 
             dataGridViewPerfumes.Rows.Clear();
