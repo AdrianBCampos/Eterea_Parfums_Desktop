@@ -24,9 +24,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
         public InformesDeVentas2_UC(int numeroSucursal)
         {
             InitializeComponent();
-            cargarDatos();
             this.numeroSucursal = numeroSucursal;
-
+            cargarDatos();
             lbl_info.Text = numeroSucursal.ToString();
         }
 
@@ -51,9 +50,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             .ToList();
 
             stocks = StockControlador.getAll()
-             .Where(s => s.sucursal.id == numeroSucursal)
-             .ToList();
-
+            .Where(s => s.sucursal != null && s.sucursal.id == numeroSucursal)
+            .ToList();
+      
 
             dataGridViewPerfumes.Rows.Clear();
             foreach (Stock stock in stocks)

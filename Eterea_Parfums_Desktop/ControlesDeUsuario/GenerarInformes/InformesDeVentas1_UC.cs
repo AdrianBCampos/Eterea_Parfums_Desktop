@@ -108,27 +108,64 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             {
                 List<DetalleFactura> detalles = DetalleFacturaControlador.getByIdFactura(factura.num_factura);
                 Console.WriteLine("Cantidad de detales: " + detalles.Count());
+                //Se completa la información de cada detalle de factura con el perfume correspondiente
                 foreach (DetalleFactura detalle in detalles)
                 {
                     var detalle_factura = detalle;
                     detalle_factura.perfume = PerfumeControlador.getByID(detalle.perfume.id);
-                    Console.WriteLine("perfumeID " + detalle_factura.perfume.id + "perfume " + detalle_factura.perfume.nombre);
+                    //Console.WriteLine("perfumeID " + detalle_factura.perfume.id + "perfume " + detalle_factura.perfume.nombre);
                     detalles_Totales.Add(detalle_factura);
                 }
             }
-            txt_mas_vendido.Text = detalles_Totales
-            .GroupBy(d => d.perfume)
-            .OrderByDescending(g => g.Sum(d => d.cantidad)) // Ordenar por la suma de cantidades vendidas
-            .First().Key.nombre;  // Obtener el nombre del perfume con más ventas
 
 
+            if (detalles_Totales.Count == 0)
+            {
+                resetearDatos();
+                return;
+            }
 
-            //txt_mas_vendido.Text = facturas.GroupBy(f => f.num_factura).OrderByDescending(g => g.Count()).First().Key.ToString();
-            txt_menos_vendido.Text = detalles_Totales
-            .GroupBy(d => d.perfume)
-            .OrderBy(g => g.Sum(d => d.cantidad)) // Ordenar por la suma de cantidades vendidas
-            .First().Key.nombre;  // Obtener el nombre del perfume con más ventas
 
+            // Agrupar perfumes por ventas
+            var perfumesAgrupados = detalles_Totales
+                .GroupBy(d => d.perfume)
+                .Select(g => new
+                {
+                    Perfume = g.Key,
+                    CantidadVendida = g.Sum(d => d.cantidad)
+                })
+                .ToList();
+
+            // Encontrar la mayor cantidad vendida
+            int mayorCantidad = perfumesAgrupados.Max(p => p.CantidadVendida);
+
+            // Filtrar los perfumes que tienen esa mayor cantidad
+            var perfumesMasVendidos = perfumesAgrupados
+                .Where(p => p.CantidadVendida == mayorCantidad)
+                .Select(p => p.Perfume.nombre)
+                .ToList();
+
+            // Concatenar los nombres
+            string nombresMasVendidos = string.Join(", ", perfumesMasVendidos);
+
+            // Asignar al TextBox
+            txt_mas_vendido.Text = nombresMasVendidos;
+
+
+            // Encontrar la menor cantidad vendida
+            int menorCantidad = perfumesAgrupados.Min(p => p.CantidadVendida);
+
+            // Filtrar los perfumes que tienen esa menor cantidad
+            var perfumesMenosVendidos = perfumesAgrupados
+                .Where(p => p.CantidadVendida == menorCantidad)
+                .Select(p => p.Perfume.nombre)
+                .ToList();
+
+            // Concatenar los nombres
+            string nombresMenosVendidos = string.Join(", ", perfumesMenosVendidos);
+
+            // Asignar al TextBox
+            txt_menos_vendido.Text = nombresMenosVendidos;
 
         }
 
