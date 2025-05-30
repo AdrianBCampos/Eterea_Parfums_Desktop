@@ -107,7 +107,7 @@ namespace Eterea_Parfums_Desktop
                     Ruta_Web = @"C:\Users\damim\Source\Repos\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
                     break;
                 case "adri":
-                    Ruta_Base = @"C:\Users\intersan\Desktop\TESIS\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                    Ruta_Base = @"C:\Users\intersan\Desktop\TESIS_New\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
                     Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
                     break;
                 case "luis":
