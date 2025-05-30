@@ -38,6 +38,7 @@
             this.lbl_facturacion = new System.Windows.Forms.Label();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.dataGridViewPerfumes = new System.Windows.Forms.DataGridView();
+            this.lbl_info = new System.Windows.Forms.Label();
             this.Imagen = new System.Windows.Forms.DataGridViewImageColumn();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,7 +50,6 @@
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lbl_info = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
@@ -75,7 +75,7 @@
             this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox7.Location = new System.Drawing.Point(17, 83);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(1466, 302);
             this.pictureBox7.TabIndex = 470;
@@ -86,7 +86,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Location = new System.Drawing.Point(8, 74);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(1484, 318);
             this.pictureBox1.TabIndex = 468;
@@ -109,7 +109,7 @@
             this.pictureBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox9.Location = new System.Drawing.Point(8, 8);
-            this.pictureBox9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(1484, 60);
             this.pictureBox9.TabIndex = 467;
@@ -163,7 +163,7 @@
             this.dataGridViewPerfumes.EnableHeadersVisualStyles = false;
             this.dataGridViewPerfumes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.dataGridViewPerfumes.Location = new System.Drawing.Point(24, 93);
-            this.dataGridViewPerfumes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewPerfumes.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewPerfumes.Name = "dataGridViewPerfumes";
             this.dataGridViewPerfumes.ReadOnly = true;
             this.dataGridViewPerfumes.RowHeadersWidth = 51;
@@ -177,97 +177,6 @@
             this.dataGridViewPerfumes.Size = new System.Drawing.Size(1451, 236);
             this.dataGridViewPerfumes.TabIndex = 473;
             // 
-            // Imagen
-            // 
-            this.Imagen.HeaderText = "Imagen";
-            this.Imagen.MinimumWidth = 6;
-            this.Imagen.Name = "Imagen";
-            this.Imagen.ReadOnly = true;
-            // 
-            // Codigo
-            // 
-            this.Codigo.HeaderText = "Código";
-            this.Codigo.MinimumWidth = 6;
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            // 
-            // Marca
-            // 
-            this.Marca.FillWeight = 125F;
-            this.Marca.HeaderText = "Marca";
-            this.Marca.MinimumWidth = 6;
-            this.Marca.Name = "Marca";
-            this.Marca.ReadOnly = true;
-            this.Marca.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Nombre_del_Perfume
-            // 
-            this.Nombre_del_Perfume.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Nombre_del_Perfume.FillWeight = 125F;
-            this.Nombre_del_Perfume.HeaderText = "Nombre";
-            this.Nombre_del_Perfume.MinimumWidth = 6;
-            this.Nombre_del_Perfume.Name = "Nombre_del_Perfume";
-            this.Nombre_del_Perfume.ReadOnly = true;
-            this.Nombre_del_Perfume.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Nombre_del_Perfume.Width = 170;
-            // 
-            // Tipo_de_Perfume
-            // 
-            this.Tipo_de_Perfume.HeaderText = "Tipo";
-            this.Tipo_de_Perfume.MinimumWidth = 6;
-            this.Tipo_de_Perfume.Name = "Tipo_de_Perfume";
-            this.Tipo_de_Perfume.ReadOnly = true;
-            // 
-            // Genero
-            // 
-            this.Genero.FillWeight = 50F;
-            this.Genero.HeaderText = "Género";
-            this.Genero.MinimumWidth = 6;
-            this.Genero.Name = "Genero";
-            this.Genero.ReadOnly = true;
-            this.Genero.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Presentacion_en_mi
-            // 
-            this.Presentacion_en_mi.HeaderText = "Presentación (ml)";
-            this.Presentacion_en_mi.MinimumWidth = 6;
-            this.Presentacion_en_mi.Name = "Presentacion_en_mi";
-            this.Presentacion_en_mi.ReadOnly = true;
-            // 
-            // Es_recargable
-            // 
-            this.Es_recargable.HeaderText = "Recargable";
-            this.Es_recargable.MinimumWidth = 6;
-            this.Es_recargable.Name = "Es_recargable";
-            this.Es_recargable.ReadOnly = true;
-            // 
-            // Precio
-            // 
-            this.Precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Precio.FillWeight = 50F;
-            this.Precio.HeaderText = "Precio ($)";
-            this.Precio.MinimumWidth = 6;
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
-            this.Precio.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Precio.Width = 109;
-            // 
-            // Sucursal
-            // 
-            this.Sucursal.HeaderText = "Sucursal";
-            this.Sucursal.MinimumWidth = 6;
-            this.Sucursal.Name = "Sucursal";
-            this.Sucursal.ReadOnly = true;
-            // 
-            // Stock
-            // 
-            this.Stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Stock.HeaderText = "Stock";
-            this.Stock.MinimumWidth = 4;
-            this.Stock.Name = "Stock";
-            this.Stock.ReadOnly = true;
-            this.Stock.Width = 70;
-            // 
             // lbl_info
             // 
             this.lbl_info.AutoSize = true;
@@ -279,6 +188,113 @@
             this.lbl_info.Size = new System.Drawing.Size(180, 31);
             this.lbl_info.TabIndex = 474;
             this.lbl_info.Text = "info sucursal";
+            // 
+            // Imagen
+            // 
+            this.Imagen.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Imagen.FillWeight = 150F;
+            this.Imagen.HeaderText = "Imagen";
+            this.Imagen.MinimumWidth = 6;
+            this.Imagen.Name = "Imagen";
+            this.Imagen.ReadOnly = true;
+            this.Imagen.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Imagen.Width = 73;
+            // 
+            // Codigo
+            // 
+            this.Codigo.FillWeight = 150F;
+            this.Codigo.HeaderText = "Código";
+            this.Codigo.MinimumWidth = 6;
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            this.Codigo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Marca
+            // 
+            this.Marca.FillWeight = 150F;
+            this.Marca.HeaderText = "Marca";
+            this.Marca.MinimumWidth = 6;
+            this.Marca.Name = "Marca";
+            this.Marca.ReadOnly = true;
+            this.Marca.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Nombre_del_Perfume
+            // 
+            this.Nombre_del_Perfume.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Nombre_del_Perfume.FillWeight = 150F;
+            this.Nombre_del_Perfume.HeaderText = "Nombre";
+            this.Nombre_del_Perfume.MinimumWidth = 6;
+            this.Nombre_del_Perfume.Name = "Nombre_del_Perfume";
+            this.Nombre_del_Perfume.ReadOnly = true;
+            this.Nombre_del_Perfume.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Nombre_del_Perfume.Width = 170;
+            // 
+            // Tipo_de_Perfume
+            // 
+            this.Tipo_de_Perfume.FillWeight = 150F;
+            this.Tipo_de_Perfume.HeaderText = "Tipo";
+            this.Tipo_de_Perfume.MinimumWidth = 6;
+            this.Tipo_de_Perfume.Name = "Tipo_de_Perfume";
+            this.Tipo_de_Perfume.ReadOnly = true;
+            this.Tipo_de_Perfume.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Genero
+            // 
+            this.Genero.FillWeight = 150F;
+            this.Genero.HeaderText = "Género";
+            this.Genero.MinimumWidth = 6;
+            this.Genero.Name = "Genero";
+            this.Genero.ReadOnly = true;
+            this.Genero.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Presentacion_en_mi
+            // 
+            this.Presentacion_en_mi.FillWeight = 150F;
+            this.Presentacion_en_mi.HeaderText = "Presentación (ml)";
+            this.Presentacion_en_mi.MinimumWidth = 6;
+            this.Presentacion_en_mi.Name = "Presentacion_en_mi";
+            this.Presentacion_en_mi.ReadOnly = true;
+            this.Presentacion_en_mi.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Es_recargable
+            // 
+            this.Es_recargable.FillWeight = 150F;
+            this.Es_recargable.HeaderText = "Recargable";
+            this.Es_recargable.MinimumWidth = 6;
+            this.Es_recargable.Name = "Es_recargable";
+            this.Es_recargable.ReadOnly = true;
+            this.Es_recargable.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Precio
+            // 
+            this.Precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Precio.FillWeight = 150F;
+            this.Precio.HeaderText = "Precio ($)";
+            this.Precio.MinimumWidth = 6;
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            this.Precio.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Precio.Width = 109;
+            // 
+            // Sucursal
+            // 
+            this.Sucursal.FillWeight = 150F;
+            this.Sucursal.HeaderText = "Sucursal";
+            this.Sucursal.MinimumWidth = 6;
+            this.Sucursal.Name = "Sucursal";
+            this.Sucursal.ReadOnly = true;
+            this.Sucursal.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Stock
+            // 
+            this.Stock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Stock.FillWeight = 150F;
+            this.Stock.HeaderText = "Stock";
+            this.Stock.MinimumWidth = 4;
+            this.Stock.Name = "Stock";
+            this.Stock.ReadOnly = true;
+            this.Stock.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Stock.Width = 70;
             // 
             // InformesDeVentas2_UC
             // 
@@ -292,7 +308,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lbl_facturacion);
             this.Controls.Add(this.pictureBox9);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "InformesDeVentas2_UC";
             this.Size = new System.Drawing.Size(1499, 400);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
@@ -312,6 +328,7 @@
         private System.Windows.Forms.Label lbl_facturacion;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.DataGridView dataGridViewPerfumes;
+        private System.Windows.Forms.Label lbl_info;
         private System.Windows.Forms.DataGridViewImageColumn Imagen;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
@@ -323,6 +340,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sucursal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
-        private System.Windows.Forms.Label lbl_info;
     }
 }
