@@ -29,7 +29,7 @@ namespace Eterea_Parfums_Desktop
         public static int IdHistorialCajaActual = 0;
 
 
-
+        //public static String Ruta_Base_Mini;
         public static String Ruta_Base;
         public static String Ruta_Web;
         public static String entorno = "adri";
@@ -108,6 +108,7 @@ namespace Eterea_Parfums_Desktop
                     break;
                 case "adri":
                     Ruta_Base = @"C:\Users\intersan\Desktop\TESIS_New\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\";
+                    //Ruta_Base_Mini = @"C:\Users\intersan\Desktop\TESIS_New\Eterea_Parfums_Desktop\Eterea_Parfums_Desktop\Resources\Mini\";
                     Ruta_Web = @"C:\Users\intersan\source\repos\Eterea_Web\Eterea_Web\Content\ImgPerfumes\";
                     break;
                 case "luis":
