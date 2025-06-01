@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -112,7 +113,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
 
             return string.IsNullOrEmpty(mensaje);
         }
-        private void SetearDatos()
+        /*private void SetearDatos()
         {
             txt_codigo_producto.Clear(); // Borra el texto si el código no existe
             txt_datos_producto.Text = ""; // Limpia el campo de datos del producto
@@ -124,9 +125,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
             
             perfume = null;
                         
-        }
+        }*/
 
-        
+
         private void txt_codigo_producto_TextChanged(object sender, EventArgs e)
         {
             List<Stock> stocks = StockControlador.getAll();
@@ -135,32 +136,71 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
             {
                 if (!validarSiExisteCodigoPerfume(txt_codigo_producto.Text.Trim()))
                 {
-       
                     lbl_error_codigo.Text = "Código ingresado es inexistente.";
                     lbl_error_codigo.Visible = true;
 
-
+                    // Limpiar campos de datos si el código no existe
+                    LimpiarCampos();
                 }
                 else
                 {
-                    txt_datos_producto.Text = perfume.nombre; // Muestra el nombre del perfume si existe
-                    txt_tamaño_producto.Text = perfume.presentacion_ml.ToString() + " ML";
+                    lbl_error_codigo.Visible = false;
 
-                    // Agrupar por id de perfume y sumar las cantidades
-                    var stockTotal = stocks
-                        .Where(s => s.perfume.id == perfume.id)
-                        .Sum(p => p.cantidad);
+                    // Buscar el perfume correspondiente (aquí deberías obtenerlo con tu lógica)
+                    var perfume = PerfumeControlador.getByCodigo(txt_codigo_producto.Text.Trim());  // Asumiendo que tienes este método
 
-                    // Mostrar stock total en el campo correspondiente
-                    txt_cantidad_actual_producto.Text = stockTotal.ToString();
+                    if (perfume != null)
+                    {
+                        txt_datos_producto.Text = perfume.nombre;
+                        txt_tamaño_producto.Text = perfume.presentacion_ml.ToString() + " ML";
 
-                    string nombreImagen = perfume.imagen1.ToString();
-                    string rutaCompletaImagen = Program.Ruta_Base + nombreImagen + ".jpg";
-                    img_perfume.Image = Image.FromFile(rutaCompletaImagen);
+                        var stockTotal = stocks
+                            .Where(s => s.perfume.id == perfume.id)
+                            .Sum(p => p.cantidad);
+
+                        txt_cantidad_actual_producto.Text = stockTotal.ToString();
+
+                        string nombreImagen = perfume.imagen1.ToString();
+                        string rutaCompletaImagen = Program.Ruta_Base + nombreImagen + ".jpg";
+
+                        if (File.Exists(rutaCompletaImagen))
+                        {
+                            img_perfume.Image = Image.FromFile(rutaCompletaImagen);
+                        }
+                        else
+                        {
+                            img_perfume.Image = null;  // O imagen por defecto
+                        }
+                    }
                 }
             }
+            else
+            {
+                // Si el código no tiene 13 dígitos, limpia los campos
+                LimpiarCampos();
+            }
+        }
 
-           
+
+        // Método auxiliar para limpiar los campos
+        private void LimpiarCampos()
+        {
+            txt_datos_producto.Text = string.Empty;
+            txt_tamaño_producto.Text = string.Empty;
+            txt_cantidad_actual_producto.Text = string.Empty;
+
+            // Cargar imagen por defecto en el PictureBox
+            string rutaImagenPorDefecto = Program.Ruta_Base + "sinImagen.jpg";  // Cambia por tu ruta real
+            if (File.Exists(rutaImagenPorDefecto))
+            {
+                img_perfume.Image = Image.FromFile(rutaImagenPorDefecto);
+            }
+            else
+            {
+                img_perfume.Image = null;  // O puedes mostrar un color sólido o ícono
+            }
+
+            lbl_error_codigo.Visible = false;
         }
 
         private void txt_cantidad_producto_TextChanged(object sender, EventArgs e)
@@ -214,8 +254,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
             }
 
             MessageBox.Show("Se ha ingresado con éxito.");
-            SetearDatos();
-        
+            LimpiarCampos();
+
+
     }
 
         

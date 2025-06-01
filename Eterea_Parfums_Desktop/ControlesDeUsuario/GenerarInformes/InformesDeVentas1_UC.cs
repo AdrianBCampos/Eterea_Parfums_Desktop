@@ -26,6 +26,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 
             lbl_error_fecha.Text = "";
             lbl_error_fecha2.Text = "";
+
+
         }
         public InformesDeVentas1_UC(int numeroSucursal)
         {
@@ -37,6 +39,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             this.numeroSucursal = numeroSucursal;
 
             lbl_info.Text = numeroSucursal.ToString();
+
+            this.Cursor = Cursors.Default;
+            this.UseWaitCursor = false;
         }
 
         private bool validarFechas()

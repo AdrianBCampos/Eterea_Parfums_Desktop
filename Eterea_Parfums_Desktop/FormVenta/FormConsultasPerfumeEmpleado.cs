@@ -32,7 +32,7 @@ namespace Eterea_Parfums_Desktop
 
         //LA PAGINA ACTUAL
         private static int current = 0;
-        private static int paginador = 10;
+        private static int paginador = 2;
 
         //TOTAL DE PRODUCTOS
         private static int total = 0;
@@ -384,6 +384,8 @@ namespace Eterea_Parfums_Desktop
 
                 }
                 dataGridViewConsultas.ClearSelection();
+
+                dataGridViewConsultas.CellPainting += dataGridViewConsultas_CellPainting;
             }
         }
 
