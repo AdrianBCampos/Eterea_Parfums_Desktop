@@ -30,6 +30,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 
             cargarDatos();
             lbl_info.Text = numeroSucursal.ToString();
+
+            this.Cursor = Cursors.Default;
+            this.UseWaitCursor = false;
         }
 
         private System.Drawing.Image redimensionarImagen(System.Drawing.Image img, int cellWidth, int cellHeight)
