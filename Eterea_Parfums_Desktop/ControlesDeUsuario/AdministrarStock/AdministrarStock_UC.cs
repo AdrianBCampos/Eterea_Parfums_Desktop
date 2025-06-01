@@ -16,7 +16,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
     public partial class AdministrarStock_UC : UserControl
     {
         private Perfume perfume;
-        private int idSucursal;     
+        private int idSucursal;
+
+        private bool limpiezaAutomatica = false;
 
 
         public AdministrarStock_UC(int idSucursal)
@@ -113,73 +115,52 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
 
             return string.IsNullOrEmpty(mensaje);
         }
-        /*private void SetearDatos()
-        {
-            txt_codigo_producto.Clear(); // Borra el texto si el código no existe
-            txt_datos_producto.Text = ""; // Limpia el campo de datos del producto
-            txt_cantidad_producto.Text = "";
-            txt_tamaño_producto.Text = "";
-            txt_cantidad_actual_producto.Text = "";
 
-            img_perfume.Image = Properties.Resources.sinImagen;
-            
-            perfume = null;
-                        
-        }*/
 
 
         private void txt_codigo_producto_TextChanged(object sender, EventArgs e)
         {
-            List<Stock> stocks = StockControlador.getAll();
+            if (limpiezaAutomatica) return;  // Salimos si es limpieza automática
 
-            if (txt_codigo_producto.Text.Length == 13)
+            string codigoIngresado = txt_codigo_producto.Text.Trim();
+
+            if (codigoIngresado.Length < 13)
             {
-                if (!validarSiExisteCodigoPerfume(txt_codigo_producto.Text.Trim()))
-                {
-                    lbl_error_codigo.Text = "Código ingresado es inexistente.";
-                    lbl_error_codigo.Visible = true;
+                lbl_error_codigo.Text = "El código del producto debe tener 13 dígitos.";
+                lbl_error_codigo.Visible = true;
 
-                    // Limpiar campos de datos si el código no existe
-                    LimpiarCampos();
-                }
-                else
-                {
-                    lbl_error_codigo.Visible = false;
+                LimpiarCamposSinOcultarMensaje();
+                return;
+            }
 
-                    // Buscar el perfume correspondiente (aquí deberías obtenerlo con tu lógica)
-                    var perfume = PerfumeControlador.getByCodigo(txt_codigo_producto.Text.Trim());  // Asumiendo que tienes este método
+            perfume = PerfumeControlador.getByCodigo(codigoIngresado);
 
-                    if (perfume != null)
-                    {
-                        txt_datos_producto.Text = perfume.nombre;
-                        txt_tamaño_producto.Text = perfume.presentacion_ml.ToString() + " ML";
+            if (perfume == null)
+            {
+                lbl_error_codigo.Text = "El código ingresado es inexistente.";
+                lbl_error_codigo.Visible = true;
 
-                        var stockTotal = stocks
-                            .Where(s => s.perfume.id == perfume.id)
-                            .Sum(p => p.cantidad);
-
-                        txt_cantidad_actual_producto.Text = stockTotal.ToString();
-
-                        string nombreImagen = perfume.imagen1.ToString();
-                        string rutaCompletaImagen = Program.Ruta_Base + nombreImagen + ".jpg";
-
-                        if (File.Exists(rutaCompletaImagen))
-                        {
-                            img_perfume.Image = Image.FromFile(rutaCompletaImagen);
-                        }
-                        else
-                        {
-                            img_perfume.Image = null;  // O imagen por defecto
-                        }
-                    }
-                }
+                LimpiarCamposSinOcultarMensaje();
             }
             else
             {
-                // Si el código no tiene 13 dígitos, limpia los campos
-                LimpiarCampos();
+                lbl_error_codigo.Visible = false;
+
+                txt_datos_producto.Text = perfume.nombre;
+                txt_tamaño_producto.Text = perfume.presentacion_ml + " ML";
+
+                List<Stock> stocks = StockControlador.getAll();
+                int stockTotal = stocks
+                    .Where(s => s.perfume.id == perfume.id && s.sucursal.id == idSucursal)
+                    .Sum(s => s.cantidad);
+
+                txt_cantidad_actual_producto.Text = stockTotal.ToString();
+
+                string rutaCompletaImagen = Program.Ruta_Base + perfume.imagen1 + ".jpg";
+                img_perfume.Image = File.Exists(rutaCompletaImagen) ? Image.FromFile(rutaCompletaImagen) : Properties.Resources.sinImagen;
             }
         }
+
 
 
         // Método auxiliar para limpiar los campos
@@ -189,18 +170,23 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
             txt_tamaño_producto.Text = string.Empty;
             txt_cantidad_actual_producto.Text = string.Empty;
 
-            // Cargar imagen por defecto en el PictureBox
-            string rutaImagenPorDefecto = Program.Ruta_Base + "sinImagen.jpg";  // Cambia por tu ruta real
-            if (File.Exists(rutaImagenPorDefecto))
-            {
-                img_perfume.Image = Image.FromFile(rutaImagenPorDefecto);
-            }
-            else
-            {
-                img_perfume.Image = null;  // O puedes mostrar un color sólido o ícono
-            }
+            // Cargar imagen por defecto embebida
+            img_perfume.Image = Properties.Resources.sinImagen;
 
             lbl_error_codigo.Visible = false;
+
+            txt_cantidad_producto.Text = string.Empty;
+            txt_total_stock.Text = string.Empty;
+            txt_codigo_producto.Text = string.Empty;
+        }
+
+        private void LimpiarCamposSinOcultarMensaje()
+        {
+            txt_datos_producto.Text = string.Empty;
+            txt_tamaño_producto.Text = string.Empty;
+            txt_cantidad_actual_producto.Text = string.Empty;
+            img_perfume.Image = Properties.Resources.sinImagen;
+            // No ocultamos lbl_error_codigo aquí
         }
 
         private void txt_cantidad_producto_TextChanged(object sender, EventArgs e)
@@ -227,15 +213,14 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
 
         private void btn_confirmar_Click(object sender, EventArgs e)
         {
-            // Limpiar mensajes anteriores
             lbl_error_codigo.Text = "";
             lbl_error_codigo.Visible = false;
             lbl_error_stock.Text = "";
             lbl_error_stock.Visible = false;
+
             bool stockValido = Validar_Datos_Stock();
             bool codigoValido = Validar_Datos_Codigo();
 
-            // Si alguna validación falla, no continuar
             if (!stockValido || !codigoValido)
             {
                 return;
@@ -243,7 +228,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
 
             int cantidad = int.Parse(txt_cantidad_producto.Text);
 
-            // Si el stock ya existe, se actualiza la cantidad
             if (StockControlador.getStock(perfume.id, idSucursal) != -1)
             {
                 StockControlador.updateStock(perfume.id, idSucursal, cantidad);
@@ -254,11 +238,13 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
             }
 
             MessageBox.Show("Se ha ingresado con éxito.");
+
+            limpiezaAutomatica = true;  // Activar bandera para evitar validaciones al limpiar
             LimpiarCampos();
-
-
+            limpiezaAutomatica = false;  // Desactivar bandera
+        }
     }
 
         
-    }
+    
 }
