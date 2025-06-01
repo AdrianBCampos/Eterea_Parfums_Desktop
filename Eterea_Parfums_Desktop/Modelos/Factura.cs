@@ -4,7 +4,9 @@ namespace Eterea_Parfums_Desktop.Modelos
 {
     internal class Factura
     {
-        public int num_factura { get; set; }
+        public int id { get; set; } 
+        public string num_factura { get; set; } 
+        public string tipo_de_factura { get; set; }
         public DateTime fecha { get; set; }
         public Sucursal sucursal_id { get; set; }
         public Empleado empleado_id { get; set; }
@@ -16,12 +18,14 @@ namespace Eterea_Parfums_Desktop.Modelos
         public int numero_de_caja { get; set; }
         public String tipo_de_consumidor { get; set; }
         public String origen { get; set; }
-        public String facura_pdf { get; set; }
+        public String factura_pdf { get; set; }
 
-        public Factura(int num_factura, DateTime fecha, Sucursal sucursal, Empleado empleado, Cliente cliente, string forma_de_pago, double precio_total
-           , double recargo_tarjeta, double descuento, int numero_de_caja, string tipo_de_consumidor, string origen, string facura_pdf)
+        public Factura(int id, string num_factura, string tipo_de_factura, DateTime fecha, Sucursal sucursal, Empleado empleado, Cliente cliente, string forma_de_pago,
+           double precio_total, double recargo_tarjeta, double descuento, int numero_de_caja, string tipo_de_consumidor, string origen, string factura_pdf)
         {
+            this.id = id;
             this.num_factura = num_factura;
+            this.tipo_de_factura = tipo_de_factura;
             this.fecha = fecha;
             this.sucursal_id = sucursal;
             this.empleado_id = empleado;
@@ -33,7 +37,7 @@ namespace Eterea_Parfums_Desktop.Modelos
             this.numero_de_caja = numero_de_caja;
             this.tipo_de_consumidor = tipo_de_consumidor;
             this.origen = origen;
-            this.facura_pdf = facura_pdf;
+            this.factura_pdf = factura_pdf;
         }
 
         public Factura()
