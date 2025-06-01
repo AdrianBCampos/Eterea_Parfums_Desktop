@@ -1,4 +1,5 @@
 ﻿using Eterea_Parfums_Desktop.Modelos;
+using Org.BouncyCastle.Utilities.Collections;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +10,7 @@ namespace Eterea_Parfums_Desktop.Controladores
     internal class FacturaControlador
     {
 
-        public static int ObtenerProximoIdFactura()
+       /* public static int ObtenerProximoIdFactura()
         {
             int proximoId = 0;
 
@@ -38,32 +39,73 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
 
             return proximoId;
+        }*/
+
+        public static string ObtenerProximoNumFactura(string tipoDeFactura)
+        {
+            string proximoNumFactura = "";
+            int nuevoNumero = 1;
+
+            string query = @"
+        SELECT MAX(num_factura)
+        FROM dbo.Factura
+        WHERE tipo_de_factura = @tipo_de_factura
+          AND LEFT(num_factura, 4) = @punto_de_venta;
+    ";
+
+            using (SqlConnection conexion = new SqlConnection(DB_Controller.connection.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conexion))
+                {
+                    cmd.Parameters.AddWithValue("@tipo_de_factura", tipoDeFactura);
+
+                    conexion.Open();
+                    var result = cmd.ExecuteScalar();
+                    conexion.Close();
+
+                    if (result != null && result != DBNull.Value)
+                    {
+                        string maxNumFactura = result.ToString();
+                        string parteNumerica = maxNumFactura.Substring(4, 8);
+                        nuevoNumero = int.Parse(parteNumerica) + 1;
+                    }
+
+                    // Armamos el nuevo num_factura
+                    proximoNumFactura = nuevoNumero.ToString("D8");
+                }
+            }
+
+            return proximoNumFactura;
         }
+
 
         //CREAR UNA FACTURA AL IMPRIMIR LA VENTA
 
-        public static bool crearFactura(int num_factura, DateTime fecha, int sucursal_id, int vendedor_id, int cliente_id, string forma_de_pago, double precio_total,
-            double recargo_tarjeta, double descuento, int numero_de_caja, string tipo_consumidor, string origen, string factura_pdf)
+        public static bool crearFactura(int id, DateTime fecha, int sucursal_id, int vendedor_id, int cliente_id, string forma_de_pago,
+            double precio_total, double recargo_tarjeta, double descuento, int numero_de_caja, string tipo_consumidor, string origen, 
+            string factura_pdf, string num_factura, string tipo_de_factura)
         {
 
-            string query = "insert into dbo.Factura values" +
-                "(@num_factura, " +
-                "@fecha, " +
-                "@sucursal_id, " +
-                "@vendedor_id, " +
-                "@cliente_id, " +
-                "@forma_de_pago, " +
-                "@precio_total, " +
-                "@recargo_tarjeta, " +
-                "@descuento, " +
-                "@numero_de_caja, " +
-                "@tipo_consumidor, " +
-                "@origen, " +
-                "@factura_pdf); ";
+            string query = "INSERT INTO dbo.Factura(" +
+                "id, " +
+                "fecha, " +
+                "sucursal_id, " +
+                "empleado_id, " +
+                "cliente_id, " +
+                "forma_de_pago, " +
+                "precio_total, " +
+                "recargo_tarjeta, " +
+                "descuento, " +
+                "numero_de_caja, " +
+                "tipo_de_consumidor, " +
+                "origen, " +
+                "factura_pdf, " +
+                "num_factura, " +
+                "tipo_de_factura); ";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
-            cmd.Parameters.AddWithValue("@num_factura", num_factura);
+            cmd.Parameters.AddWithValue("@id", id);
             cmd.Parameters.AddWithValue("@fecha", fecha);
             cmd.Parameters.AddWithValue("@sucursal_id", sucursal_id);
             cmd.Parameters.AddWithValue("@vendedor_id", vendedor_id);
@@ -76,6 +118,8 @@ namespace Eterea_Parfums_Desktop.Controladores
             cmd.Parameters.AddWithValue("@tipo_consumidor", tipo_consumidor);
             cmd.Parameters.AddWithValue("@origen", origen);
             cmd.Parameters.AddWithValue("@factura_pdf", factura_pdf);
+            cmd.Parameters.AddWithValue("@num_factura", num_factura);
+            cmd.Parameters.AddWithValue("@tipo_de_factura", tipo_de_factura);
 
             try
             {
@@ -118,7 +162,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                     cliente.id = reader.GetInt32(4);
 
                     Factura factura = new Factura(reader.GetInt32(0), reader.GetDateTime(1), sucursal, empleado, cliente, reader.GetString(5), reader.GetDouble(6),
-                        reader.GetDouble(7), reader.GetDouble(8), reader.GetInt32(9), reader.GetString(10), reader.GetString(11), "");
+                        reader.GetDouble(7), reader.GetDouble(8), reader.GetInt32(9), reader.GetString(10), reader.GetString(11), reader.GetString(12), reader.GetString(13), reader.GetString(14));
 
                     facturas.Add(factura);
                 }
@@ -136,7 +180,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static Factura getById(int id)
         {
             Factura factura = new Factura();
-            string query = "SELECT * FROM dbo.factura WHERE num_factura = @id";
+            string query = "SELECT * FROM dbo.factura WHERE id = @id";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@id", id);
             try
@@ -145,7 +189,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    factura.num_factura = reader.GetInt32(0);
+                    factura.id = reader.GetInt32(0);
                     factura.fecha = reader.GetDateTime(1);
                     factura.sucursal_id = SucursalControlador.getById(reader.GetInt32(2));
                     factura.empleado_id = EmpleadoControlador.obtenerPorId(reader.GetInt32(3));
@@ -157,7 +201,9 @@ namespace Eterea_Parfums_Desktop.Controladores
                     factura.numero_de_caja = reader.GetInt32(9);
                     factura.tipo_de_consumidor = reader.GetString(10);
                     factura.origen = reader.GetString(11);
-                    factura.facura_pdf = reader.GetString(12);
+                    factura.factura_pdf = reader.GetString(12);
+                    factura.num_factura = reader.GetString(13);
+                    factura.tipo_de_factura = reader.GetString(14);
                 }
                 reader.Close();
                 DB_Controller.connection.Close();
