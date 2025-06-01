@@ -25,20 +25,44 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
         {
             InitializeComponent();
             this.numeroSucursal = numeroSucursal;
+
+            dataGridViewPerfumes.RowTemplate.Height = 80;
+
             cargarDatos();
             lbl_info.Text = numeroSucursal.ToString();
+
+            this.Cursor = Cursors.Default;
+            this.UseWaitCursor = false;
         }
 
         private System.Drawing.Image redimensionarImagen(System.Drawing.Image img, int cellWidth, int cellHeight)
         {
+            // Calcula el ratio de ancho y alto original
+            float ratioX = (float)cellWidth / img.Width;
+            float ratioY = (float)cellHeight / img.Height;
+            // Elige el ratio más pequeño para que encaje manteniendo la proporción
+            float ratio = Math.Min(ratioX, ratioY);
+
+            int newWidth = (int)(img.Width * ratio);
+            int newHeight = (int)(img.Height * ratio);
+
+            // Crear un bitmap del tamaño exacto de la celda
             Bitmap resizedImage = new Bitmap(cellWidth, cellHeight);
             using (Graphics graphics = Graphics.FromImage(resizedImage))
             {
+                graphics.Clear(Color.Transparent); // Fondo transparente o el color que prefieras
                 graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                graphics.DrawImage(img, 0, 0, cellWidth, cellHeight);
+
+                // Centrar la imagen en la celda
+                int posX = (cellWidth - newWidth) / 2;
+                int posY = (cellHeight - newHeight) / 2;
+
+                graphics.DrawImage(img, posX, posY, newWidth, newHeight);
             }
+
             return resizedImage;
         }
+
 
 
         private void cargarDatos()
