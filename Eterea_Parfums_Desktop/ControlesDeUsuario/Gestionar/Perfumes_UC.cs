@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 {
-    public partial class PerfumesUC : UserControl
+    public partial class Perfumes_UC : UserControl
     {
 
         private List<Perfume> perfumes;
-        public PerfumesUC()
+        public Perfumes_UC()
         {
             InitializeComponent();
 

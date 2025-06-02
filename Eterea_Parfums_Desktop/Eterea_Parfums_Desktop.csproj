@@ -291,11 +291,11 @@
     <Compile Include="Controladores\TipoDeAromaControlador.cs" />
     <Compile Include="Controladores\TipoDeNotaControlador.cs" />
     <Compile Include="Controladores\TipoDePerfumeControlador.cs" />
-    <Compile Include="ControlesDeUsuario\Gestionar\PerfumesUC.cs">
+    <Compile Include="ControlesDeUsuario\Gestionar\Perfumes_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ControlesDeUsuario\Gestionar\PerfumesUC.Designer.cs">
-      <DependentUpon>PerfumesUC.cs</DependentUpon>
+    <Compile Include="ControlesDeUsuario\Gestionar\Perfumes_UC.Designer.cs">
+      <DependentUpon>Perfumes_UC.cs</DependentUpon>
     </Compile>
     <Compile Include="DTOs\PerfumeDTO.cs" />
     <Compile Include="FormABM\Perfume\FormEditarPerfume2.cs">
@@ -568,8 +568,8 @@
     <EmbeddedResource Include="FormABM\Perfume\FormCrearPerfume2.resx">
       <DependentUpon>FormCrearPerfume2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlesDeUsuario\Gestionar\PerfumesUC.resx">
-      <DependentUpon>PerfumesUC.cs</DependentUpon>
+    <EmbeddedResource Include="ControlesDeUsuario\Gestionar\Perfumes_UC.resx">
+      <DependentUpon>Perfumes_UC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormABM\Perfume\FormEditarPerfume2.resx">
       <DependentUpon>FormEditarPerfume2.cs</DependentUpon>

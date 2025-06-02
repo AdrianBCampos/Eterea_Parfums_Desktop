@@ -13,7 +13,7 @@ namespace Eterea_Parfums_Desktop
 
             this.Scale(new SizeF(Program.ScaleFactor, Program.ScaleFactor));
 
-            PerfumesUC perfumesUC = new PerfumesUC();
+            Perfumes_UC perfumesUC = new Perfumes_UC();
             addUserControl(perfumesUC);
            
         }
@@ -27,7 +27,7 @@ namespace Eterea_Parfums_Desktop
 
         private void btn_perfumes_Click(object sender, EventArgs e)
         {
-            PerfumesUC perfumesUC = new PerfumesUC();
+            Perfumes_UC perfumesUC = new Perfumes_UC();
             addUserControl(perfumesUC);
         }
 

@@ -1,6 +1,6 @@
 ﻿namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 {
-    partial class PerfumesUC
+    partial class Perfumes_UC
     {
         /// <summary> 
         /// Variable del diseñador necesaria.

@@ -22,14 +22,14 @@ namespace Eterea_Parfums_Desktop
         private List<NotaConTipoDeNota> notas_con_tipo_de_nota;
         private NotasDelPerfume notasDelPerfume;
         private FormEditarPerfume1 formEditarProducto;
-        private PerfumesUC perfumesUC;
+        private Perfumes_UC perfumesUC;
         public FormEditarPerfume2()
         {
             InitializeComponent();
 
         }
 
-        public FormEditarPerfume2(Perfume perfume, FormEditarPerfume1 formEditarProducto, PerfumesUC perfumesUC)
+        public FormEditarPerfume2(Perfume perfume, FormEditarPerfume1 formEditarProducto, Perfumes_UC perfumesUC)
         {
             InitializeComponent();
             this.formEditarProducto = formEditarProducto;
