@@ -380,11 +380,23 @@ namespace Eterea_Parfums_Desktop
         private void VisualizarPerfumes(List<Perfume> perfumeMostrar)
         {
             dataGridViewConsultas.Rows.Clear();
-            var stockPorPerfume = StockControlador.ObtenerTodosLosStocksPorSucursal(Program.sucursal);
+
+            // Stock total por perfume (todas las sucursales)
+            var stockPorPerfume = StockControlador.ObtenerTodosLosStocksPorSucursal();
+
+            // Stock por perfume en la sucursal actual
+            var stockPorPerfumeEnSucursal = StockControlador.ObtenerTodosLosStocksPorSucursal(Program.sucursal);
 
             foreach (Perfume perfume in perfumeMostrar)
             {
-                int stockDisponible = stockPorPerfume.ContainsKey(perfume.id) ? stockPorPerfume[perfume.id] : 0;
+                 int stockDisponible = stockPorPerfume
+                     .Where(kvp => kvp.Key.perfumeId == perfume.id)
+                     .Sum(kvp => kvp.Value);
+
+                int stockEnSucursal = stockPorPerfumeEnSucursal.ContainsKey(perfume.id)
+                   ? stockPorPerfumeEnSucursal[perfume.id]
+                   : 0;
+
                 string precioMostrado = (perfume.activo == false || stockDisponible <= 0)
                     ? "Sin Stock"
                     : perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
@@ -408,6 +420,15 @@ namespace Eterea_Parfums_Desktop
                 {
                     row.Cells["Precio"].Style.ForeColor = Color.Black;
                     row.Cells["Precio"].Style.Font = dataGridViewConsultas.DefaultCellStyle.Font;
+                }
+                // Mostrar "Agregar" solo si hay stock en la sucursal actual
+                if (stockEnSucursal > 0)
+                {
+                    row.Cells["Agregar"].Value = "Agregar";
+                }
+                else
+                {
+                    row.Cells["Agregar"].Value = ""; // O podrías poner "Sin Stock en Sucursal"
                 }
             }
 
@@ -567,16 +588,28 @@ namespace Eterea_Parfums_Desktop
             }
 
             // 🔥 Filtro por stock y estado de "a la venta" según combo
-            var stockPorPerfume = StockControlador.ObtenerTodosLosStocksPorSucursal(Program.sucursal);
+            var stockPorPerfume = StockControlador.ObtenerTodosLosStocksPorSucursal();
+
             switch (combo_filtro_articulos.SelectedIndex)
             {
-                case 0: // Perfumes a la venta
-                    Perfumes_Filtrado = Perfumes_Filtrado.Where(p => p.activo == true && stockPorPerfume.ContainsKey(p.id) && stockPorPerfume[p.id] > 0).ToList();
+                case 0: // Perfumes a la venta (activos y con stock total > 0)
+                    Perfumes_Filtrado = Perfumes_Filtrado.Where(p =>
+                        p.activo == true &&
+                        stockPorPerfume
+                            .Where(kvp => kvp.Key.perfumeId == p.id)
+                            .Sum(kvp => kvp.Value) > 0).ToList();
                     break;
-                case 1: // Todos los perfumes (ya está)
+
+                case 1: // Todos los perfumes
+                        // No se filtra más
                     break;
-                case 2: // Sin stock
-                    Perfumes_Filtrado = Perfumes_Filtrado.Where(p => p.activo == false || !stockPorPerfume.ContainsKey(p.id) || stockPorPerfume[p.id] <= 0).ToList();
+
+                case 2: // Perfumes sin stock (inactivos o sin stock total)
+                    Perfumes_Filtrado = Perfumes_Filtrado.Where(p =>
+                        p.activo == false ||
+                        stockPorPerfume
+                            .Where(kvp => kvp.Key.perfumeId == p.id)
+                            .Sum(kvp => kvp.Value) <= 0).ToList();
                     break;
             }
 
@@ -626,23 +659,35 @@ namespace Eterea_Parfums_Desktop
 
                 if (perfumeSeleccionado != null)
                 {
-                    FormStockPorSucursal stockForm = new FormStockPorSucursal(perfumeSeleccionado.nombre);
+                    FormStockPorSucursal stockForm = new FormStockPorSucursal(perfumeSeleccionado.nombre, perfumeSeleccionado.id);
                     stockForm.TopMost = true;
                     stockForm.ShowDialog(this);
                 }
             }
-            else if (e.RowIndex >= 0 && e.ColumnIndex == 7)
+            else if (e.RowIndex >= 0 && e.ColumnIndex == 7) // Columna "Agregar"
             {
                 int rowIndex = e.RowIndex;
                 Perfume perfumeSeleccionado = Perfumes_Paginados[rowIndex];
+
+                // Obtener stock en la sucursal actual
+                int stockEnSucursal = 0;
+                var stockPorPerfumeSucursal = StockControlador.ObtenerTodosLosStocksPorSucursal(Program.sucursal);
+                if (stockPorPerfumeSucursal.ContainsKey(perfumeSeleccionado.id))
+                {
+                    stockEnSucursal = stockPorPerfumeSucursal[perfumeSeleccionado.id];
+                }
+
+                if (stockEnSucursal <= 0)
+                {
+                    MessageBox.Show("No hay stock disponible en esta sucursal para agregar este perfume.", "Sin Stock", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return; // No permitir agregar
+                }
+
+                // Si tiene stock, agregarlo a la factura
                 completarFactura(perfumeSeleccionado);
                 facturacionForm.ActualizarTotales();
                 this.Close();
-
             }
-
-           
-
         }
 
         private void completarFactura(Perfume perfumeSeleccionado)

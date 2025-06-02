@@ -13,19 +13,20 @@ namespace Eterea_Parfums_Desktop
     public partial class FormStockPorSucursal : Form
     {
         private string nombrePerfume;
+        private int? perfumeIdSeleccionado;
 
-        public FormStockPorSucursal(string nombrePerfume)
+        public FormStockPorSucursal(string nombrePerfume, int? perfumeId = null)
         {
             InitializeComponent();
             this.nombrePerfume = nombrePerfume;
-
-            AplicarEstiloDataGridView();  // 👈 Llamada para aplicar el estilo
-
+            this.perfumeIdSeleccionado = perfumeId;
             CargarDatos();
         }
 
         private void CargarDatos()
         {
+            //Se oculta la primera columna de la tabla (es una columna de seleccion de fila)
+            dataGridViewStock.RowHeadersVisible = false;
             // Obtener todas las sucursales
             List<Sucursal> sucursales = SucursalControlador.getAll();
 
@@ -57,7 +58,7 @@ namespace Eterea_Parfums_Desktop
 
             // Calcular peso restante para las columnas de sucursal
             int cantidadSucursales = sucursales.Count;
-            float pesoRestante = 100 - (35 + 10 + 10 + 10 + 15);
+            float pesoRestante = 100 - (35 + 8 + 10 + 8 + 14); // Ojo: usé los valores correctos
             float pesoPorSucursal = (cantidadSucursales > 0) ? (pesoRestante / cantidadSucursales) : 0;
 
             foreach (var suc in sucursales)
@@ -69,10 +70,16 @@ namespace Eterea_Parfums_Desktop
             List<Perfume> perfumes = PerfumeControlador.getByNombre(nombrePerfume);
             var stockPorPerfumeSucursal = StockControlador.ObtenerTodosLosStocksPorSucursal();
 
-            foreach (var perfume in perfumes)
+            int? filaSeleccionada = null;  // Variable para guardar el índice a seleccionar
+
+            for (int i = 0; i < perfumes.Count; i++)
             {
+                var perfume = perfumes[i];
                 int rowIndex = dataGridViewStock.Rows.Add();
                 var row = dataGridViewStock.Rows[rowIndex];
+
+                row.Tag = perfume; // Guardar el perfume en el Tag para referencia
+
                 row.Cells["Nombre"].Value = perfume.nombre;
                 row.Cells["Presentacion"].Value = perfume.presentacion_ml + " ml";
                 row.Cells["Tipo"].Value = TipoDePerfumeControlador.getById(perfume.tipo_de_perfume.id).tipo_de_perfume;
@@ -88,10 +95,25 @@ namespace Eterea_Parfums_Desktop
                     }
                     row.Cells[$"Sucursal_{suc.id}"].Value = cantidad;
                 }
+
+                // Almacenar la fila si coincide con el perfume del click (ID)
+                if (perfumeIdSeleccionado.HasValue && perfume.id == perfumeIdSeleccionado.Value)
+                {
+                    filaSeleccionada = rowIndex;
+                }
             }
 
+            // Finalmente marcar la fila seleccionada
+            if (filaSeleccionada.HasValue)
+            {
+                dataGridViewStock.ClearSelection(); // Limpiar selección previa
+                dataGridViewStock.Rows[filaSeleccionada.Value].Selected = true;
+                dataGridViewStock.FirstDisplayedScrollingRowIndex = filaSeleccionada.Value; // Opcional: desplazar a la fila
+                dataGridViewStock.Rows[filaSeleccionada.Value].DefaultCellStyle.BackColor = Color.LightGreen; // Color destacado
+            }
             dataGridViewStock.ClearSelection();
         }
+
 
         private void AplicarEstiloDataGridView()
         {

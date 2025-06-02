@@ -411,18 +411,20 @@ namespace Eterea_Parfums_Desktop
 
         private void VisualizarPerfumes(List<Perfume> perfumeMostrar)
         {
-            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
+            //Se oculta la primera columna de la tabla (es una columna de seleccion de fila)
             dataGridViewConsultas.RowHeadersVisible = false;
 
             dataGridViewConsultas.Rows.Clear();
 
-            var stockPorPerfume = StockControlador.ObtenerTodosLosStocksPorSucursal(Program.sucursal);
+            var stockPorPerfume = StockControlador.ObtenerTodosLosStocksPorSucursal();
 
 
             foreach (Perfume perfume in perfumeMostrar)
             {
-                int stockDisponible = stockPorPerfume.ContainsKey(perfume.id) ? stockPorPerfume[perfume.id] : 0;
-
+                int stockDisponible = stockPorPerfume
+                     .Where(kvp => kvp.Key.perfumeId == perfume.id)
+                     .Sum(kvp => kvp.Value);
+                 
 
                 bool mostrarPerfume = false;
 
@@ -453,21 +455,22 @@ namespace Eterea_Parfums_Desktop
                         : perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
 
                     dataGridViewConsultas.Rows[rowIndex].Cells[0].Value = perfume.nombre;
-                    dataGridViewConsultas.Rows[rowIndex].Cells[1].Value = MarcaControlador.getById(perfume.marca.id).nombre;
-                    dataGridViewConsultas.Rows[rowIndex].Cells[2].Value = GeneroControlador.getById(perfume.genero.id).genero;
-                    dataGridViewConsultas.Rows[rowIndex].Cells[3].Value = precioMostrado;
+                    dataGridViewConsultas.Rows[rowIndex].Cells[1].Value = perfume.presentacion_ml.ToString() + "ml";
+                    dataGridViewConsultas.Rows[rowIndex].Cells[2].Value = MarcaControlador.getById(perfume.marca.id).nombre;
+                    dataGridViewConsultas.Rows[rowIndex].Cells[3].Value = GeneroControlador.getById(perfume.genero.id).genero;
+                    dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = precioMostrado;
                     if (precioMostrado == "Sin Stock")
                     {
-                        dataGridViewConsultas.Rows[rowIndex].Cells[3].Style.ForeColor = Color.Red;
-                        dataGridViewConsultas.Rows[rowIndex].Cells[3].Style.Font = new Font(dataGridViewConsultas.DefaultCellStyle.Font, FontStyle.Bold);
+                        dataGridViewConsultas.Rows[rowIndex].Cells[4].Style.ForeColor = Color.Red;
+                        dataGridViewConsultas.Rows[rowIndex].Cells[4].Style.Font = new Font(dataGridViewConsultas.DefaultCellStyle.Font, FontStyle.Bold);
                     }
                     else
                     {
-                        dataGridViewConsultas.Rows[rowIndex].Cells[3].Style.ForeColor = Color.Black;
-                        dataGridViewConsultas.Rows[rowIndex].Cells[3].Style.Font = dataGridViewConsultas.DefaultCellStyle.Font;
+                        dataGridViewConsultas.Rows[rowIndex].Cells[4].Style.ForeColor = Color.Black;
+                        dataGridViewConsultas.Rows[rowIndex].Cells[4].Style.Font = dataGridViewConsultas.DefaultCellStyle.Font;
                     }
 
-                    dataGridViewConsultas.Rows[rowIndex].Cells[4].Value = "Ver";
+                    dataGridViewConsultas.Rows[rowIndex].Cells[5].Value = "Ver";
                 }
                 dataGridViewConsultas.ClearSelection();
 
@@ -645,7 +648,7 @@ namespace Eterea_Parfums_Desktop
 
         private void dataGridViewConsultas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex == 4) // Verifica que se haga clic en la columna correcta
+            if (e.RowIndex >= 0 && e.ColumnIndex == 5) // Verifica que se haga clic en la columna correcta
             {
                 DataGridViewRow row = dataGridViewConsultas.Rows[e.RowIndex];
                 Perfume perfumeSeleccionado = row.Tag as Perfume;

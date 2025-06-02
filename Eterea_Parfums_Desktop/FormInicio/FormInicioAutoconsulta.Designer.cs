@@ -60,6 +60,7 @@
             this.btn_escanear = new System.Windows.Forms.Button();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Presentacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -244,6 +245,7 @@
             this.dataGridViewConsultas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewConsultas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nombre,
+            this.Presentacion,
             this.marca,
             this.Genero,
             this.precio,
@@ -474,13 +476,18 @@
             // 
             this.nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.nombre.FillWeight = 125F;
-            this.nombre.Frozen = true;
             this.nombre.HeaderText = "Nombre del perfume";
             this.nombre.MinimumWidth = 6;
             this.nombre.Name = "nombre";
             this.nombre.ReadOnly = true;
             this.nombre.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.nombre.Width = 469;
+            // 
+            // Presentacion
+            // 
+            this.Presentacion.HeaderText = "Presentación";
+            this.Presentacion.Name = "Presentacion";
+            this.Presentacion.ReadOnly = true;
             // 
             // marca
             // 
@@ -603,6 +610,7 @@
         public System.Windows.Forms.Button btn_escanear;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Presentacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn marca;
         private System.Windows.Forms.DataGridViewTextBoxColumn Genero;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio;
