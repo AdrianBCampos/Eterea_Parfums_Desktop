@@ -41,17 +41,16 @@ namespace Eterea_Parfums_Desktop.Controladores
             return proximoId;
         }
 
-        public static string ObtenerProximoNumFactura(string tipoDeFactura)
+        public static string ObtenerProximoNumFactura(string tipoDeFactura, string puntoDeVenta)
         {
             string proximoNumFactura = "";
             int nuevoNumero = 1;
 
             string query = @"
-        SELECT MAX(num_factura)
-        FROM dbo.Factura
-        WHERE tipo_de_factura = @tipo_de_factura
-          AND LEFT(num_factura, 4) = @punto_de_venta;
-    ";
+                SELECT MAX(num_factura)
+                FROM dbo.Factura
+                WHERE tipo_de_factura = @tipo_de_factura;
+            ";
 
             using (SqlConnection conexion = new SqlConnection(DB_Controller.connection.ConnectionString))
             {
@@ -66,12 +65,12 @@ namespace Eterea_Parfums_Desktop.Controladores
                     if (result != null && result != DBNull.Value)
                     {
                         string maxNumFactura = result.ToString();
-                        string parteNumerica = maxNumFactura.Substring(4, 8);
+                        string parteNumerica = maxNumFactura.Substring(4, 8); // Últimos 8 dígitos
                         nuevoNumero = int.Parse(parteNumerica) + 1;
                     }
 
-                    // Armamos el nuevo num_factura
-                    proximoNumFactura = nuevoNumero.ToString("D8");
+                    // Combina el punto de venta con el nuevo número
+                    proximoNumFactura = puntoDeVenta + nuevoNumero.ToString("D8");
                 }
             }
 

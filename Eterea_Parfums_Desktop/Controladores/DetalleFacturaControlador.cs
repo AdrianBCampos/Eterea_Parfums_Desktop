@@ -26,7 +26,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                     Factura factura = new Factura();
                     Perfume perfume = new Perfume();
                     Promocion promocion = new Promocion();
-                    factura.num_factura = reader.GetInt32(0);
+                    factura.id = reader.GetInt32(0);
                     perfume.id = reader.GetInt32(1);
                     promocion.id = reader.GetInt32(4);
                     DetalleFactura detalle = new DetalleFactura(factura, perfume, reader.GetInt32(2), reader.GetDouble(3), promocion);

@@ -196,18 +196,18 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             }
 
 
-            Num_factura_máximo();
+            txt_numero_factura.Text = Num_factura_máximo();
             txt_scan_factura.Focus();
             ActualizarEstadoCaja();
         }
 
 
-        private void Num_factura_máximo()
+        private string Num_factura_máximo()
         {
             int puntoDeVenta = Program.sucursal;
             string puntoDeVentaString = puntoDeVenta.ToString("D4");
-            string numeroDeFacturaString = FacturaControlador.ObtenerProximoNumFactura(tipo_de_factura());
-            txt_numero_factura.Text = puntoDeVentaString + "-" + numeroDeFacturaString;
+            string numeroDeFacturaString = FacturaControlador.ObtenerProximoNumFactura(tipo_de_factura(), puntoDeVentaString);
+            return numeroDeFacturaString;
         }
 
         private void ProcesarCodigoBarras(string codigo)
@@ -411,10 +411,12 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                         txt_nombre_cliente.Text = nuevoCliente.nombre + " " + nuevoCliente.apellido;
                         txt_condicion_iva.Text = nuevoCliente.condicion_frente_al_iva;
                         txt_email.Text = nuevoCliente.e_mail;
-                        Num_factura_máximo();
+                        
                     }
                 }
 
+
+                Num_factura_máximo();
                 ActualizarTotales();
             }
             else
@@ -840,7 +842,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         {
             String cond_frente_al_iva = txt_condicion_iva.Text;
             String tipo_De_factura = "";
-            if (cond_frente_al_iva == "responsable inscripto" || cond_frente_al_iva == "monotributista")
+            if (cond_frente_al_iva == "Responsable Inscripto" || cond_frente_al_iva == "Monotributista")
             {
                tipo_De_factura = "A";
             }
@@ -1184,7 +1186,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 }
                 CrearFactura();
                 CrearDetalleFactura();
-                // txt_numero_factura.Text = FacturaControlador.ObtenerProximoIdFactura().ToString();
 
                 ReiniciarFormulario();
 
@@ -1217,7 +1218,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             combo_descuento.SelectedIndex = 1;
             combo_cuotas.SelectedIndex = 0;
             int puntoDeVenta = Program.sucursal;
-            Num_factura_máximo();
+            txt_numero_factura.Text = Num_factura_máximo();
         }
 
         private void EnviarCorreo(string rutaArchivo, string correoDestino)
