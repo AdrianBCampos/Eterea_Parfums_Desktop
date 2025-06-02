@@ -194,18 +194,21 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 IdHistorialCaja = Program.IdHistorialCajaActual;
                 txt_numero_caja.Text = numeroCaja;
             }
-            
-            int puntoDeVenta = Program.sucursal;
-            string puntoDeVentaString = puntoDeVenta.ToString("D4");
-            string numeroDeFacturaString = FacturaControlador.ObtenerProximoIdFactura().ToString("D8");
-            txt_numero_factura.Text = puntoDeVentaString + "-" + numeroDeFacturaString;
-            
+
+
+            Num_factura_máximo();
             txt_scan_factura.Focus();
             ActualizarEstadoCaja();
         }
 
 
-
+        private void Num_factura_máximo()
+        {
+            int puntoDeVenta = Program.sucursal;
+            string puntoDeVentaString = puntoDeVenta.ToString("D4");
+            string numeroDeFacturaString = FacturaControlador.ObtenerProximoNumFactura(tipo_de_factura());
+            txt_numero_factura.Text = puntoDeVentaString + "-" + numeroDeFacturaString;
+        }
 
         private void ProcesarCodigoBarras(string codigo)
         {
@@ -393,21 +396,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     long dniIngresado = long.Parse(txt_dni.Text);
                     // Si no se encuentra el cliente, abrir el formulario para agregar un nuevo cliente
                     FormCrearClienteFactura formCrearClienteFactura = new FormCrearClienteFactura(dni);
-                    //
-                    //formCrearClienteFactura.ShowDialog(); // Cambiado a ShowDialog para esperar que el formulario se cierre
-                    /*Form parentForm = this.FindForm(); // Encuentra el Form que contiene este UserControl
-                                                       // Mostrar con fondo oscuro
-                   
 
-                    if (parentForm != null)
-                    {
-                        formCrearClienteFactura.StartPosition = FormStartPosition.CenterParent;
-                        formCrearClienteFactura.ShowDialog(parentForm); // Lo abre sobre el formulario contenedor
-                    }
-                    else
-                    {
-                        formCrearClienteFactura.ShowDialog(); // Fallback si no encuentra el Form
-                    }*/
 
                     // ✅ Mostrar con fondo oscuro sin preocuparte por el form padre
                     DialogResult dr = ModalHelper.MostrarModalConFondoOscuro(formCrearClienteFactura);
@@ -422,6 +411,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                         txt_nombre_cliente.Text = nuevoCliente.nombre + " " + nuevoCliente.apellido;
                         txt_condicion_iva.Text = nuevoCliente.condicion_frente_al_iva;
                         txt_email.Text = nuevoCliente.e_mail;
+                        Num_factura_máximo();
                     }
                 }
 
@@ -1227,9 +1217,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             combo_descuento.SelectedIndex = 1;
             combo_cuotas.SelectedIndex = 0;
             int puntoDeVenta = Program.sucursal;
-            string puntoDeVentaString = puntoDeVenta.ToString("D4");
-            string numeroDeFacturaString = FacturaControlador.ObtenerProximoIdFactura().ToString("D8");
-            txt_numero_factura.Text = puntoDeVentaString + numeroDeFacturaString;
+            Num_factura_máximo();
         }
 
         private void EnviarCorreo(string rutaArchivo, string correoDestino)
