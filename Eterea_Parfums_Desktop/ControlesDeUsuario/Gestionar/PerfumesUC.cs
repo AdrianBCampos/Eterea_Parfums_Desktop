@@ -68,9 +68,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     dataGridViewPerfumes.Rows[rowIndex].Cells[6].Value = perfume.presentacion_ml.ToString();
                     dataGridViewPerfumes.Rows[rowIndex].Cells[7].Value = (PaisControlador.getById(perfume.pais.id)).nombre;
 
- 
 
-                    if (perfume.spray.ToString() == "1")
+
+                    if (perfume.spray)
                     {
                         dataGridViewPerfumes.Rows[rowIndex].Cells[8].Value = "Si";
                     }
@@ -79,7 +79,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                         dataGridViewPerfumes.Rows[rowIndex].Cells[8].Value = "No";
                     }
 
-                    if (perfume.recargable.ToString() == "1")
+                    if (perfume.recargable)
                     {
                         dataGridViewPerfumes.Rows[rowIndex].Cells[9].Value = "Si";
                     }
@@ -99,8 +99,24 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                     dataGridViewPerfumes.Rows[rowIndex].Cells[11].Value = stockTotal.ToString();
 
-                    dataGridViewPerfumes.Rows[rowIndex].Cells[12].Value = "Editar";
-                    dataGridViewPerfumes.Rows[rowIndex].Cells[13].Value = "Eliminar";
+                    // Insertar "Activo" después de Stock
+                    int indexActivo = dataGridViewPerfumes.Columns["Activo"].Index;
+
+                    // Comprobar si el valor de activo es null o tiene valor
+                    string estadoActivo = perfume.activo.HasValue
+                        ? (perfume.activo.Value ? "Si" : "No")
+                        : "No especificado"; // O puedes mostrar "" si prefieres
+
+                    dataGridViewPerfumes.Rows[rowIndex].Cells[indexActivo].Value = estadoActivo;
+
+                    // Aplicar estilo solo si es "No"
+                    if (perfume.activo.HasValue && !perfume.activo.Value)
+                    {
+                        dataGridViewPerfumes.Rows[rowIndex].Cells[indexActivo].Style.ForeColor = Color.Red;
+                    }
+
+                    dataGridViewPerfumes.Rows[rowIndex].Cells[13].Value = "Editar";
+                    dataGridViewPerfumes.Rows[rowIndex].Cells[14].Value = "Eliminar";
                 }
                 dataGridViewPerfumes.ClearSelection();
 
