@@ -328,70 +328,131 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
 
-        public static List<Perfume> filtrarPorNombre(string nombre)
+        /* public static List<Perfume> filtrarPorNombre(string nombre)
+         {
+             List<Perfume> list = new List<Perfume>();
+
+             Marca marca = new Marca();
+             TipoDePerfume tipo = new TipoDePerfume();
+             Genero genero = new Genero();
+             Pais pais = new Pais();
+
+
+             if (nombre == null)
+             {
+                 list = PerfumeControlador.getAll();
+             }
+             else
+             {
+
+                 string query = "select * from dbo.Perfume where nombre like @nombre;";
+
+
+                 SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
+                 cmd.Parameters.AddWithValue("@nombre", "%" + nombre + "%");
+
+
+                 try
+                 {
+                     DB_Controller.connection.Open();
+                     SqlDataReader r = cmd.ExecuteReader();
+
+                     while (r.Read())
+                     {
+
+                         marca.id = r.GetInt32(2);
+                         tipo.id = r.GetInt32(4);
+                         genero.id = r.GetInt32(5);
+                         pais.id = r.GetInt32(7);
+
+                         Marca marcaOb = new Marca(marca.id, "");
+                         TipoDePerfume tipo_de_perfumeOb = new TipoDePerfume(tipo.id, "");
+                         Genero generoOb = new Genero(genero.id, "");
+                         Pais paisOb = new Pais(pais.id, "");
+
+
+                         list.Add(new Perfume(r.GetInt32(0), r.GetString(1), marcaOb, r.GetString(3),
+                             tipo_de_perfumeOb, generoOb, r.GetInt32(6), paisOb,
+                             r.GetBoolean(8), r.GetBoolean(9), r.GetString(10), r.GetInt32(11), r.GetDouble(12),
+                             r.GetBoolean(13), r.GetString(14), r.GetString(15)));
+
+
+                     }
+                     r.Close();
+                     DB_Controller.connection.Close();
+
+
+                 }
+                 catch (Exception e)
+                 {
+                     throw new Exception("Hay un error en la query: " + e.Message);
+                 }
+
+
+             }
+             return list;
+         }*/
+
+        public static List<Perfume> getByNombre(string nombre)
         {
             List<Perfume> list = new List<Perfume>();
 
-            Marca marca = new Marca();
-            TipoDePerfume tipo = new TipoDePerfume();
-            Genero genero = new Genero();
-            Pais pais = new Pais();
+            string query = @"
+        SELECT p.*, tp.tipo_de_perfume, g.genero
+        FROM dbo.Perfume p
+        JOIN dbo.tipo_de_perfume tp ON p.tipo_de_perfume_id = tp.id
+        JOIN dbo.genero g ON p.genero_id = g.id
+        WHERE p.nombre = @nombre;
+    ";
 
-
-            if (nombre == null)
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
             {
-                list = PerfumeControlador.getAll();
-            }
-            else
-            {
+                connection.Open();
 
-                string query = "select * from dbo.Perfume where nombre like @nombre;";
-
-
-                SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-                cmd.Parameters.AddWithValue("@nombre", "%" + nombre + "%");
-
-
-                try
+                using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
-                    DB_Controller.connection.Open();
-                    SqlDataReader r = cmd.ExecuteReader();
+                    cmd.Parameters.AddWithValue("@nombre", nombre);
 
-                    while (r.Read())
+                    using (SqlDataReader r = cmd.ExecuteReader())
                     {
+                        while (r.Read())
+                        {
+                            int marcaId = r.GetInt32(2);
+                            int paisId = r.GetInt32(7);
 
-                        marca.id = r.GetInt32(2);
-                        tipo.id = r.GetInt32(4);
-                        genero.id = r.GetInt32(5);
-                        pais.id = r.GetInt32(7);
+                            Marca marcaOb = MarcaControlador.getById(marcaId);
+                            Pais paisOb = PaisControlador.getById(paisId);
 
-                        Marca marcaOb = new Marca(marca.id, "");
-                        TipoDePerfume tipo_de_perfumeOb = new TipoDePerfume(tipo.id, "");
-                        Genero generoOb = new Genero(genero.id, "");
-                        Pais paisOb = new Pais(pais.id, "");
+                            TipoDePerfume tipoOb = new TipoDePerfume(r.GetInt32(4), r.GetString(r.GetOrdinal("tipo_de_perfume")));
+                            Genero generoOb = new Genero(r.GetInt32(5), r.GetString(r.GetOrdinal("genero")));
 
-
-                        list.Add(new Perfume(r.GetInt32(0), r.GetString(1), marcaOb, r.GetString(3),
-                            tipo_de_perfumeOb, generoOb, r.GetInt32(6), paisOb,
-                            r.GetBoolean(8), r.GetBoolean(9), r.GetString(10), r.GetInt32(11), r.GetDouble(12),
-                            r.GetBoolean(13), r.GetString(14), r.GetString(15)));
-
-
+                            list.Add(new Perfume(
+                                r.GetInt32(0),                 // id
+                                r.GetString(1),                // nombre
+                                marcaOb,                      // marca
+                                r.GetString(3),                // codigo
+                                tipoOb,                       // tipo de perfume
+                                generoOb,                     // genero
+                                r.GetInt32(6),                // presentacion_ml
+                                paisOb,                       // pais
+                                r.GetBoolean(8),              // spray
+                                r.GetBoolean(9),              // recargable
+                                r.GetString(10),              // descripcion
+                                r.GetInt32(11),               // anio_de_lanzamiento
+                                r.GetDouble(12),              // precio
+                                r.GetBoolean(13),             // activo
+                                r.GetString(14),              // imagen1
+                                r.GetString(15)               // imagen2
+                            ));
+                        }
                     }
-                    r.Close();
-                    DB_Controller.connection.Close();
-
-
                 }
-                catch (Exception e)
-                {
-                    throw new Exception("Hay un error en la query: " + e.Message);
-                }
-
-
             }
+
             return list;
         }
+
+
 
         public static Perfume getByCodigo(string codigo)
         {

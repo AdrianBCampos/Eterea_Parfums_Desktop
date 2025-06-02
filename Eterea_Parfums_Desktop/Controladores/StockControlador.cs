@@ -217,6 +217,33 @@ namespace Eterea_Parfums_Desktop.Controladores
             return resultado;
         }
 
+        public static Dictionary<(int perfumeId, int sucursalId), int> ObtenerTodosLosStocksPorSucursal()
+        {
+            var result = new Dictionary<(int, int), int>();
+
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            {
+                string query = @"
+                SELECT perfume_id, sucursal_id, cantidad
+                FROM stock";
+
+                SqlCommand cmd = new SqlCommand(query, connection);
+
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    int perfumeId = reader.GetInt32(0);
+                    int sucursalId = reader.GetInt32(1);
+                    int cantidad = reader.GetInt32(2);
+                    result[(perfumeId, sucursalId)] = cantidad;
+                }
+                connection.Close();
+            }
+
+            return result;
+        }
+
 
 
 

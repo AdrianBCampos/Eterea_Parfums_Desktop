@@ -50,7 +50,7 @@ namespace Eterea_Parfums_Desktop
 
             RegistrarClicks(this);
 
-          
+            ConfigurarDataGridView();  // 👈 Configurar columnas
 
             this.VisibleChanged += FormConsultasPerfumeEmpleado_VisibleChanged;
 
@@ -97,6 +97,8 @@ namespace Eterea_Parfums_Desktop
             //CargarStock();
             CargarArticulos();
 
+
+
             //Diseño del combo box
             combo_filtro_genero.DrawMode = DrawMode.OwnerDrawFixed;
             combo_filtro_genero.DrawItem += comboBoxdiseño_DrawItem;
@@ -130,6 +132,45 @@ namespace Eterea_Parfums_Desktop
 
         }
 
+        private void ConfigurarDataGridView()
+        {
+            dataGridViewConsultas.Columns.Clear();
+            dataGridViewConsultas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewConsultas.RowHeadersVisible = false;
+            dataGridViewConsultas.AllowUserToAddRows = false;
+
+            // Columnas principales
+            dataGridViewConsultas.Columns.Add("Nombre", "Nombre");
+            dataGridViewConsultas.Columns.Add("Presentacion", "Presentación");
+            dataGridViewConsultas.Columns.Add("Marca", "Marca");
+            dataGridViewConsultas.Columns.Add("Genero", "Género");
+            dataGridViewConsultas.Columns.Add("Precio", "Precio");
+
+            // Botón Detalles
+            DataGridViewButtonColumn btnDetalles = new DataGridViewButtonColumn();
+            btnDetalles.Name = "Detalles";
+            btnDetalles.HeaderText = "";
+            btnDetalles.Text = "Detalles";
+            btnDetalles.UseColumnTextForButtonValue = true;
+            dataGridViewConsultas.Columns.Add(btnDetalles);
+
+            // Botón Ver Stock
+            DataGridViewButtonColumn btnStock = new DataGridViewButtonColumn();
+            btnStock.Name = "VerStock";
+            btnStock.HeaderText = "";
+            btnStock.Text = "Ver Stock";
+            btnStock.UseColumnTextForButtonValue = true;
+            dataGridViewConsultas.Columns.Add(btnStock);
+
+            // Botón Agregar
+            DataGridViewButtonColumn btnAgregar = new DataGridViewButtonColumn();
+            btnAgregar.Name = "Agregar";
+            btnAgregar.HeaderText = "";
+            btnAgregar.Text = "Agregar";
+            btnAgregar.UseColumnTextForButtonValue = true;
+            dataGridViewConsultas.Columns.Add(btnAgregar);
+        }
+
         private void ResetearFiltros()
         {
             filtro = new Perfume(); // Resetea el objeto filtro
@@ -156,7 +197,7 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
-    
+    /*
         private void FormConsultasPerfumeEmpleado_FormClosed(object sender, FormClosedEventArgs e)
         {
             BarcodeReceiver.OnCodigoLeido -= ProcesarCodigoLeido;
@@ -168,7 +209,7 @@ namespace Eterea_Parfums_Desktop
             base.OnFormClosed(e);
             facturacionForm.ActivarEscaner(); // ✅ Reactivar si tenés este método
         }
-
+    */
 
 
         private void RegistrarClicks(Control parent)
@@ -338,46 +379,43 @@ namespace Eterea_Parfums_Desktop
 
         private void VisualizarPerfumes(List<Perfume> perfumeMostrar)
         {
-            dataGridViewConsultas.RowHeadersVisible = false;
             dataGridViewConsultas.Rows.Clear();
+            var stockPorPerfume = StockControlador.ObtenerTodosLosStocksPorSucursal(Program.sucursal);
 
             foreach (Perfume perfume in perfumeMostrar)
             {
-                int rowIndex = dataGridViewConsultas.Rows.Add();
-                DataGridViewRow row = dataGridViewConsultas.Rows[rowIndex];
-                row.Tag = perfume;
-
-                // Precio y stock visual
-                var stockPorPerfume = StockControlador.ObtenerTodosLosStocksPorSucursal(Program.sucursal);
                 int stockDisponible = stockPorPerfume.ContainsKey(perfume.id) ? stockPorPerfume[perfume.id] : 0;
                 string precioMostrado = (perfume.activo == false || stockDisponible <= 0)
                     ? "Sin Stock"
                     : perfume.precio_en_pesos.ToString("C", CultureInfo.CurrentCulture);
 
-                // Asignar valores a celdas
-                row.Cells[0].Value = perfume.nombre;
-                row.Cells[1].Value = MarcaControlador.getById(perfume.marca.id).nombre;
-                row.Cells[2].Value = GeneroControlador.getById(perfume.genero.id).genero;
-                row.Cells[3].Value = precioMostrado;
+                int rowIndex = dataGridViewConsultas.Rows.Add();
+                DataGridViewRow row = dataGridViewConsultas.Rows[rowIndex];
+                row.Tag = perfume;
+
+                row.Cells["Nombre"].Value = perfume.nombre;
+                row.Cells["Presentacion"].Value = perfume.presentacion_ml.ToString() + " ml";
+                row.Cells["Marca"].Value = MarcaControlador.getById(perfume.marca.id).nombre;
+                row.Cells["Genero"].Value = GeneroControlador.getById(perfume.genero.id).genero;
+                row.Cells["Precio"].Value = precioMostrado;
 
                 if (precioMostrado == "Sin Stock")
                 {
-                    row.Cells[3].Style.ForeColor = Color.Red;
-                    row.Cells[3].Style.Font = new Font(dataGridViewConsultas.DefaultCellStyle.Font, FontStyle.Bold);
+                    row.Cells["Precio"].Style.ForeColor = Color.Red;
+                    row.Cells["Precio"].Style.Font = new Font(dataGridViewConsultas.DefaultCellStyle.Font, FontStyle.Bold);
                 }
                 else
                 {
-                    row.Cells[3].Style.ForeColor = Color.Black;
-                    row.Cells[3].Style.Font = dataGridViewConsultas.DefaultCellStyle.Font;
+                    row.Cells["Precio"].Style.ForeColor = Color.Black;
+                    row.Cells["Precio"].Style.Font = dataGridViewConsultas.DefaultCellStyle.Font;
                 }
-
-                row.Cells[4].Value = "Ver";
-                row.Cells[5].Value = "Agregar";
             }
 
             dataGridViewConsultas.ClearSelection();
+
             dataGridViewConsultas.CellPainting += dataGridViewConsultas_CellPainting;
         }
+
 
 
         private void btn_anterior_Click(object sender, EventArgs e)
@@ -556,7 +594,7 @@ namespace Eterea_Parfums_Desktop
         {
             var senderGrid = (DataGridView)sender;
 
-            if (e.RowIndex >= 0 && e.ColumnIndex == 4) // Verifica que se haga clic en la columna correcta
+            if (e.RowIndex >= 0 && e.ColumnIndex == 5) // Verifica que se haga clic en la columna correcta
             {
                 DataGridViewRow row = dataGridViewConsultas.Rows[e.RowIndex];
                 Perfume perfumeSeleccionado = row.Tag as Perfume;
@@ -581,7 +619,19 @@ namespace Eterea_Parfums_Desktop
                 // Restaurar FormInicioAutoconsulta al cerrar FormDetallePerfume
                 detallesForm.FormClosing += (s, args) => this.Enabled = true;
             }
-            else if (e.RowIndex >= 0 && e.ColumnIndex == 5)
+            else if (e.RowIndex >= 0 && e.ColumnIndex == 6) // Columna "Stock"
+            {
+                DataGridViewRow row = dataGridViewConsultas.Rows[e.RowIndex];
+                Perfume perfumeSeleccionado = row.Tag as Perfume;
+
+                if (perfumeSeleccionado != null)
+                {
+                    FormStockPorSucursal stockForm = new FormStockPorSucursal(perfumeSeleccionado.nombre);
+                    stockForm.TopMost = true;
+                    stockForm.ShowDialog(this);
+                }
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == 7)
             {
                 int rowIndex = e.RowIndex;
                 Perfume perfumeSeleccionado = Perfumes_Paginados[rowIndex];
@@ -590,6 +640,9 @@ namespace Eterea_Parfums_Desktop
                 this.Close();
 
             }
+
+           
+
         }
 
         private void completarFactura(Perfume perfumeSeleccionado)
@@ -797,7 +850,7 @@ namespace Eterea_Parfums_Desktop
 
         }
 
-        public void PrepararParaNuevoEscaneo()
+        /*public void PrepararParaNuevoEscaneo()
         {
             escaneoHabilitado = false;  // Primero aseguro que está limpio
            
@@ -807,7 +860,7 @@ namespace Eterea_Parfums_Desktop
             lbl_codigoBarras.Visible = false;
             btn_escanear.Visible = true;
             btn_escanear.Focus(); // Opcional, si querés que quede seleccionado el botón
-        }
+        }*/
 
         /*private void MostrarCartelCodigoNoEncontrado()
         {
@@ -844,7 +897,7 @@ namespace Eterea_Parfums_Desktop
             MessageBox.Show("Error al leer el código de barras", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }*/
 
-        public void RestaurarUI()
+        /*public void RestaurarUI()
         {
             // ✅ Desactivar escaneo
             escaneoHabilitado = false;
@@ -852,7 +905,7 @@ namespace Eterea_Parfums_Desktop
             btn_escanear.Visible = true;  // Mostrar botón Escanear
             txt_scan.Visible = false;     // Ocultar txt_scan
             lbl_codigoBarras.Visible = false;  // Ocultar lbl_codigoBarras
-        }
+        }*/
 
         private void btn_close_Click(object sender, EventArgs e)
         {

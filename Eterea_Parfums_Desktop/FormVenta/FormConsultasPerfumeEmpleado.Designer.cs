@@ -61,6 +61,7 @@
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.btn_close = new System.Windows.Forms.Button();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Presentacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -154,6 +155,7 @@
             this.dataGridViewConsultas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewConsultas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nombre,
+            this.Presentacion,
             this.marca,
             this.Genero,
             this.precio,
@@ -481,6 +483,12 @@
             this.nombre.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.nombre.Width = 469;
             // 
+            // Presentacion
+            // 
+            this.Presentacion.HeaderText = "Presentacion";
+            this.Presentacion.Name = "Presentacion";
+            this.Presentacion.ReadOnly = true;
+            // 
             // marca
             // 
             this.marca.FillWeight = 125F;
@@ -492,12 +500,14 @@
             // 
             // Genero
             // 
+            this.Genero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Genero.FillWeight = 50F;
             this.Genero.HeaderText = "Genero";
             this.Genero.MinimumWidth = 6;
             this.Genero.Name = "Genero";
             this.Genero.ReadOnly = true;
             this.Genero.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Genero.Width = 92;
             // 
             // precio
             // 
@@ -512,12 +522,14 @@
             // 
             // ver
             // 
+            this.ver.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.ver.FillWeight = 50F;
             this.ver.HeaderText = "";
             this.ver.MinimumWidth = 6;
             this.ver.Name = "ver";
             this.ver.ReadOnly = true;
             this.ver.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ver.Width = 6;
             // 
             // agregar
             // 
@@ -610,6 +622,7 @@
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.Button btn_close;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Presentacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn marca;
         private System.Windows.Forms.DataGridViewTextBoxColumn Genero;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio;
