@@ -194,7 +194,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 IdHistorialCaja = Program.IdHistorialCajaActual;
                 txt_numero_caja.Text = numeroCaja;
             }
-
+            
             int puntoDeVenta = Program.sucursal;
             string puntoDeVentaString = puntoDeVenta.ToString("D4");
             string numeroDeFacturaString = FacturaControlador.ObtenerProximoIdFactura().ToString("D8");
@@ -492,13 +492,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 descuentoUnitario();
                 ActualizarTotales();
 
-                //Meti este codigo dentro del metodo ActualizarTotales para no repetir codigo
-                /*totalFactura();
-                CalcularImporteRecargo(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text));
-
-                desc();
-                sumaFinal(float.Parse(txt_subtotal.Text), float.Parse(txt_monto_recargo.Text), float.Parse(txt_monto_descuento.Text));
-                */
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == 3)
             {
@@ -736,19 +729,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 // Puedes manejar este caso de acuerdo a tus necesidades
             }
         }
-        /*
-        private void CalcularMontoRecargo()
-        {
-            if (float.TryParse(txt_rec.Text, out float porcentajeRecargo) && float.TryParse(txt_subtotal.Text, out float subtotal))
-            {
-                float montoRecargo = (porcentajeRecargo / 100) * subtotal;
-                txt_monto_recargo.Text = montoRecargo.ToString("0.00"); // Mostrar con dos decimales
-            }
-            else
-            {
-                txt_monto_recargo.Text = "0.00"; // Si hay un error en la conversión, dejarlo en cero
-            }
-        }*/
+
 
 
         private void CalcularDescuento(int desc, float subtotal)
@@ -783,9 +764,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         public void ActualizarTotales()
         {
             totalFactura();
-
-
-
             desc();
             float subtotal, recargo, descuento;
             if (!float.TryParse(txt_subtotal.Text, out subtotal)) subtotal = 0;
@@ -868,6 +846,20 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             }
         }
 
+        private string tipo_de_factura()
+        {
+            String cond_frente_al_iva = txt_condicion_iva.Text;
+            String tipo_De_factura = "";
+            if (cond_frente_al_iva == "responsable inscripto" || cond_frente_al_iva == "monotributista")
+            {
+               tipo_De_factura = "A";
+            }
+            else
+            {
+               tipo_De_factura = "B";
+            }
+            return tipo_De_factura;
+        }
         private void combo_forma_pago_SelectedIndexChanged(object sender, EventArgs e)
         {
             ActualizarDescuentosYCuotas();
@@ -910,30 +902,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             }
             ActualizarTotales();
         }
-        /*
-        private void VerificarCondicionIVA(float subtotal, float recargo, float descuento)
-        {
-            string condicionCliente = txt_condicion_iva.Text.Trim();
-
-            // Verificar si el cliente es Responsable Monotributo
-            if (condicionCliente.Contains("Responsable Monotributo"))
-            {
-                // Deshabilitar el campo de IVA
-                txt_iva.Enabled = true;
-                txt_iva.Text = CalcularIVA(subtotal, recargo, descuento).ToString("0.00");
-            }
-            else if (condicionCliente.Contains("Consumidor Final"))
-            {
-                // Si no es monotributista, habilitar el campo de IVA
-                txt_iva.Enabled = false;
-                txt_iva.Text = "0,00";
-            }
-            else if (condicionCliente.Contains("Responsable Inscripto") || condicionCliente.Contains("Responsable no Inscripto"))
-            {
-                txt_iva.Enabled = true;
-                txt_iva.Text = CalcularIVA(subtotal, recargo, descuento).ToString("0.00");
-            }
-        }*/
+ 
 
         private void CrearFactura()
         {
@@ -942,7 +911,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 Empleado empleadoAFacturar = new Empleado();
 
                 // Obtener los valores de los controles del formulario
-                int numFactura = int.Parse(txt_numero_factura.Text);
+
+                int id = FacturaControlador.ObtenerProximoIdFactura(); 
                 DateTime fecha = DateTime.Now;
                 int sucursalId = Program.sucursal;
                 int vendedorId = Program.logueado.id;
@@ -963,6 +933,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 }
                 string origen = "Local";
                 string facturaPdf = "";
+                string numFactura = txt_numero_factura.Text;
+                string tipoDeFactura = tipo_de_factura();
+
 
                 MessageBox.Show($"numFactura: {numFactura}\n" +
                 $"fecha: {fecha}\n" +
@@ -980,8 +953,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
 
                 // Llamar al método crearFactura desde FacturaControlador
-                bool exito = FacturaControlador.crearFactura(numFactura, fecha, sucursalId, vendedorId, clienteId, formaDePago,
-                    precioTotal, recargoTarjeta, descuento, numeroDeCaja, tipoConsumidor, origen, facturaPdf);
+                bool exito = FacturaControlador.crearFactura(id,fecha,sucursalId,vendedorId,clienteId,
+            formaDePago,precioTotal,recargoTarjeta,descuento,numeroDeCaja,tipoConsumidor,origen,facturaPdf,numFactura,tipoDeFactura);
 
                 if (exito)
                 {

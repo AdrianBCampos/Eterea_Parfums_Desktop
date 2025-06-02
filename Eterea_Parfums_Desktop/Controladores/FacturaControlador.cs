@@ -9,12 +9,12 @@ namespace Eterea_Parfums_Desktop.Controladores
 {
     internal class FacturaControlador
     {
-
-       /* public static int ObtenerProximoIdFactura()
+        //Este metodo es el viejo, calcula el max id, no el maximo num_factura
+        public static int ObtenerProximoIdFactura()
         {
             int proximoId = 0;
 
-            string query = "SELECT MAX(num_factura) FROM dbo.Factura;";
+            string query = "SELECT MAX(id) FROM dbo.Factura;";
 
 
 
@@ -39,7 +39,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
 
             return proximoId;
-        }*/
+        }
 
         public static string ObtenerProximoNumFactura(string tipoDeFactura)
         {
