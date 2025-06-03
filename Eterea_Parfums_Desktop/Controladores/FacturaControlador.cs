@@ -58,6 +58,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
                     if (result != null && result != DBNull.Value)
                     {
+                        proximoId = Convert.ToInt32(result);
                     }   
                     else
                     {
