@@ -1009,23 +1009,25 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                         if (cantidad > 1 && promocion_id != null)
                         {
-                            MessageBox.Show($"PromocionID: {promocion_id}");
+                            //MessageBox.Show($"PromocionID: {promocion_id}");
                         }
                         else if (cantidad == 1 && promocion_id10 != null)
                         {
                             promocion_id = promoController.obtenerPromocionIdPorPerfumeConDescuento10(perfume_id);
-                            MessageBox.Show($"PromocionID: {promocion_id}");
+                            //MessageBox.Show($"PromocionID: {promocion_id}");
                         }
                         else
                         {
                             promocion_id = 1;
-                            MessageBox.Show($"PromocionID: {promocion_id}");
+                            //MessageBox.Show($"PromocionID: {promocion_id}");
                         }
 
+                        int id_factura = FacturaControlador.ObtenerMaxIdFactura();
+                        //MessageBox.Show("Numero de factura:" + id_factura);
 
-                        MessageBox.Show($"Enviando datos2: NumFactura: {numFactura}, PerfumeID: {perfume_id}, Cantidad: {cantidad}, PrecioUnitario: {precio_unitario}, PromocionID: {promocion_id}");
+                        //MessageBox.Show($"Enviando datos2: NumFactura: {id_factura}, PerfumeID: {perfume_id}, Cantidad: {cantidad}, PrecioUnitario: {precio_unitario}, PromocionID: {promocion_id}");
 
-                        bool exito = DetalleFacturaControlador.crearDetalleFactura(numFactura, perfume_id, cantidad, precio_unitario, promocion_id);
+                        bool exito = DetalleFacturaControlador.crearDetalleFactura(id_factura, perfume_id, cantidad, precio_unitario, promocion_id);
 
                         if (!exito)
                         {
@@ -1035,7 +1037,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                         int sucursalId = Program.sucursal;
                         StockControlador.updateStock(perfume_id, sucursalId, -cantidad);
-                        MessageBox.Show($"Actualizando stock de perfume {perfume_id} en sucursal {sucursalId} con cantidad {-cantidad}");
+                        //MessageBox.Show($"Actualizando stock de perfume {perfume_id} en sucursal {sucursalId} con cantidad {-cantidad}");
 
                     }
                 }

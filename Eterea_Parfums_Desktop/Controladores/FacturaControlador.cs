@@ -41,6 +41,34 @@ namespace Eterea_Parfums_Desktop.Controladores
             return proximoId;
         }
 
+        public static int ObtenerMaxIdFactura()
+        {
+            int proximoId = 0;
+
+            string query = "SELECT MAX(id) FROM dbo.Factura;";
+
+
+            using (SqlConnection conexion = new SqlConnection(DB_Controller.connection.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, conexion))
+                {
+                    conexion.Open();
+                    var result = cmd.ExecuteScalar();
+                    conexion.Close();
+
+                    if (result != null && result != DBNull.Value)
+                    {
+                    }   
+                    else
+                    {
+                        proximoId = 1;
+                    }
+                }
+            }
+
+            return proximoId;
+        }
+
         public static string ObtenerProximoNumFactura(string tipoDeFactura, string puntoDeVenta)
         {
             string proximoNumFactura = "";
@@ -78,6 +106,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         }
 
 
+
         //CREAR UNA FACTURA AL IMPRIMIR LA VENTA
 
         public static bool crearFactura(int id, DateTime fecha, int sucursal_id, int vendedor_id, int cliente_id, string forma_de_pago,
@@ -85,22 +114,13 @@ namespace Eterea_Parfums_Desktop.Controladores
             string factura_pdf, string num_factura, string tipo_de_factura)
         {
 
-            string query = "INSERT INTO dbo.Factura(" +
-                "id, " +
-                "fecha, " +
-                "sucursal_id, " +
-                "empleado_id, " +
-                "cliente_id, " +
-                "forma_de_pago, " +
-                "precio_total, " +
-                "recargo_tarjeta, " +
-                "descuento, " +
-                "numero_de_caja, " +
-                "tipo_de_consumidor, " +
-                "origen, " +
-                "factura_pdf, " +
-                "num_factura, " +
-                "tipo_de_factura); ";
+            string query = "INSERT INTO dbo.Factura (" +
+                "id, fecha, sucursal_id, empleado_id, cliente_id, forma_de_pago, precio_total, " +
+                "recargo_tarjeta, descuento, numero_de_caja, tipo_de_consumidor, origen, factura_pdf, " +
+                "num_factura, tipo_de_factura) " +
+                "VALUES (@id, @fecha, @sucursal_id, @vendedor_id, @cliente_id, @forma_de_pago, @precio_total, " +
+                "@recargo_tarjeta, @descuento, @numero_de_caja, @tipo_consumidor, @origen, @factura_pdf, " +
+                "@num_factura, @tipo_de_factura);";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
