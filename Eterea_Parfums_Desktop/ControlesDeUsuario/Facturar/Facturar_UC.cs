@@ -51,7 +51,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             combo_forma_pago.SelectedIndexChanged -= combo_forma_pago_SelectedIndexChanged;
 
             txt_nombre_cliente.Text = "Consumidor Final";
-            txt_condicion_iva.Text = "Consumidor final";
+            txt_condicion_iva.Text = "Consumidor Final";
 
             combo_forma_pago.Items.Clear();
             combo_forma_pago.Items.Add("Efectivo");
@@ -279,6 +279,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 txt_numero_caja.Text = numeroCaja;
                 txt_estadoCaja.Text = "Abierta";
                 txt_estadoCaja.ForeColor = Color.Green;
+                ReiniciarFormulario();
             });
 
 
@@ -362,17 +363,20 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 if (string.IsNullOrWhiteSpace(txt_dni.Text))
                 {
                     MessageBox.Show("Ingrese un número de DNI o CUIT antes de buscar un cliente.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txt_dni.Text = "";
                     return;
                 }
                 // Validar la longitud del DNI
                 if (txt_dni.Text.Length != 8 && txt_dni.Text.Length != 11)
                 {
                     MessageBox.Show("El número ingresado debe tener 8 u 11 dígitos.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txt_dni.Text = "";
                     return;
                 }
                 if (!txt_dni.Text.All(char.IsDigit))
                 {
                     MessageBox.Show("El DNI o CUIT solo puede contener números, sin guiones.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txt_dni.Text = "";
                     return;
                 }
 
@@ -741,9 +745,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             string condicionCliente = txt_condicion_iva.Text.Trim();
 
             // Verificar si el cliente es Responsable Monotributo
-            if (condicionCliente.Contains("Responsable Monotributo"))
+            if (condicionCliente.Contains("Monotributista") || condicionCliente.Contains("Responsable Inscripto"))
             {
-                txt_total.Text = (subtotal + recargo - descuento - CalcularIVA(subtotal, recargo, descuento)).ToString("N2");
+                txt_subtotal.Text = (subtotal + recargo - descuento - CalcularIVA(subtotal, recargo, descuento)).ToString("N2");
+                txt_total.Text = (subtotal + recargo - descuento).ToString("N2");
+                txt_iva.Text = CalcularIVA(subtotal, recargo, descuento).ToString("N2");
             }
             else
             {
@@ -929,7 +935,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 string tipoDeFactura = tipo_de_factura();
 
 
-                MessageBox.Show($"numFactura: {numFactura}\n" +
+                /*MessageBox.Show($"numFactura: {numFactura}\n" +
                 $"fecha: {fecha}\n" +
                 $"sucursalId: {sucursalId}\n" +
                 $"vendedorId: {vendedorId}\n" +
@@ -941,7 +947,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 $"numeroDeCaja: {numeroDeCaja}\n" +
                 $"tipoConsumidor: {tipoConsumidor}\n" +
                 $"origen: {origen}\n" +
-                $"facturaPdf: {facturaPdf}");
+                $"facturaPdf: {facturaPdf}");*/
 
 
                 // Llamar al método crearFactura desde FacturaControlador
@@ -1023,7 +1029,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                         }
 
                         int id_factura = FacturaControlador.ObtenerMaxIdFactura();
-                        MessageBox.Show("Numero de factura:" + id_factura);
+                        //MessageBox.Show("Numero de factura:" + id_factura);
 
                         //MessageBox.Show($"Enviando datos2: NumFactura: {id_factura}, PerfumeID: {perfume_id}, Cantidad: {cantidad}, PrecioUnitario: {precio_unitario}, PromocionID: {promocion_id}");
 
@@ -1042,7 +1048,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     }
                 }
 
-                MessageBox.Show("Detalle de factura creado exitosamente.");
+                //MessageBox.Show("Detalle de factura creado exitosamente.");
             }
             catch (Exception ex)
             {
@@ -1078,21 +1084,67 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 string filePath = guardarFactura.FileName;
 
                 string condicionCliente = txt_condicion_iva.Text.Trim();
-                string PaginaHTML_Texto = "";
+                    MessageBox.Show("Condicion cliente: " + condicionCliente);
+                    string PaginaHTML_Texto = "";
 
-                // Verificar si el cliente es Responsable Monotributo
-                if (condicionCliente == "Consumidor Final" || condicionCliente == "Exento")
+                    // Verificar si el cliente es Responsable Monotributo
+                    // CREACION DE PDF DE LA FACTURA B
+                    if (condicionCliente == "Consumidor Final" || condicionCliente == "Exento")
                 {
                     PaginaHTML_Texto = Properties.Resources.PlantillaFactura.ToString();
 
+                    string dni = txt_dni.Text;
+                    string localidad = "Sin localidad";
+                    string domicilio = "Sin calle";
+                    string numeracion_calle = "Sin numeración";
+                    string domicilioEntero = "Sin domicilio";
 
+                    if (string.IsNullOrWhiteSpace(dni))
+                    {
+                        dni = "Sin DNI";
+                    }
+                    else
+                    {
+                        long dniNumerico;
+                        localidad = "Sin localidad";
+                        domicilio = "Sin calle";
+                        numeracion_calle = "Sin numeración";
+                        if (!long.TryParse(dni, out dniNumerico))
+                        {
+                            MessageBox.Show("El DNI ingresado no es válido.");
+                            return;
+                        }
+                        dniNumerico = long.Parse(dni);
+                        Cliente cliente = new Cliente();
+                        cliente = ClienteControlador.obtenerPorDni(dniNumerico);
+                        if (cliente.localidad_id != null)
+                        {
+                            localidad = cliente.localidad_id.nombre;
+                        }
+
+                        if (cliente.calle_id != null)
+                        {
+                            domicilio = cliente.calle_id.nombre;
+                        }
+
+                        if (cliente.numeracion_calle != null)
+                        {
+                            numeracion_calle = cliente.numeracion_calle.ToString();
+                        }
+                        domicilioEntero = domicilio + " " + numeracion_calle;
+                    }
+                    
 
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CLIENTE", txt_nombre_cliente.Text);
-                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DOCUMENTO", txt_dni.Text);
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DOCUMENTO", dni);
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NUMEROFACTURA", txt_numero_factura.Text);
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CONDIVA", txt_condicion_iva.Text);
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DOMICILIO", domicilioEntero);
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@LOCALIDAD", localidad);
 
-                    string filas = string.Empty;
+
+                        string filas = string.Empty;
                     decimal total = 0;
                     foreach (DataGridViewRow row in Factura.Rows)
                     {
@@ -1106,7 +1158,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                         total += decimal.Parse(row.Cells["Tot"].Value.ToString());
                     }
 
-                    double precioTotal = double.Parse(txt_total.Text);
+
+                        double precioTotal = double.Parse(txt_total.Text);
                     double precioSubtotal = double.Parse(txt_subtotal.Text);
                     double recargoTarjeta = double.Parse(txt_monto_recargo.Text);
                     double descuento = double.Parse(txt_monto_descuento.Text);
@@ -1117,19 +1170,67 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DESCUENTO", descuento.ToString());
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TOTAL", precioTotal.ToString());
 
-                }
+                    }
+
+                // CREACION DE PDF DE LA FACTURA A
                 else
                 {
                     PaginaHTML_Texto = Properties.Resources.FacturaA.ToString();
 
 
 
-                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CLIENTE", txt_nombre_cliente.Text);
-                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DOCUMENTO", txt_dni.Text);
-                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NUMEROFACTURA", txt_numero_factura.Text);
-                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
+                        string dni = txt_dni.Text;
+                        string localidad = "Sin localidad";
+                        string domicilio = "Sin calle";
+                        string numeracion_calle = "Sin numeración";
+                        string domicilioEntero = "Sin domicilio";
 
-                    string filas = string.Empty;
+                        if (string.IsNullOrWhiteSpace(dni))
+                        {
+                            dni = "Sin DNI";
+                        }
+                        else
+                        {
+                            long dniNumerico;
+                            localidad = "Sin localidad";
+                            domicilio = "Sin calle";
+                            numeracion_calle = "Sin numeración";
+                            if (!long.TryParse(dni, out dniNumerico))
+                            {
+                                MessageBox.Show("El DNI ingresado no es válido.");
+                                return;
+                            }
+                            dniNumerico = long.Parse(dni);
+                            Cliente cliente = new Cliente();
+                            cliente = ClienteControlador.obtenerPorDni(dniNumerico);
+                            if (cliente.localidad_id != null)
+                            {
+                                localidad = cliente.localidad_id.nombre;
+                            }
+
+                            if (cliente.calle_id != null)
+                            {
+                                domicilio = cliente.calle_id.nombre;
+                            }
+
+                            if (cliente.numeracion_calle != null)
+                            {
+                                numeracion_calle = cliente.numeracion_calle.ToString();
+                            }
+                            domicilioEntero = domicilio + " " + numeracion_calle;
+                        }
+
+
+                        PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CLIENTE", txt_nombre_cliente.Text);
+                        PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DOCUMENTO", dni);
+                        PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NUMEROFACTURA", txt_numero_factura.Text);
+                        PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
+                        PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CONDIVA", txt_condicion_iva.Text);
+                        PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DOMICILIO", domicilioEntero);
+                        PaginaHTML_Texto = PaginaHTML_Texto.Replace("@LOCALIDAD", localidad);
+
+
+                        string filas = string.Empty;
                     decimal total = 0;
                     foreach (DataGridViewRow row in Factura.Rows)
                     {
@@ -1174,7 +1275,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                         img.Alignment = iTextSharp.text.Image.UNDERLYING;
 
                         //img.SetAbsolutePosition(10,100);
-                        img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.Top - 60);
+                        img.SetAbsolutePosition(pdfDoc.LeftMargin + 12, pdfDoc.Top - 73);
                         pdfDoc.Add(img);
 
                         using (StringReader sr = new StringReader(PaginaHTML_Texto))
@@ -1207,7 +1308,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         private void ReiniciarFormulario()
         {
             txt_nombre_cliente.Text = "Consumidor Final";
-            txt_condicion_iva.Text = "Consumidor final";
+            txt_condicion_iva.Text = "Consumidor Final";
             txt_total.Text = "0,00";
             txt_subtotal.Text = "0,00";
             txt_monto_recargo.Text = "0,00";
