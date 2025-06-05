@@ -702,7 +702,7 @@ namespace Eterea_Parfums_Desktop
                 Empleado empleadoAFacturar = new Empleado();
 
                 // Obtener los valores de los controles del formulario
-                int numFactura = int.Parse(txt_numero_factura.Text);
+                int id = int.Parse(txt_numero_factura.Text);
                 DateTime fecha = DateTime.Now;
                 int sucursalId = (EmpleadoControlador.obtenerPorId(Program.logueado.id)).sucursal_id.id;
                 //int sucursalId = Program.logueado.sucursal_id.id; 
@@ -724,8 +724,10 @@ namespace Eterea_Parfums_Desktop
                 }
                 string origen = "Local";
                 string facturaPdf = "";
+                string num_factura = "VER FORM FACTURACION";
+                string tipo_de_factura = "VER FORM FACTURACION";
 
-                MessageBox.Show($"numFactura: {numFactura}\n" +
+                MessageBox.Show($"numFactura: {id}\n" +
                 $"fecha: {fecha}\n" +
                 $"sucursalId: {sucursalId}\n" +
                 $"vendedorId: {vendedorId}\n" +
@@ -741,8 +743,8 @@ namespace Eterea_Parfums_Desktop
 
 
                 // Llamar al método crearFactura desde FacturaControlador
-                bool exito = FacturaControlador.crearFactura(numFactura, fecha, sucursalId, vendedorId, clienteId, formaDePago,
-                    precioTotal, recargoTarjeta, descuento, numeroDeCaja, tipoConsumidor, origen, facturaPdf);
+                bool exito = FacturaControlador.crearFactura(id, fecha, sucursalId, vendedorId, clienteId, formaDePago,
+                    precioTotal, recargoTarjeta, descuento, numeroDeCaja, tipoConsumidor, origen, facturaPdf, num_factura, tipo_de_factura);
 
                 if (exito)
                 {

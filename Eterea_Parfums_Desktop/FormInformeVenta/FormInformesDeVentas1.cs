@@ -73,7 +73,7 @@ namespace Eterea_Parfums_Desktop
 
             foreach (Factura factura in facturas)
             {
-                List<DetalleFactura> detalles = DetalleFacturaControlador.getByIdFactura(factura.num_factura);
+                List<DetalleFactura> detalles = DetalleFacturaControlador.getByIdFactura(factura.id);
                 Console.WriteLine("Cantidad de detales: " + detalles.Count());
                 foreach (DetalleFactura detalle in detalles)
                 {
