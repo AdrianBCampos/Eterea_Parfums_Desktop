@@ -76,7 +76,7 @@
             // 
             this.dateTimeFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimeFinal.Location = new System.Drawing.Point(1479, 133);
-            this.dateTimeFinal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimeFinal.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimeFinal.Name = "dateTimeFinal";
             this.dateTimeFinal.Size = new System.Drawing.Size(357, 27);
             this.dateTimeFinal.TabIndex = 462;
@@ -87,7 +87,7 @@
             this.dateTimeInicio.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.dateTimeInicio.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimeInicio.Location = new System.Drawing.Point(599, 133);
-            this.dateTimeInicio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimeInicio.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimeInicio.Name = "dateTimeInicio";
             this.dateTimeInicio.Size = new System.Drawing.Size(359, 27);
             this.dateTimeInicio.TabIndex = 461;
@@ -371,7 +371,7 @@
             this.btn_exportar_pdf.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_exportar_pdf.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.btn_exportar_pdf.Location = new System.Drawing.Point(857, 412);
-            this.btn_exportar_pdf.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_exportar_pdf.Margin = new System.Windows.Forms.Padding(4);
             this.btn_exportar_pdf.Name = "btn_exportar_pdf";
             this.btn_exportar_pdf.Size = new System.Drawing.Size(279, 49);
             this.btn_exportar_pdf.TabIndex = 465;
@@ -447,6 +447,7 @@
             this.richTextBox_mas_vendido.Location = new System.Drawing.Point(445, 333);
             this.richTextBox_mas_vendido.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox_mas_vendido.Name = "richTextBox_mas_vendido";
+            this.richTextBox_mas_vendido.ReadOnly = true;
             this.richTextBox_mas_vendido.Size = new System.Drawing.Size(532, 52);
             this.richTextBox_mas_vendido.TabIndex = 500;
             this.richTextBox_mas_vendido.Text = "";
@@ -460,6 +461,7 @@
             this.richTextBox_menos_vendido.Location = new System.Drawing.Point(1452, 333);
             this.richTextBox_menos_vendido.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox_menos_vendido.Name = "richTextBox_menos_vendido";
+            this.richTextBox_menos_vendido.ReadOnly = true;
             this.richTextBox_menos_vendido.Size = new System.Drawing.Size(485, 52);
             this.richTextBox_menos_vendido.TabIndex = 501;
             this.richTextBox_menos_vendido.Text = "";

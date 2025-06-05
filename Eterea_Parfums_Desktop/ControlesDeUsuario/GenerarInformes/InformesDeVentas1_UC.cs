@@ -151,7 +151,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                 .ToList();
 
             // Concatenar los nombres
-            string nombresMasVendidos = string.Join(", ", perfumesMasVendidos);
+            //string nombresMasVendidos = string.Join(",", perfumesMasVendidos);
+
+            string nombresMasVendidos = string.Join(Environment.NewLine, perfumesMasVendidos);
 
             // Asignar al TextBox
             richTextBox_mas_vendido.Text = nombresMasVendidos;
@@ -167,7 +169,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                 .ToList();
 
             // Concatenar los nombres
-            string nombresMenosVendidos = string.Join(", ", perfumesMenosVendidos);
+            //string nombresMenosVendidos = string.Join(", " +"", perfumesMenosVendidos);
+
+            string nombresMenosVendidos = string.Join(Environment.NewLine, perfumesMenosVendidos);
 
             // Asignar al TextBox
             richTextBox_menos_vendido.Text = nombresMenosVendidos;
