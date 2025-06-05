@@ -207,6 +207,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             int puntoDeVenta = Program.sucursal;
             string puntoDeVentaString = puntoDeVenta.ToString("D4");
             string numeroDeFacturaString = FacturaControlador.ObtenerProximoNumFactura(tipo_de_factura(), puntoDeVentaString);
+            txt_numero_factura.Text = numeroDeFacturaString;
             return numeroDeFacturaString;
         }
 
