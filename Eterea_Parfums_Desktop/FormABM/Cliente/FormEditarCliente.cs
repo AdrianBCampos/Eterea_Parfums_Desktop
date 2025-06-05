@@ -218,6 +218,31 @@ namespace Eterea_Parfums_Desktop
             combo_con_iva.Items.Add("Exento");
             combo_con_iva.Items.Add("Monotributista");
 
+            //Diseño del combo box
+            combo_activo.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_activo.DrawItem += comboBoxdiseño_DrawItem;
+            combo_activo.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_con_iva.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_con_iva.DrawItem += comboBoxdiseño_DrawItem;
+            combo_con_iva.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_calle.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_calle.DrawItem += comboBoxdiseño_DrawItem;
+            combo_calle.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_pais.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_pais.DrawItem += comboBoxdiseño_DrawItem;
+            combo_pais.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_provincia.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_provincia.DrawItem += comboBoxdiseño_DrawItem;
+            combo_provincia.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_localidad.DrawMode = DrawMode.OwnerDrawFixed;
+            combo_localidad.DrawItem += comboBoxdiseño_DrawItem;
+            combo_localidad.DropDownStyle = ComboBoxStyle.DropDownList;
+
         }
 
         private void btn_confirmar_Click(object sender, EventArgs e)

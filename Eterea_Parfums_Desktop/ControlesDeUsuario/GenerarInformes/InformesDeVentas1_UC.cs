@@ -76,8 +76,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
         {
             txt_cantidad_ventas.Text = "0";
             txt_monto_total.Text = "$0";
-            txt_mas_vendido.Text = "No hay registros";
-            txt_menos_vendido.Text = "No hay registros";
+            richTextBox_mas_vendido.Text = "No hay registros";
+            richTextBox_menos_vendido.Text = "No hay registros";
         }
         private void cargarDatos()
         {
@@ -151,10 +151,12 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                 .ToList();
 
             // Concatenar los nombres
-            string nombresMasVendidos = string.Join(", ", perfumesMasVendidos);
+            //string nombresMasVendidos = string.Join(",", perfumesMasVendidos);
+
+            string nombresMasVendidos = string.Join(Environment.NewLine, perfumesMasVendidos);
 
             // Asignar al TextBox
-            txt_mas_vendido.Text = nombresMasVendidos;
+            richTextBox_mas_vendido.Text = nombresMasVendidos;
 
 
             // Encontrar la menor cantidad vendida
@@ -167,10 +169,12 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                 .ToList();
 
             // Concatenar los nombres
-            string nombresMenosVendidos = string.Join(", ", perfumesMenosVendidos);
+            //string nombresMenosVendidos = string.Join(", " +"", perfumesMenosVendidos);
+
+            string nombresMenosVendidos = string.Join(Environment.NewLine, perfumesMenosVendidos);
 
             // Asignar al TextBox
-            txt_menos_vendido.Text = nombresMenosVendidos;
+            richTextBox_menos_vendido.Text = nombresMenosVendidos;
 
         }
 
@@ -205,8 +209,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                                                .Replace("@FINAL", dateTimeFinal.Value.ToString("dd/MM/yyyy"))
                                                .Replace("@CANTIDAD", txt_cantidad_ventas.Text)
                                                .Replace("@MONTO_TOTAL_VENTAS", txt_monto_total.Text)
-                                               .Replace("@PERFUME_MAS_VENDIDO", txt_mas_vendido.Text)
-                                               .Replace("@PERFUME_MENOS_VENDIDO", txt_menos_vendido.Text);
+                                               .Replace("@PERFUME_MAS_VENDIDO", richTextBox_mas_vendido.Text)
+                                               .Replace("@PERFUME_MENOS_VENDIDO", richTextBox_menos_vendido.Text);
             Console.WriteLine(sucursal.provincia_id.nombre + sucursal.numeracion_calle.ToString() + sucursal.provincia_id.nombre);
 
             Console.WriteLine(PaginaHTML_Texto);

@@ -28,7 +28,7 @@ namespace Eterea_Parfums_Desktop
             InitializeComponent();
 
             // Configurar las imágenes
-            string rutaLogo = Program.Ruta_Base + @"Diseño Logo1.png";
+            string rutaLogo = Program.Ruta_Base + @"Diseño Logo2.png";
             img_logo.Image = Image.FromFile(rutaLogo);
 
             string rutaCerrarSesion = Program.Ruta_Base + @"CerrarSesion.png";
