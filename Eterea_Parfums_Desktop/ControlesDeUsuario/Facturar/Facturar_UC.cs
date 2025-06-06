@@ -50,8 +50,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
             combo_forma_pago.SelectedIndexChanged -= combo_forma_pago_SelectedIndexChanged;
 
-            txt_nombre_cliente.Text = "Consumidor Final";
-            txt_condicion_iva.Text = "Consumidor Final";
+            txt_nombre_cliente.Text = "";
+            txt_condicion_iva.Text = "";
+            txt_numero_factura.Text = "";
+
 
             combo_forma_pago.Items.Clear();
             combo_forma_pago.Items.Add("Efectivo");
@@ -65,7 +67,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
             combo_descuento.Items.Clear();
             combo_descuento.Items.AddRange(new object[] { 0, 10, 20, 30 });
-            combo_descuento.SelectedIndex = 0;
+            combo_descuento.SelectedItem = 0;
+
 
             combo_cuotas.Items.Clear();
             combo_cuotas.Items.AddRange(new object[] { 1, 2, 3, 4, 5, 6 });
@@ -184,6 +187,13 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     // 🔥 ACTIVAR EL ESCANER AQUÍ EXPLÍCITAMENTE
                     BarcodeReceiver.OnCodigoLeido -= ProcesarCodigoLeido;
                     BarcodeReceiver.OnCodigoLeido += ProcesarCodigoLeido;
+
+                    // ✅ Asignar "Consumidor Final"
+                    txt_nombre_cliente.Text = "Consumidor Final";
+                    txt_condicion_iva.Text = "Consumidor Final";
+
+                    // ✅ Obtener y mostrar número de factura
+                    txt_numero_factura.Text = Num_factura_máximo();
                 };
 
                 ModalHelper.MostrarModalConFondoOscuro(formNumero);
@@ -196,7 +206,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             }
 
 
-            txt_numero_factura.Text = Num_factura_máximo();
+           
             txt_scan_factura.Focus();
             ActualizarEstadoCaja();
         }
@@ -804,8 +814,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
             if (formaPago == "Efectivo")
             {
-                txt_desc.Text = "10";
-                combo_descuento.SelectedIndex = 1; // 10%
+                txt_desc.Text = "0";
+                combo_descuento.SelectedIndex = 0; // 0%
                 combo_cuotas.SelectedIndex = 0; // 1 cuota
                 combo_cuotas.Enabled = false;
             }
