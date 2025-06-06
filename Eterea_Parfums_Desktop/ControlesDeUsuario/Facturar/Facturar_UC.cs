@@ -65,7 +65,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
             combo_descuento.Items.Clear();
             combo_descuento.Items.AddRange(new object[] { 0, 10, 20, 30 });
-            combo_descuento.SelectedIndex = 1;
+            combo_descuento.SelectedIndex = 0;
 
             combo_cuotas.Items.Clear();
             combo_cuotas.Items.AddRange(new object[] { 1, 2, 3, 4, 5, 6 });
@@ -310,11 +310,12 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             numeroCaja = "Caja sin asignar";
             IdHistorialCaja = 0;
 
-            // Limpiar datos del cliente
-            txt_dni.Text = "";
+            ReiniciarFormulario();
+
+            //Limpiar consumidor y num factura
             txt_nombre_cliente.Text = "";
             txt_condicion_iva.Text = "";
-            txt_email.Text = "";
+            txt_numero_factura.Text = "";
 
             // Limpiar perfumes de la factura si hay alguno cargado
             if (Factura.Rows.Count > 0)
@@ -1319,7 +1320,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             txt_dni.Text = "";
             Factura.Rows.Clear();
             combo_forma_pago.SelectedIndex = 0;
-            combo_descuento.SelectedIndex = 1;
+            combo_descuento.SelectedIndex = 0;
             combo_cuotas.SelectedIndex = 0;
             int puntoDeVenta = Program.sucursal;
             txt_numero_factura.Text = Num_factura_máximo();
