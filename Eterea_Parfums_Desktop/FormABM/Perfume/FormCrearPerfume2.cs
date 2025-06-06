@@ -19,7 +19,7 @@ namespace Eterea_Parfums_Desktop
         private List<NotasDelPerfume> notas_del_perfume;
         private List<NotaConTipoDeNota> notas_con_tipo_de_nota;
         private FormCrearPerfume1 formProducto;
-        private PerfumesUC perfumesUC;
+        private Perfumes_UC perfumesUC;
         private NotasDelPerfume notasDelPerfume;
 
         
@@ -32,7 +32,7 @@ namespace Eterea_Parfums_Desktop
             
         }
 
-        public FormCrearPerfume2(Perfume perfume, FormCrearPerfume1 formProducto, PerfumesUC perfumesUC)
+        public FormCrearPerfume2(Perfume perfume, FormCrearPerfume1 formProducto, Perfumes_UC perfumesUC)
         {
             InitializeComponent();
             this.formProducto = formProducto;

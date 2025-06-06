@@ -147,7 +147,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             SELECT p.id, p.nombre, p.fecha_inicio, p.fecha_fin, p.descuento, p.activo, p.descripcion, p.banner
             FROM promocion p
             INNER JOIN perfumes_en_promo pep ON p.id = pep.promocion_id
-            WHERE pep.perfume_id = @idPerfume";
+            WHERE pep.perfume_id = @idPerfume AND p.activo = 1";
 
             List<Promocion> listaPromociones = new List<Promocion>();
 

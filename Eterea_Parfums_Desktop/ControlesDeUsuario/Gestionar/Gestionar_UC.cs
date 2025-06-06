@@ -23,7 +23,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
            
 
-            PerfumesUC perfumesUC = new PerfumesUC();
+            Perfumes_UC perfumesUC = new Perfumes_UC();
             addUserControl(perfumesUC);
 
           
@@ -47,7 +47,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void btn_perfumes_Click_1(object sender, EventArgs e)
         {
-            PerfumesUC perfumesUC = new PerfumesUC();
+            Perfumes_UC perfumesUC = new Perfumes_UC();
             addUserControl(perfumesUC);
 
             CambiarColorBoton1((Button)sender);

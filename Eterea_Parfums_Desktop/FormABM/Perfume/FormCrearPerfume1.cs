@@ -21,8 +21,8 @@ namespace Eterea_Parfums_Desktop
         private string nombre_foto_uno;
         private string nombre_foto_dos;
         private static readonly Random rnd = new Random(); //genero una sola instancia
-        private PerfumesUC perfumesUC;
-        public FormCrearPerfume1(PerfumesUC perfumesUC)
+        private Perfumes_UC perfumesUC;
+        public FormCrearPerfume1(Perfumes_UC perfumesUC)
         {
             InitializeComponent();
             //relaciono el form de productos con el PerfumesUC

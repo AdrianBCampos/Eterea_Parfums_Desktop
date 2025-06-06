@@ -18,14 +18,14 @@ namespace Eterea_Parfums_Desktop
         private string nombre_foto_dos;
         private Perfume perfume;
         private static readonly Random rnd = new Random();
-        private PerfumesUC perfumesUC;
+        private Perfumes_UC perfumesUC;
         public FormEditarPerfume1()
         {
             InitializeComponent();
         }
 
 
-        public FormEditarPerfume1(Perfume perfume, PerfumesUC perfumesUC)
+        public FormEditarPerfume1(Perfume perfume, Perfumes_UC perfumesUC)
         {
             InitializeComponent();
             this.perfumesUC = perfumesUC;

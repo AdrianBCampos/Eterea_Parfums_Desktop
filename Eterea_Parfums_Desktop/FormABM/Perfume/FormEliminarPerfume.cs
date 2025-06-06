@@ -9,7 +9,7 @@ namespace Eterea_Parfums_Desktop
     public partial class FormEliminarPerfume : Form
     {
         int id_eliminar;
-        private PerfumesUC perfumesUC;
+        private Perfumes_UC perfumesUC;
 
         public FormEliminarPerfume()
         {
@@ -18,7 +18,7 @@ namespace Eterea_Parfums_Desktop
 
 
         //SOBRECARGAR EL CONSTRUCTOR PARA INICIAR EL FORM CON LA INFO PARA ELIMINAR
-        public FormEliminarPerfume(Perfume eliminado, PerfumesUC perfumesUC)
+        public FormEliminarPerfume(Perfume eliminado, Perfumes_UC perfumesUC)
 
         {
             InitializeComponent();
