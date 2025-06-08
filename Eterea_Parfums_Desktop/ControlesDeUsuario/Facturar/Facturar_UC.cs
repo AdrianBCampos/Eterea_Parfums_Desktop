@@ -768,14 +768,13 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             {
                 float subtotalsiniva = subtotal / 1.21f;
                 txt_subtotal.Text = subtotalsiniva.ToString("N2");
-                // Intento de calculo sin iva txt_subtotal.Text = (subtotal + recargo - descuento - CalcularIVA(subtotal, recargo, descuento)).ToString("N2");
                 txt_total.Text = (subtotal + recargo - descuento).ToString("N2");
-                txt_iva.Text = CalcularIVA(subtotal, recargo, descuento).ToString("N2");
+                txt_iva.Text = CalcularIVA(subtotal).ToString("N2"); 
             }
             else
             {
                 txt_total.Text = (subtotal + recargo - descuento).ToString("N2");
-                txt_iva.Text = "";
+                txt_iva.Text = "0.00";
             }
         }
 
@@ -805,17 +804,12 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
 
 
-        private float CalcularIVA(float subtotal, float recargo, float descuento)
+        private float CalcularIVA(float subtotal)
         {
-            // Calcular el total base (subtotal + recargo - descuento)
-            float totalBase = subtotal + recargo - descuento;
+            // El subtotal ya incluye el IVA. Calculamos solo sobre él.
+            float iva = subtotal * 21f / 121f;
 
-            // Calcular el IVA (21% del total base)
-            float iva = totalBase * 0.21f;
-
-            // Actualizar el monto del IVA en el txt_iva
             return iva;
-            //txt_iva.Text = iva.ToString("0.00"); // Formato de 2 decimales
         }
 
         private void ActualizarDescuentosYCuotas()
