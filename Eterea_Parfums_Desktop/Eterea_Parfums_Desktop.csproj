@@ -253,18 +253,6 @@
     <Compile Include="FormFondoOscuro.Designer.cs">
       <DependentUpon>FormFondoOscuro.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormPedido\FormBuscarPedidos.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormPedido\FormBuscarPedidos.Designer.cs">
-      <DependentUpon>FormBuscarPedidos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormPedido\FormListaDeEnvios.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormPedido\FormListaDeEnvios.Designer.cs">
-      <DependentUpon>FormListaDeEnvios.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormStart.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -522,12 +510,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin\FormInicioVendedor.resx">
       <DependentUpon>FormInicioVendedor.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormPedido\FormBuscarPedidos.resx">
-      <DependentUpon>FormBuscarPedidos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormPedido\FormListaDeEnvios.resx">
-      <DependentUpon>FormListaDeEnvios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStart.resx">
       <DependentUpon>FormStart.cs</DependentUpon>
