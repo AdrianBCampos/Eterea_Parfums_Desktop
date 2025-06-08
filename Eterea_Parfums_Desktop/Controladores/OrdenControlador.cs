@@ -151,7 +151,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             string query = @"
                 SELECT DISTINCT 
                     o.numero_de_orden, 
-                    f.num_factura, 
+                    f.id AS num_factura, 
                     f.fecha, 
                     o.nombre_cliente, 
                     o.apellido_cliente, 
@@ -162,7 +162,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                     o.codigo_despacho,
                     f.fecha AS fecha_compra
                 FROM dbo.orden o
-                JOIN dbo.factura f ON o.num_factura = f.num_factura
+                JOIN dbo.factura f ON o.num_factura = f.id
                 WHERE o.numero_de_orden = @numeroOrden";
 
             using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
