@@ -34,6 +34,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             dataGridViewPromos.Rows.Clear();
             foreach (Promocion promocion in promociones)
             {
+                if (promocion.id == 1)
+                    continue; // 👉 Ignorar la promo con id = 1
+
                 if (string.IsNullOrEmpty(filtroNombre) || promocion.nombre.ToString().IndexOf(filtroNombre, StringComparison.OrdinalIgnoreCase) >= 0)
 
                 {

@@ -7,12 +7,12 @@ namespace Eterea_Parfums_Desktop.Controladores
 {
     internal class DetalleFacturaControlador
     {
-        public static List<DetalleFactura> getByIdFactura(int num_factura)
+        public static List<DetalleFactura> getByIdFactura(int factura_id)
         {
             List<DetalleFactura> detalles = new List<DetalleFactura>();
-            string query = "SELECT * FROM dbo.detalle_factura where num_factura = @num_factura";
+            string query = "SELECT * FROM dbo.detalle_factura where factura_id = @factura_id";
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-            cmd.Parameters.AddWithValue("@num_factura", num_factura);
+            cmd.Parameters.AddWithValue("@factura_id", factura_id);
 
 
 
@@ -43,10 +43,10 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         }
 
-        public static bool crearDetalleFactura(int num_factura, int perfume_id, int cantidad, float precio_unitario, int? promocion_id)
+        public static bool crearDetalleFactura(int factura_id, int perfume_id, int cantidad, float precio_unitario, int? promocion_id)
         {
-            string query = "INSERT INTO dbo.detalle_factura (num_factura, perfume_id, cantidad, precio_unitario, promocion_id) " +
-                           "VALUES (@num_factura, @perfume_id, @cantidad, @precio_unitario, @promocion_id);";
+            string query = "INSERT INTO dbo.detalle_factura (factura_id, perfume_id, cantidad, precio_unitario, promocion_id) " +
+                           "VALUES (@factura_id, @perfume_id, @cantidad, @precio_unitario, @promocion_id);";
 
             try
             {
@@ -54,7 +54,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                 {
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {
-                        cmd.Parameters.AddWithValue("@num_factura", num_factura);
+                        cmd.Parameters.AddWithValue("@factura_id", factura_id);
                         cmd.Parameters.AddWithValue("@perfume_id", perfume_id);
                         cmd.Parameters.AddWithValue("@cantidad", cantidad);
                         cmd.Parameters.AddWithValue("@precio_unitario", precio_unitario);

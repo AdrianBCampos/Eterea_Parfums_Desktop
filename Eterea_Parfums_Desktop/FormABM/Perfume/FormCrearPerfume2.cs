@@ -259,6 +259,16 @@ namespace Eterea_Parfums_Desktop
             perfume = formProducto.crear();
             PerfumeControlador.create(perfume);
 
+
+            // Insertar stock 0 en todas las sucursales activas
+            List<Sucursal> sucursales = SucursalControlador.getSucursalesActivas();
+
+            foreach (Sucursal sucursal in sucursales)
+            {
+                StockControlador.insertStock(perfume.id, sucursal.id, 0);
+            }
+
+            //asigna aromas y notas
             var listaDeAromasMarcados = checkedListBoxAroma.CheckedItems;
 
             foreach (var item in listaDeAromasMarcados)

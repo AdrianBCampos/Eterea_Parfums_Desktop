@@ -31,7 +31,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
                     list.Add(new Sucursal(r.GetInt32(0), r.GetString(1), pais, provincia,
-                        localidad, r.GetInt32(5), calle, r.GetInt32(7), r.GetInt32(8)));
+                        localidad, r.GetInt32(5), calle, r.GetInt32(7), r.GetBoolean(8)));
 
                 }
                 r.Close();
@@ -70,7 +70,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
                     sucursal = new Sucursal(r.GetInt32(0), r.GetString(1), pais, provincia,
-                       localidad, r.GetInt32(5), calle, r.GetInt32(7), r.GetInt32(8));
+                       localidad, r.GetInt32(5), calle, r.GetInt32(7), r.GetBoolean(8));
                 }
                 r.Close();
                 DB_Controller.connection.Close();
@@ -106,7 +106,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                             Calle calle = CalleControlador.getById(r.GetInt32(6));
 
                             sucursal = new Sucursal(r.GetInt32(0), r.GetString(1), pais, provincia,
-                                localidad, r.GetInt32(5), calle, r.GetInt32(7), r.GetInt32(8));
+                                localidad, r.GetInt32(5), calle, r.GetInt32(7), r.GetBoolean(8));
                         }
                     }
                 }
@@ -137,11 +137,46 @@ namespace Eterea_Parfums_Desktop.Controladores
                     }
                 }
             }
-        
 
 
+        public static List<Sucursal> getSucursalesActivas()
+        {
+            List<Sucursal> sucursales = new List<Sucursal>();
+            string query = "SELECT id, nombre FROM dbo.sucursal WHERE activo = 1";
 
+            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
+            try
+            {
+                DB_Controller.connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
 
+                while (reader.Read())
+                {
+                    Sucursal s = new Sucursal();
+                    s.id = reader.GetInt32(0);
+                    s.nombre = reader.GetString(1);
+                    sucursales.Add(s);
+                }
+
+                reader.Close();
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error al obtener sucursales activas: " + e.Message);
+            }
+            finally
+            {
+                DB_Controller.connection.Close();
+            }
+
+            return sucursales;
         }
+
+
+
+
+
+
+    }
 }

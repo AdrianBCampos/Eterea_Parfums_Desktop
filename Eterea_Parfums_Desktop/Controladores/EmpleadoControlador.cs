@@ -238,7 +238,11 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
 
-            string query = "select * from dbo.empleado;";
+            string query = @"
+            SELECT e.*, s.activo 
+            FROM dbo.empleado e
+            JOIN dbo.sucursal s ON e.sucursal_id = s.id;";
+
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
@@ -252,7 +256,10 @@ namespace Eterea_Parfums_Desktop.Controladores
 
                     sucursal.id = r.GetInt32(18);
 
-                    Sucursal suc = new Sucursal(sucursal.id, "", pais, provincia, localidad, 0, calle, 0, 0);
+                    bool sucursalActiva = r.GetBoolean(r.GetOrdinal("activo"));
+
+
+                    Sucursal suc = new Sucursal(sucursal.id, "", pais, provincia, localidad, 0, calle, 0, sucursalActiva);
 
                     list.Add(new Empleado(r.GetInt32(0), r.GetString(1), "", r.GetString(3), r.GetString(4),
                         r.GetInt32(5), r.GetDateTime(6), r.GetString(7), r.GetString(8), pais,

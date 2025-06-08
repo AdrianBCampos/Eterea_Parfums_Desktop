@@ -404,16 +404,16 @@ namespace Eterea_Parfums_Desktop
             }
             else if (txt_dni.Text.Length != 8 && txt_dni.Text.Length != 11)
             {
-                lbl_dniE.Text = "El DNI tiene que ser de 8 o 11 dígitos.";
+                lbl_dniE.Text = "El DNI tiene que ser de 8 u 11 dígitos.";
                 lbl_dniE.Show();
                 errorMsg += lbl_dniE.Text + Environment.NewLine;
             }
             else
             {
                 var empleadoId = EmpleadoControlador.BuscarIdPorDni(txt_dni.Text);
-                if (empleadoId != null)
+                if (empleadoId != null && empleadoId != id_editar)
                 {
-                    lbl_dniE.Text = "Ya existe un empleado con ese DNI.";
+                    lbl_dniE.Text = "Ya existe otro empleado con ese DNI.";
                     lbl_dniE.Show();
                     errorMsg += lbl_dniE.Text + Environment.NewLine;
                 }

@@ -17,98 +17,7 @@ namespace Eterea_Parfums_Desktop
         public List<Localidad> localidades;
         public List<Calle> calles;
 
-        /*public FormEditarCliente()
-        {
-            InitializeComponent();
-
-            lbl_usuarioE.Hide();
-            lbl_claveE.Hide();
-            lbl_nombreE.Hide();
-            lbl_apellidoE.Hide();
-            lbl_dniE.Hide();
-            lbl_cond_ivaE.Hide();
-            lbl_celularE.Hide();
-            lbl_emailE.Hide();
-            lbl_cpE.Hide();
-            lbl_num_calleE.Hide();
-            lbl_pisoE.Hide();
-            lbl_deptoE.Hide();
-            lbl_comentariosE.Hide();
-            lbl_nacE.Hide();
-            lbl_paisE.Hide();
-            lbl_provinciaE.Hide();
-            lbl_localidadE.Hide();
-            lbl_calleE.Hide();
-            lbl_activoE.Hide();
-
-
-            paises = PaisControlador.getAll();
-            combo_pais.Items.Clear();
-            foreach (Pais pais in paises)
-            {
-                if (pais.id != 1)
-                    combo_pais.Items.Add(pais.nombre.ToString());
-            }
-
-            provincias = ProvinciaControlador.getAll();
-            combo_provincia.Items.Clear();
-            foreach (Provincia provincia in provincias)
-            {
-                if (provincia.id != 1)
-                    combo_provincia.Items.Add(provincia.nombre.ToString());
-            }
-
-            localidades = LocalidadControlador.getAll();
-            combo_localidad.Items.Clear();
-            foreach (Localidad localidad in localidades)
-            {
-                if (localidad.id != 1)
-                    combo_localidad.Items.Add(localidad.nombre.ToString());
-            }
-
-            calles = CalleControlador.getAll();
-            combo_calle.Items.Clear();
-            foreach (Calle calle in calles)
-            {
-                if (calle.id != 1)
-                    combo_calle.Items.Add(calle.nombre.ToString());
-            }
-
-            combo_activo.Items.Clear();
-            combo_activo.Items.Add("Activo");
-            combo_activo.Items.Add("Inactivo");
-
-            combo_con_iva.Items.Clear();
-            combo_con_iva.Items.Add("Consumidor Final");
-            combo_con_iva.Items.Add("Responsable Inscripto");
-            combo_con_iva.Items.Add("Exento");
-            combo_con_iva.Items.Add("Monotributista");
-
-            //Diseño del combo box
-            combo_activo.DrawMode = DrawMode.OwnerDrawFixed;
-            combo_activo.DrawItem += comboBoxdiseño_DrawItem;
-            combo_activo.DropDownStyle = ComboBoxStyle.DropDownList;
-
-            combo_con_iva.DrawMode = DrawMode.OwnerDrawFixed;
-            combo_con_iva.DrawItem += comboBoxdiseño_DrawItem;
-            combo_con_iva.DropDownStyle = ComboBoxStyle.DropDownList;
-
-            combo_calle.DrawMode = DrawMode.OwnerDrawFixed;
-            combo_calle.DrawItem += comboBoxdiseño_DrawItem;
-            combo_calle.DropDownStyle = ComboBoxStyle.DropDownList;
-
-            combo_pais.DrawMode = DrawMode.OwnerDrawFixed;
-            combo_pais.DrawItem += comboBoxdiseño_DrawItem;
-            combo_pais.DropDownStyle = ComboBoxStyle.DropDownList;
-
-            combo_provincia.DrawMode = DrawMode.OwnerDrawFixed;
-            combo_provincia.DrawItem += comboBoxdiseño_DrawItem;
-            combo_provincia.DropDownStyle = ComboBoxStyle.DropDownList;
-
-            combo_localidad.DrawMode = DrawMode.OwnerDrawFixed;
-            combo_localidad.DrawItem += comboBoxdiseño_DrawItem;
-            combo_localidad.DropDownStyle = ComboBoxStyle.DropDownList;
-        }*/
+        
 
         //SOBRECARGAR EL CONSTRUCTOR PARA INICIAR EL FORM CON LA INFO CARGADA, PARA EDITAR
         public FormEditarCliente(Cliente cliente)
@@ -260,26 +169,54 @@ namespace Eterea_Parfums_Desktop
 
         private void editar()
         {
-            bool activo = true;
-            if (combo_activo.SelectedItem.ToString() == "Inactivo")
-            {
-                activo = false;
-            }
-
+            bool activo = combo_activo.SelectedItem.ToString() == "Activo";
             string rol = "cliente";
 
+            // Validaciones seguras con TryParse
+            if (!long.TryParse(txt_dni.Text, out long dniNumerico))
+            {
+                MessageBox.Show("El DNI o CUIT ingresado no es válido.");
+                return;
+            }
+
+            if (txt_dni.Text.Length != 8 && txt_dni.Text.Length != 11)
+            {
+                MessageBox.Show("El DNI debe tener 8 dígitos o el CUIT 11 dígitos.");
+                return;
+            }
+
+            if (!int.TryParse(txt_cp.Text, out int codigoPostal))
+            {
+                MessageBox.Show("El código postal ingresado no es válido.");
+                return;
+            }
+
+            if (!int.TryParse(txt_num_calle.Text, out int numeroCalle))
+            {
+                MessageBox.Show("El número de calle ingresado no es válido.");
+                return;
+            }
+
+            if (!DateTime.TryParse(dateTime_nac.Text, out DateTime fechaNacimiento))
+            {
+                MessageBox.Show("La fecha de nacimiento ingresada no es válida.");
+                return;
+            }
+
+            // Obtener datos relacionados
             Pais pais = PaisControlador.getByName(combo_pais.SelectedItem.ToString());
             Provincia provincia = ProvinciaControlador.getByName(combo_provincia.SelectedItem.ToString());
             Localidad ciudad = LocalidadControlador.getByName(combo_localidad.SelectedItem.ToString());
             Calle calle = CalleControlador.getByName(combo_calle.SelectedItem.ToString());
 
-
+            // Crear objeto Cliente de forma segura
             Cliente cliente = new Cliente(id_editar, txt_usuario.Text, txt_clave.Text, txt_nombre.Text, txt_apellido.Text,
-               int.Parse(txt_dni.Text), combo_con_iva.Text, DateTime.Parse(dateTime_nac.Text), txt_celular.Text, txt_email.Text,
-               pais, provincia, ciudad, int.Parse(txt_cp.Text), calle, int.Parse(txt_num_calle.Text),
+               dniNumerico, combo_con_iva.Text, fechaNacimiento, txt_celular.Text, txt_email.Text,
+               pais, provincia, ciudad, codigoPostal, calle, numeroCalle,
                txt_piso.Text, txt_depto.Text, richTextBox_comentario.Text,
-                activo, rol);
+               activo, rol);
 
+            // Guardar cliente
             if (ClienteControlador.editarCliente(cliente))
             {
                 this.DialogResult = DialogResult.OK;
@@ -341,20 +278,28 @@ namespace Eterea_Parfums_Desktop
             }
             else if (txt_dni.Text.Length != 8 && txt_dni.Text.Length != 11)
             {
-                string error = "El DNI tiene que ser de 8 o 11 dígitos." + Environment.NewLine;
+                string error = "El DNI tiene que ser de 8 u 11 dígitos." + Environment.NewLine;
                 lbl_dniE.Text = error;
                 lbl_dniE.Show();
+            }
+            else if (!long.TryParse(txt_dni.Text, out _))
+            {
+                string error = "El DNI debe ser un número válido.";
+                lbl_dniE.Text = error;
+                lbl_dniE.Show();
+                errorMsg += error + Environment.NewLine;
             }
             else
             {
                 var empleadoId = ClienteControlador.BuscarIdPorDni(txt_dni.Text);
-                if (empleadoId != null)
+                if (empleadoId != null && empleadoId != id_editar) // evitar que valide contra sí mismo
                 {
                     lbl_dniE.Text = "Ya existe un cliente con ese DNI.";
                     lbl_dniE.Show();
                     errorMsg += lbl_dniE.Text + Environment.NewLine;
                 }
             }
+
 
             if (!DateTime.TryParse(dateTime_nac.Text, out _))
             {

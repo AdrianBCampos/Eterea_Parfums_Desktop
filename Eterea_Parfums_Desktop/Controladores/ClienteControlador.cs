@@ -505,7 +505,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             using (SqlCommand cmd = new SqlCommand(query, DB_Controller.connection))
             {
                 // Intentamos convertir el string a int
-                if (!int.TryParse(dni, out int dniNumerico))
+                if (!long.TryParse(dni, out long dniNumerico))
                 {
                     throw new Exception("El DNI proporcionado no es numérico.");
                 }

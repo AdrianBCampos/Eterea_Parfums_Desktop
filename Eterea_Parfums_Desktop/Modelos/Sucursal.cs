@@ -10,11 +10,11 @@
         public int codigo_postal { get; set; }
         public Calle calle_id { get; set; }
         public int numeracion_calle { get; set; }
-        public int activo { get; set; }
+        public bool? activo { get; set; }
 
 
         public Sucursal(int id, string nombre, Pais pais_id, Provincia provincia_id, Localidad localidad_id,
-            int codigo_postal, Calle calle_id, int numeracion_calle, int activo)
+            int codigo_postal, Calle calle_id, int numeracion_calle, bool? activo)
         {
             this.id = id;
             this.nombre = nombre;
