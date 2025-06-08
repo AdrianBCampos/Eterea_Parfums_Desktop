@@ -221,7 +221,7 @@ namespace Eterea_Parfums_Desktop
         }
 
 
-        private void btn_gestionar_Click(object sender, EventArgs e)
+        /*private void btn_gestionar_Click(object sender, EventArgs e)
         {
             if (HayOrdenesActivas())
             {
@@ -233,7 +233,7 @@ namespace Eterea_Parfums_Desktop
             {
                 MessageBox.Show("En este momento no hay órdenes activas para despachar.", "Sin órdenes activas", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }
+        }*/
 
 
     }

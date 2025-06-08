@@ -13,9 +13,9 @@ namespace Eterea_Parfums_Desktop.Controladores
         public DataTable ObtenerOrdenes()
         {
             string query = @"
-            SELECT DISTINCT o.numero_de_orden, f.num_factura, f.fecha, o.nombre_cliente, o.apellido_cliente, o.dni, o.e_mail_cliente, o.domicilio_de_envio, o.codigo_despacho
+            SELECT DISTINCT o.numero_de_orden, f.id AS num_factura, f.fecha, o.nombre_cliente, o.apellido_cliente, o.dni, o.e_mail_cliente, o.domicilio_de_envio, o.codigo_despacho
             FROM dbo.orden o
-            JOIN dbo.factura f ON o.num_factura = f.num_factura
+            JOIN dbo.factura f ON o.num_factura = f.id
             WHERE o.estado = @estado
         ";
 
@@ -42,7 +42,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                 JOIN marca m ON p.marca_id = m.id
                 JOIN tipo_de_perfume tp ON p.tipo_de_perfume_id = tp.id
                 JOIN genero g ON p.genero_id = g.id
-                WHERE df.num_factura = @numFactura
+                WHERE df.factura_id = @numFactura
             ";
 
 
