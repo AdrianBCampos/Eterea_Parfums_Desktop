@@ -29,7 +29,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             dataGridViewPerfumes.RowTemplate.Height = 80;
 
             cargarDatos();
-            lbl_info.Text = numeroSucursal.ToString();
+
+            this.numeroSucursal = numeroSucursal;
+            var sucursal = SucursalControlador.getAll().FirstOrDefault(s => s.id == numeroSucursal);
+            lbl_info.Text = sucursal.nombre;
 
             this.Cursor = Cursors.Default;
             this.UseWaitCursor = false;
