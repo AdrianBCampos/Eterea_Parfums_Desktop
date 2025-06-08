@@ -37,6 +37,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
                 txt_numero_sucursal.Text = "Sucursal no encontrada";
             }
 
+            txt_datos_producto.Text = "";
+            txt_tamaño_producto.Text = "";
 
             //txt_cantidad_producto.Text = "0";
             txt_codigo_producto.MaxLength = 13;

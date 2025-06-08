@@ -26,7 +26,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 
             lbl_error_fecha.Text = "";
             lbl_error_fecha2.Text = "";
-
+            
 
         }
         public InformesDeVentas1_UC(int numeroSucursal)
@@ -36,9 +36,15 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 
             lbl_error_fecha.Text = "";
             lbl_error_fecha2.Text = "";
-            this.numeroSucursal = numeroSucursal;
 
-            lbl_info.Text = numeroSucursal.ToString();
+            txt_monto_total.Text = "";
+            txt_cantidad_ventas.Text = "";
+
+            this.numeroSucursal = numeroSucursal;
+            var sucursal = SucursalControlador.getAll().FirstOrDefault(s => s.id == numeroSucursal);
+            lbl_info.Text = sucursal.nombre;
+
+            //lbl_info.Text = numeroSucursal.ToString();
 
             this.Cursor = Cursors.Default;
             this.UseWaitCursor = false;
@@ -74,10 +80,16 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 
         private void resetearDatos()
         {
-            txt_cantidad_ventas.Text = "0";
-            txt_monto_total.Text = "$0";
-            richTextBox_mas_vendido.Text = "No hay registros";
-            richTextBox_menos_vendido.Text = "No hay registros";
+            txt_cantidad_ventas.Text = "";
+            txt_monto_total.Text = "";
+            richTextBox_mas_vendido.Text = "";
+            richTextBox_menos_vendido.Text = "";
+
+            label4.Visible = true;
+            label5.Visible = true;
+            label6.Visible = true;
+            label7.Visible = true;
+
         }
         private void cargarDatos()
         {
@@ -157,6 +169,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 
             // Asignar al TextBox
             richTextBox_mas_vendido.Text = nombresMasVendidos;
+            richTextBox_mas_vendido.SelectAll();
+            richTextBox_mas_vendido.SelectionAlignment = HorizontalAlignment.Center;
 
 
             // Encontrar la menor cantidad vendida
@@ -175,6 +189,13 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 
             // Asignar al TextBox
             richTextBox_menos_vendido.Text = nombresMenosVendidos;
+            richTextBox_menos_vendido.SelectAll();
+            richTextBox_menos_vendido.SelectionAlignment = HorizontalAlignment.Center;
+
+            label4.Visible = false;
+            label5.Visible = false;
+            label6.Visible = false;
+            label7.Visible = false;
 
         }
 
@@ -263,7 +284,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             cargarDatos();
             //DateTime fechaSeleccionada = dateTimeFinal.Value;
             //lbl_fecha_Fin.Text = fechaSeleccionada.ToString("dd 'de' MMMM 'de' yyyy");
-        } 
+        }
 
+        
     }
 }
