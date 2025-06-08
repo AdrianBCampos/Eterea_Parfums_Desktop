@@ -229,9 +229,14 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                                                .Replace("@INICIO", dateTimeInicio.Value.ToString("dd/MM/yyyy"))
                                                .Replace("@FINAL", dateTimeFinal.Value.ToString("dd/MM/yyyy"))
                                                .Replace("@CANTIDAD", txt_cantidad_ventas.Text)
-                                               .Replace("@MONTO_TOTAL_VENTAS", txt_monto_total.Text)
-                                               .Replace("@PERFUME_MAS_VENDIDO", richTextBox_mas_vendido.Text)
-                                               .Replace("@PERFUME_MENOS_VENDIDO", richTextBox_menos_vendido.Text);
+                                               .Replace("@MONTO_TOTAL_VENTAS", txt_monto_total.Text);
+
+            string perfumesMasVendidosHtml = richTextBox_mas_vendido.Text.Replace("\n", "<br />").Replace("\r", "");
+            string perfumesMenosVendidosHtml = richTextBox_menos_vendido.Text.Replace("\n", "<br />").Replace("\r", "");
+
+            PaginaHTML_Texto = PaginaHTML_Texto.Replace("@PERFUME_MAS_VENDIDO", perfumesMasVendidosHtml)
+                                               .Replace("@PERFUME_MENOS_VENDIDO", perfumesMenosVendidosHtml);
+
             Console.WriteLine(sucursal.provincia_id.nombre + sucursal.numeracion_calle.ToString() + sucursal.provincia_id.nombre);
 
             Console.WriteLine(PaginaHTML_Texto);
