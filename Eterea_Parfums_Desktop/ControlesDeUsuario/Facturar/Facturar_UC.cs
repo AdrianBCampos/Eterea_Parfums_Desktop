@@ -166,7 +166,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         private void txt_dni_TextChanged(object sender, EventArgs e)
         {
             btn_imprimir.Enabled = false;
-            btn_imprimir.Text = "Ingresar cliente";
         }
 
         private void FormFacturacion_Load(object sender, EventArgs e)
