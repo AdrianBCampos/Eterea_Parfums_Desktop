@@ -60,6 +60,12 @@
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
             this.richTextBox_mas_vendido = new System.Windows.Forms.RichTextBox();
             this.richTextBox_menos_vendido = new System.Windows.Forms.RichTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -100,12 +106,12 @@
             this.txt_monto_total.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.txt_monto_total.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_monto_total.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_monto_total.Location = new System.Drawing.Point(1615, 270);
+            this.txt_monto_total.Location = new System.Drawing.Point(1619, 266);
             this.txt_monto_total.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_monto_total.Name = "txt_monto_total";
-            this.txt_monto_total.Size = new System.Drawing.Size(164, 32);
+            this.txt_monto_total.Size = new System.Drawing.Size(31, 32);
             this.txt_monto_total.TabIndex = 458;
-            this.txt_monto_total.Text = "Monto Total";
+            this.txt_monto_total.Text = "T";
             // 
             // txt_cantidad_ventas
             // 
@@ -113,12 +119,12 @@
             this.txt_cantidad_ventas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.txt_cantidad_ventas.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_cantidad_ventas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_cantidad_ventas.Location = new System.Drawing.Point(675, 270);
+            this.txt_cantidad_ventas.Location = new System.Drawing.Point(689, 266);
             this.txt_cantidad_ventas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_cantidad_ventas.Name = "txt_cantidad_ventas";
-            this.txt_cantidad_ventas.Size = new System.Drawing.Size(225, 32);
+            this.txt_cantidad_ventas.Size = new System.Drawing.Size(34, 32);
             this.txt_cantidad_ventas.TabIndex = 457;
-            this.txt_cantidad_ventas.Text = "Cantidad Ventas";
+            this.txt_cantidad_ventas.Text = "N";
             // 
             // label1
             // 
@@ -409,7 +415,7 @@
             this.lbl_info.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_info.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_info.Location = new System.Drawing.Point(1751, 24);
+            this.lbl_info.Location = new System.Drawing.Point(1614, 24);
             this.lbl_info.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_info.Name = "lbl_info";
             this.lbl_info.Size = new System.Drawing.Size(214, 38);
@@ -441,7 +447,7 @@
             // richTextBox_mas_vendido
             // 
             this.richTextBox_mas_vendido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.richTextBox_mas_vendido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.richTextBox_mas_vendido.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox_mas_vendido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox_mas_vendido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.richTextBox_mas_vendido.Location = new System.Drawing.Point(445, 333);
@@ -455,7 +461,7 @@
             // richTextBox_menos_vendido
             // 
             this.richTextBox_menos_vendido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.richTextBox_menos_vendido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.richTextBox_menos_vendido.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox_menos_vendido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox_menos_vendido.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
             this.richTextBox_menos_vendido.Location = new System.Drawing.Point(1452, 333);
@@ -466,11 +472,97 @@
             this.richTextBox_menos_vendido.TabIndex = 501;
             this.richTextBox_menos_vendido.Text = "";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label2.Location = new System.Drawing.Point(547, 277);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(329, 32);
+            this.label2.TabIndex = 502;
+            this.label2.Text = "...................................";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label3.Location = new System.Drawing.Point(1531, 277);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(329, 32);
+            this.label3.TabIndex = 503;
+            this.label3.Text = "...................................";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label4.Location = new System.Drawing.Point(602, 343);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(220, 32);
+            this.label4.TabIndex = 504;
+            this.label4.Text = "No Hay Registro";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label5.Location = new System.Drawing.Point(1595, 343);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(220, 32);
+            this.label5.TabIndex = 505;
+            this.label5.Text = "No Hay Registro";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label6.Location = new System.Drawing.Point(597, 266);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(220, 32);
+            this.label6.TabIndex = 506;
+            this.label6.Text = "No Hay Registro";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label7.Location = new System.Drawing.Point(1591, 266);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(220, 32);
+            this.label7.TabIndex = 507;
+            this.label7.Text = "No Hay Registro";
+            // 
             // InformesDeVentas1_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txt_monto_total);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txt_cantidad_ventas);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.richTextBox_menos_vendido);
             this.Controls.Add(this.richTextBox_mas_vendido);
             this.Controls.Add(this.lbl_producto_mas_vendido);
@@ -480,8 +572,6 @@
             this.Controls.Add(this.lbl_error_fecha2);
             this.Controls.Add(this.lbl_error_fecha);
             this.Controls.Add(this.btn_exportar_pdf);
-            this.Controls.Add(this.txt_monto_total);
-            this.Controls.Add(this.txt_cantidad_ventas);
             this.Controls.Add(this.lbl_producto_menos_vendido);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.lbl_monto_total_ventas);
@@ -555,5 +645,11 @@
         private System.Windows.Forms.PictureBox pictureBox11;
         private System.Windows.Forms.RichTextBox richTextBox_mas_vendido;
         private System.Windows.Forms.RichTextBox richTextBox_menos_vendido;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }

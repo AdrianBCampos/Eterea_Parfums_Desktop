@@ -76,7 +76,6 @@
             this.button2.TabIndex = 86;
             this.button2.Text = "X";
             this.button2.UseVisualStyleBackColor = false;
-            //this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // lbl_facturacion
             // 
@@ -84,12 +83,12 @@
             this.lbl_facturacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_facturacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_facturacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_facturacion.Location = new System.Drawing.Point(12, 14);
+            this.lbl_facturacion.Location = new System.Drawing.Point(13, 15);
             this.lbl_facturacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_facturacion.Name = "lbl_facturacion";
-            this.lbl_facturacion.Size = new System.Drawing.Size(470, 38);
+            this.lbl_facturacion.Size = new System.Drawing.Size(293, 38);
             this.lbl_facturacion.TabIndex = 404;
-            this.lbl_facturacion.Text = "Ingresar Número de Sucursal";
+            this.lbl_facturacion.Text = "Cambiar Sucursal";
             // 
             // label1
             // 
@@ -100,9 +99,9 @@
             this.label1.Location = new System.Drawing.Point(29, 80);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(343, 38);
+            this.label1.Size = new System.Drawing.Size(355, 38);
             this.label1.TabIndex = 405;
-            this.label1.Text = "Número de Sucursal:";
+            this.label1.Text = "Seleccionar Sucursal:";
             // 
             // btn_continuar
             // 
