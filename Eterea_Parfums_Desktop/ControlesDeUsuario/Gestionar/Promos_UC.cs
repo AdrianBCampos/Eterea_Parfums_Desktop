@@ -54,14 +54,12 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     string textoPromocion = GetTextoPromocion(promocion.descuento);
                     dataGridViewPromos.Rows[rowIndex].Cells[2].Value = textoPromocion;
 
-                    if (promocion.activo.ToString() == "1")
-                    {
-                        dataGridViewPromos.Rows[rowIndex].Cells[5].Value = "Activo";
-                    }
-                    else
-                    {
-                        dataGridViewPromos.Rows[rowIndex].Cells[5].Value = "Inactivo";
-                    }
+                    string estadoActivo = promocion.activo ? "Activo" : "Inactivo";
+                    dataGridViewPromos.Rows[rowIndex].Cells[5].Value = estadoActivo;
+
+                    // Colorear el texto según el estado
+                    dataGridViewPromos.Rows[rowIndex].Cells[5].Style.ForeColor = promocion.activo ? Color.Green : Color.Red;
+
 
                     dataGridViewPromos.Rows[rowIndex].Cells[6].Value = "Editar";
                     dataGridViewPromos.Rows[rowIndex].Cells[7].Value = "Eliminar";

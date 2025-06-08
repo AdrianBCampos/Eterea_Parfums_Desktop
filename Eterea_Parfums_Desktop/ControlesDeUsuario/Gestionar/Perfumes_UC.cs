@@ -104,16 +104,21 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                     // Comprobar si el valor de activo es null o tiene valor
                     string estadoActivo = perfume.activo.HasValue
-                        ? (perfume.activo.Value ? "Si" : "No")
-                        : "No especificado"; // O puedes mostrar "" si prefieres
+                    ? (perfume.activo.Value ? "Activo" : "Inactivo")
+                    : "No especificado";
 
                     dataGridViewPerfumes.Rows[rowIndex].Cells[indexActivo].Value = estadoActivo;
 
-                    // Aplicar estilo solo si es "No"
-                    if (perfume.activo.HasValue && !perfume.activo.Value)
+                    // Aplicar colores
+                    if (perfume.activo.HasValue)
                     {
-                        dataGridViewPerfumes.Rows[rowIndex].Cells[indexActivo].Style.ForeColor = Color.Red;
+                        var color = perfume.activo.Value ? Color.Green : Color.Red;
+                        dataGridViewPerfumes.Rows[rowIndex].Cells[indexActivo].Style.ForeColor = color;
                     }
+
+                    dataGridViewPerfumes.Rows[rowIndex].Cells[indexActivo].Value = estadoActivo;
+
+                  
 
                     dataGridViewPerfumes.Rows[rowIndex].Cells[13].Value = "Editar";
                     dataGridViewPerfumes.Rows[rowIndex].Cells[14].Value = "Eliminar";

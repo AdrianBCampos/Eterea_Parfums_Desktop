@@ -26,15 +26,13 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         private void cargarClientes(string filtroDni = "")
         {
-            //Ocultas la primera columna de la tabla (es una columna de seleccion de fila)
             dataGridViewClientes.RowHeadersVisible = false;
-
             clientes = ClienteControlador.obtenerTodos();
-
             dataGridViewClientes.Rows.Clear();
+
             foreach (Cliente cliente in clientes)
             {
-                if (cliente.activo == true && (string.IsNullOrEmpty(filtroDni) || cliente.dni.ToString().Contains(filtroDni)))
+                if (string.IsNullOrEmpty(filtroDni) || cliente.dni.ToString().Contains(filtroDni))
                 {
                     int rowIndex = dataGridViewClientes.Rows.Add();
 
@@ -43,24 +41,25 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     dataGridViewClientes.Rows[rowIndex].Cells[2].Value = cliente.nombre.ToString();
                     dataGridViewClientes.Rows[rowIndex].Cells[3].Value = cliente.apellido.ToString();
                     dataGridViewClientes.Rows[rowIndex].Cells[4].Value = cliente.dni.ToString();
-
                     dataGridViewClientes.Rows[rowIndex].Cells[5].Value = cliente.celular.ToString();
                     dataGridViewClientes.Rows[rowIndex].Cells[6].Value = cliente.e_mail.ToString();
 
-                    if (cliente.activo.ToString() == "1")
+                    dataGridViewClientes.Rows[rowIndex].Cells[7].Value = cliente.activo ? "Activo" : "Inactivo";
+
+                    if (!cliente.activo)
                     {
-                        dataGridViewClientes.Rows[rowIndex].Cells[7].Value = "Activo";
+                        dataGridViewClientes.Rows[rowIndex].Cells[7].Style.ForeColor = Color.Red;
                     }
                     else
                     {
-                        dataGridViewClientes.Rows[rowIndex].Cells[7].Value = "Inactivo";
+                        dataGridViewClientes.Rows[rowIndex].Cells[7].Style.ForeColor = Color.Green; // Opcional
                     }
 
                     dataGridViewClientes.Rows[rowIndex].Cells[8].Value = "Editar";
                     dataGridViewClientes.Rows[rowIndex].Cells[9].Value = "Eliminar";
                 }
-                dataGridViewClientes.ClearSelection();
 
+                dataGridViewClientes.ClearSelection();
                 dataGridViewClientes.CellPainting += dataGridView1_CellPainting;
             }
         }
