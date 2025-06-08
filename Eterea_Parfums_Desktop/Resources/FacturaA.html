@@ -112,11 +112,12 @@
                 <table class="border" style="margin-bottom: 30px;">
                     <thead>
                         <tr>
-                            <th>Descripción</th>
-                            <th>Precio Unitario</th>
-                            <th>Cantidad</th>
-                            <th>Descuento Unitario</th>
-                            <th>Importe</th>
+                            <th style="width: 20%;">Descripción</th>
+                            <th style="width: 12%;">Precio Unitario</th>
+                            <th style="width: 13%;">Cantidad</th>
+                            <th style="width: 15%;">Descuento Total</th>
+                            <th style="width: 20%;">Subtotal</th>
+                            <th style="width: 20%;">Subtotal con iva</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -124,29 +125,28 @@
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="3" style="border: 0px solid white;"></td>
-                            <td style="text-align: right;"><strong>Subtotal:</strong></td>
-                            <td style="text-align: right;"> @SUBTOTAL</td>
+                            <td colspan="4" style="border: 0px solid white;"></td>
+                            <td style="text-align: right;"><strong>Importe Neto Gravado:</strong></td>
+                            <td style="text-align: right;"> @IMPORTE</td>
                         </tr>
                         <tr>
-                            <td colspan="3" style="border:0px solid white;"></td>
-                            <td style="text-align: right;"><strong>Recargo:</strong></td>
-                            <td style="text-align: right;">@RECARGO</td>
+                            <td colspan="4" style="border:0px solid white;"></td>
+                            <td style="text-align: right;"><strong>IVA 21%:</strong></td>
+                            <td style="text-align: right;"> @IVA</td>
                         </tr>
                         <tr>
-                            <td colspan="3" style="border:0px solid white;"></td>
-                            <td style="text-align: right;"><strong>Descuento:</strong></td>
+                            <td colspan="4" style="border:0px solid white;"></td>
+                            <td style="text-align: right;"><strong>Bonificación:</strong></td>
                             <td style="text-align: right;"> @DESCUENTO</td>
                         </tr>
                         <tr>
-                            <td colspan="3" style="border:0px solid white;"></td>
-                            <td style="text-align: right;"><strong>IVA:</strong></td>
-                            <td style="text-align: right;"> @IVA</td>
+                            <td colspan="4" style="border:0px solid white;"></td>
+                            <td style="text-align: right;"><strong>Recargo Tarjeta:</strong></td>
+                            <td style="text-align: right;">@RECARGO</td>
                         </tr>
-                        
                         <tr>
-                            <td colspan="3" style="border: 0px solid white;"></td>
-                            <td style="text-align: right;"><strong>Total:</strong></td>
+                            <td colspan="4" style="border: 0px solid white;"></td>
+                            <td style="text-align: right;"><strong>Importe Total:</strong></td>
                             <td style="text-align: right;"> @TOTAL</td>
                         </tr>
                     </tfoot>

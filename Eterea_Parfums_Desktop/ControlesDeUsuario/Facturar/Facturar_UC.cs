@@ -163,7 +163,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             BarcodeReceiver.OnCodigoLeido += ProcesarCodigoLeido;
         }
 
-
+        private void txt_dni_TextChanged(object sender, EventArgs e)
+        {
+            btn_imprimir.Enabled = false;
+            btn_imprimir.Text = "Ingresar cliente";
+        }
 
         private void FormFacturacion_Load(object sender, EventArgs e)
         {
@@ -405,6 +409,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     txt_nombre_cliente.Text = cliente.nombre + " " + cliente.apellido;
                     txt_condicion_iva.Text = cliente.condicion_frente_al_iva;
                     txt_email.Text = cliente.e_mail;
+
+                    btn_imprimir.Enabled = true;
+                    btn_imprimir.Text = "Imprimir factura";
 
                 }
                 else
@@ -759,13 +766,16 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             // Verificar si el cliente es Responsable Monotributo
             if (condicionCliente.Contains("Monotributista") || condicionCliente.Contains("Responsable Inscripto"))
             {
-                txt_subtotal.Text = (subtotal + recargo - descuento - CalcularIVA(subtotal, recargo, descuento)).ToString("N2");
+                float subtotalsiniva = subtotal / 1.21f;
+                txt_subtotal.Text = subtotalsiniva.ToString("N2");
+                // Intento de calculo sin iva txt_subtotal.Text = (subtotal + recargo - descuento - CalcularIVA(subtotal, recargo, descuento)).ToString("N2");
                 txt_total.Text = (subtotal + recargo - descuento).ToString("N2");
                 txt_iva.Text = CalcularIVA(subtotal, recargo, descuento).ToString("N2");
             }
             else
             {
                 txt_total.Text = (subtotal + recargo - descuento).ToString("N2");
+                txt_iva.Text = "";
             }
         }
 
@@ -1177,7 +1187,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     double descuento = double.Parse(txt_monto_descuento.Text);
 
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FILAS", filas);
-                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL", precioSubtotal.ToString());
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@IMPORTE", precioSubtotal.ToString());
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@RECARGO", recargoTarjeta.ToString());
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DESCUENTO", descuento.ToString());
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TOTAL", precioTotal.ToString());
@@ -1246,11 +1256,17 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     decimal total = 0;
                     foreach (DataGridViewRow row in Factura.Rows)
                     {
-                        filas += "<tr>";
+                        decimal totalFila = decimal.Parse(row.Cells["Tot"].Value.ToString());
+                        decimal totalSinIVA = totalFila / 1.21m;
+                        decimal precioUnitario = decimal.Parse(row.Cells["Precio_Unitario"].Value.ToString());
+                        decimal precioSinIVA = precioUnitario / 1.21m;
+
+                            filas += "<tr>";
                         filas += "<td>" + row.Cells["Nombre_Perfume"].Value.ToString() + "</td>";
-                        filas += "<td>" + row.Cells["Precio_Unitario"].Value.ToString() + "</td>";
+                        filas += "<td>" + precioSinIVA.ToString("0") + "</td>";
                         filas += "<td>" + row.Cells["Cantidad"].Value.ToString() + "</td>";
                         filas += "<td>" + row.Cells["Descuento"].Value.ToString() + "</td>";
+                        filas += "<td>" + totalSinIVA.ToString("0") + "</td>";
                         filas += "<td>" + row.Cells["Tot"].Value.ToString() + "</td>";
                         filas += "</tr>";
                         total += decimal.Parse(row.Cells["Tot"].Value.ToString());
@@ -1263,7 +1279,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     double descuento = double.Parse(txt_monto_descuento.Text);
 
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FILAS", filas);
-                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUBTOTAL", precioSubtotal.ToString());
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@IMPORTE", precioSubtotal.ToString());
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@RECARGO", recargoTarjeta.ToString());
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DESCUENTO", descuento.ToString());
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@IVA", iva.ToString());
