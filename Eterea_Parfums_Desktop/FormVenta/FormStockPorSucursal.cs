@@ -67,7 +67,10 @@ namespace Eterea_Parfums_Desktop
             }
 
             // Obtener perfumes con ese nombre
-            List<Perfume> perfumes = PerfumeControlador.getByNombre(nombrePerfume);
+            List<Perfume> perfumes = PerfumeControlador.getByNombre(nombrePerfume)
+                                            .OrderBy(p => p.presentacion_ml)
+                                            .ToList();
+
             var stockPorPerfumeSucursal = StockControlador.ObtenerTodosLosStocksPorSucursal();
 
             int? filaSeleccionada = null;  // Variable para guardar el índice a seleccionar

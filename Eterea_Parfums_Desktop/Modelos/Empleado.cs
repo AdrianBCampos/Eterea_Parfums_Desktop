@@ -24,14 +24,14 @@ namespace Eterea_Parfums_Desktop.Modelos
         public String comentarios_domicilio { get; set; }
         public Sucursal sucursal_id { get; set; }
         public DateTime fecha_ingreso { get; set; }
-        public int sueldo { get; set; }
+        public double sueldo { get; set; }
         public bool activo { get; set; }
         public String rol { get; set; }
 
 
         public Empleado(int id, string usuario, string clave, string nombre, string apellido, int dni, DateTime fecha_nacimiento, string celular, string e_mail,
             Pais pais_id, Provincia provincia_id, Localidad localidad_id, int codigo_postal, Calle calle_id, int numeracion_calle, string piso, string departamento,
-            string comentarios_domicilio, Sucursal sucursal_id, DateTime fecha_ingreso, int sueldo, bool activo, string rol)
+            string comentarios_domicilio, Sucursal sucursal_id, DateTime fecha_ingreso, double sueldo, bool activo, string rol)
         {
             this.id = id;
             this.usuario = usuario;
