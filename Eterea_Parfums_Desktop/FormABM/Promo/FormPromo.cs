@@ -580,8 +580,8 @@ namespace Eterea_Parfums_Desktop
 
             situacion = "Edicion";
 
-            lbl_crear_promo.Text = "Editar promoción: ";
-            btn_crear_promo.Text = "Editar promoción";
+            lbl_crear_promo.Text = "Editar Promoción";
+            btn_crear_promo.Text = "Editar Promoción";
 
         }
 
@@ -1641,8 +1641,6 @@ namespace Eterea_Parfums_Desktop
             return Path.Combine(Program.Ruta_Base, nombreImagen + ".jpg");
         }
 
-
-
-
+       
     }
 }
