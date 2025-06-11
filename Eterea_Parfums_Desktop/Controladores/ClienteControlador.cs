@@ -537,5 +537,38 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             return idCliente; // null si no se encontró
         }
+
+        public static bool ExisteUsuario(string usuario)
+        {
+            string query = "SELECT COUNT(*) FROM dbo.cliente WHERE usuario = @usuario";
+
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@usuario", usuario);
+
+                connection.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+        public static bool ExisteEmail(string email)
+        {
+            string query = "SELECT COUNT(*) FROM dbo.cliente WHERE e_mail = @email";
+
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@email", email);
+
+                connection.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+
+
     }
 }

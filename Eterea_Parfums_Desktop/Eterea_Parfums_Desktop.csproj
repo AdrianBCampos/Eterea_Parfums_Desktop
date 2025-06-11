@@ -159,7 +159,10 @@
     <Compile Include="BarcodeReceiver.cs" />
     <Compile Include="CajaManager.cs" />
     <Compile Include="Controladores\CajaControlador.cs" />
+    <Compile Include="Controladores\CalleLocalidadControlador.cs" />
     <Compile Include="Controladores\OrdenControlador.cs" />
+    <Compile Include="Controladores\PaisProvinciaControlador.cs" />
+    <Compile Include="Controladores\ProvinciaLocalidadControlador.cs" />
     <Compile Include="ControlesDeUsuario\AdministrarStock\AdministrarStock_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
