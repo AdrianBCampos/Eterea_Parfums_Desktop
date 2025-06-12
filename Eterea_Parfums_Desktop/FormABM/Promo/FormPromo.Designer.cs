@@ -103,6 +103,7 @@
             this.GeneroOK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.idOk = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictBox_banner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
@@ -115,6 +116,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_resultado_busqueda_perfumes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_perfumes_agregados_a_promo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_tipo_promo
@@ -188,7 +190,7 @@
             this.btn_crear_promo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_crear_promo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_crear_promo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_crear_promo.Location = new System.Drawing.Point(1047, 795);
+            this.btn_crear_promo.Location = new System.Drawing.Point(1047, 798);
             this.btn_crear_promo.Margin = new System.Windows.Forms.Padding(5);
             this.btn_crear_promo.Name = "btn_crear_promo";
             this.btn_crear_promo.Size = new System.Drawing.Size(355, 62);
@@ -203,7 +205,7 @@
             this.btn_quitar_filtros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_quitar_filtros.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_quitar_filtros.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_quitar_filtros.Location = new System.Drawing.Point(1561, 143);
+            this.btn_quitar_filtros.Location = new System.Drawing.Point(1560, 157);
             this.btn_quitar_filtros.Name = "btn_quitar_filtros";
             this.btn_quitar_filtros.Size = new System.Drawing.Size(97, 65);
             this.btn_quitar_filtros.TabIndex = 301;
@@ -217,7 +219,7 @@
             this.lbl_borrar_texto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_borrar_texto.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_borrar_texto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_borrar_texto.Location = new System.Drawing.Point(940, 178);
+            this.lbl_borrar_texto.Location = new System.Drawing.Point(940, 192);
             this.lbl_borrar_texto.Margin = new System.Windows.Forms.Padding(0);
             this.lbl_borrar_texto.Name = "lbl_borrar_texto";
             this.lbl_borrar_texto.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -288,7 +290,7 @@
             this.btn_agregar_todos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_agregar_todos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_agregar_todos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_agregar_todos.Location = new System.Drawing.Point(736, 445);
+            this.btn_agregar_todos.Location = new System.Drawing.Point(735, 461);
             this.btn_agregar_todos.Name = "btn_agregar_todos";
             this.btn_agregar_todos.Size = new System.Drawing.Size(922, 40);
             this.btn_agregar_todos.TabIndex = 313;
@@ -302,7 +304,7 @@
             this.btn_eliminar_todos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_eliminar_todos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_eliminar_todos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_eliminar_todos.Location = new System.Drawing.Point(736, 726);
+            this.btn_eliminar_todos.Location = new System.Drawing.Point(735, 729);
             this.btn_eliminar_todos.Name = "btn_eliminar_todos";
             this.btn_eliminar_todos.Size = new System.Drawing.Size(458, 40);
             this.btn_eliminar_todos.TabIndex = 314;
@@ -316,7 +318,7 @@
             this.btrn_deshacer_eliminacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btrn_deshacer_eliminacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btrn_deshacer_eliminacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btrn_deshacer_eliminacion.Location = new System.Drawing.Point(1200, 726);
+            this.btrn_deshacer_eliminacion.Location = new System.Drawing.Point(1199, 729);
             this.btrn_deshacer_eliminacion.Name = "btrn_deshacer_eliminacion";
             this.btrn_deshacer_eliminacion.Size = new System.Drawing.Size(458, 40);
             this.btrn_deshacer_eliminacion.TabIndex = 315;
@@ -524,10 +526,10 @@
             // 
             this.pictureBox14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox14.Location = new System.Drawing.Point(718, 105);
+            this.pictureBox14.Location = new System.Drawing.Point(728, 113);
             this.pictureBox14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(955, 391);
+            this.pictureBox14.Size = new System.Drawing.Size(937, 395);
             this.pictureBox14.TabIndex = 442;
             this.pictureBox14.TabStop = false;
             // 
@@ -583,10 +585,10 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(718, 782);
+            this.pictureBox1.Location = new System.Drawing.Point(718, 793);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(955, 85);
+            this.pictureBox1.Size = new System.Drawing.Size(955, 74);
             this.pictureBox1.TabIndex = 448;
             this.pictureBox1.TabStop = false;
             // 
@@ -607,7 +609,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label1.Location = new System.Drawing.Point(731, 114);
+            this.label1.Location = new System.Drawing.Point(730, 120);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(595, 29);
             this.label1.TabIndex = 450;
@@ -657,10 +659,10 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(718, 500);
+            this.pictureBox2.Location = new System.Drawing.Point(728, 513);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(955, 275);
+            this.pictureBox2.Size = new System.Drawing.Size(937, 263);
             this.pictureBox2.TabIndex = 454;
             this.pictureBox2.TabStop = false;
             // 
@@ -670,7 +672,7 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label3.Location = new System.Drawing.Point(731, 510);
+            this.label3.Location = new System.Drawing.Point(730, 521);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(430, 29);
             this.label3.TabIndex = 455;
@@ -720,7 +722,7 @@
             this.dataGrid_resultado_busqueda_perfumes.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGrid_resultado_busqueda_perfumes.EnableHeadersVisualStyles = false;
             this.dataGrid_resultado_busqueda_perfumes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.dataGrid_resultado_busqueda_perfumes.Location = new System.Drawing.Point(736, 217);
+            this.dataGrid_resultado_busqueda_perfumes.Location = new System.Drawing.Point(735, 242);
             this.dataGrid_resultado_busqueda_perfumes.Margin = new System.Windows.Forms.Padding(5);
             this.dataGrid_resultado_busqueda_perfumes.Name = "dataGrid_resultado_busqueda_perfumes";
             this.dataGrid_resultado_busqueda_perfumes.ReadOnly = true;
@@ -733,7 +735,7 @@
             this.dataGrid_resultado_busqueda_perfumes.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGrid_resultado_busqueda_perfumes.RowTemplate.Height = 35;
             this.dataGrid_resultado_busqueda_perfumes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGrid_resultado_busqueda_perfumes.Size = new System.Drawing.Size(922, 229);
+            this.dataGrid_resultado_busqueda_perfumes.Size = new System.Drawing.Size(922, 220);
             this.dataGrid_resultado_busqueda_perfumes.TabIndex = 456;
             this.dataGrid_resultado_busqueda_perfumes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_perfumes_agregados_CellContentClick);
             // 
@@ -743,7 +745,7 @@
             this.txt_buscar_nombP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_buscar_nombP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_buscar_nombP.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_buscar_nombP.Location = new System.Drawing.Point(736, 178);
+            this.txt_buscar_nombP.Location = new System.Drawing.Point(735, 192);
             this.txt_buscar_nombP.Margin = new System.Windows.Forms.Padding(4);
             this.txt_buscar_nombP.Name = "txt_buscar_nombP";
             this.txt_buscar_nombP.Size = new System.Drawing.Size(236, 30);
@@ -756,7 +758,7 @@
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label7.Location = new System.Drawing.Point(731, 150);
+            this.label7.Location = new System.Drawing.Point(730, 164);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(167, 25);
@@ -769,7 +771,7 @@
             this.combo_buscar_marcaP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combo_buscar_marcaP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_buscar_marcaP.FormattingEnabled = true;
-            this.combo_buscar_marcaP.Location = new System.Drawing.Point(1007, 175);
+            this.combo_buscar_marcaP.Location = new System.Drawing.Point(1006, 189);
             this.combo_buscar_marcaP.Margin = new System.Windows.Forms.Padding(4);
             this.combo_buscar_marcaP.Name = "combo_buscar_marcaP";
             this.combo_buscar_marcaP.Size = new System.Drawing.Size(250, 33);
@@ -782,7 +784,7 @@
             this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label8.Location = new System.Drawing.Point(1002, 150);
+            this.label8.Location = new System.Drawing.Point(1001, 164);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(152, 25);
@@ -795,7 +797,7 @@
             this.combo_buscar_generoP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combo_buscar_generoP.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combo_buscar_generoP.FormattingEnabled = true;
-            this.combo_buscar_generoP.Location = new System.Drawing.Point(1287, 173);
+            this.combo_buscar_generoP.Location = new System.Drawing.Point(1286, 187);
             this.combo_buscar_generoP.Margin = new System.Windows.Forms.Padding(4);
             this.combo_buscar_generoP.Name = "combo_buscar_generoP";
             this.combo_buscar_generoP.Size = new System.Drawing.Size(250, 33);
@@ -808,7 +810,7 @@
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label9.Location = new System.Drawing.Point(1282, 150);
+            this.label9.Location = new System.Drawing.Point(1281, 164);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(163, 25);
@@ -859,7 +861,7 @@
             this.dataGrid_perfumes_agregados_a_promo.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGrid_perfumes_agregados_a_promo.EnableHeadersVisualStyles = false;
             this.dataGrid_perfumes_agregados_a_promo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.dataGrid_perfumes_agregados_a_promo.Location = new System.Drawing.Point(736, 543);
+            this.dataGrid_perfumes_agregados_a_promo.Location = new System.Drawing.Point(735, 555);
             this.dataGrid_perfumes_agregados_a_promo.Margin = new System.Windows.Forms.Padding(5);
             this.dataGrid_perfumes_agregados_a_promo.Name = "dataGrid_perfumes_agregados_a_promo";
             this.dataGrid_perfumes_agregados_a_promo.ReadOnly = true;
@@ -872,7 +874,7 @@
             this.dataGrid_perfumes_agregados_a_promo.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGrid_perfumes_agregados_a_promo.RowTemplate.Height = 35;
             this.dataGrid_perfumes_agregados_a_promo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGrid_perfumes_agregados_a_promo.Size = new System.Drawing.Size(922, 186);
+            this.dataGrid_perfumes_agregados_a_promo.Size = new System.Drawing.Size(922, 176);
             this.dataGrid_perfumes_agregados_a_promo.TabIndex = 463;
             this.dataGrid_perfumes_agregados_a_promo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -965,6 +967,7 @@
             this.mlOK.MinimumWidth = 6;
             this.mlOK.Name = "mlOK";
             this.mlOK.ReadOnly = true;
+            this.mlOK.Width = 125;
             // 
             // GeneroOK
             // 
@@ -995,6 +998,17 @@
             this.idOk.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.idOk.Visible = false;
             this.idOk.Width = 21;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox4.Location = new System.Drawing.Point(719, 105);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(954, 681);
+            this.pictureBox4.TabIndex = 464;
+            this.pictureBox4.TabStop = false;
             // 
             // FormPromo
             // 
@@ -1047,13 +1061,14 @@
             this.Controls.Add(this.pictBox_banner);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.pictureBox15);
-            this.Controls.Add(this.pictureBox14);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.lbl_nomb_promo_edit);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lbl_crear_promo);
             this.Controls.Add(this.pictureBox7);
+            this.Controls.Add(this.pictureBox14);
             this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox17);
             this.Controls.Add(this.pictureBox18);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -1073,6 +1088,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_resultado_busqueda_perfumes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_perfumes_agregados_a_promo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1145,5 +1161,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GeneroOK;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn idOk;
+        private System.Windows.Forms.PictureBox pictureBox4;
     }
 }
