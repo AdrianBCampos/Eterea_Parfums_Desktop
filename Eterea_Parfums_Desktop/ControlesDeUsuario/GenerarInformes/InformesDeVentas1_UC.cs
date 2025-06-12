@@ -291,6 +291,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             //lbl_fecha_Fin.Text = fechaSeleccionada.ToString("dd 'de' MMMM 'de' yyyy");
         }
 
-        
+ 
     }
 }
