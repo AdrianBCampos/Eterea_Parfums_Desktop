@@ -22,7 +22,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             this.idSucursal = idSucursal;
 
             CargarDatos();
-            
+
+            this.Cursor = Cursors.Default;
+            this.UseWaitCursor = false;
+
         }
         private void CargarDatos()
         {
