@@ -601,11 +601,15 @@ namespace Eterea_Parfums_Desktop
 
         private void cargarPerfumesDePromo(List<PerfumeDTO> perfumes)
         {
+
             try
             {
                 // Verificar que la lista de perfumes tiene datos
                 if (perfumes != null && perfumes.Count > 0)
                 {
+                    //Se oculta la primera columna de la tabla (es una columna de seleccion de fila)
+                    dataGrid_perfumes_agregados_a_promo.RowHeadersVisible = false;
+
                     // Limpiar las filas previas del DataGridView
                     dataGrid_perfumes_agregados_a_promo.Rows.Clear();
 

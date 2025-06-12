@@ -29,15 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbl_tipo_promo = new System.Windows.Forms.Label();
             this.lbl_nombre_promo = new System.Windows.Forms.Label();
             this.lbl_fecha_ini_promo = new System.Windows.Forms.Label();
@@ -51,13 +50,6 @@
             this.lbl_error_fecha_iniP = new System.Windows.Forms.Label();
             this.lbl_error_fecha_finP = new System.Windows.Forms.Label();
             this.lbl_error_promo_act = new System.Windows.Forms.Label();
-            this.dataGrid_perfumes_agregados_a_promo = new System.Windows.Forms.DataGridView();
-            this.MarcaOK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreOK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mlOK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GeneroOK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.IdOK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_agregar_todos = new System.Windows.Forms.Button();
             this.btn_eliminar_todos = new System.Windows.Forms.Button();
             this.btrn_deshacer_eliminacion = new System.Windows.Forms.Button();
@@ -92,19 +84,25 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dataGrid_resultado_busqueda_perfumes = new System.Windows.Forms.DataGridView();
-            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Presentacion_ml = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Agregar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_buscar_nombP = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.combo_buscar_marcaP = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.combo_buscar_generoP = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_perfumes_agregados_a_promo)).BeginInit();
+            this.dataGrid_perfumes_agregados_a_promo = new System.Windows.Forms.DataGridView();
+            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Presentacion_ml = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Agregar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MarcaOK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreOK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mlOK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GeneroOK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.idOk = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictBox_banner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
@@ -116,6 +114,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_resultado_busqueda_perfumes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_perfumes_agregados_a_promo)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_tipo_promo
@@ -283,117 +282,6 @@
             this.lbl_error_promo_act.TabIndex = 307;
             this.lbl_error_promo_act.Text = "error";
             // 
-            // dataGrid_perfumes_agregados_a_promo
-            // 
-            this.dataGrid_perfumes_agregados_a_promo.AllowUserToAddRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGrid_perfumes_agregados_a_promo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
-            this.dataGrid_perfumes_agregados_a_promo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGrid_perfumes_agregados_a_promo.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGrid_perfumes_agregados_a_promo.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            this.dataGrid_perfumes_agregados_a_promo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGrid_perfumes_agregados_a_promo.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGrid_perfumes_agregados_a_promo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            this.dataGrid_perfumes_agregados_a_promo.ColumnHeadersHeight = 24;
-            this.dataGrid_perfumes_agregados_a_promo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MarcaOK,
-            this.NombreOK,
-            this.mlOK,
-            this.GeneroOK,
-            this.Eliminar,
-            this.IdOK});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGrid_perfumes_agregados_a_promo.DefaultCellStyle = dataGridViewCellStyle12;
-            this.dataGrid_perfumes_agregados_a_promo.EnableHeadersVisualStyles = false;
-            this.dataGrid_perfumes_agregados_a_promo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.dataGrid_perfumes_agregados_a_promo.Location = new System.Drawing.Point(1275, 547);
-            this.dataGrid_perfumes_agregados_a_promo.Name = "dataGrid_perfumes_agregados_a_promo";
-            this.dataGrid_perfumes_agregados_a_promo.ReadOnly = true;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGrid_perfumes_agregados_a_promo.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
-            this.dataGrid_perfumes_agregados_a_promo.RowHeadersWidth = 51;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGrid_perfumes_agregados_a_promo.RowsDefaultCellStyle = dataGridViewCellStyle14;
-            this.dataGrid_perfumes_agregados_a_promo.RowTemplate.Height = 28;
-            this.dataGrid_perfumes_agregados_a_promo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGrid_perfumes_agregados_a_promo.Size = new System.Drawing.Size(383, 179);
-            this.dataGrid_perfumes_agregados_a_promo.TabIndex = 311;
-            this.dataGrid_perfumes_agregados_a_promo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // MarcaOK
-            // 
-            this.MarcaOK.HeaderText = "Marca";
-            this.MarcaOK.MinimumWidth = 8;
-            this.MarcaOK.Name = "MarcaOK";
-            this.MarcaOK.ReadOnly = true;
-            this.MarcaOK.Width = 73;
-            // 
-            // NombreOK
-            // 
-            this.NombreOK.HeaderText = "Nombre";
-            this.NombreOK.MinimumWidth = 8;
-            this.NombreOK.Name = "NombreOK";
-            this.NombreOK.ReadOnly = true;
-            this.NombreOK.Width = 84;
-            // 
-            // mlOK
-            // 
-            this.mlOK.HeaderText = "ml";
-            this.mlOK.MinimumWidth = 8;
-            this.mlOK.Name = "mlOK";
-            this.mlOK.ReadOnly = true;
-            this.mlOK.Width = 49;
-            // 
-            // GeneroOK
-            // 
-            this.GeneroOK.HeaderText = "Genero";
-            this.GeneroOK.MinimumWidth = 8;
-            this.GeneroOK.Name = "GeneroOK";
-            this.GeneroOK.ReadOnly = true;
-            this.GeneroOK.Width = 80;
-            // 
-            // Eliminar
-            // 
-            this.Eliminar.HeaderText = "";
-            this.Eliminar.MinimumWidth = 6;
-            this.Eliminar.Name = "Eliminar";
-            this.Eliminar.ReadOnly = true;
-            this.Eliminar.Width = 6;
-            // 
-            // IdOK
-            // 
-            this.IdOK.HeaderText = "";
-            this.IdOK.MinimumWidth = 6;
-            this.IdOK.Name = "IdOK";
-            this.IdOK.ReadOnly = true;
-            this.IdOK.Visible = false;
-            this.IdOK.Width = 23;
-            // 
             // btn_agregar_todos
             // 
             this.btn_agregar_todos.BackColor = System.Drawing.Color.RosyBrown;
@@ -412,10 +300,11 @@
             // 
             this.btn_eliminar_todos.BackColor = System.Drawing.Color.RosyBrown;
             this.btn_eliminar_todos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_eliminar_todos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_eliminar_todos.Location = new System.Drawing.Point(1275, 726);
+            this.btn_eliminar_todos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_eliminar_todos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.btn_eliminar_todos.Location = new System.Drawing.Point(736, 726);
             this.btn_eliminar_todos.Name = "btn_eliminar_todos";
-            this.btn_eliminar_todos.Size = new System.Drawing.Size(191, 24);
+            this.btn_eliminar_todos.Size = new System.Drawing.Size(458, 40);
             this.btn_eliminar_todos.TabIndex = 314;
             this.btn_eliminar_todos.Text = "Eliminar todos";
             this.btn_eliminar_todos.UseVisualStyleBackColor = false;
@@ -425,10 +314,11 @@
             // 
             this.btrn_deshacer_eliminacion.BackColor = System.Drawing.Color.RosyBrown;
             this.btrn_deshacer_eliminacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btrn_deshacer_eliminacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btrn_deshacer_eliminacion.Location = new System.Drawing.Point(1467, 726);
+            this.btrn_deshacer_eliminacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btrn_deshacer_eliminacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.btrn_deshacer_eliminacion.Location = new System.Drawing.Point(1200, 726);
             this.btrn_deshacer_eliminacion.Name = "btrn_deshacer_eliminacion";
-            this.btrn_deshacer_eliminacion.Size = new System.Drawing.Size(191, 24);
+            this.btrn_deshacer_eliminacion.Size = new System.Drawing.Size(458, 40);
             this.btrn_deshacer_eliminacion.TabIndex = 315;
             this.btrn_deshacer_eliminacion.Text = "Deshacer \"Eliminar todos\"";
             this.btrn_deshacer_eliminacion.UseVisualStyleBackColor = false;
@@ -780,7 +670,7 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label3.Location = new System.Drawing.Point(731, 530);
+            this.label3.Location = new System.Drawing.Point(731, 510);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(430, 29);
             this.label3.TabIndex = 455;
@@ -792,25 +682,25 @@
             this.dataGrid_resultado_busqueda_perfumes.AllowUserToDeleteRows = false;
             this.dataGrid_resultado_busqueda_perfumes.AllowUserToResizeColumns = false;
             this.dataGrid_resultado_busqueda_perfumes.AllowUserToResizeRows = false;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGrid_resultado_busqueda_perfumes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGrid_resultado_busqueda_perfumes.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGrid_resultado_busqueda_perfumes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGrid_resultado_busqueda_perfumes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             this.dataGrid_resultado_busqueda_perfumes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGrid_resultado_busqueda_perfumes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGrid_resultado_busqueda_perfumes.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGrid_resultado_busqueda_perfumes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGrid_resultado_busqueda_perfumes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGrid_resultado_busqueda_perfumes.ColumnHeadersHeight = 40;
             this.dataGrid_resultado_busqueda_perfumes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGrid_resultado_busqueda_perfumes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -820,14 +710,14 @@
             this.dataGridViewTextBoxColumn3,
             this.Agregar,
             this.ID});
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGrid_resultado_busqueda_perfumes.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGrid_resultado_busqueda_perfumes.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGrid_resultado_busqueda_perfumes.EnableHeadersVisualStyles = false;
             this.dataGrid_resultado_busqueda_perfumes.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.dataGrid_resultado_busqueda_perfumes.Location = new System.Drawing.Point(736, 217);
@@ -836,76 +726,16 @@
             this.dataGrid_resultado_busqueda_perfumes.ReadOnly = true;
             this.dataGrid_resultado_busqueda_perfumes.RowHeadersWidth = 51;
             this.dataGrid_resultado_busqueda_perfumes.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGrid_resultado_busqueda_perfumes.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGrid_resultado_busqueda_perfumes.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGrid_resultado_busqueda_perfumes.RowTemplate.Height = 35;
             this.dataGrid_resultado_busqueda_perfumes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGrid_resultado_busqueda_perfumes.Size = new System.Drawing.Size(922, 229);
             this.dataGrid_resultado_busqueda_perfumes.TabIndex = 456;
             this.dataGrid_resultado_busqueda_perfumes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGrid_perfumes_agregados_CellContentClick);
-            // 
-            // Marca
-            // 
-            this.Marca.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Marca.FillWeight = 125F;
-            this.Marca.HeaderText = "Marca";
-            this.Marca.MinimumWidth = 6;
-            this.Marca.Name = "Marca";
-            this.Marca.ReadOnly = true;
-            this.Marca.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Marca.Width = 260;
-            // 
-            // Nombre
-            // 
-            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Nombre.FillWeight = 125F;
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.MinimumWidth = 6;
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            this.Nombre.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Nombre.Width = 260;
-            // 
-            // Presentacion_ml
-            // 
-            this.Presentacion_ml.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Presentacion_ml.HeaderText = "ml";
-            this.Presentacion_ml.MinimumWidth = 6;
-            this.Presentacion_ml.Name = "Presentacion_ml";
-            this.Presentacion_ml.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.FillWeight = 50F;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Genero";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Agregar
-            // 
-            this.Agregar.FillWeight = 50F;
-            this.Agregar.HeaderText = "";
-            this.Agregar.MinimumWidth = 6;
-            this.Agregar.Name = "Agregar";
-            this.Agregar.ReadOnly = true;
-            this.Agregar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ID.FillWeight = 50F;
-            this.ID.HeaderText = "";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ID.Visible = false;
-            this.ID.Width = 21;
             // 
             // txt_buscar_nombP
             // 
@@ -985,6 +815,187 @@
             this.label9.TabIndex = 462;
             this.label9.Text = "Buscar Género:";
             // 
+            // dataGrid_perfumes_agregados_a_promo
+            // 
+            this.dataGrid_perfumes_agregados_a_promo.AllowUserToAddRows = false;
+            this.dataGrid_perfumes_agregados_a_promo.AllowUserToDeleteRows = false;
+            this.dataGrid_perfumes_agregados_a_promo.AllowUserToResizeColumns = false;
+            this.dataGrid_perfumes_agregados_a_promo.AllowUserToResizeRows = false;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGrid_perfumes_agregados_a_promo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGrid_perfumes_agregados_a_promo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGrid_perfumes_agregados_a_promo.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            this.dataGrid_perfumes_agregados_a_promo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGrid_perfumes_agregados_a_promo.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGrid_perfumes_agregados_a_promo.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGrid_perfumes_agregados_a_promo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGrid_perfumes_agregados_a_promo.ColumnHeadersHeight = 40;
+            this.dataGrid_perfumes_agregados_a_promo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGrid_perfumes_agregados_a_promo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MarcaOK,
+            this.NombreOK,
+            this.mlOK,
+            this.GeneroOK,
+            this.Eliminar,
+            this.idOk});
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGrid_perfumes_agregados_a_promo.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dataGrid_perfumes_agregados_a_promo.EnableHeadersVisualStyles = false;
+            this.dataGrid_perfumes_agregados_a_promo.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
+            this.dataGrid_perfumes_agregados_a_promo.Location = new System.Drawing.Point(736, 543);
+            this.dataGrid_perfumes_agregados_a_promo.Margin = new System.Windows.Forms.Padding(5);
+            this.dataGrid_perfumes_agregados_a_promo.Name = "dataGrid_perfumes_agregados_a_promo";
+            this.dataGrid_perfumes_agregados_a_promo.ReadOnly = true;
+            this.dataGrid_perfumes_agregados_a_promo.RowHeadersWidth = 51;
+            this.dataGrid_perfumes_agregados_a_promo.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGrid_perfumes_agregados_a_promo.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            this.dataGrid_perfumes_agregados_a_promo.RowTemplate.Height = 35;
+            this.dataGrid_perfumes_agregados_a_promo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGrid_perfumes_agregados_a_promo.Size = new System.Drawing.Size(922, 186);
+            this.dataGrid_perfumes_agregados_a_promo.TabIndex = 463;
+            this.dataGrid_perfumes_agregados_a_promo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Marca
+            // 
+            this.Marca.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Marca.FillWeight = 125F;
+            this.Marca.HeaderText = "Marca";
+            this.Marca.MinimumWidth = 6;
+            this.Marca.Name = "Marca";
+            this.Marca.ReadOnly = true;
+            this.Marca.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Marca.Width = 170;
+            // 
+            // Nombre
+            // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Nombre.FillWeight = 125F;
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.MinimumWidth = 6;
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Nombre.Width = 170;
+            // 
+            // Presentacion_ml
+            // 
+            this.Presentacion_ml.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Presentacion_ml.HeaderText = "ml";
+            this.Presentacion_ml.MinimumWidth = 6;
+            this.Presentacion_ml.Name = "Presentacion_ml";
+            this.Presentacion_ml.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.FillWeight = 50F;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Genero";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Agregar
+            // 
+            this.Agregar.FillWeight = 50F;
+            this.Agregar.HeaderText = "";
+            this.Agregar.MinimumWidth = 6;
+            this.Agregar.Name = "Agregar";
+            this.Agregar.ReadOnly = true;
+            this.Agregar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ID.FillWeight = 50F;
+            this.ID.HeaderText = "";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ID.Visible = false;
+            this.ID.Width = 21;
+            // 
+            // MarcaOK
+            // 
+            this.MarcaOK.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.MarcaOK.FillWeight = 125F;
+            this.MarcaOK.HeaderText = "Marca";
+            this.MarcaOK.MinimumWidth = 6;
+            this.MarcaOK.Name = "MarcaOK";
+            this.MarcaOK.ReadOnly = true;
+            this.MarcaOK.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.MarcaOK.Width = 170;
+            // 
+            // NombreOK
+            // 
+            this.NombreOK.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.NombreOK.FillWeight = 125F;
+            this.NombreOK.HeaderText = "Nombre";
+            this.NombreOK.MinimumWidth = 6;
+            this.NombreOK.Name = "NombreOK";
+            this.NombreOK.ReadOnly = true;
+            this.NombreOK.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.NombreOK.Width = 170;
+            // 
+            // mlOK
+            // 
+            this.mlOK.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.mlOK.HeaderText = "ml";
+            this.mlOK.MinimumWidth = 6;
+            this.mlOK.Name = "mlOK";
+            this.mlOK.ReadOnly = true;
+            // 
+            // GeneroOK
+            // 
+            this.GeneroOK.FillWeight = 50F;
+            this.GeneroOK.HeaderText = "Genero";
+            this.GeneroOK.MinimumWidth = 6;
+            this.GeneroOK.Name = "GeneroOK";
+            this.GeneroOK.ReadOnly = true;
+            this.GeneroOK.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.FillWeight = 50F;
+            this.Eliminar.HeaderText = "";
+            this.Eliminar.MinimumWidth = 6;
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
+            this.Eliminar.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // idOk
+            // 
+            this.idOk.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.idOk.FillWeight = 50F;
+            this.idOk.HeaderText = "";
+            this.idOk.MinimumWidth = 6;
+            this.idOk.Name = "idOk";
+            this.idOk.ReadOnly = true;
+            this.idOk.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.idOk.Visible = false;
+            this.idOk.Width = 21;
+            // 
             // FormPromo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -993,6 +1004,9 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(1700, 892);
+            this.Controls.Add(this.btn_eliminar_todos);
+            this.Controls.Add(this.btrn_deshacer_eliminacion);
+            this.Controls.Add(this.dataGrid_perfumes_agregados_a_promo);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.combo_buscar_generoP);
             this.Controls.Add(this.label8);
@@ -1036,9 +1050,6 @@
             this.Controls.Add(this.pictureBox14);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.lbl_nomb_promo_edit);
-            this.Controls.Add(this.btrn_deshacer_eliminacion);
-            this.Controls.Add(this.btn_eliminar_todos);
-            this.Controls.Add(this.dataGrid_perfumes_agregados_a_promo);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.lbl_crear_promo);
             this.Controls.Add(this.pictureBox7);
@@ -1050,7 +1061,6 @@
             this.Name = "FormPromo";
             this.Padding = new System.Windows.Forms.Padding(5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_perfumes_agregados_a_promo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictBox_banner)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
@@ -1062,6 +1072,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid_resultado_busqueda_perfumes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGrid_perfumes_agregados_a_promo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1081,13 +1092,6 @@
         private System.Windows.Forms.Label lbl_error_fecha_iniP;
         private System.Windows.Forms.Label lbl_error_fecha_finP;
         private System.Windows.Forms.Label lbl_error_promo_act;
-        private System.Windows.Forms.DataGridView dataGrid_perfumes_agregados_a_promo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MarcaOK;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NombreOK;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mlOK;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GeneroOK;
-        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdOK;
         private System.Windows.Forms.Button btn_agregar_todos;
         private System.Windows.Forms.Button btn_eliminar_todos;
         private System.Windows.Forms.Button btrn_deshacer_eliminacion;
@@ -1122,17 +1126,24 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dataGrid_resultado_busqueda_perfumes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Presentacion_ml;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewButtonColumn Agregar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.TextBox txt_buscar_nombP;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox combo_buscar_marcaP;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox combo_buscar_generoP;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridView dataGrid_perfumes_agregados_a_promo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Presentacion_ml;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewButtonColumn Agregar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MarcaOK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreOK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mlOK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn GeneroOK;
+        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idOk;
     }
 }
