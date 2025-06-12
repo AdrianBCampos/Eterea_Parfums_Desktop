@@ -53,10 +53,6 @@ namespace Eterea_Parfums_Desktop
             //txt_nomb_promo.KeyPress += txt_nomb_promo_KeyPress;
             //txt_descripcion_promo.KeyPress += txt_descripcion_promo_KeyPress;
 
-
-            //Ocultar label del nombre de la promo a editar
-            lbl_nomb_promo_edit.Visible = false;
-
             // Ocultar etiquetas de error
             lbl_error_tipo_promo.Visible = false;
             lbl_error_nombP.Visible = false;
@@ -581,7 +577,7 @@ namespace Eterea_Parfums_Desktop
 
             // Asignar los valores de la promoción a los controles del formulario
             txt_nomb_promo.Text = promo.nombre;
-            lbl_nomb_promo_edit.Text = promo.nombre;
+            
             txt_descripcion_promo.Text = promo.descripcion;
 
             // Primero, permitir cualquier fecha (evita restricciones previas)
