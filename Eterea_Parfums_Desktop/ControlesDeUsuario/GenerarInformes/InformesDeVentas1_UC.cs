@@ -146,30 +146,27 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             }
 
 
-            // Agrupar perfumes por ventas
-            var perfumesAgrupados = detalles_Totales
-                .GroupBy(d => d.perfume)
-                .Select(g => new
-                {
-                    Perfume = g.Key,
-                    CantidadVendida = g.Sum(d => d.cantidad)
-                })
-                .ToList();
+          var perfumesAgrupados = detalles_Totales
+          .GroupBy(d => d.perfume.id) // Agrupar por ID del perfume
+          .Select(g => new
+          {
+              IdPerfume = g.Key,
+              Nombre = g.First().perfume.nombre, // Asumimos que todos tienen el mismo nombre
+              CantidadVendida = g.Sum(d => d.cantidad)
+          })
+          .ToList();
+
+           
 
             // Encontrar la mayor cantidad vendida
             int mayorCantidad = perfumesAgrupados.Max(p => p.CantidadVendida);
-            MessageBox.Show("Mayor Cant: " + mayorCantidad);
 
             // Filtrar los perfumes que tienen esa mayor cantidad
             var perfumesMasVendidos = perfumesAgrupados
                 .Where(p => p.CantidadVendida == mayorCantidad)
-                .Select(p => p.Perfume.nombre)
+                .Select(p => p.Nombre)
                 .ToList();
 
-            // Concatenar los nombres
-            //string nombresMasVendidos = string.Join(",", perfumesMasVendidos);
-
-           
 
             string nombresMasVendidos = string.Join(Environment.NewLine, perfumesMasVendidos);
             MessageBox.Show(nombresMasVendidos);
@@ -181,18 +178,17 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 
             // Encontrar la menor cantidad vendida
             int menorCantidad = perfumesAgrupados.Min(p => p.CantidadVendida);
-            MessageBox.Show("Menor Cant: " + menorCantidad);
+     
             // Filtrar los perfumes que tienen esa menor cantidad
             var perfumesMenosVendidos = perfumesAgrupados
                 .Where(p => p.CantidadVendida == menorCantidad)
-                .Select(p => p.Perfume.nombre)
+                .Select(p => p.Nombre)
                 .ToList();
 
-            // Concatenar los nombres
-            //string nombresMenosVendidos = string.Join(", " +"", perfumesMenosVendidos);
+ 
 
             string nombresMenosVendidos = string.Join(Environment.NewLine, perfumesMenosVendidos);
-            MessageBox.Show(nombresMenosVendidos);
+      
             // Asignar al TextBox
             richTextBox_menos_vendido.Text = nombresMenosVendidos;
             richTextBox_menos_vendido.SelectAll();
@@ -338,11 +334,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 
             dateTimeInicio.Format = DateTimePickerFormat.Custom;
             dateTimeInicio.CustomFormat = " ";
-            dateTimeInicio.Value = DateTime.Today;
+            //dateTimeInicio.Value = DateTime.Today;
 
             dateTimeFinal.Format = DateTimePickerFormat.Custom;
             dateTimeFinal.CustomFormat = " ";
-            dateTimeFinal.Value = DateTime.Today;
+            //dateTimeFinal.Value = DateTime.Today;
         }
 
         private async void dateTimeInicio_ValueChanged(object sender, EventArgs e)
