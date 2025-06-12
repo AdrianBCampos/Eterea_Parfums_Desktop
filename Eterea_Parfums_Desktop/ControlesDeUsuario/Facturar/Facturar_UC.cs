@@ -36,7 +36,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         {
             InitializeComponent();
 
-          
 
             txt_nombre_empleado.Text = Program.logueado.nombre + " " + Program.logueado.apellido;
 
@@ -163,9 +162,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             BarcodeReceiver.OnCodigoLeido += ProcesarCodigoLeido;
         }
 
+        private bool btn_imprimir_habilitado = false;
         private void txt_dni_TextChanged(object sender, EventArgs e)
         {
-            btn_imprimir.Enabled = false;
+            btn_imprimir_habilitado = false;
         }
 
         private void FormFacturacion_Load(object sender, EventArgs e)
@@ -409,9 +409,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     txt_condicion_iva.Text = cliente.condicion_frente_al_iva;
                     txt_email.Text = cliente.e_mail;
 
-                    btn_imprimir.Enabled = true;
-                    btn_imprimir.Text = "Imprimir factura";
-
+                    btn_imprimir_habilitado = true;
                 }
                 else
                 {
@@ -1075,6 +1073,12 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         private void btn_imprimir_Click(object sender, EventArgs e)
         {
             string numero = Program.NumeroCajaActual;
+
+            if (!btn_imprimir_habilitado)
+            {
+                MessageBox.Show("Debe buscar un cliente por su dni antes de imprimir.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             if (Factura.Rows.Count == 0)
             {
