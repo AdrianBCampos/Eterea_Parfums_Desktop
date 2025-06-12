@@ -52,7 +52,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             txt_nombre_cliente.Text = "";
             txt_condicion_iva.Text = "";
             txt_numero_factura.Text = "";
-
+            btn_imprimir_habilitado = true;
 
             combo_forma_pago.Items.Clear();
             combo_forma_pago.Items.Add("Efectivo");
@@ -1332,6 +1332,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         {
             txt_nombre_cliente.Text = "Consumidor Final";
             txt_condicion_iva.Text = "Consumidor Final";
+            btn_imprimir_habilitado = true;
+            btn_imprimir_habilitado = true;
             txt_total.Text = "0,00";
             txt_subtotal.Text = "0,00";
             txt_monto_recargo.Text = "0,00";
@@ -1345,6 +1347,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             combo_cuotas.SelectedIndex = 0;
             int puntoDeVenta = Program.sucursal;
             txt_numero_factura.Text = Num_factura_máximo();
+
         }
 
         private void EnviarCorreo(string rutaArchivo, string correoDestino)
