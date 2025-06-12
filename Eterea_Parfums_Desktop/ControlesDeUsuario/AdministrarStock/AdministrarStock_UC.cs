@@ -258,6 +258,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
             {
                 PerfumeControlador.marcarComoActivo(perfume.id);
                 perfume.activo = true; // actualizamos el objeto en memoria
+                PerfumeControlador.LimpiarFechaDeBaja(perfume.id);
             }
 
             limpiezaAutomatica = true;  // Activar bandera para evitar validaciones al limpiar

@@ -263,6 +263,7 @@
             // 
             this.dataGrid_resultado_busqueda_perfumes.AllowDrop = true;
             this.dataGrid_resultado_busqueda_perfumes.AllowUserToAddRows = false;
+            this.dataGrid_resultado_busqueda_perfumes.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
@@ -551,6 +552,7 @@
             // dataGrid_perfumes_agregados_a_promo
             // 
             this.dataGrid_perfumes_agregados_a_promo.AllowUserToAddRows = false;
+            this.dataGrid_perfumes_agregados_a_promo.AllowUserToDeleteRows = false;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
             dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));

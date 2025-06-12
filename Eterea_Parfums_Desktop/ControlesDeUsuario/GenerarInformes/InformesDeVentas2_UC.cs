@@ -111,21 +111,14 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                     dataGridViewPerfumes.Rows[rowIndex].Cells[3].Value = perfume.nombre.ToString();
                     dataGridViewPerfumes.Rows[rowIndex].Cells[4].Value = (TipoDePerfumeControlador.getById(perfume.tipo_de_perfume.id)).tipo_de_perfume;
                     dataGridViewPerfumes.Rows[rowIndex].Cells[5].Value = (GeneroControlador.getById(perfume.genero.id)).genero;
-                    dataGridViewPerfumes.Rows[rowIndex].Cells[6].Value = perfume.presentacion_ml.ToString();
+                    dataGridViewPerfumes.Rows[rowIndex].Cells[6].Value = perfume.presentacion_ml.ToString() + " ml";
 
 
-                    if (perfume.spray.ToString() == "1")
-                    {
-                        dataGridViewPerfumes.Rows[rowIndex].Cells[7].Value = "Si";
-                    }
-                    else
-                    {
-                        dataGridViewPerfumes.Rows[rowIndex].Cells[7].Value = "No";
-                    }
+                  
 
-                    dataGridViewPerfumes.Rows[rowIndex].Cells[8].Value = perfume.precio_en_pesos.ToString();
-                    dataGridViewPerfumes.Rows[rowIndex].Cells[9].Value = SucursalControlador.getById(stock.sucursal.id).nombre;
-                    dataGridViewPerfumes.Rows[rowIndex].Cells[10].Value = stock.cantidad;
+                    dataGridViewPerfumes.Rows[rowIndex].Cells[7].Value = "$ " + perfume.precio_en_pesos.ToString();
+                    dataGridViewPerfumes.Rows[rowIndex].Cells[8].Value = SucursalControlador.getById(stock.sucursal.id).nombre;
+                    dataGridViewPerfumes.Rows[rowIndex].Cells[9].Value = stock.cantidad;
                 }
 
                 //dataGridViewPerfumes.CellPainting += dataGridView1_CellPainting;

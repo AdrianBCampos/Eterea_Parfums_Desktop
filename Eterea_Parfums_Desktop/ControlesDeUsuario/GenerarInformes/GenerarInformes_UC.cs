@@ -25,7 +25,14 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
         public GenerarInformes_UC()
         {
             InitializeComponent();
+
             numeroSucursal = Program.sucursal;
+
+            // Agregar opciones al comboBox
+            combobox_informe.Items.Add("Informe de ventas");
+            combobox_informe.Items.Add("Inventario");
+            combobox_informe.Items.Add("Listar perfumes con bajo stock");
+
             InformesDeVentas1_UC adminUC = new InformesDeVentas1_UC(numeroSucursal);
             addUserControl(adminUC);
 
@@ -62,6 +69,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             {
                 InformesDeVentas2_UC adminUC = new InformesDeVentas2_UC(numeroSucursal);
                 addUserControl(adminUC);
+            }
+            else if (combobox_informe.SelectedIndex == 2)
+            {
+                ListadoPerfumesBajoStock_UC listadoUC = new ListadoPerfumesBajoStock_UC(numeroSucursal);
+                addUserControl(listadoUC);
             }
         }
 

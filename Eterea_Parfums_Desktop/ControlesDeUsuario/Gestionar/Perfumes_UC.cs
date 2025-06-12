@@ -102,23 +102,27 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     // Insertar "Activo" después de Stock
                     int indexActivo = dataGridViewPerfumes.Columns["Activo"].Index;
 
-                    // Comprobar si el valor de activo es null o tiene valor
-                    string estadoActivo = perfume.activo.HasValue
-                    ? (perfume.activo.Value ? "Activo" : "Inactivo")
-                    : "No especificado";
+                    bool? activo = perfume.activo;
+
+                    // Mostrar texto según valor
+                    string estadoActivo = activo.HasValue
+                        ? (activo.Value ? "Activo" : "Inactivo")
+                        : "No especificado";
 
                     dataGridViewPerfumes.Rows[rowIndex].Cells[indexActivo].Value = estadoActivo;
 
-                    // Aplicar colores
-                    if (perfume.activo.HasValue)
+                    // Aplicar color solo si tiene valor
+                    if (activo.HasValue)
                     {
-                        var color = perfume.activo.Value ? Color.Green : Color.Red;
+                        var color = activo.Value ? Color.Green : Color.Red;
                         dataGridViewPerfumes.Rows[rowIndex].Cells[indexActivo].Style.ForeColor = color;
                     }
+                    else
+                    {
+                        // Color por defecto si está sin especificar
+                        dataGridViewPerfumes.Rows[rowIndex].Cells[indexActivo].Style.ForeColor = Color.Gray;
+                    }
 
-                    dataGridViewPerfumes.Rows[rowIndex].Cells[indexActivo].Value = estadoActivo;
-
-                  
 
                     dataGridViewPerfumes.Rows[rowIndex].Cells[13].Value = "Editar";
                     dataGridViewPerfumes.Rows[rowIndex].Cells[14].Value = "Eliminar";
@@ -165,7 +169,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     perfume_editar.precio_en_pesos,
                     perfume_editar.activo,
                     perfume_editar.imagen1,
-                    perfume_editar.imagen2
+                    perfume_editar.imagen2,
+                    perfume_editar.fecha_baja
                 );
 
                 FormEditarPerfume1 formEditarProductoABM = new FormEditarPerfume1(perfume_editar, this);

@@ -105,14 +105,17 @@ namespace Eterea_Parfums_Desktop
             richTextBox_descripcion.Text = perfume.descripcion;
             txt_anio_de_lanzamiento.Text = perfume.anio_de_lanzamiento.ToString();
             txt_precio.Text = perfume.precio_en_pesos.ToString();
-            if (perfume.activo.HasValue && perfume.activo.Value)
+
+            if (perfume.activo.HasValue)
             {
-                combo_activo.SelectedItem = "Si";
+                combo_activo.SelectedItem = perfume.activo.Value ? "Si" : "No";
             }
             else
             {
-                combo_activo.SelectedItem = "No";
+                combo_activo.SelectedItem = "No especificado"; // O dejalo vacío si preferís
             }
+
+
             nombre_foto_uno = perfume.imagen1;
             nombre_foto_dos = perfume.imagen2;
             cargarImagen(nombre_foto_uno, pictureBoxProducto1);
@@ -657,7 +660,7 @@ namespace Eterea_Parfums_Desktop
             Console.WriteLine("Marca: " + marca.nombre);
             Perfume perfume1 = new Perfume(perfume.id, txt_codigo.Text, marca, txt_nombre.Text, tipo_de_perfume,
                 genero, int.Parse(txt_presentacion.Text), pais, spray, recargable, richTextBox_descripcion.Text,
-                int.Parse(txt_anio_de_lanzamiento.Text), Double.Parse(txt_precio.Text), activo, nombre_foto_uno, nombre_foto_dos);
+                int.Parse(txt_anio_de_lanzamiento.Text), Double.Parse(txt_precio.Text), activo, nombre_foto_uno, nombre_foto_dos, null);
 
             return perfume1;
 

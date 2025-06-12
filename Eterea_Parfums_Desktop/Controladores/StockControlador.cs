@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using Eterea_Parfums_Desktop.Modelos;
+using Org.BouncyCastle.Utilities.Collections;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
@@ -102,6 +103,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                 if (stockTotal <= 0)
                 {
                     cmdInactivar.ExecuteNonQuery();
+                    PerfumeControlador.RegistrarFechaDeBaja(perfume_id);
                 }
 
                 DB_Controller.connection.Close();
@@ -244,8 +246,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             return result;
         }
 
-
-
+  
 
     }
 }

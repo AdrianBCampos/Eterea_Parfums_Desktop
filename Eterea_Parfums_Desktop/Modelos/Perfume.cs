@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Eterea_Parfums_Desktop.Modelos
 {
@@ -20,11 +21,13 @@ namespace Eterea_Parfums_Desktop.Modelos
         public bool? activo { get; set; }
         public string imagen1 { get; set; }
         public string imagen2 { get; set; }
+        public DateTime? fecha_baja { get; set; }
+
 
 
         public Perfume(int id, string codigo, Marca marca, string nombre, TipoDePerfume tipo_de_perfume
             , Genero genero, int presentacion_ml, Pais pais, bool spray, bool recargable, string descripcion,
-            int anio_de_lanzamiento, double precio_en_pesos, bool? activo, string imagen1, string imagen2)
+            int anio_de_lanzamiento, double precio_en_pesos, bool? activo, string imagen1, string imagen2, DateTime? fecha_baja)
         {
             this.id = id;
             this.codigo = codigo;
@@ -42,6 +45,7 @@ namespace Eterea_Parfums_Desktop.Modelos
             this.activo = activo;
             this.imagen1 = imagen1;
             this.imagen2 = imagen2;
+            this.fecha_baja = fecha_baja;
         }
 
         public Perfume()
@@ -54,7 +58,7 @@ namespace Eterea_Parfums_Desktop.Modelos
             this.id = id;
         }
 
-        public Perfume(int id, bool? activo)
+        public Perfume(int id, bool activo)
         {
             this.id = id;
             this.activo = activo;

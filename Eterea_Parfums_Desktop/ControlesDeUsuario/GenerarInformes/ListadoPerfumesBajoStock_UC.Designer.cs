@@ -1,6 +1,6 @@
 ﻿namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 {
-    partial class ListadoPerfumesBajoStock
+    partial class ListadoPerfumesBajoStock_UC
     {
         /// <summary> 
         /// Variable del diseñador necesaria.
@@ -46,9 +46,7 @@
             this.Tipo_de_Perfume = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Genero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Presentacion_en_mi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Es_recargable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
@@ -157,9 +155,7 @@
             this.Tipo_de_Perfume,
             this.Genero,
             this.Presentacion_en_mi,
-            this.Es_recargable,
             this.Precio,
-            this.Sucursal,
             this.Stock});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
@@ -249,40 +245,22 @@
             // Presentacion_en_mi
             // 
             this.Presentacion_en_mi.FillWeight = 150F;
-            this.Presentacion_en_mi.HeaderText = "Presentación (ml)";
+            this.Presentacion_en_mi.HeaderText = "Presentación";
             this.Presentacion_en_mi.MinimumWidth = 6;
             this.Presentacion_en_mi.Name = "Presentacion_en_mi";
             this.Presentacion_en_mi.ReadOnly = true;
             this.Presentacion_en_mi.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // Es_recargable
-            // 
-            this.Es_recargable.FillWeight = 150F;
-            this.Es_recargable.HeaderText = "Recargable";
-            this.Es_recargable.MinimumWidth = 6;
-            this.Es_recargable.Name = "Es_recargable";
-            this.Es_recargable.ReadOnly = true;
-            this.Es_recargable.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
             // Precio
             // 
             this.Precio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.Precio.FillWeight = 150F;
-            this.Precio.HeaderText = "Precio ($)";
+            this.Precio.HeaderText = "Precio";
             this.Precio.MinimumWidth = 6;
             this.Precio.Name = "Precio";
             this.Precio.ReadOnly = true;
             this.Precio.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.Precio.Width = 109;
-            // 
-            // Sucursal
-            // 
-            this.Sucursal.FillWeight = 150F;
-            this.Sucursal.HeaderText = "Sucursal";
-            this.Sucursal.MinimumWidth = 6;
-            this.Sucursal.Name = "Sucursal";
-            this.Sucursal.ReadOnly = true;
-            this.Sucursal.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.Precio.Width = 82;
             // 
             // Stock
             // 
@@ -295,7 +273,7 @@
             this.Stock.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Stock.Width = 70;
             // 
-            // ListadoPerfumesBajoStock
+            // ListadoPerfumesBajoStock_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -309,7 +287,7 @@
             this.Controls.Add(this.lbl_facturacion);
             this.Controls.Add(this.pictureBox9);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "ListadoPerfumesBajoStock";
+            this.Name = "ListadoPerfumesBajoStock_UC";
             this.Size = new System.Drawing.Size(1499, 400);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
@@ -337,9 +315,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo_de_Perfume;
         private System.Windows.Forms.DataGridViewTextBoxColumn Genero;
         private System.Windows.Forms.DataGridViewTextBoxColumn Presentacion_en_mi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Es_recargable;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Sucursal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
     }
 }
