@@ -28,6 +28,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
         {
             dataGridViewPerfumes.Rows.Clear();
 
+            //Se oculta la primera columna de la tabla (es una columna de seleccion de fila)
+            dataGridViewPerfumes.RowHeadersVisible = false;
+
             var perfumes = PerfumeControlador.getAll(); // devuelve List<Perfume>
             var stocks = StockControlador.getAll()
                 .Where(s => s.sucursal != null && s.sucursal.id == idSucursal)
