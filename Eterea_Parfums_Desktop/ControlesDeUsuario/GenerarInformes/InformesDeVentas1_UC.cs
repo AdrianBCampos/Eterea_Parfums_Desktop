@@ -334,10 +334,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 
             dateTimeInicio.Format = DateTimePickerFormat.Custom;
             dateTimeInicio.CustomFormat = " ";
-            //dateTimeInicio.Value = DateTime.Today;
+            dateTimeInicio.Value = DateTime.Today.AddDays(-2);
 
             dateTimeFinal.Format = DateTimePickerFormat.Custom;
             dateTimeFinal.CustomFormat = " ";
+            dateTimeFinal.Value = DateTime.Today.AddDays(-1);
             //dateTimeFinal.Value = DateTime.Today;
         }
 
