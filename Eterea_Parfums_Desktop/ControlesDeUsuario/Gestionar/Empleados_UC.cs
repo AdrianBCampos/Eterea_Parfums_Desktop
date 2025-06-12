@@ -35,7 +35,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             dataGridViewEmpleados.Rows.Clear();
             foreach (Empleado empleado in empleados)
             {
-                if (empleado.activo == true && (string.IsNullOrEmpty(filtroDni) || empleado.dni.ToString().Contains(filtroDni)))
+                if (string.IsNullOrEmpty(filtroDni) || empleado.dni.ToString().Contains(filtroDni))
                 {
                     int rowIndex = dataGridViewEmpleados.Rows.Add();
 
@@ -54,10 +54,19 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
 
                     dataGridViewEmpleados.Rows[rowIndex].Cells[8].Value = empleado.rol;
+                    dataGridViewEmpleados.Rows[rowIndex].Cells[9].Value = empleado.activo ? "Activo" : "Inactivo";
 
+                    if (!empleado.activo)
+                    {
+                        dataGridViewEmpleados.Rows[rowIndex].Cells[9].Style.ForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        dataGridViewEmpleados.Rows[rowIndex].Cells[9].Style.ForeColor = Color.Green; // Opcional
+                    }
 
-                    dataGridViewEmpleados.Rows[rowIndex].Cells[9].Value = "Editar";
-                    dataGridViewEmpleados.Rows[rowIndex].Cells[10].Value = "Eliminar";
+                    dataGridViewEmpleados.Rows[rowIndex].Cells[10].Value = "Editar";
+                    dataGridViewEmpleados.Rows[rowIndex].Cells[11].Value = "Eliminar";
                 }
                 dataGridViewEmpleados.ClearSelection();
 
