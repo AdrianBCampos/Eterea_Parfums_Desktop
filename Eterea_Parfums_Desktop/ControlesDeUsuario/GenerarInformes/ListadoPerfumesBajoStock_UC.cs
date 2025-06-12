@@ -22,8 +22,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             this.idSucursal = idSucursal;
 
             CargarDatos();
-            dataGridViewPerfumes.Columns[0].Visible = false; // Oculta la primera columna
-
+            
         }
         private void CargarDatos()
         {
@@ -51,17 +50,22 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 
                 if (incluir)
                 {
+                    string marca = perfume.marca != null ? MarcaControlador.getById(perfume.marca.id)?.nombre ?? "Sin marca" : "Sin marca";
+                    string tipo = perfume.tipo_de_perfume != null ? TipoDePerfumeControlador.getById(perfume.tipo_de_perfume.id)?.tipo_de_perfume ?? "Sin tipo" : "Sin tipo";
+                    string genero = perfume.genero != null ? GeneroControlador.getById(perfume.genero.id)?.genero ?? "Sin género" : "Sin género";
+
                     dataGridViewPerfumes.Rows.Add(
                         perfume.codigo,
-                        perfume.marca?.nombre ?? "Sin marca",
+                        marca,
                         perfume.nombre,
-                        perfume.tipo_de_perfume?.tipo_de_perfume ?? "Sin tipo",
-                        perfume.genero?.genero ?? "Sin género",
+                        tipo,
+                        genero,
                         $"{perfume.presentacion_ml} ml",
                         perfume.precio_en_pesos.ToString("C"),
-                      
                         cantidadStock
                     );
+
+
                 }
             }
         }
