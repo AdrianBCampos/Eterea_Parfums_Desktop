@@ -46,7 +46,9 @@ namespace Eterea_Parfums_Desktop
             this.Close();
         }
 
-        private void btn_eliminar_cliente_Click(object sender, EventArgs e)
+
+
+        private void btn_eliminar_cliente_Click_1(object sender, EventArgs e)
         {
             eliminar();
         }
