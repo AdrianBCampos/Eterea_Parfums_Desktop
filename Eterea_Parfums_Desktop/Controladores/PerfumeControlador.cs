@@ -1,7 +1,9 @@
 ﻿using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
+using System.Windows;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
@@ -42,6 +44,8 @@ namespace Eterea_Parfums_Desktop.Controladores
                     Genero generoOb = new Genero(genero.id, "");
                     Pais paisOb = new Pais(pais.id, "");
 
+                    DateTime? fechaBaja = r.IsDBNull(16) ? (DateTime?)null : r.GetDateTime(16);
+
                     /*if (r.GetInt32(13) == 1)
                     {
                         lista_perfumes.Add(new Perfume(r.GetInt32(0), r.GetString(1), marcaOb, r.GetString(3),
@@ -53,7 +57,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                     lista_perfumes.Add(new Perfume(r.GetInt32(0), r.GetString(1), marcaOb, r.GetString(3),
                         tipo_de_perfumeOb, generoOb, r.GetInt32(6), paisOb,
                        r.GetBoolean(8), r.GetBoolean(9), r.GetString(10), r.GetInt32(11), r.GetDouble(12),
-                        r.GetBoolean(13), r.GetString(14), r.GetString(15)));
+                        r.GetBoolean(13), r.GetString(14), r.GetString(15), fechaBaja));
 
 
                 }
@@ -442,7 +446,8 @@ namespace Eterea_Parfums_Desktop.Controladores
                                 r.GetDouble(12),              // precio
                                 r.GetBoolean(13),             // activo
                                 r.GetString(14),              // imagen1
-                                r.GetString(15)               // imagen2
+                                r.GetString(15),
+                                r.GetDateTime(16)             // registro de cambio activo
                             ));
                         }
                     }
@@ -592,7 +597,8 @@ namespace Eterea_Parfums_Desktop.Controladores
                         r.GetDouble(12),
                        r.GetBoolean(13),
                         r.GetString(14),
-                        r.GetString(15)
+                        r.GetString(15),
+                        r.GetDateTime(16)
                     ));
 
                 }
@@ -608,7 +614,134 @@ namespace Eterea_Parfums_Desktop.Controladores
             return perfumesSimilares;
         }
 
+        public static void marcarComoActivo(int idPerfume)
+        {
+            string query = "UPDATE dbo.perfume SET activo = 1 WHERE id = @id";
 
+            using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@id", idPerfume);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static DataTable ListarPerfumesBajoStock(int idSucursal)
+        {
+            Dictionary<int, int> stocks = StockControlador.ObtenerTodosLosStocksPorSucursal(idSucursal);
+
+            string query = @"
+        SELECT 
+            p.id,
+            p.codigo,
+            p.nombre AS nombre_perfume,
+            p.presentacion_ml,
+            p.precio_en_pesos,
+            p.activo,
+            p.fecha_baja,
+            m.nombre AS marca,
+            tp.tipo_de_perfume AS tipo,
+            g.genero AS genero
+        FROM perfume p
+        JOIN marca m ON p.marca_id = m.id
+        JOIN tipo_de_perfume tp ON p.tipo_de_perfume_id = tp.id
+        JOIN genero g ON p.genero_id = g.id
+    ";
+
+            DataTable resultTable = new DataTable();
+            resultTable.Columns.Add("codigo");
+            resultTable.Columns.Add("marca");
+            resultTable.Columns.Add("nombre_perfume");
+            resultTable.Columns.Add("tipo");
+            resultTable.Columns.Add("genero");
+            resultTable.Columns.Add("presentacion_ml");
+            resultTable.Columns.Add("precio_en_pesos");
+            resultTable.Columns.Add("stock");
+
+            using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int perfumeId = reader.GetInt32(reader.GetOrdinal("id"));
+                        int stock = stocks.ContainsKey(perfumeId) ? stocks[perfumeId] : 0;
+                        bool activo = reader.GetBoolean(reader.GetOrdinal("activo"));
+
+                        DateTime? fechaBaja = null;
+                        int ordFechaBaja = reader.GetOrdinal("fecha_baja");
+                        if (!reader.IsDBNull(ordFechaBaja))
+                        {
+                            fechaBaja = reader.GetDateTime(ordFechaBaja);
+                        }
+
+                        // Reglas de inclusión
+                        bool incluir =
+                            (stock > 0 && stock <= 5)
+                            || (stock == 0 && (
+                                activo
+                                || (!activo && fechaBaja.HasValue && fechaBaja.Value >= DateTime.Now.AddDays(-30))
+                            ));
+
+                        if (incluir)
+                        {
+                            resultTable.Rows.Add(
+                                reader["codigo"].ToString(),
+                                reader["marca"].ToString(),
+                                reader["nombre_perfume"].ToString(),
+                                reader["tipo"].ToString(),
+                                reader["genero"].ToString(),
+                                $"{reader["presentacion_ml"]} ml",
+                                Convert.ToDecimal(reader["precio_en_pesos"]).ToString("C"),
+                                stock
+                            );
+                        }
+                    }
+                }
+            }
+
+            return resultTable;
+        }
+
+
+        public static void RegistrarFechaDeBaja(int idPerfume)
+        {
+            string query = @"
+        UPDATE perfume
+        SET activo = 0,
+            fecha_baja = GETDATE()
+        WHERE id = @idPerfume;
+    ";
+
+            using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@idPerfume", idPerfume);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public static void LimpiarFechaDeBaja(int idPerfume)
+        {
+            string query = @"
+        UPDATE perfume
+        SET activo = 1,
+            fecha_baja = NULL
+        WHERE id = @idPerfume;
+    ";
+
+            using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@idPerfume", idPerfume);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
 
 
 

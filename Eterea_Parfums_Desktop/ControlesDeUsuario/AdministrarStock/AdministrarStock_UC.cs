@@ -17,6 +17,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
     {
         private Perfume perfume;
         private int idSucursal;
+        
 
         private bool limpiezaAutomatica = false;
 
@@ -30,11 +31,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
 
             if (sucursal != null)
             {
-                txt_numero_sucursal.Text = sucursal.nombre;
+                txt_nombre_sucursal.Text = sucursal.nombre;
             }
             else
             {
-                txt_numero_sucursal.Text = "Sucursal no encontrada";
+                txt_nombre_sucursal.Text = "Sucursal no encontrada";
             }
 
 
@@ -52,7 +53,20 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
             this.Cursor = Cursors.Default;
             this.UseWaitCursor = false;
 
+           
+
+          
+
+
         }
+
+      
+
+       
+
+
+        
+
 
         private void CargarImagenPorDefecto()
         {
@@ -238,6 +252,14 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.AdministrarStock
             }
 
             MessageBox.Show("Se ha ingresado con éxito.");
+
+            // Si el perfume no está activo y se le está agregando stock, lo marcamos como activo
+            if(perfume.activo == false)
+            {
+                PerfumeControlador.marcarComoActivo(perfume.id);
+                perfume.activo = true; // actualizamos el objeto en memoria
+                PerfumeControlador.LimpiarFechaDeBaja(perfume.id);
+            }
 
             limpiezaAutomatica = true;  // Activar bandera para evitar validaciones al limpiar
             LimpiarCampos();

@@ -3,6 +3,7 @@ using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -38,16 +39,21 @@ namespace Eterea_Parfums_Desktop
             lbl_calleE.Hide();
             lbl_activoE.Hide();
 
+            // Mostrar el DateTimePicker como vacío
+            dateTime_nac.Format = DateTimePickerFormat.Custom;
+            dateTime_nac.CustomFormat = " "; // espacio en blanco
+
+
 
             paises = PaisControlador.getAll();
             combo_pais.Items.Clear();
             foreach (Pais pais in paises)
             {
                 if (pais.id != 1)
-                    combo_pais.Items.Add(pais.nombre.ToString());
+                    combo_pais.Items.Add(pais.nombre);
             }
 
-            provincias = ProvinciaControlador.getAll();
+            /*provincias = ProvinciaControlador.getAll();
             combo_provincia.Items.Clear();
             foreach (Provincia provincia in provincias)
             {
@@ -69,7 +75,7 @@ namespace Eterea_Parfums_Desktop
             {
                 if (calle.id != 1)
                     combo_calle.Items.Add(calle.nombre.ToString());
-            }
+            }*/
 
             combo_activo.Items.Clear();
             combo_activo.Items.Add("Activo");
@@ -80,6 +86,9 @@ namespace Eterea_Parfums_Desktop
             combo_con_iva.Items.Add("Responsable Inscripto");
             combo_con_iva.Items.Add("Exento");
             combo_con_iva.Items.Add("Monotributista");
+
+            combo_con_iva.Enabled = false;
+
 
             //Diseño del combo box
             combo_activo.DrawMode = DrawMode.OwnerDrawFixed;
@@ -106,8 +115,126 @@ namespace Eterea_Parfums_Desktop
             combo_localidad.DrawItem += comboBoxdiseño_DrawItem;
             combo_localidad.DropDownStyle = ComboBoxStyle.DropDownList;
 
-          
+            // Asignar eventos a los comboBox
+            combo_pais.SelectedIndexChanged += combo_pais_SelectedIndexChanged;
+            combo_provincia.SelectedIndexChanged += combo_provincia_SelectedIndexChanged;
+            combo_localidad.SelectedIndexChanged += combo_localidad_SelectedIndexChanged;
+
+            //Asignar evento al txt_dni
+            txt_dni.TextChanged += txt_dni_TextChanged;
+
+            //Asignar evento al dateTime_nac
+            dateTime_nac.ValueChanged += dateTime_nac_ValueChanged;
+
+
         }
+
+        private void combo_pais_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            combo_provincia.Items.Clear();
+            combo_localidad.Items.Clear();
+            combo_calle.Items.Clear();
+
+            string nombrePaisSeleccionado = combo_pais.SelectedItem.ToString();
+            Pais paisSeleccionado = paises.FirstOrDefault(p => p.nombre == nombrePaisSeleccionado);
+
+            if (paisSeleccionado != null)
+            {
+                // Nuevo método que busca provincias por pais_id
+                var provinciasRelacionadas = ProvinciaControlador.getProvinciasPorPaisId(paisSeleccionado.id);
+                provincias = provinciasRelacionadas;
+
+                foreach (var provincia in provincias)
+                {
+                    combo_provincia.Items.Add(provincia.nombre);
+                }
+            }
+        }
+
+
+        private void combo_provincia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            combo_localidad.Items.Clear();
+            combo_calle.Items.Clear();
+
+            string nombreProvinciaSeleccionada = combo_provincia.SelectedItem.ToString();
+            Provincia provinciaSeleccionada = provincias.FirstOrDefault(p => p.nombre == nombreProvinciaSeleccionada);
+
+            if (provinciaSeleccionada != null)
+            {
+                // Llamás al nuevo método que obtiene localidades directamente por provincia_id
+                var localidadesRelacionadas = LocalidadControlador.getLocalidadesPorProvinciaId(provinciaSeleccionada.id);
+                localidades = localidadesRelacionadas;
+
+                foreach (var localidad in localidades)
+                {
+                    combo_localidad.Items.Add(localidad.nombre);
+                }
+            }
+        }
+
+
+        private void combo_localidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            combo_calle.Items.Clear();
+
+            string nombreLocalidadSeleccionada = combo_localidad.SelectedItem.ToString();
+            Localidad localidadSeleccionada = localidades.FirstOrDefault(l => l.nombre == nombreLocalidadSeleccionada);
+
+            if (localidadSeleccionada != null)
+            {
+                // Ahora se busca directamente en la tabla "calle" filtrando por localidad_id
+                var callesRelacionadas = CalleControlador.getCallesPorLocalidadId(localidadSeleccionada.id);
+                calles = callesRelacionadas;
+
+                combo_calle.Items.Clear(); // recomendable limpiar antes
+                foreach (var calle in calles)
+                {
+                    combo_calle.Items.Add(calle.nombre);
+                }
+            }
+        }
+
+            private void txt_dni_TextChanged(object sender, EventArgs e)
+        {
+            string dni = txt_dni.Text.Trim();
+
+            if (dni.Length == 8 && long.TryParse(dni, out _))
+            {
+                combo_con_iva.Items.Clear();
+                combo_con_iva.Items.Add("Consumidor Final");
+                combo_con_iva.SelectedIndex = 0;
+                combo_con_iva.Enabled = false;
+                lbl_dniE.Hide();
+            }
+            else if (dni.Length == 11 && long.TryParse(dni, out _))
+            {
+                if (!CuitValido(dni))
+                {
+                    lbl_dniE.Text = "CUIT inválido (falló verificación).";
+                    lbl_dniE.Show();
+                    combo_con_iva.Enabled = false;
+                    combo_con_iva.Items.Clear();
+                    return;
+                }
+
+                combo_con_iva.Items.Clear();
+                combo_con_iva.Items.Add("Responsable Inscripto");
+                combo_con_iva.Items.Add("Exento");
+                combo_con_iva.Items.Add("Monotributista");
+                combo_con_iva.SelectedIndex = 0;
+                combo_con_iva.Enabled = true;
+                lbl_dniE.Hide();
+            }
+            else
+            {
+                combo_con_iva.Items.Clear();
+                combo_con_iva.Enabled = false;
+                lbl_dniE.Hide();
+            }
+        }
+
+
 
         private void btn_crear_cliente_Click(object sender, EventArgs e)
         {
@@ -203,89 +330,146 @@ namespace Eterea_Parfums_Desktop
             lbl_calleE.Hide();
             lbl_activoE.Hide();
 
-            // Validaciones individuales
-            //Usuario          
+            // Usuario
             if (string.IsNullOrEmpty(txt_usuario.Text))
             {
                 lbl_usuarioE.Text = "Debe indicar un nombre de usuario.";
                 lbl_usuarioE.Show();
                 errorMsg += lbl_usuarioE.Text + Environment.NewLine;
             }
+            else if (txt_usuario.Text.Length < 3 || txt_usuario.Text.Length > 45)
+            {
+                lbl_usuarioE.Text = "El usuario debe tener entre 3 y 45 caracteres.";
+                lbl_usuarioE.Show();
+                errorMsg += lbl_usuarioE.Text + Environment.NewLine;
+            }
+            else if (ClienteControlador.ExisteUsuario(txt_usuario.Text))
+            {
+                lbl_usuarioE.Text = "Ya existe un cliente con ese nombre de usuario.";
+                lbl_usuarioE.Show();
+                errorMsg += lbl_usuarioE.Text + Environment.NewLine;
+            }
 
-            //Clave
+            // Clave
             if (string.IsNullOrEmpty(txt_clave.Text))
             {
                 lbl_claveE.Text = "Debe generar una contraseña.";
                 lbl_claveE.Show();
                 errorMsg += lbl_claveE.Text + Environment.NewLine;
             }
-
-            //Nombre
-            if (string.IsNullOrEmpty(txt_nombre.Text))
+            else if (txt_clave.Text.Length < 6 ||
+                     !txt_clave.Text.Any(char.IsLetter) ||
+                     !txt_clave.Text.Any(char.IsDigit))
             {
-                lbl_nombreE.Text = "Debe ingresar el nombre del cliente.";
+                lbl_claveE.Text = "La contraseña debe tener al menos 6 caracteres, incluyendo letras y números.";
+                lbl_claveE.Show();
+                errorMsg += lbl_claveE.Text + Environment.NewLine;
+            }
+
+            // Nombre
+            if (string.IsNullOrEmpty(txt_nombre.Text) || txt_nombre.Text.Length < 2 || txt_nombre.Text.Length > 45)
+            {
+                lbl_nombreE.Text = "El nombre debe tener entre 2 y 45 caracteres.";
                 lbl_nombreE.Show();
                 errorMsg += lbl_nombreE.Text + Environment.NewLine;
             }
 
-            //Apellido
-            if (string.IsNullOrEmpty(txt_apellido.Text))
+            // Apellido
+            if (string.IsNullOrEmpty(txt_apellido.Text) || txt_apellido.Text.Length < 2 || txt_apellido.Text.Length > 45)
             {
-                lbl_apellidoE.Text = "Debe ingresar el apellido del cliente.";
+                lbl_apellidoE.Text = "El apellido debe tener entre 2 y 45 caracteres.";
                 lbl_apellidoE.Show();
                 errorMsg += lbl_apellidoE.Text + Environment.NewLine;
             }
 
-            //DNI
+            // DNI
             if (string.IsNullOrEmpty(txt_dni.Text))
             {
-                string error = "Debe ingresar el número de DNI del cliente." + Environment.NewLine;
-                lbl_dniE.Text = error;
+                lbl_dniE.Text = "Debe ingresar el número de DNI del cliente.";
                 lbl_dniE.Show();
+                errorMsg += lbl_dniE.Text + Environment.NewLine;
             }
             else if (txt_dni.Text.Length != 8 && txt_dni.Text.Length != 11)
             {
-                string error = "El DNI tiene que ser de 8 o 11 dígitos." + Environment.NewLine;
-                lbl_dniE.Text = error;
+                lbl_dniE.Text = "El DNI debe tener 8 o 11 dígitos.";
                 lbl_dniE.Show();
+                errorMsg += lbl_dniE.Text + Environment.NewLine;
             }
             else
             {
-                var empleadoId = ClienteControlador.BuscarIdPorDni(txt_dni.Text);
-                if (empleadoId != null)
+                var idExistente = ClienteControlador.BuscarIdPorDni(txt_dni.Text);
+                if (idExistente != null)
                 {
-                    string error = "Ya existe un cliente con ese DNI." + Environment.NewLine;
-                    lbl_dniE.Text = error;
+                    lbl_dniE.Text = "Ya existe un cliente con ese DNI.";
                     lbl_dniE.Show();
+                    errorMsg += lbl_dniE.Text + Environment.NewLine;
                 }
             }
 
+            // Condición IVA
+            if (combo_con_iva.SelectedItem == null)
+            {
+                lbl_cond_ivaE.Text = "Debe seleccionar una condición de IVA.";
+                lbl_cond_ivaE.Show();
+                errorMsg += lbl_cond_ivaE.Text + Environment.NewLine;
+            }
 
-            //Fecha Nacimiento
-            if (!DateTime.TryParse(dateTime_nac.Text, out _))
+            // Fecha de nacimiento
+            if (!DateTime.TryParse(dateTime_nac.Text, out DateTime fecha))
             {
                 lbl_nacE.Text = "Debe ingresar una fecha de nacimiento válida.";
                 lbl_nacE.Show();
                 errorMsg += lbl_nacE.Text + Environment.NewLine;
             }
-
-            //Celular
-            if (string.IsNullOrEmpty(txt_celular.Text) || !int.TryParse(txt_celular.Text, out _))
+            else
             {
-                lbl_celularE.Text = "Debe ingresar un número de celular válido.";
+                DateTime hoy = DateTime.Today;
+
+                if (fecha > hoy)
+                {
+                    lbl_nacE.Text = "La fecha de nacimiento no puede ser futura.";
+                    lbl_nacE.Show();
+                    errorMsg += lbl_nacE.Text + Environment.NewLine;
+                }
+                else
+                {
+                    int edad = hoy.Year - fecha.Year;
+                    if (fecha.Date > hoy.AddYears(-edad)) edad--;
+
+                    if (edad < 18)
+                    {
+                        lbl_nacE.Text = "El cliente debe tener al menos 18 años.";
+                        lbl_nacE.Show();
+                        errorMsg += lbl_nacE.Text + Environment.NewLine;
+                    }
+                }
+            }
+
+            // Celular
+            if (string.IsNullOrEmpty(txt_celular.Text) || !long.TryParse(txt_celular.Text, out long celular) ||
+                txt_celular.Text.Length < 10 || txt_celular.Text.Length > 13)
+            {
+                lbl_celularE.Text = "El celular debe tener entre 10 y 13 dígitos numéricos.";
                 lbl_celularE.Show();
                 errorMsg += lbl_celularE.Text + Environment.NewLine;
             }
 
-            //Email
-            if (string.IsNullOrEmpty(txt_email.Text) || !txt_email.Text.Contains("@"))
+            // Email
+            if (string.IsNullOrEmpty(txt_email.Text) ||
+                !System.Text.RegularExpressions.Regex.IsMatch(txt_email.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
             {
                 lbl_emailE.Text = "Debe ingresar un correo electrónico válido.";
                 lbl_emailE.Show();
                 errorMsg += lbl_emailE.Text + Environment.NewLine;
             }
+            else if (ClienteControlador.ExisteEmail(txt_email.Text))
+            {
+                lbl_emailE.Text = "Ya existe un cliente registrado con ese correo electrónico.";
+                lbl_emailE.Show();
+                errorMsg += lbl_emailE.Text + Environment.NewLine;
+            }
 
-            //Codigo Postal
+            // Código Postal
             if (string.IsNullOrEmpty(txt_cp.Text) || !int.TryParse(txt_cp.Text, out _))
             {
                 lbl_cpE.Text = "Debe ingresar un código postal válido.";
@@ -293,7 +477,7 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_cpE.Text + Environment.NewLine;
             }
 
-            //Pais
+            // País
             if (combo_pais.SelectedItem == null)
             {
                 lbl_paisE.Text = "Debe seleccionar un país.";
@@ -301,7 +485,7 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_paisE.Text + Environment.NewLine;
             }
 
-            //Provincia
+            // Provincia
             if (combo_provincia.SelectedItem == null)
             {
                 lbl_provinciaE.Text = "Debe seleccionar una provincia.";
@@ -309,7 +493,7 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_provinciaE.Text + Environment.NewLine;
             }
 
-            //Localidad
+            // Localidad
             if (combo_localidad.SelectedItem == null)
             {
                 lbl_localidadE.Text = "Debe seleccionar una localidad.";
@@ -317,7 +501,7 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_localidadE.Text + Environment.NewLine;
             }
 
-            //Nombre Calle
+            // Calle
             if (combo_calle.SelectedItem == null)
             {
                 lbl_calleE.Text = "Debe seleccionar una calle.";
@@ -325,7 +509,7 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_calleE.Text + Environment.NewLine;
             }
 
-            //Numero Calle
+            // Número de calle
             if (string.IsNullOrEmpty(txt_num_calle.Text) || !int.TryParse(txt_num_calle.Text, out _))
             {
                 lbl_num_calleE.Text = "Debe ingresar un número de calle válido.";
@@ -333,7 +517,7 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_num_calleE.Text + Environment.NewLine;
             }
 
-            //Estado
+            // Estado activo/inactivo
             if (combo_activo.SelectedItem == null)
             {
                 lbl_activoE.Text = "Debe seleccionar el estado activo/inactivo.";
@@ -341,8 +525,25 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_activoE.Text + Environment.NewLine;
             }
 
+            // Piso y depto (opcionales)
+            if (!string.IsNullOrEmpty(txt_piso.Text) && txt_piso.Text.Length > 10)
+            {
+                lbl_pisoE.Text = "El campo 'piso' es demasiado largo.";
+                lbl_pisoE.Show();
+                errorMsg += lbl_pisoE.Text + Environment.NewLine;
+            }
+
+            if (!string.IsNullOrEmpty(txt_depto.Text) && txt_depto.Text.Length > 10)
+            {
+                lbl_deptoE.Text = "El campo 'depto' es demasiado largo.";
+                lbl_deptoE.Show();
+                errorMsg += lbl_deptoE.Text + Environment.NewLine;
+            }
+
+            // Retorna true si no hay errores
             return string.IsNullOrEmpty(errorMsg);
         }
+
 
 
         //Diseño del combo box
@@ -390,6 +591,30 @@ namespace Eterea_Parfums_Desktop
             this.Close();
         }
 
-        
+        private bool CuitValido(string cuit)
+        {
+            if (string.IsNullOrWhiteSpace(cuit) || cuit.Length != 11 || !long.TryParse(cuit, out _))
+                return false;
+
+            int[] pesos = { 5, 4, 3, 2, 7, 6, 5, 4, 3, 2 };
+            int suma = 0;
+
+            for (int i = 0; i < 10; i++)
+            {
+                suma += int.Parse(cuit[i].ToString()) * pesos[i];
+            }
+
+            int resto = suma % 11;
+            int digitoVerificador = resto == 0 ? 0 : (resto == 1 ? 9 : 11 - resto);
+
+            return digitoVerificador == int.Parse(cuit[10].ToString());
+        }
+
+        private void dateTime_nac_ValueChanged(object sender, EventArgs e)
+        {
+            dateTime_nac.Format = DateTimePickerFormat.Short;
+        }
+
+
     }
 }

@@ -32,8 +32,7 @@
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txt_numero_sucursal = new System.Windows.Forms.Label();
+            this.txt_nombre_sucursal = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -118,29 +117,17 @@
             this.pictureBox1.TabIndex = 406;
             this.pictureBox1.TabStop = false;
             // 
-            // label1
+            // txt_nombre_sucursal
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label1.Location = new System.Drawing.Point(465, 96);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(320, 31);
-            this.label1.TabIndex = 408;
-            this.label1.Text = "Sucursal Seleccionada:";
-            // 
-            // txt_numero_sucursal
-            // 
-            this.txt_numero_sucursal.AutoSize = true;
-            this.txt_numero_sucursal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.txt_numero_sucursal.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_numero_sucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.txt_numero_sucursal.Location = new System.Drawing.Point(777, 96);
-            this.txt_numero_sucursal.Name = "txt_numero_sucursal";
-            this.txt_numero_sucursal.Size = new System.Drawing.Size(278, 31);
-            this.txt_numero_sucursal.TabIndex = 409;
-            this.txt_numero_sucursal.Text = "Numero de Sucursal";
+            this.txt_nombre_sucursal.AutoSize = true;
+            this.txt_nombre_sucursal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.txt_nombre_sucursal.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_nombre_sucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.txt_nombre_sucursal.Location = new System.Drawing.Point(633, 98);
+            this.txt_nombre_sucursal.Name = "txt_nombre_sucursal";
+            this.txt_nombre_sucursal.Size = new System.Drawing.Size(278, 31);
+            this.txt_nombre_sucursal.TabIndex = 409;
+            this.txt_nombre_sucursal.Text = "Nombre de Sucursal";
             // 
             // pictureBox4
             // 
@@ -473,8 +460,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pictureBox5);
             this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.txt_numero_sucursal);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txt_nombre_sucursal);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lbl_facturacion);
@@ -483,6 +469,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AdministrarStock_UC";
             this.Size = new System.Drawing.Size(1511, 568);
+           
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -505,8 +492,7 @@
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label txt_numero_sucursal;
+        private System.Windows.Forms.Label txt_nombre_sucursal;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label2;

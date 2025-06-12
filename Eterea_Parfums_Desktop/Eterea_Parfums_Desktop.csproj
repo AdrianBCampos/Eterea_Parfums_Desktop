@@ -190,6 +190,12 @@
     <Compile Include="ControlesDeUsuario\GenerarInformes\InformesDeVentas2_UC.Designer.cs">
       <DependentUpon>InformesDeVentas2_UC.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlesDeUsuario\GenerarInformes\ListadoPerfumesBajoStock_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\GenerarInformes\ListadoPerfumesBajoStock_UC.Designer.cs">
+      <DependentUpon>ListadoPerfumesBajoStock_UC.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlesDeUsuario\Gestionar\Gestionar_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -419,6 +425,7 @@
     <Compile Include="FormVenta\FormStockPorSucursal.Designer.cs">
       <DependentUpon>FormStockPorSucursal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CorreoHelper.cs" />
     <Compile Include="Helpers\ModalHelper.cs" />
     <Compile Include="Modelos\AromaDelPerfume.cs" />
     <Compile Include="Modelos\Calle.cs" />
@@ -480,6 +487,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlesDeUsuario\GenerarInformes\InformesDeVentas2_UC.resx">
       <DependentUpon>InformesDeVentas2_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesDeUsuario\GenerarInformes\ListadoPerfumesBajoStock_UC.resx">
+      <DependentUpon>ListadoPerfumesBajoStock_UC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlesDeUsuario\Gestionar\Gestionar_UC.resx">
       <DependentUpon>Gestionar_UC.cs</DependentUpon>

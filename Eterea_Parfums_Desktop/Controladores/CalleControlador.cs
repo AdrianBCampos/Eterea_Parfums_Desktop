@@ -93,5 +93,33 @@ namespace Eterea_Parfums_Desktop.Controladores
             return calle;
         }
 
+        public static List<Calle> getCallesPorLocalidadId(int localidadId)
+        {
+            List<Calle> listaCalles = new List<Calle>();
+
+            string query = "SELECT id, nombre FROM dbo.calle WHERE localidad_id = @localidadId;";
+
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            {
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@localidadId", localidadId);
+
+                    using (SqlDataReader r = cmd.ExecuteReader())
+                    {
+                        while (r.Read())
+                        {
+                            Calle calle = new Calle(r.GetInt32(0), r.GetString(1));
+                            listaCalles.Add(calle);
+                        }
+                    }
+                }
+            }
+
+            return listaCalles;
+        }
+
+
     }
 }

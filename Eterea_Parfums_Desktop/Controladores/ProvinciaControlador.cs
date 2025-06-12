@@ -93,5 +93,32 @@ namespace Eterea_Parfums_Desktop.Controladores
             return provincia;
         }
 
+        public static List<Provincia> getProvinciasPorPaisId(int paisId)
+        {
+            List<Provincia> listaProvincias = new List<Provincia>();
+            string query = "SELECT id, nombre FROM dbo.provincia WHERE pais_id = @paisId;";
+
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            {
+                connection.Open();
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    cmd.Parameters.AddWithValue("@paisId", paisId);
+
+                    using (SqlDataReader r = cmd.ExecuteReader())
+                    {
+                        while (r.Read())
+                        {
+                            Provincia provincia = new Provincia(r.GetInt32(0), r.GetString(1));
+                            listaProvincias.Add(provincia);
+                        }
+                    }
+                }
+            }
+
+            return listaProvincias;
+        }
+
+
     }
 }

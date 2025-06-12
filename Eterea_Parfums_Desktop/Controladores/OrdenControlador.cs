@@ -13,9 +13,9 @@ namespace Eterea_Parfums_Desktop.Controladores
         public DataTable ObtenerOrdenes()
         {
             string query = @"
-            SELECT DISTINCT o.numero_de_orden, f.id AS num_factura, f.fecha, o.nombre_cliente, o.apellido_cliente, o.dni, o.e_mail_cliente, o.domicilio_de_envio, o.codigo_despacho
+            SELECT DISTINCT o.numero_de_orden, f.id AS num_factura, f.fecha,  o.fecha_creacion,o.nombre_cliente, o.apellido_cliente, o.dni, o.e_mail_cliente, o.domicilio_de_envio, o.codigo_despacho
             FROM dbo.orden o
-            JOIN dbo.factura f ON o.num_factura = f.id
+            JOIN dbo.factura f ON o.factura_id = f.id
             WHERE o.estado = @estado
         ";
 
@@ -82,6 +82,25 @@ namespace Eterea_Parfums_Desktop.Controladores
                 return cantidad;
             }
         }
+
+        public int ObtenerCantidadOrdenesActivasEnRango19a19()
+        {
+            string query = @"
+        SELECT COUNT(*) 
+        FROM dbo.orden
+        WHERE estado = 1
+          AND fecha_creacion >= DATEADD(HOUR, 19, CAST(CAST(GETDATE() - 1 AS DATE) AS DATETIME))
+          AND fecha_creacion <  DATEADD(HOUR, 19, CAST(CAST(GETDATE() AS DATE) AS DATETIME))";
+
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                connection.Open();
+                int cantidad = (int)command.ExecuteScalar();
+                return cantidad;
+            }
+        }
+
 
 
 
@@ -151,6 +170,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             string query = @"
                 SELECT DISTINCT 
                     o.numero_de_orden, 
+                    o.factura_id,
                     f.id AS num_factura, 
                     f.fecha, 
                     o.nombre_cliente, 
@@ -160,9 +180,10 @@ namespace Eterea_Parfums_Desktop.Controladores
                     o.domicilio_de_envio, 
                     o.estado, 
                     o.codigo_despacho,
+                    o.fecha_creacion,
                     f.fecha AS fecha_compra
                 FROM dbo.orden o
-                JOIN dbo.factura f ON o.num_factura = f.id
+                JOIN dbo.factura f ON o.factura_id = f.id
                 WHERE o.numero_de_orden = @numeroOrden";
 
             using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
@@ -172,6 +193,29 @@ namespace Eterea_Parfums_Desktop.Controladores
 
                 using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                 {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+        }
+
+        public DataTable ObtenerOrdenesDeUltimas24HorasHasta19hs()
+        {
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            {
+                connection.Open();
+
+                string query = @"
+            SELECT * 
+            FROM dbo.orden
+            WHERE estado = 1
+              AND fecha_creacion >= DATEADD(HOUR, 19, CAST(CAST(GETDATE() - 1 AS DATE) AS DATETIME))
+              AND fecha_creacion <  DATEADD(HOUR, 19, CAST(CAST(GETDATE() AS DATE) AS DATETIME))";
+
+                using (SqlCommand cmd = new SqlCommand(query, connection))
+                {
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     return dt;

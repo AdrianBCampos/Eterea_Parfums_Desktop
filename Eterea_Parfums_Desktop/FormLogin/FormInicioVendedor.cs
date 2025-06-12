@@ -55,7 +55,7 @@ namespace Eterea_Parfums_Desktop
         internal static bool HayOrdenesActivas()
         {
             OrdenControlador controlador = new OrdenControlador();
-            return controlador.ObtenerCantidadOrdenesActivas() > 0;
+            return controlador.ObtenerCantidadOrdenesActivasEnRango19a19() > 0;
         }
 
 

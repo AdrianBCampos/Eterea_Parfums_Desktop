@@ -6,6 +6,7 @@ using System.IO;
 using System.Windows.Forms;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
+using Eterea_Parfums_Desktop.Helpers;
 
 namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
 {
@@ -30,7 +31,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
 
 
             OrdenControlador controlador = new OrdenControlador();
-            int cantidad = controlador.ObtenerCantidadOrdenesActivas();
+            int cantidad = controlador.ObtenerCantidadOrdenesActivasEnRango19a19();
 
             if (cantidad == 0 && !numeroOrden.HasValue)
             {
@@ -86,7 +87,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
                 lbl_cantidad_ordenes.Visible = true;
                 txt_cantidad_ordenes.Visible = true;
                 lbl_pedido_buscado.Visible = false;
-                dtOrdenes = new OrdenControlador().ObtenerOrdenes();
+                //dtOrdenes = new OrdenControlador().ObtenerOrdenes();
+                dtOrdenes = controlador.ObtenerOrdenesDeUltimas24HorasHasta19hs();
+
             }
 
             //MessageBox.Show("Órdenes activas encontradas: " + dtOrdenes.Rows.Count);
@@ -95,7 +98,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
             foreach (DataRow orden in dtOrdenes.Rows)
             {
                 int numeroOrden = Convert.ToInt32(orden["numero_de_orden"]);
-                int numFactura = Convert.ToInt32(orden["num_factura"]);
+                int numFactura = Convert.ToInt32(orden["factura_id"]);
 
                 Panel panelOrden = new Panel
                 {
@@ -107,7 +110,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
 
                 Label lblOrden = new Label
                 {
-                    Text = $"Orden Nº {numeroOrden} - Cliente: {orden["nombre_cliente"]} {orden["apellido_cliente"]} - DNI: {orden["dni"]} - Fecha: {Convert.ToDateTime(orden["fecha"]).ToShortDateString()}",
+                    Text = $"Orden Nº {numeroOrden} - Cliente: {orden["nombre_cliente"]} {orden["apellido_cliente"]} - DNI: {orden["dni"]} - Fecha: {Convert.ToDateTime(orden["fecha_creacion"]).ToShortDateString()}",
                     Location = new Point(5, 5),
                     Font = new Font("Segoe UI", 16, FontStyle.Bold),
                     ForeColor = Color.FromArgb(195, 156, 164),
@@ -179,6 +182,16 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
                     }
                     controlador.DesactivarOrden(numeroOrden);
 
+                    // Email de cliente
+                    string emailCliente = orden["e_mail_cliente"]?.ToString();
+                    string nombreCliente = $"{orden["nombre_cliente"]} {orden["apellido_cliente"]}";
+
+                    // Validar y enviar notificación
+                    if (!string.IsNullOrWhiteSpace(emailCliente))
+                    {
+                        CorreoHelper.EnviarCorreoNotificacionDespacho(emailCliente, nombreCliente, codigoDespacho);
+                    }
+
                     string contenidoQR = $"Orden N {numeroOrden}\n" +
                                          $"Cliente: {orden["nombre_cliente"]} {orden["apellido_cliente"]}\n" +
                                          $"DNI: {orden["dni"]}\n" +
@@ -231,7 +244,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
                     {
                         // Si no se accedió desde BuscarPedidos_UC, simplemente recargar las órdenes
                         CargarOrdenes();
-                        int cantidad = controlador.ObtenerCantidadOrdenesActivas();
+                        int cantidad = controlador.ObtenerCantidadOrdenesActivasEnRango19a19();
                         txt_cantidad_ordenes.Text = cantidad.ToString();
 
                         // Si ya no quedan órdenes, mostrar mensaje
