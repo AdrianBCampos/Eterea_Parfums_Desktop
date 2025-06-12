@@ -28,127 +28,175 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pic_fondo_promo_seleccionada_eliminar = new System.Windows.Forms.PictureBox();
-            this.lbl_crear_promo = new System.Windows.Forms.Label();
-            this.lbl_nomb_promo_eliminar = new System.Windows.Forms.Label();
-            this.lbl_nombre_promo_seleccionada = new System.Windows.Forms.Label();
-            this.btn_eliminar_promo = new System.Windows.Forms.Button();
             this.btn_x_cerrar_ventana_eliminar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_fondo_promo_seleccionada_eliminar)).BeginInit();
+            this.lbl_crear_empleado = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox17 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btn_eliminar_promo = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lbl_nombre_promo_seleccionada = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
-            // pic_fondo_promo_seleccionada_eliminar
+            // btn_x_cerrar_ventana_eliminar
             // 
-            this.pic_fondo_promo_seleccionada_eliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.pic_fondo_promo_seleccionada_eliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pic_fondo_promo_seleccionada_eliminar.Location = new System.Drawing.Point(11, 76);
-            this.pic_fondo_promo_seleccionada_eliminar.Margin = new System.Windows.Forms.Padding(5);
-            this.pic_fondo_promo_seleccionada_eliminar.Name = "pic_fondo_promo_seleccionada_eliminar";
-            this.pic_fondo_promo_seleccionada_eliminar.Size = new System.Drawing.Size(397, 59);
-            this.pic_fondo_promo_seleccionada_eliminar.TabIndex = 113;
-            this.pic_fondo_promo_seleccionada_eliminar.TabStop = false;
+            this.btn_x_cerrar_ventana_eliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
+            this.btn_x_cerrar_ventana_eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_x_cerrar_ventana_eliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_x_cerrar_ventana_eliminar.ForeColor = System.Drawing.Color.White;
+            this.btn_x_cerrar_ventana_eliminar.Location = new System.Drawing.Point(685, 18);
+            this.btn_x_cerrar_ventana_eliminar.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_x_cerrar_ventana_eliminar.Name = "btn_x_cerrar_ventana_eliminar";
+            this.btn_x_cerrar_ventana_eliminar.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btn_x_cerrar_ventana_eliminar.Size = new System.Drawing.Size(81, 71);
+            this.btn_x_cerrar_ventana_eliminar.TabIndex = 426;
+            this.btn_x_cerrar_ventana_eliminar.Text = "X";
+            this.btn_x_cerrar_ventana_eliminar.UseVisualStyleBackColor = false;
+            this.btn_x_cerrar_ventana_eliminar.Click += new System.EventHandler(this.btn_x_cerrar_ventana_eliminar_Click);
             // 
-            // lbl_crear_promo
+            // lbl_crear_empleado
             // 
-            this.lbl_crear_promo.AutoSize = true;
-            this.lbl_crear_promo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.lbl_crear_promo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_crear_promo.ForeColor = System.Drawing.Color.Black;
-            this.lbl_crear_promo.Location = new System.Drawing.Point(131, 40);
-            this.lbl_crear_promo.Name = "lbl_crear_promo";
-            this.lbl_crear_promo.Size = new System.Drawing.Size(162, 18);
-            this.lbl_crear_promo.TabIndex = 114;
-            this.lbl_crear_promo.Text = "Eliminar Promoción:";
+            this.lbl_crear_empleado.AutoSize = true;
+            this.lbl_crear_empleado.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.lbl_crear_empleado.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_crear_empleado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_crear_empleado.Location = new System.Drawing.Point(211, 35);
+            this.lbl_crear_empleado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_crear_empleado.Name = "lbl_crear_empleado";
+            this.lbl_crear_empleado.Size = new System.Drawing.Size(317, 38);
+            this.lbl_crear_empleado.TabIndex = 425;
+            this.lbl_crear_empleado.Text = "Eliminar Promoción";
             // 
-            // lbl_nomb_promo_eliminar
+            // pictureBox1
             // 
-            this.lbl_nomb_promo_eliminar.AutoSize = true;
-            this.lbl_nomb_promo_eliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_nomb_promo_eliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_nomb_promo_eliminar.Location = new System.Drawing.Point(19, 94);
-            this.lbl_nomb_promo_eliminar.Name = "lbl_nomb_promo_eliminar";
-            this.lbl_nomb_promo_eliminar.Size = new System.Drawing.Size(66, 16);
-            this.lbl_nomb_promo_eliminar.TabIndex = 115;
-            this.lbl_nomb_promo_eliminar.Text = "Nombre:";
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.Location = new System.Drawing.Point(15, 97);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(751, 98);
+            this.pictureBox1.TabIndex = 422;
+            this.pictureBox1.TabStop = false;
             // 
-            // lbl_nombre_promo_seleccionada
+            // pictureBox5
             // 
-            this.lbl_nombre_promo_seleccionada.AutoSize = true;
-            this.lbl_nombre_promo_seleccionada.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_nombre_promo_seleccionada.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_nombre_promo_seleccionada.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lbl_nombre_promo_seleccionada.Location = new System.Drawing.Point(83, 92);
-            this.lbl_nombre_promo_seleccionada.MaximumSize = new System.Drawing.Size(320, 40);
-            this.lbl_nombre_promo_seleccionada.Name = "lbl_nombre_promo_seleccionada";
-            this.lbl_nombre_promo_seleccionada.Size = new System.Drawing.Size(217, 18);
-            this.lbl_nombre_promo_seleccionada.TabIndex = 116;
-            this.lbl_nombre_promo_seleccionada.Text = "nombrePromoSeleccionada";
-            this.lbl_nombre_promo_seleccionada.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox5.Location = new System.Drawing.Point(15, 19);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(663, 71);
+            this.pictureBox5.TabIndex = 424;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox17
+            // 
+            this.pictureBox17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(196)))), ((int)(((byte)(206)))));
+            this.pictureBox17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox17.Location = new System.Drawing.Point(7, 10);
+            this.pictureBox17.Name = "pictureBox17";
+            this.pictureBox17.Size = new System.Drawing.Size(767, 293);
+            this.pictureBox17.TabIndex = 423;
+            this.pictureBox17.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.label2.Location = new System.Drawing.Point(55, 131);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(129, 32);
+            this.label2.TabIndex = 430;
+            this.label2.Text = "Nombre:";
             // 
             // btn_eliminar_promo
             // 
             this.btn_eliminar_promo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
             this.btn_eliminar_promo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_eliminar_promo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_eliminar_promo.Location = new System.Drawing.Point(148, 147);
-            this.btn_eliminar_promo.Margin = new System.Windows.Forms.Padding(5);
+            this.btn_eliminar_promo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_eliminar_promo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.btn_eliminar_promo.Location = new System.Drawing.Point(267, 215);
+            this.btn_eliminar_promo.Margin = new System.Windows.Forms.Padding(4);
             this.btn_eliminar_promo.Name = "btn_eliminar_promo";
-            this.btn_eliminar_promo.Size = new System.Drawing.Size(126, 24);
-            this.btn_eliminar_promo.TabIndex = 284;
-            this.btn_eliminar_promo.Text = "Eliminar Promoción";
+            this.btn_eliminar_promo.Size = new System.Drawing.Size(226, 68);
+            this.btn_eliminar_promo.TabIndex = 431;
+            this.btn_eliminar_promo.Text = "Eliminar";
             this.btn_eliminar_promo.UseVisualStyleBackColor = false;
             this.btn_eliminar_promo.Click += new System.EventHandler(this.btn_eliminar_promo_Click);
             // 
-            // btn_x_cerrar_ventana_eliminar
+            // pictureBox2
             // 
-            this.btn_x_cerrar_ventana_eliminar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btn_x_cerrar_ventana_eliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(112)))), ((int)(((byte)(112)))));
-            this.btn_x_cerrar_ventana_eliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_x_cerrar_ventana_eliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_x_cerrar_ventana_eliminar.ForeColor = System.Drawing.Color.White;
-            this.btn_x_cerrar_ventana_eliminar.Location = new System.Drawing.Point(373, 7);
-            this.btn_x_cerrar_ventana_eliminar.Name = "btn_x_cerrar_ventana_eliminar";
-            this.btn_x_cerrar_ventana_eliminar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_x_cerrar_ventana_eliminar.Size = new System.Drawing.Size(35, 32);
-            this.btn_x_cerrar_ventana_eliminar.TabIndex = 329;
-            this.btn_x_cerrar_ventana_eliminar.Text = "X";
-            this.btn_x_cerrar_ventana_eliminar.UseVisualStyleBackColor = false;
-            this.btn_x_cerrar_ventana_eliminar.Click += new System.EventHandler(this.btn_x_cerrar_ventana_eliminar_Click);
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox2.Location = new System.Drawing.Point(15, 200);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(751, 95);
+            this.pictureBox2.TabIndex = 432;
+            this.pictureBox2.TabStop = false;
+            // 
+            // lbl_nombre_promo_seleccionada
+            // 
+            this.lbl_nombre_promo_seleccionada.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.lbl_nombre_promo_seleccionada.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_nombre_promo_seleccionada.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_nombre_promo_seleccionada.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_nombre_promo_seleccionada.Location = new System.Drawing.Point(206, 133);
+            this.lbl_nombre_promo_seleccionada.Margin = new System.Windows.Forms.Padding(4);
+            this.lbl_nombre_promo_seleccionada.Name = "lbl_nombre_promo_seleccionada";
+            this.lbl_nombre_promo_seleccionada.ReadOnly = true;
+            this.lbl_nombre_promo_seleccionada.Size = new System.Drawing.Size(516, 30);
+            this.lbl_nombre_promo_seleccionada.TabIndex = 447;
             // 
             // FormEliminarPromo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.ClientSize = new System.Drawing.Size(419, 183);
-            this.ControlBox = false;
-            this.Controls.Add(this.btn_x_cerrar_ventana_eliminar);
-            this.Controls.Add(this.btn_eliminar_promo);
+            this.ClientSize = new System.Drawing.Size(784, 313);
             this.Controls.Add(this.lbl_nombre_promo_seleccionada);
-            this.Controls.Add(this.lbl_nomb_promo_eliminar);
-            this.Controls.Add(this.lbl_crear_promo);
-            this.Controls.Add(this.pic_fondo_promo_seleccionada_eliminar);
+            this.Controls.Add(this.btn_eliminar_promo);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btn_x_cerrar_ventana_eliminar);
+            this.Controls.Add(this.lbl_crear_empleado);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBox5);
+            this.Controls.Add(this.pictureBox17);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximizeBox = false;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormEliminarPromo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormEliminarPromo";
-            ((System.ComponentModel.ISupportInitialize)(this.pic_fondo_promo_seleccionada_eliminar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pic_fondo_promo_seleccionada_eliminar;
-        private System.Windows.Forms.Label lbl_crear_promo;
-        private System.Windows.Forms.Label lbl_nomb_promo_eliminar;
-        private System.Windows.Forms.Label lbl_nombre_promo_seleccionada;
-        private System.Windows.Forms.Button btn_eliminar_promo;
         private System.Windows.Forms.Button btn_x_cerrar_ventana_eliminar;
+        private System.Windows.Forms.Label lbl_crear_empleado;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.PictureBox pictureBox17;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_eliminar_promo;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TextBox lbl_nombre_promo_seleccionada;
     }
 }
