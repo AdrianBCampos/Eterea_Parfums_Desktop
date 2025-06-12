@@ -140,7 +140,8 @@ namespace Eterea_Parfums_Desktop
 
             if (paisSeleccionado != null)
             {
-                var provinciasRelacionadas = PaisProvinciaControlador.getProvinciasPorPais(paisSeleccionado.id);
+                // Nuevo método que busca provincias por pais_id
+                var provinciasRelacionadas = ProvinciaControlador.getProvinciasPorPaisId(paisSeleccionado.id);
                 provincias = provinciasRelacionadas;
 
                 foreach (var provincia in provincias)
@@ -149,6 +150,7 @@ namespace Eterea_Parfums_Desktop
                 }
             }
         }
+
 
         private void combo_provincia_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -160,7 +162,8 @@ namespace Eterea_Parfums_Desktop
 
             if (provinciaSeleccionada != null)
             {
-                var localidadesRelacionadas = ProvinciaLocalidadControlador.getLocalidadesPorProvincia(provinciaSeleccionada.id);
+                // Llamás al nuevo método que obtiene localidades directamente por provincia_id
+                var localidadesRelacionadas = LocalidadControlador.getLocalidadesPorProvinciaId(provinciaSeleccionada.id);
                 localidades = localidadesRelacionadas;
 
                 foreach (var localidad in localidades)
@@ -169,6 +172,7 @@ namespace Eterea_Parfums_Desktop
                 }
             }
         }
+
 
         private void combo_localidad_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -179,9 +183,11 @@ namespace Eterea_Parfums_Desktop
 
             if (localidadSeleccionada != null)
             {
-                var callesRelacionadas = CalleLocalidadControlador.getCallesPorLocalidad(localidadSeleccionada.id);
+                // Ahora se busca directamente en la tabla "calle" filtrando por localidad_id
+                var callesRelacionadas = CalleControlador.getCallesPorLocalidadId(localidadSeleccionada.id);
                 calles = callesRelacionadas;
 
+                combo_calle.Items.Clear(); // recomendable limpiar antes
                 foreach (var calle in calles)
                 {
                     combo_calle.Items.Add(calle.nombre);
@@ -189,7 +195,7 @@ namespace Eterea_Parfums_Desktop
             }
         }
 
-        private void txt_dni_TextChanged(object sender, EventArgs e)
+            private void txt_dni_TextChanged(object sender, EventArgs e)
         {
             string dni = txt_dni.Text.Trim();
 

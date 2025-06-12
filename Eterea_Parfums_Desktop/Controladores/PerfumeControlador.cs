@@ -608,6 +608,18 @@ namespace Eterea_Parfums_Desktop.Controladores
             return perfumesSimilares;
         }
 
+        public static void marcarComoActivo(int idPerfume)
+        {
+            string query = "UPDATE dbo.perfume SET activo = 1 WHERE id = @id";
+
+            using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@id", idPerfume);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
 
 
 

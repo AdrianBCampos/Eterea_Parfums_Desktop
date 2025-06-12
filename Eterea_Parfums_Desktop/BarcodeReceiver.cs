@@ -34,8 +34,12 @@ public class BarcodeReceiver
                 int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
                 string barcode = Encoding.UTF8.GetString(buffer, 0, bytesRead).Trim();
 
-                // ✅ Disparar el evento
-                OnCodigoLeido?.Invoke(barcode);
+                // ✅ Disparar el evento. Solo invocar si el código no está vacío
+                if (!string.IsNullOrWhiteSpace(barcode))
+                {
+                    OnCodigoLeido?.Invoke(barcode);
+                }
+
             }
         }
     }

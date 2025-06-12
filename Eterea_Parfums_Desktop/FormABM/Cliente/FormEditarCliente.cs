@@ -188,16 +188,16 @@ namespace Eterea_Parfums_Desktop
 
             string nombrePaisSeleccionado = combo_pais.SelectedItem?.ToString();
             Pais paisSeleccionado = paises.FirstOrDefault(p => p.nombre == nombrePaisSeleccionado);
-
             if (paisSeleccionado != null)
             {
-                provincias = PaisProvinciaControlador.getProvinciasPorPais(paisSeleccionado.id);
+                // Nuevo método que busca provincias por pais_id
+                var provinciasRelacionadas = ProvinciaControlador.getProvinciasPorPaisId(paisSeleccionado.id);
+                provincias = provinciasRelacionadas;
 
-                // Convertir a lista de strings para mostrar en el combo
-                List<string> nombresProvincias = provincias.Select(p => p.nombre).ToList();
-
-                // Usar método reutilizable
-                CargarComboConOpciones(combo_provincia, nombresProvincias);
+                foreach (var provincia in provincias)
+                {
+                    combo_provincia.Items.Add(provincia.nombre);
+                }
             }
         }
 
@@ -207,29 +207,41 @@ namespace Eterea_Parfums_Desktop
             combo_localidad.Items.Clear();
             combo_calle.Items.Clear();
 
-            string nombreProvincia = combo_provincia.SelectedItem?.ToString();
-            Provincia provincia = provincias.FirstOrDefault(p => p.nombre == nombreProvincia);
+            string nombreProvinciaSeleccionada = combo_provincia.SelectedItem.ToString();
+            Provincia provinciaSeleccionada = provincias.FirstOrDefault(p => p.nombre == nombreProvinciaSeleccionada);
 
-            if (provincia != null)
+            if (provinciaSeleccionada != null)
             {
-                localidades = ProvinciaLocalidadControlador.getLocalidadesPorProvincia(provincia.id);
-                List<string> nombresLocalidades = localidades.Select(l => l.nombre).ToList();
-                CargarComboConOpciones(combo_localidad, nombresLocalidades);
+                // Llamás al nuevo método que obtiene localidades directamente por provincia_id
+                var localidadesRelacionadas = LocalidadControlador.getLocalidadesPorProvinciaId(provinciaSeleccionada.id);
+                localidades = localidadesRelacionadas;
+
+                foreach (var localidad in localidades)
+                {
+                    combo_localidad.Items.Add(localidad.nombre);
+                }
             }
         }
+
 
         private void combo_localidad_SelectedIndexChanged(object sender, EventArgs e)
         {
             combo_calle.Items.Clear();
 
-            string nombreLocalidad = combo_localidad.SelectedItem?.ToString();
-            Localidad localidad = localidades.FirstOrDefault(l => l.nombre == nombreLocalidad);
+            string nombreLocalidadSeleccionada = combo_localidad.SelectedItem.ToString();
+            Localidad localidadSeleccionada = localidades.FirstOrDefault(l => l.nombre == nombreLocalidadSeleccionada);
 
-            if (localidad != null)
+            if (localidadSeleccionada != null)
             {
-                calles = CalleLocalidadControlador.getCallesPorLocalidad(localidad.id);
-                List<string> nombresCalles = calles.Select(c => c.nombre).ToList();
-                CargarComboConOpciones(combo_calle, nombresCalles);
+                // Ahora se busca directamente en la tabla "calle" filtrando por localidad_id
+                var callesRelacionadas = CalleControlador.getCallesPorLocalidadId(localidadSeleccionada.id);
+                calles = callesRelacionadas;
+
+                combo_calle.Items.Clear(); // recomendable limpiar antes
+                foreach (var calle in calles)
+                {
+                    combo_calle.Items.Add(calle.nombre);
+                }
             }
         }
 
