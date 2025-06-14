@@ -11,6 +11,8 @@ namespace Eterea_Parfums_Desktop
     {
         // Evento público que otros formularios pueden "escuchar"
         public event EventHandler<int> ConfirmarNumeroSucursal;
+        public int SucursalActualId { get; set; }
+
 
         public FormNumeroDeSucursal()
         {
@@ -21,7 +23,7 @@ namespace Eterea_Parfums_Desktop
 
             Sucursal sucursal = SucursalControlador.getById(Program.sucursal);
 
-            //combo_sucursales.SelectedIndex = sucursal.id; // Seleccionar la sucursal actual por defecto
+           
 
             combo_sucursales.DrawMode = DrawMode.OwnerDrawFixed;
             combo_sucursales.DrawItem += comboBoxDiseño_DrawItem;
@@ -31,13 +33,21 @@ namespace Eterea_Parfums_Desktop
         private void CargarSucursales()
         {
             var sucursales = SucursalControlador.getAll();
+
             combo_sucursales.Items.Clear();
             foreach (Sucursal sucursal in sucursales)
             {
-                combo_sucursales.Items.Add(sucursal.nombre.ToString());
+                combo_sucursales.Items.Add(sucursal.nombre);
             }
 
+            // Obtener el nombre de la sucursal actual a partir del ID
+            var sucursalActual = sucursales.FirstOrDefault(s => s.id == SucursalActualId);
+            if (sucursalActual != null)
+            {
+                combo_sucursales.SelectedItem = sucursalActual.nombre;
+            }
         }
+
 
         /*private void button2_Click(object sender, EventArgs e)
         {
@@ -110,5 +120,9 @@ namespace Eterea_Parfums_Desktop
             e.DrawFocusRectangle();
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

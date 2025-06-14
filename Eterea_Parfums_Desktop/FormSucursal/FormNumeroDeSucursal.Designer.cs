@@ -43,10 +43,10 @@
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Location = new System.Drawing.Point(17, 58);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(13, 47);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(935, 81);
+            this.pictureBox2.Size = new System.Drawing.Size(701, 66);
             this.pictureBox2.TabIndex = 376;
             this.pictureBox2.TabStop = false;
             // 
@@ -55,9 +55,10 @@
             this.pictureBox17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox17.Location = new System.Drawing.Point(6, 7);
+            this.pictureBox17.Location = new System.Drawing.Point(4, 6);
+            this.pictureBox17.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(957, 142);
+            this.pictureBox17.Size = new System.Drawing.Size(718, 116);
             this.pictureBox17.TabIndex = 382;
             this.pictureBox17.TabStop = false;
             // 
@@ -68,14 +69,14 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(907, 13);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Location = new System.Drawing.Point(680, 11);
             this.button2.Name = "button2";
             this.button2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button2.Size = new System.Drawing.Size(45, 39);
+            this.button2.Size = new System.Drawing.Size(34, 32);
             this.button2.TabIndex = 86;
             this.button2.Text = "X";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // lbl_facturacion
             // 
@@ -83,10 +84,9 @@
             this.lbl_facturacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_facturacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_facturacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_facturacion.Location = new System.Drawing.Point(13, 15);
-            this.lbl_facturacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_facturacion.Location = new System.Drawing.Point(10, 12);
             this.lbl_facturacion.Name = "lbl_facturacion";
-            this.lbl_facturacion.Size = new System.Drawing.Size(293, 38);
+            this.lbl_facturacion.Size = new System.Drawing.Size(245, 31);
             this.lbl_facturacion.TabIndex = 404;
             this.lbl_facturacion.Text = "Cambiar Sucursal";
             // 
@@ -96,10 +96,9 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label1.Location = new System.Drawing.Point(29, 80);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(22, 65);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(355, 38);
+            this.label1.Size = new System.Drawing.Size(298, 31);
             this.label1.TabIndex = 405;
             this.label1.Text = "Seleccionar Sucursal:";
             // 
@@ -109,10 +108,9 @@
             this.btn_continuar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_continuar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_continuar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_continuar.Location = new System.Drawing.Point(738, 78);
-            this.btn_continuar.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_continuar.Location = new System.Drawing.Point(554, 63);
             this.btn_continuar.Name = "btn_continuar";
-            this.btn_continuar.Size = new System.Drawing.Size(193, 43);
+            this.btn_continuar.Size = new System.Drawing.Size(145, 35);
             this.btn_continuar.TabIndex = 437;
             this.btn_continuar.Text = "Confirmar";
             this.btn_continuar.UseVisualStyleBackColor = false;
@@ -127,18 +125,17 @@
             this.combo_sucursales.Items.AddRange(new object[] {
             "Ventas en un período",
             "Inventario"});
-            this.combo_sucursales.Location = new System.Drawing.Point(424, 83);
-            this.combo_sucursales.Margin = new System.Windows.Forms.Padding(4);
+            this.combo_sucursales.Location = new System.Drawing.Point(318, 67);
             this.combo_sucursales.Name = "combo_sucursales";
-            this.combo_sucursales.Size = new System.Drawing.Size(288, 33);
+            this.combo_sucursales.Size = new System.Drawing.Size(217, 28);
             this.combo_sucursales.TabIndex = 438;
             // 
             // FormNumeroDeSucursal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
-            this.ClientSize = new System.Drawing.Size(971, 155);
+            this.ClientSize = new System.Drawing.Size(728, 126);
             this.Controls.Add(this.combo_sucursales);
             this.Controls.Add(this.btn_continuar);
             this.Controls.Add(this.label1);
@@ -147,7 +144,7 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox17);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormNumeroDeSucursal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NumeroSucursal";

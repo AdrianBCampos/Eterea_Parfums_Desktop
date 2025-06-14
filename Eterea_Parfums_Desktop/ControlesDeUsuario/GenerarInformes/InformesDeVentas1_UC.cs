@@ -169,8 +169,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 
 
             string nombresMasVendidos = string.Join(Environment.NewLine, perfumesMasVendidos);
-            MessageBox.Show(nombresMasVendidos);
-            // Asignar al TextBox
+ 
             richTextBox_mas_vendido.Text = nombresMasVendidos;
             richTextBox_mas_vendido.SelectAll();
             richTextBox_mas_vendido.SelectionAlignment = HorizontalAlignment.Center;
@@ -299,12 +298,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 
         private void inicializarDatePickers()
         {
-
-            // Desuscribimos eventos
+            // Desuscribimos eventos previos
             dateTimeInicio.ValueChanged -= dateTimeInicio_ValueChanged;
             dateTimeFinal.ValueChanged -= dateTimeFinal_ValueChanged;
 
-            // Inicialmente mostrar campos vacíos
+            // Formato vacío inicial
             dateTimeInicio.Format = DateTimePickerFormat.Custom;
             dateTimeInicio.CustomFormat = " ";
             dateTimeFinal.Format = DateTimePickerFormat.Custom;
@@ -314,16 +312,20 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             dateTimeInicio.MaxDate = DateTime.Now;
             dateTimeFinal.MaxDate = DateTime.Now;
 
-            // Marcamos que aún no se seleccionó una fecha
+            // Estado de carga
             inicioCargado = false;
             finalCargado = false;
 
-            // Volvemos a suscribir
+            // Suscribir eventos
             dateTimeInicio.ValueChanged += dateTimeInicio_ValueChanged;
+            dateTimeInicio.DropDown += dateTimeInicio_DropDown;
+
             dateTimeFinal.ValueChanged += dateTimeFinal_ValueChanged;
+            dateTimeFinal.DropDown += dateTimeFinal_DropDown;
 
-            
-
+            // ✅ Suscribir DropDown para mostrar calendario sin autocompletar
+            dateTimeInicio.DropDown += dateTimeInicio_DropDown;
+            dateTimeFinal.DropDown += dateTimeFinal_DropDown;
         }
 
 
@@ -344,19 +346,26 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 
         private async void dateTimeInicio_ValueChanged(object sender, EventArgs e)
         {
-            if (!inicioCargado)
-            {
-                dateTimeInicio.Format = DateTimePickerFormat.Short;
-                inicioCargado = true;
+            dateTimeInicio.Format = DateTimePickerFormat.Short;
+            inicioCargado = true;
 
+            // Siempre actualizar MinDate del final
+            dateTimeFinal.MinDate = dateTimeInicio.Value;
+
+            // Si la fecha final es anterior a la nueva fecha de inicio, ajustarla automáticamente
+            if (dateTimeFinal.Value < dateTimeInicio.Value)
+            {
+                dateTimeFinal.Value = dateTimeInicio.Value;
+                dateTimeFinal.Format = DateTimePickerFormat.Short;
+                finalCargado = true;
             }
 
             if (inicioCargado && finalCargado)
             {
                 await Task.Run(() => cargarDatosSeguro());
-            };
-
+            }
         }
+
 
         private async void dateTimeFinal_ValueChanged(object sender, EventArgs e)
         {
@@ -371,8 +380,38 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             {
                 await Task.Run(() => cargarDatosSeguro());
             }
-
-
         }
+
+
+        public void ActualizarSucursal(Sucursal nuevaSucursal)
+        {
+            this.numeroSucursal = nuevaSucursal.id;
+            lbl_info.Text = nuevaSucursal.nombre;
+        }
+
+        private void dateTimeInicio_DropDown(object sender, EventArgs e)
+        {
+            if (!inicioCargado)
+            {
+                dateTimeInicio.Value = DateTime.Today; // Asignar temporalmente para evitar error
+                dateTimeInicio.Format = DateTimePickerFormat.Short;
+                dateTimeInicio.CustomFormat = "dd/MM/yyyy";
+                inicioCargado = true;
+            }
+        }
+
+        private void dateTimeFinal_DropDown(object sender, EventArgs e)
+        {
+            if (!finalCargado)
+            {
+                dateTimeFinal.Value = DateTime.Today;
+                dateTimeFinal.Format = DateTimePickerFormat.Short;
+                dateTimeFinal.CustomFormat = "dd/MM/yyyy";
+                finalCargado = true;
+            }
+        }
+
+
+
     }
 }

@@ -20,8 +20,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 {
     public partial class GenerarInformes_UC : UserControl
     {
-        FormNumeroDeSucursal FormNumeroDeSucursal;
-        int numeroSucursal;
+        int numeroSucursal;      
+
+
         public GenerarInformes_UC()
         {
             InitializeComponent();
@@ -40,11 +41,22 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             combobox_informe.DrawItem += comboBoxDiseño_DrawItem;
             combobox_informe.DropDownStyle = ComboBoxStyle.DropDownList;
 
+            //Llenar combo de sucursales
+            comboBox_cambiar_sucursal.DrawMode = DrawMode.OwnerDrawFixed;
+            comboBox_cambiar_sucursal.DrawItem += comboBoxDiseño_DrawItem;
+            comboBox_cambiar_sucursal.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_cambiar_sucursal.SelectedIndexChanged += comboBox_cambiar_sucursal_SelectedIndexChanged; //Evento
+
+            CargarComboSucursal();
+
+
             combobox_informe.SelectedIndex = 0; // Seleccionar el primer informe por defecto
 
             this.Cursor = Cursors.Default;
             this.UseWaitCursor = false;
 
+            combobox_informe.SelectedIndexChanged += combobox_informe_SelectedIndexChanged;  //Evento que cumple la funcion del boton "Confirmar"
+            
         }
 
 
@@ -57,25 +69,54 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             uc.BringToFront();
         }
 
-        private void btn_continuar_Click(object sender, EventArgs e)
-        {
-            if (combobox_informe.SelectedIndex == 0)
-            {
-                InformesDeVentas1_UC adminUC = new InformesDeVentas1_UC(numeroSucursal);
 
-                addUserControl(adminUC);
-            }
-            else if (combobox_informe.SelectedIndex == 1)
+
+        private void CargarComboSucursal()
+        {
+            var sucursales = SucursalControlador.getAll();
+
+            comboBox_cambiar_sucursal.DataSource = null;
+            comboBox_cambiar_sucursal.Items.Clear();
+
+            comboBox_cambiar_sucursal.DisplayMember = "nombre";
+            comboBox_cambiar_sucursal.ValueMember = "id";
+
+            comboBox_cambiar_sucursal.DataSource = sucursales;
+
+            // Seleccionar la sucursal actual por defecto
+            var actual = sucursales.FirstOrDefault(s => s.id == Program.sucursal);
+            if (actual != null)
             {
-                InformesDeVentas2_UC adminUC = new InformesDeVentas2_UC(numeroSucursal);
-                addUserControl(adminUC);
-            }
-            else if (combobox_informe.SelectedIndex == 2)
-            {
-                ListadoPerfumesBajoStock_UC listadoUC = new ListadoPerfumesBajoStock_UC(numeroSucursal);
-                addUserControl(listadoUC);
+                comboBox_cambiar_sucursal.SelectedValue = actual.id;
+                numeroSucursal = actual.id;
             }
         }
+
+
+        private void comboBox_cambiar_sucursal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_cambiar_sucursal.SelectedItem is Sucursal sucursalSeleccionada)
+            {
+                numeroSucursal = sucursalSeleccionada.id;
+
+                // Refrescar el informe actualmente seleccionado
+                combobox_informe_SelectedIndexChanged(null, null);
+
+                // Actualizar el label lbl_info si el control ya está instanciado
+                if (panel_info_ventas.Controls.Count > 0)
+                {
+                    var uc = panel_info_ventas.Controls[0];
+                    if (uc is InformesDeVentas1_UC informes1)
+                        informes1.ActualizarSucursal(sucursalSeleccionada);
+                    else if (uc is InformesDeVentas2_UC informes2)
+                        informes2.ActualizarSucursal(sucursalSeleccionada);
+                    else if (uc is ListadoPerfumesBajoStock_UC listado)
+                        listado.ActualizarSucursal(sucursalSeleccionada);
+                }
+            }
+        }
+
+
 
         private void comboBoxDiseño_DrawItem(object sender, DrawItemEventArgs e)
         {
@@ -85,7 +126,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             // Obtener el ComboBox y el texto del ítem actual
             ComboBox combo = sender as ComboBox;
 
-            string text = combo.Items[e.Index].ToString();
+            string text = combo.Items[e.Index] is Sucursal suc ? suc.nombre : combo.Items[e.Index].ToString();
+
 
             // Definir colores personalizados
             Color backgroundColor;
@@ -117,31 +159,26 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             e.DrawFocusRectangle();
         }
 
-        private void btn_sucursal_Click(object sender, EventArgs e)
+        private void combobox_informe_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FormNumeroDeSucursal = new FormNumeroDeSucursal();
-
-            // Suscripción al evento aquí
-            FormNumeroDeSucursal.ConfirmarNumeroSucursal += (s, id) =>
+            if (combobox_informe.SelectedIndex == 0)
             {
-                //Actualizando en numero de sucursal
-                numeroSucursal = id;
-
-                // Recreando los UseControl con el nuevo número de sucursal actualizado
-                if (combobox_informe.SelectedIndex == 0)
-                {
-                    InformesDeVentas1_UC adminUC = new InformesDeVentas1_UC(numeroSucursal);
-                    addUserControl(adminUC);
-                }
-                else if (combobox_informe.SelectedIndex == 1)
-                {
-                    InformesDeVentas2_UC adminUC = new InformesDeVentas2_UC(numeroSucursal);
-                    addUserControl(adminUC);
-                }
-
-            };
-
-            FormNumeroDeSucursal.ShowDialog();
+                InformesDeVentas1_UC adminUC = new InformesDeVentas1_UC(numeroSucursal);
+                addUserControl(adminUC);
+            }
+            else if (combobox_informe.SelectedIndex == 1)
+            {
+                InformesDeVentas2_UC adminUC = new InformesDeVentas2_UC(numeroSucursal);
+                addUserControl(adminUC);
+            }
+            else if (combobox_informe.SelectedIndex == 2)
+            {
+                ListadoPerfumesBajoStock_UC listadoUC = new ListadoPerfumesBajoStock_UC(numeroSucursal);
+                addUserControl(listadoUC);
+            }
         }
+
+
+       
     }
 }

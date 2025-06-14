@@ -35,10 +35,10 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.combobox_informe = new System.Windows.Forms.ComboBox();
-            this.btn_continuar = new System.Windows.Forms.Button();
             this.panel_info_ventas = new System.Windows.Forms.Panel();
-            this.btn_sucursal = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.lbl_cambiar_sucursal = new System.Windows.Forms.Label();
+            this.comboBox_cambiar_sucursal = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -52,7 +52,7 @@
             this.lbl_facturacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_facturacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_facturacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_facturacion.Location = new System.Drawing.Point(440, 22);
+            this.lbl_facturacion.Location = new System.Drawing.Point(615, 22);
             this.lbl_facturacion.Name = "lbl_facturacion";
             this.lbl_facturacion.Size = new System.Drawing.Size(242, 31);
             this.lbl_facturacion.TabIndex = 406;
@@ -65,7 +65,7 @@
             this.pictureBox9.Location = new System.Drawing.Point(11, 11);
             this.pictureBox9.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(1011, 52);
+            this.pictureBox9.Size = new System.Drawing.Size(1486, 52);
             this.pictureBox9.TabIndex = 408;
             this.pictureBox9.TabStop = false;
             // 
@@ -98,7 +98,7 @@
             this.pictureBox2.Location = new System.Drawing.Point(11, 82);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1484, 63);
+            this.pictureBox2.Size = new System.Drawing.Size(890, 63);
             this.pictureBox2.TabIndex = 410;
             this.pictureBox2.TabStop = false;
             // 
@@ -108,7 +108,7 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label1.Location = new System.Drawing.Point(200, 97);
+            this.label1.Location = new System.Drawing.Point(48, 98);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(388, 31);
             this.label1.TabIndex = 411;
@@ -120,24 +120,10 @@
             this.combobox_informe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combobox_informe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combobox_informe.FormattingEnabled = true;
-            this.combobox_informe.Location = new System.Drawing.Point(636, 101);
+            this.combobox_informe.Location = new System.Drawing.Point(446, 101);
             this.combobox_informe.Name = "combobox_informe";
-            this.combobox_informe.Size = new System.Drawing.Size(386, 28);
+            this.combobox_informe.Size = new System.Drawing.Size(427, 28);
             this.combobox_informe.TabIndex = 413;
-            // 
-            // btn_continuar
-            // 
-            this.btn_continuar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.btn_continuar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_continuar.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_continuar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_continuar.Location = new System.Drawing.Point(1183, 93);
-            this.btn_continuar.Name = "btn_continuar";
-            this.btn_continuar.Size = new System.Drawing.Size(209, 40);
-            this.btn_continuar.TabIndex = 415;
-            this.btn_continuar.Text = "Confirmar";
-            this.btn_continuar.UseVisualStyleBackColor = false;
-            this.btn_continuar.Click += new System.EventHandler(this.btn_continuar_Click);
             // 
             // panel_info_ventas
             // 
@@ -150,40 +136,49 @@
             this.panel_info_ventas.TabIndex = 416;
             this.panel_info_ventas.UseWaitCursor = true;
             // 
-            // btn_sucursal
-            // 
-            this.btn_sucursal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.btn_sucursal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_sucursal.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_sucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_sucursal.Location = new System.Drawing.Point(1178, 18);
-            this.btn_sucursal.Name = "btn_sucursal";
-            this.btn_sucursal.Size = new System.Drawing.Size(214, 36);
-            this.btn_sucursal.TabIndex = 417;
-            this.btn_sucursal.Text = "Cambiar Sucursal";
-            this.btn_sucursal.UseVisualStyleBackColor = false;
-            this.btn_sucursal.Click += new System.EventHandler(this.btn_sucursal_Click);
-            // 
             // pictureBox3
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox3.Location = new System.Drawing.Point(1026, 11);
+            this.pictureBox3.Location = new System.Drawing.Point(905, 82);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(471, 52);
+            this.pictureBox3.Size = new System.Drawing.Size(592, 63);
             this.pictureBox3.TabIndex = 418;
             this.pictureBox3.TabStop = false;
+            // 
+            // lbl_cambiar_sucursal
+            // 
+            this.lbl_cambiar_sucursal.AutoSize = true;
+            this.lbl_cambiar_sucursal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.lbl_cambiar_sucursal.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_cambiar_sucursal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            this.lbl_cambiar_sucursal.Location = new System.Drawing.Point(922, 98);
+            this.lbl_cambiar_sucursal.Name = "lbl_cambiar_sucursal";
+            this.lbl_cambiar_sucursal.Size = new System.Drawing.Size(262, 31);
+            this.lbl_cambiar_sucursal.TabIndex = 419;
+            this.lbl_cambiar_sucursal.Text = "Cambiar Sucursal: ";
+            // 
+            // comboBox_cambiar_sucursal
+            // 
+            this.comboBox_cambiar_sucursal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
+            this.comboBox_cambiar_sucursal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox_cambiar_sucursal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox_cambiar_sucursal.FormattingEnabled = true;
+            this.comboBox_cambiar_sucursal.Location = new System.Drawing.Point(1175, 101);
+            this.comboBox_cambiar_sucursal.Name = "comboBox_cambiar_sucursal";
+            this.comboBox_cambiar_sucursal.Size = new System.Drawing.Size(298, 28);
+            this.comboBox_cambiar_sucursal.TabIndex = 414;
             // 
             // GenerarInformes_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
-            this.Controls.Add(this.btn_sucursal);
+            this.Controls.Add(this.comboBox_cambiar_sucursal);
+            this.Controls.Add(this.lbl_cambiar_sucursal);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.panel_info_ventas);
-            this.Controls.Add(this.btn_continuar);
             this.Controls.Add(this.combobox_informe);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
@@ -213,9 +208,9 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox combobox_informe;
-        private System.Windows.Forms.Button btn_continuar;
         private System.Windows.Forms.Panel panel_info_ventas;
-        private System.Windows.Forms.Button btn_sucursal;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Label lbl_cambiar_sucursal;
+        private System.Windows.Forms.ComboBox comboBox_cambiar_sucursal;
     }
 }
