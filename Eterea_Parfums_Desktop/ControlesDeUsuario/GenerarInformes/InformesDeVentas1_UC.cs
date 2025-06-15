@@ -118,6 +118,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             {
                 resetearDatos();
 
+                label6.Visible=false;
+                label7.Visible=false;   
                 label4.Visible=false;
                 label5.Visible=false;
 
@@ -129,6 +131,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                 richTextBox_mas_vendido.SelectionAlignment = HorizontalAlignment.Center;
                 richTextBox_menos_vendido.SelectAll();
                 richTextBox_menos_vendido.SelectionAlignment = HorizontalAlignment.Center;
+
+                // ✅ Mostrar valores en cero
+                txt_cantidad_ventas.Text = "0";
+                txt_monto_total.Text = "$ 0";
 
                 return;
             }
@@ -238,6 +244,13 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             //int sucursalId = EmpleadoControlador.obtenerPorId(numeroSucursal).sucursal_id.id;
             Sucursal sucursal = SucursalControlador.getById(numeroSucursal);
 
+            List<Factura> facturas = FacturaControlador.getAllIntervaloFechas(dateTimeInicio.Value, dateTimeFinal.Value)
+                .Where(f => f.sucursal_id.id == numeroSucursal)
+                .ToList();
+
+            bool sinVentas = facturas.Count == 0;
+
+
             string PaginaHTML_Texto = Properties.Resources.PlantillaInformeVentas.ToString();
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUCURSAL", sucursal.nombre)
                                                .Replace("@CALLE", sucursal.calle_id.nombre)
@@ -247,16 +260,25 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                                                .Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"))
                                                .Replace("@INICIO", dateTimeInicio.Value.ToString("dd/MM/yyyy"))
                                                .Replace("@FINAL", dateTimeFinal.Value.ToString("dd/MM/yyyy"))
-                                               .Replace("@CANTIDAD", txt_cantidad_ventas.Text)
-                                               .Replace("@MONTO_TOTAL_VENTAS", txt_monto_total.Text);
+                                               .Replace("@CANTIDAD", sinVentas ? " 0" : txt_cantidad_ventas.Text)
+                                               .Replace("@MONTO_TOTAL_VENTAS", sinVentas ? "$ 0.-" : txt_monto_total.Text);
 
-            string perfumesMasVendidosHtml = richTextBox_mas_vendido.Text.Replace("\n", "<br />").Replace("\r", "");
-            string perfumesMenosVendidosHtml = richTextBox_menos_vendido.Text.Replace("\n", "<br />").Replace("\r", "");
+            string perfumesMasVendidosHtml;
+            string perfumesMenosVendidosHtml;
+
+            if (sinVentas)
+            {
+                perfumesMasVendidosHtml = "<br /><strong>No hubo ventas en este período.</strong>";
+                perfumesMenosVendidosHtml = "<br /><strong>No hubo ventas en este período.</strong>";
+            }
+            else
+            {
+                perfumesMasVendidosHtml = richTextBox_mas_vendido.Text.Replace("\n", "<br />").Replace("\r", "");
+                perfumesMenosVendidosHtml = richTextBox_menos_vendido.Text.Replace("\n", "<br />").Replace("\r", "");
+            }
 
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@PERFUME_MAS_VENDIDO", perfumesMasVendidosHtml)
                                                .Replace("@PERFUME_MENOS_VENDIDO", perfumesMenosVendidosHtml);
-
-         
 
             if (guardarFactura.ShowDialog() == DialogResult.OK)
             {
