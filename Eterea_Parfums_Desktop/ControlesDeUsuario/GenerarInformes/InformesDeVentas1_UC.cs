@@ -85,8 +85,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             richTextBox_mas_vendido.Text = "";
             richTextBox_menos_vendido.Text = "";
 
-            lbl_fecha_Inicio.Text = "...................................";
-            lbl_fecha_Fin.Text = "...................................";
+            /*lbl_fecha_Inicio.Text = "...................................";
+            lbl_fecha_Fin.Text = "...................................";*/
 
             label4.Visible = true;
             label5.Visible = true;
@@ -96,8 +96,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
         }
         private void cargarDatos()
         {
-            lbl_fecha_Inicio.Text = dateTimeInicio.Value.ToString("dd 'de' MMMM 'de' yyyy");
-            lbl_fecha_Fin.Text = dateTimeFinal.Value.ToString("dd 'de' MMMM 'de' yyyy");
 
             // Validación de las fechas
             if (!validarFechas())
@@ -107,6 +105,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                 return;
             }
 
+            // ✅ Muestra siempre las fechas seleccionadas, incluso si no hay ventas
+            lbl_fecha_Inicio.Text = dateTimeInicio.Value.ToString("dd 'de' MMMM 'de' yyyy");
+            lbl_fecha_Fin.Text = dateTimeFinal.Value.ToString("dd 'de' MMMM 'de' yyyy");
+
             List<Factura> facturas = FacturaControlador.getAllIntervaloFechas(dateTimeInicio.Value, dateTimeFinal.Value);
 
             //SE FILTRA POR SUCURSAL
@@ -115,8 +117,22 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             if (facturas.Count == 0)
             {
                 resetearDatos();
+
+                label4.Visible=false;
+                label5.Visible=false;
+
+                // ✅ Mostrar mensaje indicando que no hubo ventas
+                richTextBox_mas_vendido.Text = "\nNo hubo ventas en este período.";
+                richTextBox_menos_vendido.Text = "\nNo hubo ventas en este período.";
+
+                richTextBox_mas_vendido.SelectAll();
+                richTextBox_mas_vendido.SelectionAlignment = HorizontalAlignment.Center;
+                richTextBox_menos_vendido.SelectAll();
+                richTextBox_menos_vendido.SelectionAlignment = HorizontalAlignment.Center;
+
                 return;
             }
+        
 
           
             txt_cantidad_ventas.Text = facturas.Count.ToString();
@@ -151,7 +167,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
           .Select(g => new
           {
               IdPerfume = g.Key,
-              Nombre = g.First().perfume.nombre, // Asumimos que todos tienen el mismo nombre
+              Nombre = g.First().perfume.nombre, 
+              Presentacion = g.First().perfume.presentacion_ml,
               CantidadVendida = g.Sum(d => d.cantidad)
           })
           .ToList();
@@ -164,7 +181,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             // Filtrar los perfumes que tienen esa mayor cantidad
             var perfumesMasVendidos = perfumesAgrupados
                 .Where(p => p.CantidadVendida == mayorCantidad)
-                .Select(p => p.Nombre)
+                .Select(p => $"{p.Nombre} - {p.Presentacion} ml")
                 .ToList();
 
 
@@ -181,7 +198,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             // Filtrar los perfumes que tienen esa menor cantidad
             var perfumesMenosVendidos = perfumesAgrupados
                 .Where(p => p.CantidadVendida == menorCantidad)
-                .Select(p => p.Nombre)
+                 .Select(p => $"{p.Nombre} - {p.Presentacion} ml")
                 .ToList();
 
  
