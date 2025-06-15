@@ -34,12 +34,12 @@ namespace Eterea_Parfums_Desktop
             CargarPaises();
             CargarOpciones(combo_spray);
             CargarOpciones(combo_recargable);
-            CargarOpciones(combo_activo);
+            //CargarOpciones(combo_activo);
 
             //Diseño del combo box
-            combo_activo.DrawMode = DrawMode.OwnerDrawFixed;
+            /*combo_activo.DrawMode = DrawMode.OwnerDrawFixed;
             combo_activo.DrawItem += comboBoxdiseño_DrawItem;
-            combo_activo.DropDownStyle = ComboBoxStyle.DropDownList;
+            combo_activo.DropDownStyle = ComboBoxStyle.DropDownList;*/
 
             combo_marca.DrawMode = DrawMode.OwnerDrawFixed;
             combo_marca.DrawItem += comboBoxdiseño_DrawItem;
@@ -83,7 +83,7 @@ namespace Eterea_Parfums_Desktop
             lbl_error_descripcion.Visible = false;
             lbl_error_anio.Visible = false;
             lbl_error_precio.Visible = false;
-            lbl_error_activo.Visible = false;
+            //lbl_error_activo.Visible = false;
             lbl_error_img1.Visible = false;
             lbl_error_img2.Visible = false;
 
@@ -213,12 +213,13 @@ namespace Eterea_Parfums_Desktop
                 recargable = true;
             }
 
-            bool activo = true;
+            /*bool activo = true;
             if (combo_activo.SelectedItem.ToString() == "No")
             {
                 activo = false;
-            }
+            }*/
 
+            bool activo = false;
 
             Marca marca = MarcaControlador.getByName(combo_marca.SelectedItem.ToString());
             TipoDePerfume tipo_de_perfume = TipoDePerfumeControlador.getByName(combo_tipo_de_perfume.SelectedItem.ToString());
@@ -477,7 +478,7 @@ namespace Eterea_Parfums_Desktop
                 }
             }
 
-            if (combo_activo.SelectedItem == null || string.IsNullOrEmpty(combo_activo.Text))
+            /*if (combo_activo.SelectedItem == null || string.IsNullOrEmpty(combo_activo.Text))
             {
                 errorMsg += "Debes indicar si el producto ingresa como activo o no" + Environment.NewLine;
                 lbl_error_activo.Text = "Debes indicar si el producto ingresa como activo o no";
@@ -486,7 +487,7 @@ namespace Eterea_Parfums_Desktop
             else
             {
                 lbl_error_activo.Visible = false;
-            }
+            }*/
 
             if (pictureBoxProducto1.Image == null)
             {

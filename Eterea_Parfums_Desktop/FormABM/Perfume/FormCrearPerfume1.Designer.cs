@@ -37,7 +37,6 @@
             this.lbl_error_nombre = new System.Windows.Forms.Label();
             this.lbl_error_marca = new System.Windows.Forms.Label();
             this.lbl_error_codigo = new System.Windows.Forms.Label();
-            this.lbl_error_activo = new System.Windows.Forms.Label();
             this.lbl_error_precio = new System.Windows.Forms.Label();
             this.lbl_error_anio = new System.Windows.Forms.Label();
             this.lbl_error_img1 = new System.Windows.Forms.Label();
@@ -85,10 +84,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.combo_activo = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox17 = new System.Windows.Forms.PictureBox();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProducto1)).BeginInit();
@@ -103,7 +99,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             this.SuspendLayout();
@@ -207,17 +202,6 @@
             this.lbl_error_codigo.TabIndex = 113;
             this.lbl_error_codigo.Text = "Error";
             // 
-            // lbl_error_activo
-            // 
-            this.lbl_error_activo.AutoSize = true;
-            this.lbl_error_activo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.lbl_error_activo.ForeColor = System.Drawing.Color.Crimson;
-            this.lbl_error_activo.Location = new System.Drawing.Point(362, 672);
-            this.lbl_error_activo.Name = "lbl_error_activo";
-            this.lbl_error_activo.Size = new System.Drawing.Size(29, 13);
-            this.lbl_error_activo.TabIndex = 130;
-            this.lbl_error_activo.Text = "Error";
-            // 
             // lbl_error_precio
             // 
             this.lbl_error_precio.AutoSize = true;
@@ -314,9 +298,9 @@
             this.btn_siguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_siguiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_siguiente.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.btn_siguiente.Location = new System.Drawing.Point(990, 626);
+            this.btn_siguiente.Location = new System.Drawing.Point(32, 627);
             this.btn_siguiente.Name = "btn_siguiente";
-            this.btn_siguiente.Size = new System.Drawing.Size(170, 55);
+            this.btn_siguiente.Size = new System.Drawing.Size(1210, 55);
             this.btn_siguiente.TabIndex = 142;
             this.btn_siguiente.Text = "Siguiente";
             this.btn_siguiente.UseVisualStyleBackColor = false;
@@ -365,7 +349,7 @@
             this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox5.Location = new System.Drawing.Point(11, 13);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(1185, 58);
             this.pictureBox5.TabIndex = 371;
@@ -446,7 +430,7 @@
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox4.Location = new System.Drawing.Point(17, 84);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(419, 136);
             this.pictureBox4.TabIndex = 381;
@@ -503,7 +487,7 @@
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox3.Location = new System.Drawing.Point(17, 225);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(419, 219);
             this.pictureBox3.TabIndex = 386;
@@ -514,7 +498,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Location = new System.Drawing.Point(441, 318);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(419, 73);
             this.pictureBox1.TabIndex = 387;
@@ -548,7 +532,7 @@
             this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox6.Location = new System.Drawing.Point(441, 396);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(419, 205);
             this.pictureBox6.TabIndex = 390;
@@ -628,7 +612,7 @@
             this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox7.Location = new System.Drawing.Point(17, 448);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(419, 153);
             this.pictureBox7.TabIndex = 397;
@@ -709,7 +693,7 @@
             this.pictureBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox11.Location = new System.Drawing.Point(441, 84);
-            this.pictureBox11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox11.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox11.Name = "pictureBox11";
             this.pictureBox11.Size = new System.Drawing.Size(419, 230);
             this.pictureBox11.TabIndex = 405;
@@ -720,7 +704,7 @@
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox2.Location = new System.Drawing.Point(865, 84);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(391, 255);
             this.pictureBox2.TabIndex = 406;
@@ -743,7 +727,7 @@
             this.pictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox8.Location = new System.Drawing.Point(865, 344);
-            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox8.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(391, 258);
             this.pictureBox8.TabIndex = 408;
@@ -761,50 +745,16 @@
             this.label12.TabIndex = 409;
             this.label12.Text = "Cargar Imagen 2";
             // 
-            // combo_activo
-            // 
-            this.combo_activo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.combo_activo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.combo_activo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.combo_activo.FormattingEnabled = true;
-            this.combo_activo.Location = new System.Drawing.Point(364, 633);
-            this.combo_activo.Name = "combo_activo";
-            this.combo_activo.Size = new System.Drawing.Size(290, 37);
-            this.combo_activo.TabIndex = 413;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.label13.Location = new System.Drawing.Point(205, 638);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(83, 29);
-            this.label13.TabIndex = 412;
-            this.label13.Text = "Activo";
-            // 
             // pictureBox9
             // 
             this.pictureBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
             this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox9.Location = new System.Drawing.Point(17, 606);
-            this.pictureBox9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox9.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(843, 96);
+            this.pictureBox9.Size = new System.Drawing.Size(1239, 96);
             this.pictureBox9.TabIndex = 414;
             this.pictureBox9.TabStop = false;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
-            this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox10.Location = new System.Drawing.Point(865, 606);
-            this.pictureBox10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(391, 96);
-            this.pictureBox10.TabIndex = 415;
-            this.pictureBox10.TabStop = false;
             // 
             // pictureBox17
             // 
@@ -812,7 +762,7 @@
             this.pictureBox17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox17.Location = new System.Drawing.Point(6, 6);
-            this.pictureBox17.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox17.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox17.Name = "pictureBox17";
             this.pictureBox17.Size = new System.Drawing.Size(1264, 711);
             this.pictureBox17.TabIndex = 416;
@@ -823,7 +773,7 @@
             this.pictureBox12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.pictureBox12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox12.Location = new System.Drawing.Point(11, 76);
-            this.pictureBox12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox12.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(1251, 635);
             this.pictureBox12.TabIndex = 417;
@@ -836,8 +786,6 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.ClientSize = new System.Drawing.Size(1275, 725);
-            this.Controls.Add(this.combo_activo);
-            this.Controls.Add(this.label13);
             this.Controls.Add(this.pictureBoxProducto2);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.pictureBoxProducto1);
@@ -875,7 +823,6 @@
             this.Controls.Add(this.btn_cargar_img2);
             this.Controls.Add(this.lbl_error_img1);
             this.Controls.Add(this.btn_cargar_img1);
-            this.Controls.Add(this.lbl_error_activo);
             this.Controls.Add(this.lbl_error_precio);
             this.Controls.Add(this.lbl_error_anio);
             this.Controls.Add(this.lbl_error_recargable);
@@ -895,12 +842,11 @@
             this.Controls.Add(this.pictureBox11);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox8);
-            this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.pictureBox9);
             this.Controls.Add(this.pictureBox12);
             this.Controls.Add(this.pictureBox17);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormCrearPerfume1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Productos";
@@ -916,7 +862,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             this.ResumeLayout(false);
@@ -934,7 +879,6 @@
         private System.Windows.Forms.Label lbl_error_nombre;
         private System.Windows.Forms.Label lbl_error_marca;
         private System.Windows.Forms.Label lbl_error_codigo;
-        private System.Windows.Forms.Label lbl_error_activo;
         private System.Windows.Forms.Label lbl_error_precio;
         private System.Windows.Forms.Label lbl_error_anio;
         private System.Windows.Forms.Label lbl_error_img1;
@@ -982,10 +926,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox combo_activo;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.PictureBox pictureBox9;
-        private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.PictureBox pictureBox12;
     }
