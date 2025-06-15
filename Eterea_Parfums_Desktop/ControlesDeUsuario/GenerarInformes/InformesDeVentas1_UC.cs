@@ -85,8 +85,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             richTextBox_mas_vendido.Text = "";
             richTextBox_menos_vendido.Text = "";
 
-            lbl_fecha_Inicio.Text = "...................................";
-            lbl_fecha_Fin.Text = "...................................";
+            /*lbl_fecha_Inicio.Text = "...................................";
+            lbl_fecha_Fin.Text = "...................................";*/
 
             label4.Visible = true;
             label5.Visible = true;
@@ -96,8 +96,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
         }
         private void cargarDatos()
         {
-            lbl_fecha_Inicio.Text = dateTimeInicio.Value.ToString("dd 'de' MMMM 'de' yyyy");
-            lbl_fecha_Fin.Text = dateTimeFinal.Value.ToString("dd 'de' MMMM 'de' yyyy");
 
             // Validación de las fechas
             if (!validarFechas())
@@ -107,6 +105,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                 return;
             }
 
+            // ✅ Muestra siempre las fechas seleccionadas, incluso si no hay ventas
+            lbl_fecha_Inicio.Text = dateTimeInicio.Value.ToString("dd 'de' MMMM 'de' yyyy");
+            lbl_fecha_Fin.Text = dateTimeFinal.Value.ToString("dd 'de' MMMM 'de' yyyy");
+
             List<Factura> facturas = FacturaControlador.getAllIntervaloFechas(dateTimeInicio.Value, dateTimeFinal.Value);
 
             //SE FILTRA POR SUCURSAL
@@ -115,8 +117,28 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             if (facturas.Count == 0)
             {
                 resetearDatos();
+
+                label6.Visible=false;
+                label7.Visible=false;   
+                label4.Visible=false;
+                label5.Visible=false;
+
+                // ✅ Mostrar mensaje indicando que no hubo ventas
+                richTextBox_mas_vendido.Text = "\nNo hubo ventas en este período.";
+                richTextBox_menos_vendido.Text = "\nNo hubo ventas en este período.";
+
+                richTextBox_mas_vendido.SelectAll();
+                richTextBox_mas_vendido.SelectionAlignment = HorizontalAlignment.Center;
+                richTextBox_menos_vendido.SelectAll();
+                richTextBox_menos_vendido.SelectionAlignment = HorizontalAlignment.Center;
+
+                // ✅ Mostrar valores en cero
+                txt_cantidad_ventas.Text = "0";
+                txt_monto_total.Text = "$ 0";
+
                 return;
             }
+        
 
           
             txt_cantidad_ventas.Text = facturas.Count.ToString();
@@ -151,7 +173,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
           .Select(g => new
           {
               IdPerfume = g.Key,
-              Nombre = g.First().perfume.nombre, // Asumimos que todos tienen el mismo nombre
+              Nombre = g.First().perfume.nombre, 
+              Presentacion = g.First().perfume.presentacion_ml,
               CantidadVendida = g.Sum(d => d.cantidad)
           })
           .ToList();
@@ -164,13 +187,12 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             // Filtrar los perfumes que tienen esa mayor cantidad
             var perfumesMasVendidos = perfumesAgrupados
                 .Where(p => p.CantidadVendida == mayorCantidad)
-                .Select(p => p.Nombre)
+                .Select(p => $"{p.Nombre} - {p.Presentacion} ml")
                 .ToList();
 
 
             string nombresMasVendidos = string.Join(Environment.NewLine, perfumesMasVendidos);
-            MessageBox.Show(nombresMasVendidos);
-            // Asignar al TextBox
+ 
             richTextBox_mas_vendido.Text = nombresMasVendidos;
             richTextBox_mas_vendido.SelectAll();
             richTextBox_mas_vendido.SelectionAlignment = HorizontalAlignment.Center;
@@ -182,7 +204,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             // Filtrar los perfumes que tienen esa menor cantidad
             var perfumesMenosVendidos = perfumesAgrupados
                 .Where(p => p.CantidadVendida == menorCantidad)
-                .Select(p => p.Nombre)
+                 .Select(p => $"{p.Nombre} - {p.Presentacion} ml")
                 .ToList();
 
  
@@ -222,6 +244,13 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             //int sucursalId = EmpleadoControlador.obtenerPorId(numeroSucursal).sucursal_id.id;
             Sucursal sucursal = SucursalControlador.getById(numeroSucursal);
 
+            List<Factura> facturas = FacturaControlador.getAllIntervaloFechas(dateTimeInicio.Value, dateTimeFinal.Value)
+                .Where(f => f.sucursal_id.id == numeroSucursal)
+                .ToList();
+
+            bool sinVentas = facturas.Count == 0;
+
+
             string PaginaHTML_Texto = Properties.Resources.PlantillaInformeVentas.ToString();
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@SUCURSAL", sucursal.nombre)
                                                .Replace("@CALLE", sucursal.calle_id.nombre)
@@ -231,16 +260,25 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                                                .Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"))
                                                .Replace("@INICIO", dateTimeInicio.Value.ToString("dd/MM/yyyy"))
                                                .Replace("@FINAL", dateTimeFinal.Value.ToString("dd/MM/yyyy"))
-                                               .Replace("@CANTIDAD", txt_cantidad_ventas.Text)
-                                               .Replace("@MONTO_TOTAL_VENTAS", txt_monto_total.Text);
+                                               .Replace("@CANTIDAD", sinVentas ? " 0" : txt_cantidad_ventas.Text)
+                                               .Replace("@MONTO_TOTAL_VENTAS", sinVentas ? "$ 0.-" : txt_monto_total.Text);
 
-            string perfumesMasVendidosHtml = richTextBox_mas_vendido.Text.Replace("\n", "<br />").Replace("\r", "");
-            string perfumesMenosVendidosHtml = richTextBox_menos_vendido.Text.Replace("\n", "<br />").Replace("\r", "");
+            string perfumesMasVendidosHtml;
+            string perfumesMenosVendidosHtml;
+
+            if (sinVentas)
+            {
+                perfumesMasVendidosHtml = "<br /><strong>No hubo ventas en este período.</strong>";
+                perfumesMenosVendidosHtml = "<br /><strong>No hubo ventas en este período.</strong>";
+            }
+            else
+            {
+                perfumesMasVendidosHtml = richTextBox_mas_vendido.Text.Replace("\n", "<br />").Replace("\r", "");
+                perfumesMenosVendidosHtml = richTextBox_menos_vendido.Text.Replace("\n", "<br />").Replace("\r", "");
+            }
 
             PaginaHTML_Texto = PaginaHTML_Texto.Replace("@PERFUME_MAS_VENDIDO", perfumesMasVendidosHtml)
                                                .Replace("@PERFUME_MENOS_VENDIDO", perfumesMenosVendidosHtml);
-
-         
 
             if (guardarFactura.ShowDialog() == DialogResult.OK)
             {
@@ -299,12 +337,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 
         private void inicializarDatePickers()
         {
-
-            // Desuscribimos eventos
+            // Desuscribimos eventos previos
             dateTimeInicio.ValueChanged -= dateTimeInicio_ValueChanged;
             dateTimeFinal.ValueChanged -= dateTimeFinal_ValueChanged;
 
-            // Inicialmente mostrar campos vacíos
+            // Formato vacío inicial
             dateTimeInicio.Format = DateTimePickerFormat.Custom;
             dateTimeInicio.CustomFormat = " ";
             dateTimeFinal.Format = DateTimePickerFormat.Custom;
@@ -314,16 +351,20 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             dateTimeInicio.MaxDate = DateTime.Now;
             dateTimeFinal.MaxDate = DateTime.Now;
 
-            // Marcamos que aún no se seleccionó una fecha
+            // Estado de carga
             inicioCargado = false;
             finalCargado = false;
 
-            // Volvemos a suscribir
+            // Suscribir eventos
             dateTimeInicio.ValueChanged += dateTimeInicio_ValueChanged;
+            dateTimeInicio.DropDown += dateTimeInicio_DropDown;
+
             dateTimeFinal.ValueChanged += dateTimeFinal_ValueChanged;
+            dateTimeFinal.DropDown += dateTimeFinal_DropDown;
 
-            
-
+            // ✅ Suscribir DropDown para mostrar calendario sin autocompletar
+            dateTimeInicio.DropDown += dateTimeInicio_DropDown;
+            dateTimeFinal.DropDown += dateTimeFinal_DropDown;
         }
 
 
@@ -344,19 +385,26 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 
         private async void dateTimeInicio_ValueChanged(object sender, EventArgs e)
         {
-            if (!inicioCargado)
-            {
-                dateTimeInicio.Format = DateTimePickerFormat.Short;
-                inicioCargado = true;
+            dateTimeInicio.Format = DateTimePickerFormat.Short;
+            inicioCargado = true;
 
+            // Siempre actualizar MinDate del final
+            dateTimeFinal.MinDate = dateTimeInicio.Value;
+
+            // Si la fecha final es anterior a la nueva fecha de inicio, ajustarla automáticamente
+            if (dateTimeFinal.Value < dateTimeInicio.Value)
+            {
+                dateTimeFinal.Value = dateTimeInicio.Value;
+                dateTimeFinal.Format = DateTimePickerFormat.Short;
+                finalCargado = true;
             }
 
             if (inicioCargado && finalCargado)
             {
                 await Task.Run(() => cargarDatosSeguro());
-            };
-
+            }
         }
+
 
         private async void dateTimeFinal_ValueChanged(object sender, EventArgs e)
         {
@@ -371,8 +419,38 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             {
                 await Task.Run(() => cargarDatosSeguro());
             }
-
-
         }
+
+
+        public void ActualizarSucursal(Sucursal nuevaSucursal)
+        {
+            this.numeroSucursal = nuevaSucursal.id;
+            lbl_info.Text = nuevaSucursal.nombre;
+        }
+
+        private void dateTimeInicio_DropDown(object sender, EventArgs e)
+        {
+            if (!inicioCargado)
+            {
+                dateTimeInicio.Value = DateTime.Today; // Asignar temporalmente para evitar error
+                dateTimeInicio.Format = DateTimePickerFormat.Short;
+                dateTimeInicio.CustomFormat = "dd/MM/yyyy";
+                inicioCargado = true;
+            }
+        }
+
+        private void dateTimeFinal_DropDown(object sender, EventArgs e)
+        {
+            if (!finalCargado)
+            {
+                dateTimeFinal.Value = DateTime.Today;
+                dateTimeFinal.Format = DateTimePickerFormat.Short;
+                dateTimeFinal.CustomFormat = "dd/MM/yyyy";
+                finalCargado = true;
+            }
+        }
+
+
+
     }
 }

@@ -127,7 +127,7 @@ namespace Eterea_Parfums_Desktop
 
                 addUserControl(administrarStockUC);
             }
-            else
+            /*else
             {
                 // No hay sucursal asignada, mostrar FormNumeroDeSucursal para elegirla
                 FormNumeroDeSucursal formNumeroDeSucursal = new FormNumeroDeSucursal();
@@ -139,7 +139,7 @@ namespace Eterea_Parfums_Desktop
                 };
 
                 formNumeroDeSucursal.ShowDialog();
-            }
+            }*/
         }    
 
         private void btn_generar_informes_Click(object sender, EventArgs e)
