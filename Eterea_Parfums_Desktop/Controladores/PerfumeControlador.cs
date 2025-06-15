@@ -95,7 +95,8 @@ namespace Eterea_Parfums_Desktop.Controladores
                 "@precio_en_pesos, " +
                 "@activo, " +
                 "@imagen1, " +
-                "@imagen2);";
+                "@imagen2, " +
+                "@fecha_baja);";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
@@ -112,9 +113,11 @@ namespace Eterea_Parfums_Desktop.Controladores
             cmd.Parameters.AddWithValue("@descripcion", perfume.descripcion);
             cmd.Parameters.AddWithValue("@anio_de_lanzamiento", perfume.anio_de_lanzamiento);
             cmd.Parameters.AddWithValue("@precio_en_pesos", perfume.precio_en_pesos);
-            cmd.Parameters.AddWithValue("@activo", perfume.activo);
+            cmd.Parameters.AddWithValue("@activo", false);
             cmd.Parameters.AddWithValue("@imagen1", perfume.imagen1);
             cmd.Parameters.AddWithValue("@imagen2", perfume.imagen2);
+            cmd.Parameters.AddWithValue("@fecha_baja", DateTime.Now);
+
 
 
 
