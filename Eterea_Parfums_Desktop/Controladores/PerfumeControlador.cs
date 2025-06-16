@@ -305,10 +305,11 @@ namespace Eterea_Parfums_Desktop.Controladores
                 DB_Controller.connection.Open();
                 SqlTransaction transaction = DB_Controller.connection.BeginTransaction();
 
-                // 1. Marcar como inactivo
-                string queryUpdate = "UPDATE dbo.perfume SET activo = 0 WHERE id = @id;";
+                // 1. Marcar como inactivo y registrar fecha de baja
+                string queryUpdate = "UPDATE dbo.perfume SET activo = 0, fecha_baja = @fecha_baja WHERE id = @id;";
                 SqlCommand cmdUpdate = new SqlCommand(queryUpdate, DB_Controller.connection, transaction);
                 cmdUpdate.Parameters.AddWithValue("@id", id);
+                cmdUpdate.Parameters.AddWithValue("@fecha_baja", DateTime.Now); // ✅ agrega fecha actual
                 cmdUpdate.ExecuteNonQuery();
 
                 // 2. Eliminar relaciones con promo excepto la ID = 1
