@@ -222,7 +222,28 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             bool result = false;
 
-            string query = "update dbo.perfume set " +
+            // Paso 1: Obtener el valor actual de "activo" en la base
+            bool? activoOriginal = null;
+
+            string querySelect = "SELECT activo FROM dbo.perfume WHERE id = @id;";
+            using (SqlCommand cmdSelect = new SqlCommand(querySelect, DB_Controller.connection))
+            {
+                cmdSelect.Parameters.AddWithValue("@id", perfume.id);
+                DB_Controller.connection.Open();
+                var valor = cmdSelect.ExecuteScalar();
+                DB_Controller.connection.Close();
+
+                if (valor != null && valor != DBNull.Value)
+                {
+                    activoOriginal = Convert.ToBoolean(valor);
+                }
+            }
+
+            // Paso 2: Determinar si se debe actualizar fecha_baja
+            bool actualizarFechaBaja = (activoOriginal != null && perfume.activo != null && activoOriginal != perfume.activo);
+
+            // Paso 3: Armar la query con lógica condicional
+            string query = "UPDATE dbo.perfume SET " +
                 "codigo = @codigo, " +
                 "marca_id = @marca, " +
                 "nombre = @nombre, " +
@@ -237,8 +258,15 @@ namespace Eterea_Parfums_Desktop.Controladores
                 "precio_en_pesos = @precio_en_pesos, " +
                 "activo = @activo, " +
                 "imagen1 = @imagen1, " +
-                "imagen2 = @imagen2 " +
-                "where id = @id;";
+                "imagen2 = @imagen2";
+
+            if (actualizarFechaBaja)
+            {
+                query += ", fecha_baja = @fecha_baja";
+            }
+
+            query += " WHERE id = @id;";
+
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@id", perfume.id);
             cmd.Parameters.AddWithValue("@codigo", perfume.codigo);
@@ -256,6 +284,16 @@ namespace Eterea_Parfums_Desktop.Controladores
             cmd.Parameters.AddWithValue("@activo", perfume.activo);
             cmd.Parameters.AddWithValue("@imagen1", perfume.imagen1);
             cmd.Parameters.AddWithValue("@imagen2", perfume.imagen2);
+
+            if (actualizarFechaBaja)
+            {
+                // Si lo estoy activando, la fecha_baja debe ir como NULL
+                if (perfume.activo == true)
+                    cmd.Parameters.AddWithValue("@fecha_baja", DBNull.Value);
+                else
+                    cmd.Parameters.AddWithValue("@fecha_baja", DateTime.Now);
+            }
+
             try
             {
                 DB_Controller.connection.Open();
@@ -274,6 +312,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             return result;
         }
+
 
         /* public static bool delete(int id)
          {
