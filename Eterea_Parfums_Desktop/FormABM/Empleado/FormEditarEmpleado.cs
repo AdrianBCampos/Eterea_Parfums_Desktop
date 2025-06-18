@@ -3,6 +3,7 @@ using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop
@@ -142,30 +143,63 @@ namespace Eterea_Parfums_Desktop
 
             }
 
+            LimpiarCombo(combo_provincia);
+            LimpiarCombo(combo_localidad);
+            LimpiarCombo(combo_calle);
 
-            provincias = ProvinciaControlador.getAll();
+
             combo_provincia.Items.Clear();
-            foreach (Provincia provincia in provincias)
+
+            if (provincias != null && provincias.Count > 0)
             {
-                if (provincia.id != 1)
-                    combo_provincia.Items.Add(provincia.nombre.ToString());
+                foreach (Provincia provincia in provincias)
+                {
+                    if (provincia.id != 1)
+                        combo_provincia.Items.Add(provincia.nombre.ToString());
+                }
+            }
+            else
+            {
+                combo_provincia.Items.Add(" ");
+                combo_provincia.SelectedIndex = 0;
             }
 
-            localidades = LocalidadControlador.getAll();
+
+
             combo_localidad.Items.Clear();
-            foreach (Localidad localidad in localidades)
+
+            if (localidades != null && localidades.Count > 0)
             {
-                if (localidad.id != 1)
-                    combo_localidad.Items.Add(localidad.nombre.ToString());
+                foreach (Localidad localidad in localidades)
+                {
+                    if (localidad.id != 1)
+                        combo_localidad.Items.Add(localidad.nombre.ToString());
+                }
+            }
+            else
+            {
+                combo_localidad.Items.Add(" ");
+                combo_localidad.SelectedIndex = 0;
             }
 
-            calles = CalleControlador.getAll();
+
+
             combo_calle.Items.Clear();
-            foreach (Calle calle in calles)
+
+            if (calles != null && calles.Count > 0)
             {
-                if (calle.id != 1)
-                    combo_calle.Items.Add(calle.nombre.ToString());
+                foreach (Calle calle in calles)
+                {
+                    if (calle.id != 1)
+                        combo_calle.Items.Add(calle.nombre);
+                }
             }
+            else
+            {
+                combo_calle.Items.Add(" ");
+                combo_calle.SelectedIndex = 0;
+            }
+
 
             sucursales = SucursalControlador.getAll();
             combo_sucursal.Items.Clear();
@@ -186,7 +220,7 @@ namespace Eterea_Parfums_Desktop
 
             // No se muestra la contraseña actual en el campo
             txt_contraseña.Text = "";
-            
+
             // Mostrar el hash por consola
             Console.WriteLine("Hash actual: " + empleado.clave);
 
@@ -197,10 +231,21 @@ namespace Eterea_Parfums_Desktop
             txt_celular.Text = empleado.celular.ToString();
             txt_e_mail.Text = empleado.e_mail.ToString();
             combo_pais.SelectedItem = empleado.pais_id.nombre.ToString();
-            combo_provincia.SelectedItem = empleado.provincia_id.nombre.ToString();
-            combo_localidad.SelectedItem = empleado.localidad_id.nombre.ToString();
+
+            // Forzar carga de provincias con SelectedIndexChanged simulado
+            combo_pais_SelectedIndexChanged(combo_pais, EventArgs.Empty);
+            combo_provincia.SelectedItem = empleado.provincia_id.nombre;
+
+            // Forzar carga de localidades
+            combo_provincia_SelectedIndexChanged(combo_provincia, EventArgs.Empty);
+            combo_localidad.SelectedItem = empleado.localidad_id.nombre;
+
             txt_cp.Text = empleado.codigo_postal.ToString();
-            combo_calle.SelectedItem = empleado.calle_id.nombre.ToString();
+
+            // Forzá carga de calles
+            combo_localidad_SelectedIndexChanged(combo_localidad, EventArgs.Empty);
+            combo_calle.SelectedItem = empleado.calle_id.nombre;
+
             txt_num_calle.Text = empleado.numeracion_calle.ToString();
             txt_piso.Text = empleado.piso.ToString();
             txt_departamento.Text = empleado.departamento.ToString();
@@ -273,7 +318,98 @@ namespace Eterea_Parfums_Desktop
             combo_localidad.DrawMode = DrawMode.OwnerDrawFixed;
             combo_localidad.DrawItem += comboBoxdiseño_DrawItem;
             combo_localidad.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            combo_pais.SelectedIndexChanged += combo_pais_SelectedIndexChanged;
+            combo_provincia.SelectedIndexChanged += combo_provincia_SelectedIndexChanged;
+            combo_localidad.SelectedIndexChanged += combo_localidad_SelectedIndexChanged;
+
         }
+
+        private void combo_pais_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LimpiarCombo(combo_provincia);
+            LimpiarCombo(combo_localidad);
+            LimpiarCombo(combo_calle);
+
+            string nombrePais = combo_pais.SelectedItem?.ToString();
+            if (string.IsNullOrWhiteSpace(nombrePais)) return;
+
+            Pais paisSeleccionado = paises.FirstOrDefault(p => p.nombre == nombrePais);
+            if (paisSeleccionado != null)
+            {
+                provincias = ProvinciaControlador.getProvinciasPorPaisId(paisSeleccionado.id);
+                if (provincias.Any())
+                {
+                    combo_provincia.Items.Clear();
+                    foreach (var provincia in provincias)
+                        combo_provincia.Items.Add(provincia.nombre);
+                }
+                else
+                {
+                    LimpiarCombo(combo_provincia);
+                }
+            }
+        }
+
+        private void combo_provincia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LimpiarCombo(combo_localidad);
+            LimpiarCombo(combo_calle);
+
+            string nombreProvincia = combo_provincia.SelectedItem?.ToString();
+            if (string.IsNullOrWhiteSpace(nombreProvincia)) return;
+
+            Provincia provinciaSeleccionada = provincias.FirstOrDefault(p => p.nombre == nombreProvincia);
+            if (provinciaSeleccionada != null)
+            {
+                localidades = LocalidadControlador.getLocalidadesPorProvinciaId(provinciaSeleccionada.id);
+                if (localidades.Any())
+                {
+                    combo_localidad.Items.Clear();
+                    foreach (var localidad in localidades)
+                        combo_localidad.Items.Add(localidad.nombre);
+                }
+                else
+                {
+                    LimpiarCombo(combo_localidad);
+                }
+            }
+        }
+
+        private void combo_localidad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LimpiarCombo(combo_calle);
+
+            string nombreLocalidad = combo_localidad.SelectedItem?.ToString();
+            if (string.IsNullOrWhiteSpace(nombreLocalidad)) return;
+
+            Localidad localidadSeleccionada = localidades.FirstOrDefault(l => l.nombre == nombreLocalidad);
+            if (localidadSeleccionada != null)
+            {
+                calles = CalleControlador.getCallesPorLocalidadId(localidadSeleccionada.id);
+                if (calles.Any())
+                {
+                    combo_calle.Items.Clear();
+                    foreach (var calle in calles)
+                        combo_calle.Items.Add(calle.nombre);
+                }
+                else
+                {
+                    LimpiarCombo(combo_calle);
+                }
+            }
+        }
+
+
+
+
+        private void LimpiarCombo(ComboBox combo)
+        {
+            combo.Items.Clear();
+            combo.Items.Add(" ");
+            combo.SelectedIndex = 0;
+        }
+
 
         private void editar()
         {
