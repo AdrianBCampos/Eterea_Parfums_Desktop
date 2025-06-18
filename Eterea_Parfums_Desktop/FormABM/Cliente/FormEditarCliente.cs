@@ -58,27 +58,19 @@ namespace Eterea_Parfums_Desktop
                     combo_pais.Items.Add(pais.nombre.ToString());
             }
 
-            provincias = ProvinciaControlador.getAll();
-            combo_provincia.Items.Clear();
+            provincias = ProvinciaControlador.getAll() ?? new List<Provincia>();
             List<string> nombresProvincias = provincias.Select(p => p.nombre).ToList();
             CargarComboConOpciones(combo_provincia, nombresProvincias);
 
 
-            localidades = LocalidadControlador.getAll();
-            combo_localidad.Items.Clear();
-            foreach (Localidad localidad in localidades)
-            {
-                if (localidad.id != 1)
-                    combo_localidad.Items.Add(localidad.nombre.ToString());
-            }
 
-            calles = CalleControlador.getAll();
-            combo_calle.Items.Clear();
-            foreach (Calle calle in calles)
-            {
-                if (calle.id != 1)
-                    combo_calle.Items.Add(calle.nombre.ToString());
-            }
+            localidades = LocalidadControlador.getAll() ?? new List<Localidad>();
+            List<string> nombresLocalidades = localidades.Select(l => l.nombre).ToList();
+            CargarComboConOpciones(combo_localidad, nombresLocalidades);
+
+            calles = CalleControlador.getAll() ?? new List<Calle>();
+            List<string> nombresCalles = calles.Select(c => c.nombre).ToList();
+            CargarComboConOpciones(combo_calle, nombresCalles);
 
             id_editar = cliente.id;
 
@@ -191,13 +183,13 @@ namespace Eterea_Parfums_Desktop
             if (paisSeleccionado != null)
             {
                 // Nuevo método que busca provincias por pais_id
-                var provinciasRelacionadas = ProvinciaControlador.getProvinciasPorPaisId(paisSeleccionado.id);
+                var provinciasRelacionadas = ProvinciaControlador.getProvinciasPorPaisId(paisSeleccionado.id) ?? new List<Provincia>();
                 provincias = provinciasRelacionadas;
 
-                foreach (var provincia in provincias)
-                {
-                    combo_provincia.Items.Add(provincia.nombre);
-                }
+
+                List<string> nombresProvincias = provincias.Select(p => p.nombre).ToList();
+                CargarComboConOpciones(combo_provincia, nombresProvincias);
+
             }
         }
 
@@ -207,19 +199,19 @@ namespace Eterea_Parfums_Desktop
             combo_localidad.Items.Clear();
             combo_calle.Items.Clear();
 
-            string nombreProvinciaSeleccionada = combo_provincia.SelectedItem.ToString();
+            string nombreProvinciaSeleccionada = combo_provincia.SelectedItem?.ToString();
+            if (string.IsNullOrEmpty(nombreProvinciaSeleccionada)) return;
             Provincia provinciaSeleccionada = provincias.FirstOrDefault(p => p.nombre == nombreProvinciaSeleccionada);
 
             if (provinciaSeleccionada != null)
             {
                 // Llamás al nuevo método que obtiene localidades directamente por provincia_id
-                var localidadesRelacionadas = LocalidadControlador.getLocalidadesPorProvinciaId(provinciaSeleccionada.id);
+                var localidadesRelacionadas = LocalidadControlador.getLocalidadesPorProvinciaId(provinciaSeleccionada.id) ?? new List<Localidad>();
                 localidades = localidadesRelacionadas;
 
-                foreach (var localidad in localidades)
-                {
-                    combo_localidad.Items.Add(localidad.nombre);
-                }
+
+                List<string> nombresLocalidades = localidades.Select(l => l.nombre).ToList();
+                CargarComboConOpciones(combo_localidad, nombresLocalidades);
             }
         }
 
@@ -228,7 +220,9 @@ namespace Eterea_Parfums_Desktop
         {
             combo_calle.Items.Clear();
 
-            string nombreLocalidadSeleccionada = combo_localidad.SelectedItem.ToString();
+
+            string nombreLocalidadSeleccionada = combo_localidad.SelectedItem?.ToString();
+            if (string.IsNullOrEmpty(nombreLocalidadSeleccionada)) return;
             Localidad localidadSeleccionada = localidades.FirstOrDefault(l => l.nombre == nombreLocalidadSeleccionada);
 
             if (localidadSeleccionada != null)
@@ -238,10 +232,10 @@ namespace Eterea_Parfums_Desktop
                 calles = callesRelacionadas;
 
                 combo_calle.Items.Clear(); // recomendable limpiar antes
-                foreach (var calle in calles)
-                {
-                    combo_calle.Items.Add(calle.nombre);
-                }
+
+                List<string> nombresCalles = calles.Select(c => c.nombre).ToList();
+                CargarComboConOpciones(combo_calle, nombresCalles);
+
             }
         }
 

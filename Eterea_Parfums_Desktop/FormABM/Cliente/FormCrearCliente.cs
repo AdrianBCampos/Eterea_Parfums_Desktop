@@ -53,6 +53,10 @@ namespace Eterea_Parfums_Desktop
                     combo_pais.Items.Add(pais.nombre);
             }
 
+            LimpiarCombo(combo_provincia);
+            LimpiarCombo(combo_localidad);
+            LimpiarCombo(combo_calle);
+
             /*provincias = ProvinciaControlador.getAll();
             combo_provincia.Items.Clear();
             foreach (Provincia provincia in provincias)
@@ -131,71 +135,96 @@ namespace Eterea_Parfums_Desktop
 
         private void combo_pais_SelectedIndexChanged(object sender, EventArgs e)
         {
-            combo_provincia.Items.Clear();
-            combo_localidad.Items.Clear();
-            combo_calle.Items.Clear();
+            LimpiarCombo(combo_provincia);
+            LimpiarCombo(combo_localidad);
+            LimpiarCombo(combo_calle);
 
-            string nombrePaisSeleccionado = combo_pais.SelectedItem.ToString();
-            Pais paisSeleccionado = paises.FirstOrDefault(p => p.nombre == nombrePaisSeleccionado);
+            string nombrePaisSeleccionado = combo_pais.SelectedItem?.ToString();
+            Pais paisSeleccionado = paises?.FirstOrDefault(p => p.nombre == nombrePaisSeleccionado);
 
             if (paisSeleccionado != null)
             {
-                // Nuevo método que busca provincias por pais_id
-                var provinciasRelacionadas = ProvinciaControlador.getProvinciasPorPaisId(paisSeleccionado.id);
-                provincias = provinciasRelacionadas;
+                provincias = ProvinciaControlador.getProvinciasPorPaisId(paisSeleccionado.id);
 
-                foreach (var provincia in provincias)
+                if (provincias != null && provincias.Count > 0)
                 {
-                    combo_provincia.Items.Add(provincia.nombre);
+                    combo_provincia.Items.Clear();
+                    foreach (var provincia in provincias)
+                        if (provincia.id != 1)
+                            combo_provincia.Items.Add(provincia.nombre);
+                }
+                else
+                {
+                    LimpiarCombo(combo_provincia);
                 }
             }
         }
+
 
 
         private void combo_provincia_SelectedIndexChanged(object sender, EventArgs e)
         {
-            combo_localidad.Items.Clear();
-            combo_calle.Items.Clear();
+            LimpiarCombo(combo_localidad);
+            LimpiarCombo(combo_calle);
 
-            string nombreProvinciaSeleccionada = combo_provincia.SelectedItem.ToString();
-            Provincia provinciaSeleccionada = provincias.FirstOrDefault(p => p.nombre == nombreProvinciaSeleccionada);
+            string nombreProvincia = combo_provincia.SelectedItem?.ToString();
+            Provincia provinciaSeleccionada = provincias?.FirstOrDefault(p => p.nombre == nombreProvincia);
 
             if (provinciaSeleccionada != null)
             {
-                // Llamás al nuevo método que obtiene localidades directamente por provincia_id
-                var localidadesRelacionadas = LocalidadControlador.getLocalidadesPorProvinciaId(provinciaSeleccionada.id);
-                localidades = localidadesRelacionadas;
+                localidades = LocalidadControlador.getLocalidadesPorProvinciaId(provinciaSeleccionada.id);
 
-                foreach (var localidad in localidades)
+                if (localidades != null && localidades.Count > 0)
                 {
-                    combo_localidad.Items.Add(localidad.nombre);
+                    combo_localidad.Items.Clear();
+                    foreach (var localidad in localidades)
+                        if (localidad.id != 1)
+                            combo_localidad.Items.Add(localidad.nombre);
+                }
+                else
+                {
+                    LimpiarCombo(combo_localidad);
                 }
             }
         }
+
 
 
         private void combo_localidad_SelectedIndexChanged(object sender, EventArgs e)
         {
-            combo_calle.Items.Clear();
+            LimpiarCombo(combo_calle);
 
-            string nombreLocalidadSeleccionada = combo_localidad.SelectedItem.ToString();
-            Localidad localidadSeleccionada = localidades.FirstOrDefault(l => l.nombre == nombreLocalidadSeleccionada);
+            string nombreLocalidad = combo_localidad.SelectedItem?.ToString();
+            Localidad localidadSeleccionada = localidades?.FirstOrDefault(l => l.nombre == nombreLocalidad);
 
             if (localidadSeleccionada != null)
             {
-                // Ahora se busca directamente en la tabla "calle" filtrando por localidad_id
-                var callesRelacionadas = CalleControlador.getCallesPorLocalidadId(localidadSeleccionada.id);
-                calles = callesRelacionadas;
+                calles = CalleControlador.getCallesPorLocalidadId(localidadSeleccionada.id);
 
-                combo_calle.Items.Clear(); // recomendable limpiar antes
-                foreach (var calle in calles)
+                if (calles != null && calles.Count > 0)
                 {
-                    combo_calle.Items.Add(calle.nombre);
+                    combo_calle.Items.Clear();
+                    foreach (var calle in calles)
+                        if (calle.id != 1)
+                            combo_calle.Items.Add(calle.nombre);
+                }
+                else
+                {
+                    LimpiarCombo(combo_calle);
                 }
             }
         }
 
-            private void txt_dni_TextChanged(object sender, EventArgs e)
+
+        private void LimpiarCombo(ComboBox combo)
+        {
+            combo.Items.Clear();
+            combo.Items.Add(" ");
+            combo.SelectedIndex = 0;
+        }
+
+
+        private void txt_dni_TextChanged(object sender, EventArgs e)
         {
             string dni = txt_dni.Text.Trim();
 
