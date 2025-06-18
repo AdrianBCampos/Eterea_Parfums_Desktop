@@ -116,7 +116,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                 }
             }
 
-            return listaProvincias;
+            return listaProvincias ?? new List<Provincia>();
         }
 
 
