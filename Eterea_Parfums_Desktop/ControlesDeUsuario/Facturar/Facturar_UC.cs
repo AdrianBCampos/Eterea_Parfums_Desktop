@@ -360,12 +360,12 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             }
         }
 
-        private void MostrarCajaSinAsignar()
+        /*private void MostrarCajaSinAsignar()
         {
             numeroCaja = null;
 
             txt_numero_caja.Text = "Caja sin asignar";
-        }
+        }*/
 
         private void btn_buscar_Click(object sender, EventArgs e)
         {
@@ -381,19 +381,30 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     txt_dni.Text = "";
                     return;
                 }
-                // Validar la longitud del DNI
-                if (txt_dni.Text.Length != 8 && txt_dni.Text.Length != 11)
-                {
-                    MessageBox.Show("El número ingresado debe tener 8 u 11 dígitos.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txt_dni.Text = "";
-                    return;
-                }
+                // Validar DNI o CUIT
                 if (!txt_dni.Text.All(char.IsDigit))
                 {
                     MessageBox.Show("El DNI o CUIT solo puede contener números, sin guiones.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txt_dni.Text = "";
                     return;
                 }
+
+                if (txt_dni.Text.Length == 11)
+                {
+                    if (!ValidarCuit(txt_dni.Text))
+                    {
+                        MessageBox.Show("El CUIT ingresado no es válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txt_dni.Text = "";
+                        return;
+                    }
+                }
+                else if (txt_dni.Text.Length != 8)
+                {
+                    MessageBox.Show("El número ingresado debe tener 8 o 11 dígitos.", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txt_dni.Text = "";
+                    return;
+                }
+
 
 
                 long dni = long.Parse(txt_dni.Text);
@@ -455,6 +466,25 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 e.SuppressKeyPress = true; // evita el sonido 'ding'
                 btn_buscar.PerformClick(); // llama al botón como si hicieras clic
             }
+        }
+
+        private bool ValidarCuit(string cuit)
+        {
+            if (cuit.Length != 11 || !cuit.All(char.IsDigit))
+                return false;
+
+            int[] pesos = { 5, 4, 3, 2, 7, 6, 5, 4, 3, 2 };
+            int suma = 0;
+
+            for (int i = 0; i < 10; i++)
+            {
+                suma += int.Parse(cuit[i].ToString()) * pesos[i];
+            }
+
+            int resto = suma % 11;
+            int verificador = resto == 0 ? 0 : resto == 1 ? 9 : 11 - resto;
+
+            return verificador == int.Parse(cuit[10].ToString());
         }
 
 
