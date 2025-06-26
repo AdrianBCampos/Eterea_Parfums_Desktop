@@ -575,6 +575,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                                 p.activo, 
                                 p.imagen1, 
                                 p.imagen2,
+                                p.fecha_baja,
 
                                 COUNT(DISTINCT CASE 
                                     WHEN ntn.tipo_de_nota_id IN (2, 3) THEN np.nota_con_tipo_de_nota_id 
@@ -604,7 +605,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                             GROUP BY p.id, p.codigo, p.marca_id, p.nombre, p.tipo_de_perfume_id, 
                                      p.genero_id, p.presentacion_ml, p.pais_id, p.spray, p.recargable, 
                                      p.descripcion, p.anio_de_lanzamiento, p.precio_en_pesos, p.activo, 
-                                     p.imagen1, p.imagen2
+                                     p.imagen1, p.imagen2, p.fecha_baja
                             ORDER BY notas_comunes DESC, aromas_comunes DESC;";
 
 
@@ -638,10 +639,11 @@ namespace Eterea_Parfums_Desktop.Controladores
                         r.GetString(10),
                         r.GetInt32(11),
                         r.GetDouble(12),
-                       r.GetBoolean(13),
+                        r.GetBoolean(13),
                         r.GetString(14),
                         r.GetString(15),
-                        r.GetDateTime(16)
+                        r.IsDBNull(16) ? (DateTime?)null : r.GetDateTime(16)
+
                     ));
 
                 }
