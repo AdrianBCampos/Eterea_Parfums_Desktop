@@ -20,7 +20,8 @@ namespace Eterea_Parfums_Desktop.Controladores
             switch (usuario)
             {
                 case "Adri":
-                    connectionString = "Data Source=(localdb)\\Local;Initial Catalog=eterea;Integrated Security=True;";
+                    //connectionString = "Data Source=(localdb)\\Local;Initial Catalog=eterea;Integrated Security=True;";
+                    connectionString = "Data Source=DESKTOP-12IG1S9\\MSSQLSERVER2025;Initial Catalog=eterea;User ID=as;Password=Melona88;";
                     break;
                 case "Dami":
                     connectionString = "Data Source=LocalHost;Initial Catalog=eterea;Integrated Security=True;";
