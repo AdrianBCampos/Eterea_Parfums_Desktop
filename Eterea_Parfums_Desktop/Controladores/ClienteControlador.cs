@@ -121,7 +121,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             string query = "SELECT * FROM dbo.cliente;";
 
             // 🔹 Usamos "using" para que la conexión se cierre automáticamente
-            using (SqlConnection conexion = new SqlConnection(DB_Controller.connection.ConnectionString))
+            using (SqlConnection conexion = new SqlConnection(DB_Controller.GetConnectionString()))
             {
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
                 {

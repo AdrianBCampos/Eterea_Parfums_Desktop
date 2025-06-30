@@ -52,17 +52,17 @@ namespace Eterea_Parfums_Desktop.Controladores
         public List<PerfumeDTO> CargarPerfumesPorIdPromocion(int idPromo)
         {
             string query = @"
-                SELECT p.id, m.nombre AS marca, p.nombre, p.presentacion_ml, g.genero AS genero
-                FROM dbo.perfumes_en_promo pep
-                JOIN dbo.perfume p ON pep.perfume_id = p.id
-                JOIN dbo.marca m ON p.marca_id = m.id
-                JOIN dbo.genero g ON p.genero_id = g.id
-                WHERE pep.promocion_id = @idPromo;";
+        SELECT p.id, m.nombre AS marca, p.nombre, p.presentacion_ml, g.genero AS genero
+        FROM dbo.perfumes_en_promo pep
+        JOIN dbo.perfume p ON pep.perfume_id = p.id
+        JOIN dbo.marca m ON p.marca_id = m.id
+        JOIN dbo.genero g ON p.genero_id = g.id
+        WHERE pep.promocion_id = @idPromo;";
 
             List<PerfumeDTO> perfumes = new List<PerfumeDTO>();
 
-
-            using (SqlConnection connection = new SqlConnection(DB_Controller.connection.ConnectionString))
+            // ✅ Usá el método que retorna la cadena correctamente configurada
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
             {
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
@@ -85,7 +85,6 @@ namespace Eterea_Parfums_Desktop.Controladores
                                 };
                                 perfumes.Add(perfume);
 
-                                // Mostrar en consola
                                 Console.WriteLine($"ID: {perfume.id}, Marca: {perfume.marca}, Nombre: {perfume.nombre}, " +
                                                   $"Mililitros: {perfume.mililitros}, Género: {perfume.genero}");
                             }
@@ -102,6 +101,7 @@ namespace Eterea_Parfums_Desktop.Controladores
             Console.WriteLine($"Total perfumes recuperados: {perfumes.Count}");
             return perfumes;
         }
+
 
         /* using (SqlCommand cmd = new SqlCommand(query, DB_Controller.connection))
          {
