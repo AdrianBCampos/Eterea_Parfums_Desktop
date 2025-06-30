@@ -7,7 +7,6 @@ namespace Eterea_Parfums_Desktop.Controladores
     public static class DB_Controller
     {
         //public static string connectionString = "";
-        private static string connectionString;
         public static SqlConnection connection;
 
 
@@ -15,29 +14,27 @@ namespace Eterea_Parfums_Desktop.Controladores
         // Método para configurar la conexión basada en el usuario
         public static void ConfigurarConexion(string usuario)
         {
-            usuario = usuario.ToLower();
             // Definir la cadena de conexión según el usuario seleccionado
-
+            string connectionString;
 
             switch (usuario)
             {
-                case "adri":
-                    //connectionString = "Data Source=(localdb)\\Local;Initial Catalog=eterea;Integrated Security=True;";
-                    connectionString = "Data Source=DESKTOP-12IG1S9\\MSSQLSERVER2025;Initial Catalog=eterea;User ID=as;Password=Melona88;";
-                    break;
-                case "dami":
-                    connectionString = "Data Source=LocalHost;Initial Catalog=eterea;Integrated Security=True;";
-                    break;
-                case "luis":
-                    connectionString = "Data Source=LocalHost;Initial Catalog=eterea;Integrated Security=True;";
-                    break;
-                case "maxi":
-                    connectionString = "Data Source=DESKTOP-N6TI9JV\\MSSQLSERVER02;Initial Catalog=eterea;Integrated Security=True;";
-                    break;
-                case "marino":
+                case "Adri":
                     connectionString = "Data Source=(localdb)\\Local;Initial Catalog=eterea;Integrated Security=True;";
                     break;
-                case "notebook adri":
+                case "Dami":
+                    connectionString = "Data Source=LocalHost;Initial Catalog=eterea;Integrated Security=True;";
+                    break;
+                case "Luis":
+                    connectionString = "Data Source=LocalHost;Initial Catalog=eterea;Integrated Security=True;";
+                    break;
+                case "Maxi":
+                    connectionString = "Data Source=DESKTOP-N6TI9JV\\MSSQLSERVER02;Initial Catalog=eterea;Integrated Security=True;";
+                    break;
+                case "Marino":
+                    connectionString = "Data Source=(localdb)\\Local;Initial Catalog=eterea;Integrated Security=True;";
+                    break;
+                case "Notebook Adri":
                     connectionString = "Data Source=DESKTOP-U4RUEJ1\\SQLEXPRESS;Initial Catalog=eterea;Integrated Security=True;";
                     break;
                 default:
@@ -57,7 +54,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         public static string GetConnectionString()
         {
-            return connectionString; // Devolver la cadena de conexión actual
+            return connection.ConnectionString; // Devolver la cadena de conexión actual
         }
 
 
