@@ -9,13 +9,17 @@
 
         public Promocion promocion { get; set; }
 
-        public DetalleFactura(Factura factura, Perfume perfume, int cantidad, double precio_unitario, Promocion promocion)
+        public Promocion promocion2 { get; set; }
+
+
+        public DetalleFactura(Factura factura, Perfume perfume, int cantidad, double precio_unitario, Promocion promocion, Promocion promocion2)
         {
             this.factura = factura;
             this.perfume = perfume;
             this.cantidad = cantidad;
             this.precio_unitario = precio_unitario;
             this.promocion = promocion;
+            this.promocion2 = promocion2;
         }
 
         public DetalleFactura()
