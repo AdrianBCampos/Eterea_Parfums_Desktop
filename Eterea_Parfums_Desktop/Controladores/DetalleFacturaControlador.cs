@@ -26,10 +26,12 @@ namespace Eterea_Parfums_Desktop.Controladores
                     Factura factura = new Factura();
                     Perfume perfume = new Perfume();
                     Promocion promocion = new Promocion();
+                    Promocion promocion2 = new Promocion();
                     factura.id = reader.GetInt32(0);
                     perfume.id = reader.GetInt32(1);
                     promocion.id = reader.GetInt32(4);
-                    DetalleFactura detalle = new DetalleFactura(factura, perfume, reader.GetInt32(2), reader.GetDouble(3), promocion);
+                    promocion2.id = reader.GetInt32(5);
+                    DetalleFactura detalle = new DetalleFactura(factura, perfume, reader.GetInt32(2), reader.GetDouble(3), promocion, promocion2);
                     detalles.Add(detalle);
                 }
                 reader.Close();
@@ -43,10 +45,10 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         }
 
-        public static bool crearDetalleFactura(int factura_id, int perfume_id, int cantidad, float precio_unitario, int? promocion_id)
+        public static bool crearDetalleFactura(int factura_id, int perfume_id, int cantidad, float precio_unitario, int? promocion_id, int? promocion2_id)
         {
             string query = "INSERT INTO dbo.detalle_factura (factura_id, perfume_id, cantidad, precio_unitario, promocion_id) " +
-                           "VALUES (@factura_id, @perfume_id, @cantidad, @precio_unitario, @promocion_id);";
+                           "VALUES (@factura_id, @perfume_id, @cantidad, @precio_unitario, @promocion_id, @promocion2_id);";
 
             try
             {
@@ -59,6 +61,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                         cmd.Parameters.AddWithValue("@cantidad", cantidad);
                         cmd.Parameters.AddWithValue("@precio_unitario", precio_unitario);
                         cmd.Parameters.AddWithValue("@promocion_id", promocion_id);
+                        cmd.Parameters.AddWithValue("@promocion2_id", promocion_id);
 
                         connection.Open();
                         cmd.ExecuteNonQuery();

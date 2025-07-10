@@ -1052,7 +1052,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                             return;
                         }
                         int? promocion_id = promoController.obtenerPromocionIdPorPerfume(perfume_id);
+                        int? promocion2_id = promoController.obtenerPromocionIdPorPerfume(perfume_id);
                         int? promocion_id10 = promoController.obtenerPromocionIdPorPerfumeConDescuento10(perfume_id);
+
+                        //ACA AGREGAR LOGICA PARA GUARDAR SI HAY UNA SEGUNDA PROMOCION!!!! MAXI
 
                         if (cantidad > 1 && promocion_id != null)
                         {
@@ -1074,7 +1077,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                         //MessageBox.Show($"Enviando datos2: NumFactura: {id_factura}, PerfumeID: {perfume_id}, Cantidad: {cantidad}, PrecioUnitario: {precio_unitario}, PromocionID: {promocion_id}");
 
-                        bool exito = DetalleFacturaControlador.crearDetalleFactura(id_factura, perfume_id, cantidad, precio_unitario, promocion_id);
+                        bool exito = DetalleFacturaControlador.crearDetalleFactura(id_factura, perfume_id, cantidad, precio_unitario, promocion_id, promocion2_id);
 
                         if (!exito)
                         {
