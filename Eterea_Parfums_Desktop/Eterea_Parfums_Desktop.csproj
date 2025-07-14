@@ -196,6 +196,12 @@
     <Compile Include="ControlesDeUsuario\GenerarInformes\ListadoPerfumesBajoStock_UC.Designer.cs">
       <DependentUpon>ListadoPerfumesBajoStock_UC.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlesDeUsuario\GenerarInformes\HistorialDeCaja_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\GenerarInformes\HistorialDeCaja_UC.Designer.cs">
+      <DependentUpon>HistorialDeCaja_UC.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlesDeUsuario\Gestionar\Gestionar_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
