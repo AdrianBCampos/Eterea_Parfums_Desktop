@@ -482,6 +482,9 @@
     <EmbeddedResource Include="ControlesDeUsuario\GenerarInformes\GenerarInformes_UC.resx">
       <DependentUpon>GenerarInformes_UC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ControlesDeUsuario\GenerarInformes\HistorialDeCaja_UC.resx">
+      <DependentUpon>HistorialDeCaja_UC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlesDeUsuario\GenerarInformes\InformesDeVentas1_UC.resx">
       <DependentUpon>InformesDeVentas1_UC.cs</DependentUpon>
     </EmbeddedResource>
