@@ -1062,24 +1062,24 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                             if (cantidad % 2 == 0)
                             {
                                 promocion2_id = 1;
-                                MessageBox.Show($"PromocionID: {promocion_id} y PromocionID2: {promocion_id}");
+                               // MessageBox.Show($"PromocionID: {promocion_id} y PromocionID2: {promocion2_id}");
                             }
                             else
                             {
-                                MessageBox.Show($"PromocionID: {promocion_id} y PromocionID2: {promocion_id}");
+                              //  MessageBox.Show($"PromocionID: {promocion_id} y PromocionID2: {promocion2_id}");
                             }
                         }
                         else if (cantidad == 1 && promocion2_id != null)
                         {
                             promocion_id = promoController.obtenerPromocionIdPorPerfumeConDescuento10(perfume_id);
                             promocion2_id = 1;
-                            MessageBox.Show($"PromocionID: {promocion_id} y PromocionID2: {promocion_id}");
+                            //MessageBox.Show($"PromocionID: {promocion_id} y PromocionID2: {promocion2_id}");
                         }
                         else
                         {
                             promocion_id = 1;
                             promocion2_id = 1;
-                            MessageBox.Show($"PromocionID: {promocion_id} y PromocionID2: {promocion_id}");
+                           // MessageBox.Show($"PromocionID: {promocion_id} y PromocionID2: {promocion2_id}");
                         }
 
                         int id_factura = FacturaControlador.ObtenerMaxIdFactura();
