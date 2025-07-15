@@ -159,6 +159,7 @@
     <Compile Include="BarcodeReceiver.cs" />
     <Compile Include="CajaManager.cs" />
     <Compile Include="Controladores\CajaControlador.cs" />
+    <Compile Include="Controladores\HistorialCajaControlador.cs" />
     <Compile Include="Controladores\OrdenControlador.cs" />
     <Compile Include="ControlesDeUsuario\AdministrarStock\AdministrarStock_UC.cs">
       <SubType>UserControl</SubType>
@@ -171,6 +172,12 @@
     </Compile>
     <Compile Include="ControlesDeUsuario\Facturar\Facturar_UC.Designer.cs">
       <DependentUpon>Facturar_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\GenerarInformes\FormEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlesDeUsuario\GenerarInformes\FormEmpleado.Designer.cs">
+      <DependentUpon>FormEmpleado.cs</DependentUpon>
     </Compile>
     <Compile Include="ControlesDeUsuario\GenerarInformes\GenerarInformes_UC.cs">
       <SubType>UserControl</SubType>
@@ -220,6 +227,8 @@
     <Compile Include="ControlesDeUsuario\PrepararEnvios\PrepararEnvios_UC.Designer.cs">
       <DependentUpon>PrepararEnvios_UC.cs</DependentUpon>
     </Compile>
+    <Compile Include="DTOs\EmpleadoDTO.cs" />
+    <Compile Include="DTOs\HistorialCajaDTO.cs" />
     <Compile Include="FormABM\Cliente\FormCrearClienteFactura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -478,6 +487,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ControlesDeUsuario\Facturar\Facturar_UC.resx">
       <DependentUpon>Facturar_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlesDeUsuario\GenerarInformes\FormEmpleado.resx">
+      <DependentUpon>FormEmpleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlesDeUsuario\GenerarInformes\GenerarInformes_UC.resx">
       <DependentUpon>GenerarInformes_UC.cs</DependentUpon>

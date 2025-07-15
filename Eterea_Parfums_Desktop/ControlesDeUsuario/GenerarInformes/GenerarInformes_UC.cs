@@ -33,6 +33,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             combobox_informe.Items.Add("Informe de ventas");
             combobox_informe.Items.Add("Inventario");
             combobox_informe.Items.Add("Listar perfumes con bajo stock");
+            combobox_informe.Items.Add("Informe de Historial de Caja");
 
             InformesDeVentas1_UC adminUC = new InformesDeVentas1_UC(numeroSucursal);
             addUserControl(adminUC);
@@ -112,6 +113,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                         informes2.ActualizarSucursal(sucursalSeleccionada);
                     else if (uc is ListadoPerfumesBajoStock_UC listado)
                         listado.ActualizarSucursal(sucursalSeleccionada);
+                    else if (uc is HistorialDeCaja_UC historialUC)
+                        historialUC.ActualizarSucursal(sucursalSeleccionada.id);
                 }
             }
         }
@@ -176,9 +179,15 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                 ListadoPerfumesBajoStock_UC listadoUC = new ListadoPerfumesBajoStock_UC(numeroSucursal);
                 addUserControl(listadoUC);
             }
+            else if (combobox_informe.SelectedIndex == 3)
+            {
+                HistorialDeCaja_UC historialUC = new HistorialDeCaja_UC(numeroSucursal);
+                addUserControl(historialUC);
+            }
         }
 
 
-       
+
+
     }
 }

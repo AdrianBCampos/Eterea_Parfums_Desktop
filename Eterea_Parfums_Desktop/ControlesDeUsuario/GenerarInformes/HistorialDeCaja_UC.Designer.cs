@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.lbl_historial_caja = new System.Windows.Forms.Label();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.lbl_info = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dataGridViewPerfumesBajoStock = new System.Windows.Forms.DataGridView();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.dataGridViewHistorialCaja = new System.Windows.Forms.DataGridView();
             this.Caja = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha_Apertura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha_Cierre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Empleado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Datos_Empleado = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnVerEmpleado = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.btn_exportar_pdf = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,7 +52,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPerfumesBajoStock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistorialCaja)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -97,7 +97,7 @@
             this.lbl_info.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
             this.lbl_info.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_info.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            this.lbl_info.Location = new System.Drawing.Point(1245, 45);
+            this.lbl_info.Location = new System.Drawing.Point(1252, 44);
             this.lbl_info.Name = "lbl_info";
             this.lbl_info.Size = new System.Drawing.Size(180, 31);
             this.lbl_info.TabIndex = 479;
@@ -114,72 +114,61 @@
             this.pictureBox1.TabIndex = 480;
             this.pictureBox1.TabStop = false;
             // 
-            // dataGridViewPerfumesBajoStock
+            // dataGridViewHistorialCaja
             // 
-            this.dataGridViewPerfumesBajoStock.AllowUserToAddRows = false;
-            this.dataGridViewPerfumesBajoStock.AllowUserToDeleteRows = false;
-            this.dataGridViewPerfumesBajoStock.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridViewPerfumesBajoStock.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewPerfumesBajoStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewPerfumesBajoStock.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            this.dataGridViewPerfumesBajoStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewPerfumesBajoStock.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridViewPerfumesBajoStock.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPerfumesBajoStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewPerfumesBajoStock.ColumnHeadersHeight = 40;
-            this.dataGridViewPerfumesBajoStock.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewHistorialCaja.AllowUserToAddRows = false;
+            this.dataGridViewHistorialCaja.AllowUserToDeleteRows = false;
+            this.dataGridViewHistorialCaja.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridViewHistorialCaja.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewHistorialCaja.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewHistorialCaja.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            this.dataGridViewHistorialCaja.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewHistorialCaja.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridViewHistorialCaja.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewHistorialCaja.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewHistorialCaja.ColumnHeadersHeight = 40;
+            this.dataGridViewHistorialCaja.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Caja,
             this.Fecha_Apertura,
             this.Fecha_Cierre,
             this.Empleado,
-            this.Datos_Empleado});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewPerfumesBajoStock.DefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridViewPerfumesBajoStock.EnableHeadersVisualStyles = false;
-            this.dataGridViewPerfumesBajoStock.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
-            this.dataGridViewPerfumesBajoStock.Location = new System.Drawing.Point(24, 138);
-            this.dataGridViewPerfumesBajoStock.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridViewPerfumesBajoStock.Name = "dataGridViewPerfumesBajoStock";
-            this.dataGridViewPerfumesBajoStock.ReadOnly = true;
-            this.dataGridViewPerfumesBajoStock.RowHeadersWidth = 51;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridViewPerfumesBajoStock.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewPerfumesBajoStock.RowTemplate.Height = 35;
-            this.dataGridViewPerfumesBajoStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPerfumesBajoStock.Size = new System.Drawing.Size(1451, 191);
-            this.dataGridViewPerfumesBajoStock.TabIndex = 482;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
-            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox7.Location = new System.Drawing.Point(17, 128);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(1466, 257);
-            this.pictureBox7.TabIndex = 483;
-            this.pictureBox7.TabStop = false;
+            this.btnVerEmpleado});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewHistorialCaja.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewHistorialCaja.EnableHeadersVisualStyles = false;
+            this.dataGridViewHistorialCaja.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(228)))), ((int)(((byte)(137)))), ((int)(((byte)(164)))));
+            this.dataGridViewHistorialCaja.Location = new System.Drawing.Point(24, 138);
+            this.dataGridViewHistorialCaja.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridViewHistorialCaja.Name = "dataGridViewHistorialCaja";
+            this.dataGridViewHistorialCaja.ReadOnly = true;
+            this.dataGridViewHistorialCaja.RowHeadersWidth = 51;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(217)))), ((int)(((byte)(222)))));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(156)))), ((int)(((byte)(164)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridViewHistorialCaja.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewHistorialCaja.RowTemplate.Height = 35;
+            this.dataGridViewHistorialCaja.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewHistorialCaja.Size = new System.Drawing.Size(1451, 191);
+            this.dataGridViewHistorialCaja.TabIndex = 482;
             // 
             // Caja
             // 
@@ -229,14 +218,25 @@
             this.Empleado.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Empleado.Width = 216;
             // 
-            // Datos_Empleado
+            // btnVerEmpleado
             // 
-            this.Datos_Empleado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Datos_Empleado.Frozen = true;
-            this.Datos_Empleado.HeaderText = "Datos Empleado";
-            this.Datos_Empleado.Name = "Datos_Empleado";
-            this.Datos_Empleado.ReadOnly = true;
-            this.Datos_Empleado.Width = 180;
+            this.btnVerEmpleado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.btnVerEmpleado.Frozen = true;
+            this.btnVerEmpleado.HeaderText = "Datos Empleado";
+            this.btnVerEmpleado.Name = "btnVerEmpleado";
+            this.btnVerEmpleado.ReadOnly = true;
+            this.btnVerEmpleado.Width = 180;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(199)))), ((int)(((byte)(206)))));
+            this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox7.Location = new System.Drawing.Point(17, 128);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(1466, 257);
+            this.pictureBox7.TabIndex = 483;
+            this.pictureBox7.TabStop = false;
             // 
             // btn_exportar_pdf
             // 
@@ -298,12 +298,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(167)))), ((int)(((byte)(180)))));
+            this.Controls.Add(this.dataGridViewHistorialCaja);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btn_exportar_pdf);
-            this.Controls.Add(this.dataGridViewPerfumesBajoStock);
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.lbl_info);
@@ -316,7 +316,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPerfumesBajoStock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHistorialCaja)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -331,17 +331,17 @@
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.Label lbl_info;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridView dataGridViewPerfumesBajoStock;
+        private System.Windows.Forms.DataGridView dataGridViewHistorialCaja;
         private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Caja;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha_Apertura;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha_Cierre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Empleado;
-        private System.Windows.Forms.DataGridViewButtonColumn Datos_Empleado;
         private System.Windows.Forms.Button btn_exportar_pdf;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Caja;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha_Apertura;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha_Cierre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Empleado;
+        private System.Windows.Forms.DataGridViewButtonColumn btnVerEmpleado;
     }
 }
