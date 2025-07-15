@@ -36,5 +36,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             lbl_mail.Text = empleado.Email;
             lbl_sucursal.Text = empleado.SucursalNombre;
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

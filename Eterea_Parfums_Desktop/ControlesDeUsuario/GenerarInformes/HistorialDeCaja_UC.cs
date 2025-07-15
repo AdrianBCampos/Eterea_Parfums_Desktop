@@ -29,6 +29,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
         {
             historial = HistorialCajaControlador.GetPorSucursal(numeroSucursal);
 
+            dataGridViewHistorialCaja.RowHeadersVisible = false;
+
             dataGridViewHistorialCaja.Columns.Clear();
             dataGridViewHistorialCaja.DataSource = null;
             dataGridViewHistorialCaja.AutoGenerateColumns = false;
@@ -74,6 +76,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             dataGridViewHistorialCaja.Columns.Add(btnCol);
 
             dataGridViewHistorialCaja.DataSource = historial;
+
+            dataGridViewHistorialCaja.CellPainting += dataGridViewHistorialCaja_CellPainting;
+
+
         }
 
 
@@ -96,6 +102,32 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
         {
             this.numeroSucursal = nuevaSucursal;
             CargarHistorial();
+        }
+
+        private void dataGridViewHistorialCaja_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && e.RowIndex >= 0 && dataGridViewHistorialCaja.Columns[e.ColumnIndex] is DataGridViewButtonColumn)
+            {
+                e.Handled = true;
+                e.PaintBackground(e.CellBounds, true);
+
+                // Crear un rectángulo para el botón
+                Rectangle buttonRect = e.CellBounds;
+                buttonRect.Inflate(-2, -2); // Reducir tamaño para dar efecto de borde
+
+                // Definir colores personalizados
+                Color buttonColor = Color.FromArgb(228, 137, 164); // Color de fondo del botón
+                Color textColor = Color.FromArgb(250, 236, 239); // Color del texto
+
+                using (SolidBrush brush = new SolidBrush(buttonColor))
+                {
+                    e.Graphics.FillRectangle(brush, buttonRect);
+                }
+
+                // Dibujar el texto del botón
+                TextRenderer.DrawText(e.Graphics, (string)e.Value, e.CellStyle.Font, buttonRect, textColor,
+                                      TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
+            }
         }
     }
 }
