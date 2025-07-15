@@ -1,14 +1,15 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
 using Eterea_Parfums_Desktop.DTOs;
+using Eterea_Parfums_Desktop.Modelos;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Rectangle = System.Drawing.Rectangle;
 
 namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 {
@@ -21,22 +22,30 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
         {
             InitializeComponent();
             this.numeroSucursal = numeroSucursal;
-            CargarHistorial();
-            this.dataGridViewHistorialCaja.CellClick += dataGridViewHistorialCaja_CellClick;
 
-        }
-        private void CargarHistorial()
-        {
-            historial = HistorialCajaControlador.GetPorSucursal(numeroSucursal);
+            dataGridViewHistorialCaja.CellClick += dataGridViewHistorialCaja_CellClick;
+            dataGridViewHistorialCaja.CellPainting += dataGridViewHistorialCaja_CellPainting;
 
             dataGridViewHistorialCaja.RowHeadersVisible = false;
-
-            dataGridViewHistorialCaja.Columns.Clear();
-            dataGridViewHistorialCaja.DataSource = null;
             dataGridViewHistorialCaja.AutoGenerateColumns = false;
-            dataGridViewHistorialCaja.RowHeadersVisible = false; // <--- Esto elimina la columna vacía de encabezados
+            dataGridViewHistorialCaja.DataSource = null;
 
-            // Columnas personalizadas
+            lbl_sin_datos.Visible = false;
+
+            selector_dia.ValueChanged += selector_dia_ValueChanged;
+
+            CrearColumnas();
+        }
+
+        private void selector_dia_ValueChanged(object sender, EventArgs e)
+        {
+            FiltrarPorFecha(selector_dia.Value.Date);
+        }
+
+        private void CrearColumnas()
+        {
+            dataGridViewHistorialCaja.Columns.Clear();
+
             dataGridViewHistorialCaja.Columns.Add(new DataGridViewTextBoxColumn
             {
                 HeaderText = "Caja N°",
@@ -65,7 +74,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                 ReadOnly = true
             });
 
-            // Botón "Ver Empleado"
             DataGridViewButtonColumn btnCol = new DataGridViewButtonColumn
             {
                 HeaderText = "Datos Empleado",
@@ -74,34 +82,47 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                 Name = "btnVerEmpleado"
             };
             dataGridViewHistorialCaja.Columns.Add(btnCol);
+        }
 
+        private void FiltrarPorFecha(DateTime fechaSeleccionada)
+        {
+            historial = HistorialCajaControlador.GetPorSucursal(numeroSucursal)
+                .Where(h => h.FechaApertura.Date == fechaSeleccionada)
+                .ToList();
+
+            dataGridViewHistorialCaja.DataSource = null;
             dataGridViewHistorialCaja.DataSource = historial;
 
-            dataGridViewHistorialCaja.CellPainting += dataGridViewHistorialCaja_CellPainting;
+            dataGridViewHistorialCaja.CellFormatting += (s, e) =>
+            {
+                if (e.RowIndex >= 0 && e.Value != null)
+                {
+                    string columnName = dataGridViewHistorialCaja.Columns[e.ColumnIndex].DataPropertyName;
 
+                    if ((columnName == "FechaApertura" || columnName == "FechaCierre") && e.Value is DateTime dt)
+                    {
+                        e.Value = dt.ToString("dd/MM/yyyy HH:mm") + " hs";
+                        e.FormattingApplied = true;
+                    }
+                }
+            };
 
         }
 
-
-        // Manejo del clic en botón
         private void dataGridViewHistorialCaja_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && dataGridViewHistorialCaja.Columns[e.ColumnIndex].Name == "btnVerEmpleado")
             {
                 var usuario = historial[e.RowIndex].Usuario;
-                FormEmpleado form = new FormEmpleado(usuario);
-                form.StartPosition = FormStartPosition.CenterScreen; // Opcional: lo centra en pantalla
-                form.TopMost = true; // Lo muestra encima de todo
-                form.ShowDialog(); // Usar Show() si querés que no bloquee la UI. Usar ShowDialog() si querés que sea modal.
-                form.BringToFront(); // Asegura que esté al frente
-                form.Focus(); // Pone el foco
+                FormEmpleado form = new FormEmpleado(usuario)
+                {
+                    StartPosition = FormStartPosition.CenterScreen,
+                    TopMost = true
+                };
+                form.ShowDialog();
+                form.BringToFront();
+                form.Focus();
             }
-        }
-
-        public void ActualizarSucursal(int nuevaSucursal)
-        {
-            this.numeroSucursal = nuevaSucursal;
-            CargarHistorial();
         }
 
         private void dataGridViewHistorialCaja_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -111,23 +132,132 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
                 e.Handled = true;
                 e.PaintBackground(e.CellBounds, true);
 
-                // Crear un rectángulo para el botón
                 Rectangle buttonRect = e.CellBounds;
-                buttonRect.Inflate(-2, -2); // Reducir tamaño para dar efecto de borde
+                buttonRect.Inflate(-2, -2);
 
-                // Definir colores personalizados
-                Color buttonColor = Color.FromArgb(228, 137, 164); // Color de fondo del botón
-                Color textColor = Color.FromArgb(250, 236, 239); // Color del texto
+                Color buttonColor = Color.FromArgb(228, 137, 164);
+                Color textColor = Color.FromArgb(250, 236, 239);
 
                 using (SolidBrush brush = new SolidBrush(buttonColor))
                 {
                     e.Graphics.FillRectangle(brush, buttonRect);
                 }
 
-                // Dibujar el texto del botón
                 TextRenderer.DrawText(e.Graphics, (string)e.Value, e.CellStyle.Font, buttonRect, textColor,
                                       TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter);
             }
         }
+
+        public void ActualizarSucursal(int nuevaSucursal)
+        {
+            this.numeroSucursal = nuevaSucursal;
+            var sucursal = SucursalControlador.getAll().FirstOrDefault(s => s.id == nuevaSucursal);
+            lbl_info.Text = sucursal != null ? sucursal.nombre : "Sucursal desconocida";
+
+            if (selector_dia.Value != null)
+                FiltrarPorFecha(selector_dia.Value.Date);
+        }
+
+        // Dentro del evento del botón btn_exportar_pdf_Click para HistorialDeCaja_UC
+        private void btn_exportar_pdf_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewHistorialCaja.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Sucursal sucursal = SucursalControlador.getById(numeroSucursal);
+
+            SaveFileDialog guardarPDF = new SaveFileDialog
+            {
+                FileName = DateTime.Now.ToString("ddMMyyyyHHmmss") + ".pdf",
+                Filter = "Archivos PDF (*.pdf)|*.pdf",
+                DefaultExt = "pdf",
+                AddExtension = true
+            };
+
+            if (guardarPDF.ShowDialog() == DialogResult.OK)
+            {
+                using (FileStream stream = new FileStream(guardarPDF.FileName, FileMode.Create))
+                {
+                    Document pdfDoc = new Document(PageSize.A4.Rotate(), 25, 25, 25, 25);
+                    PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+                    pdfDoc.Open();
+
+                    // Logo
+                    try
+                    {
+                        iTextSharp.text.Image logo = iTextSharp.text.Image.GetInstance(Properties.Resources.LogoEtereaFactura, System.Drawing.Imaging.ImageFormat.Png);
+                        logo.ScaleToFit(70, 70);
+                        logo.Alignment = iTextSharp.text.Image.UNDERLYING;
+                        pdfDoc.Add(logo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al cargar el logo: " + ex.Message);
+                    }
+
+                    // Encabezado
+                    Paragraph header = new Paragraph();
+                    header.Alignment = Element.ALIGN_CENTER;
+                    header.Add(Chunk.NEWLINE);
+                    header.Add(new Chunk("HISTORIAL DE CAJA", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 21)));
+                    header.Add(Chunk.NEWLINE);
+                    header.Add(Chunk.NEWLINE);
+                    header.Add(new Chunk($"{sucursal.nombre} - {sucursal.calle_id.nombre} {sucursal.numeracion_calle} - {sucursal.provincia_id.nombre} - {sucursal.pais_id.nombre}.",
+                        FontFactory.GetFont(FontFactory.HELVETICA, 12)));
+                    header.Add(Chunk.NEWLINE);
+                    header.Add(Chunk.NEWLINE);
+                    header.Add(Chunk.NEWLINE);
+                    pdfDoc.Add(header);
+
+                    // Tabla con 4 columnas
+                    PdfPTable table = new PdfPTable(4) { WidthPercentage = 100 };
+                    table.SetWidths(new float[] { 20f, 25f, 25f, 30f });
+
+                    string[] columnas = { "Caja Nº", "Apertura", "Cierre", "Empleado" };
+                    foreach (string col in columnas)
+                    {
+                        PdfPCell cell = new PdfPCell(new Phrase(col, FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 10)))
+                        {
+                            BackgroundColor = new BaseColor(200, 200, 200),
+                            HorizontalAlignment = Element.ALIGN_CENTER
+                        };
+                        table.AddCell(cell);
+                    }
+
+                    foreach (DataGridViewRow row in dataGridViewHistorialCaja.Rows)
+                    {
+                        if (row.IsNewRow) continue;
+
+                        string caja = row.Cells[0].FormattedValue?.ToString() ?? "-";
+                        string apertura = row.Cells[1].Value is DateTime fa ? fa.ToString("dd/MM/yyyy HH:mm\" hs\"") : "-";
+                        string cierre = row.Cells[2].Value is DateTime fc ? fc.ToString("dd/MM/yyyy HH:mm\" hs\"") : "-";
+                        string empleado = row.Cells[3].FormattedValue?.ToString() ?? "-";
+
+                        table.AddCell(new PdfPCell(new Phrase(caja)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        table.AddCell(new PdfPCell(new Phrase(apertura)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        table.AddCell(new PdfPCell(new Phrase(cierre)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        table.AddCell(new PdfPCell(new Phrase(empleado)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                    }
+
+                    pdfDoc.Add(table);
+
+                    // Footer
+                    Paragraph footer = new Paragraph();
+                    footer.Add(Chunk.NEWLINE);
+                    footer.Add(new Chunk("Reporte generado el " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"), FontFactory.GetFont(FontFactory.HELVETICA, 8)));
+                    footer.Alignment = Element.ALIGN_CENTER;
+                    pdfDoc.Add(footer);
+
+                    pdfDoc.Close();
+                    stream.Close();
+                }
+
+                MessageBox.Show("PDF generado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
     }
 }

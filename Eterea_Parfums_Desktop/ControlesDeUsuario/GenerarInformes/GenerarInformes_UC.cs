@@ -74,7 +74,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 
         private void CargarComboSucursal()
         {
-            var sucursales = SucursalControlador.getAll();
+            // Obtener sucursales y filtrar la que tiene id == 0
+            var sucursales = SucursalControlador.getAll()
+                .Where(s => s.id != 0)
+                .ToList();
 
             comboBox_cambiar_sucursal.DataSource = null;
             comboBox_cambiar_sucursal.Items.Clear();
@@ -183,6 +186,15 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             {
                 HistorialDeCaja_UC historialUC = new HistorialDeCaja_UC(numeroSucursal);
                 addUserControl(historialUC);
+
+                var sucursalActual = SucursalControlador.getAll().FirstOrDefault(s => s.id == numeroSucursal);
+                if (sucursalActual != null)
+                {
+                    historialUC.Controls.Find("lbl_info", true).FirstOrDefault()?.GetType()
+                        .GetProperty("Text")?.SetValue(
+                            historialUC.Controls.Find("lbl_info", true).FirstOrDefault(),
+                            sucursalActual.nombre);
+                }
             }
         }
 
