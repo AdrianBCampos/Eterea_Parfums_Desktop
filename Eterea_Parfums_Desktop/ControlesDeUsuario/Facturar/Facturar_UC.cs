@@ -1052,24 +1052,34 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                             return;
                         }
                         int? promocion_id = promoController.obtenerPromocionIdPorPerfume(perfume_id);
-                        int? promocion2_id = promoController.obtenerPromocionIdPorPerfume(perfume_id);
-                        int? promocion_id10 = promoController.obtenerPromocionIdPorPerfumeConDescuento10(perfume_id);
+                        int? promocion2_id = promoController.obtenerPromocionIdPorPerfumeConDescuento10(perfume_id);
+                        //int? promocion_id10 = promoController.obtenerPromocionIdPorPerfumeConDescuento10(perfume_id);
 
                         //ACA AGREGAR LOGICA PARA GUARDAR SI HAY UNA SEGUNDA PROMOCION!!!! MAXI
 
                         if (cantidad > 1 && promocion_id != null)
                         {
-                            //MessageBox.Show($"PromocionID: {promocion_id}");
+                            if (cantidad % 2 == 0)
+                            {
+                                promocion2_id = 1;
+                               // MessageBox.Show($"PromocionID: {promocion_id} y PromocionID2: {promocion2_id}");
+                            }
+                            else
+                            {
+                              //  MessageBox.Show($"PromocionID: {promocion_id} y PromocionID2: {promocion2_id}");
+                            }
                         }
-                        else if (cantidad == 1 && promocion_id10 != null)
+                        else if (cantidad == 1 && promocion2_id != null)
                         {
                             promocion_id = promoController.obtenerPromocionIdPorPerfumeConDescuento10(perfume_id);
-                            //MessageBox.Show($"PromocionID: {promocion_id}");
+                            promocion2_id = 1;
+                            //MessageBox.Show($"PromocionID: {promocion_id} y PromocionID2: {promocion2_id}");
                         }
                         else
                         {
                             promocion_id = 1;
-                           // MessageBox.Show($"PromocionID: {promocion_id}");
+                            promocion2_id = 1;
+                           // MessageBox.Show($"PromocionID: {promocion_id} y PromocionID2: {promocion2_id}");
                         }
 
                         int id_factura = FacturaControlador.ObtenerMaxIdFactura();

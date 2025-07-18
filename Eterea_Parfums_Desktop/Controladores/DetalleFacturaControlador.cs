@@ -47,7 +47,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
         public static bool crearDetalleFactura(int factura_id, int perfume_id, int cantidad, float precio_unitario, int? promocion_id, int? promocion2_id)
         {
-            string query = "INSERT INTO dbo.detalle_factura (factura_id, perfume_id, cantidad, precio_unitario, promocion_id) " +
+            string query = "INSERT INTO dbo.detalle_factura (factura_id, perfume_id, cantidad, precio_unitario, promocion_id, promocion2_id) " +
                            "VALUES (@factura_id, @perfume_id, @cantidad, @precio_unitario, @promocion_id, @promocion2_id);";
 
             try
@@ -61,7 +61,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                         cmd.Parameters.AddWithValue("@cantidad", cantidad);
                         cmd.Parameters.AddWithValue("@precio_unitario", precio_unitario);
                         cmd.Parameters.AddWithValue("@promocion_id", promocion_id);
-                        cmd.Parameters.AddWithValue("@promocion2_id", promocion_id);
+                        cmd.Parameters.AddWithValue("@promocion2_id", promocion2_id);
 
                         connection.Open();
                         cmd.ExecuteNonQuery();
