@@ -208,5 +208,9 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             }
         }
 
+        private void ListadoPerfumesBajoStock_UC_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

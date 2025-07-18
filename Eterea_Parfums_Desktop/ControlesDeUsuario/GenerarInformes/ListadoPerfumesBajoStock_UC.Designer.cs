@@ -290,6 +290,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ListadoPerfumesBajoStock_UC";
             this.Size = new System.Drawing.Size(1499, 400);
+            this.Load += new System.EventHandler(this.ListadoPerfumesBajoStock_UC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

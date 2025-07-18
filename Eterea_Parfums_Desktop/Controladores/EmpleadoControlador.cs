@@ -1,4 +1,5 @@
-﻿using Eterea_Parfums_Desktop.Modelos;
+﻿using Eterea_Parfums_Desktop.DTOs;
+using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -591,5 +592,44 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             return idEmpleado; // null si no se encontró
         }
+        public static EmpleadoDTO GetEmpleadoPorUsuario(string usuario)
+        {
+            EmpleadoDTO empleado = null;
+
+            Console.WriteLine($"Buscando usuario: {usuario}");
+
+            string query = @"
+        SELECT e.id, e.nombre, e.apellido, e.dni, e.e_mail, s.nombre AS sucursal
+        FROM dbo.empleado e
+        INNER JOIN dbo.sucursal s ON e.sucursal_id = s.id
+        WHERE e.usuario = @usuario";
+
+            using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@usuario", usuario);
+                conn.Open();
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        empleado = new EmpleadoDTO
+                        {
+                            Id = reader.GetInt32(0),
+                            Nombre = reader.GetString(1),
+                            Apellido = reader.GetString(2),
+                            Dni = reader[3].ToString(), // aseguramos string
+                            Email = reader[4].ToString(),
+                            SucursalNombre = reader["sucursal"].ToString()
+                        };
+                    }
+                }
+            }
+
+            return empleado;
+        }
+
+
     }
 }
