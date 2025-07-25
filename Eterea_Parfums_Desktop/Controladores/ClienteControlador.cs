@@ -492,8 +492,8 @@ namespace Eterea_Parfums_Desktop.Controladores
             string query = "SELECT COUNT(*) FROM dbo.cliente WHERE usuario = @usuario";
 
             using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(query, connection))
             {
-                SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@usuario", usuario);
 
                 connection.Open();
@@ -507,8 +507,8 @@ namespace Eterea_Parfums_Desktop.Controladores
             string query = "SELECT COUNT(*) FROM dbo.cliente WHERE e_mail = @email";
 
             using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(query, connection))
             {
-                SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@email", email);
 
                 connection.Open();
