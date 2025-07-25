@@ -32,6 +32,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
         private bool yaMostroAdvertenciaCaja = false;  // lo ponés como campo en la clase
 
 
+
         public Facturar_UC()
         {
             InitializeComponent();
@@ -847,20 +848,24 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 combo_descuento.SelectedIndex = 0; // 0%
                 combo_cuotas.SelectedIndex = 0; // 1 cuota
                 combo_cuotas.Enabled = false;
+                combo_descuento.Enabled = true; // ✅ Habilitar solo en efectivo
             }
-            else if (formaPago == "Mercado Pago")
+            else if (formaPago == "Mercado Pago" || formaPago == "Visa Débito")
             {
                 txt_desc.Text = "0";
                 combo_descuento.SelectedIndex = 0; // 0%
                 combo_cuotas.SelectedIndex = 0; // 1 cuota
+                combo_cuotas.SelectedItem = 1;
                 combo_cuotas.Enabled = false;
+                combo_descuento.Enabled = false; // ❌ Deshabilitar en otros medios
             }
-            else // tarjeta
+            else // tarjeta: Visa Crédito, Mastercard, Amex
             {
 
                 txt_desc.Text = "0";
                 combo_descuento.SelectedIndex = 0; // 0%
                 combo_cuotas.Enabled = true;
+                combo_descuento.Enabled = false; // ❌ Deshabilitar en tarjetas
             }
         }
 

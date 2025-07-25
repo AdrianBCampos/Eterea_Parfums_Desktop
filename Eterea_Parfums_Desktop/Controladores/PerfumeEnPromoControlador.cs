@@ -270,9 +270,9 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             int descuento = 0;
 
-            using (SqlConnection connection = new SqlConnection(DB_Controller.connection.ConnectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand(query, connection))
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            { 
+            using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
                     cmd.Parameters.AddWithValue("@perfumeId", perfumeId);
 
@@ -329,10 +329,17 @@ namespace Eterea_Parfums_Desktop.Controladores
 
                         Console.WriteLine($"Perfume ID: {perfumeId}, Promoción Aplicada: {promocionId}");
                     }
-                    catch (Exception ex)
+                    /*catch (Exception ex)
                     {
                         Console.WriteLine($"Error al obtener promoción para perfume ID {perfumeId}: {ex.Message}");
                         throw new Exception("Error al obtener la promoción del perfume.", ex);
+                    }*/
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"ERROR REAL: {ex.Message}");
+                        Console.WriteLine($"INNER EXCEPTION: {ex.InnerException?.Message}");
+                        Console.WriteLine($"STACKTRACE: {ex.StackTrace}");
+                        throw;
                     }
                 }
             }
@@ -353,7 +360,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             int? descuento = null;  // Usamos int? para permitir valores nulos
 
-            using (SqlConnection connection = new SqlConnection(DB_Controller.connection.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
             {
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
@@ -374,7 +381,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                     catch (Exception ex)
                     {
                         Console.WriteLine($"Error al obtener promoción para perfume ID {perfumeId}: {ex.Message}");
-                        throw new Exception("Error al obtener la promoción del perfume.", ex);
+                        throw new Exception($"Error al obtener la promoción del perfume ID {perfumeId}: {ex.Message}", ex);
                     }
                 }
             }
