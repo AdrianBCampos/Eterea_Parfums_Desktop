@@ -81,25 +81,36 @@ namespace Eterea_Parfums_Desktop.Controladores
                 WHERE tipo_de_factura = @tipo_de_factura;
             ";
 
-            using (SqlConnection conexion = new SqlConnection(DB_Controller.connection.ConnectionString))
+            using (SqlConnection conexion = new SqlConnection(DB_Controller.GetConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(query, conexion))
             {
-                using (SqlCommand cmd = new SqlCommand(query, conexion))
-                {
-                    cmd.Parameters.AddWithValue("@tipo_de_factura", tipoDeFactura);
+                cmd.Parameters.AddWithValue("@tipo_de_factura", tipoDeFactura);
 
+                try
+                {
                     conexion.Open();
                     var result = cmd.ExecuteScalar();
-                    conexion.Close();
 
                     if (result != null && result != DBNull.Value)
                     {
                         string maxNumFactura = result.ToString();
-                        string parteNumerica = maxNumFactura.Substring(4, 8); // Últimos 8 dígitos
-                        nuevoNumero = int.Parse(parteNumerica) + 1;
+
+                        if (maxNumFactura.Length >= 12)
+                        {
+                            string parteNumerica = maxNumFactura.Substring(4, 8); // Últimos 8 dígitos
+                            nuevoNumero = int.Parse(parteNumerica) + 1;
+                        }
+                        else
+                        {
+                            throw new Exception("El formato de num_factura no es válido. Valor: " + maxNumFactura);
+                        }
                     }
 
-                    // Combina el punto de venta con el nuevo número
                     proximoNumFactura = puntoDeVenta + nuevoNumero.ToString("D8");
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al obtener el próximo número de factura: " + ex.Message);
                 }
             }
 
