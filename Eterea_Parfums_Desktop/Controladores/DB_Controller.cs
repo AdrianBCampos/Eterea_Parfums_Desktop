@@ -33,7 +33,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                     connectionString = "Data Source=LocalHost;Initial Catalog=eterea;Integrated Security=True;";
                     break;
                 case "maxi":
-                    connectionString = "Data Source=DESKTOP-N6TI9JV\\MSSQLSERVER02;Initial Catalog=eterea;Integrated Security=True;";
+                    connectionString = "Data Source=DESKTOP-N6TI9JV\\MSSQLSERVER2025;Initial Catalog=eterea;User ID=sa;Password=12345;";
                     break;
                 case "marino":
                     connectionString = "Data Source=(localdb)\\Local;Initial Catalog=eterea;Integrated Security=True;";
