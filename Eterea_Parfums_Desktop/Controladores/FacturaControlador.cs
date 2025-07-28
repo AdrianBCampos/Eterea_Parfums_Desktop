@@ -19,7 +19,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
             // 🔹 Usamos "using" para que la conexión se cierre automáticamente
-            using (SqlConnection conexion = new SqlConnection(DB_Controller.connection.ConnectionString))
+            using (SqlConnection conexion = new SqlConnection(DB_Controller.GetConnectionString()))
             {
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
                 {
@@ -47,8 +47,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             string query = "SELECT MAX(id) FROM dbo.Factura;";
 
-
-            using (SqlConnection conexion = new SqlConnection(DB_Controller.connection.ConnectionString))
+            using (SqlConnection conexion = new SqlConnection(DB_Controller.GetConnectionString()))
             {
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
                 {
@@ -59,7 +58,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                     if (result != null && result != DBNull.Value)
                     {
                         proximoId = Convert.ToInt32(result);
-                    }   
+                    }
                     else
                     {
                         proximoId = 1;
@@ -70,18 +69,19 @@ namespace Eterea_Parfums_Desktop.Controladores
             return proximoId;
         }
 
+
         public static string ObtenerProximoNumFactura(string tipoDeFactura, string puntoDeVenta)
         {
             string proximoNumFactura = "";
             int nuevoNumero = 1;
 
             string query = @"
-                SELECT MAX(num_factura)
-                FROM dbo.Factura
-                WHERE tipo_de_factura = @tipo_de_factura;
-            ";
+        SELECT MAX(num_factura)
+        FROM dbo.Factura
+        WHERE tipo_de_factura = @tipo_de_factura;
+    ";
 
-            using (SqlConnection conexion = new SqlConnection(DB_Controller.connection.ConnectionString))
+            using (SqlConnection conexion = new SqlConnection(DB_Controller.GetConnectionString()))
             {
                 using (SqlCommand cmd = new SqlCommand(query, conexion))
                 {
@@ -98,7 +98,6 @@ namespace Eterea_Parfums_Desktop.Controladores
                         nuevoNumero = int.Parse(parteNumerica) + 1;
                     }
 
-                    // Combina el punto de venta con el nuevo número
                     proximoNumFactura = puntoDeVenta + nuevoNumero.ToString("D8");
                 }
             }

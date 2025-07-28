@@ -270,7 +270,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             int descuento = 0;
 
-            using (SqlConnection connection = new SqlConnection(DB_Controller.connection.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
             {
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
@@ -311,7 +311,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             int? promocionId = null;  // Usamos int? para permitir valores nulos
 
-            using (SqlConnection connection = new SqlConnection(DB_Controller.connection.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
             {
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
@@ -353,7 +353,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             int? descuento = null;  // Usamos int? para permitir valores nulos
 
-            using (SqlConnection connection = new SqlConnection(DB_Controller.connection.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
             {
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
@@ -394,7 +394,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             int? promocionId = null;  // Usamos int? para permitir valores nulos
 
-            using (SqlConnection connection = new SqlConnection(DB_Controller.connection.ConnectionString))
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
             {
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
