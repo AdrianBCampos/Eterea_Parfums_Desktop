@@ -52,7 +52,7 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             try
             {
-                using (SqlConnection connection = new SqlConnection(DB_Controller.connection.ConnectionString))
+                using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
                 {
                     using (SqlCommand cmd = new SqlCommand(query, connection))
                     {

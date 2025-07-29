@@ -12,6 +12,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 using Eterea_Parfums_Desktop.Helpers;
+using iTextSharp.tool.xml.html;
 
 namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 {
@@ -588,10 +589,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                             // Obtener el descuento del perfume (en porcentaje)
                             descuentoPorcentaje = promoController.obtenerMayorDescuentoPorPerfume(perfumeId) ?? 0; // CAMBIAR METODO TIENE QUE SER MAYOR A 20%
+                            Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido aca: {descuentoPorcentaje}%");
 
                             if (descuentoPorcentaje > 20)
                             {
-                                Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
+                                Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido first: {descuentoPorcentaje}%");
 
 
                                 // Obtener cantidad
@@ -667,7 +669,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                                 descuentoPorcentaje = promoController.obtenerPromocionPorPerfumeConDescuento10(perfumeId) ?? 0;
 
 
-                                Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
+                                Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido 1: {descuentoPorcentaje}%");
 
 
                                 // Obtener cantidad
@@ -688,13 +690,13 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                                 // Mostrar en consola para depuración
                                 Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Aplicado: {descuentoMonto} (Monto), Total con Descuento: {totalConDescuento}");
                             }
-                            if (descuentoUnitario == 2) //Descuento cuando no tiene descuento mayor a 20%
+                        }
+                        if (descuentoUnitario == 2) //Descuento cuando no tiene descuento mayor a 20%
                             {
                                 // Obtener el descuento del perfume (en porcentaje)
                                 descuentoPorcentaje = promoController.obtenerPromocionPorPerfumeConDescuento10(perfumeId) ?? 0;
 
-
-                                Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
+                                Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido 2: {descuentoPorcentaje}%");
 
                                 // Obtener cantidad
                                 cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
@@ -714,7 +716,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                                 // Mostrar en consola para depuración
                                 Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Aplicado: {descuentoMonto} (Monto), Total con Descuento: {totalConDescuento}");
                             }
-                        }
+                        
 
                     }
                 }
@@ -1064,10 +1066,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                                 promocion2_id = 1;
                                // MessageBox.Show($"PromocionID: {promocion_id} y PromocionID2: {promocion2_id}");
                             }
-                            else
-                            {
-                              //  MessageBox.Show($"PromocionID: {promocion_id} y PromocionID2: {promocion2_id}");
-                            }
+                        }
+                        else if (cantidad > 1 && cantidad % 2 == 0 && promocion2_id != null)
+                        {
+                                promocion_id = 1;
+                            
                         }
                         else if (cantidad == 1 && promocion2_id != null)
                         {
@@ -1075,11 +1078,15 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                             promocion2_id = 1;
                             //MessageBox.Show($"PromocionID: {promocion_id} y PromocionID2: {promocion2_id}");
                         }
-                        else
+                        else if (promocion_id != null && promocion2_id != null)
                         {
                             promocion_id = 1;
                             promocion2_id = 1;
                            // MessageBox.Show($"PromocionID: {promocion_id} y PromocionID2: {promocion2_id}");
+                        }
+                        else
+                        {
+                            promocion_id = 1;
                         }
 
                         int id_factura = FacturaControlador.ObtenerMaxIdFactura();
@@ -1200,6 +1207,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NUMEROFACTURA", txt_numero_factura.Text);
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CONDIVA", txt_condicion_iva.Text);
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FORMAPAGO", combo_forma_pago.SelectedItem.ToString());
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DOMICILIO", domicilioEntero);
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@LOCALIDAD", localidad);
 
@@ -1286,6 +1294,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                         PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NUMEROFACTURA", txt_numero_factura.Text);
                         PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
                         PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CONDIVA", txt_condicion_iva.Text);
+                        PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FORMAPAGO", combo_forma_pago.SelectedItem.ToString());
                         PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DOMICILIO", domicilioEntero);
                         PaginaHTML_Texto = PaginaHTML_Texto.Replace("@LOCALIDAD", localidad);
 
