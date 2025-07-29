@@ -48,30 +48,26 @@ namespace Eterea_Parfums_Desktop.Controladores
 
 
 
-        public static bool CajaDisponibleEnSucursal(int numeroCaja, int sucursalId)
+        /*public static bool CajaDisponibleEnSucursal(int numeroCaja, int sucursalId)
         {
-
-
-            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
-            {
-                connection.Open();
-
-                string query = @"SELECT COUNT(*) 
+            string query = @"SELECT COUNT(*) 
                          FROM dbo.caja
                          WHERE numCaja = @NumeroCaja 
                            AND sucursal_id = @SucursalId 
                            AND disponible = 1";
 
-                using (SqlCommand cmd = new SqlCommand(query, connection))
-                {
-                    cmd.Parameters.AddWithValue("@NumeroCaja", numeroCaja);
-                    cmd.Parameters.AddWithValue("@SucursalId", sucursalId);
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(query, connection))
+            {
+                cmd.Parameters.AddWithValue("@NumeroCaja", numeroCaja);
+                cmd.Parameters.AddWithValue("@SucursalId", sucursalId);
 
-                    int count = (int)cmd.ExecuteScalar();
-                    return count > 0;
-                }
+                connection.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
             }
-        }
+            
+        }*/
 
 
 

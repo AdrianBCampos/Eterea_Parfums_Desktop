@@ -87,18 +87,31 @@ namespace Eterea_Parfums_Desktop.Controladores
                 {
                     cmd.Parameters.AddWithValue("@tipo_de_factura", tipoDeFactura);
 
+                try
+                {
                     conexion.Open();
                     var result = cmd.ExecuteScalar();
-                    conexion.Close();
 
                     if (result != null && result != DBNull.Value)
                     {
                         string maxNumFactura = result.ToString();
-                        string parteNumerica = maxNumFactura.Substring(4, 8); // Últimos 8 dígitos
-                        nuevoNumero = int.Parse(parteNumerica) + 1;
+
+                        if (maxNumFactura.Length >= 12)
+                        {
+                            string parteNumerica = maxNumFactura.Substring(4, 8); // Últimos 8 dígitos
+                            nuevoNumero = int.Parse(parteNumerica) + 1;
+                        }
+                        else
+                        {
+                            throw new Exception("El formato de num_factura no es válido. Valor: " + maxNumFactura);
+                        }
                     }
 
                     proximoNumFactura = puntoDeVenta + nuevoNumero.ToString("D8");
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al obtener el próximo número de factura: " + ex.Message);
                 }
             }
 

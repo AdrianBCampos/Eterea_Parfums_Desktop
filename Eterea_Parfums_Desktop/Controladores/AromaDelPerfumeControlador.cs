@@ -10,18 +10,21 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static void create(AromaDelPerfume aromaDelPerfume)
         {
             string query = "INSERT INTO dbo.aroma_del_perfume VALUES (@perfume_id, @tipo_de_aroma_id)";
-            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-            cmd.Parameters.AddWithValue("@perfume_id", aromaDelPerfume.perfume.id);
-            cmd.Parameters.AddWithValue("@tipo_de_aroma_id", aromaDelPerfume.tipoDeAroma.id);
-            try
+            using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
             {
-                DB_Controller.connection.Open();
-                cmd.ExecuteNonQuery();
-                DB_Controller.connection.Close();
-            }
-            catch (Exception e)
-            {
-                throw new Exception("Hay un error en la query: " + e.Message);
+                cmd.Parameters.AddWithValue("@perfume_id", aromaDelPerfume.perfume.id);
+                cmd.Parameters.AddWithValue("@tipo_de_aroma_id", aromaDelPerfume.tipoDeAroma.id);
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Hay un error en la query: " + e.Message);
+                }
             }
         }
 
@@ -29,84 +32,87 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             List<AromaDelPerfume> aromasDelPerfume = new List<AromaDelPerfume>();
             string query = "SELECT * FROM dbo.aroma_del_perfume WHERE perfume_id = @id";
-            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-            cmd.Parameters.AddWithValue("@id", id);
-            try
+
+            using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
             {
-                DB_Controller.connection.Open();
-                SqlDataReader r = cmd.ExecuteReader();
-                while (r.Read())
+                cmd.Parameters.AddWithValue("@id", id);
+
+                try
                 {
-                    Perfume perfume = new Perfume(r.GetInt32(0));
-                    TipoDeAroma tipoDeAroma = new TipoDeAroma(r.GetInt32(0), null);
-                    perfume.id = r.GetInt32(0);
-                    tipoDeAroma.id = r.GetInt32(1);
-                    aromasDelPerfume.Add(new AromaDelPerfume(perfume, tipoDeAroma));
+                    conn.Open();
+                    using (SqlDataReader r = cmd.ExecuteReader())
+                    {
+                        while (r.Read())
+                        {
+                            Perfume perfume = new Perfume(r.GetInt32(0));
+                            TipoDeAroma tipoDeAroma = new TipoDeAroma(r.GetInt32(1), null);
+                            aromasDelPerfume.Add(new AromaDelPerfume(perfume, tipoDeAroma));
+                        }
+                    }
                 }
-                r.Close();
-                DB_Controller.connection.Close();
+                catch (Exception e)
+                {
+                    throw new Exception("Hay un error en la query: " + e.Message);
+                }
             }
-            catch (Exception e)
-            {
-                throw new Exception("Hay un error en la query: " + e.Message);
-            }
+
             return aromasDelPerfume;
         }
-
 
         public static bool deleteBYTipoDePerfume(int id)
         {
             bool result = false;
             string query = "DELETE FROM dbo.aroma_del_perfume WHERE tipo_de_aroma_id = @id";
-            SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
-            cmd.Parameters.AddWithValue("@id", id);
-            try
+
+            using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
             {
-                DB_Controller.connection.Open();
-                cmd.ExecuteNonQuery();
-                DB_Controller.connection.Close();
-                result = true;
+                cmd.Parameters.AddWithValue("@id", id);
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    result = true;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Hay un error en la query: " + e.Message);
+                }
             }
-            catch (Exception e)
-            {
-                throw new Exception("Hay un error en la query: " + e.Message);
-            }
+
             return result;
         }
 
         public static List<int> getPerfumeIdsPorAroma(int aromaId)
         {
             List<int> perfumeIds = new List<int>();
-
             string query = "SELECT DISTINCT perfume_id FROM dbo.aroma_del_perfume WHERE tipo_de_aroma_id = @aromaId";
 
-            using (SqlCommand cmd = new SqlCommand(query, DB_Controller.connection))
+            using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 cmd.Parameters.AddWithValue("@aromaId", aromaId);
 
-                DB_Controller.connection.Open();
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
+                try
                 {
-                    while (reader.Read())
+                    conn.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        perfumeIds.Add(reader.GetInt32(0));
+                        while (reader.Read())
+                        {
+                            perfumeIds.Add(reader.GetInt32(0));
+                        }
                     }
                 }
-
-                DB_Controller.connection.Close();
+                catch (Exception e)
+                {
+                    throw new Exception("Hay un error en la query: " + e.Message);
+                }
             }
 
             return perfumeIds;
         }
-
-
-
-
-
-
-
     }
-
-
 }
