@@ -227,7 +227,8 @@ namespace Eterea_Parfums_Desktop.Controladores
             {
                 string query = @"
                 SELECT perfume_id, sucursal_id, cantidad
-                FROM stock";
+                FROM stock
+                WHERE sucursal_id <> 0";
 
                 SqlCommand cmd = new SqlCommand(query, connection);
 

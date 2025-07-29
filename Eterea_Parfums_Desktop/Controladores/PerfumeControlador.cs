@@ -445,12 +445,12 @@ namespace Eterea_Parfums_Desktop.Controladores
             List<Perfume> list = new List<Perfume>();
 
             string query = @"
-        SELECT p.*, tp.tipo_de_perfume, g.genero
-        FROM dbo.Perfume p
-        JOIN dbo.tipo_de_perfume tp ON p.tipo_de_perfume_id = tp.id
-        JOIN dbo.genero g ON p.genero_id = g.id
-        WHERE p.nombre = @nombre;
-    ";
+    SELECT p.*, tp.tipo_de_perfume, g.genero
+    FROM dbo.Perfume p
+    JOIN dbo.tipo_de_perfume tp ON p.tipo_de_perfume_id = tp.id
+    JOIN dbo.genero g ON p.genero_id = g.id
+    WHERE p.nombre = @nombre;
+";
 
             using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
             {
@@ -464,34 +464,60 @@ namespace Eterea_Parfums_Desktop.Controladores
                     {
                         while (r.Read())
                         {
-                            int marcaId = r.GetInt32(2);
-                            int paisId = r.GetInt32(7);
+                            try
+                            {
+                                // 👇 Log por consola de todos los campos
+                                for (int i = 0; i < r.FieldCount; i++)
+                                {
+                                    string columnName = r.GetName(i);
+                                    bool isNull = r.IsDBNull(i);
+                                    string value = isNull ? "NULL" : r.GetValue(i).ToString();
+                                    Console.WriteLine($"[{i}] {columnName} = {value}");
+                                }
 
-                            Marca marcaOb = MarcaControlador.getById(marcaId);
-                            Pais paisOb = PaisControlador.getById(paisId);
+                                int marcaId = r.IsDBNull(2) ? 0 : r.GetInt32(2);
+                                int paisId = r.IsDBNull(7) ? 0 : r.GetInt32(7);
 
-                            TipoDePerfume tipoOb = new TipoDePerfume(r.GetInt32(4), r.GetString(r.GetOrdinal("tipo_de_perfume")));
-                            Genero generoOb = new Genero(r.GetInt32(5), r.GetString(r.GetOrdinal("genero")));
+                                Marca marcaOb = MarcaControlador.getById(marcaId);
+                                Pais paisOb = PaisControlador.getById(paisId);
 
-                            list.Add(new Perfume(
-                                r.GetInt32(0),                 // id
-                                r.GetString(1),                // nombre
-                                marcaOb,                      // marca
-                                r.GetString(3),                // codigo
-                                tipoOb,                       // tipo de perfume
-                                generoOb,                     // genero
-                                r.GetInt32(6),                // presentacion_ml
-                                paisOb,                       // pais
-                                r.GetBoolean(8),              // spray
-                                r.GetBoolean(9),              // recargable
-                                r.GetString(10),              // descripcion
-                                r.GetInt32(11),               // anio_de_lanzamiento
-                                r.GetDouble(12),              // precio
-                                r.GetBoolean(13),             // activo
-                                r.GetString(14),              // imagen1
-                                r.GetString(15),
-                                r.GetDateTime(16)             // registro de cambio activo
-                            ));
+                                TipoDePerfume tipoOb = new TipoDePerfume(
+                                    r.GetInt32(4),
+                                    r.IsDBNull(r.GetOrdinal("tipo_de_perfume")) ? null : r.GetString(r.GetOrdinal("tipo_de_perfume"))
+                                );
+
+                                Genero generoOb = new Genero(
+                                    r.GetInt32(5),
+                                    r.IsDBNull(r.GetOrdinal("genero")) ? null : r.GetString(r.GetOrdinal("genero"))
+                                );
+
+                                DateTime? fechaBaja = r.IsDBNull(16) ? (DateTime?)null : r.GetDateTime(16);
+
+                                list.Add(new Perfume(
+                                    r.GetInt32(0),                             // id
+                                    r.GetString(1),                            // codigo
+                                    marcaOb,                                   // marca
+                                    r.GetString(3),                            // nombre
+                                    tipoOb,                                    // tipo de perfume
+                                    generoOb,                                  // genero
+                                    r.GetInt32(6),                             // presentacion_ml
+                                    paisOb,                                    // pais
+                                    r.GetBoolean(8),                           // spray
+                                    r.GetBoolean(9),                           // recargable
+                                    r.IsDBNull(10) ? null : r.GetString(10),   // descripcion
+                                    r.GetInt32(11),                            // año
+                                    r.GetDouble(12),                           // precio
+                                    r.IsDBNull(13) ? (bool?)null : r.GetBoolean(13), // activo
+                                    r.IsDBNull(14) ? null : r.GetString(14),   // imagen1
+                                    r.IsDBNull(15) ? null : r.GetString(15),   // imagen2
+                                    fechaBaja                                  // fecha_baja
+                                ));
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine("❌ ERROR al construir el objeto Perfume:");
+                                Console.WriteLine(ex.ToString());
+                            }
                         }
                     }
                 }
@@ -499,8 +525,6 @@ namespace Eterea_Parfums_Desktop.Controladores
 
             return list;
         }
-
-
 
         public static Perfume getByCodigo(string codigo)
         {

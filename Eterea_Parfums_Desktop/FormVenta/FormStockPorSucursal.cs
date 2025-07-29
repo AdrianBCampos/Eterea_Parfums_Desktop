@@ -27,8 +27,12 @@ namespace Eterea_Parfums_Desktop
         {
             //Se oculta la primera columna de la tabla (es una columna de seleccion de fila)
             dataGridViewStock.RowHeadersVisible = false;
-            // Obtener todas las sucursales
-            List<Sucursal> sucursales = SucursalControlador.getAll();
+
+            // Obtener todas las sucursales menos la "WEB"
+            List<Sucursal> sucursales = SucursalControlador.getAll()
+             .Where(s => s.id != 0)
+             .ToList();
+
 
             // Configurar DataGridView
             dataGridViewStock.Columns.Clear();

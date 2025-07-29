@@ -906,6 +906,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
             }
             return tipo_De_factura;
         }
+
         private void combo_forma_pago_SelectedIndexChanged(object sender, EventArgs e)
         {
             ActualizarDescuentosYCuotas();

@@ -87,35 +87,36 @@ namespace Eterea_Parfums_Desktop.Controladores
                 {
                     cmd.Parameters.AddWithValue("@tipo_de_factura", tipoDeFactura);
 
-                try
-                {
-                    conexion.Open();
-                    var result = cmd.ExecuteScalar();
-
-                    if (result != null && result != DBNull.Value)
+                    try
                     {
-                        string maxNumFactura = result.ToString();
+                        conexion.Open();
+                        var result = cmd.ExecuteScalar();
 
-                        if (maxNumFactura.Length >= 12)
+                        if (result != null && result != DBNull.Value)
                         {
-                            string parteNumerica = maxNumFactura.Substring(4, 8); // Últimos 8 dígitos
-                            nuevoNumero = int.Parse(parteNumerica) + 1;
+                            string maxNumFactura = result.ToString();
+
+                            if (maxNumFactura.Length >= 12)
+                            {
+                                string parteNumerica = maxNumFactura.Substring(4, 8); // Últimos 8 dígitos
+                                nuevoNumero = int.Parse(parteNumerica) + 1;
+                            }
+                            else
+                            {
+                                throw new Exception("El formato de num_factura no es válido. Valor: " + maxNumFactura);
+                            }
                         }
-                        else
-                        {
-                            throw new Exception("El formato de num_factura no es válido. Valor: " + maxNumFactura);
-                        }
+
+                        proximoNumFactura = puntoDeVenta + nuevoNumero.ToString("D8");
                     }
+                    catch (Exception ex)
+                    {
+                        throw new Exception("Error al obtener el próximo número de factura: " + ex.Message);
+                    }
+                }
 
-                    proximoNumFactura = puntoDeVenta + nuevoNumero.ToString("D8");
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Error al obtener el próximo número de factura: " + ex.Message);
-                }
+                return proximoNumFactura;
             }
-
-            return proximoNumFactura;
         }
 
 
