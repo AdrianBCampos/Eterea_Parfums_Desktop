@@ -588,10 +588,11 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
                             // Obtener el descuento del perfume (en porcentaje)
                             descuentoPorcentaje = promoController.obtenerMayorDescuentoPorPerfume(perfumeId) ?? 0; // CAMBIAR METODO TIENE QUE SER MAYOR A 20%
+                            Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido aca: {descuentoPorcentaje}%");
 
                             if (descuentoPorcentaje > 20)
                             {
-                                Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
+                                Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido first: {descuentoPorcentaje}%");
 
 
                                 // Obtener cantidad
@@ -667,7 +668,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                                 descuentoPorcentaje = promoController.obtenerPromocionPorPerfumeConDescuento10(perfumeId) ?? 0;
 
 
-                                Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
+                                Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido 1: {descuentoPorcentaje}%");
 
 
                                 // Obtener cantidad
@@ -688,13 +689,13 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                                 // Mostrar en consola para depuración
                                 Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Aplicado: {descuentoMonto} (Monto), Total con Descuento: {totalConDescuento}");
                             }
-                            if (descuentoUnitario == 2) //Descuento cuando no tiene descuento mayor a 20%
+                        }
+                        if (descuentoUnitario == 2) //Descuento cuando no tiene descuento mayor a 20%
                             {
                                 // Obtener el descuento del perfume (en porcentaje)
                                 descuentoPorcentaje = promoController.obtenerPromocionPorPerfumeConDescuento10(perfumeId) ?? 0;
 
-
-                                Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido: {descuentoPorcentaje}%");
+                                Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Porcentaje Obtenido 2: {descuentoPorcentaje}%");
 
                                 // Obtener cantidad
                                 cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
@@ -714,7 +715,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                                 // Mostrar en consola para depuración
                                 Console.WriteLine($"Perfume ID: {perfumeId}, Descuento Aplicado: {descuentoMonto} (Monto), Total con Descuento: {totalConDescuento}");
                             }
-                        }
+                        
 
                     }
                 }
