@@ -1093,6 +1093,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                         else
                         {
                             promocion_id = 1;
+                            promocion2_id = 1;
                         }
 
                         int id_factura = FacturaControlador.ObtenerMaxIdFactura();
@@ -1157,7 +1158,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 string filePath = guardarFactura.FileName;
 
                 string condicionCliente = txt_condicion_iva.Text.Trim();
-                    MessageBox.Show("Condicion cliente: " + condicionCliente);
+                    //MessageBox.Show("Condicion cliente: " + condicionCliente);
                     string PaginaHTML_Texto = "";
 
                     // Verificar si el cliente es Responsable Monotributo
