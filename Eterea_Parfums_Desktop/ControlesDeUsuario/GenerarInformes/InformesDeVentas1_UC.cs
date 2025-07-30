@@ -110,7 +110,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
             lbl_fecha_Fin.Text = dateTimeFinal.Value.ToString("dd 'de' MMMM 'de' yyyy");
 
             List<Factura> facturas = FacturaControlador.getAllIntervaloFechas(dateTimeInicio.Value, dateTimeFinal.Value);
-
+            //MessageBox.Show("Facturas encontradas: " + facturas.Count);
             //SE FILTRA POR SUCURSAL
             facturas = facturas.Where(f => f.sucursal_id.id == numeroSucursal).ToList();
 
@@ -138,18 +138,17 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.GenerarInformes
 
                 return;
             }
-        
 
-          
-            txt_cantidad_ventas.Text = facturas.Count.ToString();
+
+                txt_cantidad_ventas.Text = facturas.Count.ToString();
             txt_monto_total.Text = facturas.Sum(f => f.precio_total).ToString("C2");
 
             List<DetalleFactura> detalles_Totales = new List<DetalleFactura>();
-
             foreach (Factura factura in facturas)
             {
+                
                 List<DetalleFactura> detalles = DetalleFacturaControlador.getByIdFactura(factura.id);
-                Console.WriteLine("Cantidad de detales: " + detalles.Count());
+                //Console.WriteLine("Cantidad de detales: " + detalles.Count());
                 //Se completa la información de cada detalle de factura con el perfume correspondiente
                 foreach (DetalleFactura detalle in detalles)
                 {

@@ -1,7 +1,10 @@
 ﻿using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
+using System.Windows;
+using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
@@ -10,40 +13,52 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<DetalleFactura> getByIdFactura(int factura_id)
         {
             List<DetalleFactura> detalles = new List<DetalleFactura>();
-            string query = "SELECT * FROM dbo.detalle_factura where factura_id = @factura_id";
+            string query = "SELECT * FROM dbo.detalle_factura WHERE factura_id = @factura_id";
+
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
             cmd.Parameters.AddWithValue("@factura_id", factura_id);
 
-
-
             try
             {
-                DB_Controller.connection.Open();
+                if (DB_Controller.connection.State != ConnectionState.Open)
+                    DB_Controller.connection.Open();
+
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
+                    Factura factura = new Factura { id = reader.GetInt32(0) };
+                    Perfume perfume = new Perfume { id = reader.GetInt32(1) };
+                    int cantidad = reader.GetInt32(2);
+                    double precioUnitario = reader.GetDouble(3);
 
-                    Factura factura = new Factura();
-                    Perfume perfume = new Perfume();
-                    Promocion promocion = new Promocion();
-                    Promocion promocion2 = new Promocion();
-                    factura.id = reader.GetInt32(0);
-                    perfume.id = reader.GetInt32(1);
-                    promocion.id = reader.GetInt32(4);
-                    promocion2.id = reader.GetInt32(5);
-                    DetalleFactura detalle = new DetalleFactura(factura, perfume, reader.GetInt32(2), reader.GetDouble(3), promocion, promocion2);
+                    Promocion promocion1 = null;
+                    Promocion promocion2 = null;
+
+                    if (!reader.IsDBNull(4))
+                        promocion1 = new Promocion { id = reader.GetInt32(4) };
+
+                    if (!reader.IsDBNull(5))
+                        promocion2 = new Promocion { id = reader.GetInt32(5) };
+
+                    DetalleFactura detalle = new DetalleFactura(factura, perfume, cantidad, precioUnitario, promocion1, promocion2);
                     detalles.Add(detalle);
                 }
+
                 reader.Close();
-                DB_Controller.connection.Close();
-                return detalles;
             }
             catch (Exception e)
             {
                 throw new Exception("Hay un error en la query: " + e.Message);
             }
+            finally
+            {
+                if (DB_Controller.connection.State != ConnectionState.Closed)
+                    DB_Controller.connection.Close();
+            }
 
+            return detalles;
         }
+
 
         public static bool crearDetalleFactura(int factura_id, int perfume_id, int cantidad, float precio_unitario, int? promocion_id, int? promocion2_id)
         {

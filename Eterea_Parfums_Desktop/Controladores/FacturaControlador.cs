@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Eterea_Parfums_Desktop.Controladores
 {
@@ -174,7 +175,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         public static List<Factura> getAllIntervaloFechas(DateTime fecha_inicio, DateTime fecha_final)
         {
             List<Factura> facturas = new List<Factura>();
-            string query = "SELECT * FROM dbo.factura WHERE fecha BETWEEN @fecha_inicio AND @fecha_final";
+            string query = "SELECT * FROM dbo.factura WHERE fecha BETWEEN @fecha_inicio AND @fecha_final AND sucursal_id != 0";
             // Modificar fecha_final para incluir todo el día
             DateTime fecha_final_modificada = fecha_final.AddDays(1).AddTicks(-1);
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
@@ -205,7 +206,9 @@ namespace Eterea_Parfums_Desktop.Controladores
             }
             catch (Exception e)
             {
+                MessageBox.Show(e.Message);
                 throw new Exception("Hay un error en la query: " + e.Message);
+
             }
 
         }
