@@ -398,10 +398,10 @@ namespace Eterea_Parfums_Desktop.Controladores
                 query += " AND id <> @idPromo"; // Evita conflicto al editar
             }
 
-            using (SqlConnection conn = new SqlConnection(DB_Controller.connection.ConnectionString))
+            using (SqlConnection conexion = new SqlConnection(DB_Controller.GetConnectionString()))
             {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                conexion.Open();
+                using (SqlCommand cmd = new SqlCommand(query, conexion))
                 {
                     cmd.Parameters.AddWithValue("@nombrePromo", nombrePromo);
                     if (idPromo != null)
