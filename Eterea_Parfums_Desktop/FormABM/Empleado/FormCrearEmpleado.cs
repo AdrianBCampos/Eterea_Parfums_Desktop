@@ -330,16 +330,41 @@ namespace Eterea_Parfums_Desktop
                 }
             }
 
-            if (!DateTime.TryParse(dateTime_nac.Text, out _))
+            if (!DateTime.TryParse(dateTime_nac.Text, out DateTime fecha))
             {
                 lbl_nacE.Text = "Debe ingresar una fecha de nacimiento válida.";
                 lbl_nacE.Show();
                 errorMsg += lbl_nacE.Text + Environment.NewLine;
             }
-
-            if (string.IsNullOrEmpty(txt_celular.Text) || !int.TryParse(txt_celular.Text, out _))
+            else
             {
-                lbl_celularE.Text = "Debe ingresar un número de celular válido.";
+                DateTime hoy = DateTime.Today;
+
+                if (fecha > hoy)
+                {
+                    lbl_nacE.Text = "La fecha de nacimiento no puede ser futura.";
+                    lbl_nacE.Show();
+                    errorMsg += lbl_nacE.Text + Environment.NewLine;
+                }
+                else
+                {
+                    int edad = hoy.Year - fecha.Year;
+                    if (fecha.Date > hoy.AddYears(-edad)) edad--;
+
+                    if (edad < 18)
+                    {
+                        lbl_nacE.Text = "El empleado debe tener al menos 18 años.";
+                        lbl_nacE.Show();
+                        errorMsg += lbl_nacE.Text + Environment.NewLine;
+                    }
+                }
+            }
+
+            // Celular
+            if (string.IsNullOrEmpty(txt_celular.Text) || !long.TryParse(txt_celular.Text, out long celular) ||
+                txt_celular.Text.Length < 10 || txt_celular.Text.Length > 13)
+            {
+                lbl_celularE.Text = "El celular debe tener entre 10 y 13 dígitos numéricos.";
                 lbl_celularE.Show();
                 errorMsg += lbl_celularE.Text + Environment.NewLine;
             }
