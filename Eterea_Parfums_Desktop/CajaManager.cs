@@ -79,7 +79,7 @@ namespace Eterea_Parfums_Desktop.Helpers
 
             if (cajas.Count == 0)
             {
-                MessageBox.Show("No hay cajas disponibles en este momento. Por favor, comuníquese con el administrador o soporte técnico por los canales habilitados.", "Sin cajas disponibles", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No hay cajas disponibles en este momento.\nPor favor, comuníquese con el administrador o soporte técnico por los canales habilitados.", "Sin cajas disponibles", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -114,7 +114,7 @@ namespace Eterea_Parfums_Desktop.Helpers
 
             if (cajas.Count == 0)
             {
-                MessageBox.Show("No hay cajas disponibles en este momento.", "Sin cajas disponibles", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No hay cajas disponibles en este momento.\nPor favor, comuníquese con el administrador o soporte técnico por los canales habilitados.", "Sin cajas disponibles", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
