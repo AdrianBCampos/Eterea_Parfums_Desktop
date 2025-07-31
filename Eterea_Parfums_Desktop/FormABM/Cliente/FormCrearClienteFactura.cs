@@ -109,10 +109,10 @@ namespace Eterea_Parfums_Desktop
                 string claveHasheada = PasswordHelper.CrearHash(clavePorDefecto);
 
                 string rol = "cliente";
-                Pais pais = PaisControlador.getByName("Argentina");
-                Provincia provincia = ProvinciaControlador.getByName("Buenos Aires");
-                Localidad localidad = LocalidadControlador.getByName("CABA");
-                Calle calle = CalleControlador.getById(1);
+                Pais pais = PaisControlador.getByName("SIN DATO");
+                Provincia provincia = ProvinciaControlador.getByName("SIN DATO");
+                Localidad localidad = LocalidadControlador.getByName("SIN DATO");
+                Calle calle = CalleControlador.getByName("SIN DATO");
                 DateTime fecha = new DateTime(1900, 1, 1);
 
 
