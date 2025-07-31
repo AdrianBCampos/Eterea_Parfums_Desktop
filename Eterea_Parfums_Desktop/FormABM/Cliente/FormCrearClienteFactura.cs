@@ -1,6 +1,7 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
 using Eterea_Parfums_Desktop.ControlesDeUsuario;
 using Eterea_Parfums_Desktop.Modelos;
+using PdfSharp.Quality;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -101,16 +102,21 @@ namespace Eterea_Parfums_Desktop
             bool clienteValidado = validarCliente(out string errorMsg);
             if (clienteValidado)
             {
+                string usuario = txt_dni.Text; // ✅ usar DNI o CUIT como usuario
+                string clavePorDefecto = txt_dni.Text;
+
+                // ✅ Hashear la clave
+                string claveHasheada = PasswordHelper.CrearHash(clavePorDefecto);
 
                 string rol = "cliente";
                 Pais pais = PaisControlador.getByName("Argentina");
                 Provincia provincia = ProvinciaControlador.getByName("Buenos Aires");
                 Localidad localidad = LocalidadControlador.getByName("CABA");
-                Calle calle = CalleControlador.getByName("Av. Cabildo");
+                Calle calle = CalleControlador.getById(1);
                 DateTime fecha = new DateTime(1900, 1, 1);
 
 
-                Cliente cliente = new Cliente(0, txt_nombre.Text, txt_dni.Text, txt_nombre.Text, txt_apellido.Text,
+                Cliente cliente = new Cliente(0, usuario, claveHasheada, txt_nombre.Text, txt_apellido.Text,
                     long.Parse(txt_dni.Text), combo_con_iva.Text, fecha, "0", txt_email.Text,
                     pais, provincia, localidad, 0, calle, 0,
                     "0", "0", " ",
