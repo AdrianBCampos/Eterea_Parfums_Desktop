@@ -344,10 +344,10 @@ namespace Eterea_Parfums_Desktop
                 }
             }
 
-            // Fecha de nacimiento
+            // Fecha de Ingreso
             if (!DateTime.TryParse(dateTime_ing.Text, out DateTime fecha))
             {
-                lbl_ingE.Text = "Debe ingresar una fecha de nacimiento válida.";
+                lbl_ingE.Text = "Debe ingresar una fecha de ingreso válida.";
                 lbl_ingE.Show();
                 errorMsg += lbl_ingE.Text + Environment.NewLine;
             }
@@ -357,20 +357,40 @@ namespace Eterea_Parfums_Desktop
 
                 if (fecha > hoy)
                 {
-                    lbl_ingE.Text = "La fecha de nacimiento no puede ser futura.";
+                    lbl_ingE.Text = "La fecha de ingreso no puede ser futura.";
                     lbl_ingE.Show();
                     errorMsg += lbl_ingE.Text + Environment.NewLine;
                 }
+               
+            }
+
+            // Fecha de nacimiento
+            if (!DateTime.TryParse(dateTime_nac.Text, out DateTime fechanac))
+            {
+                lbl_nacE.Text = "Debe ingresar una fecha de nacimiento válida.";
+                lbl_nacE.Show();
+                errorMsg += lbl_nacE.Text + Environment.NewLine;
+            }
+            else
+            {
+                DateTime hoy = DateTime.Today;
+
+                if (fechanac > hoy)
+                {
+                    lbl_nacE.Text = "La fecha de nacimiento no puede ser futura.";
+                    lbl_nacE.Show();
+                    errorMsg += lbl_nacE.Text + Environment.NewLine;
+                }
                 else
                 {
-                    int edad = hoy.Year - fecha.Year;
+                    int edad = hoy.Year - fechanac.Year;
                     if (fecha.Date > hoy.AddYears(-edad)) edad--;
 
                     if (edad < 18)
                     {
-                        lbl_ingE.Text = "El cliente debe tener al menos 18 años.";
-                        lbl_ingE.Show();
-                        errorMsg += lbl_ingE.Text + Environment.NewLine;
+                        lbl_nacE.Text = "El cliente debe tener al menos 18 años.";
+                        lbl_nacE.Show();
+                        errorMsg += lbl_nacE.Text + Environment.NewLine;
                     }
                 }
             }
