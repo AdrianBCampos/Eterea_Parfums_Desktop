@@ -492,8 +492,8 @@ namespace Eterea_Parfums_Desktop.Controladores
             string query = "SELECT COUNT(*) FROM dbo.cliente WHERE usuario = @usuario";
 
             using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
-            using (SqlCommand cmd = new SqlCommand(query, connection))
             {
+                SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@usuario", usuario);
 
                 connection.Open();
@@ -507,9 +507,57 @@ namespace Eterea_Parfums_Desktop.Controladores
             string query = "SELECT COUNT(*) FROM dbo.cliente WHERE e_mail = @email";
 
             using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
-            using (SqlCommand cmd = new SqlCommand(query, connection))
             {
+                SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@email", email);
+
+                connection.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+        public static bool ExisteUsuarioEnOtroCliente(string usuario, int idClienteActual)
+        {
+            string query = "SELECT COUNT(*) FROM dbo.cliente WHERE usuario = @usuario AND id <> @id";
+
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@usuario", usuario);
+                cmd.Parameters.AddWithValue("@id", idClienteActual);
+
+                connection.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+        public static bool ExisteEmailEnOtroCliente(string email, int idClienteActual)
+        {
+            string query = "SELECT COUNT(*) FROM dbo.cliente WHERE e_mail = @email AND id <> @id";
+
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@id", idClienteActual);
+
+                connection.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+        public static bool ExisteDniEnOtroCliente(string dni, int idClienteActual)
+        {
+            string query = "SELECT COUNT(*) FROM cliente WHERE dni = @dni AND id <> @id";
+
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@dni", dni);
+                cmd.Parameters.AddWithValue("@id", idClienteActual);
 
                 connection.Open();
                 int count = (int)cmd.ExecuteScalar();

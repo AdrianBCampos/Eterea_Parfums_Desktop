@@ -229,11 +229,35 @@
     </Compile>
     <Compile Include="DTOs\EmpleadoDTO.cs" />
     <Compile Include="DTOs\HistorialCajaDTO.cs" />
+    <Compile Include="FormABM\Cliente\FormCrearCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormABM\Cliente\FormCrearCliente.Designer.cs">
+      <DependentUpon>FormCrearCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormABM\Cliente\FormCrearClienteFactura.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormABM\Cliente\FormCrearClienteFactura.Designer.cs">
       <DependentUpon>FormCrearClienteFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormABM\Cliente\FormEditarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormABM\Cliente\FormEditarCliente.Designer.cs">
+      <DependentUpon>FormEditarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormABM\Empleado\FormCrearEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormABM\Empleado\FormCrearEmpleado.Designer.cs">
+      <DependentUpon>FormCrearEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormABM\Empleado\FormEditarEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormABM\Empleado\FormEditarEmpleado.Designer.cs">
+      <DependentUpon>FormEditarEmpleado.cs</DependentUpon>
     </Compile>
     <Compile Include="FormInfoPerfume\FormVerDetallePerfume.cs">
       <SubType>Form</SubType>
@@ -368,29 +392,11 @@
     <Compile Include="FormABM\Promo\FormEliminarPromo.Designer.cs">
       <DependentUpon>FormEliminarPromo.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormABM\Cliente\FormCrearCliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormABM\Cliente\FormCrearCliente.Designer.cs">
-      <DependentUpon>FormCrearCliente.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormABM\Promo\FormPromo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormABM\Promo\FormPromo.Designer.cs">
       <DependentUpon>FormPromo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormABM\Cliente\FormEditarCliente.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormABM\Cliente\FormEditarCliente.Designer.cs">
-      <DependentUpon>FormEditarCliente.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormABM\Empleado\FormEditarEmpleado.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormABM\Empleado\FormEditarEmpleado.Designer.cs">
-      <DependentUpon>FormEditarEmpleado.cs</DependentUpon>
     </Compile>
     <Compile Include="FormABM\Cliente\FormEliminarCliente.cs">
       <SubType>Form</SubType>
@@ -409,12 +415,6 @@
     </Compile>
     <Compile Include="FormABM\Perfume\FormEliminarPerfume.Designer.cs">
       <DependentUpon>FormEliminarPerfume.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormABM\Empleado\FormCrearEmpleado.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormABM\Empleado\FormCrearEmpleado.Designer.cs">
-      <DependentUpon>FormCrearEmpleado.cs</DependentUpon>
     </Compile>
     <Compile Include="ControlesDeUsuario\PrepararEnvios\FormVisorPDF.cs">
       <SubType>Form</SubType>
@@ -515,8 +515,20 @@
     <EmbeddedResource Include="ControlesDeUsuario\PrepararEnvios\PrepararEnvios_UC.resx">
       <DependentUpon>PrepararEnvios_UC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormABM\Cliente\FormCrearCliente.resx">
+      <DependentUpon>FormCrearCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormABM\Cliente\FormCrearClienteFactura.resx">
       <DependentUpon>FormCrearClienteFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormABM\Cliente\FormEditarCliente.resx">
+      <DependentUpon>FormEditarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormABM\Empleado\FormCrearEmpleado.resx">
+      <DependentUpon>FormCrearEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormABM\Empleado\FormEditarEmpleado.resx">
+      <DependentUpon>FormEditarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormInfoPerfume\FormVerDetallePerfume.resx">
       <DependentUpon>FormVerDetallePerfume.cs</DependentUpon>
@@ -569,17 +581,8 @@
     <EmbeddedResource Include="FormABM\Promo\FormEliminarPromo.resx">
       <DependentUpon>FormEliminarPromo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormABM\Cliente\FormCrearCliente.resx">
-      <DependentUpon>FormCrearCliente.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormABM\Promo\FormPromo.resx">
       <DependentUpon>FormPromo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormABM\Cliente\FormEditarCliente.resx">
-      <DependentUpon>FormEditarCliente.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormABM\Empleado\FormEditarEmpleado.resx">
-      <DependentUpon>FormEditarEmpleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormABM\Cliente\FormEliminarCliente.resx">
       <DependentUpon>FormEliminarCliente.cs</DependentUpon>
@@ -589,9 +592,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormABM\Perfume\FormEliminarPerfume.resx">
       <DependentUpon>FormEliminarPerfume.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormABM\Empleado\FormCrearEmpleado.resx">
-      <DependentUpon>FormCrearEmpleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormInicio\FormSeleccionarUsuario.resx">
       <DependentUpon>FormSeleccionarUsuario.cs</DependentUpon>
