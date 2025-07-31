@@ -181,9 +181,11 @@ namespace Eterea_Parfums_Desktop.Controladores
                     o.estado, 
                     o.codigo_despacho,
                     o.fecha_creacion,
-                    f.fecha AS fecha_compra
+                    f.fecha AS fecha_compra,
+                    c.celular AS celular_cliente
                 FROM dbo.orden o
                 JOIN dbo.factura f ON o.factura_id = f.id
+                JOIN dbo.cliente c ON f.cliente_id = c.id 
                 WHERE o.numero_de_orden = @numeroOrden";
 
             using (SqlConnection conn = new SqlConnection(DB_Controller.GetConnectionString()))
@@ -207,11 +209,27 @@ namespace Eterea_Parfums_Desktop.Controladores
                 connection.Open();
 
                 string query = @"
-            SELECT * 
-            FROM dbo.orden
-            WHERE estado = 1
-              AND fecha_creacion >= DATEADD(HOUR, 19, CAST(CAST(GETDATE() - 1 AS DATE) AS DATETIME))
-              AND fecha_creacion <  DATEADD(HOUR, 19, CAST(CAST(GETDATE() AS DATE) AS DATETIME))";
+            SELECT DISTINCT 
+                o.numero_de_orden, 
+                o.factura_id,
+                f.id AS num_factura, 
+                f.fecha, 
+                o.nombre_cliente, 
+                o.apellido_cliente, 
+                o.dni, 
+                o.e_mail_cliente, 
+                o.domicilio_de_envio, 
+                o.estado, 
+                o.codigo_despacho,
+                o.fecha_creacion,
+                f.fecha AS fecha_compra,
+                c.celular AS celular_cliente -- ✅ agregado
+            FROM dbo.orden o
+            JOIN dbo.factura f ON o.factura_id = f.id
+            JOIN dbo.cliente c ON f.cliente_id = c.id -- ✅ relación necesaria
+            WHERE o.estado = 1
+              AND o.fecha_creacion >= DATEADD(HOUR, 19, CAST(CAST(GETDATE() - 1 AS DATE) AS DATETIME))
+              AND o.fecha_creacion <  DATEADD(HOUR, 19, CAST(CAST(GETDATE() AS DATE) AS DATETIME))";
 
                 using (SqlCommand cmd = new SqlCommand(query, connection))
                 {
@@ -222,6 +240,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                 }
             }
         }
+
 
 
 

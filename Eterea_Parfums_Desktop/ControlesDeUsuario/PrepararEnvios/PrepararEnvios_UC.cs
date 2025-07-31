@@ -1,12 +1,13 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
+using Eterea_Parfums_Desktop.Helpers;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
 using System;
 using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
-using PdfSharp.Drawing;
-using PdfSharp.Pdf;
-using Eterea_Parfums_Desktop.Helpers;
 
 namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
 {
@@ -192,9 +193,14 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
                         CorreoHelper.EnviarCorreoNotificacionDespacho(emailCliente, nombreCliente, codigoDespacho);
                     }
 
+                    string celularSinFormatear = orden["celular_cliente"]?.ToString();
+
+                    string celularFormateado = FormatearCelular(celularSinFormatear);
+
                     string contenidoQR = $"Orden N {numeroOrden}\n" +
                                          $"Cliente: {orden["nombre_cliente"]} {orden["apellido_cliente"]}\n" +
                                          $"DNI: {orden["dni"]}\n" +
+                                         $"Celular: {celularFormateado}\n" +
                                          $"Email: {orden["e_mail_cliente"]}\n" +
                                          $"Domicilio: {orden["domicilio_de_envio"]}\n\n" +
                                          $"Codigo verificacion de despacho: {codigoDespacho}\n" +
@@ -435,7 +441,26 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
             }
         }
 
-       
+        private string FormatearCelular(string celular)
+        {
+            if (string.IsNullOrWhiteSpace(celular))
+                return "No disponible";
+
+            string soloNumeros = new string(celular.Where(char.IsDigit).ToArray());
+
+            if (soloNumeros.Length < 8)
+                return celular; // No se puede formatear
+
+            string ultimos8 = soloNumeros.Substring(soloNumeros.Length - 8);
+            string codigoArea = soloNumeros.Substring(0, soloNumeros.Length - 8);
+
+            string grupo1 = ultimos8.Substring(0, 4);
+            string grupo2 = ultimos8.Substring(4, 4);
+
+            return $"{codigoArea}-{grupo1}-{grupo2}";
+        }
+
+
     }
 }
 

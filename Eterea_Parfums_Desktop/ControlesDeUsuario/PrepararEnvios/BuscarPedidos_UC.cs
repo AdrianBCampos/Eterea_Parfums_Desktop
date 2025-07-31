@@ -44,7 +44,7 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
             if (resultado.Rows.Count == 0)
             {
-                MessageBox.Show("No se encontró la orden indicada.");
+                MessageBox.Show("Número de orden inexistente, vuelva a intentar");
                 return;
             }
 
