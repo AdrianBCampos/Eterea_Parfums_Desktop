@@ -194,9 +194,10 @@ namespace Eterea_Parfums_Desktop.Controladores
                     sucursal.id = reader.GetInt32(2);
                     empleado.id = reader.GetInt32(3);
                     cliente.id = reader.GetInt32(4);
+                    string factura_pdf = reader.IsDBNull(12) ? string.Empty : reader.GetString(12);
 
                     Factura factura = new Factura(reader.GetInt32(0), reader.GetDateTime(1), sucursal, empleado, cliente, reader.GetString(5), reader.GetDouble(6),
-                        reader.GetDouble(7), reader.GetDouble(8), reader.GetInt32(9), reader.GetString(10), reader.GetString(11), reader.GetString(12), reader.GetString(13), reader.GetString(14));
+                        reader.GetDouble(7), reader.GetDouble(8), reader.GetInt32(9), reader.GetString(10), reader.GetString(11), factura_pdf, reader.GetString(13), reader.GetString(14));
 
                     facturas.Add(factura);
                 }
