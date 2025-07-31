@@ -74,6 +74,12 @@ namespace Eterea_Parfums_Desktop
 
             id_editar = cliente.id;
 
+            combo_con_iva.Items.Clear();
+            combo_con_iva.Items.Add("Consumidor Final");
+            combo_con_iva.Items.Add("Responsable Inscripto");
+            combo_con_iva.Items.Add("Exento");
+            combo_con_iva.Items.Add("Monotributista");
+
             txt_usuario.Text = cliente.usuario.ToString();
             txt_clave.Hide();
             txt_nombre.Text = cliente.nombre.ToString();
@@ -112,11 +118,7 @@ namespace Eterea_Parfums_Desktop
                 combo_activo.SelectedItem = "Inactivo";
             }
 
-            combo_con_iva.Items.Clear();
-            combo_con_iva.Items.Add("Consumidor Final");
-            combo_con_iva.Items.Add("Responsable Inscripto");
-            combo_con_iva.Items.Add("Exento");
-            combo_con_iva.Items.Add("Monotributista");
+            
 
             //Diseño del combo box
             combo_activo.DrawMode = DrawMode.OwnerDrawFixed;
@@ -386,14 +388,13 @@ namespace Eterea_Parfums_Desktop
                 lbl_usuarioE.Show();
                 errorMsg += lbl_usuarioE.Text + Environment.NewLine;
             }
-            else if (ClienteControlador.ExisteUsuario(txt_usuario.Text))
+            else if (ClienteControlador.ExisteUsuarioEnOtroCliente(txt_usuario.Text, id_editar))
             {
                 lbl_usuarioE.Text = "Ya existe un cliente con ese nombre de usuario.";
                 lbl_usuarioE.Show();
                 errorMsg += lbl_usuarioE.Text + Environment.NewLine;
             }
 
-           
             // Nombre
             if (string.IsNullOrEmpty(txt_nombre.Text) || txt_nombre.Text.Length < 2 || txt_nombre.Text.Length > 45)
             {
@@ -423,15 +424,11 @@ namespace Eterea_Parfums_Desktop
                 lbl_dniE.Show();
                 errorMsg += lbl_dniE.Text + Environment.NewLine;
             }
-            else
+            else if (ClienteControlador.ExisteDniEnOtroCliente(txt_dni.Text, id_editar))
             {
-                var idExistente = ClienteControlador.BuscarIdPorDni(txt_dni.Text);
-                if (idExistente != null)
-                {
-                    lbl_dniE.Text = "Ya existe un cliente con ese DNI.";
-                    lbl_dniE.Show();
-                    errorMsg += lbl_dniE.Text + Environment.NewLine;
-                }
+                lbl_dniE.Text = "Ya existe un cliente con ese DNI.";
+                lbl_dniE.Show();
+                errorMsg += lbl_dniE.Text + Environment.NewLine;
             }
 
             // Condición IVA
@@ -490,9 +487,9 @@ namespace Eterea_Parfums_Desktop
                 lbl_emailE.Show();
                 errorMsg += lbl_emailE.Text + Environment.NewLine;
             }
-            else if (ClienteControlador.ExisteEmail(txt_email.Text))
+            else if (ClienteControlador.ExisteEmailEnOtroCliente(txt_email.Text, id_editar))
             {
-                lbl_emailE.Text = "Ya existe un cliente registrado con ese correo electrónico.";
+                lbl_emailE.Text = "Ya existe un cliente con ese correo electrónico.";
                 lbl_emailE.Show();
                 errorMsg += lbl_emailE.Text + Environment.NewLine;
             }

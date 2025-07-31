@@ -631,5 +631,69 @@ namespace Eterea_Parfums_Desktop.Controladores
         }
 
 
+        public static bool ExisteUsuario(string usuario)
+        {
+            string query = "SELECT COUNT(*) FROM dbo.empleado WHERE usuario = @usuario";
+
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@usuario", usuario);
+
+                connection.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+        public static bool ExisteEmail(string email)
+        {
+            string query = "SELECT COUNT(*) FROM dbo.empleado WHERE e_mail = @email";
+
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@email", email);
+
+                connection.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+
+        public static bool ExisteUsuarioEnOtroEmpleado(string usuario, int idEmpleadoActual)
+        {
+            string query = "SELECT COUNT(*) FROM dbo.empleado WHERE usuario = @usuario AND id <> @id";
+
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@usuario", usuario);
+                cmd.Parameters.AddWithValue("@id", idEmpleadoActual);
+
+                connection.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+        public static bool ExisteEmailEnOtroEmpleado(string email, int idEmpleadoActual)
+        {
+            string query = "SELECT COUNT(*) FROM dbo.empleado WHERE e_mail = @email AND id <> @id";
+
+            using (SqlConnection connection = new SqlConnection(DB_Controller.GetConnectionString()))
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@id", idEmpleadoActual);
+
+                connection.Open();
+                int count = (int)cmd.ExecuteScalar();
+                return count > 0;
+            }
+        }
+
+       
     }
 }

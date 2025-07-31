@@ -117,7 +117,8 @@ namespace Eterea_Parfums_Desktop
             combo_provincia.SelectedIndexChanged += combo_provincia_SelectedIndexChanged;
             combo_localidad.SelectedIndexChanged += combo_localidad_SelectedIndexChanged;
 
-
+            //Asignar evento al dateTime_nac
+            dateTime_nac.ValueChanged += dateTime_nac_ValueChanged;
         }
 
         private void combo_pais_SelectedIndexChanged(object sender, EventArgs e)
@@ -278,14 +279,27 @@ namespace Eterea_Parfums_Desktop
             lbl_activoE.Hide();
             lbl_rolE.Hide();
 
-            // Validaciones individuales
+            // Validaciones usuraio
             if (string.IsNullOrEmpty(txt_usuario.Text))
             {
                 lbl_usuarioE.Text = "Debe indicar un nombre de usuario.";
                 lbl_usuarioE.Show();
                 errorMsg += lbl_usuarioE.Text + Environment.NewLine;
             }
+            else if (txt_usuario.Text.Length < 3 || txt_usuario.Text.Length > 45)
+            {
+                lbl_usuarioE.Text = "El usuario debe tener entre 3 y 45 caracteres.";
+                lbl_usuarioE.Show();
+                errorMsg += lbl_usuarioE.Text + Environment.NewLine;
+            }
+            else if (EmpleadoControlador.ExisteUsuario(txt_usuario.Text))
+            {
+                lbl_usuarioE.Text = "Ya existe un cliente con ese nombre de usuario.";
+                lbl_usuarioE.Show();
+                errorMsg += lbl_usuarioE.Text + Environment.NewLine;
+            }
 
+            // Validaciones contraseña
             if (string.IsNullOrEmpty(txt_contraseña.Text))
             {
                 lbl_claveE.Text = "Debe generar una contraseña.";
@@ -330,11 +344,35 @@ namespace Eterea_Parfums_Desktop
                 }
             }
 
-            if (!DateTime.TryParse(dateTime_nac.Text, out _))
+            // Fecha de nacimiento
+            if (!DateTime.TryParse(dateTime_ing.Text, out DateTime fecha))
             {
-                lbl_nacE.Text = "Debe ingresar una fecha de nacimiento válida.";
-                lbl_nacE.Show();
-                errorMsg += lbl_nacE.Text + Environment.NewLine;
+                lbl_ingE.Text = "Debe ingresar una fecha de nacimiento válida.";
+                lbl_ingE.Show();
+                errorMsg += lbl_ingE.Text + Environment.NewLine;
+            }
+            else
+            {
+                DateTime hoy = DateTime.Today;
+
+                if (fecha > hoy)
+                {
+                    lbl_ingE.Text = "La fecha de nacimiento no puede ser futura.";
+                    lbl_ingE.Show();
+                    errorMsg += lbl_ingE.Text + Environment.NewLine;
+                }
+                else
+                {
+                    int edad = hoy.Year - fecha.Year;
+                    if (fecha.Date > hoy.AddYears(-edad)) edad--;
+
+                    if (edad < 18)
+                    {
+                        lbl_ingE.Text = "El cliente debe tener al menos 18 años.";
+                        lbl_ingE.Show();
+                        errorMsg += lbl_ingE.Text + Environment.NewLine;
+                    }
+                }
             }
 
             if (string.IsNullOrEmpty(txt_celular.Text) || !int.TryParse(txt_celular.Text, out _))
@@ -344,9 +382,23 @@ namespace Eterea_Parfums_Desktop
                 errorMsg += lbl_celularE.Text + Environment.NewLine;
             }
 
-            if (string.IsNullOrEmpty(txt_e_mail.Text) || !txt_e_mail.Text.Contains("@"))
+            /*if (string.IsNullOrEmpty(txt_e_mail.Text) || !txt_e_mail.Text.Contains("@"))
             {
                 lbl_e_mailE.Text = "Debe ingresar un correo electrónico válido.";
+                lbl_e_mailE.Show();
+                errorMsg += lbl_e_mailE.Text + Environment.NewLine;
+            }*/
+
+            if (string.IsNullOrEmpty(txt_e_mail.Text) ||
+               !System.Text.RegularExpressions.Regex.IsMatch(txt_e_mail.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                lbl_e_mailE.Text = "Debe ingresar un correo electrónico válido.";
+                lbl_e_mailE.Show();
+                errorMsg += lbl_e_mailE.Text + Environment.NewLine;
+            }
+            else if (EmpleadoControlador.ExisteEmail(txt_e_mail.Text))
+            {
+                lbl_e_mailE.Text = "Ya existe un cliente registrado con ese correo electrónico.";
                 lbl_e_mailE.Show();
                 errorMsg += lbl_e_mailE.Text + Environment.NewLine;
             }
@@ -412,13 +464,6 @@ namespace Eterea_Parfums_Desktop
                 lbl_sucursalE.Text = "Debe seleccionar una sucursal.";
                 lbl_sucursalE.Show();
                 errorMsg += lbl_sucursalE.Text + Environment.NewLine;
-            }
-
-            if (!DateTime.TryParse(dateTime_ing.Text, out _))
-            {
-                lbl_ingE.Text = "Debe ingresar una fecha de ingreso válida.";
-                lbl_ingE.Show();
-                errorMsg += lbl_ingE.Text + Environment.NewLine;
             }
 
             if (string.IsNullOrEmpty(txt_sueldo.Text) || !int.TryParse(txt_sueldo.Text, out _))
@@ -490,6 +535,9 @@ namespace Eterea_Parfums_Desktop
             this.Close();
         }
 
-
+        private void dateTime_nac_ValueChanged(object sender, EventArgs e)
+        {
+            dateTime_nac.Format = DateTimePickerFormat.Short;
+        }
     }
 }
