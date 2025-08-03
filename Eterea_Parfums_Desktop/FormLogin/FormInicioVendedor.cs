@@ -48,6 +48,8 @@ namespace Eterea_Parfums_Desktop
 
             this.Shown += FormInicioVendedor_Shown;
 
+            this.Load += FormInicioVendedor_Load;
+
             // Obtener y mostrar el nombre de la sucursal en el label
             txt_nombre_suc.Text = SucursalControlador.ObtenerNombreSucursalPorId(Program.sucursal);
         }
@@ -124,6 +126,19 @@ namespace Eterea_Parfums_Desktop
             addUserControl(buscarPedidosUC);
         }
 
+        /*private void button1_Click(object sender, EventArgs e)
+        {
+            //CambiarColorBoton1((Button)sender);
+
+            if (facturarUC == null)
+                facturarUC = new Facturar_UC();
+
+            addUserControl(facturarUC);
+
+            facturarUC.BringToFront();
+            facturarUC.Visible = true;
+        }*/
+
 
         private void FormInicioVendedor_Shown(object sender, EventArgs e)
         {
@@ -135,6 +150,40 @@ namespace Eterea_Parfums_Desktop
             facturarUC.BringToFront();
             facturarUC.Visible = true;
         }
+
+        private void FormInicioVendedor_Load(object sender, EventArgs e)
+        {
+            if (Program.sucursal > 1)
+            {
+                pictureBox4.Visible = true;
+                button1.Visible = true;
+                pictureBox8.Visible = true;
+
+                pictureBox3.Visible = false;
+                pictureBox1.Visible = false;
+                btn_facturar.Visible = false;
+
+                pictureBox10.Visible = false;
+                pictureBox2.Visible = false;
+                btn_preparar_envios.Visible = false;
+
+                pictureBox5.Visible = false;
+                pictureBox9.Visible = false;
+                btn_buscar_envios.Visible = false; 
+
+            }
+            else
+            {
+                pictureBox4.Visible = false;
+                button1.Visible = false;
+                pictureBox8.Visible = false;
+            }
+
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.FlatAppearance.MouseOverBackColor = button1.BackColor;
+            button1.FlatAppearance.MouseDownBackColor = button1.BackColor;
+        }
+
 
         private void CambiarColorBoton1(Button botonSeleccionado)
         {
@@ -219,6 +268,8 @@ namespace Eterea_Parfums_Desktop
             botonAnterior = botonSeleccionado;
 
         }
+
+       
 
 
         /*private void btn_gestionar_Click(object sender, EventArgs e)
