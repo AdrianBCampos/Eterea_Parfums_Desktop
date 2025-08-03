@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel_admin = new System.Windows.Forms.Panel();
             this.btn_preparar_envios = new System.Windows.Forms.Button();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
@@ -48,6 +47,10 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txt_nombre_suc = new System.Windows.Forms.Label();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.panel_admin = new System.Windows.Forms.Panel();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -60,19 +63,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel_admin
-            // 
-            this.panel_admin.AutoSize = true;
-            this.panel_admin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
-            this.panel_admin.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.panel_admin.Location = new System.Drawing.Point(13, 284);
-            this.panel_admin.Margin = new System.Windows.Forms.Padding(4);
-            this.panel_admin.Name = "panel_admin";
-            this.panel_admin.Size = new System.Drawing.Size(1509, 567);
-            this.panel_admin.TabIndex = 399;
-            this.panel_admin.UseWaitCursor = true;
             // 
             // btn_preparar_envios
             // 
@@ -143,7 +136,7 @@
             this.txt_saludo.Location = new System.Drawing.Point(667, 122);
             this.txt_saludo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_saludo.Name = "txt_saludo";
-            this.txt_saludo.Size = new System.Drawing.Size(572, 73);
+            this.txt_saludo.Size = new System.Drawing.Size(361, 46);
             this.txt_saludo.TabIndex = 389;
             this.txt_saludo.Text = "Nombre Vendedor";
             // 
@@ -156,7 +149,7 @@
             this.txt_bienvenido.Location = new System.Drawing.Point(356, 117);
             this.txt_bienvenido.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_bienvenido.Name = "txt_bienvenido";
-            this.txt_bienvenido.Size = new System.Drawing.Size(394, 79);
+            this.txt_bienvenido.Size = new System.Drawing.Size(249, 51);
             this.txt_bienvenido.TabIndex = 388;
             this.txt_bienvenido.Text = "Bienvenido:";
             // 
@@ -190,7 +183,7 @@
             this.label9.Location = new System.Drawing.Point(620, 33);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(533, 79);
+            this.label9.Size = new System.Drawing.Size(341, 51);
             this.label9.TabIndex = 393;
             this.label9.Text = "Modo Vendedor";
             // 
@@ -281,7 +274,7 @@
             this.txt_nombre_suc.Location = new System.Drawing.Point(1259, 129);
             this.txt_nombre_suc.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_nombre_suc.Name = "txt_nombre_suc";
-            this.txt_nombre_suc.Size = new System.Drawing.Size(200, 52);
+            this.txt_nombre_suc.Size = new System.Drawing.Size(133, 32);
             this.txt_nombre_suc.TabIndex = 410;
             this.txt_nombre_suc.Text = "Sucursal";
             // 
@@ -294,6 +287,52 @@
             this.pictureBox11.Size = new System.Drawing.Size(315, 76);
             this.pictureBox11.TabIndex = 411;
             this.pictureBox11.TabStop = false;
+            // 
+            // panel_admin
+            // 
+            this.panel_admin.AutoSize = true;
+            this.panel_admin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
+            this.panel_admin.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.panel_admin.Location = new System.Drawing.Point(13, 284);
+            this.panel_admin.Margin = new System.Windows.Forms.Padding(4);
+            this.panel_admin.Name = "panel_admin";
+            this.panel_admin.Size = new System.Drawing.Size(1509, 567);
+            this.panel_admin.TabIndex = 399;
+            this.panel_admin.UseWaitCursor = true;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
+            this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox8.Location = new System.Drawing.Point(13, 237);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(1509, 81);
+            this.pictureBox8.TabIndex = 414;
+            this.pictureBox8.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
+            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox4.Location = new System.Drawing.Point(13, 186);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(1509, 81);
+            this.pictureBox4.TabIndex = 413;
+            this.pictureBox4.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(186)))), ((int)(((byte)(197)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.button1.Location = new System.Drawing.Point(24, 197);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(1485, 79);
+            this.button1.TabIndex = 412;
+            this.button1.Text = "FACTURAR";
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // FormInicioVendedor
             // 
@@ -319,6 +358,9 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.btn_cerrar_sesion);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.pictureBox17);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -337,13 +379,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel_admin;
         private System.Windows.Forms.Button btn_preparar_envios;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox10;
@@ -363,5 +406,9 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label txt_nombre_suc;
         private System.Windows.Forms.PictureBox pictureBox11;
+        private System.Windows.Forms.Panel panel_admin;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Button button1;
     }
 }
