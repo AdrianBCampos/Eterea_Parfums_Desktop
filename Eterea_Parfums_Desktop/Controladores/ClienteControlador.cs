@@ -18,7 +18,7 @@ namespace Eterea_Parfums_Desktop.Controladores
         {
             //Dar de alta un cliente en la base de datos
 
-            string query = "insert into dbo.cliente values" +
+            string query = "insert into dbo.cliente (id,usuario,clave,nombre,apellido,dni,condicion_frente_al_iva,fecha_nacimiento,celular,e_mail,pais_id,provincia_id,localidad_id,codigo_postal,calle_id,numeracion_calle,piso,departamento,comentarios_domicilio,activo,rol) values" +
                 "(@id, " +
                 "@usuario, " +
                 "@clave, " +
