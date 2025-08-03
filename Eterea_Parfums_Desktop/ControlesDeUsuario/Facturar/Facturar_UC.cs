@@ -983,22 +983,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 string numFactura = txt_numero_factura.Text;
                 string tipoDeFactura = tipo_de_factura();
 
-
-                /*MessageBox.Show($"numFactura: {numFactura}\n" +
-                $"fecha: {fecha}\n" +
-                $"sucursalId: {sucursalId}\n" +
-                $"vendedorId: {vendedorId}\n" +
-                $"clienteId: {clienteId}\n" +
-                $"formaDePago: {formaDePago}\n" +
-                $"precioTotal: {precioTotal}\n" +
-                $"recargoTarjeta: {recargoTarjeta}\n" +
-                $"descuento: {descuento}\n" +
-                $"numeroDeCaja: {numeroDeCaja}\n" +
-                $"tipoConsumidor: {tipoConsumidor}\n" +
-                $"origen: {origen}\n" +
-                $"facturaPdf: {facturaPdf}");*/
-
-
                 // Llamar al método crearFactura desde FacturaControlador
                 bool exito = FacturaControlador.crearFactura(id,fecha,sucursalId,vendedorId,clienteId,
             formaDePago,precioTotal,recargoTarjeta,descuento,numeroDeCaja,tipoConsumidor,origen,facturaPdf,numFactura,tipoDeFactura);
@@ -1149,17 +1133,21 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
             if (numero != null && numero != "Caja sin asignar")
             {
-                // Si hay caja asignada     
-                SaveFileDialog guardarFactura = new SaveFileDialog();
-                guardarFactura.FileName = DateTime.Now.ToString("ddMMyyyyHHss") + ".pdf";
-                guardarFactura.Filter = "Archivos PDF (*.pdf)|*.pdf"; // Filtro para archivos PDF
-                guardarFactura.DefaultExt = "pdf"; // Extensión por defecto
-                guardarFactura.AddExtension = true; // Agrega la extensión si el usuario no la pone
-                string filePath = guardarFactura.FileName;
-
-                string condicionCliente = txt_condicion_iva.Text.Trim();
+            
+                    string condicionCliente = txt_condicion_iva.Text.Trim();
                     //MessageBox.Show("Condicion cliente: " + condicionCliente);
                     string PaginaHTML_Texto = "";
+
+                   
+                    string carpetaFacturas = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "FacturasGeneradas");
+
+                    if (!Directory.Exists(carpetaFacturas))
+                    {
+                        Directory.CreateDirectory(carpetaFacturas);
+                    }
+
+                    string rutaFactura = Path.Combine(carpetaFacturas, $"Factura_Orden_{txt_numero_factura.Text}.pdf");
+                    string filePath = rutaFactura;
 
                     // Verificar si el cliente es Responsable Monotributo
                     // CREACION DE PDF DE LA FACTURA B
@@ -1340,26 +1328,26 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TOTAL", precioTotal.ToString());
                 }
 
-                if (guardarFactura.ShowDialog() == DialogResult.OK)
-                {
+                    // GUARDAR FACTURA AUTOMÁTICAMENTE EN CARPETA
+                    if (!Directory.Exists(carpetaFacturas))
+                        Directory.CreateDirectory(carpetaFacturas);
 
-                    using (FileStream stream = new FileStream(guardarFactura.FileName, FileMode.Create))
+                    string rutaArchivo = Path.Combine(carpetaFacturas, $"Factura_Orden_{txt_numero_factura.Text}.pdf");
+
+                    using (FileStream stream = new FileStream(rutaArchivo, FileMode.Create))
                     {
-                        //Creamos un nuevo documento y lo definimos como PDF
                         Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
-
                         PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
                         pdfDoc.Open();
 
-                        //Agregamos la imagen del banner al documento
+                        // Agregamos el logo
                         iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.LogoEtereaFactura, System.Drawing.Imaging.ImageFormat.Png);
                         img.ScaleToFit(60, 60);
                         img.Alignment = iTextSharp.text.Image.UNDERLYING;
-
-                        //img.SetAbsolutePosition(10,100);
                         img.SetAbsolutePosition(pdfDoc.LeftMargin + 12, pdfDoc.Top - 73);
                         pdfDoc.Add(img);
 
+                        // Agregamos el HTML
                         using (StringReader sr = new StringReader(PaginaHTML_Texto))
                         {
                             XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
@@ -1368,23 +1356,37 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                         pdfDoc.Close();
                         stream.Close();
                     }
-                }
-                CrearFactura();
-                CrearDetalleFactura();
+
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                    {
+                        FileName = rutaArchivo,
+                        UseShellExecute = true
+                    });
+
+                    DialogResult resultado = MessageBox.Show("¿Desea imprimir la factura ahora?", "Factura impresa",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (resultado == DialogResult.Yes)
+                    {
+                        ImprimirPdf(rutaArchivo);
+                    }
+
+                    CrearFactura();
+                    CrearDetalleFactura();
 
 
-                if (!string.IsNullOrWhiteSpace(txt_email.Text))
-                {
+                    if (!string.IsNullOrWhiteSpace(txt_email.Text))
+                    {
                         CorreoHelper.EnviarCorreoFactura(filePath, txt_email.Text.Trim());
                         MessageBox.Show("Factura enviada a " + txt_email.Text + " correctamente");
+                    }
+                    ReiniciarFormulario();
                 }
-                ReiniciarFormulario();
+                else
+                {
+                    // No hay caja asignada, mostrar FormNumeroDeCaja para elegirla
+                    MessageBox.Show("\"Debes ingresar un número de caja. \n Haz click en 'Abrir Caja' ", "Número de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-            else
-            {
-                // No hay caja asignada, mostrar FormNumeroDeCaja para elegirla
-                MessageBox.Show("\"Debes ingresar un número de caja. \n Haz click en 'Abrir Caja' ", "Número de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
             }
         }
 
@@ -1410,7 +1412,22 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
 
         }
 
-      
+        private void ImprimirPdf(string rutaPdf)
+        {
+            try
+            {
+                System.Diagnostics.Process printProcess = new System.Diagnostics.Process();
+                printProcess.StartInfo.FileName = rutaPdf;
+                printProcess.StartInfo.Verb = "print";
+                printProcess.StartInfo.CreateNoWindow = true;
+                printProcess.StartInfo.UseShellExecute = true;
+                printProcess.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al imprimir el PDF: " + ex.Message);
+            }
+        }
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
             if (keyData == Keys.Enter)
