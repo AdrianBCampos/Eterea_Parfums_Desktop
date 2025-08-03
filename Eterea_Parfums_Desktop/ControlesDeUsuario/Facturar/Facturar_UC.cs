@@ -983,22 +983,6 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                 string numFactura = txt_numero_factura.Text;
                 string tipoDeFactura = tipo_de_factura();
 
-
-                /*MessageBox.Show($"numFactura: {numFactura}\n" +
-                $"fecha: {fecha}\n" +
-                $"sucursalId: {sucursalId}\n" +
-                $"vendedorId: {vendedorId}\n" +
-                $"clienteId: {clienteId}\n" +
-                $"formaDePago: {formaDePago}\n" +
-                $"precioTotal: {precioTotal}\n" +
-                $"recargoTarjeta: {recargoTarjeta}\n" +
-                $"descuento: {descuento}\n" +
-                $"numeroDeCaja: {numeroDeCaja}\n" +
-                $"tipoConsumidor: {tipoConsumidor}\n" +
-                $"origen: {origen}\n" +
-                $"facturaPdf: {facturaPdf}");*/
-
-
                 // Llamar al método crearFactura desde FacturaControlador
                 bool exito = FacturaControlador.crearFactura(id,fecha,sucursalId,vendedorId,clienteId,
             formaDePago,precioTotal,recargoTarjeta,descuento,numeroDeCaja,tipoConsumidor,origen,facturaPdf,numFactura,tipoDeFactura);
