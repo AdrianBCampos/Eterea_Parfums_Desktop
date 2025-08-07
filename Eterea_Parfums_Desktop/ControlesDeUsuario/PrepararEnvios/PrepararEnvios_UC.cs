@@ -381,44 +381,29 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
 
         private void MostrarDialogoDeEtiqueta(string rutaArchivo)
         {
-            Form mainForm = this.FindForm();
-            var prevWindowState = mainForm.WindowState;
-
             try
             {
-                using (var visor = new FormVisorPDF(rutaArchivo)
+                var visor = new FormVisorPDF(rutaArchivo)
                 {
                     StartPosition = FormStartPosition.CenterScreen,
-                    TopMost = true
-                })
-                {
-                    // aquí pasamos el owner para que sea modal
-                    visor.ShowDialog(mainForm);
-                }
+                    TopMost = true // 🔥 Forza que esté al frente
+                };
+
+                visor.ShowDialog(); // ShowDialog lo hace modal (bloquea hasta que se cierra)
             }
             catch (Exception ex)
             {
                 MessageBox.Show("No se pudo abrir el visor PDF: " + ex.Message);
             }
-            finally
-            {
-                // Fuerza a maximizar y activar
-                mainForm.WindowState = FormWindowState.Maximized;
-                mainForm.Activate();
-            }
 
-            var resultado = MessageBox.Show(
-                "¿Desea imprimir la etiqueta ahora?",
-                "Etiqueta generada",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
-            );
+            DialogResult resultado = MessageBox.Show("¿Desea imprimir la etiqueta ahora?", "Etiqueta generada",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (resultado == DialogResult.Yes)
+            {
                 ImprimirPdf(rutaArchivo);
+            }
         }
-
-
 
 
 
