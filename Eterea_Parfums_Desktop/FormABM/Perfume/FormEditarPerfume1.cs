@@ -1,5 +1,6 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
 using Eterea_Parfums_Desktop.ControlesDeUsuario;
+using Eterea_Parfums_Desktop.Helpers;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Diagnostics;
@@ -16,6 +17,13 @@ namespace Eterea_Parfums_Desktop
         private Image imagen2;
         private string nombre_foto_uno;
         private string nombre_foto_dos;
+
+        private string pathLocalImg1;
+        private string pathLocalImg2;
+
+        private string urlImagen1Actual;
+        private string urlImagen2Actual;
+
         private Perfume perfume;
         private static readonly Random rnd = new Random();
         private Perfumes_UC perfumesUC;
@@ -255,10 +263,12 @@ namespace Eterea_Parfums_Desktop
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "JPG(*.JPG)|*.JPG|PNG(*.png)|*.png";
+
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 imagen1 = Image.FromFile(ofd.FileName);
                 pictureBoxProducto1.Image = imagen1;
+                pathLocalImg1 = ofd.FileName; // ✅ se guarda la ruta
 
             }
         }
@@ -267,10 +277,12 @@ namespace Eterea_Parfums_Desktop
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Filter = "JPG(*.JPG)|*.JPG|PNG(*.png)|*.png";
+
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 imagen2 = Image.FromFile(ofd.FileName);
                 pictureBoxProducto2.Image = imagen2;
+                pathLocalImg2 = ofd.FileName; // ✅ se guarda la ruta
 
             }
         }
@@ -660,7 +672,7 @@ namespace Eterea_Parfums_Desktop
             Console.WriteLine("Marca: " + marca.nombre);
             Perfume perfume1 = new Perfume(perfume.id, txt_codigo.Text, marca, txt_nombre.Text, tipo_de_perfume,
                 genero, int.Parse(txt_presentacion.Text), pais, spray, recargable, richTextBox_descripcion.Text,
-                int.Parse(txt_anio_de_lanzamiento.Text), Double.Parse(txt_precio.Text), activo, nombre_foto_uno, nombre_foto_dos, null);
+                int.Parse(txt_anio_de_lanzamiento.Text), Double.Parse(txt_precio.Text), activo, nombre_foto_uno, nombre_foto_dos, null, null, null);
 
             return perfume1;
 

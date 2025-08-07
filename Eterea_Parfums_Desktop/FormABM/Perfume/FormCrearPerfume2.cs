@@ -257,6 +257,8 @@ namespace Eterea_Parfums_Desktop
             formProducto.guardarNuevaImg();
             //Actualizar el perfume con los datos que se han modificado
             perfume = formProducto.crear();
+            perfume.imagen1_URL = formProducto.urlImagen1Actual;
+            perfume.imagen2_URL = formProducto.urlImagen2Actual;
             PerfumeControlador.create(perfume);
 
 

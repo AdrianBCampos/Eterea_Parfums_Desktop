@@ -57,7 +57,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                     lista_perfumes.Add(new Perfume(r.GetInt32(0), r.GetString(1), marcaOb, r.GetString(3),
                         tipo_de_perfumeOb, generoOb, r.GetInt32(6), paisOb,
                        r.GetBoolean(8), r.GetBoolean(9), r.GetString(10), r.GetInt32(11), r.GetDouble(12),
-                        r.GetBoolean(13), r.GetString(14), r.GetString(15), fechaBaja));
+                        r.GetBoolean(13), r.GetString(14), r.GetString(15), fechaBaja, r.GetString(17), r.GetString(18)));
 
 
                 }
@@ -96,7 +96,9 @@ namespace Eterea_Parfums_Desktop.Controladores
                 "@activo, " +
                 "@imagen1, " +
                 "@imagen2, " +
-                "@fecha_baja);";
+                "@fecha_baja," +
+                "@imagen1_URL," +
+                "@imagen2_URL);";
 
             SqlCommand cmd = new SqlCommand(query, DB_Controller.connection);
 
@@ -117,6 +119,8 @@ namespace Eterea_Parfums_Desktop.Controladores
             cmd.Parameters.AddWithValue("@imagen1", perfume.imagen1);
             cmd.Parameters.AddWithValue("@imagen2", perfume.imagen2);
             cmd.Parameters.AddWithValue("@fecha_baja", DateTime.Now);
+            cmd.Parameters.AddWithValue("@imagen1_URL", perfume.imagen1_URL);
+            cmd.Parameters.AddWithValue("@imagen2_URL", perfume.imagen2_URL);
 
 
 
@@ -510,7 +514,10 @@ namespace Eterea_Parfums_Desktop.Controladores
                                     r.IsDBNull(13) ? (bool?)null : r.GetBoolean(13), // activo
                                     r.IsDBNull(14) ? null : r.GetString(14),   // imagen1
                                     r.IsDBNull(15) ? null : r.GetString(15),   // imagen2
-                                    fechaBaja                                  // fecha_baja
+                                    fechaBaja,                                  // fecha_baja
+                                    r.IsDBNull(17) ? null : r.GetString(17),   //URL de imagen 1
+                                    r.IsDBNull(18) ? null : r.GetString(18)    //URL de imagen 2
+
                                 ));
                             }
                             catch (Exception ex)
@@ -600,6 +607,8 @@ namespace Eterea_Parfums_Desktop.Controladores
                         p.imagen1, 
                         p.imagen2,
                         p.fecha_baja,
+                        p.imagen1_URL,
+                        p.imagen2_URL,
 
                         COUNT(DISTINCT CASE 
                             WHEN ntn.tipo_de_nota_id IN (2, 3) THEN np.nota_con_tipo_de_nota_id 
@@ -630,7 +639,7 @@ namespace Eterea_Parfums_Desktop.Controladores
                     GROUP BY p.id, p.codigo, p.marca_id, p.nombre, p.tipo_de_perfume_id, 
                              p.genero_id, p.presentacion_ml, p.pais_id, p.spray, p.recargable, 
                              p.descripcion, p.anio_de_lanzamiento, p.precio_en_pesos, p.activo, 
-                             p.imagen1, p.imagen2, p.fecha_baja
+                             p.imagen1, p.imagen2, p.fecha_baja, p.imagen1_URL, p.imagen2_URL
                     ORDER BY notas_comunes DESC, aromas_comunes DESC;";
 
 
@@ -669,7 +678,9 @@ namespace Eterea_Parfums_Desktop.Controladores
                         r.GetBoolean(13),
                         r.GetString(14),
                         r.GetString(15),
-                        r.IsDBNull(16) ? (DateTime?)null : r.GetDateTime(16)
+                        r.IsDBNull(16) ? (DateTime?)null : r.GetDateTime(16),
+                        r.GetString(17),
+                        r.GetString(18)
 
                     ));
 

@@ -1,10 +1,12 @@
 ﻿using Eterea_Parfums_Desktop.Controladores;
 using Eterea_Parfums_Desktop.ControlesDeUsuario;
+using Eterea_Parfums_Desktop.Helpers;
 using Eterea_Parfums_Desktop.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -18,8 +20,16 @@ namespace Eterea_Parfums_Desktop
         public List<Pais> paises;
         private Image imagen1;
         private Image imagen2;
+
         private string nombre_foto_uno;
         private string nombre_foto_dos;
+
+        private string pathLocalImg1;
+        private string pathLocalImg2;
+
+        public string urlImagen1Actual;
+        public string urlImagen2Actual;
+
         private static readonly Random rnd = new Random(); //genero una sola instancia
         private Perfumes_UC perfumesUC;
         public FormCrearPerfume1(Perfumes_UC perfumesUC)
@@ -137,18 +147,28 @@ namespace Eterea_Parfums_Desktop
             combo.Items.Add("No");
         }
 
- internal void guardarNuevaImg()
-{
-    if (imagen1 != null)
-    {
-        saveImagenResources(out nombre_foto_uno, imagen1, "envase");
-    }
+        internal void guardarNuevaImg()
+        {
+            var uploader = new GoogleDriveUploader();
+            string carpetaDriveId = "1haFolSk8OuUAUGtBykB0DmiC4bne8T9b"; // ID de carpeta de drive
 
-    if (imagen2 != null)
-    {
-        saveImagenResources(out nombre_foto_dos, imagen2, "envase y caja");
-    }
-}
+            if (imagen1 != null && !string.IsNullOrEmpty(pathLocalImg1))
+            {
+                saveImagenResources(out nombre_foto_uno, imagen1, "envase");
+                string rutaDestino = Program.Ruta_Base + nombre_foto_uno + ".jpg";
+                File.Copy(pathLocalImg1, rutaDestino, true);
+                urlImagen1Actual = uploader.SubirImagen(rutaDestino, nombre_foto_uno + ".jpg", carpetaDriveId);
+            }
+
+            if (imagen2 != null && !string.IsNullOrEmpty(pathLocalImg2))
+            {
+                saveImagenResources(out nombre_foto_dos, imagen2, "envase y caja");
+                string rutaDestino = Program.Ruta_Base + nombre_foto_dos + ".jpg";
+                File.Copy(pathLocalImg2, rutaDestino, true);
+                urlImagen2Actual = uploader.SubirImagen(rutaDestino, nombre_foto_dos + ".jpg", carpetaDriveId);
+            }
+        }
+
 
 
         private void btn_siguiente_Click(object sender, EventArgs e)
@@ -231,7 +251,7 @@ namespace Eterea_Parfums_Desktop
             Console.WriteLine("ID: " + id_Perfume);
             Perfume perfume = new Perfume(id_Perfume + 1, txt_codigo.Text, marca, txt_nombre.Text, tipo_de_perfume,
                 genero, int.Parse(txt_presentacion.Text), pais, spray, recargable, richTextBox_descripcion.Text,
-                int.Parse(txt_anio_de_lanzamiento.Text), Double.Parse(txt_precio.Text), activo, nombre_foto_uno, nombre_foto_dos, null);
+                int.Parse(txt_anio_de_lanzamiento.Text), Double.Parse(txt_precio.Text), activo, nombre_foto_uno, nombre_foto_dos, null, urlImagen1Actual, urlImagen2Actual);
 
             return perfume;
 
@@ -535,6 +555,8 @@ namespace Eterea_Parfums_Desktop
                 imagen1 = Image.FromFile(ofd.FileName);
                 pictureBoxProducto1.Image = imagen1;
 
+                // ✅ Guardar la ruta local original
+                pathLocalImg1 = ofd.FileName;
             }
         }
 
@@ -547,6 +569,8 @@ namespace Eterea_Parfums_Desktop
                 imagen2 = Image.FromFile(ofd.FileName);
                 pictureBoxProducto2.Image = imagen2;
 
+                // ✅ Guardar la ruta local original
+                pathLocalImg2 = ofd.FileName;
             }
         }
 

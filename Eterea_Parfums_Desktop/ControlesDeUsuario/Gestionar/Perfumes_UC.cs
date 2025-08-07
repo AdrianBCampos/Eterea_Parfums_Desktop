@@ -170,7 +170,10 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario
                     perfume_editar.activo,
                     perfume_editar.imagen1,
                     perfume_editar.imagen2,
-                    perfume_editar.fecha_baja
+                    perfume_editar.fecha_baja,
+                    perfume_editar.imagen1_URL,
+                    perfume_editar.imagen2_URL
+
                 );
 
                 FormEditarPerfume1 formEditarProductoABM = new FormEditarPerfume1(perfume_editar, this);

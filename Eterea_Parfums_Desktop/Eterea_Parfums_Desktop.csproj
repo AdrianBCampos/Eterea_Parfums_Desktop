@@ -50,6 +50,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Google.Apis, Version=1.70.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.70.0\lib\net462\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.70.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.70.0\lib\net462\Google.Apis.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Core, Version=1.70.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.70.0\lib\net462\Google.Apis.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Drive.v3, Version=1.70.0.3856, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Drive.v3.1.70.0.3856\lib\net462\Google.Apis.Drive.v3.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
     </Reference>
@@ -95,6 +107,9 @@
     <Reference Include="MigraDoc.RtfRendering-gdi, Version=6.1.1.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
       <HintPath>..\packages\PDFsharp-MigraDoc-GDI.6.1.1\lib\net472\MigraDoc.RtfRendering-gdi.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PdfSharp-gdi, Version=6.1.1.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
       <HintPath>..\packages\PDFsharp-MigraDoc-GDI.6.1.1\lib\net472\PdfSharp-gdi.dll</HintPath>
     </Reference>
@@ -128,6 +143,7 @@
       <HintPath>..\packages\PDFsharp-MigraDoc-GDI.6.1.1\lib\net472\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\PDFsharp-MigraDoc-GDI.6.1.1\lib\net472\System.Memory.dll</HintPath>
     </Reference>
@@ -435,6 +451,7 @@
       <DependentUpon>FormStockPorSucursal.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CorreoHelper.cs" />
+    <Compile Include="Helpers\GoogleDriveUploader.cs" />
     <Compile Include="Helpers\ModalHelper.cs" />
     <Compile Include="Modelos\AromaDelPerfume.cs" />
     <Compile Include="Modelos\Calle.cs" />

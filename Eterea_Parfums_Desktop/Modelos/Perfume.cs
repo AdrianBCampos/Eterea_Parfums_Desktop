@@ -22,12 +22,14 @@ namespace Eterea_Parfums_Desktop.Modelos
         public string imagen1 { get; set; }
         public string imagen2 { get; set; }
         public DateTime? fecha_baja { get; set; }
+        public string imagen1_URL { get; set; }
+        public string imagen2_URL { get; set; }
 
 
 
         public Perfume(int id, string codigo, Marca marca, string nombre, TipoDePerfume tipo_de_perfume
             , Genero genero, int presentacion_ml, Pais pais, bool spray, bool recargable, string descripcion,
-            int anio_de_lanzamiento, double precio_en_pesos, bool? activo, string imagen1, string imagen2, DateTime? fecha_baja)
+            int anio_de_lanzamiento, double precio_en_pesos, bool? activo, string imagen1, string imagen2, DateTime? fecha_baja, string imagen1_URL, string imagen2_URL)
         {
             this.id = id;
             this.codigo = codigo;
@@ -46,6 +48,9 @@ namespace Eterea_Parfums_Desktop.Modelos
             this.imagen1 = imagen1;
             this.imagen2 = imagen2;
             this.fecha_baja = fecha_baja;
+            this.imagen1_URL = imagen1_URL;
+            this.imagen2_URL = imagen2_URL;
+
         }
 
         public Perfume()
