@@ -532,6 +532,9 @@
     <EmbeddedResource Include="ControlesDeUsuario\PrepararEnvios\PrepararEnvios_UC.resx">
       <DependentUpon>PrepararEnvios_UC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ControlesDeUsuario\PrepararEnvios\PrepararEnvios_UC.zu.resx">
+      <DependentUpon>PrepararEnvios_UC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormABM\Cliente\FormCrearCliente.resx">
       <DependentUpon>FormCrearCliente.cs</DependentUpon>
     </EmbeddedResource>
