@@ -56,6 +56,8 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
 
             this.Cursor = Cursors.Default;
             this.UseWaitCursor = false;
+            this.Dock = DockStyle.Fill;
+            this.BringToFront();
 
         }
 
@@ -379,29 +381,43 @@ namespace Eterea_Parfums_Desktop.ControlesDeUsuario.PrepararEnvios
 
         private void MostrarDialogoDeEtiqueta(string rutaArchivo)
         {
+            Form mainForm = this.FindForm();
+            var prevWindowState = mainForm.WindowState;
+
             try
             {
-                var visor = new FormVisorPDF(rutaArchivo)
+                using (var visor = new FormVisorPDF(rutaArchivo)
                 {
                     StartPosition = FormStartPosition.CenterScreen,
-                    TopMost = true // 🔥 Forza que esté al frente
-                };
-
-                visor.ShowDialog(); // ShowDialog lo hace modal (bloquea hasta que se cierra)
+                    TopMost = true
+                })
+                {
+                    // aquí pasamos el owner para que sea modal
+                    visor.ShowDialog(mainForm);
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("No se pudo abrir el visor PDF: " + ex.Message);
             }
+            finally
+            {
+                // Fuerza a maximizar y activar
+                mainForm.WindowState = FormWindowState.Maximized;
+                mainForm.Activate();
+            }
 
-            DialogResult resultado = MessageBox.Show("¿Desea imprimir la etiqueta ahora?", "Etiqueta generada",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var resultado = MessageBox.Show(
+                "¿Desea imprimir la etiqueta ahora?",
+                "Etiqueta generada",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
 
             if (resultado == DialogResult.Yes)
-            {
                 ImprimirPdf(rutaArchivo);
-            }
         }
+
 
 
 
